@@ -1,0 +1,984 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_guardduty</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_guardduty</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon GuardDuty is a continuous security monitoring service that  
+analyzes and processes the following data sources: VPC Flow Logs, AWS  
+CloudTrail event logs, and DNS logs.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon GuardDuty is a continuous security monitoring service that  
+analyzes and processes the following data sources: VPC Flow Logs, AWS  
+CloudTrail event logs, and DNS logs.</p>
+ 
+  <p>It uses threat intelligence feeds (such as lists of malicious IPs and  
+domains) and machine learning to identify unexpected, potentially  
+unauthorized, and malicious activity within your AWS environment. This can  
+include issues like escalations of privileges, uses of exposed  
+credentials, or communication with malicious IPs, URLs, or domains. For  
+example, GuardDuty can detect compromised EC2 instances that serve malware  
+or mine bitcoin.</p>
+ 
+  <p>GuardDuty also monitors AWS account access behavior for signs of  
+compromise. Some examples of this are unauthorized infrastructure  
+deployments such as EC2 instances deployed in a Region that has never been  
+used, or unusual API calls like a password policy change to reduce  
+password strength.</p>
+ 
+  GuardDuty informs you of the status of your AWS environment by producing
+  security findings that you can view in the GuardDuty console or through
+  Amazon CloudWatch events. For more information, see the Amazon GuardDuty
+  User Guide .
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#accept_invitation-3">accept_invitation/3</a></td><td>Accepts the invitation to be monitored by a master GuardDuty account.</td></tr>
+<tr><td valign="top"><a href="#accept_invitation-4">accept_invitation/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#archive_findings-3">archive_findings/3</a></td><td>Archives GuardDuty findings that are specified by the list of finding  
+IDs.</td></tr>
+<tr><td valign="top"><a href="#archive_findings-4">archive_findings/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_detector-2">create_detector/2</a></td><td>Creates a single Amazon GuardDuty detector.</td></tr>
+<tr><td valign="top"><a href="#create_detector-3">create_detector/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_filter-3">create_filter/3</a></td><td>Creates a filter using the specified finding criteria.</td></tr>
+<tr><td valign="top"><a href="#create_filter-4">create_filter/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_i_p_set-3">create_i_p_set/3</a></td><td>Creates a new IPSet, which is called a trusted IP list in the console  
+user interface.</td></tr>
+<tr><td valign="top"><a href="#create_i_p_set-4">create_i_p_set/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_members-3">create_members/3</a></td><td>Creates member accounts of the current AWS account by specifying a  
+list of AWS account IDs.</td></tr>
+<tr><td valign="top"><a href="#create_members-4">create_members/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_publishing_destination-3">create_publishing_destination/3</a></td><td>Creates a publishing destination to export findings to.</td></tr>
+<tr><td valign="top"><a href="#create_publishing_destination-4">create_publishing_destination/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_sample_findings-3">create_sample_findings/3</a></td><td>Generates example findings of types specified by the list of finding  
+types.</td></tr>
+<tr><td valign="top"><a href="#create_sample_findings-4">create_sample_findings/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_threat_intel_set-3">create_threat_intel_set/3</a></td><td>Creates a new ThreatIntelSet.</td></tr>
+<tr><td valign="top"><a href="#create_threat_intel_set-4">create_threat_intel_set/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#decline_invitations-2">decline_invitations/2</a></td><td>Declines invitations sent to the current member account by AWS
+  accounts specified by their account IDs.</td></tr>
+<tr><td valign="top"><a href="#decline_invitations-3">decline_invitations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_detector-3">delete_detector/3</a></td><td>Deletes an Amazon GuardDuty detector that is specified by the
+  detector ID.</td></tr>
+<tr><td valign="top"><a href="#delete_detector-4">delete_detector/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_filter-4">delete_filter/4</a></td><td>Deletes the filter specified by the filter name.</td></tr>
+<tr><td valign="top"><a href="#delete_filter-5">delete_filter/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_i_p_set-4">delete_i_p_set/4</a></td><td>Deletes the IPSet specified by the <code>ipSetId</code>.</td></tr>
+<tr><td valign="top"><a href="#delete_i_p_set-5">delete_i_p_set/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_invitations-2">delete_invitations/2</a></td><td>Deletes invitations sent to the current member account by AWS
+  accounts specified by their account IDs.</td></tr>
+<tr><td valign="top"><a href="#delete_invitations-3">delete_invitations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_members-3">delete_members/3</a></td><td>Deletes GuardDuty member accounts (to the current GuardDuty master
+  account) specified by the account IDs.</td></tr>
+<tr><td valign="top"><a href="#delete_members-4">delete_members/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_publishing_destination-4">delete_publishing_destination/4</a></td><td>Deletes the publishing definition with the specified <code>destinationId</code>.</td></tr>
+<tr><td valign="top"><a href="#delete_publishing_destination-5">delete_publishing_destination/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_threat_intel_set-4">delete_threat_intel_set/4</a></td><td>Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.</td></tr>
+<tr><td valign="top"><a href="#delete_threat_intel_set-5">delete_threat_intel_set/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_organization_configuration-2">describe_organization_configuration/2</a></td><td>Returns information about the account selected as the delegated
+  administrator for GuardDuty.</td></tr>
+<tr><td valign="top"><a href="#describe_organization_configuration-3">describe_organization_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_publishing_destination-3">describe_publishing_destination/3</a></td><td>Returns information about the publishing destination specified by the
+  provided <code>destinationId</code>.</td></tr>
+<tr><td valign="top"><a href="#describe_publishing_destination-4">describe_publishing_destination/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disable_organization_admin_account-2">disable_organization_admin_account/2</a></td><td>Disables an AWS account within the Organization as the GuardDuty
+  delegated administrator.</td></tr>
+<tr><td valign="top"><a href="#disable_organization_admin_account-3">disable_organization_admin_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_from_master_account-3">disassociate_from_master_account/3</a></td><td>Disassociates the current GuardDuty member account from its master
+  account.</td></tr>
+<tr><td valign="top"><a href="#disassociate_from_master_account-4">disassociate_from_master_account/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_members-3">disassociate_members/3</a></td><td>Disassociates GuardDuty member accounts (to the current GuardDuty
+  master account) specified by the account IDs.</td></tr>
+<tr><td valign="top"><a href="#disassociate_members-4">disassociate_members/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#enable_organization_admin_account-2">enable_organization_admin_account/2</a></td><td>Enables an AWS account within the organization as the GuardDuty
+  delegated administrator.</td></tr>
+<tr><td valign="top"><a href="#enable_organization_admin_account-3">enable_organization_admin_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_detector-2">get_detector/2</a></td><td>Retrieves an Amazon GuardDuty detector specified by the detectorId.</td></tr>
+<tr><td valign="top"><a href="#get_detector-3">get_detector/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_filter-3">get_filter/3</a></td><td>Returns the details of the filter specified by the filter name.</td></tr>
+<tr><td valign="top"><a href="#get_filter-4">get_filter/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_findings-3">get_findings/3</a></td><td>Describes Amazon GuardDuty findings specified by finding IDs.</td></tr>
+<tr><td valign="top"><a href="#get_findings-4">get_findings/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_findings_statistics-3">get_findings_statistics/3</a></td><td>Lists Amazon GuardDuty findings statistics for the specified detector
+  ID.</td></tr>
+<tr><td valign="top"><a href="#get_findings_statistics-4">get_findings_statistics/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_i_p_set-3">get_i_p_set/3</a></td><td>Retrieves the IPSet specified by the <code>ipSetId</code>.</td></tr>
+<tr><td valign="top"><a href="#get_i_p_set-4">get_i_p_set/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_invitations_count-1">get_invitations_count/1</a></td><td>Returns the count of all GuardDuty membership invitations that were
+  sent to the current member account except the currently accepted
+  invitation.</td></tr>
+<tr><td valign="top"><a href="#get_invitations_count-2">get_invitations_count/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_master_account-2">get_master_account/2</a></td><td>Provides the details for the GuardDuty master account associated with
+  the current GuardDuty member account.</td></tr>
+<tr><td valign="top"><a href="#get_master_account-3">get_master_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_member_detectors-3">get_member_detectors/3</a></td><td>Describes which data sources are enabled for the member account's
+  detector.</td></tr>
+<tr><td valign="top"><a href="#get_member_detectors-4">get_member_detectors/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_members-3">get_members/3</a></td><td>Retrieves GuardDuty member accounts (to the current GuardDuty master
+  account) specified by the account IDs.</td></tr>
+<tr><td valign="top"><a href="#get_members-4">get_members/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_threat_intel_set-3">get_threat_intel_set/3</a></td><td>Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
+  ID.</td></tr>
+<tr><td valign="top"><a href="#get_threat_intel_set-4">get_threat_intel_set/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_usage_statistics-3">get_usage_statistics/3</a></td><td>Lists Amazon GuardDuty usage statistics over the last 30 days for the  
+specified detector ID.</td></tr>
+<tr><td valign="top"><a href="#get_usage_statistics-4">get_usage_statistics/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#invite_members-3">invite_members/3</a></td><td>Invites other AWS accounts (created as members of the current AWS
+  account by CreateMembers) to enable GuardDuty, and allow the current AWS
+  account to view and manage these accounts' GuardDuty findings on their
+  behalf as the master account.</td></tr>
+<tr><td valign="top"><a href="#invite_members-4">invite_members/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_detectors-3">list_detectors/3</a></td><td>Lists detectorIds of all the existing Amazon GuardDuty detector
+  resources.</td></tr>
+<tr><td valign="top"><a href="#list_detectors-4">list_detectors/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_filters-4">list_filters/4</a></td><td>Returns a paginated list of the current filters.</td></tr>
+<tr><td valign="top"><a href="#list_filters-5">list_filters/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_findings-3">list_findings/3</a></td><td>Lists Amazon GuardDuty findings for the specified detector ID.</td></tr>
+<tr><td valign="top"><a href="#list_findings-4">list_findings/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_i_p_sets-4">list_i_p_sets/4</a></td><td>Lists the IPSets of the GuardDuty service specified by the detector  
+ID.</td></tr>
+<tr><td valign="top"><a href="#list_i_p_sets-5">list_i_p_sets/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_invitations-3">list_invitations/3</a></td><td>Lists all GuardDuty membership invitations that were sent to the
+  current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_invitations-4">list_invitations/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_members-5">list_members/5</a></td><td>Lists details about all member accounts for the current GuardDuty
+  master account.</td></tr>
+<tr><td valign="top"><a href="#list_members-6">list_members/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_organization_admin_accounts-3">list_organization_admin_accounts/3</a></td><td>Lists the accounts configured as GuardDuty delegated administrators.</td></tr>
+<tr><td valign="top"><a href="#list_organization_admin_accounts-4">list_organization_admin_accounts/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_publishing_destinations-4">list_publishing_destinations/4</a></td><td>Returns a list of publishing destinations associated with the
+  specified <code>dectectorId</code>.</td></tr>
+<tr><td valign="top"><a href="#list_publishing_destinations-5">list_publishing_destinations/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists tags for a resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_threat_intel_sets-4">list_threat_intel_sets/4</a></td><td>Lists the ThreatIntelSets of the GuardDuty service specified by the  
+detector ID.</td></tr>
+<tr><td valign="top"><a href="#list_threat_intel_sets-5">list_threat_intel_sets/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_monitoring_members-3">start_monitoring_members/3</a></td><td>Turns on GuardDuty monitoring of the specified member accounts.</td></tr>
+<tr><td valign="top"><a href="#start_monitoring_members-4">start_monitoring_members/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_monitoring_members-3">stop_monitoring_members/3</a></td><td>Stops GuardDuty monitoring for the specified member accounts.</td></tr>
+<tr><td valign="top"><a href="#stop_monitoring_members-4">stop_monitoring_members/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds tags to a resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unarchive_findings-3">unarchive_findings/3</a></td><td>Unarchives GuardDuty findings specified by the <code>findingIds</code>.</td></tr>
+<tr><td valign="top"><a href="#unarchive_findings-4">unarchive_findings/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes tags from a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_detector-3">update_detector/3</a></td><td>Updates the Amazon GuardDuty detector specified by the detectorId.</td></tr>
+<tr><td valign="top"><a href="#update_detector-4">update_detector/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_filter-4">update_filter/4</a></td><td>Updates the filter specified by the filter name.</td></tr>
+<tr><td valign="top"><a href="#update_filter-5">update_filter/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_findings_feedback-3">update_findings_feedback/3</a></td><td>Marks the specified GuardDuty findings as useful or not useful.</td></tr>
+<tr><td valign="top"><a href="#update_findings_feedback-4">update_findings_feedback/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_i_p_set-4">update_i_p_set/4</a></td><td>Updates the IPSet specified by the IPSet ID.</td></tr>
+<tr><td valign="top"><a href="#update_i_p_set-5">update_i_p_set/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_member_detectors-3">update_member_detectors/3</a></td><td>Contains information on member accounts to be updated.</td></tr>
+<tr><td valign="top"><a href="#update_member_detectors-4">update_member_detectors/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_organization_configuration-3">update_organization_configuration/3</a></td><td>Updates the delegated administrator account with the values provided.</td></tr>
+<tr><td valign="top"><a href="#update_organization_configuration-4">update_organization_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_publishing_destination-4">update_publishing_destination/4</a></td><td>Updates information about the publishing destination specified by the
+  <code>destinationId</code>.</td></tr>
+<tr><td valign="top"><a href="#update_publishing_destination-5">update_publishing_destination/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_threat_intel_set-4">update_threat_intel_set/4</a></td><td>Updates the ThreatIntelSet specified by the ThreatIntelSet ID.</td></tr>
+<tr><td valign="top"><a href="#update_threat_intel_set-5">update_threat_intel_set/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="accept_invitation-3">accept_invitation/3</a></h3>
+<div class="spec">
+<p><tt>accept_invitation(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Accepts the invitation to be monitored by a master GuardDuty account.</p>
+
+<h3 class="function"><a name="accept_invitation-4">accept_invitation/4</a></h3>
+<div class="spec">
+<p><tt>accept_invitation(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="archive_findings-3">archive_findings/3</a></h3>
+<div class="spec">
+<p><tt>archive_findings(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Archives GuardDuty findings that are specified by the list of finding  
+IDs.</p>
+ 
+  Only the master account can archive findings. Member accounts don't have
+  permission to archive findings from their accounts.</p>
+
+<h3 class="function"><a name="archive_findings-4">archive_findings/4</a></h3>
+<div class="spec">
+<p><tt>archive_findings(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_detector-2">create_detector/2</a></h3>
+<div class="spec">
+<p><tt>create_detector(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a single Amazon GuardDuty detector.</p>
+ 
+  A detector is a resource that represents the GuardDuty service. To start
+  using GuardDuty, you must create a detector in each Region where you
+  enable the service. You can have only one detector per account per Region.
+  All data sources are enabled in a new detector by default.</p>
+
+<h3 class="function"><a name="create_detector-3">create_detector/3</a></h3>
+<div class="spec">
+<p><tt>create_detector(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_filter-3">create_filter/3</a></h3>
+<div class="spec">
+<p><tt>create_filter(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a filter using the specified finding criteria.</p>
+
+<h3 class="function"><a name="create_filter-4">create_filter/4</a></h3>
+<div class="spec">
+<p><tt>create_filter(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_i_p_set-3">create_i_p_set/3</a></h3>
+<div class="spec">
+<p><tt>create_i_p_set(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new IPSet, which is called a trusted IP list in the console  
+user interface.</p>
+ 
+  An IPSet is a list of IP addresses that are trusted for secure
+  communication with AWS infrastructure and applications. GuardDuty doesn't
+  generate findings for IP addresses that are included in IPSets. Only users
+  from the master account can use this operation.</p>
+
+<h3 class="function"><a name="create_i_p_set-4">create_i_p_set/4</a></h3>
+<div class="spec">
+<p><tt>create_i_p_set(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_members-3">create_members/3</a></h3>
+<div class="spec">
+<p><tt>create_members(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates member accounts of the current AWS account by specifying a  
+list of AWS account IDs.</p>
+ 
+  <p>This step is a prerequisite for managing the associated member accounts  
+either by invitation or through an organization.</p>
+ 
+  <p>When using <code>Create Members</code> as an organizations delegated administrator  
+this action will enable GuardDuty in the added member accounts, with the  
+exception of the organization master account, which must enable GuardDuty  
+prior to being added as a member.</p>
+ 
+  If you are adding accounts by invitation use this action after GuardDuty
+  has been enabled in potential member accounts and before using <code>Invite
+  Members</code> .</p>
+
+<h3 class="function"><a name="create_members-4">create_members/4</a></h3>
+<div class="spec">
+<p><tt>create_members(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_publishing_destination-3">create_publishing_destination/3</a></h3>
+<div class="spec">
+<p><tt>create_publishing_destination(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a publishing destination to export findings to.</p>
+ 
+  The resource to export findings to must exist before you use this
+  operation.</p>
+
+<h3 class="function"><a name="create_publishing_destination-4">create_publishing_destination/4</a></h3>
+<div class="spec">
+<p><tt>create_publishing_destination(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_sample_findings-3">create_sample_findings/3</a></h3>
+<div class="spec">
+<p><tt>create_sample_findings(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Generates example findings of types specified by the list of finding  
+types.</p>
+ 
+  If 'NULL' is specified for <code>findingTypes</code>, the API generates example
+  findings of all supported finding types.</p>
+
+<h3 class="function"><a name="create_sample_findings-4">create_sample_findings/4</a></h3>
+<div class="spec">
+<p><tt>create_sample_findings(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_threat_intel_set-3">create_threat_intel_set/3</a></h3>
+<div class="spec">
+<p><tt>create_threat_intel_set(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new ThreatIntelSet.</p>
+ 
+  ThreatIntelSets consist of known malicious IP addresses. GuardDuty
+  generates findings based on ThreatIntelSets. Only users of the master
+  account can use this operation.</p>
+
+<h3 class="function"><a name="create_threat_intel_set-4">create_threat_intel_set/4</a></h3>
+<div class="spec">
+<p><tt>create_threat_intel_set(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="decline_invitations-2">decline_invitations/2</a></h3>
+<div class="spec">
+<p><tt>decline_invitations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Declines invitations sent to the current member account by AWS
+  accounts specified by their account IDs.</p>
+
+<h3 class="function"><a name="decline_invitations-3">decline_invitations/3</a></h3>
+<div class="spec">
+<p><tt>decline_invitations(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_detector-3">delete_detector/3</a></h3>
+<div class="spec">
+<p><tt>delete_detector(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an Amazon GuardDuty detector that is specified by the
+  detector ID.</p>
+
+<h3 class="function"><a name="delete_detector-4">delete_detector/4</a></h3>
+<div class="spec">
+<p><tt>delete_detector(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_filter-4">delete_filter/4</a></h3>
+<div class="spec">
+<p><tt>delete_filter(Client, DetectorId, FilterName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the filter specified by the filter name.</p>
+
+<h3 class="function"><a name="delete_filter-5">delete_filter/5</a></h3>
+<div class="spec">
+<p><tt>delete_filter(Client, DetectorId, FilterName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_i_p_set-4">delete_i_p_set/4</a></h3>
+<div class="spec">
+<p><tt>delete_i_p_set(Client, DetectorId, IpSetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the IPSet specified by the <code>ipSetId</code>.</p>
+ 
+  IPSets are called trusted IP lists in the console user interface.</p>
+
+<h3 class="function"><a name="delete_i_p_set-5">delete_i_p_set/5</a></h3>
+<div class="spec">
+<p><tt>delete_i_p_set(Client, DetectorId, IpSetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_invitations-2">delete_invitations/2</a></h3>
+<div class="spec">
+<p><tt>delete_invitations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes invitations sent to the current member account by AWS
+  accounts specified by their account IDs.</p>
+
+<h3 class="function"><a name="delete_invitations-3">delete_invitations/3</a></h3>
+<div class="spec">
+<p><tt>delete_invitations(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_members-3">delete_members/3</a></h3>
+<div class="spec">
+<p><tt>delete_members(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes GuardDuty member accounts (to the current GuardDuty master
+  account) specified by the account IDs.</p>
+
+<h3 class="function"><a name="delete_members-4">delete_members/4</a></h3>
+<div class="spec">
+<p><tt>delete_members(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_publishing_destination-4">delete_publishing_destination/4</a></h3>
+<div class="spec">
+<p><tt>delete_publishing_destination(Client, DestinationId, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the publishing definition with the specified <code>destinationId</code>.</p>
+
+<h3 class="function"><a name="delete_publishing_destination-5">delete_publishing_destination/5</a></h3>
+<div class="spec">
+<p><tt>delete_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_threat_intel_set-4">delete_threat_intel_set/4</a></h3>
+<div class="spec">
+<p><tt>delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the ThreatIntelSet specified by the ThreatIntelSet ID.</p>
+
+<h3 class="function"><a name="delete_threat_intel_set-5">delete_threat_intel_set/5</a></h3>
+<div class="spec">
+<p><tt>delete_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_organization_configuration-2">describe_organization_configuration/2</a></h3>
+<div class="spec">
+<p><tt>describe_organization_configuration(Client, DetectorId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the account selected as the delegated
+  administrator for GuardDuty.</p>
+
+<h3 class="function"><a name="describe_organization_configuration-3">describe_organization_configuration/3</a></h3>
+<div class="spec">
+<p><tt>describe_organization_configuration(Client, DetectorId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_publishing_destination-3">describe_publishing_destination/3</a></h3>
+<div class="spec">
+<p><tt>describe_publishing_destination(Client, DestinationId, DetectorId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the publishing destination specified by the
+  provided <code>destinationId</code>.</p>
+
+<h3 class="function"><a name="describe_publishing_destination-4">describe_publishing_destination/4</a></h3>
+<div class="spec">
+<p><tt>describe_publishing_destination(Client, DestinationId, DetectorId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disable_organization_admin_account-2">disable_organization_admin_account/2</a></h3>
+<div class="spec">
+<p><tt>disable_organization_admin_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables an AWS account within the Organization as the GuardDuty
+  delegated administrator.</p>
+
+<h3 class="function"><a name="disable_organization_admin_account-3">disable_organization_admin_account/3</a></h3>
+<div class="spec">
+<p><tt>disable_organization_admin_account(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_from_master_account-3">disassociate_from_master_account/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_from_master_account(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the current GuardDuty member account from its master
+  account.</p>
+
+<h3 class="function"><a name="disassociate_from_master_account-4">disassociate_from_master_account/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_from_master_account(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_members-3">disassociate_members/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_members(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates GuardDuty member accounts (to the current GuardDuty
+  master account) specified by the account IDs.</p>
+
+<h3 class="function"><a name="disassociate_members-4">disassociate_members/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_members(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="enable_organization_admin_account-2">enable_organization_admin_account/2</a></h3>
+<div class="spec">
+<p><tt>enable_organization_admin_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables an AWS account within the organization as the GuardDuty
+  delegated administrator.</p>
+
+<h3 class="function"><a name="enable_organization_admin_account-3">enable_organization_admin_account/3</a></h3>
+<div class="spec">
+<p><tt>enable_organization_admin_account(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_detector-2">get_detector/2</a></h3>
+<div class="spec">
+<p><tt>get_detector(Client, DetectorId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves an Amazon GuardDuty detector specified by the detectorId.</p>
+
+<h3 class="function"><a name="get_detector-3">get_detector/3</a></h3>
+<div class="spec">
+<p><tt>get_detector(Client, DetectorId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_filter-3">get_filter/3</a></h3>
+<div class="spec">
+<p><tt>get_filter(Client, DetectorId, FilterName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the details of the filter specified by the filter name.</p>
+
+<h3 class="function"><a name="get_filter-4">get_filter/4</a></h3>
+<div class="spec">
+<p><tt>get_filter(Client, DetectorId, FilterName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_findings-3">get_findings/3</a></h3>
+<div class="spec">
+<p><tt>get_findings(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes Amazon GuardDuty findings specified by finding IDs.</p>
+
+<h3 class="function"><a name="get_findings-4">get_findings/4</a></h3>
+<div class="spec">
+<p><tt>get_findings(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_findings_statistics-3">get_findings_statistics/3</a></h3>
+<div class="spec">
+<p><tt>get_findings_statistics(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists Amazon GuardDuty findings statistics for the specified detector
+  ID.</p>
+
+<h3 class="function"><a name="get_findings_statistics-4">get_findings_statistics/4</a></h3>
+<div class="spec">
+<p><tt>get_findings_statistics(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_i_p_set-3">get_i_p_set/3</a></h3>
+<div class="spec">
+<p><tt>get_i_p_set(Client, DetectorId, IpSetId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the IPSet specified by the <code>ipSetId</code>.</p>
+
+<h3 class="function"><a name="get_i_p_set-4">get_i_p_set/4</a></h3>
+<div class="spec">
+<p><tt>get_i_p_set(Client, DetectorId, IpSetId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_invitations_count-1">get_invitations_count/1</a></h3>
+<div class="spec">
+<p><tt>get_invitations_count(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the count of all GuardDuty membership invitations that were
+  sent to the current member account except the currently accepted
+  invitation.</p>
+
+<h3 class="function"><a name="get_invitations_count-2">get_invitations_count/2</a></h3>
+<div class="spec">
+<p><tt>get_invitations_count(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_master_account-2">get_master_account/2</a></h3>
+<div class="spec">
+<p><tt>get_master_account(Client, DetectorId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides the details for the GuardDuty master account associated with
+  the current GuardDuty member account.</p>
+
+<h3 class="function"><a name="get_master_account-3">get_master_account/3</a></h3>
+<div class="spec">
+<p><tt>get_master_account(Client, DetectorId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_member_detectors-3">get_member_detectors/3</a></h3>
+<div class="spec">
+<p><tt>get_member_detectors(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes which data sources are enabled for the member account's
+  detector.</p>
+
+<h3 class="function"><a name="get_member_detectors-4">get_member_detectors/4</a></h3>
+<div class="spec">
+<p><tt>get_member_detectors(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_members-3">get_members/3</a></h3>
+<div class="spec">
+<p><tt>get_members(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves GuardDuty member accounts (to the current GuardDuty master
+  account) specified by the account IDs.</p>
+
+<h3 class="function"><a name="get_members-4">get_members/4</a></h3>
+<div class="spec">
+<p><tt>get_members(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_threat_intel_set-3">get_threat_intel_set/3</a></h3>
+<div class="spec">
+<p><tt>get_threat_intel_set(Client, DetectorId, ThreatIntelSetId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the ThreatIntelSet that is specified by the ThreatIntelSet
+  ID.</p>
+
+<h3 class="function"><a name="get_threat_intel_set-4">get_threat_intel_set/4</a></h3>
+<div class="spec">
+<p><tt>get_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_usage_statistics-3">get_usage_statistics/3</a></h3>
+<div class="spec">
+<p><tt>get_usage_statistics(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists Amazon GuardDuty usage statistics over the last 30 days for the  
+specified detector ID.</p>
+ 
+  For newly enabled detectors or data sources the cost returned will include
+  only the usage so far under 30 days, this may differ from the cost metrics
+  in the console, which projects usage over 30 days to provide a monthly
+  cost estimate. For more information see Understanding How Usage Costs are
+  Calculated.</p>
+
+<h3 class="function"><a name="get_usage_statistics-4">get_usage_statistics/4</a></h3>
+<div class="spec">
+<p><tt>get_usage_statistics(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="invite_members-3">invite_members/3</a></h3>
+<div class="spec">
+<p><tt>invite_members(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Invites other AWS accounts (created as members of the current AWS
+  account by CreateMembers) to enable GuardDuty, and allow the current AWS
+  account to view and manage these accounts' GuardDuty findings on their
+  behalf as the master account.</p>
+
+<h3 class="function"><a name="invite_members-4">invite_members/4</a></h3>
+<div class="spec">
+<p><tt>invite_members(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_detectors-3">list_detectors/3</a></h3>
+<div class="spec">
+<p><tt>list_detectors(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists detectorIds of all the existing Amazon GuardDuty detector
+  resources.</p>
+
+<h3 class="function"><a name="list_detectors-4">list_detectors/4</a></h3>
+<div class="spec">
+<p><tt>list_detectors(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_filters-4">list_filters/4</a></h3>
+<div class="spec">
+<p><tt>list_filters(Client, DetectorId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a paginated list of the current filters.</p>
+
+<h3 class="function"><a name="list_filters-5">list_filters/5</a></h3>
+<div class="spec">
+<p><tt>list_filters(Client, DetectorId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_findings-3">list_findings/3</a></h3>
+<div class="spec">
+<p><tt>list_findings(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists Amazon GuardDuty findings for the specified detector ID.</p>
+
+<h3 class="function"><a name="list_findings-4">list_findings/4</a></h3>
+<div class="spec">
+<p><tt>list_findings(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_i_p_sets-4">list_i_p_sets/4</a></h3>
+<div class="spec">
+<p><tt>list_i_p_sets(Client, DetectorId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the IPSets of the GuardDuty service specified by the detector  
+ID.</p>
+ 
+  If you use this operation from a member account, the IPSets returned are
+  the IPSets from the associated master account.</p>
+
+<h3 class="function"><a name="list_i_p_sets-5">list_i_p_sets/5</a></h3>
+<div class="spec">
+<p><tt>list_i_p_sets(Client, DetectorId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_invitations-3">list_invitations/3</a></h3>
+<div class="spec">
+<p><tt>list_invitations(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all GuardDuty membership invitations that were sent to the
+  current AWS account.</p>
+
+<h3 class="function"><a name="list_invitations-4">list_invitations/4</a></h3>
+<div class="spec">
+<p><tt>list_invitations(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_members-5">list_members/5</a></h3>
+<div class="spec">
+<p><tt>list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists details about all member accounts for the current GuardDuty
+  master account.</p>
+
+<h3 class="function"><a name="list_members-6">list_members/6</a></h3>
+<div class="spec">
+<p><tt>list_members(Client, DetectorId, MaxResults, NextToken, OnlyAssociated, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_organization_admin_accounts-3">list_organization_admin_accounts/3</a></h3>
+<div class="spec">
+<p><tt>list_organization_admin_accounts(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the accounts configured as GuardDuty delegated administrators.</p>
+
+<h3 class="function"><a name="list_organization_admin_accounts-4">list_organization_admin_accounts/4</a></h3>
+<div class="spec">
+<p><tt>list_organization_admin_accounts(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_publishing_destinations-4">list_publishing_destinations/4</a></h3>
+<div class="spec">
+<p><tt>list_publishing_destinations(Client, DetectorId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of publishing destinations associated with the
+  specified <code>dectectorId</code>.</p>
+
+<h3 class="function"><a name="list_publishing_destinations-5">list_publishing_destinations/5</a></h3>
+<div class="spec">
+<p><tt>list_publishing_destinations(Client, DetectorId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists tags for a resource.</p>
+ 
+  Tagging is currently supported for detectors, finding filters, IP sets,
+  and threat intel sets, with a limit of 50 tags per resource. When invoked,
+  this operation returns all assigned tags for a given resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_threat_intel_sets-4">list_threat_intel_sets/4</a></h3>
+<div class="spec">
+<p><tt>list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the ThreatIntelSets of the GuardDuty service specified by the  
+detector ID.</p>
+ 
+  If you use this operation from a member account, the ThreatIntelSets
+  associated with the master account are returned.</p>
+
+<h3 class="function"><a name="list_threat_intel_sets-5">list_threat_intel_sets/5</a></h3>
+<div class="spec">
+<p><tt>list_threat_intel_sets(Client, DetectorId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_monitoring_members-3">start_monitoring_members/3</a></h3>
+<div class="spec">
+<p><tt>start_monitoring_members(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Turns on GuardDuty monitoring of the specified member accounts.</p>
+ 
+  Use this operation to restart monitoring of accounts that you stopped
+  monitoring with the <code>StopMonitoringMembers</code> operation.</p>
+
+<h3 class="function"><a name="start_monitoring_members-4">start_monitoring_members/4</a></h3>
+<div class="spec">
+<p><tt>start_monitoring_members(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_monitoring_members-3">stop_monitoring_members/3</a></h3>
+<div class="spec">
+<p><tt>stop_monitoring_members(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops GuardDuty monitoring for the specified member accounts.</p>
+ 
+  Use the <code>StartMonitoringMembers</code> operation to restart monitoring for those
+  accounts.</p>
+
+<h3 class="function"><a name="stop_monitoring_members-4">stop_monitoring_members/4</a></h3>
+<div class="spec">
+<p><tt>stop_monitoring_members(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds tags to a resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="unarchive_findings-3">unarchive_findings/3</a></h3>
+<div class="spec">
+<p><tt>unarchive_findings(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Unarchives GuardDuty findings specified by the <code>findingIds</code>.</p>
+
+<h3 class="function"><a name="unarchive_findings-4">unarchive_findings/4</a></h3>
+<div class="spec">
+<p><tt>unarchive_findings(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from a resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_detector-3">update_detector/3</a></h3>
+<div class="spec">
+<p><tt>update_detector(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the Amazon GuardDuty detector specified by the detectorId.</p>
+
+<h3 class="function"><a name="update_detector-4">update_detector/4</a></h3>
+<div class="spec">
+<p><tt>update_detector(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_filter-4">update_filter/4</a></h3>
+<div class="spec">
+<p><tt>update_filter(Client, DetectorId, FilterName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the filter specified by the filter name.</p>
+
+<h3 class="function"><a name="update_filter-5">update_filter/5</a></h3>
+<div class="spec">
+<p><tt>update_filter(Client, DetectorId, FilterName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_findings_feedback-3">update_findings_feedback/3</a></h3>
+<div class="spec">
+<p><tt>update_findings_feedback(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Marks the specified GuardDuty findings as useful or not useful.</p>
+
+<h3 class="function"><a name="update_findings_feedback-4">update_findings_feedback/4</a></h3>
+<div class="spec">
+<p><tt>update_findings_feedback(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_i_p_set-4">update_i_p_set/4</a></h3>
+<div class="spec">
+<p><tt>update_i_p_set(Client, DetectorId, IpSetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the IPSet specified by the IPSet ID.</p>
+
+<h3 class="function"><a name="update_i_p_set-5">update_i_p_set/5</a></h3>
+<div class="spec">
+<p><tt>update_i_p_set(Client, DetectorId, IpSetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_member_detectors-3">update_member_detectors/3</a></h3>
+<div class="spec">
+<p><tt>update_member_detectors(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Contains information on member accounts to be updated.</p>
+
+<h3 class="function"><a name="update_member_detectors-4">update_member_detectors/4</a></h3>
+<div class="spec">
+<p><tt>update_member_detectors(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_organization_configuration-3">update_organization_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_organization_configuration(Client, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the delegated administrator account with the values provided.</p>
+
+<h3 class="function"><a name="update_organization_configuration-4">update_organization_configuration/4</a></h3>
+<div class="spec">
+<p><tt>update_organization_configuration(Client, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_publishing_destination-4">update_publishing_destination/4</a></h3>
+<div class="spec">
+<p><tt>update_publishing_destination(Client, DestinationId, DetectorId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates information about the publishing destination specified by the
+  <code>destinationId</code>.</p>
+
+<h3 class="function"><a name="update_publishing_destination-5">update_publishing_destination/5</a></h3>
+<div class="spec">
+<p><tt>update_publishing_destination(Client, DestinationId, DetectorId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_threat_intel_set-4">update_threat_intel_set/4</a></h3>
+<div class="spec">
+<p><tt>update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the ThreatIntelSet specified by the ThreatIntelSet ID.</p>
+
+<h3 class="function"><a name="update_threat_intel_set-5">update_threat_intel_set/5</a></h3>
+<div class="spec">
+<p><tt>update_threat_intel_set(Client, DetectorId, ThreatIntelSetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

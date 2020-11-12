@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_api_pricing</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_api_pricing</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Price List Service API (AWS Price List Service) is a centralized  
+and convenient way to programmatically query Amazon Web Services for  
+services, products, and pricing information.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Price List Service API (AWS Price List Service) is a centralized  
+and convenient way to programmatically query Amazon Web Services for  
+services, products, and pricing information.</p>
+ 
+  <p>The AWS Price List Service uses standardized product attributes such as
+  <code>Location</code>, <code>Storage Class</code>, and <code>Operating System</code>, and provides prices  
+at the SKU level. You can use the AWS Price List Service to build cost  
+control and scenario planning tools, reconcile billing data, forecast  
+future spend for budgeting purposes, and provide cost benefit analysis  
+that compare your internal workloads with AWS.</p>
+ 
+  <p>Use <code>GetServices</code> without a service code to retrieve the service codes for
+  all AWS services, then <code>GetServices</code> with a service code to retreive the
+  attribute names for that service. After you have the service code and
+  attribute names, you can use <code>GetAttributeValues</code> to see what values are
+  available for an attribute. With the service code and an attribute name
+  and value, you can use <code>GetProducts</code> to find specific products that you're
+  interested in, such as an <code>AmazonEC2</code> instance, with a <code>Provisioned IOPS</code>
+  <code>volumeType</code>.</p>
+ 
+  <p>Service Endpoint</p>
+ 
+  <p>AWS Price List Service API provides the following two endpoints:</p>
+ 
+  <ul> <li><p> https://api.pricing.us-east-1.amazonaws.com</p>
+ 
+  </li> <li><p> https://api.pricing.ap-south-1.amazonaws.com</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#describe_services-2">describe_services/2</a></td><td>Returns the metadata for one service or a list of the metadata for  
+all services.</td></tr>
+<tr><td valign="top"><a href="#describe_services-3">describe_services/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_attribute_values-2">get_attribute_values/2</a></td><td>Returns a list of attribute values.</td></tr>
+<tr><td valign="top"><a href="#get_attribute_values-3">get_attribute_values/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_products-2">get_products/2</a></td><td>Returns a list of all products that match the filter criteria.</td></tr>
+<tr><td valign="top"><a href="#get_products-3">get_products/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="describe_services-2">describe_services/2</a></h3>
+<div class="spec">
+<p><tt>describe_services(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the metadata for one service or a list of the metadata for  
+all services.</p>
+ 
+  Use this without a service code to get the service codes for all services.
+  Use it with a service code, such as <code>AmazonEC2</code>, to get information
+  specific to that service, such as the attribute names available for that
+  service. For example, some of the attribute names available for EC2 are
+  <code>volumeType</code>, <code>maxIopsVolume</code>, <code>operation</code>, <code>locationType</code>, and
+  <code>instanceCapacity10xlarge</code>.</p>
+
+<h3 class="function"><a name="describe_services-3">describe_services/3</a></h3>
+<div class="spec">
+<p><tt>describe_services(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_attribute_values-2">get_attribute_values/2</a></h3>
+<div class="spec">
+<p><tt>get_attribute_values(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of attribute values.</p>
+ 
+  Attibutes are similar to the details in a Price List API offer file. For a
+  list of available attributes, see Offer File Definitions in the AWS
+  Billing and Cost Management User Guide.</p>
+
+<h3 class="function"><a name="get_attribute_values-3">get_attribute_values/3</a></h3>
+<div class="spec">
+<p><tt>get_attribute_values(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_products-2">get_products/2</a></h3>
+<div class="spec">
+<p><tt>get_products(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of all products that match the filter criteria.</p>
+
+<h3 class="function"><a name="get_products-3">get_products/3</a></h3>
+<div class="spec">
+<p><tt>get_products(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

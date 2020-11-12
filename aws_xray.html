@@ -1,0 +1,520 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_xray</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_xray</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS X-Ray provides APIs for managing debug traces and retrieving
+  service maps and other data created by processing those traces.
+
+
+<h2><a name="description">Description</a></h2>AWS X-Ray provides APIs for managing debug traces and retrieving
+  service maps and other data created by processing those traces.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#batch_get_traces-2">batch_get_traces/2</a></td><td>Retrieves a list of traces specified by ID.</td></tr>
+<tr><td valign="top"><a href="#batch_get_traces-3">batch_get_traces/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_group-2">create_group/2</a></td><td>Creates a group resource with a name and a filter expression.</td></tr>
+<tr><td valign="top"><a href="#create_group-3">create_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_sampling_rule-2">create_sampling_rule/2</a></td><td>Creates a rule to control sampling behavior for instrumented  
+applications.</td></tr>
+<tr><td valign="top"><a href="#create_sampling_rule-3">create_sampling_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_group-2">delete_group/2</a></td><td>Deletes a group resource.</td></tr>
+<tr><td valign="top"><a href="#delete_group-3">delete_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_sampling_rule-2">delete_sampling_rule/2</a></td><td>Deletes a sampling rule.</td></tr>
+<tr><td valign="top"><a href="#delete_sampling_rule-3">delete_sampling_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_encryption_config-2">get_encryption_config/2</a></td><td>Retrieves the current encryption configuration for X-Ray data.</td></tr>
+<tr><td valign="top"><a href="#get_encryption_config-3">get_encryption_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group-2">get_group/2</a></td><td>Retrieves group resource details.</td></tr>
+<tr><td valign="top"><a href="#get_group-3">get_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_groups-2">get_groups/2</a></td><td>Retrieves all active group details.</td></tr>
+<tr><td valign="top"><a href="#get_groups-3">get_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_insight-2">get_insight/2</a></td><td>Retrieves the summary information of an insight.</td></tr>
+<tr><td valign="top"><a href="#get_insight-3">get_insight/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_insight_events-2">get_insight_events/2</a></td><td>X-Ray reevaluates insights periodically until they're resolved, and  
+records each intermediate state as an event.</td></tr>
+<tr><td valign="top"><a href="#get_insight_events-3">get_insight_events/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_insight_impact_graph-2">get_insight_impact_graph/2</a></td><td>Retrieves a service graph structure filtered by the specified  
+insight.</td></tr>
+<tr><td valign="top"><a href="#get_insight_impact_graph-3">get_insight_impact_graph/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_insight_summaries-2">get_insight_summaries/2</a></td><td>Retrieves the summaries of all insights in the specified group
+  matching the provided filter values.</td></tr>
+<tr><td valign="top"><a href="#get_insight_summaries-3">get_insight_summaries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sampling_rules-2">get_sampling_rules/2</a></td><td>Retrieves all sampling rules.</td></tr>
+<tr><td valign="top"><a href="#get_sampling_rules-3">get_sampling_rules/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sampling_statistic_summaries-2">get_sampling_statistic_summaries/2</a></td><td>Retrieves information about recent sampling results for all sampling
+  rules.</td></tr>
+<tr><td valign="top"><a href="#get_sampling_statistic_summaries-3">get_sampling_statistic_summaries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sampling_targets-2">get_sampling_targets/2</a></td><td>Requests a sampling quota for rules that the service is using to
+  sample requests.</td></tr>
+<tr><td valign="top"><a href="#get_sampling_targets-3">get_sampling_targets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_service_graph-2">get_service_graph/2</a></td><td>Retrieves a document that describes services that process incoming  
+requests, and downstream services that they call as a result.</td></tr>
+<tr><td valign="top"><a href="#get_service_graph-3">get_service_graph/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_time_series_service_statistics-2">get_time_series_service_statistics/2</a></td><td>Get an aggregation of service statistics defined by a specific time
+  range.</td></tr>
+<tr><td valign="top"><a href="#get_time_series_service_statistics-3">get_time_series_service_statistics/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_trace_graph-2">get_trace_graph/2</a></td><td>Retrieves a service graph for one or more specific trace IDs.</td></tr>
+<tr><td valign="top"><a href="#get_trace_graph-3">get_trace_graph/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_trace_summaries-2">get_trace_summaries/2</a></td><td>Retrieves IDs and annotations for traces available for a specified  
+time frame using an optional filter.</td></tr>
+<tr><td valign="top"><a href="#get_trace_summaries-3">get_trace_summaries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of tags that are applied to the specified AWS X-Ray
+  group or sampling rule.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_encryption_config-2">put_encryption_config/2</a></td><td>Updates the encryption configuration for X-Ray data.</td></tr>
+<tr><td valign="top"><a href="#put_encryption_config-3">put_encryption_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_telemetry_records-2">put_telemetry_records/2</a></td><td>Used by the AWS X-Ray daemon to upload telemetry.</td></tr>
+<tr><td valign="top"><a href="#put_telemetry_records-3">put_telemetry_records/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_trace_segments-2">put_trace_segments/2</a></td><td>Uploads segment documents to AWS X-Ray.</td></tr>
+<tr><td valign="top"><a href="#put_trace_segments-3">put_trace_segments/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Applies tags to an existing AWS X-Ray group or sampling rule.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes tags from an AWS X-Ray group or sampling rule.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_group-2">update_group/2</a></td><td>Updates a group resource.</td></tr>
+<tr><td valign="top"><a href="#update_group-3">update_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_sampling_rule-2">update_sampling_rule/2</a></td><td>Modifies a sampling rule's configuration.</td></tr>
+<tr><td valign="top"><a href="#update_sampling_rule-3">update_sampling_rule/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="batch_get_traces-2">batch_get_traces/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_traces(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list of traces specified by ID.</p>
+ 
+  Each trace is a collection of segment documents that originates from a
+  single request. Use <code>GetTraceSummaries</code> to get a list of trace IDs.</p>
+
+<h3 class="function"><a name="batch_get_traces-3">batch_get_traces/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_traces(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_group-2">create_group/2</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a group resource with a name and a filter expression.</p>
+
+<h3 class="function"><a name="create_group-3">create_group/3</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_sampling_rule-2">create_sampling_rule/2</a></h3>
+<div class="spec">
+<p><tt>create_sampling_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a rule to control sampling behavior for instrumented  
+applications.</p>
+ 
+  Services retrieve rules with <code>GetSamplingRules</code>, and evaluate each rule in
+  ascending order of priority for each request. If a rule matches, the
+  service records a trace, borrowing it from the reservoir size. After 10
+  seconds, the service reports back to X-Ray with <code>GetSamplingTargets</code> to
+  get updated versions of each in-use rule. The updated rule contains a
+  trace quota that the service can use instead of borrowing from the
+  reservoir.</p>
+
+<h3 class="function"><a name="create_sampling_rule-3">create_sampling_rule/3</a></h3>
+<div class="spec">
+<p><tt>create_sampling_rule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_group-2">delete_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a group resource.</p>
+
+<h3 class="function"><a name="delete_group-3">delete_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_sampling_rule-2">delete_sampling_rule/2</a></h3>
+<div class="spec">
+<p><tt>delete_sampling_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a sampling rule.</p>
+
+<h3 class="function"><a name="delete_sampling_rule-3">delete_sampling_rule/3</a></h3>
+<div class="spec">
+<p><tt>delete_sampling_rule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_encryption_config-2">get_encryption_config/2</a></h3>
+<div class="spec">
+<p><tt>get_encryption_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the current encryption configuration for X-Ray data.</p>
+
+<h3 class="function"><a name="get_encryption_config-3">get_encryption_config/3</a></h3>
+<div class="spec">
+<p><tt>get_encryption_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group-2">get_group/2</a></h3>
+<div class="spec">
+<p><tt>get_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves group resource details.</p>
+
+<h3 class="function"><a name="get_group-3">get_group/3</a></h3>
+<div class="spec">
+<p><tt>get_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_groups-2">get_groups/2</a></h3>
+<div class="spec">
+<p><tt>get_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves all active group details.</p>
+
+<h3 class="function"><a name="get_groups-3">get_groups/3</a></h3>
+<div class="spec">
+<p><tt>get_groups(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_insight-2">get_insight/2</a></h3>
+<div class="spec">
+<p><tt>get_insight(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the summary information of an insight.</p>
+ 
+  This includes impact to clients and root cause services, the top anomalous
+  services, the category, the state of the insight, and the start and end
+  time of the insight.</p>
+
+<h3 class="function"><a name="get_insight-3">get_insight/3</a></h3>
+<div class="spec">
+<p><tt>get_insight(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_insight_events-2">get_insight_events/2</a></h3>
+<div class="spec">
+<p><tt>get_insight_events(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>X-Ray reevaluates insights periodically until they're resolved, and  
+records each intermediate state as an event.</p>
+ 
+  You can review an insight's events in the Impact Timeline on the Inspect
+  page in the X-Ray console.</p>
+
+<h3 class="function"><a name="get_insight_events-3">get_insight_events/3</a></h3>
+<div class="spec">
+<p><tt>get_insight_events(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_insight_impact_graph-2">get_insight_impact_graph/2</a></h3>
+<div class="spec">
+<p><tt>get_insight_impact_graph(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a service graph structure filtered by the specified  
+insight.</p>
+ 
+  The service graph is limited to only structural information. For a
+  complete service graph, use this API with the GetServiceGraph API.</p>
+
+<h3 class="function"><a name="get_insight_impact_graph-3">get_insight_impact_graph/3</a></h3>
+<div class="spec">
+<p><tt>get_insight_impact_graph(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_insight_summaries-2">get_insight_summaries/2</a></h3>
+<div class="spec">
+<p><tt>get_insight_summaries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the summaries of all insights in the specified group
+  matching the provided filter values.</p>
+
+<h3 class="function"><a name="get_insight_summaries-3">get_insight_summaries/3</a></h3>
+<div class="spec">
+<p><tt>get_insight_summaries(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sampling_rules-2">get_sampling_rules/2</a></h3>
+<div class="spec">
+<p><tt>get_sampling_rules(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves all sampling rules.</p>
+
+<h3 class="function"><a name="get_sampling_rules-3">get_sampling_rules/3</a></h3>
+<div class="spec">
+<p><tt>get_sampling_rules(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sampling_statistic_summaries-2">get_sampling_statistic_summaries/2</a></h3>
+<div class="spec">
+<p><tt>get_sampling_statistic_summaries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about recent sampling results for all sampling
+  rules.</p>
+
+<h3 class="function"><a name="get_sampling_statistic_summaries-3">get_sampling_statistic_summaries/3</a></h3>
+<div class="spec">
+<p><tt>get_sampling_statistic_summaries(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sampling_targets-2">get_sampling_targets/2</a></h3>
+<div class="spec">
+<p><tt>get_sampling_targets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Requests a sampling quota for rules that the service is using to
+  sample requests.</p>
+
+<h3 class="function"><a name="get_sampling_targets-3">get_sampling_targets/3</a></h3>
+<div class="spec">
+<p><tt>get_sampling_targets(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_service_graph-2">get_service_graph/2</a></h3>
+<div class="spec">
+<p><tt>get_service_graph(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a document that describes services that process incoming  
+requests, and downstream services that they call as a result.</p>
+ 
+  Root services process incoming requests and make calls to downstream
+  services. Root services are applications that use the AWS X-Ray SDK.
+  Downstream services can be other applications, AWS resources, HTTP web
+  APIs, or SQL databases.</p>
+
+<h3 class="function"><a name="get_service_graph-3">get_service_graph/3</a></h3>
+<div class="spec">
+<p><tt>get_service_graph(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_time_series_service_statistics-2">get_time_series_service_statistics/2</a></h3>
+<div class="spec">
+<p><tt>get_time_series_service_statistics(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get an aggregation of service statistics defined by a specific time
+  range.</p>
+
+<h3 class="function"><a name="get_time_series_service_statistics-3">get_time_series_service_statistics/3</a></h3>
+<div class="spec">
+<p><tt>get_time_series_service_statistics(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_trace_graph-2">get_trace_graph/2</a></h3>
+<div class="spec">
+<p><tt>get_trace_graph(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a service graph for one or more specific trace IDs.</p>
+
+<h3 class="function"><a name="get_trace_graph-3">get_trace_graph/3</a></h3>
+<div class="spec">
+<p><tt>get_trace_graph(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_trace_summaries-2">get_trace_summaries/2</a></h3>
+<div class="spec">
+<p><tt>get_trace_summaries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves IDs and annotations for traces available for a specified  
+time frame using an optional filter.</p>
+ 
+  <p>To get the full traces, pass the trace IDs to <code>BatchGetTraces</code>.</p>
+ 
+  <p>A filter expression can target traced requests that hit specific service
+  nodes or edges, have errors, or come from a known user. For example, the
+  following filter expression targets traces that pass through
+  <code>api.example.com</code>:</p>
+ 
+  <p><code>service("api.example.com")</code></p>
+ 
+  <p>This filter expression finds traces that have an annotation named
+  <code>account</code> with the value <code>12345</code>:</p>
+ 
+  <p><code>annotation.account = "12345"</code></p>
+ 
+  For a full list of indexed fields and keywords that you can use in filter
+  expressions, see Using Filter Expressions in the AWS X-Ray Developer
+  Guide.</p>
+
+<h3 class="function"><a name="get_trace_summaries-3">get_trace_summaries/3</a></h3>
+<div class="spec">
+<p><tt>get_trace_summaries(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of tags that are applied to the specified AWS X-Ray
+  group or sampling rule.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_encryption_config-2">put_encryption_config/2</a></h3>
+<div class="spec">
+<p><tt>put_encryption_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the encryption configuration for X-Ray data.</p>
+
+<h3 class="function"><a name="put_encryption_config-3">put_encryption_config/3</a></h3>
+<div class="spec">
+<p><tt>put_encryption_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_telemetry_records-2">put_telemetry_records/2</a></h3>
+<div class="spec">
+<p><tt>put_telemetry_records(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Used by the AWS X-Ray daemon to upload telemetry.</p>
+
+<h3 class="function"><a name="put_telemetry_records-3">put_telemetry_records/3</a></h3>
+<div class="spec">
+<p><tt>put_telemetry_records(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_trace_segments-2">put_trace_segments/2</a></h3>
+<div class="spec">
+<p><tt>put_trace_segments(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Uploads segment documents to AWS X-Ray.</p>
+ 
+  <p>The X-Ray SDK generates segment documents and sends them to the X-Ray  
+daemon, which uploads them in batches. A segment document can be a  
+completed segment, an in-progress segment, or an array of subsegments.</p>
+ 
+  <p>Segments must include the following fields. For the full segment document  
+schema, see AWS X-Ray Segment Documents in the AWS X-Ray Developer Guide.</p>
+ 
+  <h3><a name="Required_segment_document_fields">Required segment document fields</a></h3>
+ 
+  <ul> <li><p> <code>name</code> - The name of the service that handled the request.</p>
+ 
+  </li> <li><p> <code>id</code> - A 64-bit identifier for the segment, unique among  
+segments in the same trace, in 16 hexadecimal digits.</p>
+ 
+  </li> <li><p> <code>trace_id</code> - A unique identifier that connects all segments and  
+subsegments originating from a single client request.</p>
+ 
+  </li> <li><p> <code>start_time</code> - Time the segment or subsegment was created, in
+  floating point seconds in epoch time, accurate to milliseconds. For
+  example, <code>1480615200.010</code> or <code>1.480615200010E9</code>.</p>
+ 
+  </li> <li><p> <code>end_time</code> - Time the segment or subsegment was closed. For
+  example, <code>1480615200.090</code> or <code>1.480615200090E9</code>. Specify either an
+  <code>end_time</code> or <code>in_progress</code>.</p>
+ 
+  </li> <li><p> <code>in_progress</code> - Set to <code>true</code> instead of specifying an
+  <code>end_time</code> to record that a segment has been started, but is not complete.  
+Send an in-progress segment when your application receives a request that  
+will take a long time to serve, to trace that the request was received.  
+When the response is sent, send the complete segment to overwrite the  
+in-progress segment.</p>
+ 
+  </li> </ul><p> A <code>trace_id</code> consists of three numbers separated by hyphens.  
+For example, 1-58406520-a006649127e371903a2de979. This includes:</p>
+ 
+  <h3><a name="Trace_ID_Format">Trace ID Format</a></h3>
+ 
+  <ul> <li><p> The version number, for instance, <code>1</code>.</p>
+ 
+  </li> <li><p> The time of the original request, in Unix epoch time, in 8
+  hexadecimal digits. For example, 10:00AM December 2nd, 2016 PST in epoch
+  time is <code>1480615200</code> seconds, or <code>58406520</code> in hexadecimal.</p>
+ 
+  </li> <li><p> A 96-bit identifier for the trace, globally unique, in 24  
+hexadecimal digits.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="put_trace_segments-3">put_trace_segments/3</a></h3>
+<div class="spec">
+<p><tt>put_trace_segments(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Applies tags to an existing AWS X-Ray group or sampling rule.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes tags from an AWS X-Ray group or sampling rule.</p>
+ 
+  You cannot edit or delete system tags (those with an <code>aws:</code> prefix).</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_group-2">update_group/2</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a group resource.</p>
+
+<h3 class="function"><a name="update_group-3">update_group/3</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_sampling_rule-2">update_sampling_rule/2</a></h3>
+<div class="spec">
+<p><tt>update_sampling_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies a sampling rule's configuration.</p>
+
+<h3 class="function"><a name="update_sampling_rule-3">update_sampling_rule/3</a></h3>
+<div class="spec">
+<p><tt>update_sampling_rule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

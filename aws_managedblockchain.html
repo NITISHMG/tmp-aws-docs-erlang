@@ -1,0 +1,344 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_managedblockchain</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_managedblockchain</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>.
+
+
+<h2><a name="description">Description</a></h2>
+ 
+  <p>Amazon Managed Blockchain is a fully managed service for creating and  
+managing blockchain networks using open source frameworks.</p>
+ 
+  Blockchain allows you to build applications where multiple parties can
+  securely and transparently run transactions and share data without the
+  need for a trusted, central authority. Currently, Managed Blockchain
+  supports the Hyperledger Fabric open source framework.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_member-3">create_member/3</a></td><td>Creates a member within a Managed Blockchain network.</td></tr>
+<tr><td valign="top"><a href="#create_member-4">create_member/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_network-2">create_network/2</a></td><td>Creates a new blockchain network using Amazon Managed Blockchain.</td></tr>
+<tr><td valign="top"><a href="#create_network-3">create_network/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_node-4">create_node/4</a></td><td>Creates a peer node in a member.</td></tr>
+<tr><td valign="top"><a href="#create_node-5">create_node/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_proposal-3">create_proposal/3</a></td><td>Creates a proposal for a change to the network that other members of  
+the network can vote on, for example, a proposal to add a new member to  
+the network.</td></tr>
+<tr><td valign="top"><a href="#create_proposal-4">create_proposal/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_member-4">delete_member/4</a></td><td>Deletes a member.</td></tr>
+<tr><td valign="top"><a href="#delete_member-5">delete_member/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_node-5">delete_node/5</a></td><td>Deletes a peer node from a member that your AWS account owns.</td></tr>
+<tr><td valign="top"><a href="#delete_node-6">delete_node/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_member-3">get_member/3</a></td><td>Returns detailed information about a member.</td></tr>
+<tr><td valign="top"><a href="#get_member-4">get_member/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_network-2">get_network/2</a></td><td>Returns detailed information about a network.</td></tr>
+<tr><td valign="top"><a href="#get_network-3">get_network/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_node-4">get_node/4</a></td><td>Returns detailed information about a peer node.</td></tr>
+<tr><td valign="top"><a href="#get_node-5">get_node/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_proposal-3">get_proposal/3</a></td><td>Returns detailed information about a proposal.</td></tr>
+<tr><td valign="top"><a href="#get_proposal-4">get_proposal/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_invitations-3">list_invitations/3</a></td><td>Returns a listing of all invitations for the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_invitations-4">list_invitations/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_members-7">list_members/7</a></td><td>Returns a listing of the members in a network and properties of their
+  configurations.</td></tr>
+<tr><td valign="top"><a href="#list_members-8">list_members/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_networks-6">list_networks/6</a></td><td>Returns information about the networks in which the current AWS
+  account has members.</td></tr>
+<tr><td valign="top"><a href="#list_networks-7">list_networks/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_nodes-6">list_nodes/6</a></td><td>Returns information about the nodes within a network.</td></tr>
+<tr><td valign="top"><a href="#list_nodes-7">list_nodes/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_proposal_votes-5">list_proposal_votes/5</a></td><td>Returns the listing of votes for a specified proposal, including the
+  value of each vote and the unique identifier of the member that cast the
+  vote.</td></tr>
+<tr><td valign="top"><a href="#list_proposal_votes-6">list_proposal_votes/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_proposals-4">list_proposals/4</a></td><td>Returns a listing of proposals for the network.</td></tr>
+<tr><td valign="top"><a href="#list_proposals-5">list_proposals/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reject_invitation-3">reject_invitation/3</a></td><td>Rejects an invitation to join a network.</td></tr>
+<tr><td valign="top"><a href="#reject_invitation-4">reject_invitation/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_member-4">update_member/4</a></td><td>Updates a member configuration with new parameters.</td></tr>
+<tr><td valign="top"><a href="#update_member-5">update_member/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_node-5">update_node/5</a></td><td>Updates a node configuration with new parameters.</td></tr>
+<tr><td valign="top"><a href="#update_node-6">update_node/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#vote_on_proposal-4">vote_on_proposal/4</a></td><td>Casts a vote for a specified <code>ProposalId</code> on behalf of a member.</td></tr>
+<tr><td valign="top"><a href="#vote_on_proposal-5">vote_on_proposal/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_member-3">create_member/3</a></h3>
+<div class="spec">
+<p><tt>create_member(Client, NetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a member within a Managed Blockchain network.</p>
+
+<h3 class="function"><a name="create_member-4">create_member/4</a></h3>
+<div class="spec">
+<p><tt>create_member(Client, NetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_network-2">create_network/2</a></h3>
+<div class="spec">
+<p><tt>create_network(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new blockchain network using Amazon Managed Blockchain.</p>
+
+<h3 class="function"><a name="create_network-3">create_network/3</a></h3>
+<div class="spec">
+<p><tt>create_network(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_node-4">create_node/4</a></h3>
+<div class="spec">
+<p><tt>create_node(Client, MemberId, NetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a peer node in a member.</p>
+
+<h3 class="function"><a name="create_node-5">create_node/5</a></h3>
+<div class="spec">
+<p><tt>create_node(Client, MemberId, NetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_proposal-3">create_proposal/3</a></h3>
+<div class="spec">
+<p><tt>create_proposal(Client, NetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a proposal for a change to the network that other members of  
+the network can vote on, for example, a proposal to add a new member to  
+the network.</p>
+ 
+  Any member can create a proposal.</p>
+
+<h3 class="function"><a name="create_proposal-4">create_proposal/4</a></h3>
+<div class="spec">
+<p><tt>create_proposal(Client, NetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_member-4">delete_member/4</a></h3>
+<div class="spec">
+<p><tt>delete_member(Client, MemberId, NetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a member.</p>
+ 
+  Deleting a member removes the member and all associated resources from the
+  network. <code>DeleteMember</code> can only be called for a specified <code>MemberId</code> if
+  the principal performing the action is associated with the AWS account
+  that owns the member. In all other cases, the <code>DeleteMember</code> action is
+  carried out as the result of an approved proposal to remove a member. If
+  <code>MemberId</code> is the last member in a network specified by the last AWS
+  account, the network is deleted also.</p>
+
+<h3 class="function"><a name="delete_member-5">delete_member/5</a></h3>
+<div class="spec">
+<p><tt>delete_member(Client, MemberId, NetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_node-5">delete_node/5</a></h3>
+<div class="spec">
+<p><tt>delete_node(Client, MemberId, NetworkId, NodeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a peer node from a member that your AWS account owns.</p>
+ 
+  All data on the node is lost and cannot be recovered.</p>
+
+<h3 class="function"><a name="delete_node-6">delete_node/6</a></h3>
+<div class="spec">
+<p><tt>delete_node(Client, MemberId, NetworkId, NodeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_member-3">get_member/3</a></h3>
+<div class="spec">
+<p><tt>get_member(Client, MemberId, NetworkId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns detailed information about a member.</p>
+
+<h3 class="function"><a name="get_member-4">get_member/4</a></h3>
+<div class="spec">
+<p><tt>get_member(Client, MemberId, NetworkId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_network-2">get_network/2</a></h3>
+<div class="spec">
+<p><tt>get_network(Client, NetworkId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns detailed information about a network.</p>
+
+<h3 class="function"><a name="get_network-3">get_network/3</a></h3>
+<div class="spec">
+<p><tt>get_network(Client, NetworkId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_node-4">get_node/4</a></h3>
+<div class="spec">
+<p><tt>get_node(Client, MemberId, NetworkId, NodeId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns detailed information about a peer node.</p>
+
+<h3 class="function"><a name="get_node-5">get_node/5</a></h3>
+<div class="spec">
+<p><tt>get_node(Client, MemberId, NetworkId, NodeId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_proposal-3">get_proposal/3</a></h3>
+<div class="spec">
+<p><tt>get_proposal(Client, NetworkId, ProposalId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns detailed information about a proposal.</p>
+
+<h3 class="function"><a name="get_proposal-4">get_proposal/4</a></h3>
+<div class="spec">
+<p><tt>get_proposal(Client, NetworkId, ProposalId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_invitations-3">list_invitations/3</a></h3>
+<div class="spec">
+<p><tt>list_invitations(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a listing of all invitations for the current AWS account.</p>
+
+<h3 class="function"><a name="list_invitations-4">list_invitations/4</a></h3>
+<div class="spec">
+<p><tt>list_invitations(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_members-7">list_members/7</a></h3>
+<div class="spec">
+<p><tt>list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a listing of the members in a network and properties of their
+  configurations.</p>
+
+<h3 class="function"><a name="list_members-8">list_members/8</a></h3>
+<div class="spec">
+<p><tt>list_members(Client, NetworkId, IsOwned, MaxResults, Name, NextToken, Status, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_networks-6">list_networks/6</a></h3>
+<div class="spec">
+<p><tt>list_networks(Client, Framework, MaxResults, Name, NextToken, Status) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the networks in which the current AWS
+  account has members.</p>
+
+<h3 class="function"><a name="list_networks-7">list_networks/7</a></h3>
+<div class="spec">
+<p><tt>list_networks(Client, Framework, MaxResults, Name, NextToken, Status, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_nodes-6">list_nodes/6</a></h3>
+<div class="spec">
+<p><tt>list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the nodes within a network.</p>
+
+<h3 class="function"><a name="list_nodes-7">list_nodes/7</a></h3>
+<div class="spec">
+<p><tt>list_nodes(Client, MemberId, NetworkId, MaxResults, NextToken, Status, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_proposal_votes-5">list_proposal_votes/5</a></h3>
+<div class="spec">
+<p><tt>list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the listing of votes for a specified proposal, including the
+  value of each vote and the unique identifier of the member that cast the
+  vote.</p>
+
+<h3 class="function"><a name="list_proposal_votes-6">list_proposal_votes/6</a></h3>
+<div class="spec">
+<p><tt>list_proposal_votes(Client, NetworkId, ProposalId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_proposals-4">list_proposals/4</a></h3>
+<div class="spec">
+<p><tt>list_proposals(Client, NetworkId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a listing of proposals for the network.</p>
+
+<h3 class="function"><a name="list_proposals-5">list_proposals/5</a></h3>
+<div class="spec">
+<p><tt>list_proposals(Client, NetworkId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reject_invitation-3">reject_invitation/3</a></h3>
+<div class="spec">
+<p><tt>reject_invitation(Client, InvitationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Rejects an invitation to join a network.</p>
+ 
+  This action can be called by a principal in an AWS account that has
+  received an invitation to create a member and join a network.</p>
+
+<h3 class="function"><a name="reject_invitation-4">reject_invitation/4</a></h3>
+<div class="spec">
+<p><tt>reject_invitation(Client, InvitationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_member-4">update_member/4</a></h3>
+<div class="spec">
+<p><tt>update_member(Client, MemberId, NetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a member configuration with new parameters.</p>
+
+<h3 class="function"><a name="update_member-5">update_member/5</a></h3>
+<div class="spec">
+<p><tt>update_member(Client, MemberId, NetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_node-5">update_node/5</a></h3>
+<div class="spec">
+<p><tt>update_node(Client, MemberId, NetworkId, NodeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a node configuration with new parameters.</p>
+
+<h3 class="function"><a name="update_node-6">update_node/6</a></h3>
+<div class="spec">
+<p><tt>update_node(Client, MemberId, NetworkId, NodeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="vote_on_proposal-4">vote_on_proposal/4</a></h3>
+<div class="spec">
+<p><tt>vote_on_proposal(Client, NetworkId, ProposalId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Casts a vote for a specified <code>ProposalId</code> on behalf of a member.</p>
+ 
+  The member to vote as, specified by <code>VoterMemberId</code>, must be in the same
+  AWS account as the principal that calls the action.</p>
+
+<h3 class="function"><a name="vote_on_proposal-5">vote_on_proposal/5</a></h3>
+<div class="spec">
+<p><tt>vote_on_proposal(Client, NetworkId, ProposalId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

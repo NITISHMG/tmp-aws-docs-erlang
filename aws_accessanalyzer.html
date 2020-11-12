@@ -1,0 +1,325 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_accessanalyzer</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_accessanalyzer</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS IAM Access Analyzer helps identify potential resource-access  
+risks by enabling you to identify any policies that grant access to an  
+external principal.
+
+
+<h2><a name="description">Description</a></h2><p>AWS IAM Access Analyzer helps identify potential resource-access  
+risks by enabling you to identify any policies that grant access to an  
+external principal.</p>
+ 
+  <p>It does this by using logic-based reasoning to analyze resource-based  
+policies in your AWS environment. An external principal can be another AWS  
+account, a root user, an IAM user or role, a federated user, an AWS  
+service, or an anonymous user. This guide describes the AWS IAM Access  
+Analyzer operations that you can call programmatically. For general  
+information about Access Analyzer, see AWS IAM Access Analyzer in the IAM  
+User Guide.</p>
+ 
+  To start using Access Analyzer, you first need to create an analyzer.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#apply_archive_rule-2">apply_archive_rule/2</a></td><td>Retroactively applies the archive rule to existing findings that meet
+  the archive rule criteria.</td></tr>
+<tr><td valign="top"><a href="#apply_archive_rule-3">apply_archive_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_analyzer-2">create_analyzer/2</a></td><td>Creates an analyzer for your account.</td></tr>
+<tr><td valign="top"><a href="#create_analyzer-3">create_analyzer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_archive_rule-3">create_archive_rule/3</a></td><td>Creates an archive rule for the specified analyzer.</td></tr>
+<tr><td valign="top"><a href="#create_archive_rule-4">create_archive_rule/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_analyzer-3">delete_analyzer/3</a></td><td>Deletes the specified analyzer.</td></tr>
+<tr><td valign="top"><a href="#delete_analyzer-4">delete_analyzer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_archive_rule-4">delete_archive_rule/4</a></td><td>Deletes the specified archive rule.</td></tr>
+<tr><td valign="top"><a href="#delete_archive_rule-5">delete_archive_rule/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_analyzed_resource-3">get_analyzed_resource/3</a></td><td>Retrieves information about a resource that was analyzed.</td></tr>
+<tr><td valign="top"><a href="#get_analyzed_resource-4">get_analyzed_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_analyzer-2">get_analyzer/2</a></td><td>Retrieves information about the specified analyzer.</td></tr>
+<tr><td valign="top"><a href="#get_analyzer-3">get_analyzer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_archive_rule-3">get_archive_rule/3</a></td><td>Retrieves information about an archive rule.</td></tr>
+<tr><td valign="top"><a href="#get_archive_rule-4">get_archive_rule/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_finding-3">get_finding/3</a></td><td>Retrieves information about the specified finding.</td></tr>
+<tr><td valign="top"><a href="#get_finding-4">get_finding/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_analyzed_resources-2">list_analyzed_resources/2</a></td><td>Retrieves a list of resources of the specified type that have been
+  analyzed by the specified analyzer..</td></tr>
+<tr><td valign="top"><a href="#list_analyzed_resources-3">list_analyzed_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_analyzers-4">list_analyzers/4</a></td><td>Retrieves a list of analyzers.</td></tr>
+<tr><td valign="top"><a href="#list_analyzers-5">list_analyzers/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_archive_rules-4">list_archive_rules/4</a></td><td>Retrieves a list of archive rules created for the specified analyzer.</td></tr>
+<tr><td valign="top"><a href="#list_archive_rules-5">list_archive_rules/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_findings-2">list_findings/2</a></td><td>Retrieves a list of findings generated by the specified analyzer.</td></tr>
+<tr><td valign="top"><a href="#list_findings-3">list_findings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieves a list of tags applied to the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_resource_scan-2">start_resource_scan/2</a></td><td>Immediately starts a scan of the policies applied to the specified
+  resource.</td></tr>
+<tr><td valign="top"><a href="#start_resource_scan-3">start_resource_scan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds a tag to the specified resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes a tag from the specified resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_archive_rule-4">update_archive_rule/4</a></td><td>Updates the criteria and values for the specified archive rule.</td></tr>
+<tr><td valign="top"><a href="#update_archive_rule-5">update_archive_rule/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_findings-2">update_findings/2</a></td><td>Updates the status for the specified findings.</td></tr>
+<tr><td valign="top"><a href="#update_findings-3">update_findings/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="apply_archive_rule-2">apply_archive_rule/2</a></h3>
+<div class="spec">
+<p><tt>apply_archive_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retroactively applies the archive rule to existing findings that meet
+  the archive rule criteria.</p>
+
+<h3 class="function"><a name="apply_archive_rule-3">apply_archive_rule/3</a></h3>
+<div class="spec">
+<p><tt>apply_archive_rule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_analyzer-2">create_analyzer/2</a></h3>
+<div class="spec">
+<p><tt>create_analyzer(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an analyzer for your account.</p>
+
+<h3 class="function"><a name="create_analyzer-3">create_analyzer/3</a></h3>
+<div class="spec">
+<p><tt>create_analyzer(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_archive_rule-3">create_archive_rule/3</a></h3>
+<div class="spec">
+<p><tt>create_archive_rule(Client, AnalyzerName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an archive rule for the specified analyzer.</p>
+ 
+  Archive rules automatically archive new findings that meet the criteria
+  you define when you create the rule.</p>
+
+<h3 class="function"><a name="create_archive_rule-4">create_archive_rule/4</a></h3>
+<div class="spec">
+<p><tt>create_archive_rule(Client, AnalyzerName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_analyzer-3">delete_analyzer/3</a></h3>
+<div class="spec">
+<p><tt>delete_analyzer(Client, AnalyzerName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified analyzer.</p>
+ 
+  When you delete an analyzer, Access Analyzer is disabled for the account
+  in the current or specific Region. All findings that were generated by the
+  analyzer are deleted. You cannot undo this action.</p>
+
+<h3 class="function"><a name="delete_analyzer-4">delete_analyzer/4</a></h3>
+<div class="spec">
+<p><tt>delete_analyzer(Client, AnalyzerName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_archive_rule-4">delete_archive_rule/4</a></h3>
+<div class="spec">
+<p><tt>delete_archive_rule(Client, AnalyzerName, RuleName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified archive rule.</p>
+
+<h3 class="function"><a name="delete_archive_rule-5">delete_archive_rule/5</a></h3>
+<div class="spec">
+<p><tt>delete_archive_rule(Client, AnalyzerName, RuleName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_analyzed_resource-3">get_analyzed_resource/3</a></h3>
+<div class="spec">
+<p><tt>get_analyzed_resource(Client, AnalyzerArn, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a resource that was analyzed.</p>
+
+<h3 class="function"><a name="get_analyzed_resource-4">get_analyzed_resource/4</a></h3>
+<div class="spec">
+<p><tt>get_analyzed_resource(Client, AnalyzerArn, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_analyzer-2">get_analyzer/2</a></h3>
+<div class="spec">
+<p><tt>get_analyzer(Client, AnalyzerName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the specified analyzer.</p>
+
+<h3 class="function"><a name="get_analyzer-3">get_analyzer/3</a></h3>
+<div class="spec">
+<p><tt>get_analyzer(Client, AnalyzerName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_archive_rule-3">get_archive_rule/3</a></h3>
+<div class="spec">
+<p><tt>get_archive_rule(Client, AnalyzerName, RuleName) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves information about an archive rule.</p>
+ 
+  To learn about filter keys that you can use to create an archive rule, see
+  Access Analyzer filter keys in the IAM User Guide.</p>
+
+<h3 class="function"><a name="get_archive_rule-4">get_archive_rule/4</a></h3>
+<div class="spec">
+<p><tt>get_archive_rule(Client, AnalyzerName, RuleName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_finding-3">get_finding/3</a></h3>
+<div class="spec">
+<p><tt>get_finding(Client, Id, AnalyzerArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the specified finding.</p>
+
+<h3 class="function"><a name="get_finding-4">get_finding/4</a></h3>
+<div class="spec">
+<p><tt>get_finding(Client, Id, AnalyzerArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_analyzed_resources-2">list_analyzed_resources/2</a></h3>
+<div class="spec">
+<p><tt>list_analyzed_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of resources of the specified type that have been
+  analyzed by the specified analyzer..</p>
+
+<h3 class="function"><a name="list_analyzed_resources-3">list_analyzed_resources/3</a></h3>
+<div class="spec">
+<p><tt>list_analyzed_resources(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_analyzers-4">list_analyzers/4</a></h3>
+<div class="spec">
+<p><tt>list_analyzers(Client, MaxResults, NextToken, Type) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of analyzers.</p>
+
+<h3 class="function"><a name="list_analyzers-5">list_analyzers/5</a></h3>
+<div class="spec">
+<p><tt>list_analyzers(Client, MaxResults, NextToken, Type, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_archive_rules-4">list_archive_rules/4</a></h3>
+<div class="spec">
+<p><tt>list_archive_rules(Client, AnalyzerName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of archive rules created for the specified analyzer.</p>
+
+<h3 class="function"><a name="list_archive_rules-5">list_archive_rules/5</a></h3>
+<div class="spec">
+<p><tt>list_archive_rules(Client, AnalyzerName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_findings-2">list_findings/2</a></h3>
+<div class="spec">
+<p><tt>list_findings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list of findings generated by the specified analyzer.</p>
+ 
+  To learn about filter keys that you can use to create an archive rule, see
+  Access Analyzer filter keys in the IAM User Guide.</p>
+
+<h3 class="function"><a name="list_findings-3">list_findings/3</a></h3>
+<div class="spec">
+<p><tt>list_findings(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of tags applied to the specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_resource_scan-2">start_resource_scan/2</a></h3>
+<div class="spec">
+<p><tt>start_resource_scan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Immediately starts a scan of the policies applied to the specified
+  resource.</p>
+
+<h3 class="function"><a name="start_resource_scan-3">start_resource_scan/3</a></h3>
+<div class="spec">
+<p><tt>start_resource_scan(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds a tag to the specified resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a tag from the specified resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_archive_rule-4">update_archive_rule/4</a></h3>
+<div class="spec">
+<p><tt>update_archive_rule(Client, AnalyzerName, RuleName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the criteria and values for the specified archive rule.</p>
+
+<h3 class="function"><a name="update_archive_rule-5">update_archive_rule/5</a></h3>
+<div class="spec">
+<p><tt>update_archive_rule(Client, AnalyzerName, RuleName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_findings-2">update_findings/2</a></h3>
+<div class="spec">
+<p><tt>update_findings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the status for the specified findings.</p>
+
+<h3 class="function"><a name="update_findings-3">update_findings/3</a></h3>
+<div class="spec">
+<p><tt>update_findings(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

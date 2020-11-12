@@ -1,0 +1,844 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_backup</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_backup</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Backup.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Backup</p>
+ 
+  <p>AWS Backup is a unified backup service designed to protect AWS services  
+and their associated data.</p>
+ 
+  AWS Backup simplifies the creation, migration, restoration, and deletion
+  of backups, while also providing reporting and auditing.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_backup_plan-2">create_backup_plan/2</a></td><td>Creates a backup plan using a backup plan name and backup rules.</td></tr>
+<tr><td valign="top"><a href="#create_backup_plan-3">create_backup_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_backup_selection-3">create_backup_selection/3</a></td><td>Creates a JSON document that specifies a set of resources to assign  
+to a backup plan.</td></tr>
+<tr><td valign="top"><a href="#create_backup_selection-4">create_backup_selection/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_backup_vault-3">create_backup_vault/3</a></td><td>Creates a logical container where backups are stored.</td></tr>
+<tr><td valign="top"><a href="#create_backup_vault-4">create_backup_vault/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_backup_plan-3">delete_backup_plan/3</a></td><td>Deletes a backup plan.</td></tr>
+<tr><td valign="top"><a href="#delete_backup_plan-4">delete_backup_plan/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_backup_selection-4">delete_backup_selection/4</a></td><td>Deletes the resource selection associated with a backup plan that is
+  specified by the <code>SelectionId</code>.</td></tr>
+<tr><td valign="top"><a href="#delete_backup_selection-5">delete_backup_selection/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_backup_vault-3">delete_backup_vault/3</a></td><td>Deletes the backup vault identified by its name.</td></tr>
+<tr><td valign="top"><a href="#delete_backup_vault-4">delete_backup_vault/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_backup_vault_access_policy-3">delete_backup_vault_access_policy/3</a></td><td>Deletes the policy document that manages permissions on a backup
+  vault.</td></tr>
+<tr><td valign="top"><a href="#delete_backup_vault_access_policy-4">delete_backup_vault_access_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_backup_vault_notifications-3">delete_backup_vault_notifications/3</a></td><td>Deletes event notifications for the specified backup vault.</td></tr>
+<tr><td valign="top"><a href="#delete_backup_vault_notifications-4">delete_backup_vault_notifications/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_recovery_point-4">delete_recovery_point/4</a></td><td>Deletes the recovery point specified by a recovery point ID.</td></tr>
+<tr><td valign="top"><a href="#delete_recovery_point-5">delete_recovery_point/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_backup_job-2">describe_backup_job/2</a></td><td>Returns backup job details for the specified <code>BackupJobId</code>.</td></tr>
+<tr><td valign="top"><a href="#describe_backup_job-3">describe_backup_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_backup_vault-2">describe_backup_vault/2</a></td><td>Returns metadata about a backup vault specified by its name.</td></tr>
+<tr><td valign="top"><a href="#describe_backup_vault-3">describe_backup_vault/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_copy_job-2">describe_copy_job/2</a></td><td>Returns metadata associated with creating a copy of a resource.</td></tr>
+<tr><td valign="top"><a href="#describe_copy_job-3">describe_copy_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_protected_resource-2">describe_protected_resource/2</a></td><td>Returns information about a saved resource, including the last time
+  it was backed up, its Amazon Resource Name (ARN), and the AWS service type
+  of the saved resource.</td></tr>
+<tr><td valign="top"><a href="#describe_protected_resource-3">describe_protected_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_recovery_point-3">describe_recovery_point/3</a></td><td>Returns metadata associated with a recovery point, including ID,
+  status, encryption, and lifecycle.</td></tr>
+<tr><td valign="top"><a href="#describe_recovery_point-4">describe_recovery_point/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_region_settings-1">describe_region_settings/1</a></td><td>Returns the current service opt-in settings for the Region.</td></tr>
+<tr><td valign="top"><a href="#describe_region_settings-2">describe_region_settings/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_restore_job-2">describe_restore_job/2</a></td><td>Returns metadata associated with a restore job that is specified by a
+  job ID.</td></tr>
+<tr><td valign="top"><a href="#describe_restore_job-3">describe_restore_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#export_backup_plan_template-2">export_backup_plan_template/2</a></td><td>Returns the backup plan that is specified by the plan ID as a backup
+  template.</td></tr>
+<tr><td valign="top"><a href="#export_backup_plan_template-3">export_backup_plan_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_backup_plan-3">get_backup_plan/3</a></td><td>Returns <code>BackupPlan</code> details for the specified <code>BackupPlanId</code>.</td></tr>
+<tr><td valign="top"><a href="#get_backup_plan-4">get_backup_plan/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_backup_plan_from_j_s_o_n-2">get_backup_plan_from_j_s_o_n/2</a></td><td>Returns a valid JSON document specifying a backup plan or an error.</td></tr>
+<tr><td valign="top"><a href="#get_backup_plan_from_j_s_o_n-3">get_backup_plan_from_j_s_o_n/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_backup_plan_from_template-2">get_backup_plan_from_template/2</a></td><td>Returns the template specified by its <code>templateId</code> as a backup plan.</td></tr>
+<tr><td valign="top"><a href="#get_backup_plan_from_template-3">get_backup_plan_from_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_backup_selection-3">get_backup_selection/3</a></td><td>Returns selection metadata and a document in JSON format that
+  specifies a list of resources that are associated with a backup plan.</td></tr>
+<tr><td valign="top"><a href="#get_backup_selection-4">get_backup_selection/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_backup_vault_access_policy-2">get_backup_vault_access_policy/2</a></td><td>Returns the access policy document that is associated with the named
+  backup vault.</td></tr>
+<tr><td valign="top"><a href="#get_backup_vault_access_policy-3">get_backup_vault_access_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_backup_vault_notifications-2">get_backup_vault_notifications/2</a></td><td>Returns event notifications for the specified backup vault.</td></tr>
+<tr><td valign="top"><a href="#get_backup_vault_notifications-3">get_backup_vault_notifications/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_recovery_point_restore_metadata-3">get_recovery_point_restore_metadata/3</a></td><td>Returns a set of metadata key-value pairs that were used to create
+  the backup.</td></tr>
+<tr><td valign="top"><a href="#get_recovery_point_restore_metadata-4">get_recovery_point_restore_metadata/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_supported_resource_types-1">get_supported_resource_types/1</a></td><td>Returns the AWS resource types supported by AWS Backup.</td></tr>
+<tr><td valign="top"><a href="#get_supported_resource_types-2">get_supported_resource_types/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_backup_jobs-10">list_backup_jobs/10</a></td><td>Returns a list of existing backup jobs for an authenticated account.</td></tr>
+<tr><td valign="top"><a href="#list_backup_jobs-11">list_backup_jobs/11</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_backup_plan_templates-3">list_backup_plan_templates/3</a></td><td>Returns metadata of your saved backup plan templates, including the
+  template ID, name, and the creation and deletion dates.</td></tr>
+<tr><td valign="top"><a href="#list_backup_plan_templates-4">list_backup_plan_templates/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_backup_plan_versions-4">list_backup_plan_versions/4</a></td><td>Returns version metadata of your backup plans, including Amazon
+  Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan
+  names, and version IDs.</td></tr>
+<tr><td valign="top"><a href="#list_backup_plan_versions-5">list_backup_plan_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_backup_plans-4">list_backup_plans/4</a></td><td>Returns a list of existing backup plans for an authenticated account.</td></tr>
+<tr><td valign="top"><a href="#list_backup_plans-5">list_backup_plans/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_backup_selections-4">list_backup_selections/4</a></td><td>Returns an array containing metadata of the resources associated with
+  the target backup plan.</td></tr>
+<tr><td valign="top"><a href="#list_backup_selections-5">list_backup_selections/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_backup_vaults-3">list_backup_vaults/3</a></td><td>Returns a list of recovery point storage containers along with
+  information about them.</td></tr>
+<tr><td valign="top"><a href="#list_backup_vaults-4">list_backup_vaults/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_copy_jobs-10">list_copy_jobs/10</a></td><td>Returns metadata about your copy jobs.</td></tr>
+<tr><td valign="top"><a href="#list_copy_jobs-11">list_copy_jobs/11</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_protected_resources-3">list_protected_resources/3</a></td><td>Returns an array of resources successfully backed up by AWS Backup,
+  including the time the resource was saved, an Amazon Resource Name (ARN)
+  of the resource, and a resource type.</td></tr>
+<tr><td valign="top"><a href="#list_protected_resources-4">list_protected_resources/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_recovery_points_by_backup_vault-10">list_recovery_points_by_backup_vault/10</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_recovery_points_by_backup_vault-9">list_recovery_points_by_backup_vault/9</a></td><td>Returns detailed information about the recovery points stored in a
+  backup vault.</td></tr>
+<tr><td valign="top"><a href="#list_recovery_points_by_resource-4">list_recovery_points_by_resource/4</a></td><td>Returns detailed information about recovery points of the type
+  specified by a resource Amazon Resource Name (ARN).</td></tr>
+<tr><td valign="top"><a href="#list_recovery_points_by_resource-5">list_recovery_points_by_resource/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_restore_jobs-7">list_restore_jobs/7</a></td><td>Returns a list of jobs that AWS Backup initiated to restore a saved
+  resource, including metadata about the recovery process.</td></tr>
+<tr><td valign="top"><a href="#list_restore_jobs-8">list_restore_jobs/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags-4">list_tags/4</a></td><td>Returns a list of key-value pairs assigned to a target recovery  
+point, backup plan, or backup vault.</td></tr>
+<tr><td valign="top"><a href="#list_tags-5">list_tags/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_backup_vault_access_policy-3">put_backup_vault_access_policy/3</a></td><td>Sets a resource-based policy that is used to manage access  
+permissions on the target backup vault.</td></tr>
+<tr><td valign="top"><a href="#put_backup_vault_access_policy-4">put_backup_vault_access_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_backup_vault_notifications-3">put_backup_vault_notifications/3</a></td><td>Turns on notifications on a backup vault for the specified topic and
+  events.</td></tr>
+<tr><td valign="top"><a href="#put_backup_vault_notifications-4">put_backup_vault_notifications/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_backup_job-2">start_backup_job/2</a></td><td>Starts an on-demand backup job for the specified resource.</td></tr>
+<tr><td valign="top"><a href="#start_backup_job-3">start_backup_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_copy_job-2">start_copy_job/2</a></td><td>Starts a job to create a one-time copy of the specified resource.</td></tr>
+<tr><td valign="top"><a href="#start_copy_job-3">start_copy_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_restore_job-2">start_restore_job/2</a></td><td>Recovers the saved resource identified by an Amazon Resource Name
+  (ARN).</td></tr>
+<tr><td valign="top"><a href="#start_restore_job-3">start_restore_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_backup_job-3">stop_backup_job/3</a></td><td>Attempts to cancel a job to create a one-time backup of a resource.</td></tr>
+<tr><td valign="top"><a href="#stop_backup_job-4">stop_backup_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Assigns a set of key-value pairs to a recovery point, backup plan, or
+  backup vault identified by an Amazon Resource Name (ARN).</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes a set of key-value pairs from a recovery point, backup plan,
+  or backup vault identified by an Amazon Resource Name (ARN).</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_backup_plan-3">update_backup_plan/3</a></td><td>Updates an existing backup plan identified by its <code>backupPlanId</code> with  
+the input document in JSON format.</td></tr>
+<tr><td valign="top"><a href="#update_backup_plan-4">update_backup_plan/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_recovery_point_lifecycle-4">update_recovery_point_lifecycle/4</a></td><td>Sets the transition lifecycle of a recovery point.</td></tr>
+<tr><td valign="top"><a href="#update_recovery_point_lifecycle-5">update_recovery_point_lifecycle/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_region_settings-2">update_region_settings/2</a></td><td>Updates the current service opt-in settings for the Region.</td></tr>
+<tr><td valign="top"><a href="#update_region_settings-3">update_region_settings/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_backup_plan-2">create_backup_plan/2</a></h3>
+<div class="spec">
+<p><tt>create_backup_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a backup plan using a backup plan name and backup rules.</p>
+ 
+  <p>A backup plan is a document that contains information that AWS Backup uses  
+to schedule tasks that create recovery points for resources.</p>
+ 
+  If you call <code>CreateBackupPlan</code> with a plan that already exists, an
+  <code>AlreadyExistsException</code> is returned.</p>
+
+<h3 class="function"><a name="create_backup_plan-3">create_backup_plan/3</a></h3>
+<div class="spec">
+<p><tt>create_backup_plan(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_backup_selection-3">create_backup_selection/3</a></h3>
+<div class="spec">
+<p><tt>create_backup_selection(Client, BackupPlanId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a JSON document that specifies a set of resources to assign  
+to a backup plan.</p>
+ 
+  <p>Resources can be included by specifying patterns for a <code>ListOfTags</code> and
+  selected <code>Resources</code>.</p>
+ 
+  <p>For example, consider the following patterns:</p>
+ 
+  <ul> <li><p> <code>Resources: "arn:aws:ec2:region:account-id:volume/volume-id"</code></p>
+ 
+  </li> <li><p> <code>ConditionKey:"department"</code></p>
+ 
+  <p><code>ConditionValue:"finance"</code></p>
+ 
+  <p><code>ConditionType:"StringEquals"</code></p>
+ 
+  </li> <li><p> <code>ConditionKey:"importance"</code></p>
+ 
+  <p><code>ConditionValue:"critical"</code></p>
+ 
+  <p><code>ConditionType:"StringEquals"</code></p>
+ 
+  </li> </ul><p> Using these patterns would back up all Amazon Elastic Block
+  Store (Amazon EBS) volumes that are tagged as <code>"department=finance"</code>,
+  <code>"importance=critical"</code>, in addition to an EBS volume with the specified  
+volume ID.</p>
+ 
+  Resources and conditions are additive in that all resources that match the
+  pattern are selected. This shouldn't be confused with a logical AND, where
+  all conditions must match. The matching patterns are logically put
+  together using the OR operator. In other words, all patterns that match
+  are selected for backup.</p>
+
+<h3 class="function"><a name="create_backup_selection-4">create_backup_selection/4</a></h3>
+<div class="spec">
+<p><tt>create_backup_selection(Client, BackupPlanId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_backup_vault-3">create_backup_vault/3</a></h3>
+<div class="spec">
+<p><tt>create_backup_vault(Client, BackupVaultName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a logical container where backups are stored.</p>
+ 
+  <p>A <code>CreateBackupVault</code> request includes a name, optionally one or more  
+resource tags, an encryption key, and a request ID.</p>
+ 
+  Sensitive data, such as passport numbers, should not be included the name
+  of a backup vault.</p>
+
+<h3 class="function"><a name="create_backup_vault-4">create_backup_vault/4</a></h3>
+<div class="spec">
+<p><tt>create_backup_vault(Client, BackupVaultName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_backup_plan-3">delete_backup_plan/3</a></h3>
+<div class="spec">
+<p><tt>delete_backup_plan(Client, BackupPlanId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a backup plan.</p>
+ 
+  A backup plan can only be deleted after all associated selections of
+  resources have been deleted. Deleting a backup plan deletes the current
+  version of a backup plan. Previous versions, if any, will still exist.</p>
+
+<h3 class="function"><a name="delete_backup_plan-4">delete_backup_plan/4</a></h3>
+<div class="spec">
+<p><tt>delete_backup_plan(Client, BackupPlanId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_backup_selection-4">delete_backup_selection/4</a></h3>
+<div class="spec">
+<p><tt>delete_backup_selection(Client, BackupPlanId, SelectionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the resource selection associated with a backup plan that is
+  specified by the <code>SelectionId</code>.</p>
+
+<h3 class="function"><a name="delete_backup_selection-5">delete_backup_selection/5</a></h3>
+<div class="spec">
+<p><tt>delete_backup_selection(Client, BackupPlanId, SelectionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_backup_vault-3">delete_backup_vault/3</a></h3>
+<div class="spec">
+<p><tt>delete_backup_vault(Client, BackupVaultName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the backup vault identified by its name.</p>
+ 
+  A vault can be deleted only if it is empty.</p>
+
+<h3 class="function"><a name="delete_backup_vault-4">delete_backup_vault/4</a></h3>
+<div class="spec">
+<p><tt>delete_backup_vault(Client, BackupVaultName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_backup_vault_access_policy-3">delete_backup_vault_access_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_backup_vault_access_policy(Client, BackupVaultName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the policy document that manages permissions on a backup
+  vault.</p>
+
+<h3 class="function"><a name="delete_backup_vault_access_policy-4">delete_backup_vault_access_policy/4</a></h3>
+<div class="spec">
+<p><tt>delete_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_backup_vault_notifications-3">delete_backup_vault_notifications/3</a></h3>
+<div class="spec">
+<p><tt>delete_backup_vault_notifications(Client, BackupVaultName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes event notifications for the specified backup vault.</p>
+
+<h3 class="function"><a name="delete_backup_vault_notifications-4">delete_backup_vault_notifications/4</a></h3>
+<div class="spec">
+<p><tt>delete_backup_vault_notifications(Client, BackupVaultName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_recovery_point-4">delete_recovery_point/4</a></h3>
+<div class="spec">
+<p><tt>delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the recovery point specified by a recovery point ID.</p>
+
+<h3 class="function"><a name="delete_recovery_point-5">delete_recovery_point/5</a></h3>
+<div class="spec">
+<p><tt>delete_recovery_point(Client, BackupVaultName, RecoveryPointArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_backup_job-2">describe_backup_job/2</a></h3>
+<div class="spec">
+<p><tt>describe_backup_job(Client, BackupJobId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns backup job details for the specified <code>BackupJobId</code>.</p>
+
+<h3 class="function"><a name="describe_backup_job-3">describe_backup_job/3</a></h3>
+<div class="spec">
+<p><tt>describe_backup_job(Client, BackupJobId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_backup_vault-2">describe_backup_vault/2</a></h3>
+<div class="spec">
+<p><tt>describe_backup_vault(Client, BackupVaultName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns metadata about a backup vault specified by its name.</p>
+
+<h3 class="function"><a name="describe_backup_vault-3">describe_backup_vault/3</a></h3>
+<div class="spec">
+<p><tt>describe_backup_vault(Client, BackupVaultName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_copy_job-2">describe_copy_job/2</a></h3>
+<div class="spec">
+<p><tt>describe_copy_job(Client, CopyJobId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns metadata associated with creating a copy of a resource.</p>
+
+<h3 class="function"><a name="describe_copy_job-3">describe_copy_job/3</a></h3>
+<div class="spec">
+<p><tt>describe_copy_job(Client, CopyJobId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_protected_resource-2">describe_protected_resource/2</a></h3>
+<div class="spec">
+<p><tt>describe_protected_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a saved resource, including the last time
+  it was backed up, its Amazon Resource Name (ARN), and the AWS service type
+  of the saved resource.</p>
+
+<h3 class="function"><a name="describe_protected_resource-3">describe_protected_resource/3</a></h3>
+<div class="spec">
+<p><tt>describe_protected_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_recovery_point-3">describe_recovery_point/3</a></h3>
+<div class="spec">
+<p><tt>describe_recovery_point(Client, BackupVaultName, RecoveryPointArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns metadata associated with a recovery point, including ID,
+  status, encryption, and lifecycle.</p>
+
+<h3 class="function"><a name="describe_recovery_point-4">describe_recovery_point/4</a></h3>
+<div class="spec">
+<p><tt>describe_recovery_point(Client, BackupVaultName, RecoveryPointArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_region_settings-1">describe_region_settings/1</a></h3>
+<div class="spec">
+<p><tt>describe_region_settings(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the current service opt-in settings for the Region.</p>
+ 
+  If the service has a value set to <code>true</code>, AWS Backup tries to protect that
+  service's resources in this Region, when included in an on-demand backup
+  or scheduled backup plan. If the value is set to <code>false</code> for a service,
+  AWS Backup does not try to protect that service's resources in this
+  Region.</p>
+
+<h3 class="function"><a name="describe_region_settings-2">describe_region_settings/2</a></h3>
+<div class="spec">
+<p><tt>describe_region_settings(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_restore_job-2">describe_restore_job/2</a></h3>
+<div class="spec">
+<p><tt>describe_restore_job(Client, RestoreJobId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns metadata associated with a restore job that is specified by a
+  job ID.</p>
+
+<h3 class="function"><a name="describe_restore_job-3">describe_restore_job/3</a></h3>
+<div class="spec">
+<p><tt>describe_restore_job(Client, RestoreJobId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="export_backup_plan_template-2">export_backup_plan_template/2</a></h3>
+<div class="spec">
+<p><tt>export_backup_plan_template(Client, BackupPlanId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the backup plan that is specified by the plan ID as a backup
+  template.</p>
+
+<h3 class="function"><a name="export_backup_plan_template-3">export_backup_plan_template/3</a></h3>
+<div class="spec">
+<p><tt>export_backup_plan_template(Client, BackupPlanId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_backup_plan-3">get_backup_plan/3</a></h3>
+<div class="spec">
+<p><tt>get_backup_plan(Client, BackupPlanId, VersionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns <code>BackupPlan</code> details for the specified <code>BackupPlanId</code>.</p>
+ 
+  Returns the body of a backup plan in JSON format, in addition to plan
+  metadata.</p>
+
+<h3 class="function"><a name="get_backup_plan-4">get_backup_plan/4</a></h3>
+<div class="spec">
+<p><tt>get_backup_plan(Client, BackupPlanId, VersionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_backup_plan_from_j_s_o_n-2">get_backup_plan_from_j_s_o_n/2</a></h3>
+<div class="spec">
+<p><tt>get_backup_plan_from_j_s_o_n(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a valid JSON document specifying a backup plan or an error.</p>
+
+<h3 class="function"><a name="get_backup_plan_from_j_s_o_n-3">get_backup_plan_from_j_s_o_n/3</a></h3>
+<div class="spec">
+<p><tt>get_backup_plan_from_j_s_o_n(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_backup_plan_from_template-2">get_backup_plan_from_template/2</a></h3>
+<div class="spec">
+<p><tt>get_backup_plan_from_template(Client, BackupPlanTemplateId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the template specified by its <code>templateId</code> as a backup plan.</p>
+
+<h3 class="function"><a name="get_backup_plan_from_template-3">get_backup_plan_from_template/3</a></h3>
+<div class="spec">
+<p><tt>get_backup_plan_from_template(Client, BackupPlanTemplateId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_backup_selection-3">get_backup_selection/3</a></h3>
+<div class="spec">
+<p><tt>get_backup_selection(Client, BackupPlanId, SelectionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns selection metadata and a document in JSON format that
+  specifies a list of resources that are associated with a backup plan.</p>
+
+<h3 class="function"><a name="get_backup_selection-4">get_backup_selection/4</a></h3>
+<div class="spec">
+<p><tt>get_backup_selection(Client, BackupPlanId, SelectionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_backup_vault_access_policy-2">get_backup_vault_access_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_backup_vault_access_policy(Client, BackupVaultName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the access policy document that is associated with the named
+  backup vault.</p>
+
+<h3 class="function"><a name="get_backup_vault_access_policy-3">get_backup_vault_access_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_backup_vault_access_policy(Client, BackupVaultName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_backup_vault_notifications-2">get_backup_vault_notifications/2</a></h3>
+<div class="spec">
+<p><tt>get_backup_vault_notifications(Client, BackupVaultName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns event notifications for the specified backup vault.</p>
+
+<h3 class="function"><a name="get_backup_vault_notifications-3">get_backup_vault_notifications/3</a></h3>
+<div class="spec">
+<p><tt>get_backup_vault_notifications(Client, BackupVaultName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_recovery_point_restore_metadata-3">get_recovery_point_restore_metadata/3</a></h3>
+<div class="spec">
+<p><tt>get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a set of metadata key-value pairs that were used to create
+  the backup.</p>
+
+<h3 class="function"><a name="get_recovery_point_restore_metadata-4">get_recovery_point_restore_metadata/4</a></h3>
+<div class="spec">
+<p><tt>get_recovery_point_restore_metadata(Client, BackupVaultName, RecoveryPointArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_supported_resource_types-1">get_supported_resource_types/1</a></h3>
+<div class="spec">
+<p><tt>get_supported_resource_types(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the AWS resource types supported by AWS Backup.</p>
+
+<h3 class="function"><a name="get_supported_resource_types-2">get_supported_resource_types/2</a></h3>
+<div class="spec">
+<p><tt>get_supported_resource_types(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_backup_jobs-10">list_backup_jobs/10</a></h3>
+<div class="spec">
+<p><tt>list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of existing backup jobs for an authenticated account.</p>
+
+<h3 class="function"><a name="list_backup_jobs-11">list_backup_jobs/11</a></h3>
+<div class="spec">
+<p><tt>list_backup_jobs(Client, ByAccountId, ByBackupVaultName, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_backup_plan_templates-3">list_backup_plan_templates/3</a></h3>
+<div class="spec">
+<p><tt>list_backup_plan_templates(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns metadata of your saved backup plan templates, including the
+  template ID, name, and the creation and deletion dates.</p>
+
+<h3 class="function"><a name="list_backup_plan_templates-4">list_backup_plan_templates/4</a></h3>
+<div class="spec">
+<p><tt>list_backup_plan_templates(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_backup_plan_versions-4">list_backup_plan_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns version metadata of your backup plans, including Amazon
+  Resource Names (ARNs), backup plan IDs, creation and deletion dates, plan
+  names, and version IDs.</p>
+
+<h3 class="function"><a name="list_backup_plan_versions-5">list_backup_plan_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_backup_plan_versions(Client, BackupPlanId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_backup_plans-4">list_backup_plans/4</a></h3>
+<div class="spec">
+<p><tt>list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of existing backup plans for an authenticated account.</p>
+ 
+  The list is populated only if the advanced option is set for the backup
+  plan. The list contains information such as Amazon Resource Names (ARNs),
+  plan IDs, creation and deletion dates, version IDs, plan names, and
+  creator request IDs.</p>
+
+<h3 class="function"><a name="list_backup_plans-5">list_backup_plans/5</a></h3>
+<div class="spec">
+<p><tt>list_backup_plans(Client, IncludeDeleted, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_backup_selections-4">list_backup_selections/4</a></h3>
+<div class="spec">
+<p><tt>list_backup_selections(Client, BackupPlanId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array containing metadata of the resources associated with
+  the target backup plan.</p>
+
+<h3 class="function"><a name="list_backup_selections-5">list_backup_selections/5</a></h3>
+<div class="spec">
+<p><tt>list_backup_selections(Client, BackupPlanId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_backup_vaults-3">list_backup_vaults/3</a></h3>
+<div class="spec">
+<p><tt>list_backup_vaults(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of recovery point storage containers along with
+  information about them.</p>
+
+<h3 class="function"><a name="list_backup_vaults-4">list_backup_vaults/4</a></h3>
+<div class="spec">
+<p><tt>list_backup_vaults(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_copy_jobs-10">list_copy_jobs/10</a></h3>
+<div class="spec">
+<p><tt>list_copy_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByDestinationVaultArn, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns metadata about your copy jobs.</p>
+
+<h3 class="function"><a name="list_copy_jobs-11">list_copy_jobs/11</a></h3>
+<div class="spec">
+<p><tt>list_copy_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByDestinationVaultArn, ByResourceArn, ByResourceType, ByState, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_protected_resources-3">list_protected_resources/3</a></h3>
+<div class="spec">
+<p><tt>list_protected_resources(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array of resources successfully backed up by AWS Backup,
+  including the time the resource was saved, an Amazon Resource Name (ARN)
+  of the resource, and a resource type.</p>
+
+<h3 class="function"><a name="list_protected_resources-4">list_protected_resources/4</a></h3>
+<div class="spec">
+<p><tt>list_protected_resources(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_recovery_points_by_backup_vault-10">list_recovery_points_by_backup_vault/10</a></h3>
+<div class="spec">
+<p><tt>list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_recovery_points_by_backup_vault-9">list_recovery_points_by_backup_vault/9</a></h3>
+<div class="spec">
+<p><tt>list_recovery_points_by_backup_vault(Client, BackupVaultName, ByBackupPlanId, ByCreatedAfter, ByCreatedBefore, ByResourceArn, ByResourceType, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns detailed information about the recovery points stored in a
+  backup vault.</p>
+
+<h3 class="function"><a name="list_recovery_points_by_resource-4">list_recovery_points_by_resource/4</a></h3>
+<div class="spec">
+<p><tt>list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns detailed information about recovery points of the type
+  specified by a resource Amazon Resource Name (ARN).</p>
+
+<h3 class="function"><a name="list_recovery_points_by_resource-5">list_recovery_points_by_resource/5</a></h3>
+<div class="spec">
+<p><tt>list_recovery_points_by_resource(Client, ResourceArn, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_restore_jobs-7">list_restore_jobs/7</a></h3>
+<div class="spec">
+<p><tt>list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of jobs that AWS Backup initiated to restore a saved
+  resource, including metadata about the recovery process.</p>
+
+<h3 class="function"><a name="list_restore_jobs-8">list_restore_jobs/8</a></h3>
+<div class="spec">
+<p><tt>list_restore_jobs(Client, ByAccountId, ByCreatedAfter, ByCreatedBefore, ByStatus, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags-4">list_tags/4</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, ResourceArn, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of key-value pairs assigned to a target recovery  
+point, backup plan, or backup vault.</p>
+ 
+  <code>ListTags</code> are currently only supported with Amazon EFS backups.</p>
+
+<h3 class="function"><a name="list_tags-5">list_tags/5</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, ResourceArn, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_backup_vault_access_policy-3">put_backup_vault_access_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_backup_vault_access_policy(Client, BackupVaultName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets a resource-based policy that is used to manage access  
+permissions on the target backup vault.</p>
+ 
+  Requires a backup vault name and an access policy document in JSON format.</p>
+
+<h3 class="function"><a name="put_backup_vault_access_policy-4">put_backup_vault_access_policy/4</a></h3>
+<div class="spec">
+<p><tt>put_backup_vault_access_policy(Client, BackupVaultName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_backup_vault_notifications-3">put_backup_vault_notifications/3</a></h3>
+<div class="spec">
+<p><tt>put_backup_vault_notifications(Client, BackupVaultName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Turns on notifications on a backup vault for the specified topic and
+  events.</p>
+
+<h3 class="function"><a name="put_backup_vault_notifications-4">put_backup_vault_notifications/4</a></h3>
+<div class="spec">
+<p><tt>put_backup_vault_notifications(Client, BackupVaultName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_backup_job-2">start_backup_job/2</a></h3>
+<div class="spec">
+<p><tt>start_backup_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts an on-demand backup job for the specified resource.</p>
+
+<h3 class="function"><a name="start_backup_job-3">start_backup_job/3</a></h3>
+<div class="spec">
+<p><tt>start_backup_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_copy_job-2">start_copy_job/2</a></h3>
+<div class="spec">
+<p><tt>start_copy_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts a job to create a one-time copy of the specified resource.</p>
+
+<h3 class="function"><a name="start_copy_job-3">start_copy_job/3</a></h3>
+<div class="spec">
+<p><tt>start_copy_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_restore_job-2">start_restore_job/2</a></h3>
+<div class="spec">
+<p><tt>start_restore_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Recovers the saved resource identified by an Amazon Resource Name
+  (ARN).</p>
+
+<h3 class="function"><a name="start_restore_job-3">start_restore_job/3</a></h3>
+<div class="spec">
+<p><tt>start_restore_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_backup_job-3">stop_backup_job/3</a></h3>
+<div class="spec">
+<p><tt>stop_backup_job(Client, BackupJobId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Attempts to cancel a job to create a one-time backup of a resource.</p>
+
+<h3 class="function"><a name="stop_backup_job-4">stop_backup_job/4</a></h3>
+<div class="spec">
+<p><tt>stop_backup_job(Client, BackupJobId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Assigns a set of key-value pairs to a recovery point, backup plan, or
+  backup vault identified by an Amazon Resource Name (ARN).</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a set of key-value pairs from a recovery point, backup plan,
+  or backup vault identified by an Amazon Resource Name (ARN)</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_backup_plan-3">update_backup_plan/3</a></h3>
+<div class="spec">
+<p><tt>update_backup_plan(Client, BackupPlanId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an existing backup plan identified by its <code>backupPlanId</code> with  
+the input document in JSON format.</p>
+ 
+  The new version is uniquely identified by a <code>VersionId</code>.</p>
+
+<h3 class="function"><a name="update_backup_plan-4">update_backup_plan/4</a></h3>
+<div class="spec">
+<p><tt>update_backup_plan(Client, BackupPlanId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_recovery_point_lifecycle-4">update_recovery_point_lifecycle/4</a></h3>
+<div class="spec">
+<p><tt>update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the transition lifecycle of a recovery point.</p>
+ 
+  <p>The lifecycle defines when a protected resource is transitioned to cold  
+storage and when it expires. AWS Backup transitions and expires backups  
+automatically according to the lifecycle that you define.</p>
+ 
+  Backups transitioned to cold storage must be stored in cold storage for a
+  minimum of 90 days. Therefore, the “expire after days” setting must be 90
+  days greater than the “transition to cold after days” setting. The
+  “transition to cold after days” setting cannot be changed after a backup
+  has been transitioned to cold.</p>
+
+<h3 class="function"><a name="update_recovery_point_lifecycle-5">update_recovery_point_lifecycle/5</a></h3>
+<div class="spec">
+<p><tt>update_recovery_point_lifecycle(Client, BackupVaultName, RecoveryPointArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_region_settings-2">update_region_settings/2</a></h3>
+<div class="spec">
+<p><tt>update_region_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the current service opt-in settings for the Region.</p>
+ 
+  If the service has a value set to <code>true</code>, AWS Backup tries to protect that
+  service's resources in this Region, when included in an on-demand backup
+  or scheduled backup plan. If the value is set to <code>false</code> for a service,
+  AWS Backup does not try to protect that service's resources in this
+  Region.</p>
+
+<h3 class="function"><a name="update_region_settings-3">update_region_settings/3</a></h3>
+<div class="spec">
+<p><tt>update_region_settings(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

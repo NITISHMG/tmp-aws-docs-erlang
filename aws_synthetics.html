@@ -1,0 +1,313 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_synthetics</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_synthetics</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon CloudWatch Synthetics.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon CloudWatch Synthetics</p>
+ 
+  <p>You can use Amazon CloudWatch Synthetics to continually monitor your  
+services.</p>
+ 
+  <p>You can create and manage canaries, which are modular, lightweight scripts  
+that monitor your endpoints and APIs from the outside-in. You can set up  
+your canaries to run 24 hours a day, once per minute. The canaries help  
+you check the availability and latency of your web services and  
+troubleshoot anomalies by investigating load time data, screenshots of the  
+UI, logs, and metrics. The canaries seamlessly integrate with CloudWatch  
+ServiceLens to help you trace the causes of impacted nodes in your  
+applications. For more information, see Using ServiceLens to Monitor the  
+Health of Your Applications in the Amazon CloudWatch User Guide.</p>
+ 
+  Before you create and manage canaries, be aware of the security
+  considerations. For more information, see Security Considerations for
+  Synthetics Canaries.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_canary-2">create_canary/2</a></td><td>Creates a canary.</td></tr>
+<tr><td valign="top"><a href="#create_canary-3">create_canary/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_canary-3">delete_canary/3</a></td><td>Permanently deletes the specified canary.</td></tr>
+<tr><td valign="top"><a href="#delete_canary-4">delete_canary/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_canaries-2">describe_canaries/2</a></td><td>This operation returns a list of the canaries in your account, along  
+with full details about each canary.</td></tr>
+<tr><td valign="top"><a href="#describe_canaries-3">describe_canaries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_canaries_last_run-2">describe_canaries_last_run/2</a></td><td>Use this operation to see information from the most recent run of
+  each canary that you have created.</td></tr>
+<tr><td valign="top"><a href="#describe_canaries_last_run-3">describe_canaries_last_run/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_runtime_versions-2">describe_runtime_versions/2</a></td><td>Returns a list of Synthetics canary runtime versions.</td></tr>
+<tr><td valign="top"><a href="#describe_runtime_versions-3">describe_runtime_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_canary-2">get_canary/2</a></td><td>Retrieves complete information about one canary.</td></tr>
+<tr><td valign="top"><a href="#get_canary-3">get_canary/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_canary_runs-3">get_canary_runs/3</a></td><td>Retrieves a list of runs for a specified canary.</td></tr>
+<tr><td valign="top"><a href="#get_canary_runs-4">get_canary_runs/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Displays the tags associated with a canary.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_canary-3">start_canary/3</a></td><td>Use this operation to run a canary that has already been created.</td></tr>
+<tr><td valign="top"><a href="#start_canary-4">start_canary/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_canary-3">stop_canary/3</a></td><td>Stops the canary to prevent all future runs.</td></tr>
+<tr><td valign="top"><a href="#stop_canary-4">stop_canary/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Assigns one or more tags (key-value pairs) to the specified canary.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes one or more tags from the specified canary.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_canary-3">update_canary/3</a></td><td>Use this operation to change the settings of a canary that has  
+already been created.</td></tr>
+<tr><td valign="top"><a href="#update_canary-4">update_canary/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_canary-2">create_canary/2</a></h3>
+<div class="spec">
+<p><tt>create_canary(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a canary.</p>
+ 
+  <p>Canaries are scripts that monitor your endpoints and APIs from the  
+outside-in. Canaries help you check the availability and latency of your  
+web services and troubleshoot anomalies by investigating load time data,  
+screenshots of the UI, logs, and metrics. You can set up a canary to run  
+continuously or just once.</p>
+ 
+  <p>Do not use <code>CreateCanary</code> to modify an existing canary. Use UpdateCanary  
+instead.</p>
+ 
+  <p>To create canaries, you must have the <code>CloudWatchSyntheticsFullAccess</code>
+  policy. If you are creating a new IAM role for the canary, you also need
+  the the <code>iam:CreateRole</code>, <code>iam:CreatePolicy</code> and <code>iam:AttachRolePolicy</code>  
+permissions. For more information, see Necessary Roles and Permissions.</p>
+ 
+  Do not include secrets or proprietary information in your canary names.
+  The canary name makes up part of the Amazon Resource Name (ARN) for the
+  canary, and the ARN is included in outbound calls over the internet. For
+  more information, see Security Considerations for Synthetics Canaries.</p>
+
+<h3 class="function"><a name="create_canary-3">create_canary/3</a></h3>
+<div class="spec">
+<p><tt>create_canary(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_canary-3">delete_canary/3</a></h3>
+<div class="spec">
+<p><tt>delete_canary(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Permanently deletes the specified canary.</p>
+ 
+  <p>When you delete a canary, resources used and created by the canary are not  
+automatically deleted. After you delete a canary that you do not intend to  
+use again, you should also delete the following:</p>
+ 
+  <ul> <li><p> The Lambda functions and layers used by this canary. These have
+  the prefix <code>cwsyn-MyCanaryName</code>.</p>
+ 
+  </li> <li><p> The CloudWatch alarms created for this canary. These alarms
+  have a name of <code>Synthetics-SharpDrop-Alarm-MyCanaryName</code>.</p>
+ 
+  </li> <li><p> Amazon S3 objects and buckets, such as the canary's artifact  
+location.</p>
+ 
+  </li> <li><p> IAM roles created for the canary. If they were created in the
+  console, these roles have the name <code>role/service-role/CloudWatchSyntheticsRole-MyCanaryName</code>.</p>
+ 
+  </li> <li><p> CloudWatch Logs log groups created for the canary. These logs
+  groups have the name <code>/aws/lambda/cwsyn-MyCanaryName</code>.</p>
+ 
+  </li> </ul> Before you delete a canary, you might want to use <code>GetCanary</code>
+  to display the information about this canary. Make note of the information
+  returned by this operation so that you can delete these resources after
+  you delete the canary.</p>
+
+<h3 class="function"><a name="delete_canary-4">delete_canary/4</a></h3>
+<div class="spec">
+<p><tt>delete_canary(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_canaries-2">describe_canaries/2</a></h3>
+<div class="spec">
+<p><tt>describe_canaries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This operation returns a list of the canaries in your account, along  
+with full details about each canary.</p>
+ 
+  This operation does not have resource-level authorization, so if a user is
+  able to use <code>DescribeCanaries</code>, the user can see all of the canaries in
+  the account. A deny policy can only be used to restrict access to all
+  canaries. It cannot be used on specific resources.</p>
+
+<h3 class="function"><a name="describe_canaries-3">describe_canaries/3</a></h3>
+<div class="spec">
+<p><tt>describe_canaries(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_canaries_last_run-2">describe_canaries_last_run/2</a></h3>
+<div class="spec">
+<p><tt>describe_canaries_last_run(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Use this operation to see information from the most recent run of
+  each canary that you have created.</p>
+
+<h3 class="function"><a name="describe_canaries_last_run-3">describe_canaries_last_run/3</a></h3>
+<div class="spec">
+<p><tt>describe_canaries_last_run(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_runtime_versions-2">describe_runtime_versions/2</a></h3>
+<div class="spec">
+<p><tt>describe_runtime_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of Synthetics canary runtime versions.</p>
+ 
+  For more information, see Canary Runtime Versions.</p>
+
+<h3 class="function"><a name="describe_runtime_versions-3">describe_runtime_versions/3</a></h3>
+<div class="spec">
+<p><tt>describe_runtime_versions(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_canary-2">get_canary/2</a></h3>
+<div class="spec">
+<p><tt>get_canary(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves complete information about one canary.</p>
+ 
+  You must specify the name of the canary that you want. To get a list of
+  canaries and their names, use DescribeCanaries.</p>
+
+<h3 class="function"><a name="get_canary-3">get_canary/3</a></h3>
+<div class="spec">
+<p><tt>get_canary(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_canary_runs-3">get_canary_runs/3</a></h3>
+<div class="spec">
+<p><tt>get_canary_runs(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of runs for a specified canary.</p>
+
+<h3 class="function"><a name="get_canary_runs-4">get_canary_runs/4</a></h3>
+<div class="spec">
+<p><tt>get_canary_runs(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Displays the tags associated with a canary.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_canary-3">start_canary/3</a></h3>
+<div class="spec">
+<p><tt>start_canary(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Use this operation to run a canary that has already been created.</p>
+ 
+  The frequency of the canary runs is determined by the value of the
+  canary's <code>Schedule</code>. To see a canary's schedule, use GetCanary.</p>
+
+<h3 class="function"><a name="start_canary-4">start_canary/4</a></h3>
+<div class="spec">
+<p><tt>start_canary(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_canary-3">stop_canary/3</a></h3>
+<div class="spec">
+<p><tt>stop_canary(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops the canary to prevent all future runs.</p>
+ 
+  <p>If the canary is currently running, Synthetics stops waiting for the  
+current run of the specified canary to complete. The run that is in  
+progress completes on its own, publishes metrics, and uploads artifacts,  
+but it is not recorded in Synthetics as a completed run.</p>
+ 
+  You can use <code>StartCanary</code> to start it running again with the canary’s
+  current schedule at any point in the future.</p>
+
+<h3 class="function"><a name="stop_canary-4">stop_canary/4</a></h3>
+<div class="spec">
+<p><tt>stop_canary(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Assigns one or more tags (key-value pairs) to the specified canary.</p>
+ 
+  <p>Tags can help you organize and categorize your resources. You can also use  
+them to scope user permissions, by granting a user permission to access or  
+change only resources with certain tag values.</p>
+ 
+  <p>Tags don't have any semantic meaning to AWS and are interpreted strictly  
+as strings of characters.</p>
+ 
+  <p>You can use the <code>TagResource</code> action with a canary that already has tags.  
+If you specify a new tag key for the alarm, this tag is appended to the  
+list of tags associated with the alarm. If you specify a tag key that is  
+already associated with the alarm, the new tag value that you specify  
+replaces the previous value for that tag.</p>
+ 
+  You can associate as many as 50 tags with a canary.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags from the specified canary.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_canary-3">update_canary/3</a></h3>
+<div class="spec">
+<p><tt>update_canary(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Use this operation to change the settings of a canary that has  
+already been created.</p>
+ 
+  You can't use this operation to update the tags of an existing canary. To
+  change the tags of an existing canary, use TagResource.</p>
+
+<h3 class="function"><a name="update_canary-4">update_canary/4</a></h3>
+<div class="spec">
+<p><tt>update_canary(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

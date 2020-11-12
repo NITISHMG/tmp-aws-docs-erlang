@@ -1,0 +1,406 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_qldb</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_qldb</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>The control plane for Amazon QLDB.
+
+
+<h2><a name="description">Description</a></h2>The control plane for Amazon QLDB
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_journal_kinesis_stream-4">cancel_journal_kinesis_stream/4</a></td><td>Ends a given Amazon QLDB journal stream.</td></tr>
+<tr><td valign="top"><a href="#cancel_journal_kinesis_stream-5">cancel_journal_kinesis_stream/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_ledger-2">create_ledger/2</a></td><td>Creates a new ledger in your AWS account.</td></tr>
+<tr><td valign="top"><a href="#create_ledger-3">create_ledger/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_ledger-3">delete_ledger/3</a></td><td>Deletes a ledger and all of its contents.</td></tr>
+<tr><td valign="top"><a href="#delete_ledger-4">delete_ledger/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_journal_kinesis_stream-3">describe_journal_kinesis_stream/3</a></td><td>Returns detailed information about a given Amazon QLDB journal  
+stream.</td></tr>
+<tr><td valign="top"><a href="#describe_journal_kinesis_stream-4">describe_journal_kinesis_stream/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_journal_s3_export-3">describe_journal_s3_export/3</a></td><td>Returns information about a journal export job, including the ledger  
+name, export ID, when it was created, current status, and its start and  
+end time export parameters.</td></tr>
+<tr><td valign="top"><a href="#describe_journal_s3_export-4">describe_journal_s3_export/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_ledger-2">describe_ledger/2</a></td><td>Returns information about a ledger, including its state and when it
+  was created.</td></tr>
+<tr><td valign="top"><a href="#describe_ledger-3">describe_ledger/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#export_journal_to_s3-3">export_journal_to_s3/3</a></td><td>Exports journal contents within a date and time range from a ledger  
+into a specified Amazon Simple Storage Service (Amazon S3) bucket.</td></tr>
+<tr><td valign="top"><a href="#export_journal_to_s3-4">export_journal_to_s3/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_block-3">get_block/3</a></td><td>Returns a block object at a specified address in a journal.</td></tr>
+<tr><td valign="top"><a href="#get_block-4">get_block/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_digest-3">get_digest/3</a></td><td>Returns the digest of a ledger at the latest committed block in the  
+journal.</td></tr>
+<tr><td valign="top"><a href="#get_digest-4">get_digest/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_revision-3">get_revision/3</a></td><td>Returns a revision data object for a specified document ID and block  
+address.</td></tr>
+<tr><td valign="top"><a href="#get_revision-4">get_revision/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_journal_kinesis_streams_for_ledger-4">list_journal_kinesis_streams_for_ledger/4</a></td><td>Returns an array of all Amazon QLDB journal stream descriptors for a  
+given ledger.</td></tr>
+<tr><td valign="top"><a href="#list_journal_kinesis_streams_for_ledger-5">list_journal_kinesis_streams_for_ledger/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_journal_s3_exports-3">list_journal_s3_exports/3</a></td><td>Returns an array of journal export job descriptions for all ledgers  
+that are associated with the current AWS account and Region.</td></tr>
+<tr><td valign="top"><a href="#list_journal_s3_exports-4">list_journal_s3_exports/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_journal_s3_exports_for_ledger-4">list_journal_s3_exports_for_ledger/4</a></td><td>Returns an array of journal export job descriptions for a specified  
+ledger.</td></tr>
+<tr><td valign="top"><a href="#list_journal_s3_exports_for_ledger-5">list_journal_s3_exports_for_ledger/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_ledgers-3">list_ledgers/3</a></td><td>Returns an array of ledger summaries that are associated with the  
+current AWS account and Region.</td></tr>
+<tr><td valign="top"><a href="#list_ledgers-4">list_ledgers/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns all tags for a specified Amazon QLDB resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stream_journal_to_kinesis-3">stream_journal_to_kinesis/3</a></td><td>Creates a journal stream for a given Amazon QLDB ledger.</td></tr>
+<tr><td valign="top"><a href="#stream_journal_to_kinesis-4">stream_journal_to_kinesis/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds one or more tags to a specified Amazon QLDB resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes one or more tags from a specified Amazon QLDB resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_ledger-3">update_ledger/3</a></td><td>Updates properties on a ledger.</td></tr>
+<tr><td valign="top"><a href="#update_ledger-4">update_ledger/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_journal_kinesis_stream-4">cancel_journal_kinesis_stream/4</a></h3>
+<div class="spec">
+<p><tt>cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Ends a given Amazon QLDB journal stream.</p>
+ 
+  <p>Before a stream can be canceled, its current status must be <code>ACTIVE</code>.</p>
+ 
+  You can't restart a stream after you cancel it. Canceled QLDB stream
+  resources are subject to a 7-day retention period, so they are
+  automatically deleted after this limit expires.</p>
+
+<h3 class="function"><a name="cancel_journal_kinesis_stream-5">cancel_journal_kinesis_stream/5</a></h3>
+<div class="spec">
+<p><tt>cancel_journal_kinesis_stream(Client, LedgerName, StreamId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_ledger-2">create_ledger/2</a></h3>
+<div class="spec">
+<p><tt>create_ledger(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new ledger in your AWS account.</p>
+
+<h3 class="function"><a name="create_ledger-3">create_ledger/3</a></h3>
+<div class="spec">
+<p><tt>create_ledger(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_ledger-3">delete_ledger/3</a></h3>
+<div class="spec">
+<p><tt>delete_ledger(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a ledger and all of its contents.</p>
+ 
+  <p>This action is irreversible.</p>
+ 
+  If deletion protection is enabled, you must first disable it before you
+  can delete the ledger using the QLDB API or the AWS Command Line Interface
+  (AWS CLI). You can disable it by calling the <code>UpdateLedger</code> operation to
+  set the flag to <code>false</code>. The QLDB console disables deletion protection for
+  you when you use it to delete a ledger.</p>
+
+<h3 class="function"><a name="delete_ledger-4">delete_ledger/4</a></h3>
+<div class="spec">
+<p><tt>delete_ledger(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_journal_kinesis_stream-3">describe_journal_kinesis_stream/3</a></h3>
+<div class="spec">
+<p><tt>describe_journal_kinesis_stream(Client, LedgerName, StreamId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns detailed information about a given Amazon QLDB journal  
+stream.</p>
+ 
+  The output includes the Amazon Resource Name (ARN), stream name, current
+  status, creation time, and the parameters of your original stream creation
+  request.</p>
+
+<h3 class="function"><a name="describe_journal_kinesis_stream-4">describe_journal_kinesis_stream/4</a></h3>
+<div class="spec">
+<p><tt>describe_journal_kinesis_stream(Client, LedgerName, StreamId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_journal_s3_export-3">describe_journal_s3_export/3</a></h3>
+<div class="spec">
+<p><tt>describe_journal_s3_export(Client, ExportId, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about a journal export job, including the ledger  
+name, export ID, when it was created, current status, and its start and  
+end time export parameters.</p>
+ 
+  <p>This action does not return any expired export jobs. For more information,  
+see Export Job Expiration in the Amazon QLDB Developer Guide.</p>
+ 
+  <p>If the export job with the given <code>ExportId</code> doesn't exist, then throws
+  <code>ResourceNotFoundException</code>.</p>
+ 
+  If the ledger with the given <code>Name</code> doesn't exist, then throws
+  <code>ResourceNotFoundException</code>.</p>
+
+<h3 class="function"><a name="describe_journal_s3_export-4">describe_journal_s3_export/4</a></h3>
+<div class="spec">
+<p><tt>describe_journal_s3_export(Client, ExportId, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_ledger-2">describe_ledger/2</a></h3>
+<div class="spec">
+<p><tt>describe_ledger(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a ledger, including its state and when it
+  was created.</p>
+
+<h3 class="function"><a name="describe_ledger-3">describe_ledger/3</a></h3>
+<div class="spec">
+<p><tt>describe_ledger(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="export_journal_to_s3-3">export_journal_to_s3/3</a></h3>
+<div class="spec">
+<p><tt>export_journal_to_s3(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Exports journal contents within a date and time range from a ledger  
+into a specified Amazon Simple Storage Service (Amazon S3) bucket.</p>
+ 
+  <p>The data is written as files in Amazon Ion format.</p>
+ 
+  <p>If the ledger with the given <code>Name</code> doesn't exist, then throws
+  <code>ResourceNotFoundException</code>.</p>
+ 
+  <p>If the ledger with the given <code>Name</code> is in <code>CREATING</code> status, then throws
+  <code>ResourcePreconditionNotMetException</code>.</p>
+ 
+  You can initiate up to two concurrent journal export requests for each
+  ledger. Beyond this limit, journal export requests throw
+  <code>LimitExceededException</code>.</p>
+
+<h3 class="function"><a name="export_journal_to_s3-4">export_journal_to_s3/4</a></h3>
+<div class="spec">
+<p><tt>export_journal_to_s3(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_block-3">get_block/3</a></h3>
+<div class="spec">
+<p><tt>get_block(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a block object at a specified address in a journal.</p>
+ 
+  <p>Also returns a proof of the specified block for verification if
+  <code>DigestTipAddress</code> is provided.</p>
+ 
+  <p>For information about the data contents in a block, see Journal contents  
+in the Amazon QLDB Developer Guide.</p>
+ 
+  <p>If the specified ledger doesn't exist or is in <code>DELETING</code> status, then
+  throws <code>ResourceNotFoundException</code>.</p>
+ 
+  <p>If the specified ledger is in <code>CREATING</code> status, then throws
+  <code>ResourcePreconditionNotMetException</code>.</p>
+ 
+  If no block exists with the specified address, then throws
+  <code>InvalidParameterException</code>.</p>
+
+<h3 class="function"><a name="get_block-4">get_block/4</a></h3>
+<div class="spec">
+<p><tt>get_block(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_digest-3">get_digest/3</a></h3>
+<div class="spec">
+<p><tt>get_digest(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the digest of a ledger at the latest committed block in the  
+journal.</p>
+ 
+  The response includes a 256-bit hash value and a block address.</p>
+
+<h3 class="function"><a name="get_digest-4">get_digest/4</a></h3>
+<div class="spec">
+<p><tt>get_digest(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_revision-3">get_revision/3</a></h3>
+<div class="spec">
+<p><tt>get_revision(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a revision data object for a specified document ID and block  
+address.</p>
+ 
+  Also returns a proof of the specified revision for verification if
+  <code>DigestTipAddress</code> is provided.</p>
+
+<h3 class="function"><a name="get_revision-4">get_revision/4</a></h3>
+<div class="spec">
+<p><tt>get_revision(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_journal_kinesis_streams_for_ledger-4">list_journal_kinesis_streams_for_ledger/4</a></h3>
+<div class="spec">
+<p><tt>list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns an array of all Amazon QLDB journal stream descriptors for a  
+given ledger.</p>
+ 
+  <p>The output of each stream descriptor includes the same details that are
+  returned by <code>DescribeJournalKinesisStream</code>.</p>
+ 
+  This action returns a maximum of <code>MaxResults</code> items. It is paginated so
+  that you can retrieve all the items by calling
+  <code>ListJournalKinesisStreamsForLedger</code> multiple times.</p>
+
+<h3 class="function"><a name="list_journal_kinesis_streams_for_ledger-5">list_journal_kinesis_streams_for_ledger/5</a></h3>
+<div class="spec">
+<p><tt>list_journal_kinesis_streams_for_ledger(Client, LedgerName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_journal_s3_exports-3">list_journal_s3_exports/3</a></h3>
+<div class="spec">
+<p><tt>list_journal_s3_exports(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns an array of journal export job descriptions for all ledgers  
+that are associated with the current AWS account and Region.</p>
+ 
+  <p>This action returns a maximum of <code>MaxResults</code> items, and is paginated so
+  that you can retrieve all the items by calling <code>ListJournalS3Exports</code>  
+multiple times.</p>
+ 
+  This action does not return any expired export jobs. For more information,
+  see Export Job Expiration in the Amazon QLDB Developer Guide.</p>
+
+<h3 class="function"><a name="list_journal_s3_exports-4">list_journal_s3_exports/4</a></h3>
+<div class="spec">
+<p><tt>list_journal_s3_exports(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_journal_s3_exports_for_ledger-4">list_journal_s3_exports_for_ledger/4</a></h3>
+<div class="spec">
+<p><tt>list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns an array of journal export job descriptions for a specified  
+ledger.</p>
+ 
+  <p>This action returns a maximum of <code>MaxResults</code> items, and is paginated so
+  that you can retrieve all the items by calling
+  <code>ListJournalS3ExportsForLedger</code> multiple times.</p>
+ 
+  This action does not return any expired export jobs. For more information,
+  see Export Job Expiration in the Amazon QLDB Developer Guide.</p>
+
+<h3 class="function"><a name="list_journal_s3_exports_for_ledger-5">list_journal_s3_exports_for_ledger/5</a></h3>
+<div class="spec">
+<p><tt>list_journal_s3_exports_for_ledger(Client, Name, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_ledgers-3">list_ledgers/3</a></h3>
+<div class="spec">
+<p><tt>list_ledgers(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns an array of ledger summaries that are associated with the  
+current AWS account and Region.</p>
+ 
+  This action returns a maximum of 100 items and is paginated so that you
+  can retrieve all the items by calling <code>ListLedgers</code> multiple times.</p>
+
+<h3 class="function"><a name="list_ledgers-4">list_ledgers/4</a></h3>
+<div class="spec">
+<p><tt>list_ledgers(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns all tags for a specified Amazon QLDB resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stream_journal_to_kinesis-3">stream_journal_to_kinesis/3</a></h3>
+<div class="spec">
+<p><tt>stream_journal_to_kinesis(Client, LedgerName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a journal stream for a given Amazon QLDB ledger.</p>
+ 
+  The stream captures every document revision that is committed to the
+  ledger's journal and delivers the data to a specified Amazon Kinesis Data
+  Streams resource.</p>
+
+<h3 class="function"><a name="stream_journal_to_kinesis-4">stream_journal_to_kinesis/4</a></h3>
+<div class="spec">
+<p><tt>stream_journal_to_kinesis(Client, LedgerName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds one or more tags to a specified Amazon QLDB resource.</p>
+ 
+  A resource can have up to 50 tags. If you try to create more than 50 tags
+  for a resource, your request fails and returns an error.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes one or more tags from a specified Amazon QLDB resource.</p>
+ 
+  You can specify up to 50 tag keys to remove.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_ledger-3">update_ledger/3</a></h3>
+<div class="spec">
+<p><tt>update_ledger(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates properties on a ledger.</p>
+
+<h3 class="function"><a name="update_ledger-4">update_ledger/4</a></h3>
+<div class="spec">
+<p><tt>update_ledger(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

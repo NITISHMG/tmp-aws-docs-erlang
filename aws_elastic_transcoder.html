@@ -1,0 +1,354 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_elastic_transcoder</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_elastic_transcoder</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Elastic Transcoder Service.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Elastic Transcoder Service</p>
+ 
+  The AWS Elastic Transcoder Service.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_job-3">cancel_job/3</a></td><td>The CancelJob operation cancels an unfinished job.</td></tr>
+<tr><td valign="top"><a href="#cancel_job-4">cancel_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_job-2">create_job/2</a></td><td>When you create a job, Elastic Transcoder returns JSON data that  
+includes the values that you specified plus information about the job that  
+is created.</td></tr>
+<tr><td valign="top"><a href="#create_job-3">create_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_pipeline-2">create_pipeline/2</a></td><td>The CreatePipeline operation creates a pipeline with settings that
+  you specify.</td></tr>
+<tr><td valign="top"><a href="#create_pipeline-3">create_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_preset-2">create_preset/2</a></td><td>The CreatePreset operation creates a preset with settings that you  
+specify.</td></tr>
+<tr><td valign="top"><a href="#create_preset-3">create_preset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_pipeline-3">delete_pipeline/3</a></td><td>The DeletePipeline operation removes a pipeline.</td></tr>
+<tr><td valign="top"><a href="#delete_pipeline-4">delete_pipeline/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_preset-3">delete_preset/3</a></td><td>The DeletePreset operation removes a preset that you've added in an  
+AWS region.</td></tr>
+<tr><td valign="top"><a href="#delete_preset-4">delete_preset/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_jobs_by_pipeline-4">list_jobs_by_pipeline/4</a></td><td>The ListJobsByPipeline operation gets a list of the jobs currently in  
+a pipeline.</td></tr>
+<tr><td valign="top"><a href="#list_jobs_by_pipeline-5">list_jobs_by_pipeline/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_jobs_by_status-4">list_jobs_by_status/4</a></td><td>The ListJobsByStatus operation gets a list of jobs that have a  
+specified status.</td></tr>
+<tr><td valign="top"><a href="#list_jobs_by_status-5">list_jobs_by_status/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_pipelines-3">list_pipelines/3</a></td><td>The ListPipelines operation gets a list of the pipelines associated
+  with the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_pipelines-4">list_pipelines/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_presets-3">list_presets/3</a></td><td>The ListPresets operation gets a list of the default presets included
+  with Elastic Transcoder and the presets that you've added in an AWS
+  region.</td></tr>
+<tr><td valign="top"><a href="#list_presets-4">list_presets/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#read_job-2">read_job/2</a></td><td>The ReadJob operation returns detailed information about a job.</td></tr>
+<tr><td valign="top"><a href="#read_job-3">read_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#read_pipeline-2">read_pipeline/2</a></td><td>The ReadPipeline operation gets detailed information about a
+  pipeline.</td></tr>
+<tr><td valign="top"><a href="#read_pipeline-3">read_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#read_preset-2">read_preset/2</a></td><td>The ReadPreset operation gets detailed information about a preset.</td></tr>
+<tr><td valign="top"><a href="#read_preset-3">read_preset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#test_role-2">test_role/2</a></td><td>The TestRole operation tests the IAM role used to create the  
+pipeline.</td></tr>
+<tr><td valign="top"><a href="#test_role-3">test_role/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_pipeline-3">update_pipeline/3</a></td><td>Use the <code>UpdatePipeline</code> operation to update settings for a pipeline.</td></tr>
+<tr><td valign="top"><a href="#update_pipeline-4">update_pipeline/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_pipeline_notifications-3">update_pipeline_notifications/3</a></td><td>With the UpdatePipelineNotifications operation, you can update Amazon  
+Simple Notification Service (Amazon SNS) notifications for a pipeline.</td></tr>
+<tr><td valign="top"><a href="#update_pipeline_notifications-4">update_pipeline_notifications/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_pipeline_status-3">update_pipeline_status/3</a></td><td>The UpdatePipelineStatus operation pauses or reactivates a pipeline,  
+so that the pipeline stops or restarts the processing of jobs.</td></tr>
+<tr><td valign="top"><a href="#update_pipeline_status-4">update_pipeline_status/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_job-3">cancel_job/3</a></h3>
+<div class="spec">
+<p><tt>cancel_job(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The CancelJob operation cancels an unfinished job.</p>
+ 
+  You can only cancel a job that has a status of <code>Submitted</code>. To prevent a
+  pipeline from starting to process a job while you're getting the job
+  identifier, use <code>UpdatePipelineStatus</code> to temporarily pause the pipeline.</p>
+
+<h3 class="function"><a name="cancel_job-4">cancel_job/4</a></h3>
+<div class="spec">
+<p><tt>cancel_job(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_job-2">create_job/2</a></h3>
+<div class="spec">
+<p><tt>create_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>When you create a job, Elastic Transcoder returns JSON data that  
+includes the values that you specified plus information about the job that  
+is created.</p>
+ 
+  If you have specified more than one output for your jobs (for example, one
+  output for the Kindle Fire and another output for the Apple iPhone 4s),
+  you currently must use the Elastic Transcoder API to list the jobs (as
+  opposed to the AWS Console).</p>
+
+<h3 class="function"><a name="create_job-3">create_job/3</a></h3>
+<div class="spec">
+<p><tt>create_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_pipeline-2">create_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>create_pipeline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The CreatePipeline operation creates a pipeline with settings that
+  you specify.</p>
+
+<h3 class="function"><a name="create_pipeline-3">create_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>create_pipeline(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_preset-2">create_preset/2</a></h3>
+<div class="spec">
+<p><tt>create_preset(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The CreatePreset operation creates a preset with settings that you  
+specify.</p>
+ 
+  <p>Elastic Transcoder checks the CreatePreset settings to ensure that they
+  meet Elastic Transcoder requirements and to determine whether they comply
+  with H.264 standards. If your settings are not valid for Elastic
+  Transcoder, Elastic Transcoder returns an HTTP 400 response
+  (<code>ValidationException</code>) and does not create the preset. If the settings  
+are valid for Elastic Transcoder but aren't strictly compliant with the  
+H.264 standard, Elastic Transcoder creates the preset and returns a  
+warning message in the response. This helps you determine whether your  
+settings comply with the H.264 standard while giving you greater  
+flexibility with respect to the video that Elastic Transcoder produces.</p>
+ 
+  Elastic Transcoder uses the H.264 video-compression format. For more
+  information, see the International Telecommunication Union publication
+  Recommendation ITU-T H.264: Advanced video coding for generic audiovisual
+  services.</p>
+
+<h3 class="function"><a name="create_preset-3">create_preset/3</a></h3>
+<div class="spec">
+<p><tt>create_preset(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_pipeline-3">delete_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>delete_pipeline(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The DeletePipeline operation removes a pipeline.</p>
+ 
+  You can only delete a pipeline that has never been used or that is not
+  currently in use (doesn't contain any active jobs). If the pipeline is
+  currently in use, <code>DeletePipeline</code> returns an error.</p>
+
+<h3 class="function"><a name="delete_pipeline-4">delete_pipeline/4</a></h3>
+<div class="spec">
+<p><tt>delete_pipeline(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_preset-3">delete_preset/3</a></h3>
+<div class="spec">
+<p><tt>delete_preset(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The DeletePreset operation removes a preset that you've added in an  
+AWS region.</p>
+ 
+  You can't delete the default presets that are included with Elastic
+  Transcoder.</p>
+
+<h3 class="function"><a name="delete_preset-4">delete_preset/4</a></h3>
+<div class="spec">
+<p><tt>delete_preset(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_jobs_by_pipeline-4">list_jobs_by_pipeline/4</a></h3>
+<div class="spec">
+<p><tt>list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The ListJobsByPipeline operation gets a list of the jobs currently in  
+a pipeline.</p>
+ 
+  Elastic Transcoder returns all of the jobs currently in the specified
+  pipeline. The response body contains one element for each job that
+  satisfies the search criteria.</p>
+
+<h3 class="function"><a name="list_jobs_by_pipeline-5">list_jobs_by_pipeline/5</a></h3>
+<div class="spec">
+<p><tt>list_jobs_by_pipeline(Client, PipelineId, Ascending, PageToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_jobs_by_status-4">list_jobs_by_status/4</a></h3>
+<div class="spec">
+<p><tt>list_jobs_by_status(Client, Status, Ascending, PageToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The ListJobsByStatus operation gets a list of jobs that have a  
+specified status.</p>
+ 
+  The response body contains one element for each job that satisfies the
+  search criteria.</p>
+
+<h3 class="function"><a name="list_jobs_by_status-5">list_jobs_by_status/5</a></h3>
+<div class="spec">
+<p><tt>list_jobs_by_status(Client, Status, Ascending, PageToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_pipelines-3">list_pipelines/3</a></h3>
+<div class="spec">
+<p><tt>list_pipelines(Client, Ascending, PageToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The ListPipelines operation gets a list of the pipelines associated
+  with the current AWS account.</p>
+
+<h3 class="function"><a name="list_pipelines-4">list_pipelines/4</a></h3>
+<div class="spec">
+<p><tt>list_pipelines(Client, Ascending, PageToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_presets-3">list_presets/3</a></h3>
+<div class="spec">
+<p><tt>list_presets(Client, Ascending, PageToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The ListPresets operation gets a list of the default presets included
+  with Elastic Transcoder and the presets that you've added in an AWS
+  region.</p>
+
+<h3 class="function"><a name="list_presets-4">list_presets/4</a></h3>
+<div class="spec">
+<p><tt>list_presets(Client, Ascending, PageToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="read_job-2">read_job/2</a></h3>
+<div class="spec">
+<p><tt>read_job(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The ReadJob operation returns detailed information about a job.</p>
+
+<h3 class="function"><a name="read_job-3">read_job/3</a></h3>
+<div class="spec">
+<p><tt>read_job(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="read_pipeline-2">read_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>read_pipeline(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The ReadPipeline operation gets detailed information about a
+  pipeline.</p>
+
+<h3 class="function"><a name="read_pipeline-3">read_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>read_pipeline(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="read_preset-2">read_preset/2</a></h3>
+<div class="spec">
+<p><tt>read_preset(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The ReadPreset operation gets detailed information about a preset.</p>
+
+<h3 class="function"><a name="read_preset-3">read_preset/3</a></h3>
+<div class="spec">
+<p><tt>read_preset(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="test_role-2">test_role/2</a></h3>
+<div class="spec">
+<p><tt>test_role(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The TestRole operation tests the IAM role used to create the  
+pipeline.</p>
+ 
+  The <code>TestRole</code> action lets you determine whether the IAM role you are
+  using has sufficient permissions to let Elastic Transcoder perform tasks
+  associated with the transcoding process. The action attempts to assume the
+  specified IAM role, checks read access to the input and output buckets,
+  and tries to send a test notification to Amazon SNS topics that you
+  specify.</p>
+
+<h3 class="function"><a name="test_role-3">test_role/3</a></h3>
+<div class="spec">
+<p><tt>test_role(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_pipeline-3">update_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>update_pipeline(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Use the <code>UpdatePipeline</code> operation to update settings for a pipeline.</p>
+ 
+  When you change pipeline settings, your changes take effect immediately.
+  Jobs that you have already submitted and that Elastic Transcoder has not
+  started to process are affected in addition to jobs that you submit after
+  you change settings.</p>
+
+<h3 class="function"><a name="update_pipeline-4">update_pipeline/4</a></h3>
+<div class="spec">
+<p><tt>update_pipeline(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_pipeline_notifications-3">update_pipeline_notifications/3</a></h3>
+<div class="spec">
+<p><tt>update_pipeline_notifications(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>With the UpdatePipelineNotifications operation, you can update Amazon  
+Simple Notification Service (Amazon SNS) notifications for a pipeline.</p>
+ 
+  When you update notifications for a pipeline, Elastic Transcoder returns
+  the values that you specified in the request.</p>
+
+<h3 class="function"><a name="update_pipeline_notifications-4">update_pipeline_notifications/4</a></h3>
+<div class="spec">
+<p><tt>update_pipeline_notifications(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_pipeline_status-3">update_pipeline_status/3</a></h3>
+<div class="spec">
+<p><tt>update_pipeline_status(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The UpdatePipelineStatus operation pauses or reactivates a pipeline,  
+so that the pipeline stops or restarts the processing of jobs.</p>
+ 
+  Changing the pipeline status is useful if you want to cancel one or more
+  jobs. You can't cancel jobs after Elastic Transcoder has started
+  processing them; if you pause the pipeline to which you submitted the
+  jobs, you have more time to get the job IDs for the jobs that you want to
+  cancel, and to send a <code>CancelJob</code> request.</p>
+
+<h3 class="function"><a name="update_pipeline_status-4">update_pipeline_status/4</a></h3>
+<div class="spec">
+<p><tt>update_pipeline_status(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

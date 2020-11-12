@@ -1,0 +1,136 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_connectparticipant</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_connectparticipant</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Connect is a cloud-based contact center solution that makes it  
+easy to set up and manage a customer contact center and provide reliable  
+customer engagement at any scale.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Connect is a cloud-based contact center solution that makes it  
+easy to set up and manage a customer contact center and provide reliable  
+customer engagement at any scale.</p>
+ 
+  <p>Amazon Connect enables customer contacts through voice or chat.</p>
+ 
+  The APIs described here are used by chat participants, such as agents and
+  customers.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_participant_connection-2">create_participant_connection/2</a></td><td>Creates the participant's connection.</td></tr>
+<tr><td valign="top"><a href="#create_participant_connection-3">create_participant_connection/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disconnect_participant-2">disconnect_participant/2</a></td><td>Disconnects a participant.</td></tr>
+<tr><td valign="top"><a href="#disconnect_participant-3">disconnect_participant/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_transcript-2">get_transcript/2</a></td><td>Retrieves a transcript of the session.</td></tr>
+<tr><td valign="top"><a href="#get_transcript-3">get_transcript/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_event-2">send_event/2</a></td><td>Sends an event.</td></tr>
+<tr><td valign="top"><a href="#send_event-3">send_event/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_message-2">send_message/2</a></td><td>Sends a message.</td></tr>
+<tr><td valign="top"><a href="#send_message-3">send_message/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_participant_connection-2">create_participant_connection/2</a></h3>
+<div class="spec">
+<p><tt>create_participant_connection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates the participant's connection.</p>
+ 
+  <p>Note that ParticipantToken is used for invoking this API instead of  
+ConnectionToken.</p>
+ 
+  <p>The participant token is valid for the lifetime of the participant – until  
+the they are part of a contact.</p>
+ 
+  <p>The response URL for <code>WEBSOCKET</code> Type has a connect expiry timeout of  
+100s. Clients must manually connect to the returned websocket URL and  
+subscribe to the desired topic.</p>
+ 
+  <p>For chat, you need to publish the following on the established websocket  
+connection:</p>
+ 
+  <p><code>{"topic":"aws/subscribe","content":{"topics":["aws/chat"]}}</code></p>
+ 
+  Upon websocket URL expiry, as specified in the response ConnectionExpiry
+  parameter, clients need to call this API again to obtain a new websocket
+  URL and perform the same steps as before.</p>
+
+<h3 class="function"><a name="create_participant_connection-3">create_participant_connection/3</a></h3>
+<div class="spec">
+<p><tt>create_participant_connection(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disconnect_participant-2">disconnect_participant/2</a></h3>
+<div class="spec">
+<p><tt>disconnect_participant(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disconnects a participant.</p>
+ 
+  Note that ConnectionToken is used for invoking this API instead of
+  ParticipantToken.</p>
+
+<h3 class="function"><a name="disconnect_participant-3">disconnect_participant/3</a></h3>
+<div class="spec">
+<p><tt>disconnect_participant(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_transcript-2">get_transcript/2</a></h3>
+<div class="spec">
+<p><tt>get_transcript(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a transcript of the session.</p>
+ 
+  Note that ConnectionToken is used for invoking this API instead of
+  ParticipantToken.</p>
+
+<h3 class="function"><a name="get_transcript-3">get_transcript/3</a></h3>
+<div class="spec">
+<p><tt>get_transcript(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_event-2">send_event/2</a></h3>
+<div class="spec">
+<p><tt>send_event(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sends an event.</p>
+ 
+  Note that ConnectionToken is used for invoking this API instead of
+  ParticipantToken.</p>
+
+<h3 class="function"><a name="send_event-3">send_event/3</a></h3>
+<div class="spec">
+<p><tt>send_event(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_message-2">send_message/2</a></h3>
+<div class="spec">
+<p><tt>send_message(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sends a message.</p>
+ 
+  Note that ConnectionToken is used for invoking this API instead of
+  ParticipantToken.</p>
+
+<h3 class="function"><a name="send_message-3">send_message/3</a></h3>
+<div class="spec">
+<p><tt>send_message(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

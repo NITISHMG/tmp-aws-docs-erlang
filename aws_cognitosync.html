@@ -1,0 +1,397 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_cognitosync</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_cognitosync</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Cognito Sync.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Cognito Sync</p>
+ 
+  <p>Amazon Cognito Sync provides an AWS service and client library that enable  
+cross-device syncing of application-related user data.</p>
+ 
+  <p>High-level client libraries are available for both iOS and Android. You  
+can use these libraries to persist data locally so that it's available  
+even if the device is offline. Developer credentials don't need to be  
+stored on the mobile device to access the service. You can use Amazon  
+Cognito to obtain a normalized user ID and credentials. User data is  
+persisted in a dataset that can store up to 1 MB of key-value pairs, and  
+you can have up to 20 datasets per user identity.</p>
+ 
+  <p>With Amazon Cognito Sync, the data stored for each identity is accessible  
+only to credentials assigned to that identity. In order to use the Cognito  
+Sync service, you need to make API calls using credentials retrieved with  
+Amazon Cognito Identity service.</p>
+ 
+  If you want to use Cognito Sync in an Android or iOS application, you will
+  probably want to make API calls via the AWS Mobile SDK. To learn more, see
+  the Developer Guide for Android and the Developer Guide for iOS.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#bulk_publish-3">bulk_publish/3</a></td><td>Initiates a bulk publish of all existing datasets for an Identity  
+Pool to the configured stream.</td></tr>
+<tr><td valign="top"><a href="#bulk_publish-4">bulk_publish/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_dataset-5">delete_dataset/5</a></td><td>Deletes the specific dataset.</td></tr>
+<tr><td valign="top"><a href="#delete_dataset-6">delete_dataset/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_dataset-4">describe_dataset/4</a></td><td>Gets meta data about a dataset by identity and dataset name.</td></tr>
+<tr><td valign="top"><a href="#describe_dataset-5">describe_dataset/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_identity_pool_usage-2">describe_identity_pool_usage/2</a></td><td>Gets usage details (for example, data storage) about a particular  
+identity pool.</td></tr>
+<tr><td valign="top"><a href="#describe_identity_pool_usage-3">describe_identity_pool_usage/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_identity_usage-3">describe_identity_usage/3</a></td><td>Gets usage information for an identity, including number of datasets  
+and data usage.</td></tr>
+<tr><td valign="top"><a href="#describe_identity_usage-4">describe_identity_usage/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_bulk_publish_details-3">get_bulk_publish_details/3</a></td><td>Get the status of the last BulkPublish operation for an identity  
+pool.</td></tr>
+<tr><td valign="top"><a href="#get_bulk_publish_details-4">get_bulk_publish_details/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_cognito_events-2">get_cognito_events/2</a></td><td>Gets the events and the corresponding Lambda functions associated  
+with an identity pool.</td></tr>
+<tr><td valign="top"><a href="#get_cognito_events-3">get_cognito_events/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_identity_pool_configuration-2">get_identity_pool_configuration/2</a></td><td>Gets the configuration settings of an identity pool.</td></tr>
+<tr><td valign="top"><a href="#get_identity_pool_configuration-3">get_identity_pool_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_datasets-5">list_datasets/5</a></td><td>Lists datasets for an identity.</td></tr>
+<tr><td valign="top"><a href="#list_datasets-6">list_datasets/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_identity_pool_usage-3">list_identity_pool_usage/3</a></td><td>Gets a list of identity pools registered with Cognito.</td></tr>
+<tr><td valign="top"><a href="#list_identity_pool_usage-4">list_identity_pool_usage/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_records-8">list_records/8</a></td><td>Gets paginated records, optionally changed after a particular sync  
+count for a dataset and identity.</td></tr>
+<tr><td valign="top"><a href="#list_records-9">list_records/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_device-4">register_device/4</a></td><td>Registers a device to receive push sync notifications.</td></tr>
+<tr><td valign="top"><a href="#register_device-5">register_device/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_cognito_events-3">set_cognito_events/3</a></td><td>Sets the AWS Lambda function for a given event type for an identity  
+pool.</td></tr>
+<tr><td valign="top"><a href="#set_cognito_events-4">set_cognito_events/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_identity_pool_configuration-3">set_identity_pool_configuration/3</a></td><td>Sets the necessary configuration for push sync.</td></tr>
+<tr><td valign="top"><a href="#set_identity_pool_configuration-4">set_identity_pool_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#subscribe_to_dataset-6">subscribe_to_dataset/6</a></td><td>Subscribes to receive notifications when a dataset is modified by  
+another device.</td></tr>
+<tr><td valign="top"><a href="#subscribe_to_dataset-7">subscribe_to_dataset/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unsubscribe_from_dataset-6">unsubscribe_from_dataset/6</a></td><td>Unsubscribes from receiving notifications when a dataset is modified  
+by another device.</td></tr>
+<tr><td valign="top"><a href="#unsubscribe_from_dataset-7">unsubscribe_from_dataset/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_records-5">update_records/5</a></td><td>Posts updates to records and adds and deletes records for a dataset  
+and user.</td></tr>
+<tr><td valign="top"><a href="#update_records-6">update_records/6</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="bulk_publish-3">bulk_publish/3</a></h3>
+<div class="spec">
+<p><tt>bulk_publish(Client, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Initiates a bulk publish of all existing datasets for an Identity  
+Pool to the configured stream.</p>
+ 
+  <p>Customers are limited to one successful bulk publish per 24 hours. Bulk  
+publish is an asynchronous request, customers can see the status of the  
+request via the GetBulkPublishDetails operation.</p>
+ 
+  This API can only be called with developer credentials. You cannot call
+  this API with the temporary user credentials provided by Cognito Identity.</p>
+
+<h3 class="function"><a name="bulk_publish-4">bulk_publish/4</a></h3>
+<div class="spec">
+<p><tt>bulk_publish(Client, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_dataset-5">delete_dataset/5</a></h3>
+<div class="spec">
+<p><tt>delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specific dataset.</p>
+ 
+  <p>The dataset will be deleted permanently, and the action can't be undone.  
+Datasets that this dataset was merged with will no longer report the  
+merge. Any subsequent operation on this dataset will result in a  
+ResourceNotFoundException.</p>
+ 
+  This API can be called with temporary user credentials provided by Cognito
+  Identity or with developer credentials.</p>
+
+<h3 class="function"><a name="delete_dataset-6">delete_dataset/6</a></h3>
+<div class="spec">
+<p><tt>delete_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_dataset-4">describe_dataset/4</a></h3>
+<div class="spec">
+<p><tt>describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets meta data about a dataset by identity and dataset name.</p>
+ 
+  <p>With Amazon Cognito Sync, each identity has access only to its own data.  
+Thus, the credentials used to make this API call need to have access to  
+the identity data.</p>
+ 
+  This API can be called with temporary user credentials provided by Cognito
+  Identity or with developer credentials. You should use Cognito Identity
+  credentials to make this API call.</p>
+
+<h3 class="function"><a name="describe_dataset-5">describe_dataset/5</a></h3>
+<div class="spec">
+<p><tt>describe_dataset(Client, DatasetName, IdentityId, IdentityPoolId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_identity_pool_usage-2">describe_identity_pool_usage/2</a></h3>
+<div class="spec">
+<p><tt>describe_identity_pool_usage(Client, IdentityPoolId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets usage details (for example, data storage) about a particular  
+identity pool.</p>
+ 
+  This API can only be called with developer credentials. You cannot call
+  this API with the temporary user credentials provided by Cognito Identity.</p>
+
+<h3 class="function"><a name="describe_identity_pool_usage-3">describe_identity_pool_usage/3</a></h3>
+<div class="spec">
+<p><tt>describe_identity_pool_usage(Client, IdentityPoolId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_identity_usage-3">describe_identity_usage/3</a></h3>
+<div class="spec">
+<p><tt>describe_identity_usage(Client, IdentityId, IdentityPoolId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets usage information for an identity, including number of datasets  
+and data usage.</p>
+ 
+  This API can be called with temporary user credentials provided by Cognito
+  Identity or with developer credentials.</p>
+
+<h3 class="function"><a name="describe_identity_usage-4">describe_identity_usage/4</a></h3>
+<div class="spec">
+<p><tt>describe_identity_usage(Client, IdentityId, IdentityPoolId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_bulk_publish_details-3">get_bulk_publish_details/3</a></h3>
+<div class="spec">
+<p><tt>get_bulk_publish_details(Client, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Get the status of the last BulkPublish operation for an identity  
+pool.</p>
+ 
+  This API can only be called with developer credentials. You cannot call
+  this API with the temporary user credentials provided by Cognito Identity.</p>
+
+<h3 class="function"><a name="get_bulk_publish_details-4">get_bulk_publish_details/4</a></h3>
+<div class="spec">
+<p><tt>get_bulk_publish_details(Client, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_cognito_events-2">get_cognito_events/2</a></h3>
+<div class="spec">
+<p><tt>get_cognito_events(Client, IdentityPoolId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the events and the corresponding Lambda functions associated  
+with an identity pool.</p>
+ 
+  This API can only be called with developer credentials. You cannot call
+  this API with the temporary user credentials provided by Cognito Identity.</p>
+
+<h3 class="function"><a name="get_cognito_events-3">get_cognito_events/3</a></h3>
+<div class="spec">
+<p><tt>get_cognito_events(Client, IdentityPoolId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_identity_pool_configuration-2">get_identity_pool_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_identity_pool_configuration(Client, IdentityPoolId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the configuration settings of an identity pool.</p>
+ 
+  This API can only be called with developer credentials. You cannot call
+  this API with the temporary user credentials provided by Cognito Identity.</p>
+
+<h3 class="function"><a name="get_identity_pool_configuration-3">get_identity_pool_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_identity_pool_configuration(Client, IdentityPoolId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_datasets-5">list_datasets/5</a></h3>
+<div class="spec">
+<p><tt>list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists datasets for an identity.</p>
+ 
+  <p>With Amazon Cognito Sync, each identity has access only to its own data.  
+Thus, the credentials used to make this API call need to have access to  
+the identity data.</p>
+ 
+  ListDatasets can be called with temporary user credentials provided by
+  Cognito Identity or with developer credentials. You should use the Cognito
+  Identity credentials to make this API call.</p>
+
+<h3 class="function"><a name="list_datasets-6">list_datasets/6</a></h3>
+<div class="spec">
+<p><tt>list_datasets(Client, IdentityId, IdentityPoolId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_identity_pool_usage-3">list_identity_pool_usage/3</a></h3>
+<div class="spec">
+<p><tt>list_identity_pool_usage(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of identity pools registered with Cognito.</p>
+ 
+  ListIdentityPoolUsage can only be called with developer credentials. You
+  cannot make this API call with the temporary user credentials provided by
+  Cognito Identity.</p>
+
+<h3 class="function"><a name="list_identity_pool_usage-4">list_identity_pool_usage/4</a></h3>
+<div class="spec">
+<p><tt>list_identity_pool_usage(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_records-8">list_records/8</a></h3>
+<div class="spec">
+<p><tt>list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets paginated records, optionally changed after a particular sync  
+count for a dataset and identity.</p>
+ 
+  <p>With Amazon Cognito Sync, each identity has access only to its own data.  
+Thus, the credentials used to make this API call need to have access to  
+the identity data.</p>
+ 
+  ListRecords can be called with temporary user credentials provided by
+  Cognito Identity or with developer credentials. You should use Cognito
+  Identity credentials to make this API call.</p>
+
+<h3 class="function"><a name="list_records-9">list_records/9</a></h3>
+<div class="spec">
+<p><tt>list_records(Client, DatasetName, IdentityId, IdentityPoolId, LastSyncCount, MaxResults, NextToken, SyncSessionToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_device-4">register_device/4</a></h3>
+<div class="spec">
+<p><tt>register_device(Client, IdentityId, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers a device to receive push sync notifications.</p>
+ 
+  This API can only be called with temporary credentials provided by Cognito
+  Identity. You cannot call this API with developer credentials.</p>
+
+<h3 class="function"><a name="register_device-5">register_device/5</a></h3>
+<div class="spec">
+<p><tt>register_device(Client, IdentityId, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_cognito_events-3">set_cognito_events/3</a></h3>
+<div class="spec">
+<p><tt>set_cognito_events(Client, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the AWS Lambda function for a given event type for an identity  
+pool.</p>
+ 
+  <p>This request only updates the key/value pair specified. Other key/values  
+pairs are not updated. To remove a key value pair, pass a empty value for  
+the particular key.</p>
+ 
+  This API can only be called with developer credentials. You cannot call
+  this API with the temporary user credentials provided by Cognito Identity.</p>
+
+<h3 class="function"><a name="set_cognito_events-4">set_cognito_events/4</a></h3>
+<div class="spec">
+<p><tt>set_cognito_events(Client, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_identity_pool_configuration-3">set_identity_pool_configuration/3</a></h3>
+<div class="spec">
+<p><tt>set_identity_pool_configuration(Client, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the necessary configuration for push sync.</p>
+ 
+  This API can only be called with developer credentials. You cannot call
+  this API with the temporary user credentials provided by Cognito Identity.</p>
+
+<h3 class="function"><a name="set_identity_pool_configuration-4">set_identity_pool_configuration/4</a></h3>
+<div class="spec">
+<p><tt>set_identity_pool_configuration(Client, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="subscribe_to_dataset-6">subscribe_to_dataset/6</a></h3>
+<div class="spec">
+<p><tt>subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Subscribes to receive notifications when a dataset is modified by  
+another device.</p>
+ 
+  This API can only be called with temporary credentials provided by Cognito
+  Identity. You cannot call this API with developer credentials.</p>
+
+<h3 class="function"><a name="subscribe_to_dataset-7">subscribe_to_dataset/7</a></h3>
+<div class="spec">
+<p><tt>subscribe_to_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="unsubscribe_from_dataset-6">unsubscribe_from_dataset/6</a></h3>
+<div class="spec">
+<p><tt>unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Unsubscribes from receiving notifications when a dataset is modified  
+by another device.</p>
+ 
+  This API can only be called with temporary credentials provided by Cognito
+  Identity. You cannot call this API with developer credentials.</p>
+
+<h3 class="function"><a name="unsubscribe_from_dataset-7">unsubscribe_from_dataset/7</a></h3>
+<div class="spec">
+<p><tt>unsubscribe_from_dataset(Client, DatasetName, DeviceId, IdentityId, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_records-5">update_records/5</a></h3>
+<div class="spec">
+<p><tt>update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Posts updates to records and adds and deletes records for a dataset  
+and user.</p>
+ 
+  <p>The sync count in the record patch is your last known sync count for that  
+record. The server will reject an UpdateRecords request with a  
+ResourceConflictException if you try to patch a record with a new value  
+but a stale sync count.</p>
+ 
+  <p>For example, if the sync count on the server is 5 for a key called  
+highScore and you try and submit a new highScore with sync count of 4, the  
+request will be rejected. To obtain the current sync count for a record,  
+call ListRecords. On a successful update of the record, the response  
+returns the new sync count for that record. You should present that sync  
+count the next time you try to update that same record. When the record  
+does not exist, specify the sync count as 0.</p>
+ 
+  This API can be called with temporary user credentials provided by Cognito
+  Identity or with developer credentials.</p>
+
+<h3 class="function"><a name="update_records-6">update_records/6</a></h3>
+<div class="spec">
+<p><tt>update_records(Client, DatasetName, IdentityId, IdentityPoolId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

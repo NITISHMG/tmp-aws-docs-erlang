@@ -1,0 +1,131 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_outposts</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_outposts</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Outposts is a fully-managed service that extends AWS  
+infrastructure, APIs, and tools to customer premises.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Outposts is a fully-managed service that extends AWS  
+infrastructure, APIs, and tools to customer premises.</p>
+ 
+  By providing local access to AWS-managed infrastructure, AWS Outposts
+  enables customers to build and run applications on premises using the same
+  programming interfaces as in AWS Regions, while using local compute and
+  storage resources for lower latency and local data processing needs.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_outpost-2">create_outpost/2</a></td><td>Creates an Outpost.</td></tr>
+<tr><td valign="top"><a href="#create_outpost-3">create_outpost/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_outpost-3">delete_outpost/3</a></td><td>Deletes the Outpost.</td></tr>
+<tr><td valign="top"><a href="#delete_outpost-4">delete_outpost/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_site-3">delete_site/3</a></td><td>Deletes the site.</td></tr>
+<tr><td valign="top"><a href="#delete_site-4">delete_site/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_outpost-2">get_outpost/2</a></td><td>Gets information about the specified Outpost.</td></tr>
+<tr><td valign="top"><a href="#get_outpost-3">get_outpost/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_outpost_instance_types-4">get_outpost_instance_types/4</a></td><td>Lists the instance types for the specified Outpost.</td></tr>
+<tr><td valign="top"><a href="#get_outpost_instance_types-5">get_outpost_instance_types/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_outposts-3">list_outposts/3</a></td><td>List the Outposts for your AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_outposts-4">list_outposts/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_sites-3">list_sites/3</a></td><td>Lists the sites for the specified AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_sites-4">list_sites/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_outpost-2">create_outpost/2</a></h3>
+<div class="spec">
+<p><tt>create_outpost(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an Outpost.</p>
+
+<h3 class="function"><a name="create_outpost-3">create_outpost/3</a></h3>
+<div class="spec">
+<p><tt>create_outpost(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_outpost-3">delete_outpost/3</a></h3>
+<div class="spec">
+<p><tt>delete_outpost(Client, OutpostId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the Outpost.</p>
+
+<h3 class="function"><a name="delete_outpost-4">delete_outpost/4</a></h3>
+<div class="spec">
+<p><tt>delete_outpost(Client, OutpostId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_site-3">delete_site/3</a></h3>
+<div class="spec">
+<p><tt>delete_site(Client, SiteId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the site.</p>
+
+<h3 class="function"><a name="delete_site-4">delete_site/4</a></h3>
+<div class="spec">
+<p><tt>delete_site(Client, SiteId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_outpost-2">get_outpost/2</a></h3>
+<div class="spec">
+<p><tt>get_outpost(Client, OutpostId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the specified Outpost.</p>
+
+<h3 class="function"><a name="get_outpost-3">get_outpost/3</a></h3>
+<div class="spec">
+<p><tt>get_outpost(Client, OutpostId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_outpost_instance_types-4">get_outpost_instance_types/4</a></h3>
+<div class="spec">
+<p><tt>get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the instance types for the specified Outpost.</p>
+
+<h3 class="function"><a name="get_outpost_instance_types-5">get_outpost_instance_types/5</a></h3>
+<div class="spec">
+<p><tt>get_outpost_instance_types(Client, OutpostId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_outposts-3">list_outposts/3</a></h3>
+<div class="spec">
+<p><tt>list_outposts(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List the Outposts for your AWS account.</p>
+
+<h3 class="function"><a name="list_outposts-4">list_outposts/4</a></h3>
+<div class="spec">
+<p><tt>list_outposts(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_sites-3">list_sites/3</a></h3>
+<div class="spec">
+<p><tt>list_sites(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the sites for the specified AWS account.</p>
+
+<h3 class="function"><a name="list_sites-4">list_sites/4</a></h3>
+<div class="spec">
+<p><tt>list_sites(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

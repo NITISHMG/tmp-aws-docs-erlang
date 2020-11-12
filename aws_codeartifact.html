@@ -1,0 +1,819 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_codeartifact</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_codeartifact</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS CodeArtifact is a fully managed artifact repository compatible  
+with language-native package managers and build tools such as npm, Apache  
+Maven, and pip.
+
+
+<h2><a name="description">Description</a></h2><p>AWS CodeArtifact is a fully managed artifact repository compatible  
+with language-native package managers and build tools such as npm, Apache  
+Maven, and pip.</p>
+ 
+  <p>You can use CodeArtifact to share packages with development teams and pull  
+packages. Packages can be pulled from both public and CodeArtifact  
+repositories. You can also create an upstream relationship between a  
+CodeArtifact repository and another repository, which effectively merges  
+their contents from the point of view of a package manager client.</p>
+ 
+  <p>AWS CodeArtifact Components</p>
+ 
+  <p>Use the information in this guide to help you work with the following  
+CodeArtifact components:</p>
+ 
+  <ul> <li><p> Repository: A CodeArtifact repository contains a set of package
+  versions, each of which maps to a set of assets, or files. Repositories
+  are polyglot, so a single repository can contain packages of any supported
+  type. Each repository exposes endpoints for fetching and publishing
+  packages using tools like the <code>npm</code> CLI, the Maven CLI ( <code>mvn</code> ), and
+  <code>pip</code> .</p>
+ 
+  </li> <li><p> Domain: Repositories are aggregated into a higher-level entity  
+known as a domain. All package assets and metadata are stored in the  
+domain, but are consumed through repositories. A given package asset, such  
+as a Maven JAR file, is stored once per domain, no matter how many  
+repositories it's present in. All of the assets and metadata in a domain  
+are encrypted with the same customer master key (CMK) stored in AWS Key  
+Management Service (AWS KMS).</p>
+ 
+  <p>Each repository is a member of a single domain and can't be moved to a  
+different domain.</p>
+ 
+  <p>The domain allows organizational policy to be applied across multiple  
+repositories, such as which accounts can access repositories in the  
+domain, and which public repositories can be used as sources of packages.</p>
+ 
+  <p>Although an organization can have multiple domains, we recommend a single  
+production domain that contains all published artifacts so that teams can  
+find and share packages across their organization.</p>
+ 
+  </li> <li><p> Package: A package is a bundle of software and the metadata  
+required to resolve dependencies and install the software. CodeArtifact  
+supports npm, PyPI, and Maven package formats.</p>
+ 
+  <p>In CodeArtifact, a package consists of:</p>
+ 
+  <ul> <li><p> A name (for example, <code>webpack</code> is the name of a popular npm  
+package)</p>
+ 
+  </li> <li><p> An optional namespace (for example, <code>@types</code> in <code>@types/node</code>)</p>
+ 
+  </li> <li><p> A set of versions (for example, <code>1.0.0</code>, <code>1.0.1</code>, <code>1.0.2</code>,  
+etc.)</p>
+ 
+  </li> <li><p> Package-level metadata (for example, npm tags)</p>
+ 
+  </li> </ul> </li> <li><p> Package version: A version of a package, such as
+  <code>@types/node 12.6.9</code>. The version number format and semantics vary for  
+different package formats. For example, npm package versions must conform  
+to the Semantic Versioning specification. In CodeArtifact, a package  
+version consists of the version identifier, metadata at the package  
+version level, and a set of assets.</p>
+ 
+  </li> <li><p> Upstream repository: One repository is upstream of another when  
+the package versions in it can be accessed from the repository endpoint of  
+the downstream repository, effectively merging the contents of the two  
+repositories from the point of view of a client. CodeArtifact allows  
+creating an upstream relationship between two repositories.</p>
+ 
+  </li> <li><p> Asset: An individual file stored in CodeArtifact associated
+  with a package version, such as an npm <code>.tgz</code> file or Maven POM and JAR  
+files.</p>
+ 
+  </li> </ul><p> CodeArtifact supports these operations:</p>
+ 
+  <ul> <li><p> <code>AssociateExternalConnection</code>: Adds an existing external  
+connection to a repository.</p>
+ 
+  </li> <li><p> <code>CopyPackageVersions</code>: Copies package versions from one  
+repository to another repository in the same domain.</p>
+ 
+  </li> <li><p> <code>CreateDomain</code>: Creates a domain</p>
+ 
+  </li> <li><p> <code>CreateRepository</code>: Creates a CodeArtifact repository in a  
+domain.</p>
+ 
+  </li> <li><p> <code>DeleteDomain</code>: Deletes a domain. You cannot delete a domain  
+that contains repositories.</p>
+ 
+  </li> <li><p> <code>DeleteDomainPermissionsPolicy</code>: Deletes the resource policy  
+that is set on a domain.</p>
+ 
+  </li> <li><p> <code>DeletePackageVersions</code>: Deletes versions of a package. After a  
+package has been deleted, it can be republished, but its assets and  
+metadata cannot be restored because they have been permanently removed  
+from storage.</p>
+ 
+  </li> <li><p> <code>DeleteRepository</code>: Deletes a repository.</p>
+ 
+  </li> <li><p> <code>DeleteRepositoryPermissionsPolicy</code>: Deletes the resource  
+policy that is set on a repository.</p>
+ 
+  </li> <li><p> <code>DescribeDomain</code>: Returns a <code>DomainDescription</code> object that  
+contains information about the requested domain.</p>
+ 
+  </li> <li><p> <code>DescribePackageVersion</code>: Returns a <code>PackageVersionDescription</code> object that contains details about a package version.</p>
+ 
+  </li> <li><p> <code>DescribeRepository</code>: Returns a <code>RepositoryDescription</code> object  
+that contains detailed information about the requested repository.</p>
+ 
+  </li> <li><p> <code>DisposePackageVersions</code>: Disposes versions of a package. A
+  package version with the status <code>Disposed</code> cannot be restored because they  
+have been permanently removed from storage.</p>
+ 
+  </li> <li><p> <code>DisassociateExternalConnection</code>: Removes an existing external  
+connection from a repository.</p>
+ 
+  </li> <li><p> <code>GetAuthorizationToken</code>: Generates a temporary authorization  
+token for accessing repositories in the domain. The token expires the  
+authorization period has passed. The default authorization period is 12  
+hours and can be customized to any length with a maximum of 12 hours.</p>
+ 
+  </li> <li><p> <code>GetDomainPermissionsPolicy</code>: Returns the policy of a resource  
+that is attached to the specified domain.</p>
+ 
+  </li> <li><p> <code>GetPackageVersionAsset</code>: Returns the contents of an asset that  
+is in a package version.</p>
+ 
+  </li> <li><p> <code>GetPackageVersionReadme</code>: Gets the readme file or descriptive  
+text for a package version.</p>
+ 
+  </li> <li><p> <code>GetRepositoryEndpoint</code>: Returns the endpoint of a repository  
+for a specific package format. A repository has one endpoint for each  
+package format:</p>
+ 
+  <ul> <li><p> <code>npm</code></p>
+ 
+  </li> <li><p> <code>pypi</code></p>
+ 
+  </li> <li><p> <code>maven</code></p>
+ 
+  </li> </ul> </li> <li><p> <code>GetRepositoryPermissionsPolicy</code>: Returns the  
+resource policy that is set on a repository.</p>
+ 
+  </li> <li><p> <code>ListDomains</code>: Returns a list of <code>DomainSummary</code> objects. Each
+  returned <code>DomainSummary</code> object contains information about a domain.</p>
+ 
+  </li> <li><p> <code>ListPackages</code>: Lists the packages in a repository.</p>
+ 
+  </li> <li><p> <code>ListPackageVersionAssets</code>: Lists the assets for a given  
+package version.</p>
+ 
+  </li> <li><p> <code>ListPackageVersionDependencies</code>: Returns a list of the direct  
+dependencies for a package version.</p>
+ 
+  </li> <li><p> <code>ListPackageVersions</code>: Returns a list of package versions for a  
+specified package in a repository.</p>
+ 
+  </li> <li><p> <code>ListRepositories</code>: Returns a list of repositories owned by the  
+AWS account that called this method.</p>
+ 
+  </li> <li><p> <code>ListRepositoriesInDomain</code>: Returns a list of the repositories  
+in a domain.</p>
+ 
+  </li> <li><p> <code>PutDomainPermissionsPolicy</code>: Attaches a resource policy to a  
+domain.</p>
+ 
+  </li> <li><p> <code>PutRepositoryPermissionsPolicy</code>: Sets the resource policy on a  
+repository that specifies permissions to access it.</p>
+ 
+  </li> <li><p> <code>UpdatePackageVersionsStatus</code>: Updates the status of one or  
+more versions of a package.</p>
+ 
+  </li> <li><p> <code>UpdateRepository</code>: Updates the properties of a repository.</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_external_connection-2">associate_external_connection/2</a></td><td>Adds an existing external connection to a repository.</td></tr>
+<tr><td valign="top"><a href="#associate_external_connection-3">associate_external_connection/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#copy_package_versions-2">copy_package_versions/2</a></td><td>Copies package versions from one repository to another repository in  
+the same domain.</td></tr>
+<tr><td valign="top"><a href="#copy_package_versions-3">copy_package_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_domain-2">create_domain/2</a></td><td>Creates a domain.</td></tr>
+<tr><td valign="top"><a href="#create_domain-3">create_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_repository-2">create_repository/2</a></td><td>Creates a repository.</td></tr>
+<tr><td valign="top"><a href="#create_repository-3">create_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_domain-2">delete_domain/2</a></td><td>Deletes a domain.</td></tr>
+<tr><td valign="top"><a href="#delete_domain-3">delete_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_domain_permissions_policy-2">delete_domain_permissions_policy/2</a></td><td>Deletes the resource policy set on a domain.</td></tr>
+<tr><td valign="top"><a href="#delete_domain_permissions_policy-3">delete_domain_permissions_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_package_versions-2">delete_package_versions/2</a></td><td>Deletes one or more versions of a package.</td></tr>
+<tr><td valign="top"><a href="#delete_package_versions-3">delete_package_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_repository-2">delete_repository/2</a></td><td>Deletes a repository.</td></tr>
+<tr><td valign="top"><a href="#delete_repository-3">delete_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_repository_permissions_policy-2">delete_repository_permissions_policy/2</a></td><td>Deletes the resource policy that is set on a repository.</td></tr>
+<tr><td valign="top"><a href="#delete_repository_permissions_policy-3">delete_repository_permissions_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_domain-3">describe_domain/3</a></td><td>Returns a <code>DomainDescription</code> object that contains information about
+  the requested domain.</td></tr>
+<tr><td valign="top"><a href="#describe_domain-4">describe_domain/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_package_version-8">describe_package_version/8</a></td><td>Returns a <code>PackageVersionDescription</code> object that contains
+  information about the requested package version.</td></tr>
+<tr><td valign="top"><a href="#describe_package_version-9">describe_package_version/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_repository-4">describe_repository/4</a></td><td>Returns a <code>RepositoryDescription</code> object that contains detailed
+  information about the requested repository.</td></tr>
+<tr><td valign="top"><a href="#describe_repository-5">describe_repository/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_external_connection-2">disassociate_external_connection/2</a></td><td>Removes an existing external connection from a repository.</td></tr>
+<tr><td valign="top"><a href="#disassociate_external_connection-3">disassociate_external_connection/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#dispose_package_versions-2">dispose_package_versions/2</a></td><td>Deletes the assets in package versions and sets the package versions'
+  status to <code>Disposed</code>.</td></tr>
+<tr><td valign="top"><a href="#dispose_package_versions-3">dispose_package_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_authorization_token-2">get_authorization_token/2</a></td><td>Generates a temporary authorization token for accessing repositories  
+in the domain.</td></tr>
+<tr><td valign="top"><a href="#get_authorization_token-3">get_authorization_token/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_domain_permissions_policy-3">get_domain_permissions_policy/3</a></td><td>Returns the resource policy attached to the specified domain.</td></tr>
+<tr><td valign="top"><a href="#get_domain_permissions_policy-4">get_domain_permissions_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_package_version_asset-10">get_package_version_asset/10</a></td><td>Returns an asset (or file) that is in a package.</td></tr>
+<tr><td valign="top"><a href="#get_package_version_asset-11">get_package_version_asset/11</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_package_version_readme-8">get_package_version_readme/8</a></td><td>Gets the readme file or descriptive text for a package version.</td></tr>
+<tr><td valign="top"><a href="#get_package_version_readme-9">get_package_version_readme/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_repository_endpoint-5">get_repository_endpoint/5</a></td><td>Returns the endpoint of a repository for a specific package format.</td></tr>
+<tr><td valign="top"><a href="#get_repository_endpoint-6">get_repository_endpoint/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_repository_permissions_policy-4">get_repository_permissions_policy/4</a></td><td>Returns the resource policy that is set on a repository.</td></tr>
+<tr><td valign="top"><a href="#get_repository_permissions_policy-5">get_repository_permissions_policy/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_domains-2">list_domains/2</a></td><td>Returns a list of <code>DomainSummary</code> objects for all domains owned by  
+the AWS account that makes this call.</td></tr>
+<tr><td valign="top"><a href="#list_domains-3">list_domains/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_package_version_assets-2">list_package_version_assets/2</a></td><td>Returns a list of <code>AssetSummary</code> objects for assets in a package
+  version.</td></tr>
+<tr><td valign="top"><a href="#list_package_version_assets-3">list_package_version_assets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_package_version_dependencies-2">list_package_version_dependencies/2</a></td><td>Returns the direct dependencies for a package version.</td></tr>
+<tr><td valign="top"><a href="#list_package_version_dependencies-3">list_package_version_dependencies/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_package_versions-2">list_package_versions/2</a></td><td>Returns a list of <code>PackageVersionSummary</code> objects for package
+  versions in a repository that match the request parameters.</td></tr>
+<tr><td valign="top"><a href="#list_package_versions-3">list_package_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_packages-2">list_packages/2</a></td><td>Returns a list of <code>PackageSummary</code> objects for packages in a
+  repository that match the request parameters.</td></tr>
+<tr><td valign="top"><a href="#list_packages-3">list_packages/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_repositories-2">list_repositories/2</a></td><td>Returns a list of <code>RepositorySummary</code> objects.</td></tr>
+<tr><td valign="top"><a href="#list_repositories-3">list_repositories/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_repositories_in_domain-2">list_repositories_in_domain/2</a></td><td>Returns a list of <code>RepositorySummary</code> objects.</td></tr>
+<tr><td valign="top"><a href="#list_repositories_in_domain-3">list_repositories_in_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Gets information about AWS tags for a specified Amazon Resource Name
+  (ARN) in AWS CodeArtifact.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_domain_permissions_policy-2">put_domain_permissions_policy/2</a></td><td>Sets a resource policy on a domain that specifies permissions to  
+access it.</td></tr>
+<tr><td valign="top"><a href="#put_domain_permissions_policy-3">put_domain_permissions_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_repository_permissions_policy-2">put_repository_permissions_policy/2</a></td><td>Sets the resource policy on a repository that specifies permissions  
+to access it.</td></tr>
+<tr><td valign="top"><a href="#put_repository_permissions_policy-3">put_repository_permissions_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds or updates tags for a resource in AWS CodeArtifact.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes tags from a resource in AWS CodeArtifact.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_package_versions_status-2">update_package_versions_status/2</a></td><td>Updates the status of one or more versions of a package.</td></tr>
+<tr><td valign="top"><a href="#update_package_versions_status-3">update_package_versions_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_repository-2">update_repository/2</a></td><td>Update the properties of a repository.</td></tr>
+<tr><td valign="top"><a href="#update_repository-3">update_repository/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_external_connection-2">associate_external_connection/2</a></h3>
+<div class="spec">
+<p><tt>associate_external_connection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds an existing external connection to a repository.</p>
+ 
+  <p>One external connection is allowed per repository.</p>
+ 
+  A repository can have one or more upstream repositories, or an external
+  connection.</p>
+
+<h3 class="function"><a name="associate_external_connection-3">associate_external_connection/3</a></h3>
+<div class="spec">
+<p><tt>associate_external_connection(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="copy_package_versions-2">copy_package_versions/2</a></h3>
+<div class="spec">
+<p><tt>copy_package_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Copies package versions from one repository to another repository in  
+the same domain.</p>
+ 
+  You must specify <code>versions</code> or <code>versionRevisions</code>. You cannot specify
+  both.</p>
+
+<h3 class="function"><a name="copy_package_versions-3">copy_package_versions/3</a></h3>
+<div class="spec">
+<p><tt>copy_package_versions(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_domain-2">create_domain/2</a></h3>
+<div class="spec">
+<p><tt>create_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a domain.</p>
+ 
+  <p>CodeArtifact domains make it easier to manage multiple repositories across  
+an organization. You can use a domain to apply permissions across many  
+repositories owned by different AWS accounts. An asset is stored only once  
+in a domain, even if it's in multiple repositories.</p>
+ 
+  Although you can have multiple domains, we recommend a single production
+  domain that contains all published artifacts so that your development
+  teams can find and share packages. You can use a second pre-production
+  domain to test changes to the production domain configuration.</p>
+
+<h3 class="function"><a name="create_domain-3">create_domain/3</a></h3>
+<div class="spec">
+<p><tt>create_domain(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_repository-2">create_repository/2</a></h3>
+<div class="spec">
+<p><tt>create_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a repository.</p>
+
+<h3 class="function"><a name="create_repository-3">create_repository/3</a></h3>
+<div class="spec">
+<p><tt>create_repository(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_domain-2">delete_domain/2</a></h3>
+<div class="spec">
+<p><tt>delete_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a domain.</p>
+ 
+  You cannot delete a domain that contains repositories. If you want to
+  delete a domain with repositories, first delete its repositories.</p>
+
+<h3 class="function"><a name="delete_domain-3">delete_domain/3</a></h3>
+<div class="spec">
+<p><tt>delete_domain(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_domain_permissions_policy-2">delete_domain_permissions_policy/2</a></h3>
+<div class="spec">
+<p><tt>delete_domain_permissions_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the resource policy set on a domain.</p>
+
+<h3 class="function"><a name="delete_domain_permissions_policy-3">delete_domain_permissions_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_domain_permissions_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_package_versions-2">delete_package_versions/2</a></h3>
+<div class="spec">
+<p><tt>delete_package_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes one or more versions of a package.</p>
+ 
+  A deleted package version cannot be restored in your repository. If you
+  want to remove a package version from your repository and be able to
+  restore it later, set its status to <code>Archived</code>. Archived packages cannot
+  be downloaded from a repository and don't show up with list package APIs
+  (for example, <code>ListackageVersions</code>), but you can restore them using <code>UpdatePackageVersionsStatus</code>.</p>
+
+<h3 class="function"><a name="delete_package_versions-3">delete_package_versions/3</a></h3>
+<div class="spec">
+<p><tt>delete_package_versions(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_repository-2">delete_repository/2</a></h3>
+<div class="spec">
+<p><tt>delete_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a repository.</p>
+
+<h3 class="function"><a name="delete_repository-3">delete_repository/3</a></h3>
+<div class="spec">
+<p><tt>delete_repository(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_repository_permissions_policy-2">delete_repository_permissions_policy/2</a></h3>
+<div class="spec">
+<p><tt>delete_repository_permissions_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the resource policy that is set on a repository.</p>
+ 
+  <p>After a resource policy is deleted, the permissions allowed and denied by  
+the deleted policy are removed. The effect of deleting a resource policy  
+might not be immediate.</p>
+ 
+  Use <code>DeleteRepositoryPermissionsPolicy</code> with caution. After a policy is
+  deleted, AWS users, roles, and accounts lose permissions to perform the
+  repository actions granted by the deleted policy.</p>
+
+<h3 class="function"><a name="delete_repository_permissions_policy-3">delete_repository_permissions_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_repository_permissions_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_domain-3">describe_domain/3</a></h3>
+<div class="spec">
+<p><tt>describe_domain(Client, Domain, DomainOwner) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a <code>DomainDescription</code> object that contains information about
+  the requested domain.</p>
+
+<h3 class="function"><a name="describe_domain-4">describe_domain/4</a></h3>
+<div class="spec">
+<p><tt>describe_domain(Client, Domain, DomainOwner, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_package_version-8">describe_package_version/8</a></h3>
+<div class="spec">
+<p><tt>describe_package_version(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a <code>PackageVersionDescription</code> object that contains
+  information about the requested package version.</p>
+
+<h3 class="function"><a name="describe_package_version-9">describe_package_version/9</a></h3>
+<div class="spec">
+<p><tt>describe_package_version(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_repository-4">describe_repository/4</a></h3>
+<div class="spec">
+<p><tt>describe_repository(Client, Domain, DomainOwner, Repository) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a <code>RepositoryDescription</code> object that contains detailed
+  information about the requested repository.</p>
+
+<h3 class="function"><a name="describe_repository-5">describe_repository/5</a></h3>
+<div class="spec">
+<p><tt>describe_repository(Client, Domain, DomainOwner, Repository, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_external_connection-2">disassociate_external_connection/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_external_connection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes an existing external connection from a repository.</p>
+
+<h3 class="function"><a name="disassociate_external_connection-3">disassociate_external_connection/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_external_connection(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="dispose_package_versions-2">dispose_package_versions/2</a></h3>
+<div class="spec">
+<p><tt>dispose_package_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the assets in package versions and sets the package versions'
+  status to <code>Disposed</code>.</p>
+ 
+  <p>A disposed package version cannot be restored in your repository because  
+its assets are deleted.</p>
+ 
+  <p>To view all disposed package versions in a repository, use
+  <code>ListPackageVersions</code> and set the <code>status</code> parameter to <code>Disposed</code>.</p>
+ 
+  To view information about a disposed package version, use
+  <code>DescribePackageVersion</code> ..</p>
+
+<h3 class="function"><a name="dispose_package_versions-3">dispose_package_versions/3</a></h3>
+<div class="spec">
+<p><tt>dispose_package_versions(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_authorization_token-2">get_authorization_token/2</a></h3>
+<div class="spec">
+<p><tt>get_authorization_token(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Generates a temporary authorization token for accessing repositories  
+in the domain.</p>
+ 
+  <p>This API requires the <code>codeartifact:GetAuthorizationToken</code> and
+  <code>sts:GetServiceBearerToken</code> permissions. For more information about  
+authorization tokens, see AWS CodeArtifact authentication and tokens.</p>
+ 
+  <p>CodeArtifact authorization tokens are valid for a period of 12 hours when
+  created with the <code>login</code> command. You can call <code>login</code> periodically to
+  refresh the token. When you create an authorization token with the
+  <code>GetAuthorizationToken</code> API, you can set a custom authorization period, up
+  to a maximum of 12 hours, with the <code>durationSeconds</code> parameter.</p>
+ 
+  <p>The authorization period begins after <code>login</code> or <code>GetAuthorizationToken</code>
+  is called. If <code>login</code> or <code>GetAuthorizationToken</code> is called while assuming
+  a role, the token lifetime is independent of the maximum session duration
+  of the role. For example, if you call <code>sts assume-role</code> and specify a  
+session duration of 15 minutes, then generate a CodeArtifact authorization  
+token, the token will be valid for the full authorization period even  
+though this is longer than the 15-minute session duration.</p>
+ 
+  See Using IAM Roles for more information on controlling session duration.</p>
+
+<h3 class="function"><a name="get_authorization_token-3">get_authorization_token/3</a></h3>
+<div class="spec">
+<p><tt>get_authorization_token(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_domain_permissions_policy-3">get_domain_permissions_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_domain_permissions_policy(Client, Domain, DomainOwner) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the resource policy attached to the specified domain.</p>
+ 
+  The policy is a resource-based policy, not an identity-based policy. For
+  more information, see Identity-based policies and resource-based policies
+  in the AWS Identity and Access Management User Guide.</p>
+
+<h3 class="function"><a name="get_domain_permissions_policy-4">get_domain_permissions_policy/4</a></h3>
+<div class="spec">
+<p><tt>get_domain_permissions_policy(Client, Domain, DomainOwner, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_package_version_asset-10">get_package_version_asset/10</a></h3>
+<div class="spec">
+<p><tt>get_package_version_asset(Client, Asset, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, PackageVersionRevision, Repository) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns an asset (or file) that is in a package.</p>
+ 
+  For example, for a Maven package version, use <code>GetPackageVersionAsset</code> to
+  download a <code>JAR</code> file, a <code>POM</code> file, or any other assets in the package
+  version.</p>
+
+<h3 class="function"><a name="get_package_version_asset-11">get_package_version_asset/11</a></h3>
+<div class="spec">
+<p><tt>get_package_version_asset(Client, Asset, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, PackageVersionRevision, Repository, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_package_version_readme-8">get_package_version_readme/8</a></h3>
+<div class="spec">
+<p><tt>get_package_version_readme(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the readme file or descriptive text for a package version.</p>
+ 
+  <p>For packages that do not contain a readme file, CodeArtifact extracts a
+  description from a metadata file. For example, from the <code>&lt;description&gt;</code>
+  element in the <code>pom.xml</code> file of a Maven package.</p>
+ 
+  The returned text might contain formatting. For example, it might contain
+  formatting for Markdown or reStructuredText.</p>
+
+<h3 class="function"><a name="get_package_version_readme-9">get_package_version_readme/9</a></h3>
+<div class="spec">
+<p><tt>get_package_version_readme(Client, Domain, DomainOwner, Format, Namespace, Package, PackageVersion, Repository, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_repository_endpoint-5">get_repository_endpoint/5</a></h3>
+<div class="spec">
+<p><tt>get_repository_endpoint(Client, Domain, DomainOwner, Format, Repository) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the endpoint of a repository for a specific package format.</p>
+ 
+  <p>A repository has one endpoint for each package format:</p>
+ 
+  <ul> <li><p> <code>npm</code></p>
+ 
+  </li> <li><p> <code>pypi</code></p>
+ 
+  </li> <li><p> <code>maven</code></p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_repository_endpoint-6">get_repository_endpoint/6</a></h3>
+<div class="spec">
+<p><tt>get_repository_endpoint(Client, Domain, DomainOwner, Format, Repository, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_repository_permissions_policy-4">get_repository_permissions_policy/4</a></h3>
+<div class="spec">
+<p><tt>get_repository_permissions_policy(Client, Domain, DomainOwner, Repository) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the resource policy that is set on a repository.</p>
+
+<h3 class="function"><a name="get_repository_permissions_policy-5">get_repository_permissions_policy/5</a></h3>
+<div class="spec">
+<p><tt>get_repository_permissions_policy(Client, Domain, DomainOwner, Repository, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_domains-2">list_domains/2</a></h3>
+<div class="spec">
+<p><tt>list_domains(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of <code>DomainSummary</code> objects for all domains owned by  
+the AWS account that makes this call.</p>
+ 
+  Each returned <code>DomainSummary</code> object contains information about a domain.</p>
+
+<h3 class="function"><a name="list_domains-3">list_domains/3</a></h3>
+<div class="spec">
+<p><tt>list_domains(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_package_version_assets-2">list_package_version_assets/2</a></h3>
+<div class="spec">
+<p><tt>list_package_version_assets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of <code>AssetSummary</code> objects for assets in a package
+  version.</p>
+
+<h3 class="function"><a name="list_package_version_assets-3">list_package_version_assets/3</a></h3>
+<div class="spec">
+<p><tt>list_package_version_assets(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_package_version_dependencies-2">list_package_version_dependencies/2</a></h3>
+<div class="spec">
+<p><tt>list_package_version_dependencies(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the direct dependencies for a package version.</p>
+ 
+  The dependencies are returned as <code>PackageDependency</code> objects. CodeArtifact
+  extracts the dependencies for a package version from the metadata file for
+  the package format (for example, the <code>package.json</code> file for npm packages
+  and the <code>pom.xml</code> file for Maven). Any package version dependencies that
+  are not listed in the configuration file are not returned.</p>
+
+<h3 class="function"><a name="list_package_version_dependencies-3">list_package_version_dependencies/3</a></h3>
+<div class="spec">
+<p><tt>list_package_version_dependencies(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_package_versions-2">list_package_versions/2</a></h3>
+<div class="spec">
+<p><tt>list_package_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of <code>PackageVersionSummary</code> objects for package
+  versions in a repository that match the request parameters.</p>
+
+<h3 class="function"><a name="list_package_versions-3">list_package_versions/3</a></h3>
+<div class="spec">
+<p><tt>list_package_versions(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_packages-2">list_packages/2</a></h3>
+<div class="spec">
+<p><tt>list_packages(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of <code>PackageSummary</code> objects for packages in a
+  repository that match the request parameters.</p>
+
+<h3 class="function"><a name="list_packages-3">list_packages/3</a></h3>
+<div class="spec">
+<p><tt>list_packages(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_repositories-2">list_repositories/2</a></h3>
+<div class="spec">
+<p><tt>list_repositories(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of <code>RepositorySummary</code> objects.</p>
+ 
+  Each <code>RepositorySummary</code> contains information about a repository in the
+  specified AWS account and that matches the input parameters.</p>
+
+<h3 class="function"><a name="list_repositories-3">list_repositories/3</a></h3>
+<div class="spec">
+<p><tt>list_repositories(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_repositories_in_domain-2">list_repositories_in_domain/2</a></h3>
+<div class="spec">
+<p><tt>list_repositories_in_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of <code>RepositorySummary</code> objects.</p>
+ 
+  Each <code>RepositorySummary</code> contains information about a repository in the
+  specified domain and that matches the input parameters.</p>
+
+<h3 class="function"><a name="list_repositories_in_domain-3">list_repositories_in_domain/3</a></h3>
+<div class="spec">
+<p><tt>list_repositories_in_domain(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about AWS tags for a specified Amazon Resource Name
+  (ARN) in AWS CodeArtifact.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_domain_permissions_policy-2">put_domain_permissions_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_domain_permissions_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets a resource policy on a domain that specifies permissions to  
+access it.</p>
+ 
+  When you call <code>PutDomainPermissionsPolicy</code>, the resource policy on the
+  domain is ignored when evaluting permissions. This ensures that the owner
+  of a domain cannot lock themselves out of the domain, which would prevent
+  them from being able to update the resource policy.</p>
+
+<h3 class="function"><a name="put_domain_permissions_policy-3">put_domain_permissions_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_domain_permissions_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_repository_permissions_policy-2">put_repository_permissions_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_repository_permissions_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the resource policy on a repository that specifies permissions  
+to access it.</p>
+ 
+  When you call <code>PutRepositoryPermissionsPolicy</code>, the resource policy on the
+  repository is ignored when evaluting permissions. This ensures that the
+  owner of a repository cannot lock themselves out of the repository, which
+  would prevent them from being able to update the resource policy.</p>
+
+<h3 class="function"><a name="put_repository_permissions_policy-3">put_repository_permissions_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_repository_permissions_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds or updates tags for a resource in AWS CodeArtifact.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from a resource in AWS CodeArtifact.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_package_versions_status-2">update_package_versions_status/2</a></h3>
+<div class="spec">
+<p><tt>update_package_versions_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the status of one or more versions of a package.</p>
+
+<h3 class="function"><a name="update_package_versions_status-3">update_package_versions_status/3</a></h3>
+<div class="spec">
+<p><tt>update_package_versions_status(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_repository-2">update_repository/2</a></h3>
+<div class="spec">
+<p><tt>update_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Update the properties of a repository.</p>
+
+<h3 class="function"><a name="update_repository-3">update_repository/3</a></h3>
+<div class="spec">
+<p><tt>update_repository(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

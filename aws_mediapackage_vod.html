@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_mediapackage_vod</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_mediapackage_vod</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Elemental MediaPackage VOD.
+
+
+<h2><a name="description">Description</a></h2>AWS Elemental MediaPackage VOD
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_asset-2">create_asset/2</a></td><td>Creates a new MediaPackage VOD Asset resource.</td></tr>
+<tr><td valign="top"><a href="#create_asset-3">create_asset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_packaging_configuration-2">create_packaging_configuration/2</a></td><td>Creates a new MediaPackage VOD PackagingConfiguration resource.</td></tr>
+<tr><td valign="top"><a href="#create_packaging_configuration-3">create_packaging_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_packaging_group-2">create_packaging_group/2</a></td><td>Creates a new MediaPackage VOD PackagingGroup resource.</td></tr>
+<tr><td valign="top"><a href="#create_packaging_group-3">create_packaging_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_asset-3">delete_asset/3</a></td><td>Deletes an existing MediaPackage VOD Asset resource.</td></tr>
+<tr><td valign="top"><a href="#delete_asset-4">delete_asset/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_packaging_configuration-3">delete_packaging_configuration/3</a></td><td>Deletes a MediaPackage VOD PackagingConfiguration resource.</td></tr>
+<tr><td valign="top"><a href="#delete_packaging_configuration-4">delete_packaging_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_packaging_group-3">delete_packaging_group/3</a></td><td>Deletes a MediaPackage VOD PackagingGroup resource.</td></tr>
+<tr><td valign="top"><a href="#delete_packaging_group-4">delete_packaging_group/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_asset-2">describe_asset/2</a></td><td>Returns a description of a MediaPackage VOD Asset resource.</td></tr>
+<tr><td valign="top"><a href="#describe_asset-3">describe_asset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_packaging_configuration-2">describe_packaging_configuration/2</a></td><td>Returns a description of a MediaPackage VOD PackagingConfiguration
+  resource.</td></tr>
+<tr><td valign="top"><a href="#describe_packaging_configuration-3">describe_packaging_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_packaging_group-2">describe_packaging_group/2</a></td><td>Returns a description of a MediaPackage VOD PackagingGroup resource.</td></tr>
+<tr><td valign="top"><a href="#describe_packaging_group-3">describe_packaging_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_assets-4">list_assets/4</a></td><td>Returns a collection of MediaPackage VOD Asset resources.</td></tr>
+<tr><td valign="top"><a href="#list_assets-5">list_assets/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_packaging_configurations-4">list_packaging_configurations/4</a></td><td>Returns a collection of MediaPackage VOD PackagingConfiguration
+  resources.</td></tr>
+<tr><td valign="top"><a href="#list_packaging_configurations-5">list_packaging_configurations/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_packaging_groups-3">list_packaging_groups/3</a></td><td>Returns a collection of MediaPackage VOD PackagingGroup resources.</td></tr>
+<tr><td valign="top"><a href="#list_packaging_groups-4">list_packaging_groups/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of the tags assigned to the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds tags to the specified resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes tags from the specified resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_packaging_group-3">update_packaging_group/3</a></td><td>Updates a specific packaging group.</td></tr>
+<tr><td valign="top"><a href="#update_packaging_group-4">update_packaging_group/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_asset-2">create_asset/2</a></h3>
+<div class="spec">
+<p><tt>create_asset(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new MediaPackage VOD Asset resource.</p>
+
+<h3 class="function"><a name="create_asset-3">create_asset/3</a></h3>
+<div class="spec">
+<p><tt>create_asset(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_packaging_configuration-2">create_packaging_configuration/2</a></h3>
+<div class="spec">
+<p><tt>create_packaging_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new MediaPackage VOD PackagingConfiguration resource.</p>
+
+<h3 class="function"><a name="create_packaging_configuration-3">create_packaging_configuration/3</a></h3>
+<div class="spec">
+<p><tt>create_packaging_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_packaging_group-2">create_packaging_group/2</a></h3>
+<div class="spec">
+<p><tt>create_packaging_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new MediaPackage VOD PackagingGroup resource.</p>
+
+<h3 class="function"><a name="create_packaging_group-3">create_packaging_group/3</a></h3>
+<div class="spec">
+<p><tt>create_packaging_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_asset-3">delete_asset/3</a></h3>
+<div class="spec">
+<p><tt>delete_asset(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing MediaPackage VOD Asset resource.</p>
+
+<h3 class="function"><a name="delete_asset-4">delete_asset/4</a></h3>
+<div class="spec">
+<p><tt>delete_asset(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_packaging_configuration-3">delete_packaging_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_packaging_configuration(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a MediaPackage VOD PackagingConfiguration resource.</p>
+
+<h3 class="function"><a name="delete_packaging_configuration-4">delete_packaging_configuration/4</a></h3>
+<div class="spec">
+<p><tt>delete_packaging_configuration(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_packaging_group-3">delete_packaging_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_packaging_group(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a MediaPackage VOD PackagingGroup resource.</p>
+
+<h3 class="function"><a name="delete_packaging_group-4">delete_packaging_group/4</a></h3>
+<div class="spec">
+<p><tt>delete_packaging_group(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_asset-2">describe_asset/2</a></h3>
+<div class="spec">
+<p><tt>describe_asset(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a description of a MediaPackage VOD Asset resource.</p>
+
+<h3 class="function"><a name="describe_asset-3">describe_asset/3</a></h3>
+<div class="spec">
+<p><tt>describe_asset(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_packaging_configuration-2">describe_packaging_configuration/2</a></h3>
+<div class="spec">
+<p><tt>describe_packaging_configuration(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a description of a MediaPackage VOD PackagingConfiguration
+  resource.</p>
+
+<h3 class="function"><a name="describe_packaging_configuration-3">describe_packaging_configuration/3</a></h3>
+<div class="spec">
+<p><tt>describe_packaging_configuration(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_packaging_group-2">describe_packaging_group/2</a></h3>
+<div class="spec">
+<p><tt>describe_packaging_group(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a description of a MediaPackage VOD PackagingGroup resource.</p>
+
+<h3 class="function"><a name="describe_packaging_group-3">describe_packaging_group/3</a></h3>
+<div class="spec">
+<p><tt>describe_packaging_group(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_assets-4">list_assets/4</a></h3>
+<div class="spec">
+<p><tt>list_assets(Client, MaxResults, NextToken, PackagingGroupId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a collection of MediaPackage VOD Asset resources.</p>
+
+<h3 class="function"><a name="list_assets-5">list_assets/5</a></h3>
+<div class="spec">
+<p><tt>list_assets(Client, MaxResults, NextToken, PackagingGroupId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_packaging_configurations-4">list_packaging_configurations/4</a></h3>
+<div class="spec">
+<p><tt>list_packaging_configurations(Client, MaxResults, NextToken, PackagingGroupId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a collection of MediaPackage VOD PackagingConfiguration
+  resources.</p>
+
+<h3 class="function"><a name="list_packaging_configurations-5">list_packaging_configurations/5</a></h3>
+<div class="spec">
+<p><tt>list_packaging_configurations(Client, MaxResults, NextToken, PackagingGroupId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_packaging_groups-3">list_packaging_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_packaging_groups(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a collection of MediaPackage VOD PackagingGroup resources.</p>
+
+<h3 class="function"><a name="list_packaging_groups-4">list_packaging_groups/4</a></h3>
+<div class="spec">
+<p><tt>list_packaging_groups(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the tags assigned to the specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds tags to the specified resource.</p>
+ 
+  You can specify one or more tags to add.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes tags from the specified resource.</p>
+ 
+  You can specify one or more tags to remove.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_packaging_group-3">update_packaging_group/3</a></h3>
+<div class="spec">
+<p><tt>update_packaging_group(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a specific packaging group.</p>
+ 
+  You can't change the id attribute or any other system-generated
+  attributes.</p>
+
+<h3 class="function"><a name="update_packaging_group-4">update_packaging_group/4</a></h3>
+<div class="spec">
+<p><tt>update_packaging_group(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

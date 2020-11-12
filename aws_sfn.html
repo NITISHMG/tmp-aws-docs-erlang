@@ -1,0 +1,525 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_sfn</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_sfn</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Step Functions.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Step Functions</p>
+ 
+  <p>AWS Step Functions is a service that lets you coordinate the components of  
+distributed applications and microservices using visual workflows.</p>
+ 
+  <p>You can use Step Functions to build applications from individual  
+components, each of which performs a discrete function, or task, allowing  
+you to scale and change applications quickly. Step Functions provides a  
+console that helps visualize the components of your application as a  
+series of steps. Step Functions automatically triggers and tracks each  
+step, and retries steps when there are errors, so your application  
+executes predictably and in the right order every time. Step Functions  
+logs the state of each step, so you can quickly diagnose and debug any  
+issues.</p>
+ 
+  Step Functions manages operations and underlying infrastructure to ensure
+  your application is available at any scale. You can run tasks on AWS, your
+  own servers, or any system that has access to AWS. You can access and use
+  Step Functions using the console, the AWS SDKs, or an HTTP API. For more
+  information about Step Functions, see the AWS Step Functions Developer
+  Guide .
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_activity-2">create_activity/2</a></td><td>Creates an activity.</td></tr>
+<tr><td valign="top"><a href="#create_activity-3">create_activity/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_state_machine-2">create_state_machine/2</a></td><td>Creates a state machine.</td></tr>
+<tr><td valign="top"><a href="#create_state_machine-3">create_state_machine/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_activity-2">delete_activity/2</a></td><td>Deletes an activity.</td></tr>
+<tr><td valign="top"><a href="#delete_activity-3">delete_activity/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_state_machine-2">delete_state_machine/2</a></td><td>Deletes a state machine.</td></tr>
+<tr><td valign="top"><a href="#delete_state_machine-3">delete_state_machine/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_activity-2">describe_activity/2</a></td><td>Describes an activity.</td></tr>
+<tr><td valign="top"><a href="#describe_activity-3">describe_activity/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_execution-2">describe_execution/2</a></td><td>Describes an execution.</td></tr>
+<tr><td valign="top"><a href="#describe_execution-3">describe_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_state_machine-2">describe_state_machine/2</a></td><td>Describes a state machine.</td></tr>
+<tr><td valign="top"><a href="#describe_state_machine-3">describe_state_machine/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_state_machine_for_execution-2">describe_state_machine_for_execution/2</a></td><td>Describes the state machine associated with a specific execution.</td></tr>
+<tr><td valign="top"><a href="#describe_state_machine_for_execution-3">describe_state_machine_for_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_activity_task-2">get_activity_task/2</a></td><td>Used by workers to retrieve a task (with the specified activity ARN)  
+which has been scheduled for execution by a running state machine.</td></tr>
+<tr><td valign="top"><a href="#get_activity_task-3">get_activity_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_execution_history-2">get_execution_history/2</a></td><td>Returns the history of the specified execution as a list of events.</td></tr>
+<tr><td valign="top"><a href="#get_execution_history-3">get_execution_history/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_activities-2">list_activities/2</a></td><td>Lists the existing activities.</td></tr>
+<tr><td valign="top"><a href="#list_activities-3">list_activities/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_executions-2">list_executions/2</a></td><td>Lists the executions of a state machine that meet the filtering  
+criteria.</td></tr>
+<tr><td valign="top"><a href="#list_executions-3">list_executions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_state_machines-2">list_state_machines/2</a></td><td>Lists the existing state machines.</td></tr>
+<tr><td valign="top"><a href="#list_state_machines-3">list_state_machines/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>List tags for a given resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_task_failure-2">send_task_failure/2</a></td><td>Used by activity workers and task states using the callback pattern
+  to report that the task identified by the <code>taskToken</code> failed.</td></tr>
+<tr><td valign="top"><a href="#send_task_failure-3">send_task_failure/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_task_heartbeat-2">send_task_heartbeat/2</a></td><td>Used by activity workers and task states using the callback pattern
+  to report to Step Functions that the task represented by the specified
+  <code>taskToken</code> is still making progress.</td></tr>
+<tr><td valign="top"><a href="#send_task_heartbeat-3">send_task_heartbeat/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_task_success-2">send_task_success/2</a></td><td>Used by activity workers and task states using the callback pattern
+  to report that the task identified by the <code>taskToken</code> completed
+  successfully.</td></tr>
+<tr><td valign="top"><a href="#send_task_success-3">send_task_success/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_execution-2">start_execution/2</a></td><td>Starts a state machine execution.</td></tr>
+<tr><td valign="top"><a href="#start_execution-3">start_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_execution-2">stop_execution/2</a></td><td>Stops an execution.</td></tr>
+<tr><td valign="top"><a href="#stop_execution-3">stop_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Add a tag to a Step Functions resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Remove a tag from a Step Functions resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_state_machine-2">update_state_machine/2</a></td><td>Updates an existing state machine by modifying its <code>definition</code>,
+  <code>roleArn</code>, or <code>loggingConfiguration</code>.</td></tr>
+<tr><td valign="top"><a href="#update_state_machine-3">update_state_machine/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_activity-2">create_activity/2</a></h3>
+<div class="spec">
+<p><tt>create_activity(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an activity.</p>
+ 
+  <p>An activity is a task that you write in any programming language and host
+  on any machine that has access to AWS Step Functions. Activities must poll
+  Step Functions using the <code>GetActivityTask</code> API action and respond using
+  <code>SendTask*</code> API actions. This function lets Step Functions know the  
+existence of your activity and returns an identifier for use in a state  
+machine and when polling from the activity.</p>
+ 
+  <p>This operation is eventually consistent. The results are best effort and  
+may not reflect very recent updates and changes.</p>
+ 
+  <code>CreateActivity</code> is an idempotent API. Subsequent requests won’t create a
+  duplicate resource if it was already created. <code>CreateActivity</code>'s
+  idempotency check is based on the activity <code>name</code>. If a following request
+  has different <code>tags</code> values, Step Functions will ignore these differences
+  and treat it as an idempotent request of the previous. In this case,
+  <code>tags</code> will not be updated, even if they are different.</p>
+
+<h3 class="function"><a name="create_activity-3">create_activity/3</a></h3>
+<div class="spec">
+<p><tt>create_activity(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_state_machine-2">create_state_machine/2</a></h3>
+<div class="spec">
+<p><tt>create_state_machine(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a state machine.</p>
+ 
+  <p>A state machine consists of a collection of states that can do work
+  (<code>Task</code> states), determine to which states to transition next (<code>Choice</code>
+  states), stop an execution with an error (<code>Fail</code> states), and so on. State  
+machines are specified using a JSON-based, structured language. For more  
+information, see Amazon States Language in the AWS Step Functions User  
+Guide.</p>
+ 
+  <p>This operation is eventually consistent. The results are best effort and  
+may not reflect very recent updates and changes.</p>
+ 
+  <code>CreateStateMachine</code> is an idempotent API. Subsequent requests won’t
+  create a duplicate resource if it was already created.
+  <code>CreateStateMachine</code>'s idempotency check is based on the state machine
+  <code>name</code>, <code>definition</code>, <code>type</code>, <code>LoggingConfiguration</code> and
+  <code>TracingConfiguration</code>. If a following request has a different <code>roleArn</code>
+  or <code>tags</code>, Step Functions will ignore these differences and treat it as an
+  idempotent request of the previous. In this case, <code>roleArn</code> and <code>tags</code>
+  will not be updated, even if they are different.</p>
+
+<h3 class="function"><a name="create_state_machine-3">create_state_machine/3</a></h3>
+<div class="spec">
+<p><tt>create_state_machine(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_activity-2">delete_activity/2</a></h3>
+<div class="spec">
+<p><tt>delete_activity(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an activity.</p>
+
+<h3 class="function"><a name="delete_activity-3">delete_activity/3</a></h3>
+<div class="spec">
+<p><tt>delete_activity(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_state_machine-2">delete_state_machine/2</a></h3>
+<div class="spec">
+<p><tt>delete_state_machine(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a state machine.</p>
+ 
+  <p>This is an asynchronous operation: It sets the state machine's status to
+  <code>DELETING</code> and begins the deletion process.</p>
+ 
+  For <code>EXPRESS</code>state machines, the deletion will happen eventually (usually
+  less than a minute). Running executions may emit logs after
+  <code>DeleteStateMachine</code> API is called.</p>
+
+<h3 class="function"><a name="delete_state_machine-3">delete_state_machine/3</a></h3>
+<div class="spec">
+<p><tt>delete_state_machine(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_activity-2">describe_activity/2</a></h3>
+<div class="spec">
+<p><tt>describe_activity(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes an activity.</p>
+ 
+  This operation is eventually consistent. The results are best effort and
+  may not reflect very recent updates and changes.</p>
+
+<h3 class="function"><a name="describe_activity-3">describe_activity/3</a></h3>
+<div class="spec">
+<p><tt>describe_activity(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_execution-2">describe_execution/2</a></h3>
+<div class="spec">
+<p><tt>describe_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes an execution.</p>
+ 
+  <p>This operation is eventually consistent. The results are best effort and  
+may not reflect very recent updates and changes.</p>
+ 
+  This API action is not supported by <code>EXPRESS</code> state machines.</p>
+
+<h3 class="function"><a name="describe_execution-3">describe_execution/3</a></h3>
+<div class="spec">
+<p><tt>describe_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_state_machine-2">describe_state_machine/2</a></h3>
+<div class="spec">
+<p><tt>describe_state_machine(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes a state machine.</p>
+ 
+  This operation is eventually consistent. The results are best effort and
+  may not reflect very recent updates and changes.</p>
+
+<h3 class="function"><a name="describe_state_machine-3">describe_state_machine/3</a></h3>
+<div class="spec">
+<p><tt>describe_state_machine(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_state_machine_for_execution-2">describe_state_machine_for_execution/2</a></h3>
+<div class="spec">
+<p><tt>describe_state_machine_for_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the state machine associated with a specific execution.</p>
+ 
+  <p>This operation is eventually consistent. The results are best effort and  
+may not reflect very recent updates and changes.</p>
+ 
+  This API action is not supported by <code>EXPRESS</code> state machines.</p>
+
+<h3 class="function"><a name="describe_state_machine_for_execution-3">describe_state_machine_for_execution/3</a></h3>
+<div class="spec">
+<p><tt>describe_state_machine_for_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_activity_task-2">get_activity_task/2</a></h3>
+<div class="spec">
+<p><tt>get_activity_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Used by workers to retrieve a task (with the specified activity ARN)  
+which has been scheduled for execution by a running state machine.</p>
+ 
+  <p>This initiates a long poll, where the service holds the HTTP connection
+  open and responds as soon as a task becomes available (i.e. an execution
+  of a task of this type is needed.) The maximum time the service holds on
+  to the request before responding is 60 seconds. If no task is available
+  within 60 seconds, the poll returns a <code>taskToken</code> with a null string.</p>
+ 
+  <p>Workers should set their client side socket timeout to at least 65 seconds  
+(5 seconds higher than the maximum time the service may hold the poll  
+request).</p>
+ 
+  Polling with <code>GetActivityTask</code> can cause latency in some implementations.
+  See Avoid Latency When Polling for Activity Tasks in the Step Functions
+  Developer Guide.</p>
+
+<h3 class="function"><a name="get_activity_task-3">get_activity_task/3</a></h3>
+<div class="spec">
+<p><tt>get_activity_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_execution_history-2">get_execution_history/2</a></h3>
+<div class="spec">
+<p><tt>get_execution_history(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the history of the specified execution as a list of events.</p>
+ 
+  <p>By default, the results are returned in ascending order of the <code>timeStamp</code>
+  of the events. Use the <code>reverseOrder</code> parameter to get the latest events  
+first.</p>
+ 
+  <p>If <code>nextToken</code> is returned, there are more results available. The value of
+  <code>nextToken</code> is a unique pagination token for each page. Make the call  
+again using the returned token to retrieve the next page. Keep all other  
+arguments unchanged. Each pagination token expires after 24 hours. Using  
+an expired pagination token will return an HTTP 400 InvalidToken error.</p>
+ 
+  This API action is not supported by <code>EXPRESS</code> state machines.</p>
+
+<h3 class="function"><a name="get_execution_history-3">get_execution_history/3</a></h3>
+<div class="spec">
+<p><tt>get_execution_history(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_activities-2">list_activities/2</a></h3>
+<div class="spec">
+<p><tt>list_activities(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the existing activities.</p>
+ 
+  <p>If <code>nextToken</code> is returned, there are more results available. The value of
+  <code>nextToken</code> is a unique pagination token for each page. Make the call  
+again using the returned token to retrieve the next page. Keep all other  
+arguments unchanged. Each pagination token expires after 24 hours. Using  
+an expired pagination token will return an HTTP 400 InvalidToken error.</p>
+ 
+  This operation is eventually consistent. The results are best effort and
+  may not reflect very recent updates and changes.</p>
+
+<h3 class="function"><a name="list_activities-3">list_activities/3</a></h3>
+<div class="spec">
+<p><tt>list_activities(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_executions-2">list_executions/2</a></h3>
+<div class="spec">
+<p><tt>list_executions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the executions of a state machine that meet the filtering  
+criteria.</p>
+ 
+  <p>Results are sorted by time, with the most recent execution first.</p>
+ 
+  <p>If <code>nextToken</code> is returned, there are more results available. The value of
+  <code>nextToken</code> is a unique pagination token for each page. Make the call  
+again using the returned token to retrieve the next page. Keep all other  
+arguments unchanged. Each pagination token expires after 24 hours. Using  
+an expired pagination token will return an HTTP 400 InvalidToken error.</p>
+ 
+  <p>This operation is eventually consistent. The results are best effort and  
+may not reflect very recent updates and changes.</p>
+ 
+  This API action is not supported by <code>EXPRESS</code> state machines.</p>
+
+<h3 class="function"><a name="list_executions-3">list_executions/3</a></h3>
+<div class="spec">
+<p><tt>list_executions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_state_machines-2">list_state_machines/2</a></h3>
+<div class="spec">
+<p><tt>list_state_machines(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the existing state machines.</p>
+ 
+  <p>If <code>nextToken</code> is returned, there are more results available. The value of
+  <code>nextToken</code> is a unique pagination token for each page. Make the call  
+again using the returned token to retrieve the next page. Keep all other  
+arguments unchanged. Each pagination token expires after 24 hours. Using  
+an expired pagination token will return an HTTP 400 InvalidToken error.</p>
+ 
+  This operation is eventually consistent. The results are best effort and
+  may not reflect very recent updates and changes.</p>
+
+<h3 class="function"><a name="list_state_machines-3">list_state_machines/3</a></h3>
+<div class="spec">
+<p><tt>list_state_machines(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>List tags for a given resource.</p>
+ 
+  Tags may only contain Unicode letters, digits, white space, or these
+  symbols: <code>_ . : / = + - @</code>.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_task_failure-2">send_task_failure/2</a></h3>
+<div class="spec">
+<p><tt>send_task_failure(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Used by activity workers and task states using the callback pattern
+  to report that the task identified by the <code>taskToken</code> failed.</p>
+
+<h3 class="function"><a name="send_task_failure-3">send_task_failure/3</a></h3>
+<div class="spec">
+<p><tt>send_task_failure(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_task_heartbeat-2">send_task_heartbeat/2</a></h3>
+<div class="spec">
+<p><tt>send_task_heartbeat(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Used by activity workers and task states using the callback pattern
+  to report to Step Functions that the task represented by the specified
+  <code>taskToken</code> is still making progress.</p>
+ 
+  <p>This action resets the <code>Heartbeat</code> clock. The <code>Heartbeat</code> threshold is
+  specified in the state machine's Amazon States Language definition
+  (<code>HeartbeatSeconds</code>). This action does not in itself create an event in
+  the execution history. However, if the task times out, the execution
+  history contains an <code>ActivityTimedOut</code> entry for activities, or a
+  <code>TaskTimedOut</code> entry for for tasks using the job run or callback pattern.</p>
+ 
+  The <code>Timeout</code> of a task, defined in the state machine's Amazon States
+  Language definition, is its maximum allowed duration, regardless of the
+  number of <code>SendTaskHeartbeat</code> requests received. Use <code>HeartbeatSeconds</code> to
+  configure the timeout interval for heartbeats.</p>
+
+<h3 class="function"><a name="send_task_heartbeat-3">send_task_heartbeat/3</a></h3>
+<div class="spec">
+<p><tt>send_task_heartbeat(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_task_success-2">send_task_success/2</a></h3>
+<div class="spec">
+<p><tt>send_task_success(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Used by activity workers and task states using the callback pattern
+  to report that the task identified by the <code>taskToken</code> completed
+  successfully.</p>
+
+<h3 class="function"><a name="send_task_success-3">send_task_success/3</a></h3>
+<div class="spec">
+<p><tt>send_task_success(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_execution-2">start_execution/2</a></h3>
+<div class="spec">
+<p><tt>start_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts a state machine execution.</p>
+ 
+  <code>StartExecution</code> is idempotent. If <code>StartExecution</code> is called with the
+  same name and input as a running execution, the call will succeed and
+  return the same response as the original request. If the execution is
+  closed or if the input is different, it will return a 400
+  <code>ExecutionAlreadyExists</code> error. Names can be reused after 90 days.</p>
+
+<h3 class="function"><a name="start_execution-3">start_execution/3</a></h3>
+<div class="spec">
+<p><tt>start_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_execution-2">stop_execution/2</a></h3>
+<div class="spec">
+<p><tt>stop_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops an execution.</p>
+ 
+  This API action is not supported by <code>EXPRESS</code> state machines.</p>
+
+<h3 class="function"><a name="stop_execution-3">stop_execution/3</a></h3>
+<div class="spec">
+<p><tt>stop_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Add a tag to a Step Functions resource.</p>
+ 
+  <p>An array of key-value pairs. For more information, see Using Cost  
+Allocation Tags in the AWS Billing and Cost Management User Guide, and  
+Controlling Access Using IAM Tags.</p>
+ 
+  Tags may only contain Unicode letters, digits, white space, or these
+  symbols: <code>_ . : / = + - @</code>.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Remove a tag from a Step Functions resource</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_state_machine-2">update_state_machine/2</a></h3>
+<div class="spec">
+<p><tt>update_state_machine(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an existing state machine by modifying its <code>definition</code>,
+  <code>roleArn</code>, or <code>loggingConfiguration</code>.</p>
+ 
+  <p>Running executions will continue to use the previous <code>definition</code> and
+  <code>roleArn</code>. You must include at least one of <code>definition</code> or <code>roleArn</code> or
+  you will receive a <code>MissingRequiredParameter</code> error.</p>
+ 
+  All <code>StartExecution</code> calls within a few seconds will use the updated
+  <code>definition</code> and <code>roleArn</code>. Executions started immediately after calling
+  <code>UpdateStateMachine</code> may use the previous state machine <code>definition</code> and
+  <code>roleArn</code>.</p>
+
+<h3 class="function"><a name="update_state_machine-3">update_state_machine/3</a></h3>
+<div class="spec">
+<p><tt>update_state_machine(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

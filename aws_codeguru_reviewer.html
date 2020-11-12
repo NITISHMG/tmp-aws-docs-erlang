@@ -1,0 +1,234 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_codeguru_reviewer</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_codeguru_reviewer</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>This section provides documentation for the Amazon CodeGuru Reviewer  
+API operations.
+
+
+<h2><a name="description">Description</a></h2><p>This section provides documentation for the Amazon CodeGuru Reviewer  
+API operations.</p>
+ 
+  <p>CodeGuru Reviewer is a service that uses program analysis and machine  
+learning to detect potential defects that are difficult for developers to  
+find and recommends fixes in your Java code.</p>
+ 
+  By proactively detecting and providing recommendations for addressing code
+  defects and implementing best practices, CodeGuru Reviewer improves the
+  overall quality and maintainability of your code base during the code
+  review stage. For more information about CodeGuru Reviewer, see the Amazon
+  CodeGuru Reviewer User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_repository-2">associate_repository/2</a></td><td>Use to associate an AWS CodeCommit repository or a repostory managed  
+by AWS CodeStar Connections with Amazon CodeGuru Reviewer.</td></tr>
+<tr><td valign="top"><a href="#associate_repository-3">associate_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_code_review-2">create_code_review/2</a></td><td>Use to create a code review for a repository analysis.</td></tr>
+<tr><td valign="top"><a href="#create_code_review-3">create_code_review/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_code_review-2">describe_code_review/2</a></td><td>Returns the metadata associated with the code review along with its
+  status.</td></tr>
+<tr><td valign="top"><a href="#describe_code_review-3">describe_code_review/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_recommendation_feedback-4">describe_recommendation_feedback/4</a></td><td>Describes the customer feedback for a CodeGuru Reviewer
+  recommendation.</td></tr>
+<tr><td valign="top"><a href="#describe_recommendation_feedback-5">describe_recommendation_feedback/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_repository_association-2">describe_repository_association/2</a></td><td>Returns a <code>RepositoryAssociation</code> object that contains information
+  about the requested repository association.</td></tr>
+<tr><td valign="top"><a href="#describe_repository_association-3">describe_repository_association/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_repository-3">disassociate_repository/3</a></td><td>Removes the association between Amazon CodeGuru Reviewer and a
+  repository.</td></tr>
+<tr><td valign="top"><a href="#disassociate_repository-4">disassociate_repository/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_code_reviews-7">list_code_reviews/7</a></td><td>Lists all the code reviews that the customer has created in the past
+  90 days.</td></tr>
+<tr><td valign="top"><a href="#list_code_reviews-8">list_code_reviews/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_recommendation_feedback-6">list_recommendation_feedback/6</a></td><td>Returns a list of <code>RecommendationFeedbackSummary</code> objects that
+  contain customer recommendation feedback for all CodeGuru Reviewer users.</td></tr>
+<tr><td valign="top"><a href="#list_recommendation_feedback-7">list_recommendation_feedback/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_recommendations-4">list_recommendations/4</a></td><td>Returns the list of all recommendations for a completed code review.</td></tr>
+<tr><td valign="top"><a href="#list_recommendations-5">list_recommendations/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_repository_associations-7">list_repository_associations/7</a></td><td>Returns a list of <code>RepositoryAssociationSummary</code> objects that contain  
+summary information about a repository association.</td></tr>
+<tr><td valign="top"><a href="#list_repository_associations-8">list_repository_associations/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_recommendation_feedback-2">put_recommendation_feedback/2</a></td><td>Stores customer feedback for a CodeGuru Reviewer recommendation.</td></tr>
+<tr><td valign="top"><a href="#put_recommendation_feedback-3">put_recommendation_feedback/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_repository-2">associate_repository/2</a></h3>
+<div class="spec">
+<p><tt>associate_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Use to associate an AWS CodeCommit repository or a repostory managed  
+by AWS CodeStar Connections with Amazon CodeGuru Reviewer.</p>
+ 
+  <p>When you associate a repository, CodeGuru Reviewer reviews source code  
+changes in the repository's pull requests and provides automatic  
+recommendations. You can view recommendations using the CodeGuru Reviewer  
+console. For more information, see Recommendations in Amazon CodeGuru  
+Reviewer in the Amazon CodeGuru Reviewer User Guide.</p>
+ 
+  <p>If you associate a CodeCommit repository, it must be in the same AWS  
+Region and AWS account where its CodeGuru Reviewer code reviews are  
+configured.</p>
+ 
+  <p>Bitbucket and GitHub Enterprise Server repositories are managed by AWS  
+CodeStar Connections to connect to CodeGuru Reviewer. For more  
+information, see Connect to a repository source provider in the Amazon  
+CodeGuru Reviewer User Guide.</p>
+ 
+  You cannot use the CodeGuru Reviewer SDK or the AWS CLI to associate a
+  GitHub repository with Amazon CodeGuru Reviewer. To associate a GitHub
+  repository, use the console. For more information, see Getting started
+  with CodeGuru Reviewer in the CodeGuru Reviewer User Guide.</p>
+
+<h3 class="function"><a name="associate_repository-3">associate_repository/3</a></h3>
+<div class="spec">
+<p><tt>associate_repository(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_code_review-2">create_code_review/2</a></h3>
+<div class="spec">
+<p><tt>create_code_review(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Use to create a code review for a repository analysis.</p>
+
+<h3 class="function"><a name="create_code_review-3">create_code_review/3</a></h3>
+<div class="spec">
+<p><tt>create_code_review(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_code_review-2">describe_code_review/2</a></h3>
+<div class="spec">
+<p><tt>describe_code_review(Client, CodeReviewArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the metadata associated with the code review along with its
+  status.</p>
+
+<h3 class="function"><a name="describe_code_review-3">describe_code_review/3</a></h3>
+<div class="spec">
+<p><tt>describe_code_review(Client, CodeReviewArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_recommendation_feedback-4">describe_recommendation_feedback/4</a></h3>
+<div class="spec">
+<p><tt>describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the customer feedback for a CodeGuru Reviewer
+  recommendation.</p>
+
+<h3 class="function"><a name="describe_recommendation_feedback-5">describe_recommendation_feedback/5</a></h3>
+<div class="spec">
+<p><tt>describe_recommendation_feedback(Client, CodeReviewArn, RecommendationId, UserId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_repository_association-2">describe_repository_association/2</a></h3>
+<div class="spec">
+<p><tt>describe_repository_association(Client, AssociationArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a <code>RepositoryAssociation</code> object that contains information
+  about the requested repository association.</p>
+
+<h3 class="function"><a name="describe_repository_association-3">describe_repository_association/3</a></h3>
+<div class="spec">
+<p><tt>describe_repository_association(Client, AssociationArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_repository-3">disassociate_repository/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_repository(Client, AssociationArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the association between Amazon CodeGuru Reviewer and a
+  repository.</p>
+
+<h3 class="function"><a name="disassociate_repository-4">disassociate_repository/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_repository(Client, AssociationArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_code_reviews-7">list_code_reviews/7</a></h3>
+<div class="spec">
+<p><tt>list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames, States, Type) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the code reviews that the customer has created in the past
+  90 days.</p>
+
+<h3 class="function"><a name="list_code_reviews-8">list_code_reviews/8</a></h3>
+<div class="spec">
+<p><tt>list_code_reviews(Client, MaxResults, NextToken, ProviderTypes, RepositoryNames, States, Type, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_recommendation_feedback-6">list_recommendation_feedback/6</a></h3>
+<div class="spec">
+<p><tt>list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of <code>RecommendationFeedbackSummary</code> objects that
+  contain customer recommendation feedback for all CodeGuru Reviewer users.</p>
+
+<h3 class="function"><a name="list_recommendation_feedback-7">list_recommendation_feedback/7</a></h3>
+<div class="spec">
+<p><tt>list_recommendation_feedback(Client, CodeReviewArn, MaxResults, NextToken, RecommendationIds, UserIds, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_recommendations-4">list_recommendations/4</a></h3>
+<div class="spec">
+<p><tt>list_recommendations(Client, CodeReviewArn, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the list of all recommendations for a completed code review.</p>
+
+<h3 class="function"><a name="list_recommendations-5">list_recommendations/5</a></h3>
+<div class="spec">
+<p><tt>list_recommendations(Client, CodeReviewArn, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_repository_associations-7">list_repository_associations/7</a></h3>
+<div class="spec">
+<p><tt>list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of <code>RepositoryAssociationSummary</code> objects that contain  
+summary information about a repository association.</p>
+ 
+  You can filter the returned list by <code>ProviderType</code> , <code>Name</code> , <code>State</code> ,
+  and <code>Owner</code> .</p>
+
+<h3 class="function"><a name="list_repository_associations-8">list_repository_associations/8</a></h3>
+<div class="spec">
+<p><tt>list_repository_associations(Client, MaxResults, Names, NextToken, Owners, ProviderTypes, States, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_recommendation_feedback-2">put_recommendation_feedback/2</a></h3>
+<div class="spec">
+<p><tt>put_recommendation_feedback(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stores customer feedback for a CodeGuru Reviewer recommendation.</p>
+ 
+  When this API is called again with different reactions the previous
+  feedback is overwritten.</p>
+
+<h3 class="function"><a name="put_recommendation_feedback-3">put_recommendation_feedback/3</a></h3>
+<div class="spec">
+<p><tt>put_recommendation_feedback(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,618 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_appconfig</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_appconfig</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS AppConfig.
+
+
+<h2><a name="description">Description</a></h2><p>AWS AppConfig</p>
+ 
+  <p>Use AWS AppConfig, a capability of AWS Systems Manager, to create, manage,  
+and quickly deploy application configurations.</p>
+ 
+  <p>AppConfig supports controlled deployments to applications of any size and  
+includes built-in validation checks and monitoring. You can use AppConfig  
+with applications hosted on Amazon EC2 instances, AWS Lambda, containers,  
+mobile applications, or IoT devices.</p>
+ 
+  <p>To prevent errors when deploying application configurations, especially  
+for production systems where a simple typo could cause an unexpected  
+outage, AppConfig includes validators. A validator provides a syntactic or  
+semantic check to ensure that the configuration you want to deploy works  
+as intended. To validate your application configuration data, you provide  
+a schema or a Lambda function that runs against the configuration. The  
+configuration deployment or update can only proceed when the configuration  
+data is valid.</p>
+ 
+  <p>During a configuration deployment, AppConfig monitors the application to  
+ensure that the deployment is successful. If the system encounters an  
+error, AppConfig rolls back the change to minimize impact for your  
+application users. You can configure a deployment strategy for each  
+application or environment that includes deployment criteria, including  
+velocity, bake time, and alarms to monitor. Similar to error monitoring,  
+if a deployment triggers an alarm, AppConfig automatically rolls back to  
+the previous version.</p>
+ 
+  <p>AppConfig supports multiple use cases. Here are some examples.</p>
+ 
+  <ul> <li><p> Application tuning: Use AppConfig to carefully introduce changes  
+to your application that can only be tested with production traffic.</p>
+ 
+  </li> <li><p> Feature toggle: Use AppConfig to turn on new features that  
+require a timely deployment, such as a product launch or announcement.</p>
+ 
+  </li> <li><p> Allow list: Use AppConfig to allow premium subscribers to  
+access paid content.</p>
+ 
+  </li> <li><p> Operational issues: Use AppConfig to reduce stress on your  
+application when a dependency or other external factor impacts the system.</p>
+ 
+  </li> </ul> This reference is intended to be used with the AWS AppConfig
+  User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_application-2">create_application/2</a></td><td>An application in AppConfig is a logical unit of code that provides  
+capabilities for your customers.</td></tr>
+<tr><td valign="top"><a href="#create_application-3">create_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_configuration_profile-3">create_configuration_profile/3</a></td><td>Information that enables AppConfig to access the configuration  
+source.</td></tr>
+<tr><td valign="top"><a href="#create_configuration_profile-4">create_configuration_profile/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment_strategy-2">create_deployment_strategy/2</a></td><td>A deployment strategy defines important criteria for rolling out your  
+configuration to the designated targets.</td></tr>
+<tr><td valign="top"><a href="#create_deployment_strategy-3">create_deployment_strategy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_environment-3">create_environment/3</a></td><td>For each application, you define one or more environments.</td></tr>
+<tr><td valign="top"><a href="#create_environment-4">create_environment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_hosted_configuration_version-4">create_hosted_configuration_version/4</a></td><td>Create a new configuration in the AppConfig configuration store.</td></tr>
+<tr><td valign="top"><a href="#create_hosted_configuration_version-5">create_hosted_configuration_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application-3">delete_application/3</a></td><td>Delete an application.</td></tr>
+<tr><td valign="top"><a href="#delete_application-4">delete_application/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_configuration_profile-4">delete_configuration_profile/4</a></td><td>Delete a configuration profile.</td></tr>
+<tr><td valign="top"><a href="#delete_configuration_profile-5">delete_configuration_profile/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_deployment_strategy-3">delete_deployment_strategy/3</a></td><td>Delete a deployment strategy.</td></tr>
+<tr><td valign="top"><a href="#delete_deployment_strategy-4">delete_deployment_strategy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_environment-4">delete_environment/4</a></td><td>Delete an environment.</td></tr>
+<tr><td valign="top"><a href="#delete_environment-5">delete_environment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_hosted_configuration_version-5">delete_hosted_configuration_version/5</a></td><td>Delete a version of a configuration from the AppConfig configuration
+  store.</td></tr>
+<tr><td valign="top"><a href="#delete_hosted_configuration_version-6">delete_hosted_configuration_version/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_application-2">get_application/2</a></td><td>Retrieve information about an application.</td></tr>
+<tr><td valign="top"><a href="#get_application-3">get_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_configuration-6">get_configuration/6</a></td><td>Receive information about a configuration.</td></tr>
+<tr><td valign="top"><a href="#get_configuration-7">get_configuration/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_configuration_profile-3">get_configuration_profile/3</a></td><td>Retrieve information about a configuration profile.</td></tr>
+<tr><td valign="top"><a href="#get_configuration_profile-4">get_configuration_profile/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment-4">get_deployment/4</a></td><td>Retrieve information about a configuration deployment.</td></tr>
+<tr><td valign="top"><a href="#get_deployment-5">get_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment_strategy-2">get_deployment_strategy/2</a></td><td>Retrieve information about a deployment strategy.</td></tr>
+<tr><td valign="top"><a href="#get_deployment_strategy-3">get_deployment_strategy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_environment-3">get_environment/3</a></td><td>Retrieve information about an environment.</td></tr>
+<tr><td valign="top"><a href="#get_environment-4">get_environment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_hosted_configuration_version-4">get_hosted_configuration_version/4</a></td><td>Get information about a specific configuration version.</td></tr>
+<tr><td valign="top"><a href="#get_hosted_configuration_version-5">get_hosted_configuration_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_applications-3">list_applications/3</a></td><td>List all applications in your AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_applications-4">list_applications/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_configuration_profiles-4">list_configuration_profiles/4</a></td><td>Lists the configuration profiles for an application.</td></tr>
+<tr><td valign="top"><a href="#list_configuration_profiles-5">list_configuration_profiles/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_deployment_strategies-3">list_deployment_strategies/3</a></td><td>List deployment strategies.</td></tr>
+<tr><td valign="top"><a href="#list_deployment_strategies-4">list_deployment_strategies/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_deployments-5">list_deployments/5</a></td><td>Lists the deployments for an environment.</td></tr>
+<tr><td valign="top"><a href="#list_deployments-6">list_deployments/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_environments-4">list_environments/4</a></td><td>List the environments for an application.</td></tr>
+<tr><td valign="top"><a href="#list_environments-5">list_environments/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_hosted_configuration_versions-5">list_hosted_configuration_versions/5</a></td><td>View a list of configurations stored in the AppConfig configuration
+  store by version.</td></tr>
+<tr><td valign="top"><a href="#list_hosted_configuration_versions-6">list_hosted_configuration_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieves the list of key-value tags assigned to the resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_deployment-4">start_deployment/4</a></td><td>Starts a deployment.</td></tr>
+<tr><td valign="top"><a href="#start_deployment-5">start_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_deployment-5">stop_deployment/5</a></td><td>Stops a deployment.</td></tr>
+<tr><td valign="top"><a href="#stop_deployment-6">stop_deployment/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Metadata to assign to an AppConfig resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Deletes a tag key and value from an AppConfig resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_application-3">update_application/3</a></td><td>Updates an application.</td></tr>
+<tr><td valign="top"><a href="#update_application-4">update_application/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_configuration_profile-4">update_configuration_profile/4</a></td><td>Updates a configuration profile.</td></tr>
+<tr><td valign="top"><a href="#update_configuration_profile-5">update_configuration_profile/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_deployment_strategy-3">update_deployment_strategy/3</a></td><td>Updates a deployment strategy.</td></tr>
+<tr><td valign="top"><a href="#update_deployment_strategy-4">update_deployment_strategy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_environment-4">update_environment/4</a></td><td>Updates an environment.</td></tr>
+<tr><td valign="top"><a href="#update_environment-5">update_environment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#validate_configuration-4">validate_configuration/4</a></td><td>Uses the validators in a configuration profile to validate a
+  configuration.</td></tr>
+<tr><td valign="top"><a href="#validate_configuration-5">validate_configuration/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_application-2">create_application/2</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>An application in AppConfig is a logical unit of code that provides  
+capabilities for your customers.</p>
+ 
+  For example, an application can be a microservice that runs on Amazon EC2
+  instances, a mobile application installed by your users, a serverless
+  application using Amazon API Gateway and AWS Lambda, or any system you run
+  on behalf of others.</p>
+
+<h3 class="function"><a name="create_application-3">create_application/3</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_configuration_profile-3">create_configuration_profile/3</a></h3>
+<div class="spec">
+<p><tt>create_configuration_profile(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Information that enables AppConfig to access the configuration  
+source.</p>
+ 
+  <p>Valid configuration sources include Systems Manager (SSM) documents, SSM  
+Parameter Store parameters, and Amazon S3 objects. A configuration profile  
+includes the following information.</p>
+ 
+  <ul> <li><p> The Uri location of the configuration data.</p>
+ 
+  </li> <li><p> The AWS Identity and Access Management (IAM) role that provides  
+access to the configuration data.</p>
+ 
+  </li> <li><p> A validator for the configuration data. Available validators  
+include either a JSON Schema or an AWS Lambda function.</p>
+ 
+  </li> </ul> For more information, see Create a Configuration and a
+  Configuration Profile in the AWS AppConfig User Guide.</p>
+
+<h3 class="function"><a name="create_configuration_profile-4">create_configuration_profile/4</a></h3>
+<div class="spec">
+<p><tt>create_configuration_profile(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment_strategy-2">create_deployment_strategy/2</a></h3>
+<div class="spec">
+<p><tt>create_deployment_strategy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>A deployment strategy defines important criteria for rolling out your  
+configuration to the designated targets.</p>
+ 
+  A deployment strategy includes: the overall duration required, a
+  percentage of targets to receive the deployment during each interval, an
+  algorithm that defines how percentage grows, and bake time.</p>
+
+<h3 class="function"><a name="create_deployment_strategy-3">create_deployment_strategy/3</a></h3>
+<div class="spec">
+<p><tt>create_deployment_strategy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_environment-3">create_environment/3</a></h3>
+<div class="spec">
+<p><tt>create_environment(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>For each application, you define one or more environments.</p>
+ 
+  An environment is a logical deployment group of AppConfig targets, such as
+  applications in a <code>Beta</code> or <code>Production</code> environment. You can also define
+  environments for application subcomponents such as the <code>Web</code>, <code>Mobile</code> and
+  <code>Back-end</code> components for your application. You can configure Amazon
+  CloudWatch alarms for each environment. The system monitors alarms during
+  a configuration deployment. If an alarm is triggered, the system rolls
+  back the configuration.</p>
+
+<h3 class="function"><a name="create_environment-4">create_environment/4</a></h3>
+<div class="spec">
+<p><tt>create_environment(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_hosted_configuration_version-4">create_hosted_configuration_version/4</a></h3>
+<div class="spec">
+<p><tt>create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create a new configuration in the AppConfig configuration store.</p>
+
+<h3 class="function"><a name="create_hosted_configuration_version-5">create_hosted_configuration_version/5</a></h3>
+<div class="spec">
+<p><tt>create_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application-3">delete_application/3</a></h3>
+<div class="spec">
+<p><tt>delete_application(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Delete an application.</p>
+ 
+  Deleting an application does not delete a configuration from a host.</p>
+
+<h3 class="function"><a name="delete_application-4">delete_application/4</a></h3>
+<div class="spec">
+<p><tt>delete_application(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_configuration_profile-4">delete_configuration_profile/4</a></h3>
+<div class="spec">
+<p><tt>delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Delete a configuration profile.</p>
+ 
+  Deleting a configuration profile does not delete a configuration from a
+  host.</p>
+
+<h3 class="function"><a name="delete_configuration_profile-5">delete_configuration_profile/5</a></h3>
+<div class="spec">
+<p><tt>delete_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_deployment_strategy-3">delete_deployment_strategy/3</a></h3>
+<div class="spec">
+<p><tt>delete_deployment_strategy(Client, DeploymentStrategyId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Delete a deployment strategy.</p>
+ 
+  Deleting a deployment strategy does not delete a configuration from a
+  host.</p>
+
+<h3 class="function"><a name="delete_deployment_strategy-4">delete_deployment_strategy/4</a></h3>
+<div class="spec">
+<p><tt>delete_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_environment-4">delete_environment/4</a></h3>
+<div class="spec">
+<p><tt>delete_environment(Client, ApplicationId, EnvironmentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Delete an environment.</p>
+ 
+  Deleting an environment does not delete a configuration from a host.</p>
+
+<h3 class="function"><a name="delete_environment-5">delete_environment/5</a></h3>
+<div class="spec">
+<p><tt>delete_environment(Client, ApplicationId, EnvironmentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_hosted_configuration_version-5">delete_hosted_configuration_version/5</a></h3>
+<div class="spec">
+<p><tt>delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete a version of a configuration from the AppConfig configuration
+  store.</p>
+
+<h3 class="function"><a name="delete_hosted_configuration_version-6">delete_hosted_configuration_version/6</a></h3>
+<div class="spec">
+<p><tt>delete_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_application-2">get_application/2</a></h3>
+<div class="spec">
+<p><tt>get_application(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve information about an application.</p>
+
+<h3 class="function"><a name="get_application-3">get_application/3</a></h3>
+<div class="spec">
+<p><tt>get_application(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_configuration-6">get_configuration/6</a></h3>
+<div class="spec">
+<p><tt>get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Receive information about a configuration.</p>
+ 
+  <p>AWS AppConfig uses the value of the <code>ClientConfigurationVersion</code> parameter
+  to identify the configuration version on your clients. If you don’t send
+  <code>ClientConfigurationVersion</code> with each call to <code>GetConfiguration</code>, your  
+clients receive the current configuration. You are charged each time your  
+clients receive a configuration.</p>
+ 
+  To avoid excess charges, we recommend that you include the
+  <code>ClientConfigurationVersion</code> value with every call to <code>GetConfiguration</code>.
+  This value must be saved on your client. Subsequent calls to
+  <code>GetConfiguration</code> must pass this value by using the
+  <code>ClientConfigurationVersion</code> parameter.</p>
+
+<h3 class="function"><a name="get_configuration-7">get_configuration/7</a></h3>
+<div class="spec">
+<p><tt>get_configuration(Client, Application, Configuration, Environment, ClientConfigurationVersion, ClientId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_configuration_profile-3">get_configuration_profile/3</a></h3>
+<div class="spec">
+<p><tt>get_configuration_profile(Client, ApplicationId, ConfigurationProfileId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve information about a configuration profile.</p>
+
+<h3 class="function"><a name="get_configuration_profile-4">get_configuration_profile/4</a></h3>
+<div class="spec">
+<p><tt>get_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment-4">get_deployment/4</a></h3>
+<div class="spec">
+<p><tt>get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve information about a configuration deployment.</p>
+
+<h3 class="function"><a name="get_deployment-5">get_deployment/5</a></h3>
+<div class="spec">
+<p><tt>get_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment_strategy-2">get_deployment_strategy/2</a></h3>
+<div class="spec">
+<p><tt>get_deployment_strategy(Client, DeploymentStrategyId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieve information about a deployment strategy.</p>
+ 
+  A deployment strategy defines important criteria for rolling out your
+  configuration to the designated targets. A deployment strategy includes:
+  the overall duration required, a percentage of targets to receive the
+  deployment during each interval, an algorithm that defines how percentage
+  grows, and bake time.</p>
+
+<h3 class="function"><a name="get_deployment_strategy-3">get_deployment_strategy/3</a></h3>
+<div class="spec">
+<p><tt>get_deployment_strategy(Client, DeploymentStrategyId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_environment-3">get_environment/3</a></h3>
+<div class="spec">
+<p><tt>get_environment(Client, ApplicationId, EnvironmentId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieve information about an environment.</p>
+ 
+  An environment is a logical deployment group of AppConfig applications,
+  such as applications in a <code>Production</code> environment or in an <code>EU_Region</code>
+  environment. Each configuration deployment targets an environment. You can
+  enable one or more Amazon CloudWatch alarms for an environment. If an
+  alarm is triggered during a deployment, AppConfig roles back the
+  configuration.</p>
+
+<h3 class="function"><a name="get_environment-4">get_environment/4</a></h3>
+<div class="spec">
+<p><tt>get_environment(Client, ApplicationId, EnvironmentId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_hosted_configuration_version-4">get_hosted_configuration_version/4</a></h3>
+<div class="spec">
+<p><tt>get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get information about a specific configuration version.</p>
+
+<h3 class="function"><a name="get_hosted_configuration_version-5">get_hosted_configuration_version/5</a></h3>
+<div class="spec">
+<p><tt>get_hosted_configuration_version(Client, ApplicationId, ConfigurationProfileId, VersionNumber, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_applications-3">list_applications/3</a></h3>
+<div class="spec">
+<p><tt>list_applications(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List all applications in your AWS account.</p>
+
+<h3 class="function"><a name="list_applications-4">list_applications/4</a></h3>
+<div class="spec">
+<p><tt>list_applications(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_configuration_profiles-4">list_configuration_profiles/4</a></h3>
+<div class="spec">
+<p><tt>list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the configuration profiles for an application.</p>
+
+<h3 class="function"><a name="list_configuration_profiles-5">list_configuration_profiles/5</a></h3>
+<div class="spec">
+<p><tt>list_configuration_profiles(Client, ApplicationId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_deployment_strategies-3">list_deployment_strategies/3</a></h3>
+<div class="spec">
+<p><tt>list_deployment_strategies(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List deployment strategies.</p>
+
+<h3 class="function"><a name="list_deployment_strategies-4">list_deployment_strategies/4</a></h3>
+<div class="spec">
+<p><tt>list_deployment_strategies(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_deployments-5">list_deployments/5</a></h3>
+<div class="spec">
+<p><tt>list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the deployments for an environment.</p>
+
+<h3 class="function"><a name="list_deployments-6">list_deployments/6</a></h3>
+<div class="spec">
+<p><tt>list_deployments(Client, ApplicationId, EnvironmentId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_environments-4">list_environments/4</a></h3>
+<div class="spec">
+<p><tt>list_environments(Client, ApplicationId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List the environments for an application.</p>
+
+<h3 class="function"><a name="list_environments-5">list_environments/5</a></h3>
+<div class="spec">
+<p><tt>list_environments(Client, ApplicationId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_hosted_configuration_versions-5">list_hosted_configuration_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>View a list of configurations stored in the AppConfig configuration
+  store by version.</p>
+
+<h3 class="function"><a name="list_hosted_configuration_versions-6">list_hosted_configuration_versions/6</a></h3>
+<div class="spec">
+<p><tt>list_hosted_configuration_versions(Client, ApplicationId, ConfigurationProfileId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the list of key-value tags assigned to the resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_deployment-4">start_deployment/4</a></h3>
+<div class="spec">
+<p><tt>start_deployment(Client, ApplicationId, EnvironmentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts a deployment.</p>
+
+<h3 class="function"><a name="start_deployment-5">start_deployment/5</a></h3>
+<div class="spec">
+<p><tt>start_deployment(Client, ApplicationId, EnvironmentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_deployment-5">stop_deployment/5</a></h3>
+<div class="spec">
+<p><tt>stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops a deployment.</p>
+ 
+  This API action works only on deployments that have a status of
+  <code>DEPLOYING</code>. This action moves the deployment to a status of
+  <code>ROLLED_BACK</code>.</p>
+
+<h3 class="function"><a name="stop_deployment-6">stop_deployment/6</a></h3>
+<div class="spec">
+<p><tt>stop_deployment(Client, ApplicationId, DeploymentNumber, EnvironmentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Metadata to assign to an AppConfig resource.</p>
+ 
+  Tags help organize and categorize your AppConfig resources. Each tag
+  consists of a key and an optional value, both of which you define. You can
+  specify a maximum of 50 tags for a resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a tag key and value from an AppConfig resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_application-3">update_application/3</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an application.</p>
+
+<h3 class="function"><a name="update_application-4">update_application/4</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_configuration_profile-4">update_configuration_profile/4</a></h3>
+<div class="spec">
+<p><tt>update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a configuration profile.</p>
+
+<h3 class="function"><a name="update_configuration_profile-5">update_configuration_profile/5</a></h3>
+<div class="spec">
+<p><tt>update_configuration_profile(Client, ApplicationId, ConfigurationProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_deployment_strategy-3">update_deployment_strategy/3</a></h3>
+<div class="spec">
+<p><tt>update_deployment_strategy(Client, DeploymentStrategyId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a deployment strategy.</p>
+
+<h3 class="function"><a name="update_deployment_strategy-4">update_deployment_strategy/4</a></h3>
+<div class="spec">
+<p><tt>update_deployment_strategy(Client, DeploymentStrategyId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_environment-4">update_environment/4</a></h3>
+<div class="spec">
+<p><tt>update_environment(Client, ApplicationId, EnvironmentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an environment.</p>
+
+<h3 class="function"><a name="update_environment-5">update_environment/5</a></h3>
+<div class="spec">
+<p><tt>update_environment(Client, ApplicationId, EnvironmentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="validate_configuration-4">validate_configuration/4</a></h3>
+<div class="spec">
+<p><tt>validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Uses the validators in a configuration profile to validate a
+  configuration.</p>
+
+<h3 class="function"><a name="validate_configuration-5">validate_configuration/5</a></h3>
+<div class="spec">
+<p><tt>validate_configuration(Client, ApplicationId, ConfigurationProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

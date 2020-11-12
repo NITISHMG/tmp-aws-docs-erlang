@@ -1,0 +1,2829 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_waf</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_waf</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>This is AWS WAF Classic documentation.
+
+
+<h2><a name="description">Description</a></h2><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  This is the AWS WAF Classic API Reference for using AWS WAF Classic with
+  Amazon CloudFront. The AWS WAF Classic actions and data types listed in
+  the reference are available for protecting Amazon CloudFront
+  distributions. You can use these actions and data types via the endpoint
+  waf.amazonaws.com. This guide is for developers who need detailed
+  information about the AWS WAF Classic API actions, data types, and errors.
+  For detailed information about AWS WAF Classic features and an overview of
+  how to use the AWS WAF Classic API, see the AWS WAF Classic in the
+  developer guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_byte_match_set-2">create_byte_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_byte_match_set-3">create_byte_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_geo_match_set-2">create_geo_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_geo_match_set-3">create_geo_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_i_p_set-2">create_i_p_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_i_p_set-3">create_i_p_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_rate_based_rule-2">create_rate_based_rule/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_rate_based_rule-3">create_rate_based_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_regex_match_set-2">create_regex_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_regex_match_set-3">create_regex_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_regex_pattern_set-2">create_regex_pattern_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_regex_pattern_set-3">create_regex_pattern_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_rule-2">create_rule/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_rule-3">create_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_rule_group-2">create_rule_group/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_rule_group-3">create_rule_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_size_constraint_set-2">create_size_constraint_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_size_constraint_set-3">create_size_constraint_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_sql_injection_match_set-2">create_sql_injection_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_sql_injection_match_set-3">create_sql_injection_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_web_a_c_l-2">create_web_a_c_l/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_web_a_c_l-3">create_web_a_c_l/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_web_a_c_l_migration_stack-2">create_web_a_c_l_migration_stack/2</a></td><td>Creates an AWS CloudFormation WAFV2 template for the specified web  
+ACL in the specified Amazon S3 bucket.</td></tr>
+<tr><td valign="top"><a href="#create_web_a_c_l_migration_stack-3">create_web_a_c_l_migration_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_xss_match_set-2">create_xss_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#create_xss_match_set-3">create_xss_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_byte_match_set-2">delete_byte_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_byte_match_set-3">delete_byte_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_geo_match_set-2">delete_geo_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_geo_match_set-3">delete_geo_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_i_p_set-2">delete_i_p_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_i_p_set-3">delete_i_p_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_logging_configuration-2">delete_logging_configuration/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_logging_configuration-3">delete_logging_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_permission_policy-2">delete_permission_policy/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_permission_policy-3">delete_permission_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_rate_based_rule-2">delete_rate_based_rule/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_rate_based_rule-3">delete_rate_based_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_regex_match_set-2">delete_regex_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_regex_match_set-3">delete_regex_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_regex_pattern_set-2">delete_regex_pattern_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_regex_pattern_set-3">delete_regex_pattern_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_rule-2">delete_rule/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_rule-3">delete_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_rule_group-2">delete_rule_group/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_rule_group-3">delete_rule_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_size_constraint_set-2">delete_size_constraint_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_size_constraint_set-3">delete_size_constraint_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_sql_injection_match_set-2">delete_sql_injection_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_sql_injection_match_set-3">delete_sql_injection_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_web_a_c_l-2">delete_web_a_c_l/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_web_a_c_l-3">delete_web_a_c_l/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_xss_match_set-2">delete_xss_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#delete_xss_match_set-3">delete_xss_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_byte_match_set-2">get_byte_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_byte_match_set-3">get_byte_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_change_token-2">get_change_token/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_change_token-3">get_change_token/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_change_token_status-2">get_change_token_status/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_change_token_status-3">get_change_token_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_geo_match_set-2">get_geo_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_geo_match_set-3">get_geo_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_i_p_set-2">get_i_p_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_i_p_set-3">get_i_p_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_logging_configuration-2">get_logging_configuration/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_logging_configuration-3">get_logging_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_permission_policy-2">get_permission_policy/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_permission_policy-3">get_permission_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_rate_based_rule-2">get_rate_based_rule/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_rate_based_rule-3">get_rate_based_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_rate_based_rule_managed_keys-2">get_rate_based_rule_managed_keys/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_rate_based_rule_managed_keys-3">get_rate_based_rule_managed_keys/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_regex_match_set-2">get_regex_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_regex_match_set-3">get_regex_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_regex_pattern_set-2">get_regex_pattern_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_regex_pattern_set-3">get_regex_pattern_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_rule-2">get_rule/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_rule-3">get_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_rule_group-2">get_rule_group/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_rule_group-3">get_rule_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sampled_requests-2">get_sampled_requests/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_sampled_requests-3">get_sampled_requests/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_size_constraint_set-2">get_size_constraint_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_size_constraint_set-3">get_size_constraint_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sql_injection_match_set-2">get_sql_injection_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_sql_injection_match_set-3">get_sql_injection_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_web_a_c_l-2">get_web_a_c_l/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_web_a_c_l-3">get_web_a_c_l/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_xss_match_set-2">get_xss_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#get_xss_match_set-3">get_xss_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_activated_rules_in_rule_group-2">list_activated_rules_in_rule_group/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_activated_rules_in_rule_group-3">list_activated_rules_in_rule_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_byte_match_sets-2">list_byte_match_sets/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_byte_match_sets-3">list_byte_match_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_geo_match_sets-2">list_geo_match_sets/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_geo_match_sets-3">list_geo_match_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_i_p_sets-2">list_i_p_sets/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_i_p_sets-3">list_i_p_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_logging_configurations-2">list_logging_configurations/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_logging_configurations-3">list_logging_configurations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_rate_based_rules-2">list_rate_based_rules/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_rate_based_rules-3">list_rate_based_rules/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_regex_match_sets-2">list_regex_match_sets/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_regex_match_sets-3">list_regex_match_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_regex_pattern_sets-2">list_regex_pattern_sets/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_regex_pattern_sets-3">list_regex_pattern_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_rule_groups-2">list_rule_groups/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_rule_groups-3">list_rule_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_rules-2">list_rules/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_rules-3">list_rules/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_size_constraint_sets-2">list_size_constraint_sets/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_size_constraint_sets-3">list_size_constraint_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_sql_injection_match_sets-2">list_sql_injection_match_sets/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_sql_injection_match_sets-3">list_sql_injection_match_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_subscribed_rule_groups-2">list_subscribed_rule_groups/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_subscribed_rule_groups-3">list_subscribed_rule_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_web_a_c_ls-2">list_web_a_c_ls/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_web_a_c_ls-3">list_web_a_c_ls/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_xss_match_sets-2">list_xss_match_sets/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#list_xss_match_sets-3">list_xss_match_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_logging_configuration-2">put_logging_configuration/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#put_logging_configuration-3">put_logging_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_permission_policy-2">put_permission_policy/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#put_permission_policy-3">put_permission_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_byte_match_set-2">update_byte_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_byte_match_set-3">update_byte_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_geo_match_set-2">update_geo_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_geo_match_set-3">update_geo_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_i_p_set-2">update_i_p_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_i_p_set-3">update_i_p_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_rate_based_rule-2">update_rate_based_rule/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_rate_based_rule-3">update_rate_based_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_regex_match_set-2">update_regex_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_regex_match_set-3">update_regex_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_regex_pattern_set-2">update_regex_pattern_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_regex_pattern_set-3">update_regex_pattern_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_rule-2">update_rule/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_rule-3">update_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_rule_group-2">update_rule_group/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_rule_group-3">update_rule_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_size_constraint_set-2">update_size_constraint_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_size_constraint_set-3">update_size_constraint_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_sql_injection_match_set-2">update_sql_injection_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_sql_injection_match_set-3">update_sql_injection_match_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_web_a_c_l-2">update_web_a_c_l/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_web_a_c_l-3">update_web_a_c_l/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_xss_match_set-2">update_xss_match_set/2</a></td><td>This is AWS WAF Classic documentation.</td></tr>
+<tr><td valign="top"><a href="#update_xss_match_set-3">update_xss_match_set/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_byte_match_set-2">create_byte_match_set/2</a></h3>
+<div class="spec">
+<p><tt>create_byte_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>ByteMatchSet</code>. You then use <code>UpdateByteMatchSet</code> to identify
+  the part of a web request that you want AWS WAF to inspect, such as the
+  values of the <code>User-Agent</code> header or the query string. For example, you
+  can create a <code>ByteMatchSet</code> that matches any requests with <code>User-Agent</code>
+  headers that contain the string <code>BadBot</code>. You can then configure AWS WAF  
+to reject those requests.</p>
+ 
+  <p>To create and configure a <code>ByteMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide in
+  the <code>ChangeToken</code> parameter of a <code>CreateByteMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateByteMatchSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateByteMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateByteMatchSet</code> request to specify the part of  
+the request that you want AWS WAF to inspect (for example, the header or  
+the URI) and the value that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_byte_match_set-3">create_byte_match_set/3</a></h3>
+<div class="spec">
+<p><tt>create_byte_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_geo_match_set-2">create_geo_match_set/2</a></h3>
+<div class="spec">
+<p><tt>create_geo_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates an <code>GeoMatchSet</code>, which you use to specify which web requests you
+  want to allow or block based on the country that the requests originate
+  from. For example, if you're receiving a lot of requests from one or more
+  countries and you want to block the requests, you can create an
+  <code>GeoMatchSet</code> that contains those countries and then configure AWS WAF to  
+block the requests.</p>
+ 
+  <p>To create and configure a <code>GeoMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide in
+  the <code>ChangeToken</code> parameter of a <code>CreateGeoMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateGeoMatchSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateGeoMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateGeoMatchSetSet</code> request to specify the  
+countries that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_geo_match_set-3">create_geo_match_set/3</a></h3>
+<div class="spec">
+<p><tt>create_geo_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_i_p_set-2">create_i_p_set/2</a></h3>
+<div class="spec">
+<p><tt>create_i_p_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates an <code>IPSet</code>, which you use to specify which web requests that you
+  want to allow or block based on the IP addresses that the requests
+  originate from. For example, if you're receiving a lot of requests from
+  one or more individual IP addresses or one or more ranges of IP addresses
+  and you want to block the requests, you can create an <code>IPSet</code> that  
+contains those IP addresses and then configure AWS WAF to block the  
+requests.</p>
+ 
+  <p>To create and configure an <code>IPSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide in
+  the <code>ChangeToken</code> parameter of a <code>CreateIPSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateIPSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateIPSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateIPSet</code> request to specify the IP addresses  
+that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_i_p_set-3">create_i_p_set/3</a></h3>
+<div class="spec">
+<p><tt>create_i_p_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_rate_based_rule-2">create_rate_based_rule/2</a></h3>
+<div class="spec">
+<p><tt>create_rate_based_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>RateBasedRule</code>. The <code>RateBasedRule</code> contains a <code>RateLimit</code>,
+  which specifies the maximum number of requests that AWS WAF allows from a
+  specified IP address in a five-minute period. The <code>RateBasedRule</code> also
+  contains the <code>IPSet</code> objects, <code>ByteMatchSet</code> objects, and other predicates
+  that identify the requests that you want to count or block if these
+  requests exceed the <code>RateLimit</code>.</p>
+ 
+  <p>If you add more than one predicate to a <code>RateBasedRule</code>, a request not
+  only must exceed the <code>RateLimit</code>, but it also must match all the
+  conditions to be counted or blocked. For example, suppose you add the
+  following to a <code>RateBasedRule</code>:</p>
+ 
+  <ul> <li><p> An <code>IPSet</code> that matches the IP address <code>192.0.2.44/32</code></p>
+ 
+  </li> <li><p> A <code>ByteMatchSet</code> that matches <code>BadBot</code> in the <code>User-Agent</code>  
+header</p>
+ 
+  </li> </ul><p> Further, you specify a <code>RateLimit</code> of 1,000.</p>
+ 
+  <p>You then add the <code>RateBasedRule</code> to a <code>WebACL</code> and specify that you want
+  to block requests that meet the conditions in the rule. For a request to
+  be blocked, it must come from the IP address 192.0.2.44 and the
+  <code>User-Agent</code> header in the request must contain the value <code>BadBot</code>.  
+Further, requests that match these two conditions must be received at a  
+rate of more than 1,000 requests every five minutes. If both conditions  
+are met and the rate is exceeded, AWS WAF blocks the requests. If the rate  
+drops below 1,000 for a five-minute period, AWS WAF no longer blocks the  
+requests.</p>
+ 
+  <p>As a second example, suppose you want to limit requests to a particular
+  page on your site. To do this, you could add the following to a
+  <code>RateBasedRule</code>:</p>
+ 
+  <ul> <li><p> A <code>ByteMatchSet</code> with <code>FieldToMatch</code> of <code>URI</code></p>
+ 
+  </li> <li><p> A <code>PositionalConstraint</code> of <code>STARTS_WITH</code></p>
+ 
+  </li> <li><p> A <code>TargetString</code> of <code>login</code></p>
+ 
+  </li> </ul><p> Further, you specify a <code>RateLimit</code> of 1,000.</p>
+ 
+  <p>By adding this <code>RateBasedRule</code> to a <code>WebACL</code>, you could limit requests to  
+your login page without affecting the rest of your site.</p>
+ 
+  <p>To create and configure a <code>RateBasedRule</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Create and update the predicates that you want to include in the
+  rule. For more information, see <code>CreateByteMatchSet</code>, <code>CreateIPSet</code>, and
+  <code>CreateSqlInjectionMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>CreateRule</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateRateBasedRule</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateRule</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateRateBasedRule</code> request to specify the  
+predicates that you want to include in the rule.</p>
+ 
+  </li> <li><p> Create and update a <code>WebACL</code> that contains the <code>RateBasedRule</code>.
+  For more information, see <code>CreateWebACL</code>.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_rate_based_rule-3">create_rate_based_rule/3</a></h3>
+<div class="spec">
+<p><tt>create_rate_based_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_regex_match_set-2">create_regex_match_set/2</a></h3>
+<div class="spec">
+<p><tt>create_regex_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>RegexMatchSet</code>. You then use <code>UpdateRegexMatchSet</code> to identify
+  the part of a web request that you want AWS WAF to inspect, such as the
+  values of the <code>User-Agent</code> header or the query string. For example, you
+  can create a <code>RegexMatchSet</code> that contains a <code>RegexMatchTuple</code> that looks
+  for any requests with <code>User-Agent</code> headers that match a <code>RegexPatternSet</code>
+  with pattern <code>B[a@]dB[o0]t</code>. You can then configure AWS WAF to reject  
+those requests.</p>
+ 
+  <p>To create and configure a <code>RegexMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide in
+  the <code>ChangeToken</code> parameter of a <code>CreateRegexMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateRegexMatchSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateRegexMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateRegexMatchSet</code> request to specify the part of
+  the request that you want AWS WAF to inspect (for example, the header or
+  the URI) and the value, using a <code>RegexPatternSet</code>, that you want AWS WAF  
+to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_regex_match_set-3">create_regex_match_set/3</a></h3>
+<div class="spec">
+<p><tt>create_regex_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_regex_pattern_set-2">create_regex_pattern_set/2</a></h3>
+<div class="spec">
+<p><tt>create_regex_pattern_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>RegexPatternSet</code>. You then use <code>UpdateRegexPatternSet</code> to
+  specify the regular expression (regex) pattern that you want AWS WAF to
+  search for, such as <code>B[a@]dB[o0]t</code>. You can then configure AWS WAF to  
+reject those requests.</p>
+ 
+  <p>To create and configure a <code>RegexPatternSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide in
+  the <code>ChangeToken</code> parameter of a <code>CreateRegexPatternSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateRegexPatternSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateRegexPatternSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateRegexPatternSet</code> request to specify the string  
+that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_regex_pattern_set-3">create_regex_pattern_set/3</a></h3>
+<div class="spec">
+<p><tt>create_regex_pattern_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_rule-2">create_rule/2</a></h3>
+<div class="spec">
+<p><tt>create_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>Rule</code>, which contains the <code>IPSet</code> objects, <code>ByteMatchSet</code>
+  objects, and other predicates that identify the requests that you want to
+  block. If you add more than one predicate to a <code>Rule</code>, a request must
+  match all of the specifications to be allowed or blocked. For example,
+  suppose that you add the following to a <code>Rule</code>:</p>
+ 
+  <ul> <li><p> An <code>IPSet</code> that matches the IP address <code>192.0.2.44/32</code></p>
+ 
+  </li> <li><p> A <code>ByteMatchSet</code> that matches <code>BadBot</code> in the <code>User-Agent</code>  
+header</p>
+ 
+  </li> </ul><p> You then add the <code>Rule</code> to a <code>WebACL</code> and specify that you
+  want to blocks requests that satisfy the <code>Rule</code>. For a request to be
+  blocked, it must come from the IP address 192.0.2.44 and the <code>User-Agent</code>
+  header in the request must contain the value <code>BadBot</code>.</p>
+ 
+  <p>To create and configure a <code>Rule</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Create and update the predicates that you want to include in the
+  <code>Rule</code>. For more information, see <code>CreateByteMatchSet</code>, <code>CreateIPSet</code>, and
+  <code>CreateSqlInjectionMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>CreateRule</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateRule</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateRule</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateRule</code> request to specify the predicates that
+  you want to include in the <code>Rule</code>.</p>
+ 
+  </li> <li><p> Create and update a <code>WebACL</code> that contains the <code>Rule</code>. For more
+  information, see <code>CreateWebACL</code>.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_rule-3">create_rule/3</a></h3>
+<div class="spec">
+<p><tt>create_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_rule_group-2">create_rule_group/2</a></h3>
+<div class="spec">
+<p><tt>create_rule_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>RuleGroup</code>. A rule group is a collection of predefined rules
+  that you add to a web ACL. You use <code>UpdateRuleGroup</code> to add rules to the  
+rule group.</p>
+ 
+  <p>Rule groups are subject to the following limits:</p>
+ 
+  <ul> <li><p> Three rule groups per account. You can request an increase to  
+this limit by contacting customer support.</p>
+ 
+  </li> <li><p> One rule group per web ACL.</p>
+ 
+  </li> <li><p> Ten rules per rule group.</p>
+ 
+  </li> </ul> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_rule_group-3">create_rule_group/3</a></h3>
+<div class="spec">
+<p><tt>create_rule_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_size_constraint_set-2">create_size_constraint_set/2</a></h3>
+<div class="spec">
+<p><tt>create_size_constraint_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>SizeConstraintSet</code>. You then use <code>UpdateSizeConstraintSet</code> to
+  identify the part of a web request that you want AWS WAF to check for
+  length, such as the length of the <code>User-Agent</code> header or the length of the
+  query string. For example, you can create a <code>SizeConstraintSet</code> that  
+matches any requests that have a query string that is longer than 100  
+bytes. You can then configure AWS WAF to reject those requests.</p>
+ 
+  <p>To create and configure a <code>SizeConstraintSet</code>, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide in
+  the <code>ChangeToken</code> parameter of a <code>CreateSizeConstraintSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateSizeConstraintSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateSizeConstraintSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateSizeConstraintSet</code> request to specify the part  
+of the request that you want AWS WAF to inspect (for example, the header  
+or the URI) and the value that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_size_constraint_set-3">create_size_constraint_set/3</a></h3>
+<div class="spec">
+<p><tt>create_size_constraint_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_sql_injection_match_set-2">create_sql_injection_match_set/2</a></h3>
+<div class="spec">
+<p><tt>create_sql_injection_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>SqlInjectionMatchSet</code>, which you use to allow, block, or count  
+requests that contain snippets of SQL code in a specified part of web  
+requests. AWS WAF searches for character sequences that are likely to be  
+malicious strings.</p>
+ 
+  <p>To create and configure a <code>SqlInjectionMatchSet</code>, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide in
+  the <code>ChangeToken</code> parameter of a <code>CreateSqlInjectionMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateSqlInjectionMatchSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateSqlInjectionMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateSqlInjectionMatchSet</code> request to specify the  
+parts of web requests in which you want to allow, block, or count  
+malicious SQL code.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_sql_injection_match_set-3">create_sql_injection_match_set/3</a></h3>
+<div class="spec">
+<p><tt>create_sql_injection_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_web_a_c_l-2">create_web_a_c_l/2</a></h3>
+<div class="spec">
+<p><tt>create_web_a_c_l(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates a <code>WebACL</code>, which contains the <code>Rules</code> that identify the
+  CloudFront web requests that you want to allow, block, or count. AWS WAF
+  evaluates <code>Rules</code> in order based on the value of <code>Priority</code> for each
+  <code>Rule</code>.</p>
+ 
+  <p>You also specify a default action, either <code>ALLOW</code> or <code>BLOCK</code>. If a web
+  request doesn't match any of the <code>Rules</code> in a <code>WebACL</code>, AWS WAF responds  
+to the request with the default action.</p>
+ 
+  <p>To create and configure a <code>WebACL</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Create and update the <code>ByteMatchSet</code> objects and other
+  predicates that you want to include in <code>Rules</code>. For more information, see
+  <code>CreateByteMatchSet</code>, <code>UpdateByteMatchSet</code>, <code>CreateIPSet</code>, <code>UpdateIPSet</code>,
+  <code>CreateSqlInjectionMatchSet</code>, and <code>UpdateSqlInjectionMatchSet</code>.</p>
+ 
+  </li> <li><p> Create and update the <code>Rules</code> that you want to include in the
+  <code>WebACL</code>. For more information, see <code>CreateRule</code> and <code>UpdateRule</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>CreateWebACL</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateWebACL</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateWebACL</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateWebACL</code> request to specify the <code>Rules</code> that
+  you want to include in the <code>WebACL</code>, to specify the default action, and to
+  associate the <code>WebACL</code> with a CloudFront distribution.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API, see the
+  AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_web_a_c_l-3">create_web_a_c_l/3</a></h3>
+<div class="spec">
+<p><tt>create_web_a_c_l(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_web_a_c_l_migration_stack-2">create_web_a_c_l_migration_stack/2</a></h3>
+<div class="spec">
+<p><tt>create_web_a_c_l_migration_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an AWS CloudFormation WAFV2 template for the specified web  
+ACL in the specified Amazon S3 bucket.</p>
+ 
+  <p>Then, in CloudFormation, you create a stack from the template, to create  
+the web ACL and its resources in AWS WAFV2. Use this to migrate your AWS  
+WAF Classic web ACL to the latest version of AWS WAF.</p>
+ 
+  This is part of a larger migration procedure for web ACLs from AWS WAF
+  Classic to the latest version of AWS WAF. For the full procedure,
+  including caveats and manual steps to complete the migration and switch
+  over to the new web ACL, see Migrating your AWS WAF Classic resources to
+  AWS WAF in the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_web_a_c_l_migration_stack-3">create_web_a_c_l_migration_stack/3</a></h3>
+<div class="spec">
+<p><tt>create_web_a_c_l_migration_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_xss_match_set-2">create_xss_match_set/2</a></h3>
+<div class="spec">
+<p><tt>create_xss_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Creates an <code>XssMatchSet</code>, which you use to allow, block, or count requests  
+that contain cross-site scripting attacks in the specified part of web  
+requests. AWS WAF searches for character sequences that are likely to be  
+malicious strings.</p>
+ 
+  <p>To create and configure an <code>XssMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide in
+  the <code>ChangeToken</code> parameter of a <code>CreateXssMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>CreateXssMatchSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateXssMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateXssMatchSet</code> request to specify the parts of  
+web requests in which you want to allow, block, or count cross-site  
+scripting attacks.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="create_xss_match_set-3">create_xss_match_set/3</a></h3>
+<div class="spec">
+<p><tt>create_xss_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_byte_match_set-2">delete_byte_match_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_byte_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>ByteMatchSet</code>. You can't delete a <code>ByteMatchSet</code> if
+  it's still used in any <code>Rules</code> or if it still includes any
+  <code>ByteMatchTuple</code> objects (any filters).</p>
+ 
+  <p>If you just want to remove a <code>ByteMatchSet</code> from a <code>Rule</code>, use
+  <code>UpdateRule</code>.</p>
+ 
+  <p>To permanently delete a <code>ByteMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Update the <code>ByteMatchSet</code> to remove filters, if any. For more
+  information, see <code>UpdateByteMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteByteMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteByteMatchSet</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_byte_match_set-3">delete_byte_match_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_byte_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_geo_match_set-2">delete_geo_match_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_geo_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>GeoMatchSet</code>. You can't delete a <code>GeoMatchSet</code> if
+  it's still used in any <code>Rules</code> or if it still includes any countries.</p>
+ 
+  <p>If you just want to remove a <code>GeoMatchSet</code> from a <code>Rule</code>, use
+  <code>UpdateRule</code>.</p>
+ 
+  <p>To permanently delete a <code>GeoMatchSet</code> from AWS WAF, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Update the <code>GeoMatchSet</code> to remove any countries. For more
+  information, see <code>UpdateGeoMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteGeoMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteGeoMatchSet</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_geo_match_set-3">delete_geo_match_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_geo_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_i_p_set-2">delete_i_p_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_i_p_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes an <code>IPSet</code>. You can't delete an <code>IPSet</code> if it's still
+  used in any <code>Rules</code> or if it still includes any IP addresses.</p>
+ 
+  <p>If you just want to remove an <code>IPSet</code> from a <code>Rule</code>, use <code>UpdateRule</code>.</p>
+ 
+  <p>To permanently delete an <code>IPSet</code> from AWS WAF, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Update the <code>IPSet</code> to remove IP address ranges, if any. For more
+  information, see <code>UpdateIPSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteIPSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteIPSet</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_i_p_set-3">delete_i_p_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_i_p_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_logging_configuration-2">delete_logging_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_logging_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Permanently deletes the <code>LoggingConfiguration</code> from the specified web ACL.</p>
+
+<h3 class="function"><a name="delete_logging_configuration-3">delete_logging_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_logging_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_permission_policy-2">delete_permission_policy/2</a></h3>
+<div class="spec">
+<p><tt>delete_permission_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes an IAM policy from the specified RuleGroup.</p>
+ 
+  The user making the request must be the owner of the RuleGroup.</p>
+
+<h3 class="function"><a name="delete_permission_policy-3">delete_permission_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_permission_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_rate_based_rule-2">delete_rate_based_rule/2</a></h3>
+<div class="spec">
+<p><tt>delete_rate_based_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>RateBasedRule</code>. You can't delete a rule if it's
+  still used in any <code>WebACL</code> objects or if it still includes any predicates,
+  such as <code>ByteMatchSet</code> objects.</p>
+ 
+  <p>If you just want to remove a rule from a <code>WebACL</code>, use <code>UpdateWebACL</code>.</p>
+ 
+  <p>To permanently delete a <code>RateBasedRule</code> from AWS WAF, perform the  
+following steps:</p>
+ 
+  <ol> <li><p> Update the <code>RateBasedRule</code> to remove predicates, if any. For
+  more information, see <code>UpdateRateBasedRule</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteRateBasedRule</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteRateBasedRule</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_rate_based_rule-3">delete_rate_based_rule/3</a></h3>
+<div class="spec">
+<p><tt>delete_rate_based_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_regex_match_set-2">delete_regex_match_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_regex_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>RegexMatchSet</code>. You can't delete a <code>RegexMatchSet</code>
+  if it's still used in any <code>Rules</code> or if it still includes any
+  <code>RegexMatchTuples</code> objects (any filters).</p>
+ 
+  <p>If you just want to remove a <code>RegexMatchSet</code> from a <code>Rule</code>, use
+  <code>UpdateRule</code>.</p>
+ 
+  <p>To permanently delete a <code>RegexMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Update the <code>RegexMatchSet</code> to remove filters, if any. For more
+  information, see <code>UpdateRegexMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteRegexMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteRegexMatchSet</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_regex_match_set-3">delete_regex_match_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_regex_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_regex_pattern_set-2">delete_regex_pattern_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_regex_pattern_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Permanently deletes a <code>RegexPatternSet</code>. You can't delete a
+  <code>RegexPatternSet</code> if it's still used in any <code>RegexMatchSet</code> or if the
+  <code>RegexPatternSet</code> is not empty.</p>
+
+<h3 class="function"><a name="delete_regex_pattern_set-3">delete_regex_pattern_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_regex_pattern_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_rule-2">delete_rule/2</a></h3>
+<div class="spec">
+<p><tt>delete_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>Rule</code>. You can't delete a <code>Rule</code> if it's still used
+  in any <code>WebACL</code> objects or if it still includes any predicates, such as
+  <code>ByteMatchSet</code> objects.</p>
+ 
+  <p>If you just want to remove a <code>Rule</code> from a <code>WebACL</code>, use <code>UpdateWebACL</code>.</p>
+ 
+  <p>To permanently delete a <code>Rule</code> from AWS WAF, perform the following steps:</p>
+ 
+  <ol> <li><p> Update the <code>Rule</code> to remove predicates, if any. For more
+  information, see <code>UpdateRule</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteRule</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteRule</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_rule-3">delete_rule/3</a></h3>
+<div class="spec">
+<p><tt>delete_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_rule_group-2">delete_rule_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_rule_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>RuleGroup</code>. You can't delete a <code>RuleGroup</code> if it's
+  still used in any <code>WebACL</code> objects or if it still includes any rules.</p>
+ 
+  <p>If you just want to remove a <code>RuleGroup</code> from a <code>WebACL</code>, use
+  <code>UpdateWebACL</code>.</p>
+ 
+  <p>To permanently delete a <code>RuleGroup</code> from AWS WAF, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Update the <code>RuleGroup</code> to remove rules, if any. For more
+  information, see <code>UpdateRuleGroup</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteRuleGroup</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteRuleGroup</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_rule_group-3">delete_rule_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_rule_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_size_constraint_set-2">delete_size_constraint_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_size_constraint_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>SizeConstraintSet</code>. You can't delete a
+  <code>SizeConstraintSet</code> if it's still used in any <code>Rules</code> or if it still
+  includes any <code>SizeConstraint</code> objects (any filters).</p>
+ 
+  <p>If you just want to remove a <code>SizeConstraintSet</code> from a <code>Rule</code>, use
+  <code>UpdateRule</code>.</p>
+ 
+  <p>To permanently delete a <code>SizeConstraintSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Update the <code>SizeConstraintSet</code> to remove filters, if any. For
+  more information, see <code>UpdateSizeConstraintSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteSizeConstraintSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteSizeConstraintSet</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_size_constraint_set-3">delete_size_constraint_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_size_constraint_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_sql_injection_match_set-2">delete_sql_injection_match_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_sql_injection_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>SqlInjectionMatchSet</code>. You can't delete a
+  <code>SqlInjectionMatchSet</code> if it's still used in any <code>Rules</code> or if it still
+  contains any <code>SqlInjectionMatchTuple</code> objects.</p>
+ 
+  <p>If you just want to remove a <code>SqlInjectionMatchSet</code> from a <code>Rule</code>, use
+  <code>UpdateRule</code>.</p>
+ 
+  <p>To permanently delete a <code>SqlInjectionMatchSet</code> from AWS WAF, perform the  
+following steps:</p>
+ 
+  <ol> <li><p> Update the <code>SqlInjectionMatchSet</code> to remove filters, if any. For
+  more information, see <code>UpdateSqlInjectionMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteSqlInjectionMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteSqlInjectionMatchSet</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_sql_injection_match_set-3">delete_sql_injection_match_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_sql_injection_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_web_a_c_l-2">delete_web_a_c_l/2</a></h3>
+<div class="spec">
+<p><tt>delete_web_a_c_l(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes a <code>WebACL</code>. You can't delete a <code>WebACL</code> if it still
+  contains any <code>Rules</code>.</p>
+ 
+  <p>To delete a <code>WebACL</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Update the <code>WebACL</code> to remove <code>Rules</code>, if any. For more
+  information, see <code>UpdateWebACL</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteWebACL</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteWebACL</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_web_a_c_l-3">delete_web_a_c_l/3</a></h3>
+<div class="spec">
+<p><tt>delete_web_a_c_l(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_xss_match_set-2">delete_xss_match_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_xss_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Permanently deletes an <code>XssMatchSet</code>. You can't delete an <code>XssMatchSet</code> if
+  it's still used in any <code>Rules</code> or if it still contains any <code>XssMatchTuple</code>  
+objects.</p>
+ 
+  <p>If you just want to remove an <code>XssMatchSet</code> from a <code>Rule</code>, use
+  <code>UpdateRule</code>.</p>
+ 
+  <p>To permanently delete an <code>XssMatchSet</code> from AWS WAF, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Update the <code>XssMatchSet</code> to remove filters, if any. For more
+  information, see <code>UpdateXssMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of a <code>DeleteXssMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit a <code>DeleteXssMatchSet</code> request.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="delete_xss_match_set-3">delete_xss_match_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_xss_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_byte_match_set-2">get_byte_match_set/2</a></h3>
+<div class="spec">
+<p><tt>get_byte_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>ByteMatchSet</code> specified by <code>ByteMatchSetId</code>.</p>
+
+<h3 class="function"><a name="get_byte_match_set-3">get_byte_match_set/3</a></h3>
+<div class="spec">
+<p><tt>get_byte_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_change_token-2">get_change_token/2</a></h3>
+<div class="spec">
+<p><tt>get_change_token(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>When you want to create, update, or delete AWS WAF objects, get a change  
+token and include the change token in the create, update, or delete  
+request. Change tokens ensure that your application doesn't submit  
+conflicting requests to AWS WAF.</p>
+ 
+  <p>Each create, update, or delete request must use a unique change token. If
+  your application submits a <code>GetChangeToken</code> request and then submits a
+  second <code>GetChangeToken</code> request before submitting a create, update, or
+  delete request, the second <code>GetChangeToken</code> request returns the same value
+  as the first <code>GetChangeToken</code> request.</p>
+ 
+  When you use a change token in a create, update, or delete request, the
+  status of the change token changes to <code>PENDING</code>, which indicates that AWS
+  WAF is propagating the change to all AWS WAF servers. Use
+  <code>GetChangeTokenStatus</code> to determine the status of your change token.</p>
+
+<h3 class="function"><a name="get_change_token-3">get_change_token/3</a></h3>
+<div class="spec">
+<p><tt>get_change_token(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_change_token_status-2">get_change_token_status/2</a></h3>
+<div class="spec">
+<p><tt>get_change_token_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Returns the status of a <code>ChangeToken</code> that you got by calling
+  <code>GetChangeToken</code>. <code>ChangeTokenStatus</code> is one of the following values:</p>
+ 
+  <ul> <li><p> <code>PROVISIONED</code>: You requested the change token by calling
+  <code>GetChangeToken</code>, but you haven't used it yet in a call to create, update,  
+or delete an AWS WAF object.</p>
+ 
+  </li> <li><p> <code>PENDING</code>: AWS WAF is propagating the create, update, or delete  
+request to all AWS WAF servers.</p>
+ 
+  </li> <li><p> <code>INSYNC</code>: Propagation is complete.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_change_token_status-3">get_change_token_status/3</a></h3>
+<div class="spec">
+<p><tt>get_change_token_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_geo_match_set-2">get_geo_match_set/2</a></h3>
+<div class="spec">
+<p><tt>get_geo_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>GeoMatchSet</code> that is specified by <code>GeoMatchSetId</code>.</p>
+
+<h3 class="function"><a name="get_geo_match_set-3">get_geo_match_set/3</a></h3>
+<div class="spec">
+<p><tt>get_geo_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_i_p_set-2">get_i_p_set/2</a></h3>
+<div class="spec">
+<p><tt>get_i_p_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>IPSet</code> that is specified by <code>IPSetId</code>.</p>
+
+<h3 class="function"><a name="get_i_p_set-3">get_i_p_set/3</a></h3>
+<div class="spec">
+<p><tt>get_i_p_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_logging_configuration-2">get_logging_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_logging_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>LoggingConfiguration</code> for the specified web ACL.</p>
+
+<h3 class="function"><a name="get_logging_configuration-3">get_logging_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_logging_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_permission_policy-2">get_permission_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_permission_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the IAM policy attached to the RuleGroup.</p>
+
+<h3 class="function"><a name="get_permission_policy-3">get_permission_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_permission_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_rate_based_rule-2">get_rate_based_rule/2</a></h3>
+<div class="spec">
+<p><tt>get_rate_based_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>RateBasedRule</code> that is specified by the <code>RuleId</code> that you
+  included in the <code>GetRateBasedRule</code> request.</p>
+
+<h3 class="function"><a name="get_rate_based_rule-3">get_rate_based_rule/3</a></h3>
+<div class="spec">
+<p><tt>get_rate_based_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_rate_based_rule_managed_keys-2">get_rate_based_rule_managed_keys/2</a></h3>
+<div class="spec">
+<p><tt>get_rate_based_rule_managed_keys(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of IP addresses currently being blocked by the
+  <code>RateBasedRule</code> that is specified by the <code>RuleId</code>. The maximum number of
+  managed keys that will be blocked is 10,000. If more than 10,000 addresses
+  exceed the rate limit, the 10,000 addresses with the highest rates will be
+  blocked.</p>
+
+<h3 class="function"><a name="get_rate_based_rule_managed_keys-3">get_rate_based_rule_managed_keys/3</a></h3>
+<div class="spec">
+<p><tt>get_rate_based_rule_managed_keys(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_regex_match_set-2">get_regex_match_set/2</a></h3>
+<div class="spec">
+<p><tt>get_regex_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>RegexMatchSet</code> specified by <code>RegexMatchSetId</code>.</p>
+
+<h3 class="function"><a name="get_regex_match_set-3">get_regex_match_set/3</a></h3>
+<div class="spec">
+<p><tt>get_regex_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_regex_pattern_set-2">get_regex_pattern_set/2</a></h3>
+<div class="spec">
+<p><tt>get_regex_pattern_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>RegexPatternSet</code> specified by <code>RegexPatternSetId</code>.</p>
+
+<h3 class="function"><a name="get_regex_pattern_set-3">get_regex_pattern_set/3</a></h3>
+<div class="spec">
+<p><tt>get_regex_pattern_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_rule-2">get_rule/2</a></h3>
+<div class="spec">
+<p><tt>get_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>Rule</code> that is specified by the <code>RuleId</code> that you included in
+  the <code>GetRule</code> request.</p>
+
+<h3 class="function"><a name="get_rule-3">get_rule/3</a></h3>
+<div class="spec">
+<p><tt>get_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_rule_group-2">get_rule_group/2</a></h3>
+<div class="spec">
+<p><tt>get_rule_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Returns the <code>RuleGroup</code> that is specified by the <code>RuleGroupId</code> that you
+  included in the <code>GetRuleGroup</code> request.</p>
+ 
+  To view the rules in a rule group, use <code>ListActivatedRulesInRuleGroup</code>.</p>
+
+<h3 class="function"><a name="get_rule_group-3">get_rule_group/3</a></h3>
+<div class="spec">
+<p><tt>get_rule_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sampled_requests-2">get_sampled_requests/2</a></h3>
+<div class="spec">
+<p><tt>get_sampled_requests(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Gets detailed information about a specified number of requests--a  
+sample--that AWS WAF randomly selects from among the first 5,000 requests  
+that your AWS resource received during a time range that you choose. You  
+can specify a sample size of up to 500 requests, and you can specify any  
+time range in the previous three hours.</p>
+ 
+  <code>GetSampledRequests</code> returns a time range, which is usually the time range
+  that you specified. However, if your resource (such as a CloudFront
+  distribution) received 5,000 requests before the specified time range
+  elapsed, <code>GetSampledRequests</code> returns an updated time range. This new time
+  range indicates the actual period during which AWS WAF selected the
+  requests in the sample.</p>
+
+<h3 class="function"><a name="get_sampled_requests-3">get_sampled_requests/3</a></h3>
+<div class="spec">
+<p><tt>get_sampled_requests(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_size_constraint_set-2">get_size_constraint_set/2</a></h3>
+<div class="spec">
+<p><tt>get_size_constraint_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>SizeConstraintSet</code> specified by <code>SizeConstraintSetId</code>.</p>
+
+<h3 class="function"><a name="get_size_constraint_set-3">get_size_constraint_set/3</a></h3>
+<div class="spec">
+<p><tt>get_size_constraint_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sql_injection_match_set-2">get_sql_injection_match_set/2</a></h3>
+<div class="spec">
+<p><tt>get_sql_injection_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>SqlInjectionMatchSet</code> that is specified by
+  <code>SqlInjectionMatchSetId</code>.</p>
+
+<h3 class="function"><a name="get_sql_injection_match_set-3">get_sql_injection_match_set/3</a></h3>
+<div class="spec">
+<p><tt>get_sql_injection_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_web_a_c_l-2">get_web_a_c_l/2</a></h3>
+<div class="spec">
+<p><tt>get_web_a_c_l(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>WebACL</code> that is specified by <code>WebACLId</code>.</p>
+
+<h3 class="function"><a name="get_web_a_c_l-3">get_web_a_c_l/3</a></h3>
+<div class="spec">
+<p><tt>get_web_a_c_l(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_xss_match_set-2">get_xss_match_set/2</a></h3>
+<div class="spec">
+<p><tt>get_xss_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns the <code>XssMatchSet</code> that is specified by <code>XssMatchSetId</code>.</p>
+
+<h3 class="function"><a name="get_xss_match_set-3">get_xss_match_set/3</a></h3>
+<div class="spec">
+<p><tt>get_xss_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_activated_rules_in_rule_group-2">list_activated_rules_in_rule_group/2</a></h3>
+<div class="spec">
+<p><tt>list_activated_rules_in_rule_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>ActivatedRule</code> objects.</p>
+
+<h3 class="function"><a name="list_activated_rules_in_rule_group-3">list_activated_rules_in_rule_group/3</a></h3>
+<div class="spec">
+<p><tt>list_activated_rules_in_rule_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_byte_match_sets-2">list_byte_match_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_byte_match_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>ByteMatchSetSummary</code> objects.</p>
+
+<h3 class="function"><a name="list_byte_match_sets-3">list_byte_match_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_byte_match_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_geo_match_sets-2">list_geo_match_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_geo_match_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>GeoMatchSetSummary</code> objects in the response.</p>
+
+<h3 class="function"><a name="list_geo_match_sets-3">list_geo_match_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_geo_match_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_i_p_sets-2">list_i_p_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_i_p_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>IPSetSummary</code> objects in the response.</p>
+
+<h3 class="function"><a name="list_i_p_sets-3">list_i_p_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_i_p_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_logging_configurations-2">list_logging_configurations/2</a></h3>
+<div class="spec">
+<p><tt>list_logging_configurations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>LoggingConfiguration</code> objects.</p>
+
+<h3 class="function"><a name="list_logging_configurations-3">list_logging_configurations/3</a></h3>
+<div class="spec">
+<p><tt>list_logging_configurations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_rate_based_rules-2">list_rate_based_rules/2</a></h3>
+<div class="spec">
+<p><tt>list_rate_based_rules(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>RuleSummary</code> objects.</p>
+
+<h3 class="function"><a name="list_rate_based_rules-3">list_rate_based_rules/3</a></h3>
+<div class="spec">
+<p><tt>list_rate_based_rules(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_regex_match_sets-2">list_regex_match_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_regex_match_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>RegexMatchSetSummary</code> objects.</p>
+
+<h3 class="function"><a name="list_regex_match_sets-3">list_regex_match_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_regex_match_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_regex_pattern_sets-2">list_regex_pattern_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_regex_pattern_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>RegexPatternSetSummary</code> objects.</p>
+
+<h3 class="function"><a name="list_regex_pattern_sets-3">list_regex_pattern_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_regex_pattern_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_rule_groups-2">list_rule_groups/2</a></h3>
+<div class="spec">
+<p><tt>list_rule_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>RuleGroup</code> objects.</p>
+
+<h3 class="function"><a name="list_rule_groups-3">list_rule_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_rule_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_rules-2">list_rules/2</a></h3>
+<div class="spec">
+<p><tt>list_rules(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>RuleSummary</code> objects.</p>
+
+<h3 class="function"><a name="list_rules-3">list_rules/3</a></h3>
+<div class="spec">
+<p><tt>list_rules(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_size_constraint_sets-2">list_size_constraint_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_size_constraint_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>SizeConstraintSetSummary</code> objects.</p>
+
+<h3 class="function"><a name="list_size_constraint_sets-3">list_size_constraint_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_size_constraint_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_sql_injection_match_sets-2">list_sql_injection_match_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_sql_injection_match_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>SqlInjectionMatchSet</code> objects.</p>
+
+<h3 class="function"><a name="list_sql_injection_match_sets-3">list_sql_injection_match_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_sql_injection_match_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_subscribed_rule_groups-2">list_subscribed_rule_groups/2</a></h3>
+<div class="spec">
+<p><tt>list_subscribed_rule_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>RuleGroup</code> objects that you are subscribed to.</p>
+
+<h3 class="function"><a name="list_subscribed_rule_groups-3">list_subscribed_rule_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_subscribed_rule_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Retrieves the tags associated with the specified AWS resource. Tags are  
+key:value pairs that you can use to categorize and manage your resources,  
+for purposes like billing. For example, you might set the tag key to  
+"customer" and the value to the customer name or ID. You can specify one  
+or more tags to add to each AWS resource, up to 50 tags for a resource.</p>
+ 
+  Tagging is only available through the API, SDKs, and CLI. You can't manage
+  or view tags through the AWS WAF Classic console. You can tag the AWS
+  resources that you manage through AWS WAF Classic: web ACLs, rule groups,
+  and rules.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_web_a_c_ls-2">list_web_a_c_ls/2</a></h3>
+<div class="spec">
+<p><tt>list_web_a_c_ls(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>WebACLSummary</code> objects in the response.</p>
+
+<h3 class="function"><a name="list_web_a_c_ls-3">list_web_a_c_ls/3</a></h3>
+<div class="spec">
+<p><tt>list_web_a_c_ls(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_xss_match_sets-2">list_xss_match_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_xss_match_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  Returns an array of <code>XssMatchSet</code> objects.</p>
+
+<h3 class="function"><a name="list_xss_match_sets-3">list_xss_match_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_xss_match_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_logging_configuration-2">put_logging_configuration/2</a></h3>
+<div class="spec">
+<p><tt>put_logging_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Associates a <code>LoggingConfiguration</code> with a specified web ACL.</p>
+ 
+  <p>You can access information about all traffic that AWS WAF inspects using  
+the following steps:</p>
+ 
+  <ol> <li><p> Create an Amazon Kinesis Data Firehose.</p>
+ 
+  <p>Create the data firehose with a PUT source and in the region that you are  
+operating. However, if you are capturing logs for Amazon CloudFront,  
+always create the firehose in US East (N. Virginia).</p>
+ 
+  <p>Do not create the data firehose using a <code>Kinesis stream</code> as your source.</p>
+ 
+  </li> <li><p> Associate that firehose to your web ACL using a
+  <code>PutLoggingConfiguration</code> request.</p>
+ 
+  </li> </ol> When you successfully enable logging using a
+  <code>PutLoggingConfiguration</code> request, AWS WAF will create a service linked
+  role with the necessary permissions to write logs to the Amazon Kinesis
+  Data Firehose. For more information, see Logging Web ACL Traffic
+  Information in the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="put_logging_configuration-3">put_logging_configuration/3</a></h3>
+<div class="spec">
+<p><tt>put_logging_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_permission_policy-2">put_permission_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_permission_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Attaches an IAM policy to the specified resource. The only supported use  
+for this action is to share a RuleGroup across accounts.</p>
+ 
+  <p>The <code>PutPermissionPolicy</code> is subject to the following restrictions:</p>
+ 
+  <ul> <li><p> You can attach only one policy with each <code>PutPermissionPolicy</code>  
+request.</p>
+ 
+  </li> <li><p> The policy must include an <code>Effect</code>, <code>Action</code> and <code>Principal</code>.</p>
+ 
+  </li> <li><p> <code>Effect</code> must specify <code>Allow</code>.</p>
+ 
+  </li> <li><p> The <code>Action</code> in the policy must be <code>waf:UpdateWebACL</code>,
+  <code>waf-regional:UpdateWebACL</code>, <code>waf:GetRuleGroup</code> and
+  <code>waf-regional:GetRuleGroup</code> . Any extra or wildcard actions in the policy  
+will be rejected.</p>
+ 
+  </li> <li><p> The policy cannot include a <code>Resource</code> parameter.</p>
+ 
+  </li> <li><p> The ARN in the request must be a valid WAF RuleGroup ARN and  
+the RuleGroup must exist in the same region.</p>
+ 
+  </li> <li><p> The user making the request must be the owner of the RuleGroup.</p>
+ 
+  </li> <li><p> Your policy must be composed using IAM Policy version  
+2012-10-17.</p>
+ 
+  </li> </ul><p> For more information, see IAM Policies.</p>
+ 
+  An example of a valid policy parameter is shown in the Examples section
+  below.</p>
+
+<h3 class="function"><a name="put_permission_policy-3">put_permission_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_permission_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Associates tags with the specified AWS resource. Tags are key:value pairs  
+that you can use to categorize and manage your resources, for purposes  
+like billing. For example, you might set the tag key to "customer" and the  
+value to the customer name or ID. You can specify one or more tags to add  
+to each AWS resource, up to 50 tags for a resource.</p>
+ 
+  Tagging is only available through the API, SDKs, and CLI. You can't manage
+  or view tags through the AWS WAF Classic console. You can use this action
+  to tag the AWS resources that you manage through AWS WAF Classic: web
+  ACLs, rule groups, and rules.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS
+  WAF Developer Guide. With the latest version, AWS WAF has a single set of
+  endpoints for regional and global use.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_byte_match_set-2">update_byte_match_set/2</a></h3>
+<div class="spec">
+<p><tt>update_byte_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>ByteMatchTuple</code> objects (filters) in a <code>ByteMatchSet</code>.
+  For each <code>ByteMatchTuple</code> object, you specify the following values:</p>
+ 
+  <ul> <li><p> Whether to insert or delete the object from the array. If you
+  want to change a <code>ByteMatchSetUpdate</code> object, you delete the existing  
+object and add a new one.</p>
+ 
+  </li> <li><p> The part of a web request that you want AWS WAF to inspect,
+  such as a query string or the value of the <code>User-Agent</code> header.</p>
+ 
+  </li> <li><p> The bytes (typically a string that corresponds with ASCII
+  characters) that you want AWS WAF to look for. For more information,
+  including how you specify the values for the AWS WAF API and the AWS CLI
+  or SDKs, see <code>TargetString</code> in the <code>ByteMatchTuple</code> data type.</p>
+ 
+  </li> <li><p> Where to look, such as at the beginning or the end of a query  
+string.</p>
+ 
+  </li> <li><p> Whether to perform any conversions on the request, such as  
+converting it to lowercase, before inspecting it for the specified string.</p>
+ 
+  </li> </ul><p> For example, you can add a <code>ByteMatchSetUpdate</code> object that
+  matches web requests in which <code>User-Agent</code> headers contain the string
+  <code>BadBot</code>. You can then configure AWS WAF to block those requests.</p>
+ 
+  <p>To create and configure a <code>ByteMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Create a <code>ByteMatchSet.</code> For more information, see
+  <code>CreateByteMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateByteMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateByteMatchSet</code> request to specify the part of  
+the request that you want AWS WAF to inspect (for example, the header or  
+the URI) and the value that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_byte_match_set-3">update_byte_match_set/3</a></h3>
+<div class="spec">
+<p><tt>update_byte_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_geo_match_set-2">update_geo_match_set/2</a></h3>
+<div class="spec">
+<p><tt>update_geo_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>GeoMatchConstraint</code> objects in an <code>GeoMatchSet</code>. For
+  each <code>GeoMatchConstraint</code> object, you specify the following values:</p>
+ 
+  <ul> <li><p> Whether to insert or delete the object from the array. If you
+  want to change an <code>GeoMatchConstraint</code> object, you delete the existing  
+object and add a new one.</p>
+ 
+  </li> <li><p> The <code>Type</code>. The only valid value for <code>Type</code> is <code>Country</code>.</p>
+ 
+  </li> <li><p> The <code>Value</code>, which is a two character code for the country to
+  add to the <code>GeoMatchConstraint</code> object. Valid codes are listed in
+  <code>GeoMatchConstraint$Value</code>.</p>
+ 
+  </li> </ul><p> To create and configure an <code>GeoMatchSet</code>, perform the  
+following steps:</p>
+ 
+  <ol> <li><p> Submit a <code>CreateGeoMatchSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateGeoMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateGeoMatchSet</code> request to specify the country  
+that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol><p> When you update an <code>GeoMatchSet</code>, you specify the country that  
+you want to add and/or the country that you want to delete. If you want to  
+change a country, you delete the existing country and add the new one.</p>
+ 
+  For more information about how to use the AWS WAF API to allow or block
+  HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_geo_match_set-3">update_geo_match_set/3</a></h3>
+<div class="spec">
+<p><tt>update_geo_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_i_p_set-2">update_i_p_set/2</a></h3>
+<div class="spec">
+<p><tt>update_i_p_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>IPSetDescriptor</code> objects in an <code>IPSet</code>. For each
+  <code>IPSetDescriptor</code> object, you specify the following values:</p>
+ 
+  <ul> <li><p> Whether to insert or delete the object from the array. If you
+  want to change an <code>IPSetDescriptor</code> object, you delete the existing object  
+and add a new one.</p>
+ 
+  </li> <li><p> The IP address version, <code>IPv4</code> or <code>IPv6</code>.</p>
+ 
+  </li> <li><p> The IP address in CIDR notation, for example, <code>192.0.2.0/24</code>
+  (for the range of IP addresses from <code>192.0.2.0</code> to <code>192.0.2.255</code>) or
+  <code>192.0.2.44/32</code> (for the individual IP address <code>192.0.2.44</code>).</p>
+ 
+  </li> </ul><p> AWS WAF supports IPv4 address ranges: /8 and any range between  
+/16 through /32. AWS WAF supports IPv6 address ranges: /24, /32, /48, /56,  
+/64, and /128. For more information about CIDR notation, see the Wikipedia  
+entry Classless Inter-Domain Routing.</p>
+ 
+  <p>IPv6 addresses can be represented using any of the following formats:</p>
+ 
+  <ul> <li><p> 1111:0000:0000:0000:0000:0000:0000:0111/128</p>
+ 
+  </li> <li><p> 1111:0:0:0:0:0:0:0111/128</p>
+ 
+  </li> <li><p> 1111::0111/128</p>
+ 
+  </li> <li><p> 1111::111/128</p>
+ 
+  </li> </ul><p> You use an <code>IPSet</code> to specify which web requests you want to
+  allow or block based on the IP addresses that the requests originated
+  from. For example, if you're receiving a lot of requests from one or a
+  small number of IP addresses and you want to block the requests, you can
+  create an <code>IPSet</code> that specifies those IP addresses, and then configure  
+AWS WAF to block the requests.</p>
+ 
+  <p>To create and configure an <code>IPSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Submit a <code>CreateIPSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateIPSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateIPSet</code> request to specify the IP addresses  
+that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol><p> When you update an <code>IPSet</code>, you specify the IP addresses that  
+you want to add and/or the IP addresses that you want to delete. If you  
+want to change an IP address, you delete the existing IP address and add  
+the new one.</p>
+ 
+  <p>You can insert a maximum of 1000 addresses in a single request.</p>
+ 
+  For more information about how to use the AWS WAF API to allow or block
+  HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_i_p_set-3">update_i_p_set/3</a></h3>
+<div class="spec">
+<p><tt>update_i_p_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_rate_based_rule-2">update_rate_based_rule/2</a></h3>
+<div class="spec">
+<p><tt>update_rate_based_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>Predicate</code> objects in a rule and updates the
+  <code>RateLimit</code> in the rule.</p>
+ 
+  <p>Each <code>Predicate</code> object identifies a predicate, such as a <code>ByteMatchSet</code>
+  or an <code>IPSet</code>, that specifies the web requests that you want to block or
+  count. The <code>RateLimit</code> specifies the number of requests every five minutes  
+that triggers the rule.</p>
+ 
+  <p>If you add more than one predicate to a <code>RateBasedRule</code>, a request must
+  match all the predicates and exceed the <code>RateLimit</code> to be counted or
+  blocked. For example, suppose you add the following to a <code>RateBasedRule</code>:</p>
+ 
+  <ul> <li><p> An <code>IPSet</code> that matches the IP address <code>192.0.2.44/32</code></p>
+ 
+  </li> <li><p> A <code>ByteMatchSet</code> that matches <code>BadBot</code> in the <code>User-Agent</code>  
+header</p>
+ 
+  </li> </ul><p> Further, you specify a <code>RateLimit</code> of 1,000.</p>
+ 
+  <p>You then add the <code>RateBasedRule</code> to a <code>WebACL</code> and specify that you want
+  to block requests that satisfy the rule. For a request to be blocked, it
+  must come from the IP address 192.0.2.44 and the <code>User-Agent</code> header in
+  the request must contain the value <code>BadBot</code>. Further, requests that match  
+these two conditions much be received at a rate of more than 1,000 every  
+five minutes. If the rate drops below this limit, AWS WAF no longer blocks  
+the requests.</p>
+ 
+  <p>As a second example, suppose you want to limit requests to a particular
+  page on your site. To do this, you could add the following to a
+  <code>RateBasedRule</code>:</p>
+ 
+  <ul> <li><p> A <code>ByteMatchSet</code> with <code>FieldToMatch</code> of <code>URI</code></p>
+ 
+  </li> <li><p> A <code>PositionalConstraint</code> of <code>STARTS_WITH</code></p>
+ 
+  </li> <li><p> A <code>TargetString</code> of <code>login</code></p>
+ 
+  </li> </ul><p> Further, you specify a <code>RateLimit</code> of 1,000.</p>
+ 
+  By adding this <code>RateBasedRule</code> to a <code>WebACL</code>, you could limit requests to
+  your login page without affecting the rest of your site.</p>
+
+<h3 class="function"><a name="update_rate_based_rule-3">update_rate_based_rule/3</a></h3>
+<div class="spec">
+<p><tt>update_rate_based_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_regex_match_set-2">update_regex_match_set/2</a></h3>
+<div class="spec">
+<p><tt>update_regex_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>RegexMatchTuple</code> objects (filters) in a
+  <code>RegexMatchSet</code>. For each <code>RegexMatchSetUpdate</code> object, you specify the  
+following values:</p>
+ 
+  <ul> <li><p> Whether to insert or delete the object from the array. If you
+  want to change a <code>RegexMatchSetUpdate</code> object, you delete the existing  
+object and add a new one.</p>
+ 
+  </li> <li><p> The part of a web request that you want AWS WAF to
+  inspectupdate, such as a query string or the value of the <code>User-Agent</code>  
+header.</p>
+ 
+  </li> <li><p> The identifier of the pattern (a regular expression) that you
+  want AWS WAF to look for. For more information, see <code>RegexPatternSet</code>.</p>
+ 
+  </li> <li><p> Whether to perform any conversions on the request, such as  
+converting it to lowercase, before inspecting it for the specified string.</p>
+ 
+  </li> </ul><p> For example, you can create a <code>RegexPatternSet</code> that matches
+  any requests with <code>User-Agent</code> headers that contain the string
+  <code>B[a@]dB[o0]t</code>. You can then configure AWS WAF to reject those requests.</p>
+ 
+  <p>To create and configure a <code>RegexMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Create a <code>RegexMatchSet.</code> For more information, see
+  <code>CreateRegexMatchSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateRegexMatchSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateRegexMatchSet</code> request to specify the part of
+  the request that you want AWS WAF to inspect (for example, the header or
+  the URI) and the identifier of the <code>RegexPatternSet</code> that contain the  
+regular expression patters you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_regex_match_set-3">update_regex_match_set/3</a></h3>
+<div class="spec">
+<p><tt>update_regex_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_regex_pattern_set-2">update_regex_pattern_set/2</a></h3>
+<div class="spec">
+<p><tt>update_regex_pattern_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>RegexPatternString</code> objects in a <code>RegexPatternSet</code>.
+  For each <code>RegexPatternString</code> object, you specify the following values:</p>
+ 
+  <ul> <li><p> Whether to insert or delete the <code>RegexPatternString</code>.</p>
+ 
+  </li> <li><p> The regular expression pattern that you want to insert or
+  delete. For more information, see <code>RegexPatternSet</code>.</p>
+ 
+  </li> </ul><p> For example, you can create a <code>RegexPatternString</code> such as
+  <code>B[a@]dB[o0]t</code>. AWS WAF will match this <code>RegexPatternString</code> to:</p>
+ 
+  <ul> <li><p> BadBot</p>
+ 
+  </li> <li><p> BadB0t</p>
+ 
+  </li> <li><p> B@dBot</p>
+ 
+  </li> <li><p> B@dB0t</p>
+ 
+  </li> </ul><p> To create and configure a <code>RegexPatternSet</code>, perform the  
+following steps:</p>
+ 
+  <ol> <li><p> Create a <code>RegexPatternSet.</code> For more information, see
+  <code>CreateRegexPatternSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateRegexPatternSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateRegexPatternSet</code> request to specify the  
+regular expression pattern that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_regex_pattern_set-3">update_regex_pattern_set/3</a></h3>
+<div class="spec">
+<p><tt>update_regex_pattern_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_rule-2">update_rule/2</a></h3>
+<div class="spec">
+<p><tt>update_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>Predicate</code> objects in a <code>Rule</code>. Each <code>Predicate</code>
+  object identifies a predicate, such as a <code>ByteMatchSet</code> or an <code>IPSet</code>,
+  that specifies the web requests that you want to allow, block, or count.
+  If you add more than one predicate to a <code>Rule</code>, a request must match all
+  of the specifications to be allowed, blocked, or counted. For example,
+  suppose that you add the following to a <code>Rule</code>:</p>
+ 
+  <ul> <li><p> A <code>ByteMatchSet</code> that matches the value <code>BadBot</code> in the
+  <code>User-Agent</code> header</p>
+ 
+  </li> <li><p> An <code>IPSet</code> that matches the IP address <code>192.0.2.44</code></p>
+ 
+  </li> </ul><p> You then add the <code>Rule</code> to a <code>WebACL</code> and specify that you
+  want to block requests that satisfy the <code>Rule</code>. For a request to be
+  blocked, the <code>User-Agent</code> header in the request must contain the value
+  <code>BadBot</code> and the request must originate from the IP address 192.0.2.44.</p>
+ 
+  <p>To create and configure a <code>Rule</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Create and update the predicates that you want to include in the
+  <code>Rule</code>.</p>
+ 
+  </li> <li><p> Create the <code>Rule</code>. See <code>CreateRule</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateRule</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateRule</code> request to add predicates to the <code>Rule</code>.</p>
+ 
+  </li> <li><p> Create and update a <code>WebACL</code> that contains the <code>Rule</code>. See
+  <code>CreateWebACL</code>.</p>
+ 
+  </li> </ol><p> If you want to replace one <code>ByteMatchSet</code> or <code>IPSet</code> with  
+another, you delete the existing one and add the new one.</p>
+ 
+  For more information about how to use the AWS WAF API to allow or block
+  HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_rule-3">update_rule/3</a></h3>
+<div class="spec">
+<p><tt>update_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_rule_group-2">update_rule_group/2</a></h3>
+<div class="spec">
+<p><tt>update_rule_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>ActivatedRule</code> objects in a <code>RuleGroup</code>.</p>
+ 
+  <p>You can only insert <code>REGULAR</code> rules into a rule group.</p>
+ 
+  <p>You can have a maximum of ten rules per rule group.</p>
+ 
+  <p>To create and configure a <code>RuleGroup</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Create and update the <code>Rules</code> that you want to include in the
+  <code>RuleGroup</code>. See <code>CreateRule</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateRuleGroup</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateRuleGroup</code> request to add <code>Rules</code> to the
+  <code>RuleGroup</code>.</p>
+ 
+  </li> <li><p> Create and update a <code>WebACL</code> that contains the <code>RuleGroup</code>. See
+  <code>CreateWebACL</code>.</p>
+ 
+  </li> </ol><p> If you want to replace one <code>Rule</code> with another, you delete the  
+existing one and add the new one.</p>
+ 
+  For more information about how to use the AWS WAF API to allow or block
+  HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_rule_group-3">update_rule_group/3</a></h3>
+<div class="spec">
+<p><tt>update_rule_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_size_constraint_set-2">update_size_constraint_set/2</a></h3>
+<div class="spec">
+<p><tt>update_size_constraint_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>SizeConstraint</code> objects (filters) in a
+  <code>SizeConstraintSet</code>. For each <code>SizeConstraint</code> object, you specify the  
+following values:</p>
+ 
+  <ul> <li><p> Whether to insert or delete the object from the array. If you
+  want to change a <code>SizeConstraintSetUpdate</code> object, you delete the existing  
+object and add a new one.</p>
+ 
+  </li> <li><p> The part of a web request that you want AWS WAF to evaluate,
+  such as the length of a query string or the length of the <code>User-Agent</code>  
+header.</p>
+ 
+  </li> <li><p> Whether to perform any transformations on the request, such as
+  converting it to lowercase, before checking its length. Note that
+  transformations of the request body are not supported because the AWS
+  resource forwards only the first <code>8192</code> bytes of your request to AWS WAF.</p>
+ 
+  <p>You can only specify a single type of TextTransformation.</p>
+ 
+  </li> <li><p> A <code>ComparisonOperator</code> used for evaluating the selected part of
+  the request against the specified <code>Size</code>, such as equals, greater than,  
+less than, and so on.</p>
+ 
+  </li> <li><p> The length, in bytes, that you want AWS WAF to watch for in  
+selected part of the request. The length is computed after applying the  
+transformation.</p>
+ 
+  </li> </ul><p> For example, you can add a <code>SizeConstraintSetUpdate</code> object
+  that matches web requests in which the length of the <code>User-Agent</code> header  
+is greater than 100 bytes. You can then configure AWS WAF to block those  
+requests.</p>
+ 
+  <p>To create and configure a <code>SizeConstraintSet</code>, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Create a <code>SizeConstraintSet.</code> For more information, see
+  <code>CreateSizeConstraintSet</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateSizeConstraintSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateSizeConstraintSet</code> request to specify the part  
+of the request that you want AWS WAF to inspect (for example, the header  
+or the URI) and the value that you want AWS WAF to watch for.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_size_constraint_set-3">update_size_constraint_set/3</a></h3>
+<div class="spec">
+<p><tt>update_size_constraint_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_sql_injection_match_set-2">update_sql_injection_match_set/2</a></h3>
+<div class="spec">
+<p><tt>update_sql_injection_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>SqlInjectionMatchTuple</code> objects (filters) in a
+  <code>SqlInjectionMatchSet</code>. For each <code>SqlInjectionMatchTuple</code> object, you  
+specify the following values:</p>
+ 
+  <ul> <li><p> <code>Action</code>: Whether to insert the object into or delete the object
+  from the array. To change a <code>SqlInjectionMatchTuple</code>, you delete the  
+existing object and add a new one.</p>
+ 
+  </li> <li><p> <code>FieldToMatch</code>: The part of web requests that you want AWS WAF  
+to inspect and, if you want AWS WAF to inspect a header or custom query  
+parameter, the name of the header or parameter.</p>
+ 
+  </li> <li><p> <code>TextTransformation</code>: Which text transformation, if any, to  
+perform on the web request before inspecting the request for snippets of  
+malicious SQL code.</p>
+ 
+  <p>You can only specify a single type of TextTransformation.</p>
+ 
+  </li> </ul><p> You use <code>SqlInjectionMatchSet</code> objects to specify which
+  CloudFront requests that you want to allow, block, or count. For example,
+  if you're receiving requests that contain snippets of SQL code in the
+  query string and you want to block the requests, you can create a
+  <code>SqlInjectionMatchSet</code> with the applicable settings, and then configure  
+AWS WAF to block the requests.</p>
+ 
+  <p>To create and configure a <code>SqlInjectionMatchSet</code>, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Submit a <code>CreateSqlInjectionMatchSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateIPSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateSqlInjectionMatchSet</code> request to specify the  
+parts of web requests that you want AWS WAF to inspect for snippets of SQL  
+code.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_sql_injection_match_set-3">update_sql_injection_match_set/3</a></h3>
+<div class="spec">
+<p><tt>update_sql_injection_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_web_a_c_l-2">update_web_a_c_l/2</a></h3>
+<div class="spec">
+<p><tt>update_web_a_c_l(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>ActivatedRule</code> objects in a <code>WebACL</code>. Each <code>Rule</code>
+  identifies web requests that you want to allow, block, or count. When you
+  update a <code>WebACL</code>, you specify the following values:</p>
+ 
+  <ul> <li><p> A default action for the <code>WebACL</code>, either <code>ALLOW</code> or <code>BLOCK</code>.
+  AWS WAF performs the default action if a request doesn't match the
+  criteria in any of the <code>Rules</code> in a <code>WebACL</code>.</p>
+ 
+  </li> <li><p> The <code>Rules</code> that you want to add or delete. If you want to
+  replace one <code>Rule</code> with another, you delete the existing <code>Rule</code> and add  
+the new one.</p>
+ 
+  </li> <li><p> For each <code>Rule</code>, whether you want AWS WAF to allow requests,
+  block requests, or count requests that match the conditions in the <code>Rule</code>.</p>
+ 
+  </li> <li><p> The order in which you want AWS WAF to evaluate the <code>Rules</code> in
+  a <code>WebACL</code>. If you add more than one <code>Rule</code> to a <code>WebACL</code>, AWS WAF
+  evaluates each request against the <code>Rules</code> in order based on the value of
+  <code>Priority</code>. (The <code>Rule</code> that has the lowest value for <code>Priority</code> is
+  evaluated first.) When a web request matches all the predicates (such as
+  <code>ByteMatchSets</code> and <code>IPSets</code>) in a <code>Rule</code>, AWS WAF immediately takes the
+  corresponding action, allow or block, and doesn't evaluate the request
+  against the remaining <code>Rules</code> in the <code>WebACL</code>, if any.</p>
+ 
+  </li> </ul><p> To create and configure a <code>WebACL</code>, perform the following  
+steps:</p>
+ 
+  <ol> <li><p> Create and update the predicates that you want to include in
+  <code>Rules</code>. For more information, see <code>CreateByteMatchSet</code>,
+  <code>UpdateByteMatchSet</code>, <code>CreateIPSet</code>, <code>UpdateIPSet</code>,
+  <code>CreateSqlInjectionMatchSet</code>, and <code>UpdateSqlInjectionMatchSet</code>.</p>
+ 
+  </li> <li><p> Create and update the <code>Rules</code> that you want to include in the
+  <code>WebACL</code>. For more information, see <code>CreateRule</code> and <code>UpdateRule</code>.</p>
+ 
+  </li> <li><p> Create a <code>WebACL</code>. See <code>CreateWebACL</code>.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateWebACL</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateWebACL</code> request to specify the <code>Rules</code> that
+  you want to include in the <code>WebACL</code>, to specify the default action, and to
+  associate the <code>WebACL</code> with a CloudFront distribution.</p>
+ 
+  <p>The <code>ActivatedRule</code> can be a rule group. If you specify a rule group as
+  your <code>ActivatedRule</code> , you can exclude specific rules from that rule  
+group.</p>
+ 
+  <p>If you already have a rule group associated with a web ACL and want to
+  submit an <code>UpdateWebACL</code> request to exclude certain rules from that rule
+  group, you must first remove the rule group from the web ACL, the
+  re-insert it again, specifying the excluded rules. For details, see
+  <code>ActivatedRule$ExcludedRules</code> .</p>
+ 
+  </li> </ol><p> Be aware that if you try to add a RATE_BASED rule to a web ACL
+  without setting the rule type when first creating the rule, the
+  <code>UpdateWebACL</code> request will fail because the request tries to add a  
+REGULAR rule (the default rule type) with the specified ID, which does not  
+exist.</p>
+ 
+  For more information about how to use the AWS WAF API to allow or block
+  HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_web_a_c_l-3">update_web_a_c_l/3</a></h3>
+<div class="spec">
+<p><tt>update_web_a_c_l(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_xss_match_set-2">update_xss_match_set/2</a></h3>
+<div class="spec">
+<p><tt>update_xss_match_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is AWS WAF Classic documentation.</p>
+ 
+  <p>For more information, see AWS WAF Classic in the developer guide.</p>
+ 
+  <p>For the latest version of AWS WAF, use the AWS WAFV2 API and see the AWS  
+WAF Developer Guide. With the latest version, AWS WAF has a single set of  
+endpoints for regional and global use.</p>
+ 
+  <p>Inserts or deletes <code>XssMatchTuple</code> objects (filters) in an <code>XssMatchSet</code>.
+  For each <code>XssMatchTuple</code> object, you specify the following values:</p>
+ 
+  <ul> <li><p> <code>Action</code>: Whether to insert the object into or delete the object
+  from the array. To change an <code>XssMatchTuple</code>, you delete the existing  
+object and add a new one.</p>
+ 
+  </li> <li><p> <code>FieldToMatch</code>: The part of web requests that you want AWS WAF  
+to inspect and, if you want AWS WAF to inspect a header or custom query  
+parameter, the name of the header or parameter.</p>
+ 
+  </li> <li><p> <code>TextTransformation</code>: Which text transformation, if any, to  
+perform on the web request before inspecting the request for cross-site  
+scripting attacks.</p>
+ 
+  <p>You can only specify a single type of TextTransformation.</p>
+ 
+  </li> </ul><p> You use <code>XssMatchSet</code> objects to specify which CloudFront
+  requests that you want to allow, block, or count. For example, if you're
+  receiving requests that contain cross-site scripting attacks in the
+  request body and you want to block the requests, you can create an
+  <code>XssMatchSet</code> with the applicable settings, and then configure AWS WAF to  
+block the requests.</p>
+ 
+  <p>To create and configure an <code>XssMatchSet</code>, perform the following steps:</p>
+ 
+  <ol> <li><p> Submit a <code>CreateXssMatchSet</code> request.</p>
+ 
+  </li> <li><p> Use <code>GetChangeToken</code> to get the change token that you provide
+  in the <code>ChangeToken</code> parameter of an <code>UpdateIPSet</code> request.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateXssMatchSet</code> request to specify the parts of  
+web requests that you want AWS WAF to inspect for cross-site scripting  
+attacks.</p>
+ 
+  </li> </ol> For more information about how to use the AWS WAF API to allow
+  or block HTTP requests, see the AWS WAF Developer Guide.</p>
+
+<h3 class="function"><a name="update_xss_match_set-3">update_xss_match_set/3</a></h3>
+<div class="spec">
+<p><tt>update_xss_match_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

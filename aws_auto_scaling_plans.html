@@ -1,0 +1,138 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_auto_scaling_plans</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_auto_scaling_plans</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Auto Scaling.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Auto Scaling</p>
+ 
+  <p>Use AWS Auto Scaling to quickly discover all the scalable AWS resources  
+for your application and configure dynamic scaling and predictive scaling  
+for your resources using scaling plans.</p>
+ 
+  <p>Use this service in conjunction with the Amazon EC2 Auto Scaling,  
+Application Auto Scaling, Amazon CloudWatch, and AWS CloudFormation  
+services.</p>
+ 
+  <p>Currently, predictive scaling is only available for Amazon EC2 Auto  
+Scaling groups.</p>
+ 
+  For more information about AWS Auto Scaling, including information about
+  granting IAM users required permissions for AWS Auto Scaling actions, see
+  the AWS Auto Scaling User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_scaling_plan-2">create_scaling_plan/2</a></td><td>Creates a scaling plan.</td></tr>
+<tr><td valign="top"><a href="#create_scaling_plan-3">create_scaling_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_scaling_plan-2">delete_scaling_plan/2</a></td><td>Deletes the specified scaling plan.</td></tr>
+<tr><td valign="top"><a href="#delete_scaling_plan-3">delete_scaling_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_scaling_plan_resources-2">describe_scaling_plan_resources/2</a></td><td>Describes the scalable resources in the specified scaling plan.</td></tr>
+<tr><td valign="top"><a href="#describe_scaling_plan_resources-3">describe_scaling_plan_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_scaling_plans-2">describe_scaling_plans/2</a></td><td>Describes one or more of your scaling plans.</td></tr>
+<tr><td valign="top"><a href="#describe_scaling_plans-3">describe_scaling_plans/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_scaling_plan_resource_forecast_data-2">get_scaling_plan_resource_forecast_data/2</a></td><td>Retrieves the forecast data for a scalable resource.</td></tr>
+<tr><td valign="top"><a href="#get_scaling_plan_resource_forecast_data-3">get_scaling_plan_resource_forecast_data/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_scaling_plan-2">update_scaling_plan/2</a></td><td>Updates the specified scaling plan.</td></tr>
+<tr><td valign="top"><a href="#update_scaling_plan-3">update_scaling_plan/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_scaling_plan-2">create_scaling_plan/2</a></h3>
+<div class="spec">
+<p><tt>create_scaling_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a scaling plan.</p>
+
+<h3 class="function"><a name="create_scaling_plan-3">create_scaling_plan/3</a></h3>
+<div class="spec">
+<p><tt>create_scaling_plan(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_scaling_plan-2">delete_scaling_plan/2</a></h3>
+<div class="spec">
+<p><tt>delete_scaling_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified scaling plan.</p>
+ 
+  <p>Deleting a scaling plan deletes the underlying <code>ScalingInstruction</code> for  
+all of the scalable resources that are covered by the plan.</p>
+ 
+  If the plan has launched resources or has scaling activities in progress,
+  you must delete those resources separately.</p>
+
+<h3 class="function"><a name="delete_scaling_plan-3">delete_scaling_plan/3</a></h3>
+<div class="spec">
+<p><tt>delete_scaling_plan(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_scaling_plan_resources-2">describe_scaling_plan_resources/2</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_plan_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the scalable resources in the specified scaling plan.</p>
+
+<h3 class="function"><a name="describe_scaling_plan_resources-3">describe_scaling_plan_resources/3</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_plan_resources(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_scaling_plans-2">describe_scaling_plans/2</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_plans(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes one or more of your scaling plans.</p>
+
+<h3 class="function"><a name="describe_scaling_plans-3">describe_scaling_plans/3</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_plans(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_scaling_plan_resource_forecast_data-2">get_scaling_plan_resource_forecast_data/2</a></h3>
+<div class="spec">
+<p><tt>get_scaling_plan_resource_forecast_data(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the forecast data for a scalable resource.</p>
+ 
+  Capacity forecasts are represented as predicted values, or data points,
+  that are calculated using historical data points from a specified
+  CloudWatch load metric. Data points are available for up to 56 days.</p>
+
+<h3 class="function"><a name="get_scaling_plan_resource_forecast_data-3">get_scaling_plan_resource_forecast_data/3</a></h3>
+<div class="spec">
+<p><tt>get_scaling_plan_resource_forecast_data(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_scaling_plan-2">update_scaling_plan/2</a></h3>
+<div class="spec">
+<p><tt>update_scaling_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified scaling plan.</p>
+ 
+  You cannot update a scaling plan if it is in the process of being created,
+  updated, or deleted.</p>
+
+<h3 class="function"><a name="update_scaling_plan-3">update_scaling_plan/3</a></h3>
+<div class="spec">
+<p><tt>update_scaling_plan(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

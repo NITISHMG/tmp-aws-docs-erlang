@@ -1,0 +1,419 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_budgets</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_budgets</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>The AWS Budgets API enables you to use AWS Budgets to plan your  
+service usage, service costs, and instance reservations.
+
+
+<h2><a name="description">Description</a></h2><p>The AWS Budgets API enables you to use AWS Budgets to plan your  
+service usage, service costs, and instance reservations.</p>
+ 
+  <p>The API reference provides descriptions, syntax, and usage examples for  
+each of the actions and data types for AWS Budgets.</p>
+ 
+  <p>Budgets provide you with a way to see the following information:</p>
+ 
+  <ul> <li><p> How close your plan is to your budgeted amount or to the free  
+tier limits</p>
+ 
+  </li> <li><p> Your usage-to-date, including how much you've used of your  
+Reserved Instances (RIs)</p>
+ 
+  </li> <li><p> Your current estimated charges from AWS, and how much your  
+predicted usage will accrue in charges by the end of the month</p>
+ 
+  </li> <li><p> How much of your budget has been used</p>
+ 
+  </li> </ul><p> AWS updates your budget status several times a day. Budgets  
+track your unblended costs, subscriptions, refunds, and RIs. You can  
+create the following types of budgets:</p>
+ 
+  <ul> <li><p> Cost budgets - Plan how much you want to spend on a service.</p>
+ 
+  </li> <li><p> Usage budgets - Plan how much you want to use one or more  
+services.</p>
+ 
+  </li> <li><p> RI utilization budgets - Define a utilization threshold, and  
+receive alerts when your RI usage falls below that threshold. This lets  
+you see if your RIs are unused or under-utilized.</p>
+ 
+  </li> <li><p> RI coverage budgets - Define a coverage threshold, and receive  
+alerts when the number of your instance hours that are covered by RIs fall  
+below that threshold. This lets you see how much of your instance usage is  
+covered by a reservation.</p>
+ 
+  </li> </ul><p> Service Endpoint</p>
+ 
+  <p>The AWS Budgets API provides the following endpoint:</p>
+ 
+  <ul> <li><p> https://budgets.amazonaws.com</p>
+ 
+  </li> </ul> For information about costs that are associated with the AWS
+  Budgets API, see AWS Cost Management Pricing.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_budget-2">create_budget/2</a></td><td>Creates a budget and, if included, notifications and subscribers.</td></tr>
+<tr><td valign="top"><a href="#create_budget-3">create_budget/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_budget_action-2">create_budget_action/2</a></td><td>Creates a budget action.</td></tr>
+<tr><td valign="top"><a href="#create_budget_action-3">create_budget_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_notification-2">create_notification/2</a></td><td>Creates a notification.</td></tr>
+<tr><td valign="top"><a href="#create_notification-3">create_notification/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_subscriber-2">create_subscriber/2</a></td><td>Creates a subscriber.</td></tr>
+<tr><td valign="top"><a href="#create_subscriber-3">create_subscriber/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_budget-2">delete_budget/2</a></td><td>Deletes a budget.</td></tr>
+<tr><td valign="top"><a href="#delete_budget-3">delete_budget/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_budget_action-2">delete_budget_action/2</a></td><td>Deletes a budget action.</td></tr>
+<tr><td valign="top"><a href="#delete_budget_action-3">delete_budget_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_notification-2">delete_notification/2</a></td><td>Deletes a notification.</td></tr>
+<tr><td valign="top"><a href="#delete_notification-3">delete_notification/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_subscriber-2">delete_subscriber/2</a></td><td>Deletes a subscriber.</td></tr>
+<tr><td valign="top"><a href="#delete_subscriber-3">delete_subscriber/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_budget-2">describe_budget/2</a></td><td>Describes a budget.</td></tr>
+<tr><td valign="top"><a href="#describe_budget-3">describe_budget/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_budget_action-2">describe_budget_action/2</a></td><td>Describes a budget action detail.</td></tr>
+<tr><td valign="top"><a href="#describe_budget_action-3">describe_budget_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_budget_action_histories-2">describe_budget_action_histories/2</a></td><td>Describes a budget action history detail.</td></tr>
+<tr><td valign="top"><a href="#describe_budget_action_histories-3">describe_budget_action_histories/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_budget_actions_for_account-2">describe_budget_actions_for_account/2</a></td><td>Describes all of the budget actions for an account.</td></tr>
+<tr><td valign="top"><a href="#describe_budget_actions_for_account-3">describe_budget_actions_for_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_budget_actions_for_budget-2">describe_budget_actions_for_budget/2</a></td><td>Describes all of the budget actions for a budget.</td></tr>
+<tr><td valign="top"><a href="#describe_budget_actions_for_budget-3">describe_budget_actions_for_budget/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_budget_performance_history-2">describe_budget_performance_history/2</a></td><td>Describes the history for <code>DAILY</code>, <code>MONTHLY</code>, and <code>QUARTERLY</code>  
+budgets.</td></tr>
+<tr><td valign="top"><a href="#describe_budget_performance_history-3">describe_budget_performance_history/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_budgets-2">describe_budgets/2</a></td><td>Lists the budgets that are associated with an account.</td></tr>
+<tr><td valign="top"><a href="#describe_budgets-3">describe_budgets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_notifications_for_budget-2">describe_notifications_for_budget/2</a></td><td>Lists the notifications that are associated with a budget.</td></tr>
+<tr><td valign="top"><a href="#describe_notifications_for_budget-3">describe_notifications_for_budget/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_subscribers_for_notification-2">describe_subscribers_for_notification/2</a></td><td>Lists the subscribers that are associated with a notification.</td></tr>
+<tr><td valign="top"><a href="#describe_subscribers_for_notification-3">describe_subscribers_for_notification/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#execute_budget_action-2">execute_budget_action/2</a></td><td>Executes a budget action.</td></tr>
+<tr><td valign="top"><a href="#execute_budget_action-3">execute_budget_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_budget-2">update_budget/2</a></td><td>Updates a budget.</td></tr>
+<tr><td valign="top"><a href="#update_budget-3">update_budget/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_budget_action-2">update_budget_action/2</a></td><td>Updates a budget action.</td></tr>
+<tr><td valign="top"><a href="#update_budget_action-3">update_budget_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_notification-2">update_notification/2</a></td><td>Updates a notification.</td></tr>
+<tr><td valign="top"><a href="#update_notification-3">update_notification/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_subscriber-2">update_subscriber/2</a></td><td>Updates a subscriber.</td></tr>
+<tr><td valign="top"><a href="#update_subscriber-3">update_subscriber/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_budget-2">create_budget/2</a></h3>
+<div class="spec">
+<p><tt>create_budget(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a budget and, if included, notifications and subscribers.</p>
+ 
+  Only one of <code>BudgetLimit</code> or <code>PlannedBudgetLimits</code> can be present in the
+  syntax at one time. Use the syntax that matches your case. The Request
+  Syntax section shows the <code>BudgetLimit</code> syntax. For <code>PlannedBudgetLimits</code>,
+  see the Examples section.</p>
+
+<h3 class="function"><a name="create_budget-3">create_budget/3</a></h3>
+<div class="spec">
+<p><tt>create_budget(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_budget_action-2">create_budget_action/2</a></h3>
+<div class="spec">
+<p><tt>create_budget_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a budget action.</p>
+
+<h3 class="function"><a name="create_budget_action-3">create_budget_action/3</a></h3>
+<div class="spec">
+<p><tt>create_budget_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_notification-2">create_notification/2</a></h3>
+<div class="spec">
+<p><tt>create_notification(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a notification.</p>
+ 
+  You must create the budget before you create the associated notification.</p>
+
+<h3 class="function"><a name="create_notification-3">create_notification/3</a></h3>
+<div class="spec">
+<p><tt>create_notification(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_subscriber-2">create_subscriber/2</a></h3>
+<div class="spec">
+<p><tt>create_subscriber(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a subscriber.</p>
+ 
+  You must create the associated budget and notification before you create
+  the subscriber.</p>
+
+<h3 class="function"><a name="create_subscriber-3">create_subscriber/3</a></h3>
+<div class="spec">
+<p><tt>create_subscriber(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_budget-2">delete_budget/2</a></h3>
+<div class="spec">
+<p><tt>delete_budget(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a budget.</p>
+ 
+  <p>You can delete your budget at any time.</p>
+ 
+  Deleting a budget also deletes the notifications and subscribers that are
+  associated with that budget.</p>
+
+<h3 class="function"><a name="delete_budget-3">delete_budget/3</a></h3>
+<div class="spec">
+<p><tt>delete_budget(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_budget_action-2">delete_budget_action/2</a></h3>
+<div class="spec">
+<p><tt>delete_budget_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a budget action.</p>
+
+<h3 class="function"><a name="delete_budget_action-3">delete_budget_action/3</a></h3>
+<div class="spec">
+<p><tt>delete_budget_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_notification-2">delete_notification/2</a></h3>
+<div class="spec">
+<p><tt>delete_notification(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a notification.</p>
+ 
+  Deleting a notification also deletes the subscribers that are associated
+  with the notification.</p>
+
+<h3 class="function"><a name="delete_notification-3">delete_notification/3</a></h3>
+<div class="spec">
+<p><tt>delete_notification(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_subscriber-2">delete_subscriber/2</a></h3>
+<div class="spec">
+<p><tt>delete_subscriber(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a subscriber.</p>
+ 
+  Deleting the last subscriber to a notification also deletes the
+  notification.</p>
+
+<h3 class="function"><a name="delete_subscriber-3">delete_subscriber/3</a></h3>
+<div class="spec">
+<p><tt>delete_subscriber(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_budget-2">describe_budget/2</a></h3>
+<div class="spec">
+<p><tt>describe_budget(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes a budget.</p>
+ 
+  The Request Syntax section shows the <code>BudgetLimit</code> syntax. For
+  <code>PlannedBudgetLimits</code>, see the Examples section.</p>
+
+<h3 class="function"><a name="describe_budget-3">describe_budget/3</a></h3>
+<div class="spec">
+<p><tt>describe_budget(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_budget_action-2">describe_budget_action/2</a></h3>
+<div class="spec">
+<p><tt>describe_budget_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a budget action detail.</p>
+
+<h3 class="function"><a name="describe_budget_action-3">describe_budget_action/3</a></h3>
+<div class="spec">
+<p><tt>describe_budget_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_budget_action_histories-2">describe_budget_action_histories/2</a></h3>
+<div class="spec">
+<p><tt>describe_budget_action_histories(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a budget action history detail.</p>
+
+<h3 class="function"><a name="describe_budget_action_histories-3">describe_budget_action_histories/3</a></h3>
+<div class="spec">
+<p><tt>describe_budget_action_histories(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_budget_actions_for_account-2">describe_budget_actions_for_account/2</a></h3>
+<div class="spec">
+<p><tt>describe_budget_actions_for_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes all of the budget actions for an account.</p>
+
+<h3 class="function"><a name="describe_budget_actions_for_account-3">describe_budget_actions_for_account/3</a></h3>
+<div class="spec">
+<p><tt>describe_budget_actions_for_account(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_budget_actions_for_budget-2">describe_budget_actions_for_budget/2</a></h3>
+<div class="spec">
+<p><tt>describe_budget_actions_for_budget(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes all of the budget actions for a budget.</p>
+
+<h3 class="function"><a name="describe_budget_actions_for_budget-3">describe_budget_actions_for_budget/3</a></h3>
+<div class="spec">
+<p><tt>describe_budget_actions_for_budget(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_budget_performance_history-2">describe_budget_performance_history/2</a></h3>
+<div class="spec">
+<p><tt>describe_budget_performance_history(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the history for <code>DAILY</code>, <code>MONTHLY</code>, and <code>QUARTERLY</code>  
+budgets.</p>
+ 
+  Budget history isn't available for <code>ANNUAL</code> budgets.</p>
+
+<h3 class="function"><a name="describe_budget_performance_history-3">describe_budget_performance_history/3</a></h3>
+<div class="spec">
+<p><tt>describe_budget_performance_history(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_budgets-2">describe_budgets/2</a></h3>
+<div class="spec">
+<p><tt>describe_budgets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the budgets that are associated with an account.</p>
+ 
+  The Request Syntax section shows the <code>BudgetLimit</code> syntax. For
+  <code>PlannedBudgetLimits</code>, see the Examples section.</p>
+
+<h3 class="function"><a name="describe_budgets-3">describe_budgets/3</a></h3>
+<div class="spec">
+<p><tt>describe_budgets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_notifications_for_budget-2">describe_notifications_for_budget/2</a></h3>
+<div class="spec">
+<p><tt>describe_notifications_for_budget(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the notifications that are associated with a budget.</p>
+
+<h3 class="function"><a name="describe_notifications_for_budget-3">describe_notifications_for_budget/3</a></h3>
+<div class="spec">
+<p><tt>describe_notifications_for_budget(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_subscribers_for_notification-2">describe_subscribers_for_notification/2</a></h3>
+<div class="spec">
+<p><tt>describe_subscribers_for_notification(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the subscribers that are associated with a notification.</p>
+
+<h3 class="function"><a name="describe_subscribers_for_notification-3">describe_subscribers_for_notification/3</a></h3>
+<div class="spec">
+<p><tt>describe_subscribers_for_notification(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="execute_budget_action-2">execute_budget_action/2</a></h3>
+<div class="spec">
+<p><tt>execute_budget_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Executes a budget action.</p>
+
+<h3 class="function"><a name="execute_budget_action-3">execute_budget_action/3</a></h3>
+<div class="spec">
+<p><tt>execute_budget_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_budget-2">update_budget/2</a></h3>
+<div class="spec">
+<p><tt>update_budget(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a budget.</p>
+ 
+  <p>You can change every part of a budget except for the <code>budgetName</code> and the
+  <code>calculatedSpend</code>. When you modify a budget, the <code>calculatedSpend</code> drops  
+to zero until AWS has new usage data to use for forecasting.</p>
+ 
+  Only one of <code>BudgetLimit</code> or <code>PlannedBudgetLimits</code> can be present in the
+  syntax at one time. Use the syntax that matches your case. The Request
+  Syntax section shows the <code>BudgetLimit</code> syntax. For <code>PlannedBudgetLimits</code>,
+  see the Examples section.</p>
+
+<h3 class="function"><a name="update_budget-3">update_budget/3</a></h3>
+<div class="spec">
+<p><tt>update_budget(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_budget_action-2">update_budget_action/2</a></h3>
+<div class="spec">
+<p><tt>update_budget_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a budget action.</p>
+
+<h3 class="function"><a name="update_budget_action-3">update_budget_action/3</a></h3>
+<div class="spec">
+<p><tt>update_budget_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_notification-2">update_notification/2</a></h3>
+<div class="spec">
+<p><tt>update_notification(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a notification.</p>
+
+<h3 class="function"><a name="update_notification-3">update_notification/3</a></h3>
+<div class="spec">
+<p><tt>update_notification(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_subscriber-2">update_subscriber/2</a></h3>
+<div class="spec">
+<p><tt>update_subscriber(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a subscriber.</p>
+
+<h3 class="function"><a name="update_subscriber-3">update_subscriber/3</a></h3>
+<div class="spec">
+<p><tt>update_subscriber(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

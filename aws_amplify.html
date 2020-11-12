@@ -1,0 +1,562 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_amplify</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_amplify</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amplify enables developers to develop and deploy cloud-powered mobile  
+and web apps.
+
+
+<h2><a name="description">Description</a></h2><p>Amplify enables developers to develop and deploy cloud-powered mobile  
+and web apps.</p>
+ 
+  The Amplify Console provides a continuous delivery and hosting service for
+  web applications. For more information, see the Amplify Console User
+  Guide. The Amplify Framework is a comprehensive set of SDKs, libraries,
+  tools, and documentation for client app development. For more information,
+  see the Amplify Framework.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_app-2">create_app/2</a></td><td>Creates a new Amplify app.</td></tr>
+<tr><td valign="top"><a href="#create_app-3">create_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_backend_environment-3">create_backend_environment/3</a></td><td>Creates a new backend environment for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#create_backend_environment-4">create_backend_environment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_branch-3">create_branch/3</a></td><td>Creates a new branch for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#create_branch-4">create_branch/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment-4">create_deployment/4</a></td><td>Creates a deployment for a manually deployed Amplify app.</td></tr>
+<tr><td valign="top"><a href="#create_deployment-5">create_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_domain_association-3">create_domain_association/3</a></td><td>Creates a new domain association for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#create_domain_association-4">create_domain_association/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_webhook-3">create_webhook/3</a></td><td>Creates a new webhook on an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#create_webhook-4">create_webhook/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_app-3">delete_app/3</a></td><td>Deletes an existing Amplify app specified by an app ID.</td></tr>
+<tr><td valign="top"><a href="#delete_app-4">delete_app/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_backend_environment-4">delete_backend_environment/4</a></td><td>Deletes a backend environment for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#delete_backend_environment-5">delete_backend_environment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_branch-4">delete_branch/4</a></td><td>Deletes a branch for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#delete_branch-5">delete_branch/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_domain_association-4">delete_domain_association/4</a></td><td>Deletes a domain association for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#delete_domain_association-5">delete_domain_association/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_job-5">delete_job/5</a></td><td>Deletes a job for a branch of an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#delete_job-6">delete_job/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_webhook-3">delete_webhook/3</a></td><td>Deletes a webhook.</td></tr>
+<tr><td valign="top"><a href="#delete_webhook-4">delete_webhook/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#generate_access_logs-3">generate_access_logs/3</a></td><td>Returns the website access logs for a specific time range using a
+  presigned URL.</td></tr>
+<tr><td valign="top"><a href="#generate_access_logs-4">generate_access_logs/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_app-2">get_app/2</a></td><td>Returns an existing Amplify app by appID.</td></tr>
+<tr><td valign="top"><a href="#get_app-3">get_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_artifact_url-2">get_artifact_url/2</a></td><td>Returns the artifact info that corresponds to an artifact id.</td></tr>
+<tr><td valign="top"><a href="#get_artifact_url-3">get_artifact_url/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_backend_environment-3">get_backend_environment/3</a></td><td>Returns a backend environment for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#get_backend_environment-4">get_backend_environment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_branch-3">get_branch/3</a></td><td>Returns a branch for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#get_branch-4">get_branch/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_domain_association-3">get_domain_association/3</a></td><td>Returns the domain information for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#get_domain_association-4">get_domain_association/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_job-4">get_job/4</a></td><td>Returns a job for a branch of an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#get_job-5">get_job/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_webhook-2">get_webhook/2</a></td><td>Returns the webhook information that corresponds to a specified
+  webhook ID.</td></tr>
+<tr><td valign="top"><a href="#get_webhook-3">get_webhook/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_apps-3">list_apps/3</a></td><td>Returns a list of the existing Amplify apps.</td></tr>
+<tr><td valign="top"><a href="#list_apps-4">list_apps/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_artifacts-6">list_artifacts/6</a></td><td>Returns a list of artifacts for a specified app, branch, and job.</td></tr>
+<tr><td valign="top"><a href="#list_artifacts-7">list_artifacts/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_backend_environments-5">list_backend_environments/5</a></td><td>Lists the backend environments for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#list_backend_environments-6">list_backend_environments/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_branches-4">list_branches/4</a></td><td>Lists the branches of an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#list_branches-5">list_branches/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_domain_associations-4">list_domain_associations/4</a></td><td>Returns the domain associations for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#list_domain_associations-5">list_domain_associations/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_jobs-5">list_jobs/5</a></td><td>Lists the jobs for a branch of an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#list_jobs-6">list_jobs/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of tags for a specified Amazon Resource Name (ARN).</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_webhooks-4">list_webhooks/4</a></td><td>Returns a list of webhooks for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#list_webhooks-5">list_webhooks/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_deployment-4">start_deployment/4</a></td><td>Starts a deployment for a manually deployed app.</td></tr>
+<tr><td valign="top"><a href="#start_deployment-5">start_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_job-4">start_job/4</a></td><td>Starts a new job for a branch of an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#start_job-5">start_job/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_job-5">stop_job/5</a></td><td>Stops a job that is in progress for a branch of an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#stop_job-6">stop_job/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Tags the resource with a tag key and value.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Untags a resource with a specified Amazon Resource Name (ARN).</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_app-3">update_app/3</a></td><td>Updates an existing Amplify app.</td></tr>
+<tr><td valign="top"><a href="#update_app-4">update_app/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_branch-4">update_branch/4</a></td><td>Updates a branch for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#update_branch-5">update_branch/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_domain_association-4">update_domain_association/4</a></td><td>Creates a new domain association for an Amplify app.</td></tr>
+<tr><td valign="top"><a href="#update_domain_association-5">update_domain_association/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_webhook-3">update_webhook/3</a></td><td>Updates a webhook.</td></tr>
+<tr><td valign="top"><a href="#update_webhook-4">update_webhook/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_app-2">create_app/2</a></h3>
+<div class="spec">
+<p><tt>create_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new Amplify app.</p>
+
+<h3 class="function"><a name="create_app-3">create_app/3</a></h3>
+<div class="spec">
+<p><tt>create_app(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_backend_environment-3">create_backend_environment/3</a></h3>
+<div class="spec">
+<p><tt>create_backend_environment(Client, AppId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new backend environment for an Amplify app.</p>
+
+<h3 class="function"><a name="create_backend_environment-4">create_backend_environment/4</a></h3>
+<div class="spec">
+<p><tt>create_backend_environment(Client, AppId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_branch-3">create_branch/3</a></h3>
+<div class="spec">
+<p><tt>create_branch(Client, AppId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new branch for an Amplify app.</p>
+
+<h3 class="function"><a name="create_branch-4">create_branch/4</a></h3>
+<div class="spec">
+<p><tt>create_branch(Client, AppId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment-4">create_deployment/4</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, AppId, BranchName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a deployment for a manually deployed Amplify app.</p>
+ 
+  Manually deployed apps are not connected to a repository.</p>
+
+<h3 class="function"><a name="create_deployment-5">create_deployment/5</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, AppId, BranchName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_domain_association-3">create_domain_association/3</a></h3>
+<div class="spec">
+<p><tt>create_domain_association(Client, AppId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new domain association for an Amplify app.</p>
+ 
+  This action associates a custom domain with the Amplify app</p>
+
+<h3 class="function"><a name="create_domain_association-4">create_domain_association/4</a></h3>
+<div class="spec">
+<p><tt>create_domain_association(Client, AppId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_webhook-3">create_webhook/3</a></h3>
+<div class="spec">
+<p><tt>create_webhook(Client, AppId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new webhook on an Amplify app.</p>
+
+<h3 class="function"><a name="create_webhook-4">create_webhook/4</a></h3>
+<div class="spec">
+<p><tt>create_webhook(Client, AppId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_app-3">delete_app/3</a></h3>
+<div class="spec">
+<p><tt>delete_app(Client, AppId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing Amplify app specified by an app ID.</p>
+
+<h3 class="function"><a name="delete_app-4">delete_app/4</a></h3>
+<div class="spec">
+<p><tt>delete_app(Client, AppId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_backend_environment-4">delete_backend_environment/4</a></h3>
+<div class="spec">
+<p><tt>delete_backend_environment(Client, AppId, EnvironmentName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a backend environment for an Amplify app.</p>
+
+<h3 class="function"><a name="delete_backend_environment-5">delete_backend_environment/5</a></h3>
+<div class="spec">
+<p><tt>delete_backend_environment(Client, AppId, EnvironmentName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_branch-4">delete_branch/4</a></h3>
+<div class="spec">
+<p><tt>delete_branch(Client, AppId, BranchName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a branch for an Amplify app.</p>
+
+<h3 class="function"><a name="delete_branch-5">delete_branch/5</a></h3>
+<div class="spec">
+<p><tt>delete_branch(Client, AppId, BranchName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_domain_association-4">delete_domain_association/4</a></h3>
+<div class="spec">
+<p><tt>delete_domain_association(Client, AppId, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a domain association for an Amplify app.</p>
+
+<h3 class="function"><a name="delete_domain_association-5">delete_domain_association/5</a></h3>
+<div class="spec">
+<p><tt>delete_domain_association(Client, AppId, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_job-5">delete_job/5</a></h3>
+<div class="spec">
+<p><tt>delete_job(Client, AppId, BranchName, JobId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a job for a branch of an Amplify app.</p>
+
+<h3 class="function"><a name="delete_job-6">delete_job/6</a></h3>
+<div class="spec">
+<p><tt>delete_job(Client, AppId, BranchName, JobId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_webhook-3">delete_webhook/3</a></h3>
+<div class="spec">
+<p><tt>delete_webhook(Client, WebhookId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a webhook.</p>
+
+<h3 class="function"><a name="delete_webhook-4">delete_webhook/4</a></h3>
+<div class="spec">
+<p><tt>delete_webhook(Client, WebhookId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="generate_access_logs-3">generate_access_logs/3</a></h3>
+<div class="spec">
+<p><tt>generate_access_logs(Client, AppId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the website access logs for a specific time range using a
+  presigned URL.</p>
+
+<h3 class="function"><a name="generate_access_logs-4">generate_access_logs/4</a></h3>
+<div class="spec">
+<p><tt>generate_access_logs(Client, AppId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_app-2">get_app/2</a></h3>
+<div class="spec">
+<p><tt>get_app(Client, AppId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an existing Amplify app by appID.</p>
+
+<h3 class="function"><a name="get_app-3">get_app/3</a></h3>
+<div class="spec">
+<p><tt>get_app(Client, AppId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_artifact_url-2">get_artifact_url/2</a></h3>
+<div class="spec">
+<p><tt>get_artifact_url(Client, ArtifactId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the artifact info that corresponds to an artifact id.</p>
+
+<h3 class="function"><a name="get_artifact_url-3">get_artifact_url/3</a></h3>
+<div class="spec">
+<p><tt>get_artifact_url(Client, ArtifactId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_backend_environment-3">get_backend_environment/3</a></h3>
+<div class="spec">
+<p><tt>get_backend_environment(Client, AppId, EnvironmentName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a backend environment for an Amplify app.</p>
+
+<h3 class="function"><a name="get_backend_environment-4">get_backend_environment/4</a></h3>
+<div class="spec">
+<p><tt>get_backend_environment(Client, AppId, EnvironmentName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_branch-3">get_branch/3</a></h3>
+<div class="spec">
+<p><tt>get_branch(Client, AppId, BranchName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a branch for an Amplify app.</p>
+
+<h3 class="function"><a name="get_branch-4">get_branch/4</a></h3>
+<div class="spec">
+<p><tt>get_branch(Client, AppId, BranchName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_domain_association-3">get_domain_association/3</a></h3>
+<div class="spec">
+<p><tt>get_domain_association(Client, AppId, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the domain information for an Amplify app.</p>
+
+<h3 class="function"><a name="get_domain_association-4">get_domain_association/4</a></h3>
+<div class="spec">
+<p><tt>get_domain_association(Client, AppId, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_job-4">get_job/4</a></h3>
+<div class="spec">
+<p><tt>get_job(Client, AppId, BranchName, JobId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a job for a branch of an Amplify app.</p>
+
+<h3 class="function"><a name="get_job-5">get_job/5</a></h3>
+<div class="spec">
+<p><tt>get_job(Client, AppId, BranchName, JobId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_webhook-2">get_webhook/2</a></h3>
+<div class="spec">
+<p><tt>get_webhook(Client, WebhookId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the webhook information that corresponds to a specified
+  webhook ID.</p>
+
+<h3 class="function"><a name="get_webhook-3">get_webhook/3</a></h3>
+<div class="spec">
+<p><tt>get_webhook(Client, WebhookId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_apps-3">list_apps/3</a></h3>
+<div class="spec">
+<p><tt>list_apps(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the existing Amplify apps.</p>
+
+<h3 class="function"><a name="list_apps-4">list_apps/4</a></h3>
+<div class="spec">
+<p><tt>list_apps(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_artifacts-6">list_artifacts/6</a></h3>
+<div class="spec">
+<p><tt>list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of artifacts for a specified app, branch, and job.</p>
+
+<h3 class="function"><a name="list_artifacts-7">list_artifacts/7</a></h3>
+<div class="spec">
+<p><tt>list_artifacts(Client, AppId, BranchName, JobId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_backend_environments-5">list_backend_environments/5</a></h3>
+<div class="spec">
+<p><tt>list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the backend environments for an Amplify app.</p>
+
+<h3 class="function"><a name="list_backend_environments-6">list_backend_environments/6</a></h3>
+<div class="spec">
+<p><tt>list_backend_environments(Client, AppId, EnvironmentName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_branches-4">list_branches/4</a></h3>
+<div class="spec">
+<p><tt>list_branches(Client, AppId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the branches of an Amplify app.</p>
+
+<h3 class="function"><a name="list_branches-5">list_branches/5</a></h3>
+<div class="spec">
+<p><tt>list_branches(Client, AppId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_domain_associations-4">list_domain_associations/4</a></h3>
+<div class="spec">
+<p><tt>list_domain_associations(Client, AppId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the domain associations for an Amplify app.</p>
+
+<h3 class="function"><a name="list_domain_associations-5">list_domain_associations/5</a></h3>
+<div class="spec">
+<p><tt>list_domain_associations(Client, AppId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_jobs-5">list_jobs/5</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, AppId, BranchName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the jobs for a branch of an Amplify app.</p>
+
+<h3 class="function"><a name="list_jobs-6">list_jobs/6</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, AppId, BranchName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of tags for a specified Amazon Resource Name (ARN).</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_webhooks-4">list_webhooks/4</a></h3>
+<div class="spec">
+<p><tt>list_webhooks(Client, AppId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of webhooks for an Amplify app.</p>
+
+<h3 class="function"><a name="list_webhooks-5">list_webhooks/5</a></h3>
+<div class="spec">
+<p><tt>list_webhooks(Client, AppId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_deployment-4">start_deployment/4</a></h3>
+<div class="spec">
+<p><tt>start_deployment(Client, AppId, BranchName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts a deployment for a manually deployed app.</p>
+ 
+  Manually deployed apps are not connected to a repository.</p>
+
+<h3 class="function"><a name="start_deployment-5">start_deployment/5</a></h3>
+<div class="spec">
+<p><tt>start_deployment(Client, AppId, BranchName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_job-4">start_job/4</a></h3>
+<div class="spec">
+<p><tt>start_job(Client, AppId, BranchName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts a new job for a branch of an Amplify app.</p>
+
+<h3 class="function"><a name="start_job-5">start_job/5</a></h3>
+<div class="spec">
+<p><tt>start_job(Client, AppId, BranchName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_job-5">stop_job/5</a></h3>
+<div class="spec">
+<p><tt>stop_job(Client, AppId, BranchName, JobId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stops a job that is in progress for a branch of an Amplify app.</p>
+
+<h3 class="function"><a name="stop_job-6">stop_job/6</a></h3>
+<div class="spec">
+<p><tt>stop_job(Client, AppId, BranchName, JobId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Tags the resource with a tag key and value.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Untags a resource with a specified Amazon Resource Name (ARN).</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_app-3">update_app/3</a></h3>
+<div class="spec">
+<p><tt>update_app(Client, AppId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing Amplify app.</p>
+
+<h3 class="function"><a name="update_app-4">update_app/4</a></h3>
+<div class="spec">
+<p><tt>update_app(Client, AppId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_branch-4">update_branch/4</a></h3>
+<div class="spec">
+<p><tt>update_branch(Client, AppId, BranchName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a branch for an Amplify app.</p>
+
+<h3 class="function"><a name="update_branch-5">update_branch/5</a></h3>
+<div class="spec">
+<p><tt>update_branch(Client, AppId, BranchName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_domain_association-4">update_domain_association/4</a></h3>
+<div class="spec">
+<p><tt>update_domain_association(Client, AppId, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new domain association for an Amplify app.</p>
+
+<h3 class="function"><a name="update_domain_association-5">update_domain_association/5</a></h3>
+<div class="spec">
+<p><tt>update_domain_association(Client, AppId, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_webhook-3">update_webhook/3</a></h3>
+<div class="spec">
+<p><tt>update_webhook(Client, WebhookId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a webhook.</p>
+
+<h3 class="function"><a name="update_webhook-4">update_webhook/4</a></h3>
+<div class="spec">
+<p><tt>update_webhook(Client, WebhookId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

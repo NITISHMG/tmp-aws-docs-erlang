@@ -1,0 +1,346 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_service_quotas</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_service_quotas</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Service Quotas is a web service that you can use to manage many of  
+your AWS service quotas.
+
+
+<h2><a name="description">Description</a></h2><p>Service Quotas is a web service that you can use to manage many of  
+your AWS service quotas.</p>
+ 
+  <p>Quotas, also referred to as limits, are the maximum values for a resource,  
+item, or operation. This guide provide descriptions of the Service Quotas  
+actions that you can call from an API. For the Service Quotas user guide,  
+which explains how to use Service Quotas from the console, see What is  
+Service Quotas.</p>
+ 
+  AWS provides SDKs that consist of libraries and sample code for
+  programming languages and platforms (Java, Ruby, .NET, iOS, Android,
+  etc...,). The SDKs provide a convenient way to create programmatic access
+  to Service Quotas and AWS. For information about the AWS SDKs, including
+  how to download and install them, see the Tools for Amazon Web Services
+  page.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_service_quota_template-2">associate_service_quota_template/2</a></td><td>Associates the Service Quotas template with your organization so that  
+when new accounts are created in your organization, the template submits  
+increase requests for the specified service quotas.</td></tr>
+<tr><td valign="top"><a href="#associate_service_quota_template-3">associate_service_quota_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_service_quota_increase_request_from_template-2">delete_service_quota_increase_request_from_template/2</a></td><td>Removes a service quota increase request from the Service Quotas
+  template.</td></tr>
+<tr><td valign="top"><a href="#delete_service_quota_increase_request_from_template-3">delete_service_quota_increase_request_from_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_service_quota_template-2">disassociate_service_quota_template/2</a></td><td>Disables the Service Quotas template.</td></tr>
+<tr><td valign="top"><a href="#disassociate_service_quota_template-3">disassociate_service_quota_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_a_w_s_default_service_quota-2">get_a_w_s_default_service_quota/2</a></td><td>Retrieves the default service quotas values.</td></tr>
+<tr><td valign="top"><a href="#get_a_w_s_default_service_quota-3">get_a_w_s_default_service_quota/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_association_for_service_quota_template-2">get_association_for_service_quota_template/2</a></td><td>Retrieves the <code>ServiceQuotaTemplateAssociationStatus</code> value from the  
+service.</td></tr>
+<tr><td valign="top"><a href="#get_association_for_service_quota_template-3">get_association_for_service_quota_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_requested_service_quota_change-2">get_requested_service_quota_change/2</a></td><td>Retrieves the details for a particular increase request.</td></tr>
+<tr><td valign="top"><a href="#get_requested_service_quota_change-3">get_requested_service_quota_change/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_service_quota-2">get_service_quota/2</a></td><td>Returns the details for the specified service quota.</td></tr>
+<tr><td valign="top"><a href="#get_service_quota-3">get_service_quota/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_service_quota_increase_request_from_template-2">get_service_quota_increase_request_from_template/2</a></td><td>Returns the details of the service quota increase request in your
+  template.</td></tr>
+<tr><td valign="top"><a href="#get_service_quota_increase_request_from_template-3">get_service_quota_increase_request_from_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_a_w_s_default_service_quotas-2">list_a_w_s_default_service_quotas/2</a></td><td>Lists all default service quotas for the specified AWS service or all  
+AWS services.</td></tr>
+<tr><td valign="top"><a href="#list_a_w_s_default_service_quotas-3">list_a_w_s_default_service_quotas/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_requested_service_quota_change_history-2">list_requested_service_quota_change_history/2</a></td><td>Requests a list of the changes to quotas for a service.</td></tr>
+<tr><td valign="top"><a href="#list_requested_service_quota_change_history-3">list_requested_service_quota_change_history/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_requested_service_quota_change_history_by_quota-2">list_requested_service_quota_change_history_by_quota/2</a></td><td>Requests a list of the changes to specific service quotas.</td></tr>
+<tr><td valign="top"><a href="#list_requested_service_quota_change_history_by_quota-3">list_requested_service_quota_change_history_by_quota/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_service_quota_increase_requests_in_template-2">list_service_quota_increase_requests_in_template/2</a></td><td>Returns a list of the quota increase requests in the template.</td></tr>
+<tr><td valign="top"><a href="#list_service_quota_increase_requests_in_template-3">list_service_quota_increase_requests_in_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_service_quotas-2">list_service_quotas/2</a></td><td>Lists all service quotas for the specified AWS service.</td></tr>
+<tr><td valign="top"><a href="#list_service_quotas-3">list_service_quotas/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_services-2">list_services/2</a></td><td>Lists the AWS services available in Service Quotas.</td></tr>
+<tr><td valign="top"><a href="#list_services-3">list_services/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_service_quota_increase_request_into_template-2">put_service_quota_increase_request_into_template/2</a></td><td>Defines and adds a quota to the service quota template.</td></tr>
+<tr><td valign="top"><a href="#put_service_quota_increase_request_into_template-3">put_service_quota_increase_request_into_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#request_service_quota_increase-2">request_service_quota_increase/2</a></td><td>Retrieves the details of a service quota increase request.</td></tr>
+<tr><td valign="top"><a href="#request_service_quota_increase-3">request_service_quota_increase/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_service_quota_template-2">associate_service_quota_template/2</a></h3>
+<div class="spec">
+<p><tt>associate_service_quota_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates the Service Quotas template with your organization so that  
+when new accounts are created in your organization, the template submits  
+increase requests for the specified service quotas.</p>
+ 
+  Use the Service Quotas template to request an increase for any adjustable
+  quota value. After you define the Service Quotas template, use this
+  operation to associate, or enable, the template.</p>
+
+<h3 class="function"><a name="associate_service_quota_template-3">associate_service_quota_template/3</a></h3>
+<div class="spec">
+<p><tt>associate_service_quota_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_service_quota_increase_request_from_template-2">delete_service_quota_increase_request_from_template/2</a></h3>
+<div class="spec">
+<p><tt>delete_service_quota_increase_request_from_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a service quota increase request from the Service Quotas
+  template.</p>
+
+<h3 class="function"><a name="delete_service_quota_increase_request_from_template-3">delete_service_quota_increase_request_from_template/3</a></h3>
+<div class="spec">
+<p><tt>delete_service_quota_increase_request_from_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_service_quota_template-2">disassociate_service_quota_template/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_service_quota_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disables the Service Quotas template.</p>
+ 
+  <p>Once the template is disabled, it does not request quota increases for new  
+accounts in your organization. Disabling the quota template does not apply  
+the quota increase requests from the template.</p>
+ 
+  <p>Related operations</p>
+ 
+  <ul> <li><p> To enable the quota template, call
+  <code>AssociateServiceQuotaTemplate</code>.</p>
+ 
+  </li> <li><p> To delete a specific service quota from the template, use
+  <code>DeleteServiceQuotaIncreaseRequestFromTemplate</code>.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="disassociate_service_quota_template-3">disassociate_service_quota_template/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_service_quota_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_a_w_s_default_service_quota-2">get_a_w_s_default_service_quota/2</a></h3>
+<div class="spec">
+<p><tt>get_a_w_s_default_service_quota(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the default service quotas values.</p>
+ 
+  The Value returned for each quota is the AWS default value, even if the
+  quotas have been increased..</p>
+
+<h3 class="function"><a name="get_a_w_s_default_service_quota-3">get_a_w_s_default_service_quota/3</a></h3>
+<div class="spec">
+<p><tt>get_a_w_s_default_service_quota(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_association_for_service_quota_template-2">get_association_for_service_quota_template/2</a></h3>
+<div class="spec">
+<p><tt>get_association_for_service_quota_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the <code>ServiceQuotaTemplateAssociationStatus</code> value from the  
+service.</p>
+ 
+  Use this action to determine if the Service Quota template is associated,
+  or enabled.</p>
+
+<h3 class="function"><a name="get_association_for_service_quota_template-3">get_association_for_service_quota_template/3</a></h3>
+<div class="spec">
+<p><tt>get_association_for_service_quota_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_requested_service_quota_change-2">get_requested_service_quota_change/2</a></h3>
+<div class="spec">
+<p><tt>get_requested_service_quota_change(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the details for a particular increase request.</p>
+
+<h3 class="function"><a name="get_requested_service_quota_change-3">get_requested_service_quota_change/3</a></h3>
+<div class="spec">
+<p><tt>get_requested_service_quota_change(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_service_quota-2">get_service_quota/2</a></h3>
+<div class="spec">
+<p><tt>get_service_quota(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the details for the specified service quota.</p>
+ 
+  This operation provides a different Value than the
+  <code>GetAWSDefaultServiceQuota</code> operation. This operation returns the applied
+  value for each quota. <code>GetAWSDefaultServiceQuota</code> returns the default AWS
+  value for each quota.</p>
+
+<h3 class="function"><a name="get_service_quota-3">get_service_quota/3</a></h3>
+<div class="spec">
+<p><tt>get_service_quota(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_service_quota_increase_request_from_template-2">get_service_quota_increase_request_from_template/2</a></h3>
+<div class="spec">
+<p><tt>get_service_quota_increase_request_from_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the details of the service quota increase request in your
+  template.</p>
+
+<h3 class="function"><a name="get_service_quota_increase_request_from_template-3">get_service_quota_increase_request_from_template/3</a></h3>
+<div class="spec">
+<p><tt>get_service_quota_increase_request_from_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_a_w_s_default_service_quotas-2">list_a_w_s_default_service_quotas/2</a></h3>
+<div class="spec">
+<p><tt>list_a_w_s_default_service_quotas(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all default service quotas for the specified AWS service or all  
+AWS services.</p>
+ 
+  <p>ListAWSDefaultServiceQuotas is similar to <code>ListServiceQuotas</code> except for
+  the Value object. The Value object returned by
+  <code>ListAWSDefaultServiceQuotas</code> is the default value assigned by AWS. This  
+request returns a list of all service quotas for the specified service.  
+The listing of each you'll see the default values are the values that AWS  
+provides for the quotas.</p>
+ 
+  Always check the <code>NextToken</code> response parameter when calling any of the
+  <code>List*</code> operations. These operations can return an unexpected list of
+  results, even when there are more results available. When this happens,
+  the <code>NextToken</code> response parameter contains a value to pass the next call
+  to the same API to request the next part of the list.</p>
+
+<h3 class="function"><a name="list_a_w_s_default_service_quotas-3">list_a_w_s_default_service_quotas/3</a></h3>
+<div class="spec">
+<p><tt>list_a_w_s_default_service_quotas(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_requested_service_quota_change_history-2">list_requested_service_quota_change_history/2</a></h3>
+<div class="spec">
+<p><tt>list_requested_service_quota_change_history(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Requests a list of the changes to quotas for a service.</p>
+
+<h3 class="function"><a name="list_requested_service_quota_change_history-3">list_requested_service_quota_change_history/3</a></h3>
+<div class="spec">
+<p><tt>list_requested_service_quota_change_history(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_requested_service_quota_change_history_by_quota-2">list_requested_service_quota_change_history_by_quota/2</a></h3>
+<div class="spec">
+<p><tt>list_requested_service_quota_change_history_by_quota(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests a list of the changes to specific service quotas.</p>
+ 
+  This command provides additional granularity over the
+  <code>ListRequestedServiceQuotaChangeHistory</code> command. Once a quota change
+  request has reached <code>CASE_CLOSED, APPROVED,</code> or <code>DENIED</code>, the history has
+  been kept for 90 days.</p>
+
+<h3 class="function"><a name="list_requested_service_quota_change_history_by_quota-3">list_requested_service_quota_change_history_by_quota/3</a></h3>
+<div class="spec">
+<p><tt>list_requested_service_quota_change_history_by_quota(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_service_quota_increase_requests_in_template-2">list_service_quota_increase_requests_in_template/2</a></h3>
+<div class="spec">
+<p><tt>list_service_quota_increase_requests_in_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the quota increase requests in the template.</p>
+
+<h3 class="function"><a name="list_service_quota_increase_requests_in_template-3">list_service_quota_increase_requests_in_template/3</a></h3>
+<div class="spec">
+<p><tt>list_service_quota_increase_requests_in_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_service_quotas-2">list_service_quotas/2</a></h3>
+<div class="spec">
+<p><tt>list_service_quotas(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all service quotas for the specified AWS service.</p>
+ 
+  <p>This request returns a list of the service quotas for the specified  
+service. you'll see the default values are the values that AWS provides  
+for the quotas.</p>
+ 
+  Always check the <code>NextToken</code> response parameter when calling any of the
+  <code>List*</code> operations. These operations can return an unexpected list of
+  results, even when there are more results available. When this happens,
+  the <code>NextToken</code> response parameter contains a value to pass the next call
+  to the same API to request the next part of the list.</p>
+
+<h3 class="function"><a name="list_service_quotas-3">list_service_quotas/3</a></h3>
+<div class="spec">
+<p><tt>list_service_quotas(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_services-2">list_services/2</a></h3>
+<div class="spec">
+<p><tt>list_services(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the AWS services available in Service Quotas.</p>
+ 
+  Not all AWS services are available in Service Quotas. To list the see the
+  list of the service quotas for a specific service, use
+  <code>ListServiceQuotas</code>.</p>
+
+<h3 class="function"><a name="list_services-3">list_services/3</a></h3>
+<div class="spec">
+<p><tt>list_services(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_service_quota_increase_request_into_template-2">put_service_quota_increase_request_into_template/2</a></h3>
+<div class="spec">
+<p><tt>put_service_quota_increase_request_into_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Defines and adds a quota to the service quota template.</p>
+ 
+  To add a quota to the template, you must provide the <code>ServiceCode</code>,
+  <code>QuotaCode</code>, <code>AwsRegion</code>, and <code>DesiredValue</code>. Once you add a quota to the
+  template, use <code>ListServiceQuotaIncreaseRequestsInTemplate</code> to see the list
+  of quotas in the template.</p>
+
+<h3 class="function"><a name="put_service_quota_increase_request_into_template-3">put_service_quota_increase_request_into_template/3</a></h3>
+<div class="spec">
+<p><tt>put_service_quota_increase_request_into_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="request_service_quota_increase-2">request_service_quota_increase/2</a></h3>
+<div class="spec">
+<p><tt>request_service_quota_increase(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the details of a service quota increase request.</p>
+ 
+  The response to this command provides the details in the
+  <code>RequestedServiceQuotaChange</code> object.</p>
+
+<h3 class="function"><a name="request_service_quota_increase-3">request_service_quota_increase/3</a></h3>
+<div class="spec">
+<p><tt>request_service_quota_increase(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

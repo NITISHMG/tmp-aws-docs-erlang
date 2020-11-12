@@ -1,0 +1,471 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_fms</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_fms</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Firewall Manager.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Firewall Manager</p>
+ 
+  <p>This is the AWS Firewall Manager API Reference.</p>
+ 
+  This guide is for developers who need detailed information about the AWS
+  Firewall Manager API actions, data types, and errors. For detailed
+  information about AWS Firewall Manager features, see the AWS Firewall
+  Manager Developer Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_admin_account-2">associate_admin_account/2</a></td><td>Sets the AWS Firewall Manager administrator account.</td></tr>
+<tr><td valign="top"><a href="#associate_admin_account-3">associate_admin_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_apps_list-2">delete_apps_list/2</a></td><td>Permanently deletes an AWS Firewall Manager applications list.</td></tr>
+<tr><td valign="top"><a href="#delete_apps_list-3">delete_apps_list/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_notification_channel-2">delete_notification_channel/2</a></td><td>Deletes an AWS Firewall Manager association with the IAM role and the
+  Amazon Simple Notification Service (SNS) topic that is used to record AWS
+  Firewall Manager SNS logs.</td></tr>
+<tr><td valign="top"><a href="#delete_notification_channel-3">delete_notification_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_policy-2">delete_policy/2</a></td><td>Permanently deletes an AWS Firewall Manager policy.</td></tr>
+<tr><td valign="top"><a href="#delete_policy-3">delete_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_protocols_list-2">delete_protocols_list/2</a></td><td>Permanently deletes an AWS Firewall Manager protocols list.</td></tr>
+<tr><td valign="top"><a href="#delete_protocols_list-3">delete_protocols_list/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_admin_account-2">disassociate_admin_account/2</a></td><td>Disassociates the account that has been set as the AWS Firewall  
+Manager administrator account.</td></tr>
+<tr><td valign="top"><a href="#disassociate_admin_account-3">disassociate_admin_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_admin_account-2">get_admin_account/2</a></td><td>Returns the AWS Organizations master account that is associated with
+  AWS Firewall Manager as the AWS Firewall Manager administrator.</td></tr>
+<tr><td valign="top"><a href="#get_admin_account-3">get_admin_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_apps_list-2">get_apps_list/2</a></td><td>Returns information about the specified AWS Firewall Manager
+  applications list.</td></tr>
+<tr><td valign="top"><a href="#get_apps_list-3">get_apps_list/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_compliance_detail-2">get_compliance_detail/2</a></td><td>Returns detailed compliance information about the specified member  
+account.</td></tr>
+<tr><td valign="top"><a href="#get_compliance_detail-3">get_compliance_detail/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_notification_channel-2">get_notification_channel/2</a></td><td>Information about the Amazon Simple Notification Service (SNS) topic
+  that is used to record AWS Firewall Manager SNS logs.</td></tr>
+<tr><td valign="top"><a href="#get_notification_channel-3">get_notification_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_policy-2">get_policy/2</a></td><td>Returns information about the specified AWS Firewall Manager policy.</td></tr>
+<tr><td valign="top"><a href="#get_policy-3">get_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_protection_status-2">get_protection_status/2</a></td><td>If you created a Shield Advanced policy, returns policy-level attack  
+summary information in the event of a potential DDoS attack.</td></tr>
+<tr><td valign="top"><a href="#get_protection_status-3">get_protection_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_protocols_list-2">get_protocols_list/2</a></td><td>Returns information about the specified AWS Firewall Manager
+  protocols list.</td></tr>
+<tr><td valign="top"><a href="#get_protocols_list-3">get_protocols_list/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_violation_details-2">get_violation_details/2</a></td><td>Retrieves violations for a resource based on the specified AWS
+  Firewall Manager policy and AWS account.</td></tr>
+<tr><td valign="top"><a href="#get_violation_details-3">get_violation_details/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_apps_lists-2">list_apps_lists/2</a></td><td>Returns an array of <code>AppsListDataSummary</code> objects.</td></tr>
+<tr><td valign="top"><a href="#list_apps_lists-3">list_apps_lists/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_compliance_status-2">list_compliance_status/2</a></td><td>Returns an array of <code>PolicyComplianceStatus</code> objects.</td></tr>
+<tr><td valign="top"><a href="#list_compliance_status-3">list_compliance_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_member_accounts-2">list_member_accounts/2</a></td><td>Returns a <code>MemberAccounts</code> object that lists the member accounts in  
+the administrator's AWS organization.</td></tr>
+<tr><td valign="top"><a href="#list_member_accounts-3">list_member_accounts/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_policies-2">list_policies/2</a></td><td>Returns an array of <code>PolicySummary</code> objects.</td></tr>
+<tr><td valign="top"><a href="#list_policies-3">list_policies/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_protocols_lists-2">list_protocols_lists/2</a></td><td>Returns an array of <code>ProtocolsListDataSummary</code> objects.</td></tr>
+<tr><td valign="top"><a href="#list_protocols_lists-3">list_protocols_lists/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieves the list of tags for the specified AWS resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_apps_list-2">put_apps_list/2</a></td><td>Creates an AWS Firewall Manager applications list.</td></tr>
+<tr><td valign="top"><a href="#put_apps_list-3">put_apps_list/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_notification_channel-2">put_notification_channel/2</a></td><td>Designates the IAM role and Amazon Simple Notification Service (SNS)
+  topic that AWS Firewall Manager uses to record SNS logs.</td></tr>
+<tr><td valign="top"><a href="#put_notification_channel-3">put_notification_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_policy-2">put_policy/2</a></td><td>Creates an AWS Firewall Manager policy.</td></tr>
+<tr><td valign="top"><a href="#put_policy-3">put_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_protocols_list-2">put_protocols_list/2</a></td><td>Creates an AWS Firewall Manager protocols list.</td></tr>
+<tr><td valign="top"><a href="#put_protocols_list-3">put_protocols_list/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds one or more tags to an AWS resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes one or more tags from an AWS resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_admin_account-2">associate_admin_account/2</a></h3>
+<div class="spec">
+<p><tt>associate_admin_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the AWS Firewall Manager administrator account.</p>
+ 
+  <p>AWS Firewall Manager must be associated with the master account of your  
+AWS organization or associated with a member account that has the  
+appropriate permissions. If the account ID that you submit is not an AWS  
+Organizations master account, AWS Firewall Manager will set the  
+appropriate permissions for the given member account.</p>
+ 
+  The account that you associate with AWS Firewall Manager is called the AWS
+  Firewall Manager administrator account.</p>
+
+<h3 class="function"><a name="associate_admin_account-3">associate_admin_account/3</a></h3>
+<div class="spec">
+<p><tt>associate_admin_account(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_apps_list-2">delete_apps_list/2</a></h3>
+<div class="spec">
+<p><tt>delete_apps_list(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Permanently deletes an AWS Firewall Manager applications list.</p>
+
+<h3 class="function"><a name="delete_apps_list-3">delete_apps_list/3</a></h3>
+<div class="spec">
+<p><tt>delete_apps_list(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_notification_channel-2">delete_notification_channel/2</a></h3>
+<div class="spec">
+<p><tt>delete_notification_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an AWS Firewall Manager association with the IAM role and the
+  Amazon Simple Notification Service (SNS) topic that is used to record AWS
+  Firewall Manager SNS logs.</p>
+
+<h3 class="function"><a name="delete_notification_channel-3">delete_notification_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_notification_channel(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_policy-2">delete_policy/2</a></h3>
+<div class="spec">
+<p><tt>delete_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Permanently deletes an AWS Firewall Manager policy.</p>
+
+<h3 class="function"><a name="delete_policy-3">delete_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_protocols_list-2">delete_protocols_list/2</a></h3>
+<div class="spec">
+<p><tt>delete_protocols_list(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Permanently deletes an AWS Firewall Manager protocols list.</p>
+
+<h3 class="function"><a name="delete_protocols_list-3">delete_protocols_list/3</a></h3>
+<div class="spec">
+<p><tt>delete_protocols_list(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_admin_account-2">disassociate_admin_account/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_admin_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates the account that has been set as the AWS Firewall  
+Manager administrator account.</p>
+ 
+  To set a different account as the administrator account, you must submit
+  an <code>AssociateAdminAccount</code> request.</p>
+
+<h3 class="function"><a name="disassociate_admin_account-3">disassociate_admin_account/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_admin_account(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_admin_account-2">get_admin_account/2</a></h3>
+<div class="spec">
+<p><tt>get_admin_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the AWS Organizations master account that is associated with
+  AWS Firewall Manager as the AWS Firewall Manager administrator.</p>
+
+<h3 class="function"><a name="get_admin_account-3">get_admin_account/3</a></h3>
+<div class="spec">
+<p><tt>get_admin_account(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_apps_list-2">get_apps_list/2</a></h3>
+<div class="spec">
+<p><tt>get_apps_list(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the specified AWS Firewall Manager
+  applications list.</p>
+
+<h3 class="function"><a name="get_apps_list-3">get_apps_list/3</a></h3>
+<div class="spec">
+<p><tt>get_apps_list(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_compliance_detail-2">get_compliance_detail/2</a></h3>
+<div class="spec">
+<p><tt>get_compliance_detail(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns detailed compliance information about the specified member  
+account.</p>
+ 
+  Details include resources that are in and out of compliance with the
+  specified policy. Resources are considered noncompliant for AWS WAF and
+  Shield Advanced policies if the specified policy has not been applied to
+  them. Resources are considered noncompliant for security group policies if
+  they are in scope of the policy, they violate one or more of the policy
+  rules, and remediation is disabled or not possible.</p>
+
+<h3 class="function"><a name="get_compliance_detail-3">get_compliance_detail/3</a></h3>
+<div class="spec">
+<p><tt>get_compliance_detail(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_notification_channel-2">get_notification_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_notification_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Information about the Amazon Simple Notification Service (SNS) topic
+  that is used to record AWS Firewall Manager SNS logs.</p>
+
+<h3 class="function"><a name="get_notification_channel-3">get_notification_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_notification_channel(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_policy-2">get_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the specified AWS Firewall Manager policy.</p>
+
+<h3 class="function"><a name="get_policy-3">get_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_protection_status-2">get_protection_status/2</a></h3>
+<div class="spec">
+<p><tt>get_protection_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>If you created a Shield Advanced policy, returns policy-level attack  
+summary information in the event of a potential DDoS attack.</p>
+ 
+  Other policy types are currently unsupported.</p>
+
+<h3 class="function"><a name="get_protection_status-3">get_protection_status/3</a></h3>
+<div class="spec">
+<p><tt>get_protection_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_protocols_list-2">get_protocols_list/2</a></h3>
+<div class="spec">
+<p><tt>get_protocols_list(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the specified AWS Firewall Manager
+  protocols list.</p>
+
+<h3 class="function"><a name="get_protocols_list-3">get_protocols_list/3</a></h3>
+<div class="spec">
+<p><tt>get_protocols_list(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_violation_details-2">get_violation_details/2</a></h3>
+<div class="spec">
+<p><tt>get_violation_details(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves violations for a resource based on the specified AWS
+  Firewall Manager policy and AWS account.</p>
+
+<h3 class="function"><a name="get_violation_details-3">get_violation_details/3</a></h3>
+<div class="spec">
+<p><tt>get_violation_details(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_apps_lists-2">list_apps_lists/2</a></h3>
+<div class="spec">
+<p><tt>list_apps_lists(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array of <code>AppsListDataSummary</code> objects.</p>
+
+<h3 class="function"><a name="list_apps_lists-3">list_apps_lists/3</a></h3>
+<div class="spec">
+<p><tt>list_apps_lists(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_compliance_status-2">list_compliance_status/2</a></h3>
+<div class="spec">
+<p><tt>list_compliance_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns an array of <code>PolicyComplianceStatus</code> objects.</p>
+ 
+  Use <code>PolicyComplianceStatus</code> to get a summary of which member accounts are
+  protected by the specified policy.</p>
+
+<h3 class="function"><a name="list_compliance_status-3">list_compliance_status/3</a></h3>
+<div class="spec">
+<p><tt>list_compliance_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_member_accounts-2">list_member_accounts/2</a></h3>
+<div class="spec">
+<p><tt>list_member_accounts(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a <code>MemberAccounts</code> object that lists the member accounts in  
+the administrator's AWS organization.</p>
+ 
+  The <code>ListMemberAccounts</code> must be submitted by the account that is set as
+  the AWS Firewall Manager administrator.</p>
+
+<h3 class="function"><a name="list_member_accounts-3">list_member_accounts/3</a></h3>
+<div class="spec">
+<p><tt>list_member_accounts(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_policies-2">list_policies/2</a></h3>
+<div class="spec">
+<p><tt>list_policies(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array of <code>PolicySummary</code> objects.</p>
+
+<h3 class="function"><a name="list_policies-3">list_policies/3</a></h3>
+<div class="spec">
+<p><tt>list_policies(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_protocols_lists-2">list_protocols_lists/2</a></h3>
+<div class="spec">
+<p><tt>list_protocols_lists(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array of <code>ProtocolsListDataSummary</code> objects.</p>
+
+<h3 class="function"><a name="list_protocols_lists-3">list_protocols_lists/3</a></h3>
+<div class="spec">
+<p><tt>list_protocols_lists(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the list of tags for the specified AWS resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_apps_list-2">put_apps_list/2</a></h3>
+<div class="spec">
+<p><tt>put_apps_list(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an AWS Firewall Manager applications list.</p>
+
+<h3 class="function"><a name="put_apps_list-3">put_apps_list/3</a></h3>
+<div class="spec">
+<p><tt>put_apps_list(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_notification_channel-2">put_notification_channel/2</a></h3>
+<div class="spec">
+<p><tt>put_notification_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Designates the IAM role and Amazon Simple Notification Service (SNS)
+  topic that AWS Firewall Manager uses to record SNS logs.</p>
+
+<h3 class="function"><a name="put_notification_channel-3">put_notification_channel/3</a></h3>
+<div class="spec">
+<p><tt>put_notification_channel(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_policy-2">put_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an AWS Firewall Manager policy.</p>
+ 
+  <p>Firewall Manager provides the following types of policies:</p>
+ 
+  <ul> <li><p> A Shield Advanced policy, which applies Shield Advanced  
+protection to specified accounts and resources</p>
+ 
+  </li> <li><p> An AWS WAF policy (type WAFV2), which defines rule groups to  
+run first in the corresponding AWS WAF web ACL and rule groups to run last  
+in the web ACL.</p>
+ 
+  </li> <li><p> An AWS WAF Classic policy (type WAF), which defines a rule  
+group.</p>
+ 
+  </li> <li><p> A security group policy, which manages VPC security groups  
+across your AWS organization.</p>
+ 
+  </li> </ul><p> Each policy is specific to one of the types. If you want to  
+enforce more than one policy type across accounts, create multiple  
+policies. You can create multiple policies for each type.</p>
+ 
+  You must be subscribed to Shield Advanced to create a Shield Advanced
+  policy. For more information about subscribing to Shield Advanced, see
+  CreateSubscription.</p>
+
+<h3 class="function"><a name="put_policy-3">put_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_protocols_list-2">put_protocols_list/2</a></h3>
+<div class="spec">
+<p><tt>put_protocols_list(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an AWS Firewall Manager protocols list.</p>
+
+<h3 class="function"><a name="put_protocols_list-3">put_protocols_list/3</a></h3>
+<div class="spec">
+<p><tt>put_protocols_list(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds one or more tags to an AWS resource.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags from an AWS resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

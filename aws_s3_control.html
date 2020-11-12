@@ -1,0 +1,1253 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_s3_control</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_s3_control</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS S3 Control provides access to Amazon S3 control plane operations.
+
+
+<h2><a name="description">Description</a></h2>AWS S3 Control provides access to Amazon S3 control plane operations.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_access_point-3">create_access_point/3</a></td><td>Creates an access point and associates it with the specified bucket.</td></tr>
+<tr><td valign="top"><a href="#create_access_point-4">create_access_point/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_bucket-3">create_bucket/3</a></td><td>This API operation creates an Amazon S3 on Outposts bucket.</td></tr>
+<tr><td valign="top"><a href="#create_bucket-4">create_bucket/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_job-2">create_job/2</a></td><td>S3 Batch Operations performs large-scale Batch Operations on Amazon  
+S3 objects.</td></tr>
+<tr><td valign="top"><a href="#create_job-3">create_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_access_point-3">delete_access_point/3</a></td><td>Deletes the specified access point.</td></tr>
+<tr><td valign="top"><a href="#delete_access_point-4">delete_access_point/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_access_point_policy-3">delete_access_point_policy/3</a></td><td>Deletes the access point policy for the specified access point.</td></tr>
+<tr><td valign="top"><a href="#delete_access_point_policy-4">delete_access_point_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_bucket-3">delete_bucket/3</a></td><td>This API operation deletes an Amazon S3 on Outposts bucket.</td></tr>
+<tr><td valign="top"><a href="#delete_bucket-4">delete_bucket/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_bucket_lifecycle_configuration-3">delete_bucket_lifecycle_configuration/3</a></td><td>This API action deletes an Amazon S3 on Outposts bucket's lifecycle  
+configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_bucket_lifecycle_configuration-4">delete_bucket_lifecycle_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_bucket_policy-3">delete_bucket_policy/3</a></td><td>This API operation deletes an Amazon S3 on Outposts bucket policy.</td></tr>
+<tr><td valign="top"><a href="#delete_bucket_policy-4">delete_bucket_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_bucket_tagging-3">delete_bucket_tagging/3</a></td><td>This API operation deletes an Amazon S3 on Outposts bucket's tags.</td></tr>
+<tr><td valign="top"><a href="#delete_bucket_tagging-4">delete_bucket_tagging/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_job_tagging-3">delete_job_tagging/3</a></td><td>Removes the entire tag set from the specified S3 Batch Operations  
+job.</td></tr>
+<tr><td valign="top"><a href="#delete_job_tagging-4">delete_job_tagging/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_public_access_block-2">delete_public_access_block/2</a></td><td>Removes the <code>PublicAccessBlock</code> configuration for an AWS account.</td></tr>
+<tr><td valign="top"><a href="#delete_public_access_block-3">delete_public_access_block/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_job-3">describe_job/3</a></td><td>Retrieves the configuration parameters and status for a Batch  
+Operations job.</td></tr>
+<tr><td valign="top"><a href="#describe_job-4">describe_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_access_point-3">get_access_point/3</a></td><td>Returns configuration information about the specified access point.</td></tr>
+<tr><td valign="top"><a href="#get_access_point-4">get_access_point/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_access_point_policy-3">get_access_point_policy/3</a></td><td>Returns the access point policy associated with the specified access  
+point.</td></tr>
+<tr><td valign="top"><a href="#get_access_point_policy-4">get_access_point_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_access_point_policy_status-3">get_access_point_policy_status/3</a></td><td>Indicates whether the specified access point currently has a policy  
+that allows public access.</td></tr>
+<tr><td valign="top"><a href="#get_access_point_policy_status-4">get_access_point_policy_status/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_bucket-3">get_bucket/3</a></td><td>Gets an Amazon S3 on Outposts bucket.</td></tr>
+<tr><td valign="top"><a href="#get_bucket-4">get_bucket/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_bucket_lifecycle_configuration-3">get_bucket_lifecycle_configuration/3</a></td><td>This API operation gets an Amazon S3 on Outposts bucket's lifecycle  
+configuration.</td></tr>
+<tr><td valign="top"><a href="#get_bucket_lifecycle_configuration-4">get_bucket_lifecycle_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_bucket_policy-3">get_bucket_policy/3</a></td><td>This API action gets a bucket policy for an Amazon S3 on Outposts  
+bucket.</td></tr>
+<tr><td valign="top"><a href="#get_bucket_policy-4">get_bucket_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_bucket_tagging-3">get_bucket_tagging/3</a></td><td>This API operation gets an Amazon S3 on Outposts bucket's tags.</td></tr>
+<tr><td valign="top"><a href="#get_bucket_tagging-4">get_bucket_tagging/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_job_tagging-3">get_job_tagging/3</a></td><td>Returns the tags on an S3 Batch Operations job.</td></tr>
+<tr><td valign="top"><a href="#get_job_tagging-4">get_job_tagging/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_public_access_block-2">get_public_access_block/2</a></td><td>Retrieves the <code>PublicAccessBlock</code> configuration for an AWS account.</td></tr>
+<tr><td valign="top"><a href="#get_public_access_block-3">get_public_access_block/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_access_points-5">list_access_points/5</a></td><td>Returns a list of the access points currently associated with the  
+specified bucket.</td></tr>
+<tr><td valign="top"><a href="#list_access_points-6">list_access_points/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_jobs-5">list_jobs/5</a></td><td>Lists current S3 Batch Operations jobs and jobs that have ended  
+within the last 30 days for the AWS account making the request.</td></tr>
+<tr><td valign="top"><a href="#list_jobs-6">list_jobs/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_regional_buckets-5">list_regional_buckets/5</a></td><td>Returns a list of all Outposts buckets in an Outposts that are owned  
+by the authenticated sender of the request.</td></tr>
+<tr><td valign="top"><a href="#list_regional_buckets-6">list_regional_buckets/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_access_point_policy-3">put_access_point_policy/3</a></td><td>Associates an access policy with the specified access point.</td></tr>
+<tr><td valign="top"><a href="#put_access_point_policy-4">put_access_point_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_bucket_lifecycle_configuration-3">put_bucket_lifecycle_configuration/3</a></td><td>This API action puts a lifecycle configuration to an Amazon S3 on  
+Outposts bucket.</td></tr>
+<tr><td valign="top"><a href="#put_bucket_lifecycle_configuration-4">put_bucket_lifecycle_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_bucket_policy-3">put_bucket_policy/3</a></td><td>This API action puts a bucket policy to an Amazon S3 on Outposts  
+bucket.</td></tr>
+<tr><td valign="top"><a href="#put_bucket_policy-4">put_bucket_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_bucket_tagging-3">put_bucket_tagging/3</a></td><td>This API action puts tags on an Amazon S3 on Outposts bucket.</td></tr>
+<tr><td valign="top"><a href="#put_bucket_tagging-4">put_bucket_tagging/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_job_tagging-3">put_job_tagging/3</a></td><td>Sets the supplied tag-set on an S3 Batch Operations job.</td></tr>
+<tr><td valign="top"><a href="#put_job_tagging-4">put_job_tagging/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_public_access_block-2">put_public_access_block/2</a></td><td>Creates or modifies the <code>PublicAccessBlock</code> configuration for an AWS  
+account.</td></tr>
+<tr><td valign="top"><a href="#put_public_access_block-3">put_public_access_block/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_job_priority-3">update_job_priority/3</a></td><td>Updates an existing S3 Batch Operations job's priority.</td></tr>
+<tr><td valign="top"><a href="#update_job_priority-4">update_job_priority/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_job_status-3">update_job_status/3</a></td><td>Updates the status for the specified job.</td></tr>
+<tr><td valign="top"><a href="#update_job_status-4">update_job_status/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_access_point-3">create_access_point/3</a></h3>
+<div class="spec">
+<p><tt>create_access_point(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an access point and associates it with the specified bucket.</p>
+ 
+  <p>For more information, see Managing Data Access with Amazon S3 Access  
+Points in the Amazon Simple Storage Service Developer Guide.</p>
+ 
+  <p>Using this action with Amazon S3 on Outposts</p>
+ 
+  <p>This action:</p>
+ 
+  <ul> <li><p> Requires a virtual private cloud (VPC) configuration as S3 on  
+Outposts only supports VPC style access points.</p>
+ 
+  </li> <li><p> Does not support ACL on S3 on Outposts buckets.</p>
+ 
+  </li> <li><p> Does not support Public Access on S3 on Outposts buckets.</p>
+ 
+  </li> <li><p> Does not support object lock for S3 on Outposts buckets.</p>
+ 
+  </li> </ul><p> For more information, see Using Amazon S3 on Outposts in the  
+Amazon Simple Storage Service Developer Guide .</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>CreateAccessPoint</code>:</p>
+ 
+  <ul> <li><p> GetAccessPoint</p>
+ 
+  </li> <li><p> DeleteAccessPoint</p>
+ 
+  </li> <li><p> ListAccessPoints</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="create_access_point-4">create_access_point/4</a></h3>
+<div class="spec">
+<p><tt>create_access_point(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_bucket-3">create_bucket/3</a></h3>
+<div class="spec">
+<p><tt>create_bucket(Client, Bucket, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API operation creates an Amazon S3 on Outposts bucket.</p>
+ 
+  <p>To create an S3 bucket, see Create Bucket in the Amazon Simple Storage  
+Service API.</p>
+ 
+  <p>Creates a new Outposts bucket. By creating the bucket, you become the  
+bucket owner. To create an Outposts bucket, you must have S3 on Outposts.  
+For more information, see Using Amazon S3 on Outposts in Amazon Simple  
+Storage Service Developer Guide.</p>
+ 
+  <p>Not every string is an acceptable bucket name. For information on bucket  
+naming restrictions, see Working with Amazon S3 Buckets.</p>
+ 
+  <p>S3 on Outposts buckets do not support</p>
+ 
+  <ul> <li><p> ACLs. Instead, configure access point policies to manage access  
+to buckets.</p>
+ 
+  </li> <li><p> Public access.</p>
+ 
+  </li> <li><p> Object Lock</p>
+ 
+  </li> <li><p> Bucket Location constraint</p>
+ 
+  </li> </ul><p> For an example of the request syntax for Amazon S3 on Outposts  
+that uses the S3 on Outposts endpoint hostname prefix and outpost-id in  
+your API request, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>CreateBucket</code> for Amazon S3 on  
+Outposts:</p>
+ 
+  <ul> <li><p> PutObject</p>
+ 
+  </li> <li><p> GetBucket</p>
+ 
+  </li> <li><p> DeleteBucket</p>
+ 
+  </li> <li><p> CreateAccessPoint</p>
+ 
+  </li> <li><p> PutAccessPointPolicy</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="create_bucket-4">create_bucket/4</a></h3>
+<div class="spec">
+<p><tt>create_bucket(Client, Bucket, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_job-2">create_job/2</a></h3>
+<div class="spec">
+<p><tt>create_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>S3 Batch Operations performs large-scale Batch Operations on Amazon  
+S3 objects.</p>
+ 
+  <p>Batch Operations can run a single operation or action on lists of Amazon  
+S3 objects that you specify. For more information, see S3 Batch Operations  
+in the Amazon Simple Storage Service Developer Guide.</p>
+ 
+  <p>This operation creates a S3 Batch Operations job.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> DescribeJob</p>
+ 
+  </li> <li><p> ListJobs</p>
+ 
+  </li> <li><p> UpdateJobPriority</p>
+ 
+  </li> <li><p> UpdateJobStatus</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="create_job-3">create_job/3</a></h3>
+<div class="spec">
+<p><tt>create_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_access_point-3">delete_access_point/3</a></h3>
+<div class="spec">
+<p><tt>delete_access_point(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified access point.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>DeleteAccessPoint</code>:</p>
+ 
+  <ul> <li><p> CreateAccessPoint</p>
+ 
+  </li> <li><p> GetAccessPoint</p>
+ 
+  </li> <li><p> ListAccessPoints</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_access_point-4">delete_access_point/4</a></h3>
+<div class="spec">
+<p><tt>delete_access_point(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_access_point_policy-3">delete_access_point_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_access_point_policy(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the access point policy for the specified access point.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>DeleteAccessPointPolicy</code>:</p>
+ 
+  <ul> <li><p> PutAccessPointPolicy</p>
+ 
+  </li> <li><p> GetAccessPointPolicy</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_access_point_policy-4">delete_access_point_policy/4</a></h3>
+<div class="spec">
+<p><tt>delete_access_point_policy(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_bucket-3">delete_bucket/3</a></h3>
+<div class="spec">
+<p><tt>delete_bucket(Client, Bucket, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API operation deletes an Amazon S3 on Outposts bucket.</p>
+ 
+  <p>To delete an S3 bucket, see DeleteBucket in the Amazon Simple Storage  
+Service API.</p>
+ 
+  <p>Deletes the Amazon S3 on Outposts bucket. All objects (including all  
+object versions and delete markers) in the bucket must be deleted before  
+the bucket itself can be deleted. For more information, see Using Amazon  
+S3 on Outposts in Amazon Simple Storage Service Developer Guide.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <h3><a name="Related_Resources">Related Resources</a></h3>
+ 
+  <ul> <li><p> CreateBucket</p>
+ 
+  </li> <li><p> GetBucket</p>
+ 
+  </li> <li><p> DeleteObject</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_bucket-4">delete_bucket/4</a></h3>
+<div class="spec">
+<p><tt>delete_bucket(Client, Bucket, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_bucket_lifecycle_configuration-3">delete_bucket_lifecycle_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_bucket_lifecycle_configuration(Client, Bucket, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API action deletes an Amazon S3 on Outposts bucket's lifecycle  
+configuration.</p>
+ 
+  <p>To delete an S3 bucket's lifecycle configuration, see  
+DeleteBucketLifecycle in the Amazon Simple Storage Service API.</p>
+ 
+  <p>Deletes the lifecycle configuration from the specified Outposts bucket.  
+Amazon S3 on Outposts removes all the lifecycle configuration rules in the  
+lifecycle subresource associated with the bucket. Your objects never  
+expire, and Amazon S3 on Outposts no longer automatically deletes any  
+objects on the basis of rules contained in the deleted lifecycle  
+configuration. For more information, see Using Amazon S3 on Outposts in  
+Amazon Simple Storage Service Developer Guide.</p>
+ 
+  <p>To use this operation, you must have permission to perform the
+  <code>s3outposts:DeleteLifecycleConfiguration</code> action. By default, the bucket  
+owner has this permission and the Outposts bucket owner can grant this  
+permission to others.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>For more information about object expiration, see Elements to Describe  
+Lifecycle Actions.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> PutBucketLifecycleConfiguration</p>
+ 
+  </li> <li><p> GetBucketLifecycleConfiguration</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_bucket_lifecycle_configuration-4">delete_bucket_lifecycle_configuration/4</a></h3>
+<div class="spec">
+<p><tt>delete_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_bucket_policy-3">delete_bucket_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_bucket_policy(Client, Bucket, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API operation deletes an Amazon S3 on Outposts bucket policy.</p>
+ 
+  <p>To delete an S3 bucket policy, see DeleteBucketPolicy in the Amazon Simple  
+Storage Service API.</p>
+ 
+  <p>This implementation of the DELETE operation uses the policy subresource to
+  delete the policy of a specified Amazon S3 on Outposts bucket. If you are
+  using an identity other than the root user of the AWS account that owns
+  the bucket, the calling identity must have the
+  <code>s3outposts:DeleteBucketPolicy</code> permissions on the specified Outposts  
+bucket and belong to the bucket owner's account to use this operation. For  
+more information, see Using Amazon S3 on Outposts in Amazon Simple Storage  
+Service Developer Guide.</p>
+ 
+  <p>If you don't have <code>DeleteBucketPolicy</code> permissions, Amazon S3 returns a
+  <code>403 Access Denied</code> error. If you have the correct permissions, but you're
+  not using an identity that belongs to the bucket owner's account, Amazon
+  S3 returns a <code>405 Method Not Allowed</code> error.</p>
+ 
+  <p>As a security precaution, the root user of the AWS account that owns a  
+bucket can always use this operation, even if the policy explicitly denies  
+the root user the ability to perform this action.</p>
+ 
+  <p>For more information about bucket policies, see Using Bucket Policies and  
+User Policies.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>DeleteBucketPolicy</code>:</p>
+ 
+  <ul> <li><p> GetBucketPolicy</p>
+ 
+  </li> <li><p> PutBucketPolicy</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_bucket_policy-4">delete_bucket_policy/4</a></h3>
+<div class="spec">
+<p><tt>delete_bucket_policy(Client, Bucket, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_bucket_tagging-3">delete_bucket_tagging/3</a></h3>
+<div class="spec">
+<p><tt>delete_bucket_tagging(Client, Bucket, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API operation deletes an Amazon S3 on Outposts bucket's tags.</p>
+ 
+  <p>To delete an S3 bucket tags, see DeleteBucketTagging in the Amazon Simple  
+Storage Service API.</p>
+ 
+  <p>Deletes the tags from the Outposts bucket. For more information, see Using  
+Amazon S3 on Outposts in Amazon Simple Storage Service Developer Guide.</p>
+ 
+  <p>To use this operation, you must have permission to perform the
+  <code>PutBucketTagging</code> action. By default, the bucket owner has this  
+permission and can grant this permission to others.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>DeleteBucketTagging</code>:</p>
+ 
+  <ul> <li><p> GetBucketTagging</p>
+ 
+  </li> <li><p> PutBucketTagging</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_bucket_tagging-4">delete_bucket_tagging/4</a></h3>
+<div class="spec">
+<p><tt>delete_bucket_tagging(Client, Bucket, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_job_tagging-3">delete_job_tagging/3</a></h3>
+<div class="spec">
+<p><tt>delete_job_tagging(Client, JobId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the entire tag set from the specified S3 Batch Operations  
+job.</p>
+ 
+  <p>To use this operation, you must have permission to perform the
+  <code>s3:DeleteJobTagging</code> action. For more information, see Controlling access  
+and labeling jobs using tags in the Amazon Simple Storage Service  
+Developer Guide.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> CreateJob</p>
+ 
+  </li> <li><p> GetJobTagging</p>
+ 
+  </li> <li><p> PutJobTagging</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_job_tagging-4">delete_job_tagging/4</a></h3>
+<div class="spec">
+<p><tt>delete_job_tagging(Client, JobId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_public_access_block-2">delete_public_access_block/2</a></h3>
+<div class="spec">
+<p><tt>delete_public_access_block(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the <code>PublicAccessBlock</code> configuration for an AWS account.</p>
+ 
+  <p>For more information, see Using Amazon S3 block public access.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> GetPublicAccessBlock</p>
+ 
+  </li> <li><p> PutPublicAccessBlock</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_public_access_block-3">delete_public_access_block/3</a></h3>
+<div class="spec">
+<p><tt>delete_public_access_block(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_job-3">describe_job/3</a></h3>
+<div class="spec">
+<p><tt>describe_job(Client, JobId, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the configuration parameters and status for a Batch  
+Operations job.</p>
+ 
+  <p>For more information, see S3 Batch Operations in the Amazon Simple Storage  
+Service Developer Guide.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> CreateJob</p>
+ 
+  </li> <li><p> ListJobs</p>
+ 
+  </li> <li><p> UpdateJobPriority</p>
+ 
+  </li> <li><p> UpdateJobStatus</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="describe_job-4">describe_job/4</a></h3>
+<div class="spec">
+<p><tt>describe_job(Client, JobId, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_access_point-3">get_access_point/3</a></h3>
+<div class="spec">
+<p><tt>get_access_point(Client, Name, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns configuration information about the specified access point.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>GetAccessPoint</code>:</p>
+ 
+  <ul> <li><p> CreateAccessPoint</p>
+ 
+  </li> <li><p> DeleteAccessPoint</p>
+ 
+  </li> <li><p> ListAccessPoints</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_access_point-4">get_access_point/4</a></h3>
+<div class="spec">
+<p><tt>get_access_point(Client, Name, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_access_point_policy-3">get_access_point_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_access_point_policy(Client, Name, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the access point policy associated with the specified access  
+point.</p>
+ 
+  <p>The following actions are related to <code>GetAccessPointPolicy</code>:</p>
+ 
+  <ul> <li><p> PutAccessPointPolicy</p>
+ 
+  </li> <li><p> DeleteAccessPointPolicy</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_access_point_policy-4">get_access_point_policy/4</a></h3>
+<div class="spec">
+<p><tt>get_access_point_policy(Client, Name, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_access_point_policy_status-3">get_access_point_policy_status/3</a></h3>
+<div class="spec">
+<p><tt>get_access_point_policy_status(Client, Name, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Indicates whether the specified access point currently has a policy  
+that allows public access.</p>
+ 
+  For more information about public access through access points, see
+  Managing Data Access with Amazon S3 Access Points in the Amazon Simple
+  Storage Service Developer Guide.</p>
+
+<h3 class="function"><a name="get_access_point_policy_status-4">get_access_point_policy_status/4</a></h3>
+<div class="spec">
+<p><tt>get_access_point_policy_status(Client, Name, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_bucket-3">get_bucket/3</a></h3>
+<div class="spec">
+<p><tt>get_bucket(Client, Bucket, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets an Amazon S3 on Outposts bucket.</p>
+ 
+  <p>For more information, see Using Amazon S3 on Outposts in the Amazon Simple  
+Storage Service Developer Guide.</p>
+ 
+  <p>The following actions are related to <code>GetBucket</code> for Amazon S3 on  
+Outposts:</p>
+ 
+  <ul> <li><p> PutObject</p>
+ 
+  </li> <li><p> CreateBucket</p>
+ 
+  </li> <li><p> DeleteBucket</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_bucket-4">get_bucket/4</a></h3>
+<div class="spec">
+<p><tt>get_bucket(Client, Bucket, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_bucket_lifecycle_configuration-3">get_bucket_lifecycle_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_bucket_lifecycle_configuration(Client, Bucket, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API operation gets an Amazon S3 on Outposts bucket's lifecycle  
+configuration.</p>
+ 
+  <p>To get an S3 bucket's lifecycle configuration, see  
+GetBucketLifecycleConfiguration in the Amazon Simple Storage Service API.</p>
+ 
+  <p>Returns the lifecycle configuration information set on the Outposts  
+bucket. For more information, see Using Amazon S3 on Outposts and for  
+information about lifecycle configuration, see Object Lifecycle Management  
+in Amazon Simple Storage Service Developer Guide.</p>
+ 
+  <p>To use this operation, you must have permission to perform the
+  <code>s3outposts:GetLifecycleConfiguration</code> action. The Outposts bucket owner  
+has this permission, by default. The bucket owner can grant this  
+permission to others. For more information about permissions, see  
+Permissions Related to Bucket Subresource Operations and Managing Access  
+Permissions to Your Amazon S3 Resources.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p><code>GetBucketLifecycleConfiguration</code> has the following special error:</p>
+ 
+  <ul> <li><p> Error code: <code>NoSuchLifecycleConfiguration</code></p>
+ 
+  <ul> <li><p> Description: The lifecycle configuration does not exist.</p>
+ 
+  </li> <li><p> HTTP Status Code: 404 Not Found</p>
+ 
+  </li> <li><p> SOAP Fault Code Prefix: Client</p>
+ 
+  </li> </ul> </li> </ul><p> The following actions are related to
+  <code>GetBucketLifecycleConfiguration</code>:</p>
+ 
+  <ul> <li><p> PutBucketLifecycleConfiguration</p>
+ 
+  </li> <li><p> DeleteBucketLifecycleConfiguration</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_bucket_lifecycle_configuration-4">get_bucket_lifecycle_configuration/4</a></h3>
+<div class="spec">
+<p><tt>get_bucket_lifecycle_configuration(Client, Bucket, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_bucket_policy-3">get_bucket_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_bucket_policy(Client, Bucket, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API action gets a bucket policy for an Amazon S3 on Outposts  
+bucket.</p>
+ 
+  <p>To get a policy for an S3 bucket, see GetBucketPolicy in the Amazon Simple  
+Storage Service API.</p>
+ 
+  <p>Returns the policy of a specified Outposts bucket. For more information,  
+see Using Amazon S3 on Outposts in the Amazon Simple Storage Service  
+Developer Guide.</p>
+ 
+  <p>If you are using an identity other than the root user of the AWS account
+  that owns the bucket, the calling identity must have the <code>GetBucketPolicy</code>  
+permissions on the specified bucket and belong to the bucket owner's  
+account in order to use this operation.</p>
+ 
+  <p>If you don't have <code>s3outposts:GetBucketPolicy</code> permissions, Amazon S3
+  returns a <code>403 Access Denied</code> error. If you have the correct permissions,
+  but you're not using an identity that belongs to the bucket owner's
+  account, Amazon S3 returns a <code>405 Method Not Allowed</code> error.</p>
+ 
+  <p>As a security precaution, the root user of the AWS account that owns a  
+bucket can always use this operation, even if the policy explicitly denies  
+the root user the ability to perform this action.</p>
+ 
+  <p>For more information about bucket policies, see Using Bucket Policies and  
+User Policies.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>GetBucketPolicy</code>:</p>
+ 
+  <ul> <li><p> GetObject</p>
+ 
+  </li> <li><p> PutBucketPolicy</p>
+ 
+  </li> <li><p> DeleteBucketPolicy</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_bucket_policy-4">get_bucket_policy/4</a></h3>
+<div class="spec">
+<p><tt>get_bucket_policy(Client, Bucket, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_bucket_tagging-3">get_bucket_tagging/3</a></h3>
+<div class="spec">
+<p><tt>get_bucket_tagging(Client, Bucket, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API operation gets an Amazon S3 on Outposts bucket's tags.</p>
+ 
+  <p>To get an S3 bucket tags, see GetBucketTagging in the Amazon Simple  
+Storage Service API.</p>
+ 
+  <p>Returns the tag set associated with the Outposts bucket. For more  
+information, see Using Amazon S3 on Outposts in the Amazon Simple Storage  
+Service Developer Guide.</p>
+ 
+  <p>To use this operation, you must have permission to perform the
+  <code>GetBucketTagging</code> action. By default, the bucket owner has this  
+permission and can grant this permission to others.</p>
+ 
+  <p><code>GetBucketTagging</code> has the following special error:</p>
+ 
+  <ul> <li><p> Error code: <code>NoSuchTagSetError</code></p>
+ 
+  <ul> <li><p> Description: There is no tag set associated with the bucket.</p>
+ 
+  </li> </ul> </li> </ul><p> All Amazon S3 on Outposts REST API requests for  
+this action require an additional parameter of outpost-id to be passed  
+with the request and an S3 on Outposts endpoint hostname prefix instead of  
+s3-control. For an example of the request syntax for Amazon S3 on Outposts  
+that uses the S3 on Outposts endpoint hostname prefix and the outpost-id  
+derived using the access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>GetBucketTagging</code>:</p>
+ 
+  <ul> <li><p> PutBucketTagging</p>
+ 
+  </li> <li><p> DeleteBucketTagging</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_bucket_tagging-4">get_bucket_tagging/4</a></h3>
+<div class="spec">
+<p><tt>get_bucket_tagging(Client, Bucket, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_job_tagging-3">get_job_tagging/3</a></h3>
+<div class="spec">
+<p><tt>get_job_tagging(Client, JobId, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the tags on an S3 Batch Operations job.</p>
+ 
+  <p>To use this operation, you must have permission to perform the
+  <code>s3:GetJobTagging</code> action. For more information, see Controlling access  
+and labeling jobs using tags in the Amazon Simple Storage Service  
+Developer Guide.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> CreateJob</p>
+ 
+  </li> <li><p> PutJobTagging</p>
+ 
+  </li> <li><p> DeleteJobTagging</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_job_tagging-4">get_job_tagging/4</a></h3>
+<div class="spec">
+<p><tt>get_job_tagging(Client, JobId, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_public_access_block-2">get_public_access_block/2</a></h3>
+<div class="spec">
+<p><tt>get_public_access_block(Client, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the <code>PublicAccessBlock</code> configuration for an AWS account.</p>
+ 
+  <p>For more information, see Using Amazon S3 block public access.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> DeletePublicAccessBlock</p>
+ 
+  </li> <li><p> PutPublicAccessBlock</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_public_access_block-3">get_public_access_block/3</a></h3>
+<div class="spec">
+<p><tt>get_public_access_block(Client, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_access_points-5">list_access_points/5</a></h3>
+<div class="spec">
+<p><tt>list_access_points(Client, Bucket, MaxResults, NextToken, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of the access points currently associated with the  
+specified bucket.</p>
+ 
+  <p>You can retrieve up to 1000 access points per call. If the specified
+  bucket has more than 1,000 access points (or the number specified in
+  <code>maxResults</code>, whichever is less), the response will include a continuation  
+token that you can use to list the additional access points.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>ListAccessPoints</code>:</p>
+ 
+  <ul> <li><p> CreateAccessPoint</p>
+ 
+  </li> <li><p> DeleteAccessPoint</p>
+ 
+  </li> <li><p> GetAccessPoint</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="list_access_points-6">list_access_points/6</a></h3>
+<div class="spec">
+<p><tt>list_access_points(Client, Bucket, MaxResults, NextToken, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_jobs-5">list_jobs/5</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists current S3 Batch Operations jobs and jobs that have ended  
+within the last 30 days for the AWS account making the request.</p>
+ 
+  <p>For more information, see S3 Batch Operations in the Amazon Simple Storage  
+Service Developer Guide.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> CreateJob</p>
+ 
+  </li> <li><p> DescribeJob</p>
+ 
+  </li> <li><p> UpdateJobPriority</p>
+ 
+  </li> <li><p> UpdateJobStatus</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="list_jobs-6">list_jobs/6</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, JobStatuses, MaxResults, NextToken, AccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_regional_buckets-5">list_regional_buckets/5</a></h3>
+<div class="spec">
+<p><tt>list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of all Outposts buckets in an Outposts that are owned  
+by the authenticated sender of the request.</p>
+ 
+  <p>For more information, see Using Amazon S3 on Outposts in the Amazon Simple  
+Storage Service Developer Guide.</p>
+ 
+  For an example of the request syntax for Amazon S3 on Outposts that uses
+  the S3 on Outposts endpoint hostname prefix and outpost-id in your API
+  request, see the Example section below.</p>
+
+<h3 class="function"><a name="list_regional_buckets-6">list_regional_buckets/6</a></h3>
+<div class="spec">
+<p><tt>list_regional_buckets(Client, MaxResults, NextToken, AccountId, OutpostId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_access_point_policy-3">put_access_point_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_access_point_policy(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates an access policy with the specified access point.</p>
+ 
+  <p>Each access point can have only one policy, so a request made to this API  
+replaces any existing policy associated with the specified access point.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>PutAccessPointPolicy</code>:</p>
+ 
+  <ul> <li><p> GetAccessPointPolicy</p>
+ 
+  </li> <li><p> DeleteAccessPointPolicy</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="put_access_point_policy-4">put_access_point_policy/4</a></h3>
+<div class="spec">
+<p><tt>put_access_point_policy(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_bucket_lifecycle_configuration-3">put_bucket_lifecycle_configuration/3</a></h3>
+<div class="spec">
+<p><tt>put_bucket_lifecycle_configuration(Client, Bucket, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API action puts a lifecycle configuration to an Amazon S3 on  
+Outposts bucket.</p>
+ 
+  <p>To put a lifecycle configuration to an S3 bucket, see  
+PutBucketLifecycleConfiguration in the Amazon Simple Storage Service API.</p>
+ 
+  <p>Creates a new lifecycle configuration for the Outposts bucket or replaces  
+an existing lifecycle configuration. Outposts buckets can only support a  
+lifecycle that deletes objects after a certain period of time. For more  
+information, see Managing Lifecycle Permissions for Amazon S3 on Outposts.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>PutBucketLifecycleConfiguration</code>:</p>
+ 
+  <ul> <li><p> GetBucketLifecycleConfiguration</p>
+ 
+  </li> <li><p> DeleteBucketLifecycleConfiguration</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="put_bucket_lifecycle_configuration-4">put_bucket_lifecycle_configuration/4</a></h3>
+<div class="spec">
+<p><tt>put_bucket_lifecycle_configuration(Client, Bucket, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_bucket_policy-3">put_bucket_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_bucket_policy(Client, Bucket, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API action puts a bucket policy to an Amazon S3 on Outposts  
+bucket.</p>
+ 
+  <p>To put a policy on an S3 bucket, see PutBucketPolicy in the Amazon Simple  
+Storage Service API.</p>
+ 
+  <p>Applies an Amazon S3 bucket policy to an Outposts bucket. For more  
+information, see Using Amazon S3 on Outposts in the Amazon Simple Storage  
+Service Developer Guide.</p>
+ 
+  <p>If you are using an identity other than the root user of the AWS account
+  that owns the Outposts bucket, the calling identity must have the
+  <code>PutBucketPolicy</code> permissions on the specified Outposts bucket and belong  
+to the bucket owner's account in order to use this operation.</p>
+ 
+  <p>If you don't have <code>PutBucketPolicy</code> permissions, Amazon S3 returns a <code>403
+  Access Denied</code> error. If you have the correct permissions, but you're not
+  using an identity that belongs to the bucket owner's account, Amazon S3
+  returns a <code>405 Method Not Allowed</code> error.</p>
+ 
+  <p>As a security precaution, the root user of the AWS account that owns a  
+bucket can always use this operation, even if the policy explicitly denies  
+the root user the ability to perform this action.</p>
+ 
+  <p>For more information about bucket policies, see Using Bucket Policies and  
+User Policies.</p>
+ 
+  <p>All Amazon S3 on Outposts REST API requests for this action require an  
+additional parameter of outpost-id to be passed with the request and an S3  
+on Outposts endpoint hostname prefix instead of s3-control. For an example  
+of the request syntax for Amazon S3 on Outposts that uses the S3 on  
+Outposts endpoint hostname prefix and the outpost-id derived using the  
+access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>PutBucketPolicy</code>:</p>
+ 
+  <ul> <li><p> GetBucketPolicy</p>
+ 
+  </li> <li><p> DeleteBucketPolicy</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="put_bucket_policy-4">put_bucket_policy/4</a></h3>
+<div class="spec">
+<p><tt>put_bucket_policy(Client, Bucket, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_bucket_tagging-3">put_bucket_tagging/3</a></h3>
+<div class="spec">
+<p><tt>put_bucket_tagging(Client, Bucket, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API action puts tags on an Amazon S3 on Outposts bucket.</p>
+ 
+  <p>To put tags on an S3 bucket, see PutBucketTagging in the Amazon Simple  
+Storage Service API.</p>
+ 
+  <p>Sets the tags for an Outposts bucket. For more information, see Using  
+Amazon S3 on Outposts in the Amazon Simple Storage Service Developer  
+Guide.</p>
+ 
+  <p>Use tags to organize your AWS bill to reflect your own cost structure. To  
+do this, sign up to get your AWS account bill with tag key values  
+included. Then, to see the cost of combined resources, organize your  
+billing information according to resources with the same tag key values.  
+For example, you can tag several resources with a specific application  
+name, and then organize your billing information to see the total cost of  
+that application across several services. For more information, see Cost  
+Allocation and Tagging.</p>
+ 
+  <p>Within a bucket, if you add a tag that has the same key as an existing  
+tag, the new value overwrites the old value. For more information, see  
+Using Cost Allocation in Amazon S3 Bucket Tags.</p>
+ 
+  <p>To use this operation, you must have permissions to perform the
+  <code>s3outposts:PutBucketTagging</code> action. The Outposts bucket owner has this  
+permission by default and can grant this permission to others. For more  
+information about permissions, see Permissions Related to Bucket  
+Subresource Operations and Managing Access Permissions to Your Amazon S3  
+Resources.</p>
+ 
+  <p><code>PutBucketTagging</code> has the following special errors:</p>
+ 
+  <ul> <li><p> Error code: <code>InvalidTagError</code></p>
+ 
+  <ul> <li><p> Description: The tag provided was not a valid tag. This error  
+can occur if the tag did not pass input validation. For information about  
+tag restrictions, see User-Defined Tag Restrictions and AWS-Generated Cost  
+Allocation Tag Restrictions.</p>
+ 
+  </li> </ul> </li> <li><p> Error code: <code>MalformedXMLError</code></p>
+ 
+  <ul> <li><p> Description: The XML provided does not match the schema.</p>
+ 
+  </li> </ul> </li> <li><p> Error code: <code>OperationAbortedError</code></p>
+ 
+  <ul> <li><p> Description: A conflicting conditional operation is currently in  
+progress against this resource. Try again.</p>
+ 
+  </li> </ul> </li> <li><p> Error code: <code>InternalError</code></p>
+ 
+  <ul> <li><p> Description: The service was unable to apply the provided tag to  
+the bucket.</p>
+ 
+  </li> </ul> </li> </ul><p> All Amazon S3 on Outposts REST API requests for  
+this action require an additional parameter of outpost-id to be passed  
+with the request and an S3 on Outposts endpoint hostname prefix instead of  
+s3-control. For an example of the request syntax for Amazon S3 on Outposts  
+that uses the S3 on Outposts endpoint hostname prefix and the outpost-id  
+derived using the access point ARN, see the Example section below.</p>
+ 
+  <p>The following actions are related to <code>PutBucketTagging</code>:</p>
+ 
+  <ul> <li><p> GetBucketTagging</p>
+ 
+  </li> <li><p> DeleteBucketTagging</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="put_bucket_tagging-4">put_bucket_tagging/4</a></h3>
+<div class="spec">
+<p><tt>put_bucket_tagging(Client, Bucket, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_job_tagging-3">put_job_tagging/3</a></h3>
+<div class="spec">
+<p><tt>put_job_tagging(Client, JobId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the supplied tag-set on an S3 Batch Operations job.</p>
+ 
+  <p>A tag is a key-value pair. You can associate S3 Batch Operations tags with  
+any job by sending a PUT request against the tagging subresource that is  
+associated with the job. To modify the existing tag set, you can either  
+replace the existing tag set entirely, or make changes within the existing  
+tag set by retrieving the existing tag set using GetJobTagging, modify  
+that tag set, and use this API action to replace the tag set with the one  
+you modified. For more information, see Controlling access and labeling  
+jobs using tags in the Amazon Simple Storage Service Developer Guide.</p>
+ 
+  <ul> <li><p> If you send this request with an empty tag set, Amazon S3  
+deletes the existing tag set on the Batch Operations job. If you use this  
+method, you are charged for a Tier 1 Request (PUT). For more information,  
+see Amazon S3 pricing.</p>
+ 
+  </li> <li><p> For deleting existing tags for your Batch Operations job, a  
+DeleteJobTagging request is preferred because it achieves the same result  
+without incurring charges.</p>
+ 
+  </li> <li><p> A few things to consider about using tags:</p>
+ 
+  <ul> <li><p> Amazon S3 limits the maximum number of tags to 50 tags per job.</p>
+ 
+  </li> <li><p> You can associate up to 50 tags with a job as long as they have  
+unique tag keys.</p>
+ 
+  </li> <li><p> A tag key can be up to 128 Unicode characters in length, and  
+tag values can be up to 256 Unicode characters in length.</p>
+ 
+  </li> <li><p> The key and values are case sensitive.</p>
+ 
+  </li> <li><p> For tagging-related restrictions related to characters and  
+encodings, see User-Defined Tag Restrictions in the AWS Billing and Cost  
+Management User Guide.</p>
+ 
+  </li> </ul> </li> </ul>
+ 
+  <p>To use this operation, you must have permission to perform the
+  <code>s3:PutJobTagging</code> action.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> CreatJob</p>
+ 
+  </li> <li><p> GetJobTagging</p>
+ 
+  </li> <li><p> DeleteJobTagging</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="put_job_tagging-4">put_job_tagging/4</a></h3>
+<div class="spec">
+<p><tt>put_job_tagging(Client, JobId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_public_access_block-2">put_public_access_block/2</a></h3>
+<div class="spec">
+<p><tt>put_public_access_block(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or modifies the <code>PublicAccessBlock</code> configuration for an AWS  
+account.</p>
+ 
+  <p>For more information, see Using Amazon S3 block public access.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> GetPublicAccessBlock</p>
+ 
+  </li> <li><p> DeletePublicAccessBlock</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="put_public_access_block-3">put_public_access_block/3</a></h3>
+<div class="spec">
+<p><tt>put_public_access_block(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_job_priority-3">update_job_priority/3</a></h3>
+<div class="spec">
+<p><tt>update_job_priority(Client, JobId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an existing S3 Batch Operations job's priority.</p>
+ 
+  <p>For more information, see S3 Batch Operations in the Amazon Simple Storage  
+Service Developer Guide.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> CreateJob</p>
+ 
+  </li> <li><p> ListJobs</p>
+ 
+  </li> <li><p> DescribeJob</p>
+ 
+  </li> <li><p> UpdateJobStatus</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="update_job_priority-4">update_job_priority/4</a></h3>
+<div class="spec">
+<p><tt>update_job_priority(Client, JobId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_job_status-3">update_job_status/3</a></h3>
+<div class="spec">
+<p><tt>update_job_status(Client, JobId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the status for the specified job.</p>
+ 
+  <p>Use this operation to confirm that you want to run a job or to cancel an  
+existing job. For more information, see S3 Batch Operations in the Amazon  
+Simple Storage Service Developer Guide.</p>
+ 
+  <p>Related actions include:</p>
+ 
+  <ul> <li><p> CreateJob</p>
+ 
+  </li> <li><p> ListJobs</p>
+ 
+  </li> <li><p> DescribeJob</p>
+ 
+  </li> <li><p> UpdateJobStatus</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="update_job_status-4">update_job_status/4</a></h3>
+<div class="spec">
+<p><tt>update_job_status(Client, JobId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

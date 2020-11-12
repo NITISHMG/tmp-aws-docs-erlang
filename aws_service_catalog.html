@@ -1,0 +1,1428 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_service_catalog</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_service_catalog</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Service Catalog.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Service Catalog</p>
+ 
+  <p>AWS Service Catalog enables organizations to create and manage catalogs of  
+IT services that are approved for use on AWS.</p>
+ 
+  To get the most out of this documentation, you should be familiar with the
+  terminology discussed in AWS Service Catalog Concepts.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#accept_portfolio_share-2">accept_portfolio_share/2</a></td><td>Accepts an offer to share the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#accept_portfolio_share-3">accept_portfolio_share/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_budget_with_resource-2">associate_budget_with_resource/2</a></td><td>Associates the specified budget with the specified resource.</td></tr>
+<tr><td valign="top"><a href="#associate_budget_with_resource-3">associate_budget_with_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_principal_with_portfolio-2">associate_principal_with_portfolio/2</a></td><td>Associates the specified principal ARN with the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#associate_principal_with_portfolio-3">associate_principal_with_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_product_with_portfolio-2">associate_product_with_portfolio/2</a></td><td>Associates the specified product with the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#associate_product_with_portfolio-3">associate_product_with_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_service_action_with_provisioning_artifact-2">associate_service_action_with_provisioning_artifact/2</a></td><td>Associates a self-service action with a provisioning artifact.</td></tr>
+<tr><td valign="top"><a href="#associate_service_action_with_provisioning_artifact-3">associate_service_action_with_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_tag_option_with_resource-2">associate_tag_option_with_resource/2</a></td><td>Associate the specified TagOption with the specified portfolio or
+  product.</td></tr>
+<tr><td valign="top"><a href="#associate_tag_option_with_resource-3">associate_tag_option_with_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_associate_service_action_with_provisioning_artifact-2">batch_associate_service_action_with_provisioning_artifact/2</a></td><td>Associates multiple self-service actions with provisioning artifacts.</td></tr>
+<tr><td valign="top"><a href="#batch_associate_service_action_with_provisioning_artifact-3">batch_associate_service_action_with_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_disassociate_service_action_from_provisioning_artifact-2">batch_disassociate_service_action_from_provisioning_artifact/2</a></td><td>Disassociates a batch of self-service actions from the specified
+  provisioning artifact.</td></tr>
+<tr><td valign="top"><a href="#batch_disassociate_service_action_from_provisioning_artifact-3">batch_disassociate_service_action_from_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#copy_product-2">copy_product/2</a></td><td>Copies the specified source product to the specified target product  
+or a new product.</td></tr>
+<tr><td valign="top"><a href="#copy_product-3">copy_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_constraint-2">create_constraint/2</a></td><td>Creates a constraint.</td></tr>
+<tr><td valign="top"><a href="#create_constraint-3">create_constraint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_portfolio-2">create_portfolio/2</a></td><td>Creates a portfolio.</td></tr>
+<tr><td valign="top"><a href="#create_portfolio-3">create_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_portfolio_share-2">create_portfolio_share/2</a></td><td>Shares the specified portfolio with the specified account or  
+organization node.</td></tr>
+<tr><td valign="top"><a href="#create_portfolio_share-3">create_portfolio_share/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_product-2">create_product/2</a></td><td>Creates a product.</td></tr>
+<tr><td valign="top"><a href="#create_product-3">create_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_provisioned_product_plan-2">create_provisioned_product_plan/2</a></td><td>Creates a plan.</td></tr>
+<tr><td valign="top"><a href="#create_provisioned_product_plan-3">create_provisioned_product_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_provisioning_artifact-2">create_provisioning_artifact/2</a></td><td>Creates a provisioning artifact (also known as a version) for the  
+specified product.</td></tr>
+<tr><td valign="top"><a href="#create_provisioning_artifact-3">create_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_service_action-2">create_service_action/2</a></td><td>Creates a self-service action.</td></tr>
+<tr><td valign="top"><a href="#create_service_action-3">create_service_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_tag_option-2">create_tag_option/2</a></td><td>Creates a TagOption.</td></tr>
+<tr><td valign="top"><a href="#create_tag_option-3">create_tag_option/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_constraint-2">delete_constraint/2</a></td><td>Deletes the specified constraint.</td></tr>
+<tr><td valign="top"><a href="#delete_constraint-3">delete_constraint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_portfolio-2">delete_portfolio/2</a></td><td>Deletes the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#delete_portfolio-3">delete_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_portfolio_share-2">delete_portfolio_share/2</a></td><td>Stops sharing the specified portfolio with the specified account or  
+organization node.</td></tr>
+<tr><td valign="top"><a href="#delete_portfolio_share-3">delete_portfolio_share/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_product-2">delete_product/2</a></td><td>Deletes the specified product.</td></tr>
+<tr><td valign="top"><a href="#delete_product-3">delete_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_provisioned_product_plan-2">delete_provisioned_product_plan/2</a></td><td>Deletes the specified plan.</td></tr>
+<tr><td valign="top"><a href="#delete_provisioned_product_plan-3">delete_provisioned_product_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_provisioning_artifact-2">delete_provisioning_artifact/2</a></td><td>Deletes the specified provisioning artifact (also known as a version)  
+for the specified product.</td></tr>
+<tr><td valign="top"><a href="#delete_provisioning_artifact-3">delete_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_service_action-2">delete_service_action/2</a></td><td>Deletes a self-service action.</td></tr>
+<tr><td valign="top"><a href="#delete_service_action-3">delete_service_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_tag_option-2">delete_tag_option/2</a></td><td>Deletes the specified TagOption.</td></tr>
+<tr><td valign="top"><a href="#delete_tag_option-3">delete_tag_option/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_constraint-2">describe_constraint/2</a></td><td>Gets information about the specified constraint.</td></tr>
+<tr><td valign="top"><a href="#describe_constraint-3">describe_constraint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_copy_product_status-2">describe_copy_product_status/2</a></td><td>Gets the status of the specified copy product operation.</td></tr>
+<tr><td valign="top"><a href="#describe_copy_product_status-3">describe_copy_product_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_portfolio-2">describe_portfolio/2</a></td><td>Gets information about the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#describe_portfolio-3">describe_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_portfolio_share_status-2">describe_portfolio_share_status/2</a></td><td>Gets the status of the specified portfolio share operation.</td></tr>
+<tr><td valign="top"><a href="#describe_portfolio_share_status-3">describe_portfolio_share_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_product-2">describe_product/2</a></td><td>Gets information about the specified product.</td></tr>
+<tr><td valign="top"><a href="#describe_product-3">describe_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_product_as_admin-2">describe_product_as_admin/2</a></td><td>Gets information about the specified product.</td></tr>
+<tr><td valign="top"><a href="#describe_product_as_admin-3">describe_product_as_admin/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_product_view-2">describe_product_view/2</a></td><td>Gets information about the specified product.</td></tr>
+<tr><td valign="top"><a href="#describe_product_view-3">describe_product_view/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_provisioned_product-2">describe_provisioned_product/2</a></td><td>Gets information about the specified provisioned product.</td></tr>
+<tr><td valign="top"><a href="#describe_provisioned_product-3">describe_provisioned_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_provisioned_product_plan-2">describe_provisioned_product_plan/2</a></td><td>Gets information about the resource changes for the specified plan.</td></tr>
+<tr><td valign="top"><a href="#describe_provisioned_product_plan-3">describe_provisioned_product_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_provisioning_artifact-2">describe_provisioning_artifact/2</a></td><td>Gets information about the specified provisioning artifact (also
+  known as a version) for the specified product.</td></tr>
+<tr><td valign="top"><a href="#describe_provisioning_artifact-3">describe_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_provisioning_parameters-2">describe_provisioning_parameters/2</a></td><td>Gets information about the configuration required to provision the  
+specified product using the specified provisioning artifact.</td></tr>
+<tr><td valign="top"><a href="#describe_provisioning_parameters-3">describe_provisioning_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_record-2">describe_record/2</a></td><td>Gets information about the specified request operation.</td></tr>
+<tr><td valign="top"><a href="#describe_record-3">describe_record/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_service_action-2">describe_service_action/2</a></td><td>Describes a self-service action.</td></tr>
+<tr><td valign="top"><a href="#describe_service_action-3">describe_service_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_service_action_execution_parameters-2">describe_service_action_execution_parameters/2</a></td><td>Finds the default parameters for a specific self-service action on a
+  specific provisioned product and returns a map of the results to the user.</td></tr>
+<tr><td valign="top"><a href="#describe_service_action_execution_parameters-3">describe_service_action_execution_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_tag_option-2">describe_tag_option/2</a></td><td>Gets information about the specified TagOption.</td></tr>
+<tr><td valign="top"><a href="#describe_tag_option-3">describe_tag_option/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disable_a_w_s_organizations_access-2">disable_a_w_s_organizations_access/2</a></td><td>Disable portfolio sharing through AWS Organizations feature.</td></tr>
+<tr><td valign="top"><a href="#disable_a_w_s_organizations_access-3">disable_a_w_s_organizations_access/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_budget_from_resource-2">disassociate_budget_from_resource/2</a></td><td>Disassociates the specified budget from the specified resource.</td></tr>
+<tr><td valign="top"><a href="#disassociate_budget_from_resource-3">disassociate_budget_from_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_principal_from_portfolio-2">disassociate_principal_from_portfolio/2</a></td><td>Disassociates a previously associated principal ARN from a specified
+  portfolio.</td></tr>
+<tr><td valign="top"><a href="#disassociate_principal_from_portfolio-3">disassociate_principal_from_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_product_from_portfolio-2">disassociate_product_from_portfolio/2</a></td><td>Disassociates the specified product from the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#disassociate_product_from_portfolio-3">disassociate_product_from_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_service_action_from_provisioning_artifact-2">disassociate_service_action_from_provisioning_artifact/2</a></td><td>Disassociates the specified self-service action association from the
+  specified provisioning artifact.</td></tr>
+<tr><td valign="top"><a href="#disassociate_service_action_from_provisioning_artifact-3">disassociate_service_action_from_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_tag_option_from_resource-2">disassociate_tag_option_from_resource/2</a></td><td>Disassociates the specified TagOption from the specified resource.</td></tr>
+<tr><td valign="top"><a href="#disassociate_tag_option_from_resource-3">disassociate_tag_option_from_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#enable_a_w_s_organizations_access-2">enable_a_w_s_organizations_access/2</a></td><td>Enable portfolio sharing feature through AWS Organizations.</td></tr>
+<tr><td valign="top"><a href="#enable_a_w_s_organizations_access-3">enable_a_w_s_organizations_access/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#execute_provisioned_product_plan-2">execute_provisioned_product_plan/2</a></td><td>Provisions or modifies a product based on the resource changes for
+  the specified plan.</td></tr>
+<tr><td valign="top"><a href="#execute_provisioned_product_plan-3">execute_provisioned_product_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#execute_provisioned_product_service_action-2">execute_provisioned_product_service_action/2</a></td><td>Executes a self-service action against a provisioned product.</td></tr>
+<tr><td valign="top"><a href="#execute_provisioned_product_service_action-3">execute_provisioned_product_service_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_a_w_s_organizations_access_status-2">get_a_w_s_organizations_access_status/2</a></td><td>Get the Access Status for AWS Organization portfolio share feature.</td></tr>
+<tr><td valign="top"><a href="#get_a_w_s_organizations_access_status-3">get_a_w_s_organizations_access_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_provisioned_product_outputs-2">get_provisioned_product_outputs/2</a></td><td>This API takes either a <code>ProvisonedProductId</code> or a
+  <code>ProvisionedProductName</code>, along with a list of one or more output keys,
+  and responds with the key/value pairs of those outputs.</td></tr>
+<tr><td valign="top"><a href="#get_provisioned_product_outputs-3">get_provisioned_product_outputs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_accepted_portfolio_shares-2">list_accepted_portfolio_shares/2</a></td><td>Lists all portfolios for which sharing was accepted by this account.</td></tr>
+<tr><td valign="top"><a href="#list_accepted_portfolio_shares-3">list_accepted_portfolio_shares/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_budgets_for_resource-2">list_budgets_for_resource/2</a></td><td>Lists all the budgets associated to the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_budgets_for_resource-3">list_budgets_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_constraints_for_portfolio-2">list_constraints_for_portfolio/2</a></td><td>Lists the constraints for the specified portfolio and product.</td></tr>
+<tr><td valign="top"><a href="#list_constraints_for_portfolio-3">list_constraints_for_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_launch_paths-2">list_launch_paths/2</a></td><td>Lists the paths to the specified product.</td></tr>
+<tr><td valign="top"><a href="#list_launch_paths-3">list_launch_paths/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_organization_portfolio_access-2">list_organization_portfolio_access/2</a></td><td>Lists the organization nodes that have access to the specified  
+portfolio.</td></tr>
+<tr><td valign="top"><a href="#list_organization_portfolio_access-3">list_organization_portfolio_access/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_portfolio_access-2">list_portfolio_access/2</a></td><td>Lists the account IDs that have access to the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#list_portfolio_access-3">list_portfolio_access/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_portfolios-2">list_portfolios/2</a></td><td>Lists all portfolios in the catalog.</td></tr>
+<tr><td valign="top"><a href="#list_portfolios-3">list_portfolios/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_portfolios_for_product-2">list_portfolios_for_product/2</a></td><td>Lists all portfolios that the specified product is associated with.</td></tr>
+<tr><td valign="top"><a href="#list_portfolios_for_product-3">list_portfolios_for_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_principals_for_portfolio-2">list_principals_for_portfolio/2</a></td><td>Lists all principal ARNs associated with the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#list_principals_for_portfolio-3">list_principals_for_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_provisioned_product_plans-2">list_provisioned_product_plans/2</a></td><td>Lists the plans for the specified provisioned product or all plans to
+  which the user has access.</td></tr>
+<tr><td valign="top"><a href="#list_provisioned_product_plans-3">list_provisioned_product_plans/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_provisioning_artifacts-2">list_provisioning_artifacts/2</a></td><td>Lists all provisioning artifacts (also known as versions) for the
+  specified product.</td></tr>
+<tr><td valign="top"><a href="#list_provisioning_artifacts-3">list_provisioning_artifacts/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_provisioning_artifacts_for_service_action-2">list_provisioning_artifacts_for_service_action/2</a></td><td>Lists all provisioning artifacts (also known as versions) for the
+  specified self-service action.</td></tr>
+<tr><td valign="top"><a href="#list_provisioning_artifacts_for_service_action-3">list_provisioning_artifacts_for_service_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_record_history-2">list_record_history/2</a></td><td>Lists the specified requests or all performed requests.</td></tr>
+<tr><td valign="top"><a href="#list_record_history-3">list_record_history/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resources_for_tag_option-2">list_resources_for_tag_option/2</a></td><td>Lists the resources associated with the specified TagOption.</td></tr>
+<tr><td valign="top"><a href="#list_resources_for_tag_option-3">list_resources_for_tag_option/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_service_actions-2">list_service_actions/2</a></td><td>Lists all self-service actions.</td></tr>
+<tr><td valign="top"><a href="#list_service_actions-3">list_service_actions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_service_actions_for_provisioning_artifact-2">list_service_actions_for_provisioning_artifact/2</a></td><td>Returns a paginated list of self-service actions associated with the
+  specified Product ID and Provisioning Artifact ID.</td></tr>
+<tr><td valign="top"><a href="#list_service_actions_for_provisioning_artifact-3">list_service_actions_for_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_stack_instances_for_provisioned_product-2">list_stack_instances_for_provisioned_product/2</a></td><td>Returns summary information about stack instances that are associated
+  with the specified <code>CFN_STACKSET</code> type provisioned product.</td></tr>
+<tr><td valign="top"><a href="#list_stack_instances_for_provisioned_product-3">list_stack_instances_for_provisioned_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tag_options-2">list_tag_options/2</a></td><td>Lists the specified TagOptions or all TagOptions.</td></tr>
+<tr><td valign="top"><a href="#list_tag_options-3">list_tag_options/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#provision_product-2">provision_product/2</a></td><td>Provisions the specified product.</td></tr>
+<tr><td valign="top"><a href="#provision_product-3">provision_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reject_portfolio_share-2">reject_portfolio_share/2</a></td><td>Rejects an offer to share the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#reject_portfolio_share-3">reject_portfolio_share/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#scan_provisioned_products-2">scan_provisioned_products/2</a></td><td>Lists the provisioned products that are available (not terminated).</td></tr>
+<tr><td valign="top"><a href="#scan_provisioned_products-3">scan_provisioned_products/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#search_products-2">search_products/2</a></td><td>Gets information about the products to which the caller has access.</td></tr>
+<tr><td valign="top"><a href="#search_products-3">search_products/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#search_products_as_admin-2">search_products_as_admin/2</a></td><td>Gets information about the products for the specified portfolio or
+  all products.</td></tr>
+<tr><td valign="top"><a href="#search_products_as_admin-3">search_products_as_admin/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#search_provisioned_products-2">search_provisioned_products/2</a></td><td>Gets information about the provisioned products that meet the
+  specified criteria.</td></tr>
+<tr><td valign="top"><a href="#search_provisioned_products-3">search_provisioned_products/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#terminate_provisioned_product-2">terminate_provisioned_product/2</a></td><td>Terminates the specified provisioned product.</td></tr>
+<tr><td valign="top"><a href="#terminate_provisioned_product-3">terminate_provisioned_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_constraint-2">update_constraint/2</a></td><td>Updates the specified constraint.</td></tr>
+<tr><td valign="top"><a href="#update_constraint-3">update_constraint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_portfolio-2">update_portfolio/2</a></td><td>Updates the specified portfolio.</td></tr>
+<tr><td valign="top"><a href="#update_portfolio-3">update_portfolio/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_product-2">update_product/2</a></td><td>Updates the specified product.</td></tr>
+<tr><td valign="top"><a href="#update_product-3">update_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_provisioned_product-2">update_provisioned_product/2</a></td><td>Requests updates to the configuration of the specified provisioned  
+product.</td></tr>
+<tr><td valign="top"><a href="#update_provisioned_product-3">update_provisioned_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_provisioned_product_properties-2">update_provisioned_product_properties/2</a></td><td>Requests updates to the properties of the specified provisioned
+  product.</td></tr>
+<tr><td valign="top"><a href="#update_provisioned_product_properties-3">update_provisioned_product_properties/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_provisioning_artifact-2">update_provisioning_artifact/2</a></td><td>Updates the specified provisioning artifact (also known as a version)  
+for the specified product.</td></tr>
+<tr><td valign="top"><a href="#update_provisioning_artifact-3">update_provisioning_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_service_action-2">update_service_action/2</a></td><td>Updates a self-service action.</td></tr>
+<tr><td valign="top"><a href="#update_service_action-3">update_service_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_tag_option-2">update_tag_option/2</a></td><td>Updates the specified TagOption.</td></tr>
+<tr><td valign="top"><a href="#update_tag_option-3">update_tag_option/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="accept_portfolio_share-2">accept_portfolio_share/2</a></h3>
+<div class="spec">
+<p><tt>accept_portfolio_share(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Accepts an offer to share the specified portfolio.</p>
+
+<h3 class="function"><a name="accept_portfolio_share-3">accept_portfolio_share/3</a></h3>
+<div class="spec">
+<p><tt>accept_portfolio_share(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_budget_with_resource-2">associate_budget_with_resource/2</a></h3>
+<div class="spec">
+<p><tt>associate_budget_with_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates the specified budget with the specified resource.</p>
+
+<h3 class="function"><a name="associate_budget_with_resource-3">associate_budget_with_resource/3</a></h3>
+<div class="spec">
+<p><tt>associate_budget_with_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_principal_with_portfolio-2">associate_principal_with_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>associate_principal_with_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates the specified principal ARN with the specified portfolio.</p>
+
+<h3 class="function"><a name="associate_principal_with_portfolio-3">associate_principal_with_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>associate_principal_with_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_product_with_portfolio-2">associate_product_with_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>associate_product_with_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates the specified product with the specified portfolio.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="associate_product_with_portfolio-3">associate_product_with_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>associate_product_with_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_service_action_with_provisioning_artifact-2">associate_service_action_with_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>associate_service_action_with_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a self-service action with a provisioning artifact.</p>
+
+<h3 class="function"><a name="associate_service_action_with_provisioning_artifact-3">associate_service_action_with_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>associate_service_action_with_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_tag_option_with_resource-2">associate_tag_option_with_resource/2</a></h3>
+<div class="spec">
+<p><tt>associate_tag_option_with_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associate the specified TagOption with the specified portfolio or
+  product.</p>
+
+<h3 class="function"><a name="associate_tag_option_with_resource-3">associate_tag_option_with_resource/3</a></h3>
+<div class="spec">
+<p><tt>associate_tag_option_with_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_associate_service_action_with_provisioning_artifact-2">batch_associate_service_action_with_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>batch_associate_service_action_with_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates multiple self-service actions with provisioning artifacts.</p>
+
+<h3 class="function"><a name="batch_associate_service_action_with_provisioning_artifact-3">batch_associate_service_action_with_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>batch_associate_service_action_with_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_disassociate_service_action_from_provisioning_artifact-2">batch_disassociate_service_action_from_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>batch_disassociate_service_action_from_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates a batch of self-service actions from the specified
+  provisioning artifact.</p>
+
+<h3 class="function"><a name="batch_disassociate_service_action_from_provisioning_artifact-3">batch_disassociate_service_action_from_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>batch_disassociate_service_action_from_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="copy_product-2">copy_product/2</a></h3>
+<div class="spec">
+<p><tt>copy_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Copies the specified source product to the specified target product  
+or a new product.</p>
+ 
+  <p>You can copy a product to the same account or another account. You can  
+copy a product to the same region or another region.</p>
+ 
+  This operation is performed asynchronously. To track the progress of the
+  operation, use <code>DescribeCopyProductStatus</code>.</p>
+
+<h3 class="function"><a name="copy_product-3">copy_product/3</a></h3>
+<div class="spec">
+<p><tt>copy_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_constraint-2">create_constraint/2</a></h3>
+<div class="spec">
+<p><tt>create_constraint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a constraint.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="create_constraint-3">create_constraint/3</a></h3>
+<div class="spec">
+<p><tt>create_constraint(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_portfolio-2">create_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>create_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a portfolio.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="create_portfolio-3">create_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>create_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_portfolio_share-2">create_portfolio_share/2</a></h3>
+<div class="spec">
+<p><tt>create_portfolio_share(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Shares the specified portfolio with the specified account or  
+organization node.</p>
+ 
+  <p>Shares to an organization node can only be created by the management  
+account of an organization or by a delegated administrator. You can share  
+portfolios to an organization, an organizational unit, or a specific  
+account.</p>
+ 
+  <p>Note that if a delegated admin is de-registered, they can no longer create  
+portfolio shares.</p>
+ 
+  <p><code>AWSOrganizationsAccess</code> must be enabled in order to create a portfolio  
+share to an organization node.</p>
+ 
+  You can't share a shared resource. This includes portfolios that contain a
+  shared product.</p>
+
+<h3 class="function"><a name="create_portfolio_share-3">create_portfolio_share/3</a></h3>
+<div class="spec">
+<p><tt>create_portfolio_share(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_product-2">create_product/2</a></h3>
+<div class="spec">
+<p><tt>create_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a product.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="create_product-3">create_product/3</a></h3>
+<div class="spec">
+<p><tt>create_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_provisioned_product_plan-2">create_provisioned_product_plan/2</a></h3>
+<div class="spec">
+<p><tt>create_provisioned_product_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a plan.</p>
+ 
+  <p>A plan includes the list of resources to be created (when provisioning a  
+new product) or modified (when updating a provisioned product) when the  
+plan is executed.</p>
+ 
+  <p>You can create one plan per provisioned product. To create a plan for an  
+existing provisioned product, the product status must be AVAILBLE or  
+TAINTED.</p>
+ 
+  To view the resource changes in the change set, use
+  <code>DescribeProvisionedProductPlan</code>. To create or modify the provisioned
+  product, use <code>ExecuteProvisionedProductPlan</code>.</p>
+
+<h3 class="function"><a name="create_provisioned_product_plan-3">create_provisioned_product_plan/3</a></h3>
+<div class="spec">
+<p><tt>create_provisioned_product_plan(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_provisioning_artifact-2">create_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>create_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a provisioning artifact (also known as a version) for the  
+specified product.</p>
+ 
+  You cannot create a provisioning artifact for a product that was shared
+  with you.</p>
+
+<h3 class="function"><a name="create_provisioning_artifact-3">create_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>create_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_service_action-2">create_service_action/2</a></h3>
+<div class="spec">
+<p><tt>create_service_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a self-service action.</p>
+
+<h3 class="function"><a name="create_service_action-3">create_service_action/3</a></h3>
+<div class="spec">
+<p><tt>create_service_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_tag_option-2">create_tag_option/2</a></h3>
+<div class="spec">
+<p><tt>create_tag_option(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a TagOption.</p>
+
+<h3 class="function"><a name="create_tag_option-3">create_tag_option/3</a></h3>
+<div class="spec">
+<p><tt>create_tag_option(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_constraint-2">delete_constraint/2</a></h3>
+<div class="spec">
+<p><tt>delete_constraint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified constraint.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="delete_constraint-3">delete_constraint/3</a></h3>
+<div class="spec">
+<p><tt>delete_constraint(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_portfolio-2">delete_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>delete_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified portfolio.</p>
+ 
+  <p>You cannot delete a portfolio if it was shared with you or if it has  
+associated products, users, constraints, or shared accounts.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="delete_portfolio-3">delete_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>delete_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_portfolio_share-2">delete_portfolio_share/2</a></h3>
+<div class="spec">
+<p><tt>delete_portfolio_share(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops sharing the specified portfolio with the specified account or  
+organization node.</p>
+ 
+  <p>Shares to an organization node can only be deleted by the management  
+account of an organization or by a delegated administrator.</p>
+ 
+  Note that if a delegated admin is de-registered, portfolio shares created
+  from that account are removed.</p>
+
+<h3 class="function"><a name="delete_portfolio_share-3">delete_portfolio_share/3</a></h3>
+<div class="spec">
+<p><tt>delete_portfolio_share(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_product-2">delete_product/2</a></h3>
+<div class="spec">
+<p><tt>delete_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified product.</p>
+ 
+  <p>You cannot delete a product if it was shared with you or is associated  
+with a portfolio.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="delete_product-3">delete_product/3</a></h3>
+<div class="spec">
+<p><tt>delete_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_provisioned_product_plan-2">delete_provisioned_product_plan/2</a></h3>
+<div class="spec">
+<p><tt>delete_provisioned_product_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified plan.</p>
+
+<h3 class="function"><a name="delete_provisioned_product_plan-3">delete_provisioned_product_plan/3</a></h3>
+<div class="spec">
+<p><tt>delete_provisioned_product_plan(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_provisioning_artifact-2">delete_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>delete_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified provisioning artifact (also known as a version)  
+for the specified product.</p>
+ 
+  You cannot delete a provisioning artifact associated with a product that
+  was shared with you. You cannot delete the last provisioning artifact for
+  a product, because a product must have at least one provisioning artifact.</p>
+
+<h3 class="function"><a name="delete_provisioning_artifact-3">delete_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>delete_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_service_action-2">delete_service_action/2</a></h3>
+<div class="spec">
+<p><tt>delete_service_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a self-service action.</p>
+
+<h3 class="function"><a name="delete_service_action-3">delete_service_action/3</a></h3>
+<div class="spec">
+<p><tt>delete_service_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_tag_option-2">delete_tag_option/2</a></h3>
+<div class="spec">
+<p><tt>delete_tag_option(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified TagOption.</p>
+ 
+  You cannot delete a TagOption if it is associated with a product or
+  portfolio.</p>
+
+<h3 class="function"><a name="delete_tag_option-3">delete_tag_option/3</a></h3>
+<div class="spec">
+<p><tt>delete_tag_option(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_constraint-2">describe_constraint/2</a></h3>
+<div class="spec">
+<p><tt>describe_constraint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the specified constraint.</p>
+
+<h3 class="function"><a name="describe_constraint-3">describe_constraint/3</a></h3>
+<div class="spec">
+<p><tt>describe_constraint(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_copy_product_status-2">describe_copy_product_status/2</a></h3>
+<div class="spec">
+<p><tt>describe_copy_product_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the status of the specified copy product operation.</p>
+
+<h3 class="function"><a name="describe_copy_product_status-3">describe_copy_product_status/3</a></h3>
+<div class="spec">
+<p><tt>describe_copy_product_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_portfolio-2">describe_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>describe_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the specified portfolio.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="describe_portfolio-3">describe_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>describe_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_portfolio_share_status-2">describe_portfolio_share_status/2</a></h3>
+<div class="spec">
+<p><tt>describe_portfolio_share_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the status of the specified portfolio share operation.</p>
+ 
+  This API can only be called by the management account in the organization
+  or by a delegated admin.</p>
+
+<h3 class="function"><a name="describe_portfolio_share_status-3">describe_portfolio_share_status/3</a></h3>
+<div class="spec">
+<p><tt>describe_portfolio_share_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_product-2">describe_product/2</a></h3>
+<div class="spec">
+<p><tt>describe_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the specified product.</p>
+
+<h3 class="function"><a name="describe_product-3">describe_product/3</a></h3>
+<div class="spec">
+<p><tt>describe_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_product_as_admin-2">describe_product_as_admin/2</a></h3>
+<div class="spec">
+<p><tt>describe_product_as_admin(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the specified product.</p>
+ 
+  This operation is run with administrator access.</p>
+
+<h3 class="function"><a name="describe_product_as_admin-3">describe_product_as_admin/3</a></h3>
+<div class="spec">
+<p><tt>describe_product_as_admin(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_product_view-2">describe_product_view/2</a></h3>
+<div class="spec">
+<p><tt>describe_product_view(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the specified product.</p>
+
+<h3 class="function"><a name="describe_product_view-3">describe_product_view/3</a></h3>
+<div class="spec">
+<p><tt>describe_product_view(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_provisioned_product-2">describe_provisioned_product/2</a></h3>
+<div class="spec">
+<p><tt>describe_provisioned_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the specified provisioned product.</p>
+
+<h3 class="function"><a name="describe_provisioned_product-3">describe_provisioned_product/3</a></h3>
+<div class="spec">
+<p><tt>describe_provisioned_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_provisioned_product_plan-2">describe_provisioned_product_plan/2</a></h3>
+<div class="spec">
+<p><tt>describe_provisioned_product_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the resource changes for the specified plan.</p>
+
+<h3 class="function"><a name="describe_provisioned_product_plan-3">describe_provisioned_product_plan/3</a></h3>
+<div class="spec">
+<p><tt>describe_provisioned_product_plan(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_provisioning_artifact-2">describe_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>describe_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the specified provisioning artifact (also
+  known as a version) for the specified product.</p>
+
+<h3 class="function"><a name="describe_provisioning_artifact-3">describe_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>describe_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_provisioning_parameters-2">describe_provisioning_parameters/2</a></h3>
+<div class="spec">
+<p><tt>describe_provisioning_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the configuration required to provision the  
+specified product using the specified provisioning artifact.</p>
+ 
+  If the output contains a TagOption key with an empty list of values, there
+  is a TagOption conflict for that key. The end user cannot take action to
+  fix the conflict, and launch is not blocked. In subsequent calls to
+  <code>ProvisionProduct</code>, do not include conflicted TagOption keys as tags, or
+  this causes the error "Parameter validation failed: Missing required
+  parameter in Tags[N]:Value". Tag the provisioned product with the value
+  <code>sc-tagoption-conflict-portfolioId-productId</code>.</p>
+
+<h3 class="function"><a name="describe_provisioning_parameters-3">describe_provisioning_parameters/3</a></h3>
+<div class="spec">
+<p><tt>describe_provisioning_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_record-2">describe_record/2</a></h3>
+<div class="spec">
+<p><tt>describe_record(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the specified request operation.</p>
+ 
+  <p>Use this operation after calling a request operation (for example,
+  <code>ProvisionProduct</code>, <code>TerminateProvisionedProduct</code>, or
+  <code>UpdateProvisionedProduct</code>).</p>
+ 
+  If a provisioned product was transferred to a new owner using
+  <code>UpdateProvisionedProductProperties</code>, the new owner will be able to
+  describe all past records for that product. The previous owner will no
+  longer be able to describe the records, but will be able to use
+  <code>ListRecordHistory</code> to see the product's history from when he was the
+  owner.</p>
+
+<h3 class="function"><a name="describe_record-3">describe_record/3</a></h3>
+<div class="spec">
+<p><tt>describe_record(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_service_action-2">describe_service_action/2</a></h3>
+<div class="spec">
+<p><tt>describe_service_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a self-service action.</p>
+
+<h3 class="function"><a name="describe_service_action-3">describe_service_action/3</a></h3>
+<div class="spec">
+<p><tt>describe_service_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_service_action_execution_parameters-2">describe_service_action_execution_parameters/2</a></h3>
+<div class="spec">
+<p><tt>describe_service_action_execution_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Finds the default parameters for a specific self-service action on a
+  specific provisioned product and returns a map of the results to the user.</p>
+
+<h3 class="function"><a name="describe_service_action_execution_parameters-3">describe_service_action_execution_parameters/3</a></h3>
+<div class="spec">
+<p><tt>describe_service_action_execution_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_tag_option-2">describe_tag_option/2</a></h3>
+<div class="spec">
+<p><tt>describe_tag_option(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the specified TagOption.</p>
+
+<h3 class="function"><a name="describe_tag_option-3">describe_tag_option/3</a></h3>
+<div class="spec">
+<p><tt>describe_tag_option(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disable_a_w_s_organizations_access-2">disable_a_w_s_organizations_access/2</a></h3>
+<div class="spec">
+<p><tt>disable_a_w_s_organizations_access(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disable portfolio sharing through AWS Organizations feature.</p>
+ 
+  <p>This feature will not delete your current shares but it will prevent you  
+from creating new shares throughout your organization. Current shares will  
+not be in sync with your organization structure if it changes after  
+calling this API. This API can only be called by the management account in  
+the organization.</p>
+ 
+  <p>This API can't be invoked if there are active delegated administrators in  
+the organization.</p>
+ 
+  Note that a delegated administrator is not authorized to invoke
+  <code>DisableAWSOrganizationsAccess</code>.</p>
+
+<h3 class="function"><a name="disable_a_w_s_organizations_access-3">disable_a_w_s_organizations_access/3</a></h3>
+<div class="spec">
+<p><tt>disable_a_w_s_organizations_access(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_budget_from_resource-2">disassociate_budget_from_resource/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_budget_from_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the specified budget from the specified resource.</p>
+
+<h3 class="function"><a name="disassociate_budget_from_resource-3">disassociate_budget_from_resource/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_budget_from_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_principal_from_portfolio-2">disassociate_principal_from_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_principal_from_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates a previously associated principal ARN from a specified
+  portfolio.</p>
+
+<h3 class="function"><a name="disassociate_principal_from_portfolio-3">disassociate_principal_from_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_principal_from_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_product_from_portfolio-2">disassociate_product_from_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_product_from_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates the specified product from the specified portfolio.</p>
+ 
+  A delegated admin is authorized to invoke this command.</p>
+
+<h3 class="function"><a name="disassociate_product_from_portfolio-3">disassociate_product_from_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_product_from_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_service_action_from_provisioning_artifact-2">disassociate_service_action_from_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_service_action_from_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the specified self-service action association from the
+  specified provisioning artifact.</p>
+
+<h3 class="function"><a name="disassociate_service_action_from_provisioning_artifact-3">disassociate_service_action_from_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_service_action_from_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_tag_option_from_resource-2">disassociate_tag_option_from_resource/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_tag_option_from_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the specified TagOption from the specified resource.</p>
+
+<h3 class="function"><a name="disassociate_tag_option_from_resource-3">disassociate_tag_option_from_resource/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_tag_option_from_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="enable_a_w_s_organizations_access-2">enable_a_w_s_organizations_access/2</a></h3>
+<div class="spec">
+<p><tt>enable_a_w_s_organizations_access(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Enable portfolio sharing feature through AWS Organizations.</p>
+ 
+  <p>This API will allow Service Catalog to receive updates on your  
+organization in order to sync your shares with the current structure. This  
+API can only be called by the management account in the organization.</p>
+ 
+  <p>By calling this API Service Catalog will make a call to  
+organizations:EnableAWSServiceAccess on your behalf so that your shares  
+can be in sync with any changes in your AWS Organizations structure.</p>
+ 
+  Note that a delegated administrator is not authorized to invoke
+  <code>EnableAWSOrganizationsAccess</code>.</p>
+
+<h3 class="function"><a name="enable_a_w_s_organizations_access-3">enable_a_w_s_organizations_access/3</a></h3>
+<div class="spec">
+<p><tt>enable_a_w_s_organizations_access(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="execute_provisioned_product_plan-2">execute_provisioned_product_plan/2</a></h3>
+<div class="spec">
+<p><tt>execute_provisioned_product_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provisions or modifies a product based on the resource changes for
+  the specified plan.</p>
+
+<h3 class="function"><a name="execute_provisioned_product_plan-3">execute_provisioned_product_plan/3</a></h3>
+<div class="spec">
+<p><tt>execute_provisioned_product_plan(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="execute_provisioned_product_service_action-2">execute_provisioned_product_service_action/2</a></h3>
+<div class="spec">
+<p><tt>execute_provisioned_product_service_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Executes a self-service action against a provisioned product.</p>
+
+<h3 class="function"><a name="execute_provisioned_product_service_action-3">execute_provisioned_product_service_action/3</a></h3>
+<div class="spec">
+<p><tt>execute_provisioned_product_service_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_a_w_s_organizations_access_status-2">get_a_w_s_organizations_access_status/2</a></h3>
+<div class="spec">
+<p><tt>get_a_w_s_organizations_access_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Get the Access Status for AWS Organization portfolio share feature.</p>
+ 
+  This API can only be called by the management account in the organization
+  or by a delegated admin.</p>
+
+<h3 class="function"><a name="get_a_w_s_organizations_access_status-3">get_a_w_s_organizations_access_status/3</a></h3>
+<div class="spec">
+<p><tt>get_a_w_s_organizations_access_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_provisioned_product_outputs-2">get_provisioned_product_outputs/2</a></h3>
+<div class="spec">
+<p><tt>get_provisioned_product_outputs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>This API takes either a <code>ProvisonedProductId</code> or a
+  <code>ProvisionedProductName</code>, along with a list of one or more output keys,
+  and responds with the key/value pairs of those outputs.</p>
+
+<h3 class="function"><a name="get_provisioned_product_outputs-3">get_provisioned_product_outputs/3</a></h3>
+<div class="spec">
+<p><tt>get_provisioned_product_outputs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_accepted_portfolio_shares-2">list_accepted_portfolio_shares/2</a></h3>
+<div class="spec">
+<p><tt>list_accepted_portfolio_shares(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all portfolios for which sharing was accepted by this account.</p>
+
+<h3 class="function"><a name="list_accepted_portfolio_shares-3">list_accepted_portfolio_shares/3</a></h3>
+<div class="spec">
+<p><tt>list_accepted_portfolio_shares(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_budgets_for_resource-2">list_budgets_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_budgets_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the budgets associated to the specified resource.</p>
+
+<h3 class="function"><a name="list_budgets_for_resource-3">list_budgets_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_budgets_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_constraints_for_portfolio-2">list_constraints_for_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>list_constraints_for_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the constraints for the specified portfolio and product.</p>
+
+<h3 class="function"><a name="list_constraints_for_portfolio-3">list_constraints_for_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>list_constraints_for_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_launch_paths-2">list_launch_paths/2</a></h3>
+<div class="spec">
+<p><tt>list_launch_paths(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the paths to the specified product.</p>
+ 
+  A path is how the user has access to a specified product, and is necessary
+  when provisioning a product. A path also determines the constraints put on
+  the product.</p>
+
+<h3 class="function"><a name="list_launch_paths-3">list_launch_paths/3</a></h3>
+<div class="spec">
+<p><tt>list_launch_paths(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_organization_portfolio_access-2">list_organization_portfolio_access/2</a></h3>
+<div class="spec">
+<p><tt>list_organization_portfolio_access(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the organization nodes that have access to the specified  
+portfolio.</p>
+ 
+  <p>This API can only be called by the management account in the organization  
+or by a delegated admin.</p>
+ 
+  If a delegated admin is de-registered, they can no longer perform this
+  operation.</p>
+
+<h3 class="function"><a name="list_organization_portfolio_access-3">list_organization_portfolio_access/3</a></h3>
+<div class="spec">
+<p><tt>list_organization_portfolio_access(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_portfolio_access-2">list_portfolio_access/2</a></h3>
+<div class="spec">
+<p><tt>list_portfolio_access(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the account IDs that have access to the specified portfolio.</p>
+ 
+  A delegated admin can list the accounts that have access to the shared
+  portfolio. Note that if a delegated admin is de-registered, they can no
+  longer perform this operation.</p>
+
+<h3 class="function"><a name="list_portfolio_access-3">list_portfolio_access/3</a></h3>
+<div class="spec">
+<p><tt>list_portfolio_access(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_portfolios-2">list_portfolios/2</a></h3>
+<div class="spec">
+<p><tt>list_portfolios(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all portfolios in the catalog.</p>
+
+<h3 class="function"><a name="list_portfolios-3">list_portfolios/3</a></h3>
+<div class="spec">
+<p><tt>list_portfolios(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_portfolios_for_product-2">list_portfolios_for_product/2</a></h3>
+<div class="spec">
+<p><tt>list_portfolios_for_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all portfolios that the specified product is associated with.</p>
+
+<h3 class="function"><a name="list_portfolios_for_product-3">list_portfolios_for_product/3</a></h3>
+<div class="spec">
+<p><tt>list_portfolios_for_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_principals_for_portfolio-2">list_principals_for_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>list_principals_for_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all principal ARNs associated with the specified portfolio.</p>
+
+<h3 class="function"><a name="list_principals_for_portfolio-3">list_principals_for_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>list_principals_for_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_provisioned_product_plans-2">list_provisioned_product_plans/2</a></h3>
+<div class="spec">
+<p><tt>list_provisioned_product_plans(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the plans for the specified provisioned product or all plans to
+  which the user has access.</p>
+
+<h3 class="function"><a name="list_provisioned_product_plans-3">list_provisioned_product_plans/3</a></h3>
+<div class="spec">
+<p><tt>list_provisioned_product_plans(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_provisioning_artifacts-2">list_provisioning_artifacts/2</a></h3>
+<div class="spec">
+<p><tt>list_provisioning_artifacts(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all provisioning artifacts (also known as versions) for the
+  specified product.</p>
+
+<h3 class="function"><a name="list_provisioning_artifacts-3">list_provisioning_artifacts/3</a></h3>
+<div class="spec">
+<p><tt>list_provisioning_artifacts(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_provisioning_artifacts_for_service_action-2">list_provisioning_artifacts_for_service_action/2</a></h3>
+<div class="spec">
+<p><tt>list_provisioning_artifacts_for_service_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all provisioning artifacts (also known as versions) for the
+  specified self-service action.</p>
+
+<h3 class="function"><a name="list_provisioning_artifacts_for_service_action-3">list_provisioning_artifacts_for_service_action/3</a></h3>
+<div class="spec">
+<p><tt>list_provisioning_artifacts_for_service_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_record_history-2">list_record_history/2</a></h3>
+<div class="spec">
+<p><tt>list_record_history(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the specified requests or all performed requests.</p>
+
+<h3 class="function"><a name="list_record_history-3">list_record_history/3</a></h3>
+<div class="spec">
+<p><tt>list_record_history(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resources_for_tag_option-2">list_resources_for_tag_option/2</a></h3>
+<div class="spec">
+<p><tt>list_resources_for_tag_option(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the resources associated with the specified TagOption.</p>
+
+<h3 class="function"><a name="list_resources_for_tag_option-3">list_resources_for_tag_option/3</a></h3>
+<div class="spec">
+<p><tt>list_resources_for_tag_option(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_service_actions-2">list_service_actions/2</a></h3>
+<div class="spec">
+<p><tt>list_service_actions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all self-service actions.</p>
+
+<h3 class="function"><a name="list_service_actions-3">list_service_actions/3</a></h3>
+<div class="spec">
+<p><tt>list_service_actions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_service_actions_for_provisioning_artifact-2">list_service_actions_for_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>list_service_actions_for_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a paginated list of self-service actions associated with the
+  specified Product ID and Provisioning Artifact ID.</p>
+
+<h3 class="function"><a name="list_service_actions_for_provisioning_artifact-3">list_service_actions_for_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>list_service_actions_for_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_stack_instances_for_provisioned_product-2">list_stack_instances_for_provisioned_product/2</a></h3>
+<div class="spec">
+<p><tt>list_stack_instances_for_provisioned_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns summary information about stack instances that are associated
+  with the specified <code>CFN_STACKSET</code> type provisioned product.</p>
+ 
+  You can filter for stack instances that are associated with a specific AWS
+  account name or region.</p>
+
+<h3 class="function"><a name="list_stack_instances_for_provisioned_product-3">list_stack_instances_for_provisioned_product/3</a></h3>
+<div class="spec">
+<p><tt>list_stack_instances_for_provisioned_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tag_options-2">list_tag_options/2</a></h3>
+<div class="spec">
+<p><tt>list_tag_options(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the specified TagOptions or all TagOptions.</p>
+
+<h3 class="function"><a name="list_tag_options-3">list_tag_options/3</a></h3>
+<div class="spec">
+<p><tt>list_tag_options(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="provision_product-2">provision_product/2</a></h3>
+<div class="spec">
+<p><tt>provision_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provisions the specified product.</p>
+ 
+  <p>A provisioned product is a resourced instance of a product. For example,
+  provisioning a product based on a CloudFormation template launches a
+  CloudFormation stack and its underlying resources. You can check the
+  status of this request using <code>DescribeRecord</code>.</p>
+ 
+  If the request contains a tag key with an empty list of values, there is a
+  tag conflict for that key. Do not include conflicted keys as tags, or this
+  causes the error "Parameter validation failed: Missing required parameter
+  in Tags[N]:Value".</p>
+
+<h3 class="function"><a name="provision_product-3">provision_product/3</a></h3>
+<div class="spec">
+<p><tt>provision_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reject_portfolio_share-2">reject_portfolio_share/2</a></h3>
+<div class="spec">
+<p><tt>reject_portfolio_share(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Rejects an offer to share the specified portfolio.</p>
+
+<h3 class="function"><a name="reject_portfolio_share-3">reject_portfolio_share/3</a></h3>
+<div class="spec">
+<p><tt>reject_portfolio_share(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="scan_provisioned_products-2">scan_provisioned_products/2</a></h3>
+<div class="spec">
+<p><tt>scan_provisioned_products(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the provisioned products that are available (not terminated).</p>
+ 
+  To use additional filtering, see <code>SearchProvisionedProducts</code>.</p>
+
+<h3 class="function"><a name="scan_provisioned_products-3">scan_provisioned_products/3</a></h3>
+<div class="spec">
+<p><tt>scan_provisioned_products(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="search_products-2">search_products/2</a></h3>
+<div class="spec">
+<p><tt>search_products(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the products to which the caller has access.</p>
+
+<h3 class="function"><a name="search_products-3">search_products/3</a></h3>
+<div class="spec">
+<p><tt>search_products(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="search_products_as_admin-2">search_products_as_admin/2</a></h3>
+<div class="spec">
+<p><tt>search_products_as_admin(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the products for the specified portfolio or
+  all products.</p>
+
+<h3 class="function"><a name="search_products_as_admin-3">search_products_as_admin/3</a></h3>
+<div class="spec">
+<p><tt>search_products_as_admin(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="search_provisioned_products-2">search_provisioned_products/2</a></h3>
+<div class="spec">
+<p><tt>search_provisioned_products(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the provisioned products that meet the
+  specified criteria.</p>
+
+<h3 class="function"><a name="search_provisioned_products-3">search_provisioned_products/3</a></h3>
+<div class="spec">
+<p><tt>search_provisioned_products(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="terminate_provisioned_product-2">terminate_provisioned_product/2</a></h3>
+<div class="spec">
+<p><tt>terminate_provisioned_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Terminates the specified provisioned product.</p>
+ 
+  <p>This operation does not delete any records associated with the provisioned  
+product.</p>
+ 
+  You can check the status of this request using <code>DescribeRecord</code>.</p>
+
+<h3 class="function"><a name="terminate_provisioned_product-3">terminate_provisioned_product/3</a></h3>
+<div class="spec">
+<p><tt>terminate_provisioned_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_constraint-2">update_constraint/2</a></h3>
+<div class="spec">
+<p><tt>update_constraint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the specified constraint.</p>
+
+<h3 class="function"><a name="update_constraint-3">update_constraint/3</a></h3>
+<div class="spec">
+<p><tt>update_constraint(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_portfolio-2">update_portfolio/2</a></h3>
+<div class="spec">
+<p><tt>update_portfolio(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified portfolio.</p>
+ 
+  You cannot update a product that was shared with you.</p>
+
+<h3 class="function"><a name="update_portfolio-3">update_portfolio/3</a></h3>
+<div class="spec">
+<p><tt>update_portfolio(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_product-2">update_product/2</a></h3>
+<div class="spec">
+<p><tt>update_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the specified product.</p>
+
+<h3 class="function"><a name="update_product-3">update_product/3</a></h3>
+<div class="spec">
+<p><tt>update_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_provisioned_product-2">update_provisioned_product/2</a></h3>
+<div class="spec">
+<p><tt>update_provisioned_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests updates to the configuration of the specified provisioned  
+product.</p>
+ 
+  <p>If there are tags associated with the object, they cannot be updated or  
+added. Depending on the specific updates requested, this operation can  
+update with no interruption, with some interruption, or replace the  
+provisioned product entirely.</p>
+ 
+  You can check the status of this request using <code>DescribeRecord</code>.</p>
+
+<h3 class="function"><a name="update_provisioned_product-3">update_provisioned_product/3</a></h3>
+<div class="spec">
+<p><tt>update_provisioned_product(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_provisioned_product_properties-2">update_provisioned_product_properties/2</a></h3>
+<div class="spec">
+<p><tt>update_provisioned_product_properties(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Requests updates to the properties of the specified provisioned
+  product.</p>
+
+<h3 class="function"><a name="update_provisioned_product_properties-3">update_provisioned_product_properties/3</a></h3>
+<div class="spec">
+<p><tt>update_provisioned_product_properties(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_provisioning_artifact-2">update_provisioning_artifact/2</a></h3>
+<div class="spec">
+<p><tt>update_provisioning_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified provisioning artifact (also known as a version)  
+for the specified product.</p>
+ 
+  You cannot update a provisioning artifact for a product that was shared
+  with you.</p>
+
+<h3 class="function"><a name="update_provisioning_artifact-3">update_provisioning_artifact/3</a></h3>
+<div class="spec">
+<p><tt>update_provisioning_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_service_action-2">update_service_action/2</a></h3>
+<div class="spec">
+<p><tt>update_service_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a self-service action.</p>
+
+<h3 class="function"><a name="update_service_action-3">update_service_action/3</a></h3>
+<div class="spec">
+<p><tt>update_service_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_tag_option-2">update_tag_option/2</a></h3>
+<div class="spec">
+<p><tt>update_tag_option(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the specified TagOption.</p>
+
+<h3 class="function"><a name="update_tag_option-3">update_tag_option/3</a></h3>
+<div class="spec">
+<p><tt>update_tag_option(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

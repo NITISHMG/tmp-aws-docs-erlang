@@ -1,0 +1,801 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_codebuild</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_codebuild</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS CodeBuild.
+
+
+<h2><a name="description">Description</a></h2><p>AWS CodeBuild</p>
+ 
+  <p>AWS CodeBuild is a fully managed build service in the cloud.</p>
+ 
+  <p>AWS CodeBuild compiles your source code, runs unit tests, and produces  
+artifacts that are ready to deploy. AWS CodeBuild eliminates the need to  
+provision, manage, and scale your own build servers. It provides  
+prepackaged build environments for the most popular programming languages  
+and build tools, such as Apache Maven, Gradle, and more. You can also  
+fully customize build environments in AWS CodeBuild to use your own build  
+tools. AWS CodeBuild scales automatically to meet peak build requests. You  
+pay only for the build time you consume. For more information about AWS  
+CodeBuild, see the AWS CodeBuild User Guide.</p>
+ 
+  <p>AWS CodeBuild supports these operations:</p>
+ 
+  <ul> <li><p> <code>BatchDeleteBuilds</code>: Deletes one or more builds.</p>
+ 
+  </li> <li><p> <code>BatchGetBuilds</code>: Gets information about one or more builds.</p>
+ 
+  </li> <li><p> <code>BatchGetProjects</code>: Gets information about one or more build  
+projects. A build project defines how AWS CodeBuild runs a build. This  
+includes information such as where to get the source code to build, the  
+build environment to use, the build commands to run, and where to store  
+the build output. A build environment is a representation of operating  
+system, programming language runtime, and tools that AWS CodeBuild uses to  
+run a build. You can add tags to build projects to help manage your  
+resources and costs.</p>
+ 
+  </li> <li><p> <code>BatchGetReportGroups</code>: Returns an array of report groups.</p>
+ 
+  </li> <li><p> <code>BatchGetReports</code>: Returns an array of reports.</p>
+ 
+  </li> <li><p> <code>CreateProject</code>: Creates a build project.</p>
+ 
+  </li> <li><p> <code>CreateReportGroup</code>: Creates a report group. A report group  
+contains a collection of reports.</p>
+ 
+  </li> <li><p> <code>CreateWebhook</code>: For an existing AWS CodeBuild build project  
+that has its source code stored in a GitHub or Bitbucket repository,  
+enables AWS CodeBuild to start rebuilding the source code every time a  
+code change is pushed to the repository.</p>
+ 
+  </li> <li><p> <code>DeleteProject</code>: Deletes a build project.</p>
+ 
+  </li> <li><p> <code>DeleteReport</code>: Deletes a report.</p>
+ 
+  </li> <li><p> <code>DeleteReportGroup</code>: Deletes a report group.</p>
+ 
+  </li> <li><p> <code>DeleteResourcePolicy</code>: Deletes a resource policy that is  
+identified by its resource ARN.</p>
+ 
+  </li> <li><p> <code>DeleteSourceCredentials</code>: Deletes a set of GitHub, GitHub  
+Enterprise, or Bitbucket source credentials.</p>
+ 
+  </li> <li><p> <code>DeleteWebhook</code>: For an existing AWS CodeBuild build project  
+that has its source code stored in a GitHub or Bitbucket repository, stops  
+AWS CodeBuild from rebuilding the source code every time a code change is  
+pushed to the repository.</p>
+ 
+  </li> <li><p> <code>DescribeTestCases</code>: Returns a list of details about test cases  
+for a report.</p>
+ 
+  </li> <li><p> <code>GetResourcePolicy</code>: Gets a resource policy that is identified  
+by its resource ARN.</p>
+ 
+  </li> <li><p> <code>ImportSourceCredentials</code>: Imports the source repository  
+credentials for an AWS CodeBuild project that has its source code stored  
+in a GitHub, GitHub Enterprise, or Bitbucket repository.</p>
+ 
+  </li> <li><p> <code>InvalidateProjectCache</code>: Resets the cache for a project.</p>
+ 
+  </li> <li><p> <code>ListBuilds</code>: Gets a list of build IDs, with each build ID  
+representing a single build.</p>
+ 
+  </li> <li><p> <code>ListBuildsForProject</code>: Gets a list of build IDs for the  
+specified build project, with each build ID representing a single build.</p>
+ 
+  </li> <li><p> <code>ListCuratedEnvironmentImages</code>: Gets information about Docker  
+images that are managed by AWS CodeBuild.</p>
+ 
+  </li> <li><p> <code>ListProjects</code>: Gets a list of build project names, with each  
+build project name representing a single build project.</p>
+ 
+  </li> <li><p> <code>ListReportGroups</code>: Gets a list ARNs for the report groups in  
+the current AWS account.</p>
+ 
+  </li> <li><p> <code>ListReports</code>: Gets a list ARNs for the reports in the current  
+AWS account.</p>
+ 
+  </li> <li><p> <code>ListReportsForReportGroup</code>: Returns a list of ARNs for the
+  reports that belong to a <code>ReportGroup</code>.</p>
+ 
+  </li> <li><p> <code>ListSharedProjects</code>: Gets a list of ARNs associated with  
+projects shared with the current AWS account or user.</p>
+ 
+  </li> <li><p> <code>ListSharedReportGroups</code>: Gets a list of ARNs associated with  
+report groups shared with the current AWS account or user</p>
+ 
+  </li> <li><p> <code>ListSourceCredentials</code>: Returns a list of
+  <code>SourceCredentialsInfo</code> objects. Each <code>SourceCredentialsInfo</code> object  
+includes the authentication type, token ARN, and type of source provider  
+for one set of credentials.</p>
+ 
+  </li> <li><p> <code>PutResourcePolicy</code>: Stores a resource policy for the ARN of a
+  <code>Project</code> or <code>ReportGroup</code> object.</p>
+ 
+  </li> <li><p> <code>StartBuild</code>: Starts running a build.</p>
+ 
+  </li> <li><p> <code>StopBuild</code>: Attempts to stop running a build.</p>
+ 
+  </li> <li><p> <code>UpdateProject</code>: Changes the settings of an existing build  
+project.</p>
+ 
+  </li> <li><p> <code>UpdateReportGroup</code>: Changes a report group.</p>
+ 
+  </li> <li><p> <code>UpdateWebhook</code>: Changes the settings of an existing webhook.</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#batch_delete_builds-2">batch_delete_builds/2</a></td><td>Deletes one or more builds.</td></tr>
+<tr><td valign="top"><a href="#batch_delete_builds-3">batch_delete_builds/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_build_batches-2">batch_get_build_batches/2</a></td><td>Retrieves information about one or more batch builds.</td></tr>
+<tr><td valign="top"><a href="#batch_get_build_batches-3">batch_get_build_batches/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_builds-2">batch_get_builds/2</a></td><td>Gets information about one or more builds.</td></tr>
+<tr><td valign="top"><a href="#batch_get_builds-3">batch_get_builds/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_projects-2">batch_get_projects/2</a></td><td>Gets information about one or more build projects.</td></tr>
+<tr><td valign="top"><a href="#batch_get_projects-3">batch_get_projects/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_report_groups-2">batch_get_report_groups/2</a></td><td>Returns an array of report groups.</td></tr>
+<tr><td valign="top"><a href="#batch_get_report_groups-3">batch_get_report_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_reports-2">batch_get_reports/2</a></td><td>Returns an array of reports.</td></tr>
+<tr><td valign="top"><a href="#batch_get_reports-3">batch_get_reports/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_project-2">create_project/2</a></td><td>Creates a build project.</td></tr>
+<tr><td valign="top"><a href="#create_project-3">create_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_report_group-2">create_report_group/2</a></td><td>Creates a report group.</td></tr>
+<tr><td valign="top"><a href="#create_report_group-3">create_report_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_webhook-2">create_webhook/2</a></td><td>For an existing AWS CodeBuild build project that has its source code  
+stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to start  
+rebuilding the source code every time a code change is pushed to the  
+repository.</td></tr>
+<tr><td valign="top"><a href="#create_webhook-3">create_webhook/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_build_batch-2">delete_build_batch/2</a></td><td>Deletes a batch build.</td></tr>
+<tr><td valign="top"><a href="#delete_build_batch-3">delete_build_batch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_project-2">delete_project/2</a></td><td>Deletes a build project.</td></tr>
+<tr><td valign="top"><a href="#delete_project-3">delete_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_report-2">delete_report/2</a></td><td>Deletes a report.</td></tr>
+<tr><td valign="top"><a href="#delete_report-3">delete_report/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_report_group-2">delete_report_group/2</a></td><td>Deletes a report group.</td></tr>
+<tr><td valign="top"><a href="#delete_report_group-3">delete_report_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resource_policy-2">delete_resource_policy/2</a></td><td>Deletes a resource policy that is identified by its resource ARN.</td></tr>
+<tr><td valign="top"><a href="#delete_resource_policy-3">delete_resource_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_source_credentials-2">delete_source_credentials/2</a></td><td>Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
+  credentials.</td></tr>
+<tr><td valign="top"><a href="#delete_source_credentials-3">delete_source_credentials/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_webhook-2">delete_webhook/2</a></td><td>For an existing AWS CodeBuild build project that has its source code
+  stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
+  rebuilding the source code every time a code change is pushed to the
+  repository.</td></tr>
+<tr><td valign="top"><a href="#delete_webhook-3">delete_webhook/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_code_coverages-2">describe_code_coverages/2</a></td><td>Retrieves one or more code coverage reports.</td></tr>
+<tr><td valign="top"><a href="#describe_code_coverages-3">describe_code_coverages/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_test_cases-2">describe_test_cases/2</a></td><td>Returns a list of details about test cases for a report.</td></tr>
+<tr><td valign="top"><a href="#describe_test_cases-3">describe_test_cases/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resource_policy-2">get_resource_policy/2</a></td><td>Gets a resource policy that is identified by its resource ARN.</td></tr>
+<tr><td valign="top"><a href="#get_resource_policy-3">get_resource_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_source_credentials-2">import_source_credentials/2</a></td><td>Imports the source repository credentials for an AWS CodeBuild
+  project that has its source code stored in a GitHub, GitHub Enterprise, or
+  Bitbucket repository.</td></tr>
+<tr><td valign="top"><a href="#import_source_credentials-3">import_source_credentials/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#invalidate_project_cache-2">invalidate_project_cache/2</a></td><td>Resets the cache for a project.</td></tr>
+<tr><td valign="top"><a href="#invalidate_project_cache-3">invalidate_project_cache/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_build_batches-2">list_build_batches/2</a></td><td>Retrieves the identifiers of your build batches in the current
+  region.</td></tr>
+<tr><td valign="top"><a href="#list_build_batches-3">list_build_batches/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_build_batches_for_project-2">list_build_batches_for_project/2</a></td><td>Retrieves the identifiers of the build batches for a specific
+  project.</td></tr>
+<tr><td valign="top"><a href="#list_build_batches_for_project-3">list_build_batches_for_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_builds-2">list_builds/2</a></td><td>Gets a list of build IDs, with each build ID representing a single
+  build.</td></tr>
+<tr><td valign="top"><a href="#list_builds-3">list_builds/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_builds_for_project-2">list_builds_for_project/2</a></td><td>Gets a list of build IDs for the specified build project, with each
+  build ID representing a single build.</td></tr>
+<tr><td valign="top"><a href="#list_builds_for_project-3">list_builds_for_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_curated_environment_images-2">list_curated_environment_images/2</a></td><td>Gets information about Docker images that are managed by AWS
+  CodeBuild.</td></tr>
+<tr><td valign="top"><a href="#list_curated_environment_images-3">list_curated_environment_images/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_projects-2">list_projects/2</a></td><td>Gets a list of build project names, with each build project name
+  representing a single build project.</td></tr>
+<tr><td valign="top"><a href="#list_projects-3">list_projects/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_report_groups-2">list_report_groups/2</a></td><td>Gets a list ARNs for the report groups in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_report_groups-3">list_report_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_reports-2">list_reports/2</a></td><td>Returns a list of ARNs for the reports in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_reports-3">list_reports/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_reports_for_report_group-2">list_reports_for_report_group/2</a></td><td>Returns a list of ARNs for the reports that belong to a
+  <code>ReportGroup</code>.</td></tr>
+<tr><td valign="top"><a href="#list_reports_for_report_group-3">list_reports_for_report_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_shared_projects-2">list_shared_projects/2</a></td><td>Gets a list of projects that are shared with other AWS accounts or
+  users.</td></tr>
+<tr><td valign="top"><a href="#list_shared_projects-3">list_shared_projects/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_shared_report_groups-2">list_shared_report_groups/2</a></td><td>Gets a list of report groups that are shared with other AWS accounts
+  or users.</td></tr>
+<tr><td valign="top"><a href="#list_shared_report_groups-3">list_shared_report_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_source_credentials-2">list_source_credentials/2</a></td><td>Returns a list of <code>SourceCredentialsInfo</code> objects.</td></tr>
+<tr><td valign="top"><a href="#list_source_credentials-3">list_source_credentials/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_resource_policy-2">put_resource_policy/2</a></td><td>Stores a resource policy for the ARN of a <code>Project</code> or <code>ReportGroup</code>
+  object.</td></tr>
+<tr><td valign="top"><a href="#put_resource_policy-3">put_resource_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#retry_build-2">retry_build/2</a></td><td>Restarts a build.</td></tr>
+<tr><td valign="top"><a href="#retry_build-3">retry_build/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#retry_build_batch-2">retry_build_batch/2</a></td><td>Restarts a batch build.</td></tr>
+<tr><td valign="top"><a href="#retry_build_batch-3">retry_build_batch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_build-2">start_build/2</a></td><td>Starts running a build.</td></tr>
+<tr><td valign="top"><a href="#start_build-3">start_build/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_build_batch-2">start_build_batch/2</a></td><td>Starts a batch build for a project.</td></tr>
+<tr><td valign="top"><a href="#start_build_batch-3">start_build_batch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_build-2">stop_build/2</a></td><td>Attempts to stop running a build.</td></tr>
+<tr><td valign="top"><a href="#stop_build-3">stop_build/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_build_batch-2">stop_build_batch/2</a></td><td>Stops a running batch build.</td></tr>
+<tr><td valign="top"><a href="#stop_build_batch-3">stop_build_batch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_project-2">update_project/2</a></td><td>Changes the settings of a build project.</td></tr>
+<tr><td valign="top"><a href="#update_project-3">update_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_report_group-2">update_report_group/2</a></td><td>Updates a report group.</td></tr>
+<tr><td valign="top"><a href="#update_report_group-3">update_report_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_webhook-2">update_webhook/2</a></td><td>Updates the webhook associated with an AWS CodeBuild build project.</td></tr>
+<tr><td valign="top"><a href="#update_webhook-3">update_webhook/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="batch_delete_builds-2">batch_delete_builds/2</a></h3>
+<div class="spec">
+<p><tt>batch_delete_builds(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes one or more builds.</p>
+
+<h3 class="function"><a name="batch_delete_builds-3">batch_delete_builds/3</a></h3>
+<div class="spec">
+<p><tt>batch_delete_builds(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_build_batches-2">batch_get_build_batches/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_build_batches(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about one or more batch builds.</p>
+
+<h3 class="function"><a name="batch_get_build_batches-3">batch_get_build_batches/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_build_batches(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_builds-2">batch_get_builds/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_builds(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about one or more builds.</p>
+
+<h3 class="function"><a name="batch_get_builds-3">batch_get_builds/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_builds(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_projects-2">batch_get_projects/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_projects(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about one or more build projects.</p>
+
+<h3 class="function"><a name="batch_get_projects-3">batch_get_projects/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_projects(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_report_groups-2">batch_get_report_groups/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_report_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array of report groups.</p>
+
+<h3 class="function"><a name="batch_get_report_groups-3">batch_get_report_groups/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_report_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_reports-2">batch_get_reports/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_reports(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array of reports.</p>
+
+<h3 class="function"><a name="batch_get_reports-3">batch_get_reports/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_reports(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_project-2">create_project/2</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a build project.</p>
+
+<h3 class="function"><a name="create_project-3">create_project/3</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_report_group-2">create_report_group/2</a></h3>
+<div class="spec">
+<p><tt>create_report_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a report group.</p>
+ 
+  A report group contains a collection of reports.</p>
+
+<h3 class="function"><a name="create_report_group-3">create_report_group/3</a></h3>
+<div class="spec">
+<p><tt>create_report_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_webhook-2">create_webhook/2</a></h3>
+<div class="spec">
+<p><tt>create_webhook(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>For an existing AWS CodeBuild build project that has its source code  
+stored in a GitHub or Bitbucket repository, enables AWS CodeBuild to start  
+rebuilding the source code every time a code change is pushed to the  
+repository.</p>
+ 
+  If you enable webhooks for an AWS CodeBuild project, and the project is
+  used as a build step in AWS CodePipeline, then two identical builds are
+  created for each commit. One build is triggered through webhooks, and one
+  through AWS CodePipeline. Because billing is on a per-build basis, you are
+  billed for both builds. Therefore, if you are using AWS CodePipeline, we
+  recommend that you disable webhooks in AWS CodeBuild. In the AWS CodeBuild
+  console, clear the Webhook box. For more information, see step 5 in Change
+  a Build Project's Settings.</p>
+
+<h3 class="function"><a name="create_webhook-3">create_webhook/3</a></h3>
+<div class="spec">
+<p><tt>create_webhook(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_build_batch-2">delete_build_batch/2</a></h3>
+<div class="spec">
+<p><tt>delete_build_batch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a batch build.</p>
+
+<h3 class="function"><a name="delete_build_batch-3">delete_build_batch/3</a></h3>
+<div class="spec">
+<p><tt>delete_build_batch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_project-2">delete_project/2</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a build project.</p>
+ 
+  When you delete a project, its builds are not deleted.</p>
+
+<h3 class="function"><a name="delete_project-3">delete_project/3</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_report-2">delete_report/2</a></h3>
+<div class="spec">
+<p><tt>delete_report(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a report.</p>
+
+<h3 class="function"><a name="delete_report-3">delete_report/3</a></h3>
+<div class="spec">
+<p><tt>delete_report(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_report_group-2">delete_report_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_report_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a report group.</p>
+ 
+  Before you delete a report group, you must delete its reports.</p>
+
+<h3 class="function"><a name="delete_report_group-3">delete_report_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_report_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resource_policy-2">delete_resource_policy/2</a></h3>
+<div class="spec">
+<p><tt>delete_resource_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a resource policy that is identified by its resource ARN.</p>
+
+<h3 class="function"><a name="delete_resource_policy-3">delete_resource_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_resource_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_source_credentials-2">delete_source_credentials/2</a></h3>
+<div class="spec">
+<p><tt>delete_source_credentials(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a set of GitHub, GitHub Enterprise, or Bitbucket source
+  credentials.</p>
+
+<h3 class="function"><a name="delete_source_credentials-3">delete_source_credentials/3</a></h3>
+<div class="spec">
+<p><tt>delete_source_credentials(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_webhook-2">delete_webhook/2</a></h3>
+<div class="spec">
+<p><tt>delete_webhook(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>For an existing AWS CodeBuild build project that has its source code
+  stored in a GitHub or Bitbucket repository, stops AWS CodeBuild from
+  rebuilding the source code every time a code change is pushed to the
+  repository.</p>
+
+<h3 class="function"><a name="delete_webhook-3">delete_webhook/3</a></h3>
+<div class="spec">
+<p><tt>delete_webhook(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_code_coverages-2">describe_code_coverages/2</a></h3>
+<div class="spec">
+<p><tt>describe_code_coverages(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves one or more code coverage reports.</p>
+
+<h3 class="function"><a name="describe_code_coverages-3">describe_code_coverages/3</a></h3>
+<div class="spec">
+<p><tt>describe_code_coverages(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_test_cases-2">describe_test_cases/2</a></h3>
+<div class="spec">
+<p><tt>describe_test_cases(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of details about test cases for a report.</p>
+
+<h3 class="function"><a name="describe_test_cases-3">describe_test_cases/3</a></h3>
+<div class="spec">
+<p><tt>describe_test_cases(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resource_policy-2">get_resource_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_resource_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a resource policy that is identified by its resource ARN.</p>
+
+<h3 class="function"><a name="get_resource_policy-3">get_resource_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_resource_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_source_credentials-2">import_source_credentials/2</a></h3>
+<div class="spec">
+<p><tt>import_source_credentials(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Imports the source repository credentials for an AWS CodeBuild
+  project that has its source code stored in a GitHub, GitHub Enterprise, or
+  Bitbucket repository.</p>
+
+<h3 class="function"><a name="import_source_credentials-3">import_source_credentials/3</a></h3>
+<div class="spec">
+<p><tt>import_source_credentials(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="invalidate_project_cache-2">invalidate_project_cache/2</a></h3>
+<div class="spec">
+<p><tt>invalidate_project_cache(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Resets the cache for a project.</p>
+
+<h3 class="function"><a name="invalidate_project_cache-3">invalidate_project_cache/3</a></h3>
+<div class="spec">
+<p><tt>invalidate_project_cache(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_build_batches-2">list_build_batches/2</a></h3>
+<div class="spec">
+<p><tt>list_build_batches(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the identifiers of your build batches in the current
+  region.</p>
+
+<h3 class="function"><a name="list_build_batches-3">list_build_batches/3</a></h3>
+<div class="spec">
+<p><tt>list_build_batches(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_build_batches_for_project-2">list_build_batches_for_project/2</a></h3>
+<div class="spec">
+<p><tt>list_build_batches_for_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the identifiers of the build batches for a specific
+  project.</p>
+
+<h3 class="function"><a name="list_build_batches_for_project-3">list_build_batches_for_project/3</a></h3>
+<div class="spec">
+<p><tt>list_build_batches_for_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_builds-2">list_builds/2</a></h3>
+<div class="spec">
+<p><tt>list_builds(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a list of build IDs, with each build ID representing a single
+  build.</p>
+
+<h3 class="function"><a name="list_builds-3">list_builds/3</a></h3>
+<div class="spec">
+<p><tt>list_builds(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_builds_for_project-2">list_builds_for_project/2</a></h3>
+<div class="spec">
+<p><tt>list_builds_for_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a list of build IDs for the specified build project, with each
+  build ID representing a single build.</p>
+
+<h3 class="function"><a name="list_builds_for_project-3">list_builds_for_project/3</a></h3>
+<div class="spec">
+<p><tt>list_builds_for_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_curated_environment_images-2">list_curated_environment_images/2</a></h3>
+<div class="spec">
+<p><tt>list_curated_environment_images(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about Docker images that are managed by AWS
+  CodeBuild.</p>
+
+<h3 class="function"><a name="list_curated_environment_images-3">list_curated_environment_images/3</a></h3>
+<div class="spec">
+<p><tt>list_curated_environment_images(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_projects-2">list_projects/2</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a list of build project names, with each build project name
+  representing a single build project.</p>
+
+<h3 class="function"><a name="list_projects-3">list_projects/3</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_report_groups-2">list_report_groups/2</a></h3>
+<div class="spec">
+<p><tt>list_report_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a list ARNs for the report groups in the current AWS account.</p>
+
+<h3 class="function"><a name="list_report_groups-3">list_report_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_report_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_reports-2">list_reports/2</a></h3>
+<div class="spec">
+<p><tt>list_reports(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of ARNs for the reports in the current AWS account.</p>
+
+<h3 class="function"><a name="list_reports-3">list_reports/3</a></h3>
+<div class="spec">
+<p><tt>list_reports(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_reports_for_report_group-2">list_reports_for_report_group/2</a></h3>
+<div class="spec">
+<p><tt>list_reports_for_report_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of ARNs for the reports that belong to a
+  <code>ReportGroup</code>.</p>
+
+<h3 class="function"><a name="list_reports_for_report_group-3">list_reports_for_report_group/3</a></h3>
+<div class="spec">
+<p><tt>list_reports_for_report_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_shared_projects-2">list_shared_projects/2</a></h3>
+<div class="spec">
+<p><tt>list_shared_projects(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a list of projects that are shared with other AWS accounts or
+  users.</p>
+
+<h3 class="function"><a name="list_shared_projects-3">list_shared_projects/3</a></h3>
+<div class="spec">
+<p><tt>list_shared_projects(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_shared_report_groups-2">list_shared_report_groups/2</a></h3>
+<div class="spec">
+<p><tt>list_shared_report_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a list of report groups that are shared with other AWS accounts
+  or users.</p>
+
+<h3 class="function"><a name="list_shared_report_groups-3">list_shared_report_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_shared_report_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_source_credentials-2">list_source_credentials/2</a></h3>
+<div class="spec">
+<p><tt>list_source_credentials(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of <code>SourceCredentialsInfo</code> objects.</p>
+
+<h3 class="function"><a name="list_source_credentials-3">list_source_credentials/3</a></h3>
+<div class="spec">
+<p><tt>list_source_credentials(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_resource_policy-2">put_resource_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_resource_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stores a resource policy for the ARN of a <code>Project</code> or <code>ReportGroup</code>
+  object.</p>
+
+<h3 class="function"><a name="put_resource_policy-3">put_resource_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_resource_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="retry_build-2">retry_build/2</a></h3>
+<div class="spec">
+<p><tt>retry_build(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Restarts a build.</p>
+
+<h3 class="function"><a name="retry_build-3">retry_build/3</a></h3>
+<div class="spec">
+<p><tt>retry_build(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="retry_build_batch-2">retry_build_batch/2</a></h3>
+<div class="spec">
+<p><tt>retry_build_batch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Restarts a batch build.</p>
+
+<h3 class="function"><a name="retry_build_batch-3">retry_build_batch/3</a></h3>
+<div class="spec">
+<p><tt>retry_build_batch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_build-2">start_build/2</a></h3>
+<div class="spec">
+<p><tt>start_build(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts running a build.</p>
+
+<h3 class="function"><a name="start_build-3">start_build/3</a></h3>
+<div class="spec">
+<p><tt>start_build(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_build_batch-2">start_build_batch/2</a></h3>
+<div class="spec">
+<p><tt>start_build_batch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts a batch build for a project.</p>
+
+<h3 class="function"><a name="start_build_batch-3">start_build_batch/3</a></h3>
+<div class="spec">
+<p><tt>start_build_batch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_build-2">stop_build/2</a></h3>
+<div class="spec">
+<p><tt>stop_build(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Attempts to stop running a build.</p>
+
+<h3 class="function"><a name="stop_build-3">stop_build/3</a></h3>
+<div class="spec">
+<p><tt>stop_build(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_build_batch-2">stop_build_batch/2</a></h3>
+<div class="spec">
+<p><tt>stop_build_batch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stops a running batch build.</p>
+
+<h3 class="function"><a name="stop_build_batch-3">stop_build_batch/3</a></h3>
+<div class="spec">
+<p><tt>stop_build_batch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_project-2">update_project/2</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes the settings of a build project.</p>
+
+<h3 class="function"><a name="update_project-3">update_project/3</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_report_group-2">update_report_group/2</a></h3>
+<div class="spec">
+<p><tt>update_report_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a report group.</p>
+
+<h3 class="function"><a name="update_report_group-3">update_report_group/3</a></h3>
+<div class="spec">
+<p><tt>update_report_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_webhook-2">update_webhook/2</a></h3>
+<div class="spec">
+<p><tt>update_webhook(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the webhook associated with an AWS CodeBuild build project.</p>
+ 
+  If you use Bitbucket for your repository, <code>rotateSecret</code> is ignored.</p>
+
+<h3 class="function"><a name="update_webhook-3">update_webhook/3</a></h3>
+<div class="spec">
+<p><tt>update_webhook(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

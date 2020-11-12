@@ -1,0 +1,168 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_macie</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_macie</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Macie Classic.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Macie Classic</p>
+ 
+  <p>Amazon Macie Classic is a security service that uses machine learning to  
+automatically discover, classify, and protect sensitive data in AWS.</p>
+ 
+  <p>Macie Classic recognizes sensitive data such as personally identifiable  
+information (PII) or intellectual property, and provides you with  
+dashboards and alerts that give visibility into how this data is being  
+accessed or moved. For more information, see the Amazon Macie Classic User  
+Guide.</p>
+ 
+  A new Amazon Macie is now available with significant design improvements
+  and additional features, at a lower price and in most AWS Regions. We
+  encourage you to explore and use the new and improved features, and
+  benefit from the reduced cost. To learn about features and pricing for the
+  new Amazon Macie, see Amazon Macie.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_member_account-2">associate_member_account/2</a></td><td>Associates a specified AWS account with Amazon Macie Classic as a
+  member account.</td></tr>
+<tr><td valign="top"><a href="#associate_member_account-3">associate_member_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_s3_resources-2">associate_s3_resources/2</a></td><td>Associates specified S3 resources with Amazon Macie Classic for  
+monitoring and data classification.</td></tr>
+<tr><td valign="top"><a href="#associate_s3_resources-3">associate_s3_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_member_account-2">disassociate_member_account/2</a></td><td>Removes the specified member account from Amazon Macie Classic.</td></tr>
+<tr><td valign="top"><a href="#disassociate_member_account-3">disassociate_member_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_s3_resources-2">disassociate_s3_resources/2</a></td><td>Removes specified S3 resources from being monitored by Amazon Macie  
+Classic.</td></tr>
+<tr><td valign="top"><a href="#disassociate_s3_resources-3">disassociate_s3_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_member_accounts-2">list_member_accounts/2</a></td><td>Lists all Amazon Macie Classic member accounts for the current Amazon
+  Macie Classic master account.</td></tr>
+<tr><td valign="top"><a href="#list_member_accounts-3">list_member_accounts/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_s3_resources-2">list_s3_resources/2</a></td><td>Lists all the S3 resources associated with Amazon Macie Classic.</td></tr>
+<tr><td valign="top"><a href="#list_s3_resources-3">list_s3_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_s3_resources-2">update_s3_resources/2</a></td><td>Updates the classification types for the specified S3 resources.</td></tr>
+<tr><td valign="top"><a href="#update_s3_resources-3">update_s3_resources/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_member_account-2">associate_member_account/2</a></h3>
+<div class="spec">
+<p><tt>associate_member_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a specified AWS account with Amazon Macie Classic as a
+  member account.</p>
+
+<h3 class="function"><a name="associate_member_account-3">associate_member_account/3</a></h3>
+<div class="spec">
+<p><tt>associate_member_account(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_s3_resources-2">associate_s3_resources/2</a></h3>
+<div class="spec">
+<p><tt>associate_s3_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates specified S3 resources with Amazon Macie Classic for  
+monitoring and data classification.</p>
+ 
+  If memberAccountId isn't specified, the action associates specified S3
+  resources with Macie Classic for the current master account. If
+  memberAccountId is specified, the action associates specified S3 resources
+  with Macie Classic for the specified member account.</p>
+
+<h3 class="function"><a name="associate_s3_resources-3">associate_s3_resources/3</a></h3>
+<div class="spec">
+<p><tt>associate_s3_resources(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_member_account-2">disassociate_member_account/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_member_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the specified member account from Amazon Macie Classic.</p>
+
+<h3 class="function"><a name="disassociate_member_account-3">disassociate_member_account/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_member_account(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_s3_resources-2">disassociate_s3_resources/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_s3_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes specified S3 resources from being monitored by Amazon Macie  
+Classic.</p>
+ 
+  If memberAccountId isn't specified, the action removes specified S3
+  resources from Macie Classic for the current master account. If
+  memberAccountId is specified, the action removes specified S3 resources
+  from Macie Classic for the specified member account.</p>
+
+<h3 class="function"><a name="disassociate_s3_resources-3">disassociate_s3_resources/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_s3_resources(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_member_accounts-2">list_member_accounts/2</a></h3>
+<div class="spec">
+<p><tt>list_member_accounts(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all Amazon Macie Classic member accounts for the current Amazon
+  Macie Classic master account.</p>
+
+<h3 class="function"><a name="list_member_accounts-3">list_member_accounts/3</a></h3>
+<div class="spec">
+<p><tt>list_member_accounts(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_s3_resources-2">list_s3_resources/2</a></h3>
+<div class="spec">
+<p><tt>list_s3_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all the S3 resources associated with Amazon Macie Classic.</p>
+ 
+  If memberAccountId isn't specified, the action lists the S3 resources
+  associated with Amazon Macie Classic for the current master account. If
+  memberAccountId is specified, the action lists the S3 resources associated
+  with Amazon Macie Classic for the specified member account.</p>
+
+<h3 class="function"><a name="list_s3_resources-3">list_s3_resources/3</a></h3>
+<div class="spec">
+<p><tt>list_s3_resources(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_s3_resources-2">update_s3_resources/2</a></h3>
+<div class="spec">
+<p><tt>update_s3_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the classification types for the specified S3 resources.</p>
+ 
+  If memberAccountId isn't specified, the action updates the classification
+  types of the S3 resources associated with Amazon Macie Classic for the
+  current master account. If memberAccountId is specified, the action
+  updates the classification types of the S3 resources associated with
+  Amazon Macie Classic for the specified member account.</p>
+
+<h3 class="function"><a name="update_s3_resources-3">update_s3_resources/3</a></h3>
+<div class="spec">
+<p><tt>update_s3_resources(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

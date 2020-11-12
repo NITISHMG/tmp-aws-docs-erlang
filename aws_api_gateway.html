@@ -1,0 +1,1785 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_api_gateway</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_api_gateway</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon API Gateway.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon API Gateway</p>
+ 
+  <p>Amazon API Gateway helps developers deliver robust, secure, and scalable  
+mobile and web application back ends.</p>
+ 
+  API Gateway allows developers to securely connect mobile and web
+  applications to APIs that run on AWS Lambda, Amazon EC2, or other publicly
+  addressable web services that are hosted outside of AWS.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_api_key-2">create_api_key/2</a></td><td>Create an <code>ApiKey</code> resource.</td></tr>
+<tr><td valign="top"><a href="#create_api_key-3">create_api_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_authorizer-3">create_authorizer/3</a></td><td>Adds a new <code>Authorizer</code> resource to an existing <code>RestApi</code> resource.</td></tr>
+<tr><td valign="top"><a href="#create_authorizer-4">create_authorizer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_base_path_mapping-3">create_base_path_mapping/3</a></td><td>Creates a new <code>BasePathMapping</code> resource.</td></tr>
+<tr><td valign="top"><a href="#create_base_path_mapping-4">create_base_path_mapping/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment-3">create_deployment/3</a></td><td>Creates a <code>Deployment</code> resource, which makes a specified <code>RestApi</code>
+  callable over the internet.</td></tr>
+<tr><td valign="top"><a href="#create_deployment-4">create_deployment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_documentation_part-3">create_documentation_part/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_documentation_part-4">create_documentation_part/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_documentation_version-3">create_documentation_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_documentation_version-4">create_documentation_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_domain_name-2">create_domain_name/2</a></td><td>Creates a new domain name.</td></tr>
+<tr><td valign="top"><a href="#create_domain_name-3">create_domain_name/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_model-3">create_model/3</a></td><td>Adds a new <code>Model</code> resource to an existing <code>RestApi</code> resource.</td></tr>
+<tr><td valign="top"><a href="#create_model-4">create_model/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_request_validator-3">create_request_validator/3</a></td><td>Creates a <code>ReqeustValidator</code> of a given <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#create_request_validator-4">create_request_validator/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resource-4">create_resource/4</a></td><td>Creates a <code>Resource</code> resource.</td></tr>
+<tr><td valign="top"><a href="#create_resource-5">create_resource/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_rest_api-2">create_rest_api/2</a></td><td>Creates a new <code>RestApi</code> resource.</td></tr>
+<tr><td valign="top"><a href="#create_rest_api-3">create_rest_api/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_stage-3">create_stage/3</a></td><td>Creates a new <code>Stage</code> resource that references a pre-existing
+  <code>Deployment</code> for the API.</td></tr>
+<tr><td valign="top"><a href="#create_stage-4">create_stage/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_usage_plan-2">create_usage_plan/2</a></td><td>Creates a usage plan with the throttle and quota limits, as well as
+  the associated API stages, specified in the payload.</td></tr>
+<tr><td valign="top"><a href="#create_usage_plan-3">create_usage_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_usage_plan_key-3">create_usage_plan_key/3</a></td><td>Creates a usage plan key for adding an existing API key to a usage
+  plan.</td></tr>
+<tr><td valign="top"><a href="#create_usage_plan_key-4">create_usage_plan_key/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_vpc_link-2">create_vpc_link/2</a></td><td>Creates a VPC link, under the caller's account in a selected region,  
+in an asynchronous operation that typically takes 2-4 minutes to complete  
+and become operational.</td></tr>
+<tr><td valign="top"><a href="#create_vpc_link-3">create_vpc_link/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_api_key-3">delete_api_key/3</a></td><td>Deletes the <code>ApiKey</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_api_key-4">delete_api_key/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_authorizer-4">delete_authorizer/4</a></td><td>Deletes an existing <code>Authorizer</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_authorizer-5">delete_authorizer/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_base_path_mapping-4">delete_base_path_mapping/4</a></td><td>Deletes the <code>BasePathMapping</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_base_path_mapping-5">delete_base_path_mapping/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_client_certificate-3">delete_client_certificate/3</a></td><td>Deletes the <code>ClientCertificate</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_client_certificate-4">delete_client_certificate/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_deployment-4">delete_deployment/4</a></td><td>Deletes a <code>Deployment</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_deployment-5">delete_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_documentation_part-4">delete_documentation_part/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_documentation_part-5">delete_documentation_part/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_documentation_version-4">delete_documentation_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_documentation_version-5">delete_documentation_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_domain_name-3">delete_domain_name/3</a></td><td>Deletes the <code>DomainName</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_domain_name-4">delete_domain_name/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_gateway_response-4">delete_gateway_response/4</a></td><td>Clears any customization of a <code>GatewayResponse</code> of a specified
+  response type on the given <code>RestApi</code> and resets it with the default
+  settings.</td></tr>
+<tr><td valign="top"><a href="#delete_gateway_response-5">delete_gateway_response/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_integration-5">delete_integration/5</a></td><td>Represents a delete integration.</td></tr>
+<tr><td valign="top"><a href="#delete_integration-6">delete_integration/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_integration_response-6">delete_integration_response/6</a></td><td>Represents a delete integration response.</td></tr>
+<tr><td valign="top"><a href="#delete_integration_response-7">delete_integration_response/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_method-5">delete_method/5</a></td><td>Deletes an existing <code>Method</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_method-6">delete_method/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_method_response-6">delete_method_response/6</a></td><td>Deletes an existing <code>MethodResponse</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_method_response-7">delete_method_response/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_model-4">delete_model/4</a></td><td>Deletes a model.</td></tr>
+<tr><td valign="top"><a href="#delete_model-5">delete_model/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_request_validator-4">delete_request_validator/4</a></td><td>Deletes a <code>RequestValidator</code> of a given <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#delete_request_validator-5">delete_request_validator/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resource-4">delete_resource/4</a></td><td>Deletes a <code>Resource</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_resource-5">delete_resource/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_rest_api-3">delete_rest_api/3</a></td><td>Deletes the specified API.</td></tr>
+<tr><td valign="top"><a href="#delete_rest_api-4">delete_rest_api/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_stage-4">delete_stage/4</a></td><td>Deletes a <code>Stage</code> resource.</td></tr>
+<tr><td valign="top"><a href="#delete_stage-5">delete_stage/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_usage_plan-3">delete_usage_plan/3</a></td><td>Deletes a usage plan of a given plan Id.</td></tr>
+<tr><td valign="top"><a href="#delete_usage_plan-4">delete_usage_plan/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_usage_plan_key-4">delete_usage_plan_key/4</a></td><td>Deletes a usage plan key and remove the underlying API key from the
+  associated usage plan.</td></tr>
+<tr><td valign="top"><a href="#delete_usage_plan_key-5">delete_usage_plan_key/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_vpc_link-3">delete_vpc_link/3</a></td><td>Deletes an existing <code>VpcLink</code> of a specified identifier.</td></tr>
+<tr><td valign="top"><a href="#delete_vpc_link-4">delete_vpc_link/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#flush_stage_authorizers_cache-4">flush_stage_authorizers_cache/4</a></td><td>Flushes all authorizer cache entries on a stage.</td></tr>
+<tr><td valign="top"><a href="#flush_stage_authorizers_cache-5">flush_stage_authorizers_cache/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#flush_stage_cache-4">flush_stage_cache/4</a></td><td>Flushes a stage's cache.</td></tr>
+<tr><td valign="top"><a href="#flush_stage_cache-5">flush_stage_cache/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#generate_client_certificate-2">generate_client_certificate/2</a></td><td>Generates a <code>ClientCertificate</code> resource.</td></tr>
+<tr><td valign="top"><a href="#generate_client_certificate-3">generate_client_certificate/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_account-1">get_account/1</a></td><td>Gets information about the current <code>Account</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_account-2">get_account/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_api_key-3">get_api_key/3</a></td><td>Gets information about the current <code>ApiKey</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_api_key-4">get_api_key/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_api_keys-6">get_api_keys/6</a></td><td>Gets information about the current <code>ApiKeys</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_api_keys-7">get_api_keys/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_authorizer-3">get_authorizer/3</a></td><td>Describe an existing <code>Authorizer</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_authorizer-4">get_authorizer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_authorizers-4">get_authorizers/4</a></td><td>Describe an existing <code>Authorizers</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_authorizers-5">get_authorizers/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_base_path_mapping-3">get_base_path_mapping/3</a></td><td>Describe a <code>BasePathMapping</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_base_path_mapping-4">get_base_path_mapping/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_base_path_mappings-4">get_base_path_mappings/4</a></td><td>Represents a collection of <code>BasePathMapping</code> resources.</td></tr>
+<tr><td valign="top"><a href="#get_base_path_mappings-5">get_base_path_mappings/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_client_certificate-2">get_client_certificate/2</a></td><td>Gets information about the current <code>ClientCertificate</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_client_certificate-3">get_client_certificate/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_client_certificates-3">get_client_certificates/3</a></td><td>Gets a collection of <code>ClientCertificate</code> resources.</td></tr>
+<tr><td valign="top"><a href="#get_client_certificates-4">get_client_certificates/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment-4">get_deployment/4</a></td><td>Gets information about a <code>Deployment</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_deployment-5">get_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployments-4">get_deployments/4</a></td><td>Gets information about a <code>Deployments</code> collection.</td></tr>
+<tr><td valign="top"><a href="#get_deployments-5">get_deployments/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_documentation_part-3">get_documentation_part/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_documentation_part-4">get_documentation_part/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_documentation_parts-8">get_documentation_parts/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_documentation_parts-9">get_documentation_parts/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_documentation_version-3">get_documentation_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_documentation_version-4">get_documentation_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_documentation_versions-4">get_documentation_versions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_documentation_versions-5">get_documentation_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_domain_name-2">get_domain_name/2</a></td><td>Represents a domain name that is contained in a simpler, more
+  intuitive URL that can be called.</td></tr>
+<tr><td valign="top"><a href="#get_domain_name-3">get_domain_name/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_domain_names-3">get_domain_names/3</a></td><td>Represents a collection of <code>DomainName</code> resources.</td></tr>
+<tr><td valign="top"><a href="#get_domain_names-4">get_domain_names/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_export-6">get_export/6</a></td><td>Exports a deployed version of a <code>RestApi</code> in a specified format.</td></tr>
+<tr><td valign="top"><a href="#get_export-7">get_export/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_gateway_response-3">get_gateway_response/3</a></td><td>Gets a <code>GatewayResponse</code> of a specified response type on the given
+  <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#get_gateway_response-4">get_gateway_response/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_gateway_responses-4">get_gateway_responses/4</a></td><td>Gets the <code>GatewayResponses</code> collection on the given <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#get_gateway_responses-5">get_gateway_responses/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_integration-4">get_integration/4</a></td><td>Get the integration settings.</td></tr>
+<tr><td valign="top"><a href="#get_integration-5">get_integration/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_integration_response-5">get_integration_response/5</a></td><td>Represents a get integration response.</td></tr>
+<tr><td valign="top"><a href="#get_integration_response-6">get_integration_response/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_method-4">get_method/4</a></td><td>Describe an existing <code>Method</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_method-5">get_method/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_method_response-5">get_method_response/5</a></td><td>Describes a <code>MethodResponse</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_method_response-6">get_method_response/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_model-4">get_model/4</a></td><td>Describes an existing model defined for a <code>RestApi</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_model-5">get_model/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_model_template-3">get_model_template/3</a></td><td>Generates a sample mapping template that can be used to transform a
+  payload into the structure of a model.</td></tr>
+<tr><td valign="top"><a href="#get_model_template-4">get_model_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_models-4">get_models/4</a></td><td>Describes existing <code>Models</code> defined for a <code>RestApi</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_models-5">get_models/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_request_validator-3">get_request_validator/3</a></td><td>Gets a <code>RequestValidator</code> of a given <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#get_request_validator-4">get_request_validator/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_request_validators-4">get_request_validators/4</a></td><td>Gets the <code>RequestValidators</code> collection of a given <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#get_request_validators-5">get_request_validators/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resource-4">get_resource/4</a></td><td>Lists information about a resource.</td></tr>
+<tr><td valign="top"><a href="#get_resource-5">get_resource/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resources-5">get_resources/5</a></td><td>Lists information about a collection of <code>Resource</code> resources.</td></tr>
+<tr><td valign="top"><a href="#get_resources-6">get_resources/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_rest_api-2">get_rest_api/2</a></td><td>Lists the <code>RestApi</code> resource in the collection.</td></tr>
+<tr><td valign="top"><a href="#get_rest_api-3">get_rest_api/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_rest_apis-3">get_rest_apis/3</a></td><td>Lists the <code>RestApis</code> resources for your collection.</td></tr>
+<tr><td valign="top"><a href="#get_rest_apis-4">get_rest_apis/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sdk-5">get_sdk/5</a></td><td>Generates a client SDK for a <code>RestApi</code> and <code>Stage</code>.</td></tr>
+<tr><td valign="top"><a href="#get_sdk-6">get_sdk/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sdk_type-2">get_sdk_type/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sdk_type-3">get_sdk_type/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sdk_types-3">get_sdk_types/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sdk_types-4">get_sdk_types/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_stage-3">get_stage/3</a></td><td>Gets information about a <code>Stage</code> resource.</td></tr>
+<tr><td valign="top"><a href="#get_stage-4">get_stage/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_stages-3">get_stages/3</a></td><td>Gets information about one or more <code>Stage</code> resources.</td></tr>
+<tr><td valign="top"><a href="#get_stages-4">get_stages/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_tags-4">get_tags/4</a></td><td>Gets the <code>Tags</code> collection for a given resource.</td></tr>
+<tr><td valign="top"><a href="#get_tags-5">get_tags/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_usage-7">get_usage/7</a></td><td>Gets the usage data of a usage plan in a specified time interval.</td></tr>
+<tr><td valign="top"><a href="#get_usage-8">get_usage/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_usage_plan-2">get_usage_plan/2</a></td><td>Gets a usage plan of a given plan identifier.</td></tr>
+<tr><td valign="top"><a href="#get_usage_plan-3">get_usage_plan/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_usage_plan_key-3">get_usage_plan_key/3</a></td><td>Gets a usage plan key of a given key identifier.</td></tr>
+<tr><td valign="top"><a href="#get_usage_plan_key-4">get_usage_plan_key/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_usage_plan_keys-5">get_usage_plan_keys/5</a></td><td>Gets all the usage plan keys representing the API keys added to a
+  specified usage plan.</td></tr>
+<tr><td valign="top"><a href="#get_usage_plan_keys-6">get_usage_plan_keys/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_usage_plans-4">get_usage_plans/4</a></td><td>Gets all the usage plans of the caller's account.</td></tr>
+<tr><td valign="top"><a href="#get_usage_plans-5">get_usage_plans/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_vpc_link-2">get_vpc_link/2</a></td><td>Gets a specified VPC link under the caller's account in a region.</td></tr>
+<tr><td valign="top"><a href="#get_vpc_link-3">get_vpc_link/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_vpc_links-3">get_vpc_links/3</a></td><td>Gets the <code>VpcLinks</code> collection under the caller's account in a
+  selected region.</td></tr>
+<tr><td valign="top"><a href="#get_vpc_links-4">get_vpc_links/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_api_keys-2">import_api_keys/2</a></td><td>Import API keys from an external source, such as a CSV-formatted
+  file.</td></tr>
+<tr><td valign="top"><a href="#import_api_keys-3">import_api_keys/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_documentation_parts-3">import_documentation_parts/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_documentation_parts-4">import_documentation_parts/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_rest_api-2">import_rest_api/2</a></td><td>A feature of the API Gateway control service for creating a new API
+  from an external API definition file.</td></tr>
+<tr><td valign="top"><a href="#import_rest_api-3">import_rest_api/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_gateway_response-4">put_gateway_response/4</a></td><td>Creates a customization of a <code>GatewayResponse</code> of a specified
+  response type and status code on the given <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#put_gateway_response-5">put_gateway_response/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_integration-5">put_integration/5</a></td><td>Sets up a method's integration.</td></tr>
+<tr><td valign="top"><a href="#put_integration-6">put_integration/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_integration_response-6">put_integration_response/6</a></td><td>Represents a put integration.</td></tr>
+<tr><td valign="top"><a href="#put_integration_response-7">put_integration_response/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_method-5">put_method/5</a></td><td>Add a method to an existing <code>Resource</code> resource.</td></tr>
+<tr><td valign="top"><a href="#put_method-6">put_method/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_method_response-6">put_method_response/6</a></td><td>Adds a <code>MethodResponse</code> to an existing <code>Method</code> resource.</td></tr>
+<tr><td valign="top"><a href="#put_method_response-7">put_method_response/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_rest_api-3">put_rest_api/3</a></td><td>A feature of the API Gateway control service for updating an existing  
+API with an input of external API definitions.</td></tr>
+<tr><td valign="top"><a href="#put_rest_api-4">put_rest_api/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds or updates a tag on a given resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#test_invoke_authorizer-4">test_invoke_authorizer/4</a></td><td>Simulate the execution of an <code>Authorizer</code> in your <code>RestApi</code> with  
+headers, parameters, and an incoming request body.</td></tr>
+<tr><td valign="top"><a href="#test_invoke_authorizer-5">test_invoke_authorizer/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#test_invoke_method-5">test_invoke_method/5</a></td><td>Simulate the execution of a <code>Method</code> in your <code>RestApi</code> with headers,
+  parameters, and an incoming request body.</td></tr>
+<tr><td valign="top"><a href="#test_invoke_method-6">test_invoke_method/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes a tag from a given resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_account-2">update_account/2</a></td><td>Changes information about the current <code>Account</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_account-3">update_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_api_key-3">update_api_key/3</a></td><td>Changes information about an <code>ApiKey</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_api_key-4">update_api_key/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_authorizer-4">update_authorizer/4</a></td><td>Updates an existing <code>Authorizer</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_authorizer-5">update_authorizer/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_base_path_mapping-4">update_base_path_mapping/4</a></td><td>Changes information about the <code>BasePathMapping</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_base_path_mapping-5">update_base_path_mapping/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_client_certificate-3">update_client_certificate/3</a></td><td>Changes information about an <code>ClientCertificate</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_client_certificate-4">update_client_certificate/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_deployment-4">update_deployment/4</a></td><td>Changes information about a <code>Deployment</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_deployment-5">update_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_documentation_part-4">update_documentation_part/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_documentation_part-5">update_documentation_part/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_documentation_version-4">update_documentation_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_documentation_version-5">update_documentation_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_domain_name-3">update_domain_name/3</a></td><td>Changes information about the <code>DomainName</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_domain_name-4">update_domain_name/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_gateway_response-4">update_gateway_response/4</a></td><td>Updates a <code>GatewayResponse</code> of a specified response type on the given
+  <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#update_gateway_response-5">update_gateway_response/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_integration-5">update_integration/5</a></td><td>Represents an update integration.</td></tr>
+<tr><td valign="top"><a href="#update_integration-6">update_integration/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_integration_response-6">update_integration_response/6</a></td><td>Represents an update integration response.</td></tr>
+<tr><td valign="top"><a href="#update_integration_response-7">update_integration_response/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_method-5">update_method/5</a></td><td>Updates an existing <code>Method</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_method-6">update_method/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_method_response-6">update_method_response/6</a></td><td>Updates an existing <code>MethodResponse</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_method_response-7">update_method_response/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_model-4">update_model/4</a></td><td>Changes information about a model.</td></tr>
+<tr><td valign="top"><a href="#update_model-5">update_model/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_request_validator-4">update_request_validator/4</a></td><td>Updates a <code>RequestValidator</code> of a given <code>RestApi</code>.</td></tr>
+<tr><td valign="top"><a href="#update_request_validator-5">update_request_validator/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_resource-4">update_resource/4</a></td><td>Changes information about a <code>Resource</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_resource-5">update_resource/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_rest_api-3">update_rest_api/3</a></td><td>Changes information about the specified API.</td></tr>
+<tr><td valign="top"><a href="#update_rest_api-4">update_rest_api/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_stage-4">update_stage/4</a></td><td>Changes information about a <code>Stage</code> resource.</td></tr>
+<tr><td valign="top"><a href="#update_stage-5">update_stage/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_usage-4">update_usage/4</a></td><td>Grants a temporary extension to the remaining quota of a usage plan
+  associated with a specified API key.</td></tr>
+<tr><td valign="top"><a href="#update_usage-5">update_usage/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_usage_plan-3">update_usage_plan/3</a></td><td>Updates a usage plan of a given plan Id.</td></tr>
+<tr><td valign="top"><a href="#update_usage_plan-4">update_usage_plan/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_vpc_link-3">update_vpc_link/3</a></td><td>Updates an existing <code>VpcLink</code> of a specified identifier.</td></tr>
+<tr><td valign="top"><a href="#update_vpc_link-4">update_vpc_link/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_api_key-2">create_api_key/2</a></h3>
+<div class="spec">
+<p><tt>create_api_key(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Create an <code>ApiKey</code> resource.</p>
+ 
+  See also: AWS CLI</p>
+
+<h3 class="function"><a name="create_api_key-3">create_api_key/3</a></h3>
+<div class="spec">
+<p><tt>create_api_key(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_authorizer-3">create_authorizer/3</a></h3>
+<div class="spec">
+<p><tt>create_authorizer(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds a new <code>Authorizer</code> resource to an existing <code>RestApi</code> resource.</p>
+ 
+  See also: AWS CLI</p>
+
+<h3 class="function"><a name="create_authorizer-4">create_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>create_authorizer(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_base_path_mapping-3">create_base_path_mapping/3</a></h3>
+<div class="spec">
+<p><tt>create_base_path_mapping(Client, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new <code>BasePathMapping</code> resource.</p>
+
+<h3 class="function"><a name="create_base_path_mapping-4">create_base_path_mapping/4</a></h3>
+<div class="spec">
+<p><tt>create_base_path_mapping(Client, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment-3">create_deployment/3</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a <code>Deployment</code> resource, which makes a specified <code>RestApi</code>
+  callable over the internet.</p>
+
+<h3 class="function"><a name="create_deployment-4">create_deployment/4</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_documentation_part-3">create_documentation_part/3</a></h3>
+<div class="spec">
+<p><tt>create_documentation_part(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_documentation_part-4">create_documentation_part/4</a></h3>
+<div class="spec">
+<p><tt>create_documentation_part(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_documentation_version-3">create_documentation_version/3</a></h3>
+<div class="spec">
+<p><tt>create_documentation_version(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_documentation_version-4">create_documentation_version/4</a></h3>
+<div class="spec">
+<p><tt>create_documentation_version(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_domain_name-2">create_domain_name/2</a></h3>
+<div class="spec">
+<p><tt>create_domain_name(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new domain name.</p>
+
+<h3 class="function"><a name="create_domain_name-3">create_domain_name/3</a></h3>
+<div class="spec">
+<p><tt>create_domain_name(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_model-3">create_model/3</a></h3>
+<div class="spec">
+<p><tt>create_model(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds a new <code>Model</code> resource to an existing <code>RestApi</code> resource.</p>
+
+<h3 class="function"><a name="create_model-4">create_model/4</a></h3>
+<div class="spec">
+<p><tt>create_model(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_request_validator-3">create_request_validator/3</a></h3>
+<div class="spec">
+<p><tt>create_request_validator(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a <code>ReqeustValidator</code> of a given <code>RestApi</code>.</p>
+
+<h3 class="function"><a name="create_request_validator-4">create_request_validator/4</a></h3>
+<div class="spec">
+<p><tt>create_request_validator(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resource-4">create_resource/4</a></h3>
+<div class="spec">
+<p><tt>create_resource(Client, ParentId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a <code>Resource</code> resource.</p>
+
+<h3 class="function"><a name="create_resource-5">create_resource/5</a></h3>
+<div class="spec">
+<p><tt>create_resource(Client, ParentId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_rest_api-2">create_rest_api/2</a></h3>
+<div class="spec">
+<p><tt>create_rest_api(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new <code>RestApi</code> resource.</p>
+
+<h3 class="function"><a name="create_rest_api-3">create_rest_api/3</a></h3>
+<div class="spec">
+<p><tt>create_rest_api(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_stage-3">create_stage/3</a></h3>
+<div class="spec">
+<p><tt>create_stage(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new <code>Stage</code> resource that references a pre-existing
+  <code>Deployment</code> for the API.</p>
+
+<h3 class="function"><a name="create_stage-4">create_stage/4</a></h3>
+<div class="spec">
+<p><tt>create_stage(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_usage_plan-2">create_usage_plan/2</a></h3>
+<div class="spec">
+<p><tt>create_usage_plan(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a usage plan with the throttle and quota limits, as well as
+  the associated API stages, specified in the payload.</p>
+
+<h3 class="function"><a name="create_usage_plan-3">create_usage_plan/3</a></h3>
+<div class="spec">
+<p><tt>create_usage_plan(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_usage_plan_key-3">create_usage_plan_key/3</a></h3>
+<div class="spec">
+<p><tt>create_usage_plan_key(Client, UsagePlanId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a usage plan key for adding an existing API key to a usage
+  plan.</p>
+
+<h3 class="function"><a name="create_usage_plan_key-4">create_usage_plan_key/4</a></h3>
+<div class="spec">
+<p><tt>create_usage_plan_key(Client, UsagePlanId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_vpc_link-2">create_vpc_link/2</a></h3>
+<div class="spec">
+<p><tt>create_vpc_link(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a VPC link, under the caller's account in a selected region,  
+in an asynchronous operation that typically takes 2-4 minutes to complete  
+and become operational.</p>
+ 
+  The caller must have permissions to create and update VPC Endpoint
+  services.</p>
+
+<h3 class="function"><a name="create_vpc_link-3">create_vpc_link/3</a></h3>
+<div class="spec">
+<p><tt>create_vpc_link(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_api_key-3">delete_api_key/3</a></h3>
+<div class="spec">
+<p><tt>delete_api_key(Client, ApiKey, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the <code>ApiKey</code> resource.</p>
+
+<h3 class="function"><a name="delete_api_key-4">delete_api_key/4</a></h3>
+<div class="spec">
+<p><tt>delete_api_key(Client, ApiKey, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_authorizer-4">delete_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>delete_authorizer(Client, AuthorizerId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an existing <code>Authorizer</code> resource.</p>
+ 
+  See also: AWS CLI</p>
+
+<h3 class="function"><a name="delete_authorizer-5">delete_authorizer/5</a></h3>
+<div class="spec">
+<p><tt>delete_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_base_path_mapping-4">delete_base_path_mapping/4</a></h3>
+<div class="spec">
+<p><tt>delete_base_path_mapping(Client, BasePath, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the <code>BasePathMapping</code> resource.</p>
+
+<h3 class="function"><a name="delete_base_path_mapping-5">delete_base_path_mapping/5</a></h3>
+<div class="spec">
+<p><tt>delete_base_path_mapping(Client, BasePath, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_client_certificate-3">delete_client_certificate/3</a></h3>
+<div class="spec">
+<p><tt>delete_client_certificate(Client, ClientCertificateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the <code>ClientCertificate</code> resource.</p>
+
+<h3 class="function"><a name="delete_client_certificate-4">delete_client_certificate/4</a></h3>
+<div class="spec">
+<p><tt>delete_client_certificate(Client, ClientCertificateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_deployment-4">delete_deployment/4</a></h3>
+<div class="spec">
+<p><tt>delete_deployment(Client, DeploymentId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a <code>Deployment</code> resource.</p>
+ 
+  Deleting a deployment will only succeed if there are no <code>Stage</code> resources
+  associated with it.</p>
+
+<h3 class="function"><a name="delete_deployment-5">delete_deployment/5</a></h3>
+<div class="spec">
+<p><tt>delete_deployment(Client, DeploymentId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_documentation_part-4">delete_documentation_part/4</a></h3>
+<div class="spec">
+<p><tt>delete_documentation_part(Client, DocumentationPartId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_documentation_part-5">delete_documentation_part/5</a></h3>
+<div class="spec">
+<p><tt>delete_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_documentation_version-4">delete_documentation_version/4</a></h3>
+<div class="spec">
+<p><tt>delete_documentation_version(Client, DocumentationVersion, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_documentation_version-5">delete_documentation_version/5</a></h3>
+<div class="spec">
+<p><tt>delete_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_domain_name-3">delete_domain_name/3</a></h3>
+<div class="spec">
+<p><tt>delete_domain_name(Client, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the <code>DomainName</code> resource.</p>
+
+<h3 class="function"><a name="delete_domain_name-4">delete_domain_name/4</a></h3>
+<div class="spec">
+<p><tt>delete_domain_name(Client, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_gateway_response-4">delete_gateway_response/4</a></h3>
+<div class="spec">
+<p><tt>delete_gateway_response(Client, ResponseType, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Clears any customization of a <code>GatewayResponse</code> of a specified
+  response type on the given <code>RestApi</code> and resets it with the default
+  settings.</p>
+
+<h3 class="function"><a name="delete_gateway_response-5">delete_gateway_response/5</a></h3>
+<div class="spec">
+<p><tt>delete_gateway_response(Client, ResponseType, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_integration-5">delete_integration/5</a></h3>
+<div class="spec">
+<p><tt>delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents a delete integration.</p>
+
+<h3 class="function"><a name="delete_integration-6">delete_integration/6</a></h3>
+<div class="spec">
+<p><tt>delete_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_integration_response-6">delete_integration_response/6</a></h3>
+<div class="spec">
+<p><tt>delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents a delete integration response.</p>
+
+<h3 class="function"><a name="delete_integration_response-7">delete_integration_response/7</a></h3>
+<div class="spec">
+<p><tt>delete_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_method-5">delete_method/5</a></h3>
+<div class="spec">
+<p><tt>delete_method(Client, HttpMethod, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing <code>Method</code> resource.</p>
+
+<h3 class="function"><a name="delete_method-6">delete_method/6</a></h3>
+<div class="spec">
+<p><tt>delete_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_method_response-6">delete_method_response/6</a></h3>
+<div class="spec">
+<p><tt>delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing <code>MethodResponse</code> resource.</p>
+
+<h3 class="function"><a name="delete_method_response-7">delete_method_response/7</a></h3>
+<div class="spec">
+<p><tt>delete_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_model-4">delete_model/4</a></h3>
+<div class="spec">
+<p><tt>delete_model(Client, ModelName, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a model.</p>
+
+<h3 class="function"><a name="delete_model-5">delete_model/5</a></h3>
+<div class="spec">
+<p><tt>delete_model(Client, ModelName, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_request_validator-4">delete_request_validator/4</a></h3>
+<div class="spec">
+<p><tt>delete_request_validator(Client, RequestValidatorId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a <code>RequestValidator</code> of a given <code>RestApi</code>.</p>
+
+<h3 class="function"><a name="delete_request_validator-5">delete_request_validator/5</a></h3>
+<div class="spec">
+<p><tt>delete_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resource-4">delete_resource/4</a></h3>
+<div class="spec">
+<p><tt>delete_resource(Client, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a <code>Resource</code> resource.</p>
+
+<h3 class="function"><a name="delete_resource-5">delete_resource/5</a></h3>
+<div class="spec">
+<p><tt>delete_resource(Client, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_rest_api-3">delete_rest_api/3</a></h3>
+<div class="spec">
+<p><tt>delete_rest_api(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified API.</p>
+
+<h3 class="function"><a name="delete_rest_api-4">delete_rest_api/4</a></h3>
+<div class="spec">
+<p><tt>delete_rest_api(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_stage-4">delete_stage/4</a></h3>
+<div class="spec">
+<p><tt>delete_stage(Client, RestApiId, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a <code>Stage</code> resource.</p>
+
+<h3 class="function"><a name="delete_stage-5">delete_stage/5</a></h3>
+<div class="spec">
+<p><tt>delete_stage(Client, RestApiId, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_usage_plan-3">delete_usage_plan/3</a></h3>
+<div class="spec">
+<p><tt>delete_usage_plan(Client, UsagePlanId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a usage plan of a given plan Id.</p>
+
+<h3 class="function"><a name="delete_usage_plan-4">delete_usage_plan/4</a></h3>
+<div class="spec">
+<p><tt>delete_usage_plan(Client, UsagePlanId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_usage_plan_key-4">delete_usage_plan_key/4</a></h3>
+<div class="spec">
+<p><tt>delete_usage_plan_key(Client, KeyId, UsagePlanId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a usage plan key and remove the underlying API key from the
+  associated usage plan.</p>
+
+<h3 class="function"><a name="delete_usage_plan_key-5">delete_usage_plan_key/5</a></h3>
+<div class="spec">
+<p><tt>delete_usage_plan_key(Client, KeyId, UsagePlanId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_vpc_link-3">delete_vpc_link/3</a></h3>
+<div class="spec">
+<p><tt>delete_vpc_link(Client, VpcLinkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing <code>VpcLink</code> of a specified identifier.</p>
+
+<h3 class="function"><a name="delete_vpc_link-4">delete_vpc_link/4</a></h3>
+<div class="spec">
+<p><tt>delete_vpc_link(Client, VpcLinkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="flush_stage_authorizers_cache-4">flush_stage_authorizers_cache/4</a></h3>
+<div class="spec">
+<p><tt>flush_stage_authorizers_cache(Client, RestApiId, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Flushes all authorizer cache entries on a stage.</p>
+
+<h3 class="function"><a name="flush_stage_authorizers_cache-5">flush_stage_authorizers_cache/5</a></h3>
+<div class="spec">
+<p><tt>flush_stage_authorizers_cache(Client, RestApiId, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="flush_stage_cache-4">flush_stage_cache/4</a></h3>
+<div class="spec">
+<p><tt>flush_stage_cache(Client, RestApiId, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Flushes a stage's cache.</p>
+
+<h3 class="function"><a name="flush_stage_cache-5">flush_stage_cache/5</a></h3>
+<div class="spec">
+<p><tt>flush_stage_cache(Client, RestApiId, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="generate_client_certificate-2">generate_client_certificate/2</a></h3>
+<div class="spec">
+<p><tt>generate_client_certificate(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Generates a <code>ClientCertificate</code> resource.</p>
+
+<h3 class="function"><a name="generate_client_certificate-3">generate_client_certificate/3</a></h3>
+<div class="spec">
+<p><tt>generate_client_certificate(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_account-1">get_account/1</a></h3>
+<div class="spec">
+<p><tt>get_account(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the current <code>Account</code> resource.</p>
+
+<h3 class="function"><a name="get_account-2">get_account/2</a></h3>
+<div class="spec">
+<p><tt>get_account(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_api_key-3">get_api_key/3</a></h3>
+<div class="spec">
+<p><tt>get_api_key(Client, ApiKey, IncludeValue) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the current <code>ApiKey</code> resource.</p>
+
+<h3 class="function"><a name="get_api_key-4">get_api_key/4</a></h3>
+<div class="spec">
+<p><tt>get_api_key(Client, ApiKey, IncludeValue, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_api_keys-6">get_api_keys/6</a></h3>
+<div class="spec">
+<p><tt>get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the current <code>ApiKeys</code> resource.</p>
+
+<h3 class="function"><a name="get_api_keys-7">get_api_keys/7</a></h3>
+<div class="spec">
+<p><tt>get_api_keys(Client, CustomerId, IncludeValues, Limit, NameQuery, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_authorizer-3">get_authorizer/3</a></h3>
+<div class="spec">
+<p><tt>get_authorizer(Client, AuthorizerId, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describe an existing <code>Authorizer</code> resource.</p>
+ 
+  See also: AWS CLI</p>
+
+<h3 class="function"><a name="get_authorizer-4">get_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>get_authorizer(Client, AuthorizerId, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_authorizers-4">get_authorizers/4</a></h3>
+<div class="spec">
+<p><tt>get_authorizers(Client, RestApiId, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describe an existing <code>Authorizers</code> resource.</p>
+ 
+  See also: AWS CLI</p>
+
+<h3 class="function"><a name="get_authorizers-5">get_authorizers/5</a></h3>
+<div class="spec">
+<p><tt>get_authorizers(Client, RestApiId, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_base_path_mapping-3">get_base_path_mapping/3</a></h3>
+<div class="spec">
+<p><tt>get_base_path_mapping(Client, BasePath, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describe a <code>BasePathMapping</code> resource.</p>
+
+<h3 class="function"><a name="get_base_path_mapping-4">get_base_path_mapping/4</a></h3>
+<div class="spec">
+<p><tt>get_base_path_mapping(Client, BasePath, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_base_path_mappings-4">get_base_path_mappings/4</a></h3>
+<div class="spec">
+<p><tt>get_base_path_mappings(Client, DomainName, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents a collection of <code>BasePathMapping</code> resources.</p>
+
+<h3 class="function"><a name="get_base_path_mappings-5">get_base_path_mappings/5</a></h3>
+<div class="spec">
+<p><tt>get_base_path_mappings(Client, DomainName, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_client_certificate-2">get_client_certificate/2</a></h3>
+<div class="spec">
+<p><tt>get_client_certificate(Client, ClientCertificateId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the current <code>ClientCertificate</code> resource.</p>
+
+<h3 class="function"><a name="get_client_certificate-3">get_client_certificate/3</a></h3>
+<div class="spec">
+<p><tt>get_client_certificate(Client, ClientCertificateId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_client_certificates-3">get_client_certificates/3</a></h3>
+<div class="spec">
+<p><tt>get_client_certificates(Client, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a collection of <code>ClientCertificate</code> resources.</p>
+
+<h3 class="function"><a name="get_client_certificates-4">get_client_certificates/4</a></h3>
+<div class="spec">
+<p><tt>get_client_certificates(Client, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment-4">get_deployment/4</a></h3>
+<div class="spec">
+<p><tt>get_deployment(Client, DeploymentId, RestApiId, Embed) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a <code>Deployment</code> resource.</p>
+
+<h3 class="function"><a name="get_deployment-5">get_deployment/5</a></h3>
+<div class="spec">
+<p><tt>get_deployment(Client, DeploymentId, RestApiId, Embed, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployments-4">get_deployments/4</a></h3>
+<div class="spec">
+<p><tt>get_deployments(Client, RestApiId, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a <code>Deployments</code> collection.</p>
+
+<h3 class="function"><a name="get_deployments-5">get_deployments/5</a></h3>
+<div class="spec">
+<p><tt>get_deployments(Client, RestApiId, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_documentation_part-3">get_documentation_part/3</a></h3>
+<div class="spec">
+<p><tt>get_documentation_part(Client, DocumentationPartId, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_documentation_part-4">get_documentation_part/4</a></h3>
+<div class="spec">
+<p><tt>get_documentation_part(Client, DocumentationPartId, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_documentation_parts-8">get_documentation_parts/8</a></h3>
+<div class="spec">
+<p><tt>get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Path, Position, Type) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_documentation_parts-9">get_documentation_parts/9</a></h3>
+<div class="spec">
+<p><tt>get_documentation_parts(Client, RestApiId, Limit, LocationStatus, NameQuery, Path, Position, Type, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_documentation_version-3">get_documentation_version/3</a></h3>
+<div class="spec">
+<p><tt>get_documentation_version(Client, DocumentationVersion, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_documentation_version-4">get_documentation_version/4</a></h3>
+<div class="spec">
+<p><tt>get_documentation_version(Client, DocumentationVersion, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_documentation_versions-4">get_documentation_versions/4</a></h3>
+<div class="spec">
+<p><tt>get_documentation_versions(Client, RestApiId, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_documentation_versions-5">get_documentation_versions/5</a></h3>
+<div class="spec">
+<p><tt>get_documentation_versions(Client, RestApiId, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_domain_name-2">get_domain_name/2</a></h3>
+<div class="spec">
+<p><tt>get_domain_name(Client, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents a domain name that is contained in a simpler, more
+  intuitive URL that can be called.</p>
+
+<h3 class="function"><a name="get_domain_name-3">get_domain_name/3</a></h3>
+<div class="spec">
+<p><tt>get_domain_name(Client, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_domain_names-3">get_domain_names/3</a></h3>
+<div class="spec">
+<p><tt>get_domain_names(Client, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents a collection of <code>DomainName</code> resources.</p>
+
+<h3 class="function"><a name="get_domain_names-4">get_domain_names/4</a></h3>
+<div class="spec">
+<p><tt>get_domain_names(Client, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_export-6">get_export/6</a></h3>
+<div class="spec">
+<p><tt>get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Exports a deployed version of a <code>RestApi</code> in a specified format.</p>
+
+<h3 class="function"><a name="get_export-7">get_export/7</a></h3>
+<div class="spec">
+<p><tt>get_export(Client, ExportType, RestApiId, StageName, Parameters, Accepts, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_gateway_response-3">get_gateway_response/3</a></h3>
+<div class="spec">
+<p><tt>get_gateway_response(Client, ResponseType, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a <code>GatewayResponse</code> of a specified response type on the given
+  <code>RestApi</code>.</p>
+
+<h3 class="function"><a name="get_gateway_response-4">get_gateway_response/4</a></h3>
+<div class="spec">
+<p><tt>get_gateway_response(Client, ResponseType, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_gateway_responses-4">get_gateway_responses/4</a></h3>
+<div class="spec">
+<p><tt>get_gateway_responses(Client, RestApiId, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the <code>GatewayResponses</code> collection on the given <code>RestApi</code>.</p>
+ 
+  If an API developer has not added any definitions for gateway responses,
+  the result will be the API Gateway-generated default <code>GatewayResponses</code>
+  collection for the supported response types.</p>
+
+<h3 class="function"><a name="get_gateway_responses-5">get_gateway_responses/5</a></h3>
+<div class="spec">
+<p><tt>get_gateway_responses(Client, RestApiId, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_integration-4">get_integration/4</a></h3>
+<div class="spec">
+<p><tt>get_integration(Client, HttpMethod, ResourceId, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the integration settings.</p>
+
+<h3 class="function"><a name="get_integration-5">get_integration/5</a></h3>
+<div class="spec">
+<p><tt>get_integration(Client, HttpMethod, ResourceId, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_integration_response-5">get_integration_response/5</a></h3>
+<div class="spec">
+<p><tt>get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents a get integration response.</p>
+
+<h3 class="function"><a name="get_integration_response-6">get_integration_response/6</a></h3>
+<div class="spec">
+<p><tt>get_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_method-4">get_method/4</a></h3>
+<div class="spec">
+<p><tt>get_method(Client, HttpMethod, ResourceId, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describe an existing <code>Method</code> resource.</p>
+
+<h3 class="function"><a name="get_method-5">get_method/5</a></h3>
+<div class="spec">
+<p><tt>get_method(Client, HttpMethod, ResourceId, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_method_response-5">get_method_response/5</a></h3>
+<div class="spec">
+<p><tt>get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a <code>MethodResponse</code> resource.</p>
+
+<h3 class="function"><a name="get_method_response-6">get_method_response/6</a></h3>
+<div class="spec">
+<p><tt>get_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_model-4">get_model/4</a></h3>
+<div class="spec">
+<p><tt>get_model(Client, ModelName, RestApiId, Flatten) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes an existing model defined for a <code>RestApi</code> resource.</p>
+
+<h3 class="function"><a name="get_model-5">get_model/5</a></h3>
+<div class="spec">
+<p><tt>get_model(Client, ModelName, RestApiId, Flatten, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_model_template-3">get_model_template/3</a></h3>
+<div class="spec">
+<p><tt>get_model_template(Client, ModelName, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Generates a sample mapping template that can be used to transform a
+  payload into the structure of a model.</p>
+
+<h3 class="function"><a name="get_model_template-4">get_model_template/4</a></h3>
+<div class="spec">
+<p><tt>get_model_template(Client, ModelName, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_models-4">get_models/4</a></h3>
+<div class="spec">
+<p><tt>get_models(Client, RestApiId, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes existing <code>Models</code> defined for a <code>RestApi</code> resource.</p>
+
+<h3 class="function"><a name="get_models-5">get_models/5</a></h3>
+<div class="spec">
+<p><tt>get_models(Client, RestApiId, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_request_validator-3">get_request_validator/3</a></h3>
+<div class="spec">
+<p><tt>get_request_validator(Client, RequestValidatorId, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a <code>RequestValidator</code> of a given <code>RestApi</code>.</p>
+
+<h3 class="function"><a name="get_request_validator-4">get_request_validator/4</a></h3>
+<div class="spec">
+<p><tt>get_request_validator(Client, RequestValidatorId, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_request_validators-4">get_request_validators/4</a></h3>
+<div class="spec">
+<p><tt>get_request_validators(Client, RestApiId, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the <code>RequestValidators</code> collection of a given <code>RestApi</code>.</p>
+
+<h3 class="function"><a name="get_request_validators-5">get_request_validators/5</a></h3>
+<div class="spec">
+<p><tt>get_request_validators(Client, RestApiId, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resource-4">get_resource/4</a></h3>
+<div class="spec">
+<p><tt>get_resource(Client, ResourceId, RestApiId, Embed) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists information about a resource.</p>
+
+<h3 class="function"><a name="get_resource-5">get_resource/5</a></h3>
+<div class="spec">
+<p><tt>get_resource(Client, ResourceId, RestApiId, Embed, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resources-5">get_resources/5</a></h3>
+<div class="spec">
+<p><tt>get_resources(Client, RestApiId, Embed, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists information about a collection of <code>Resource</code> resources.</p>
+
+<h3 class="function"><a name="get_resources-6">get_resources/6</a></h3>
+<div class="spec">
+<p><tt>get_resources(Client, RestApiId, Embed, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_rest_api-2">get_rest_api/2</a></h3>
+<div class="spec">
+<p><tt>get_rest_api(Client, RestApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the <code>RestApi</code> resource in the collection.</p>
+
+<h3 class="function"><a name="get_rest_api-3">get_rest_api/3</a></h3>
+<div class="spec">
+<p><tt>get_rest_api(Client, RestApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_rest_apis-3">get_rest_apis/3</a></h3>
+<div class="spec">
+<p><tt>get_rest_apis(Client, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the <code>RestApis</code> resources for your collection.</p>
+
+<h3 class="function"><a name="get_rest_apis-4">get_rest_apis/4</a></h3>
+<div class="spec">
+<p><tt>get_rest_apis(Client, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sdk-5">get_sdk/5</a></h3>
+<div class="spec">
+<p><tt>get_sdk(Client, RestApiId, SdkType, StageName, Parameters) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Generates a client SDK for a <code>RestApi</code> and <code>Stage</code>.</p>
+
+<h3 class="function"><a name="get_sdk-6">get_sdk/6</a></h3>
+<div class="spec">
+<p><tt>get_sdk(Client, RestApiId, SdkType, StageName, Parameters, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sdk_type-2">get_sdk_type/2</a></h3>
+<div class="spec">
+<p><tt>get_sdk_type(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sdk_type-3">get_sdk_type/3</a></h3>
+<div class="spec">
+<p><tt>get_sdk_type(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sdk_types-3">get_sdk_types/3</a></h3>
+<div class="spec">
+<p><tt>get_sdk_types(Client, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sdk_types-4">get_sdk_types/4</a></h3>
+<div class="spec">
+<p><tt>get_sdk_types(Client, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_stage-3">get_stage/3</a></h3>
+<div class="spec">
+<p><tt>get_stage(Client, RestApiId, StageName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a <code>Stage</code> resource.</p>
+
+<h3 class="function"><a name="get_stage-4">get_stage/4</a></h3>
+<div class="spec">
+<p><tt>get_stage(Client, RestApiId, StageName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_stages-3">get_stages/3</a></h3>
+<div class="spec">
+<p><tt>get_stages(Client, RestApiId, DeploymentId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about one or more <code>Stage</code> resources.</p>
+
+<h3 class="function"><a name="get_stages-4">get_stages/4</a></h3>
+<div class="spec">
+<p><tt>get_stages(Client, RestApiId, DeploymentId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_tags-4">get_tags/4</a></h3>
+<div class="spec">
+<p><tt>get_tags(Client, ResourceArn, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the <code>Tags</code> collection for a given resource.</p>
+
+<h3 class="function"><a name="get_tags-5">get_tags/5</a></h3>
+<div class="spec">
+<p><tt>get_tags(Client, ResourceArn, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_usage-7">get_usage/7</a></h3>
+<div class="spec">
+<p><tt>get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the usage data of a usage plan in a specified time interval.</p>
+
+<h3 class="function"><a name="get_usage-8">get_usage/8</a></h3>
+<div class="spec">
+<p><tt>get_usage(Client, UsagePlanId, EndDate, KeyId, Limit, Position, StartDate, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_usage_plan-2">get_usage_plan/2</a></h3>
+<div class="spec">
+<p><tt>get_usage_plan(Client, UsagePlanId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a usage plan of a given plan identifier.</p>
+
+<h3 class="function"><a name="get_usage_plan-3">get_usage_plan/3</a></h3>
+<div class="spec">
+<p><tt>get_usage_plan(Client, UsagePlanId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_usage_plan_key-3">get_usage_plan_key/3</a></h3>
+<div class="spec">
+<p><tt>get_usage_plan_key(Client, KeyId, UsagePlanId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a usage plan key of a given key identifier.</p>
+
+<h3 class="function"><a name="get_usage_plan_key-4">get_usage_plan_key/4</a></h3>
+<div class="spec">
+<p><tt>get_usage_plan_key(Client, KeyId, UsagePlanId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_usage_plan_keys-5">get_usage_plan_keys/5</a></h3>
+<div class="spec">
+<p><tt>get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets all the usage plan keys representing the API keys added to a
+  specified usage plan.</p>
+
+<h3 class="function"><a name="get_usage_plan_keys-6">get_usage_plan_keys/6</a></h3>
+<div class="spec">
+<p><tt>get_usage_plan_keys(Client, UsagePlanId, Limit, NameQuery, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_usage_plans-4">get_usage_plans/4</a></h3>
+<div class="spec">
+<p><tt>get_usage_plans(Client, KeyId, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets all the usage plans of the caller's account.</p>
+
+<h3 class="function"><a name="get_usage_plans-5">get_usage_plans/5</a></h3>
+<div class="spec">
+<p><tt>get_usage_plans(Client, KeyId, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_vpc_link-2">get_vpc_link/2</a></h3>
+<div class="spec">
+<p><tt>get_vpc_link(Client, VpcLinkId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a specified VPC link under the caller's account in a region.</p>
+
+<h3 class="function"><a name="get_vpc_link-3">get_vpc_link/3</a></h3>
+<div class="spec">
+<p><tt>get_vpc_link(Client, VpcLinkId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_vpc_links-3">get_vpc_links/3</a></h3>
+<div class="spec">
+<p><tt>get_vpc_links(Client, Limit, Position) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the <code>VpcLinks</code> collection under the caller's account in a
+  selected region.</p>
+
+<h3 class="function"><a name="get_vpc_links-4">get_vpc_links/4</a></h3>
+<div class="spec">
+<p><tt>get_vpc_links(Client, Limit, Position, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_api_keys-2">import_api_keys/2</a></h3>
+<div class="spec">
+<p><tt>import_api_keys(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Import API keys from an external source, such as a CSV-formatted
+  file.</p>
+
+<h3 class="function"><a name="import_api_keys-3">import_api_keys/3</a></h3>
+<div class="spec">
+<p><tt>import_api_keys(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_documentation_parts-3">import_documentation_parts/3</a></h3>
+<div class="spec">
+<p><tt>import_documentation_parts(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_documentation_parts-4">import_documentation_parts/4</a></h3>
+<div class="spec">
+<p><tt>import_documentation_parts(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_rest_api-2">import_rest_api/2</a></h3>
+<div class="spec">
+<p><tt>import_rest_api(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>A feature of the API Gateway control service for creating a new API
+  from an external API definition file.</p>
+
+<h3 class="function"><a name="import_rest_api-3">import_rest_api/3</a></h3>
+<div class="spec">
+<p><tt>import_rest_api(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_gateway_response-4">put_gateway_response/4</a></h3>
+<div class="spec">
+<p><tt>put_gateway_response(Client, ResponseType, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a customization of a <code>GatewayResponse</code> of a specified
+  response type and status code on the given <code>RestApi</code>.</p>
+
+<h3 class="function"><a name="put_gateway_response-5">put_gateway_response/5</a></h3>
+<div class="spec">
+<p><tt>put_gateway_response(Client, ResponseType, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_integration-5">put_integration/5</a></h3>
+<div class="spec">
+<p><tt>put_integration(Client, HttpMethod, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Sets up a method's integration.</p>
+
+<h3 class="function"><a name="put_integration-6">put_integration/6</a></h3>
+<div class="spec">
+<p><tt>put_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_integration_response-6">put_integration_response/6</a></h3>
+<div class="spec">
+<p><tt>put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents a put integration.</p>
+
+<h3 class="function"><a name="put_integration_response-7">put_integration_response/7</a></h3>
+<div class="spec">
+<p><tt>put_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_method-5">put_method/5</a></h3>
+<div class="spec">
+<p><tt>put_method(Client, HttpMethod, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Add a method to an existing <code>Resource</code> resource.</p>
+
+<h3 class="function"><a name="put_method-6">put_method/6</a></h3>
+<div class="spec">
+<p><tt>put_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_method_response-6">put_method_response/6</a></h3>
+<div class="spec">
+<p><tt>put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds a <code>MethodResponse</code> to an existing <code>Method</code> resource.</p>
+
+<h3 class="function"><a name="put_method_response-7">put_method_response/7</a></h3>
+<div class="spec">
+<p><tt>put_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_rest_api-3">put_rest_api/3</a></h3>
+<div class="spec">
+<p><tt>put_rest_api(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>A feature of the API Gateway control service for updating an existing  
+API with an input of external API definitions.</p>
+ 
+  The update can take the form of merging the supplied definition into the
+  existing API or overwriting the existing API.</p>
+
+<h3 class="function"><a name="put_rest_api-4">put_rest_api/4</a></h3>
+<div class="spec">
+<p><tt>put_rest_api(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds or updates a tag on a given resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="test_invoke_authorizer-4">test_invoke_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Simulate the execution of an <code>Authorizer</code> in your <code>RestApi</code> with  
+headers, parameters, and an incoming request body.</p>
+ 
+  See also: Use Lambda Function as Authorizer Use Cognito User Pool as
+  Authorizer</p>
+
+<h3 class="function"><a name="test_invoke_authorizer-5">test_invoke_authorizer/5</a></h3>
+<div class="spec">
+<p><tt>test_invoke_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="test_invoke_method-5">test_invoke_method/5</a></h3>
+<div class="spec">
+<p><tt>test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Simulate the execution of a <code>Method</code> in your <code>RestApi</code> with headers,
+  parameters, and an incoming request body.</p>
+
+<h3 class="function"><a name="test_invoke_method-6">test_invoke_method/6</a></h3>
+<div class="spec">
+<p><tt>test_invoke_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a tag from a given resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_account-2">update_account/2</a></h3>
+<div class="spec">
+<p><tt>update_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about the current <code>Account</code> resource.</p>
+
+<h3 class="function"><a name="update_account-3">update_account/3</a></h3>
+<div class="spec">
+<p><tt>update_account(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_api_key-3">update_api_key/3</a></h3>
+<div class="spec">
+<p><tt>update_api_key(Client, ApiKey, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about an <code>ApiKey</code> resource.</p>
+
+<h3 class="function"><a name="update_api_key-4">update_api_key/4</a></h3>
+<div class="spec">
+<p><tt>update_api_key(Client, ApiKey, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_authorizer-4">update_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>update_authorizer(Client, AuthorizerId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an existing <code>Authorizer</code> resource.</p>
+ 
+  See also: AWS CLI</p>
+
+<h3 class="function"><a name="update_authorizer-5">update_authorizer/5</a></h3>
+<div class="spec">
+<p><tt>update_authorizer(Client, AuthorizerId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_base_path_mapping-4">update_base_path_mapping/4</a></h3>
+<div class="spec">
+<p><tt>update_base_path_mapping(Client, BasePath, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about the <code>BasePathMapping</code> resource.</p>
+
+<h3 class="function"><a name="update_base_path_mapping-5">update_base_path_mapping/5</a></h3>
+<div class="spec">
+<p><tt>update_base_path_mapping(Client, BasePath, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_client_certificate-3">update_client_certificate/3</a></h3>
+<div class="spec">
+<p><tt>update_client_certificate(Client, ClientCertificateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about an <code>ClientCertificate</code> resource.</p>
+
+<h3 class="function"><a name="update_client_certificate-4">update_client_certificate/4</a></h3>
+<div class="spec">
+<p><tt>update_client_certificate(Client, ClientCertificateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_deployment-4">update_deployment/4</a></h3>
+<div class="spec">
+<p><tt>update_deployment(Client, DeploymentId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about a <code>Deployment</code> resource.</p>
+
+<h3 class="function"><a name="update_deployment-5">update_deployment/5</a></h3>
+<div class="spec">
+<p><tt>update_deployment(Client, DeploymentId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_documentation_part-4">update_documentation_part/4</a></h3>
+<div class="spec">
+<p><tt>update_documentation_part(Client, DocumentationPartId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_documentation_part-5">update_documentation_part/5</a></h3>
+<div class="spec">
+<p><tt>update_documentation_part(Client, DocumentationPartId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_documentation_version-4">update_documentation_version/4</a></h3>
+<div class="spec">
+<p><tt>update_documentation_version(Client, DocumentationVersion, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_documentation_version-5">update_documentation_version/5</a></h3>
+<div class="spec">
+<p><tt>update_documentation_version(Client, DocumentationVersion, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_domain_name-3">update_domain_name/3</a></h3>
+<div class="spec">
+<p><tt>update_domain_name(Client, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about the <code>DomainName</code> resource.</p>
+
+<h3 class="function"><a name="update_domain_name-4">update_domain_name/4</a></h3>
+<div class="spec">
+<p><tt>update_domain_name(Client, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_gateway_response-4">update_gateway_response/4</a></h3>
+<div class="spec">
+<p><tt>update_gateway_response(Client, ResponseType, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a <code>GatewayResponse</code> of a specified response type on the given
+  <code>RestApi</code>.</p>
+
+<h3 class="function"><a name="update_gateway_response-5">update_gateway_response/5</a></h3>
+<div class="spec">
+<p><tt>update_gateway_response(Client, ResponseType, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_integration-5">update_integration/5</a></h3>
+<div class="spec">
+<p><tt>update_integration(Client, HttpMethod, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents an update integration.</p>
+
+<h3 class="function"><a name="update_integration-6">update_integration/6</a></h3>
+<div class="spec">
+<p><tt>update_integration(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_integration_response-6">update_integration_response/6</a></h3>
+<div class="spec">
+<p><tt>update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Represents an update integration response.</p>
+
+<h3 class="function"><a name="update_integration_response-7">update_integration_response/7</a></h3>
+<div class="spec">
+<p><tt>update_integration_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_method-5">update_method/5</a></h3>
+<div class="spec">
+<p><tt>update_method(Client, HttpMethod, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing <code>Method</code> resource.</p>
+
+<h3 class="function"><a name="update_method-6">update_method/6</a></h3>
+<div class="spec">
+<p><tt>update_method(Client, HttpMethod, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_method_response-6">update_method_response/6</a></h3>
+<div class="spec">
+<p><tt>update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing <code>MethodResponse</code> resource.</p>
+
+<h3 class="function"><a name="update_method_response-7">update_method_response/7</a></h3>
+<div class="spec">
+<p><tt>update_method_response(Client, HttpMethod, ResourceId, RestApiId, StatusCode, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_model-4">update_model/4</a></h3>
+<div class="spec">
+<p><tt>update_model(Client, ModelName, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about a model.</p>
+
+<h3 class="function"><a name="update_model-5">update_model/5</a></h3>
+<div class="spec">
+<p><tt>update_model(Client, ModelName, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_request_validator-4">update_request_validator/4</a></h3>
+<div class="spec">
+<p><tt>update_request_validator(Client, RequestValidatorId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a <code>RequestValidator</code> of a given <code>RestApi</code>.</p>
+
+<h3 class="function"><a name="update_request_validator-5">update_request_validator/5</a></h3>
+<div class="spec">
+<p><tt>update_request_validator(Client, RequestValidatorId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_resource-4">update_resource/4</a></h3>
+<div class="spec">
+<p><tt>update_resource(Client, ResourceId, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about a <code>Resource</code> resource.</p>
+
+<h3 class="function"><a name="update_resource-5">update_resource/5</a></h3>
+<div class="spec">
+<p><tt>update_resource(Client, ResourceId, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_rest_api-3">update_rest_api/3</a></h3>
+<div class="spec">
+<p><tt>update_rest_api(Client, RestApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about the specified API.</p>
+
+<h3 class="function"><a name="update_rest_api-4">update_rest_api/4</a></h3>
+<div class="spec">
+<p><tt>update_rest_api(Client, RestApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_stage-4">update_stage/4</a></h3>
+<div class="spec">
+<p><tt>update_stage(Client, RestApiId, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about a <code>Stage</code> resource.</p>
+
+<h3 class="function"><a name="update_stage-5">update_stage/5</a></h3>
+<div class="spec">
+<p><tt>update_stage(Client, RestApiId, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_usage-4">update_usage/4</a></h3>
+<div class="spec">
+<p><tt>update_usage(Client, KeyId, UsagePlanId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Grants a temporary extension to the remaining quota of a usage plan
+  associated with a specified API key.</p>
+
+<h3 class="function"><a name="update_usage-5">update_usage/5</a></h3>
+<div class="spec">
+<p><tt>update_usage(Client, KeyId, UsagePlanId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_usage_plan-3">update_usage_plan/3</a></h3>
+<div class="spec">
+<p><tt>update_usage_plan(Client, UsagePlanId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a usage plan of a given plan Id.</p>
+
+<h3 class="function"><a name="update_usage_plan-4">update_usage_plan/4</a></h3>
+<div class="spec">
+<p><tt>update_usage_plan(Client, UsagePlanId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_vpc_link-3">update_vpc_link/3</a></h3>
+<div class="spec">
+<p><tt>update_vpc_link(Client, VpcLinkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing <code>VpcLink</code> of a specified identifier.</p>
+
+<h3 class="function"><a name="update_vpc_link-4">update_vpc_link/4</a></h3>
+<div class="spec">
+<p><tt>update_vpc_link(Client, VpcLinkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_iotsecuretunneling</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_iotsecuretunneling</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS IoT Secure Tunneling.
+
+
+<h2><a name="description">Description</a></h2><p>AWS IoT Secure Tunneling</p>
+ 
+  <p>AWS IoT Secure Tunnling enables you to create remote connections to  
+devices deployed in the field.</p>
+ 
+  For more information about how AWS IoT Secure Tunneling works, see the
+  User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#close_tunnel-2">close_tunnel/2</a></td><td>Closes a tunnel identified by the unique tunnel id.</td></tr>
+<tr><td valign="top"><a href="#close_tunnel-3">close_tunnel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_tunnel-2">describe_tunnel/2</a></td><td>Gets information about a tunnel identified by the unique tunnel id.</td></tr>
+<tr><td valign="top"><a href="#describe_tunnel-3">describe_tunnel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags for the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tunnels-2">list_tunnels/2</a></td><td>List all tunnels for an AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_tunnels-3">list_tunnels/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#open_tunnel-2">open_tunnel/2</a></td><td>Creates a new tunnel, and returns two client access tokens for  
+clients to use to connect to the AWS IoT Secure Tunneling proxy server.</td></tr>
+<tr><td valign="top"><a href="#open_tunnel-3">open_tunnel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>A resource tag.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes a tag from a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="close_tunnel-2">close_tunnel/2</a></h3>
+<div class="spec">
+<p><tt>close_tunnel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Closes a tunnel identified by the unique tunnel id.</p>
+ 
+  When a <code>CloseTunnel</code> request is received, we close the WebSocket
+  connections between the client and proxy server so no data can be
+  transmitted.</p>
+
+<h3 class="function"><a name="close_tunnel-3">close_tunnel/3</a></h3>
+<div class="spec">
+<p><tt>close_tunnel(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_tunnel-2">describe_tunnel/2</a></h3>
+<div class="spec">
+<p><tt>describe_tunnel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a tunnel identified by the unique tunnel id.</p>
+
+<h3 class="function"><a name="describe_tunnel-3">describe_tunnel/3</a></h3>
+<div class="spec">
+<p><tt>describe_tunnel(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags for the specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tunnels-2">list_tunnels/2</a></h3>
+<div class="spec">
+<p><tt>list_tunnels(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>List all tunnels for an AWS account.</p>
+ 
+  Tunnels are listed by creation time in descending order, newer tunnels
+  will be listed before older tunnels.</p>
+
+<h3 class="function"><a name="list_tunnels-3">list_tunnels/3</a></h3>
+<div class="spec">
+<p><tt>list_tunnels(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="open_tunnel-2">open_tunnel/2</a></h3>
+<div class="spec">
+<p><tt>open_tunnel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new tunnel, and returns two client access tokens for  
+clients to use to connect to the AWS IoT Secure Tunneling proxy server.</p>
+ 
+  .</p>
+
+<h3 class="function"><a name="open_tunnel-3">open_tunnel/3</a></h3>
+<div class="spec">
+<p><tt>open_tunnel(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>A resource tag.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a tag from a resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

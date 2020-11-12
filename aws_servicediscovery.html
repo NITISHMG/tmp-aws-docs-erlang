@@ -1,0 +1,500 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_servicediscovery</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_servicediscovery</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Cloud Map lets you configure public DNS, private DNS, or HTTP  
+namespaces that your microservice applications run in.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Cloud Map lets you configure public DNS, private DNS, or HTTP  
+namespaces that your microservice applications run in.</p>
+ 
+  When an instance of the service becomes available, you can call the AWS
+  Cloud Map API to register the instance with AWS Cloud Map. For public or
+  private DNS namespaces, AWS Cloud Map automatically creates DNS records
+  and an optional health check. Clients that submit public or private DNS
+  queries, or HTTP requests, for the service receive an answer that contains
+  up to eight healthy records.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_http_namespace-2">create_http_namespace/2</a></td><td>Creates an HTTP namespace.</td></tr>
+<tr><td valign="top"><a href="#create_http_namespace-3">create_http_namespace/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_private_dns_namespace-2">create_private_dns_namespace/2</a></td><td>Creates a private namespace based on DNS, which will be visible only  
+inside a specified Amazon VPC.</td></tr>
+<tr><td valign="top"><a href="#create_private_dns_namespace-3">create_private_dns_namespace/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_public_dns_namespace-2">create_public_dns_namespace/2</a></td><td>Creates a public namespace based on DNS, which will be visible on the  
+internet.</td></tr>
+<tr><td valign="top"><a href="#create_public_dns_namespace-3">create_public_dns_namespace/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_service-2">create_service/2</a></td><td>Creates a service, which defines the configuration for the following  
+entities:.</td></tr>
+<tr><td valign="top"><a href="#create_service-3">create_service/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_namespace-2">delete_namespace/2</a></td><td>Deletes a namespace from the current account.</td></tr>
+<tr><td valign="top"><a href="#delete_namespace-3">delete_namespace/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_service-2">delete_service/2</a></td><td>Deletes a specified service.</td></tr>
+<tr><td valign="top"><a href="#delete_service-3">delete_service/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_instance-2">deregister_instance/2</a></td><td>Deletes the Amazon Route 53 DNS records and health check, if any,
+  that AWS Cloud Map created for the specified instance.</td></tr>
+<tr><td valign="top"><a href="#deregister_instance-3">deregister_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#discover_instances-2">discover_instances/2</a></td><td>Discovers registered instances for a specified namespace and service.</td></tr>
+<tr><td valign="top"><a href="#discover_instances-3">discover_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_instance-2">get_instance/2</a></td><td>Gets information about a specified instance.</td></tr>
+<tr><td valign="top"><a href="#get_instance-3">get_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_instances_health_status-2">get_instances_health_status/2</a></td><td>Gets the current health status (<code>Healthy</code>, <code>Unhealthy</code>, or <code>Unknown</code>)  
+of one or more instances that are associated with a specified service.</td></tr>
+<tr><td valign="top"><a href="#get_instances_health_status-3">get_instances_health_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_namespace-2">get_namespace/2</a></td><td>Gets information about a namespace.</td></tr>
+<tr><td valign="top"><a href="#get_namespace-3">get_namespace/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_operation-2">get_operation/2</a></td><td>Gets information about any operation that returns an operation ID in
+  the response, such as a <code>CreateService</code> request.</td></tr>
+<tr><td valign="top"><a href="#get_operation-3">get_operation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_service-2">get_service/2</a></td><td>Gets the settings for a specified service.</td></tr>
+<tr><td valign="top"><a href="#get_service-3">get_service/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_instances-2">list_instances/2</a></td><td>Lists summary information about the instances that you registered by
+  using a specified service.</td></tr>
+<tr><td valign="top"><a href="#list_instances-3">list_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_namespaces-2">list_namespaces/2</a></td><td>Lists summary information about the namespaces that were created by
+  the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_namespaces-3">list_namespaces/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_operations-2">list_operations/2</a></td><td>Lists operations that match the criteria that you specify.</td></tr>
+<tr><td valign="top"><a href="#list_operations-3">list_operations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_services-2">list_services/2</a></td><td>Lists summary information for all the services that are associated
+  with one or more specified namespaces.</td></tr>
+<tr><td valign="top"><a href="#list_services-3">list_services/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists tags for the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_instance-2">register_instance/2</a></td><td>Creates or updates one or more records and, optionally, creates a  
+health check based on the settings in a specified service.</td></tr>
+<tr><td valign="top"><a href="#register_instance-3">register_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds one or more tags to the specified resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes one or more tags from the specified resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_instance_custom_health_status-2">update_instance_custom_health_status/2</a></td><td>Submits a request to change the health status of a custom health  
+check to healthy or unhealthy.</td></tr>
+<tr><td valign="top"><a href="#update_instance_custom_health_status-3">update_instance_custom_health_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_service-2">update_service/2</a></td><td>Submits a request to perform the following operations:.</td></tr>
+<tr><td valign="top"><a href="#update_service-3">update_service/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_http_namespace-2">create_http_namespace/2</a></h3>
+<div class="spec">
+<p><tt>create_http_namespace(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an HTTP namespace.</p>
+ 
+  <p>Service instances that you register using an HTTP namespace can be
+  discovered using a <code>DiscoverInstances</code> request but can't be discovered  
+using DNS.</p>
+ 
+  For the current quota on the number of namespaces that you can create
+  using the same AWS account, see AWS Cloud Map quotas in the AWS Cloud Map
+  Developer Guide.</p>
+
+<h3 class="function"><a name="create_http_namespace-3">create_http_namespace/3</a></h3>
+<div class="spec">
+<p><tt>create_http_namespace(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_private_dns_namespace-2">create_private_dns_namespace/2</a></h3>
+<div class="spec">
+<p><tt>create_private_dns_namespace(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a private namespace based on DNS, which will be visible only  
+inside a specified Amazon VPC.</p>
+ 
+  The namespace defines your service naming scheme. For example, if you name
+  your namespace <code>example.com</code> and name your service <code>backend</code>, the
+  resulting DNS name for the service will be <code>backend.example.com</code>. For the
+  current quota on the number of namespaces that you can create using the
+  same AWS account, see AWS Cloud Map Limits in the AWS Cloud Map Developer
+  Guide.</p>
+
+<h3 class="function"><a name="create_private_dns_namespace-3">create_private_dns_namespace/3</a></h3>
+<div class="spec">
+<p><tt>create_private_dns_namespace(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_public_dns_namespace-2">create_public_dns_namespace/2</a></h3>
+<div class="spec">
+<p><tt>create_public_dns_namespace(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a public namespace based on DNS, which will be visible on the  
+internet.</p>
+ 
+  The namespace defines your service naming scheme. For example, if you name
+  your namespace <code>example.com</code> and name your service <code>backend</code>, the
+  resulting DNS name for the service will be <code>backend.example.com</code>. For the
+  current quota on the number of namespaces that you can create using the
+  same AWS account, see AWS Cloud Map Limits in the AWS Cloud Map Developer
+  Guide.</p>
+
+<h3 class="function"><a name="create_public_dns_namespace-3">create_public_dns_namespace/3</a></h3>
+<div class="spec">
+<p><tt>create_public_dns_namespace(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_service-2">create_service/2</a></h3>
+<div class="spec">
+<p><tt>create_service(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a service, which defines the configuration for the following  
+entities:</p>
+ 
+  <ul> <li><p> For public and private DNS namespaces, one of the following  
+combinations of DNS records in Amazon Route 53:</p>
+ 
+  <ul> <li><p> <code>A</code></p>
+ 
+  </li> <li><p> <code>AAAA</code></p>
+ 
+  </li> <li><p> <code>A</code> and <code>AAAA</code></p>
+ 
+  </li> <li><p> <code>SRV</code></p>
+ 
+  </li> <li><p> <code>CNAME</code></p>
+ 
+  </li> </ul> </li> <li><p> Optionally, a health check</p>
+ 
+  </li> </ul><p> After you create the service, you can submit a  
+RegisterInstance request, and AWS Cloud Map uses the values in the  
+configuration to create the specified entities.</p>
+ 
+  For the current quota on the number of instances that you can register
+  using the same namespace and using the same service, see AWS Cloud Map
+  Limits in the AWS Cloud Map Developer Guide.</p>
+
+<h3 class="function"><a name="create_service-3">create_service/3</a></h3>
+<div class="spec">
+<p><tt>create_service(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_namespace-2">delete_namespace/2</a></h3>
+<div class="spec">
+<p><tt>delete_namespace(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a namespace from the current account.</p>
+ 
+  If the namespace still contains one or more services, the request fails.</p>
+
+<h3 class="function"><a name="delete_namespace-3">delete_namespace/3</a></h3>
+<div class="spec">
+<p><tt>delete_namespace(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_service-2">delete_service/2</a></h3>
+<div class="spec">
+<p><tt>delete_service(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified service.</p>
+ 
+  If the service still contains one or more registered instances, the
+  request fails.</p>
+
+<h3 class="function"><a name="delete_service-3">delete_service/3</a></h3>
+<div class="spec">
+<p><tt>delete_service(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_instance-2">deregister_instance/2</a></h3>
+<div class="spec">
+<p><tt>deregister_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the Amazon Route 53 DNS records and health check, if any,
+  that AWS Cloud Map created for the specified instance.</p>
+
+<h3 class="function"><a name="deregister_instance-3">deregister_instance/3</a></h3>
+<div class="spec">
+<p><tt>deregister_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="discover_instances-2">discover_instances/2</a></h3>
+<div class="spec">
+<p><tt>discover_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Discovers registered instances for a specified namespace and service.</p>
+ 
+  You can use <code>DiscoverInstances</code> to discover instances for any type of
+  namespace. For public and private DNS namespaces, you can also use DNS
+  queries to discover instances.</p>
+
+<h3 class="function"><a name="discover_instances-3">discover_instances/3</a></h3>
+<div class="spec">
+<p><tt>discover_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_instance-2">get_instance/2</a></h3>
+<div class="spec">
+<p><tt>get_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a specified instance.</p>
+
+<h3 class="function"><a name="get_instance-3">get_instance/3</a></h3>
+<div class="spec">
+<p><tt>get_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_instances_health_status-2">get_instances_health_status/2</a></h3>
+<div class="spec">
+<p><tt>get_instances_health_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the current health status (<code>Healthy</code>, <code>Unhealthy</code>, or <code>Unknown</code>)  
+of one or more instances that are associated with a specified service.</p>
+ 
+  There is a brief delay between when you register an instance and when the
+  health status for the instance is available.</p>
+
+<h3 class="function"><a name="get_instances_health_status-3">get_instances_health_status/3</a></h3>
+<div class="spec">
+<p><tt>get_instances_health_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_namespace-2">get_namespace/2</a></h3>
+<div class="spec">
+<p><tt>get_namespace(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a namespace.</p>
+
+<h3 class="function"><a name="get_namespace-3">get_namespace/3</a></h3>
+<div class="spec">
+<p><tt>get_namespace(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_operation-2">get_operation/2</a></h3>
+<div class="spec">
+<p><tt>get_operation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about any operation that returns an operation ID in
+  the response, such as a <code>CreateService</code> request.</p>
+ 
+  To get a list of operations that match specified criteria, see
+  ListOperations.</p>
+
+<h3 class="function"><a name="get_operation-3">get_operation/3</a></h3>
+<div class="spec">
+<p><tt>get_operation(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_service-2">get_service/2</a></h3>
+<div class="spec">
+<p><tt>get_service(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the settings for a specified service.</p>
+
+<h3 class="function"><a name="get_service-3">get_service/3</a></h3>
+<div class="spec">
+<p><tt>get_service(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_instances-2">list_instances/2</a></h3>
+<div class="spec">
+<p><tt>list_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists summary information about the instances that you registered by
+  using a specified service.</p>
+
+<h3 class="function"><a name="list_instances-3">list_instances/3</a></h3>
+<div class="spec">
+<p><tt>list_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_namespaces-2">list_namespaces/2</a></h3>
+<div class="spec">
+<p><tt>list_namespaces(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists summary information about the namespaces that were created by
+  the current AWS account.</p>
+
+<h3 class="function"><a name="list_namespaces-3">list_namespaces/3</a></h3>
+<div class="spec">
+<p><tt>list_namespaces(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_operations-2">list_operations/2</a></h3>
+<div class="spec">
+<p><tt>list_operations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists operations that match the criteria that you specify.</p>
+
+<h3 class="function"><a name="list_operations-3">list_operations/3</a></h3>
+<div class="spec">
+<p><tt>list_operations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_services-2">list_services/2</a></h3>
+<div class="spec">
+<p><tt>list_services(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists summary information for all the services that are associated
+  with one or more specified namespaces.</p>
+
+<h3 class="function"><a name="list_services-3">list_services/3</a></h3>
+<div class="spec">
+<p><tt>list_services(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists tags for the specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_instance-2">register_instance/2</a></h3>
+<div class="spec">
+<p><tt>register_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or updates one or more records and, optionally, creates a  
+health check based on the settings in a specified service.</p>
+ 
+  <p>When you submit a <code>RegisterInstance</code> request, the following occurs:</p>
+ 
+  <ul> <li><p> For each DNS record that you define in the service that is
+  specified by <code>ServiceId</code>, a record is created or updated in the hosted  
+zone that is associated with the corresponding namespace.</p>
+ 
+  </li> <li><p> If the service includes <code>HealthCheckConfig</code>, a health check is  
+created based on the settings in the health check configuration.</p>
+ 
+  </li> <li><p> The health check, if any, is associated with each of the new or  
+updated records.</p>
+ 
+  </li> </ul><p> One <code>RegisterInstance</code> request must complete before you can  
+submit another request and specify the same service ID and instance ID.</p>
+ 
+  <p>For more information, see CreateService.</p>
+ 
+  <p>When AWS Cloud Map receives a DNS query for the specified DNS name, it  
+returns the applicable value:</p>
+ 
+  <ul> <li><p> If the health check is healthy: returns all the records</p>
+ 
+  </li> <li><p> If the health check is unhealthy: returns the applicable value  
+for the last healthy instance</p>
+ 
+  </li> <li><p> If you didn't specify a health check configuration: returns all  
+the records</p>
+ 
+  </li> </ul> For the current quota on the number of instances that you can
+  register using the same namespace and using the same service, see AWS
+  Cloud Map Limits in the AWS Cloud Map Developer Guide.</p>
+
+<h3 class="function"><a name="register_instance-3">register_instance/3</a></h3>
+<div class="spec">
+<p><tt>register_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds one or more tags to the specified resource.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags from the specified resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_instance_custom_health_status-2">update_instance_custom_health_status/2</a></h3>
+<div class="spec">
+<p><tt>update_instance_custom_health_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Submits a request to change the health status of a custom health  
+check to healthy or unhealthy.</p>
+ 
+  <p>You can use <code>UpdateInstanceCustomHealthStatus</code> to change the status only
+  for custom health checks, which you define using <code>HealthCheckCustomConfig</code>
+  when you create a service. You can't use it to change the status for
+  Route 53 health checks, which you define using <code>HealthCheckConfig</code>.</p>
+ 
+  For more information, see HealthCheckCustomConfig.</p>
+
+<h3 class="function"><a name="update_instance_custom_health_status-3">update_instance_custom_health_status/3</a></h3>
+<div class="spec">
+<p><tt>update_instance_custom_health_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_service-2">update_service/2</a></h3>
+<div class="spec">
+<p><tt>update_service(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Submits a request to perform the following operations:</p>
+ 
+  <ul> <li><p> Update the TTL setting for existing <code>DnsRecords</code> configurations</p>
+ 
+  </li> <li><p> Add, update, or delete <code>HealthCheckConfig</code> for a specified  
+service</p>
+ 
+  <p>You can't add, update, or delete a <code>HealthCheckCustomConfig</code>  
+configuration.</p>
+ 
+  </li> </ul><p> For public and private DNS namespaces, note the following:</p>
+ 
+  <ul> <li><p> If you omit any existing <code>DnsRecords</code> or <code>HealthCheckConfig</code>
+  configurations from an <code>UpdateService</code> request, the configurations are  
+deleted from the service.</p>
+ 
+  </li> <li><p> If you omit an existing <code>HealthCheckCustomConfig</code> configuration
+  from an <code>UpdateService</code> request, the configuration is not deleted from the  
+service.</p>
+ 
+  </li> </ul> When you update settings for a service, AWS Cloud Map also
+  updates the corresponding settings in all the records and health checks
+  that were created by using the specified service.</p>
+
+<h3 class="function"><a name="update_service-3">update_service/3</a></h3>
+<div class="spec">
+<p><tt>update_service(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,539 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_support</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_support</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Support.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Support</p>
+ 
+  <p>The AWS Support API reference is intended for programmers who need  
+detailed information about the AWS Support operations and data types.</p>
+ 
+  <p>This service enables you to manage your AWS Support cases  
+programmatically. It uses HTTP methods that return results in JSON format.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  <p>If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>  
+error message appears. For information about changing your support plan,  
+see AWS Support.</p>
+ 
+  <p>The AWS Support service also exposes a set of AWS Trusted Advisor  
+features. You can retrieve a list of checks and their descriptions, get  
+check results, specify checks to refresh, and get the refresh status of  
+checks.</p>
+ 
+  <p>The following list describes the AWS Support case management operations:</p>
+ 
+  <ul> <li><p> Service names, issue categories, and available severity levels.
+  The <code>DescribeServices</code> and <code>DescribeSeverityLevels</code> operations return AWS
+  service names, service codes, service categories, and problem severity
+  levels. You use these values when you call the <code>CreateCase</code> operation.</p>
+ 
+  </li> <li><p> Case creation, case details, and case resolution. The
+  <code>CreateCase</code>, <code>DescribeCases</code>, <code>DescribeAttachment</code>, and <code>ResolveCase</code>  
+operations create AWS Support cases, retrieve information about cases, and  
+resolve cases.</p>
+ 
+  </li> <li><p> Case communication. The <code>DescribeCommunications</code>,
+  <code>AddCommunicationToCase</code>, and <code>AddAttachmentsToSet</code> operations retrieve  
+and add communications and attachments to AWS Support cases.</p>
+ 
+  </li> </ul><p> The following list describes the operations available from the  
+AWS Support service for Trusted Advisor:</p>
+ 
+  <ul> <li><p> <code>DescribeTrustedAdvisorChecks</code> returns the list of checks that  
+run against your AWS resources.</p>
+ 
+  </li> <li><p> Using the <code>checkId</code> for a specific check returned by
+  <code>DescribeTrustedAdvisorChecks</code>, you can call
+  <code>DescribeTrustedAdvisorCheckResult</code> to obtain the results for the check  
+that you specified.</p>
+ 
+  </li> <li><p> <code>DescribeTrustedAdvisorCheckSummaries</code> returns summarized  
+results for one or more Trusted Advisor checks.</p>
+ 
+  </li> <li><p> <code>RefreshTrustedAdvisorCheck</code> requests that Trusted Advisor  
+rerun a specified check.</p>
+ 
+  </li> <li><p> <code>DescribeTrustedAdvisorCheckRefreshStatuses</code> reports the  
+refresh status of one or more checks.</p>
+ 
+  </li> </ul><p> For authentication of requests, AWS Support uses Signature  
+Version 4 Signing Process.</p>
+ 
+  See About the AWS Support API in the AWS Support User Guide for
+  information about how to use this service to create and manage your
+  support cases, and how to call Trusted Advisor for results of checks on
+  your resources.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_attachments_to_set-2">add_attachments_to_set/2</a></td><td>Adds one or more attachments to an attachment set.</td></tr>
+<tr><td valign="top"><a href="#add_attachments_to_set-3">add_attachments_to_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_communication_to_case-2">add_communication_to_case/2</a></td><td>Adds additional customer communication to an AWS Support case.</td></tr>
+<tr><td valign="top"><a href="#add_communication_to_case-3">add_communication_to_case/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_case-2">create_case/2</a></td><td>Creates a case in the AWS Support Center.</td></tr>
+<tr><td valign="top"><a href="#create_case-3">create_case/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_attachment-2">describe_attachment/2</a></td><td>Returns the attachment that has the specified ID.</td></tr>
+<tr><td valign="top"><a href="#describe_attachment-3">describe_attachment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_cases-2">describe_cases/2</a></td><td>Returns a list of cases that you specify by passing one or more case  
+IDs.</td></tr>
+<tr><td valign="top"><a href="#describe_cases-3">describe_cases/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_communications-2">describe_communications/2</a></td><td>Returns communications and attachments for one or more support cases.</td></tr>
+<tr><td valign="top"><a href="#describe_communications-3">describe_communications/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_services-2">describe_services/2</a></td><td>Returns the current list of AWS services and a list of service  
+categories for each service.</td></tr>
+<tr><td valign="top"><a href="#describe_services-3">describe_services/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_severity_levels-2">describe_severity_levels/2</a></td><td>Returns the list of severity levels that you can assign to an AWS  
+Support case.</td></tr>
+<tr><td valign="top"><a href="#describe_severity_levels-3">describe_severity_levels/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_trusted_advisor_check_refresh_statuses-2">describe_trusted_advisor_check_refresh_statuses/2</a></td><td>Returns the refresh status of the AWS Trusted Advisor checks that  
+have the specified check IDs.</td></tr>
+<tr><td valign="top"><a href="#describe_trusted_advisor_check_refresh_statuses-3">describe_trusted_advisor_check_refresh_statuses/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_trusted_advisor_check_result-2">describe_trusted_advisor_check_result/2</a></td><td>Returns the results of the AWS Trusted Advisor check that has the  
+specified check ID.</td></tr>
+<tr><td valign="top"><a href="#describe_trusted_advisor_check_result-3">describe_trusted_advisor_check_result/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_trusted_advisor_check_summaries-2">describe_trusted_advisor_check_summaries/2</a></td><td>Returns the results for the AWS Trusted Advisor check summaries for  
+the check IDs that you specified.</td></tr>
+<tr><td valign="top"><a href="#describe_trusted_advisor_check_summaries-3">describe_trusted_advisor_check_summaries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_trusted_advisor_checks-2">describe_trusted_advisor_checks/2</a></td><td>Returns information about all available AWS Trusted Advisor checks,  
+including the name, ID, category, description, and metadata.</td></tr>
+<tr><td valign="top"><a href="#describe_trusted_advisor_checks-3">describe_trusted_advisor_checks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#refresh_trusted_advisor_check-2">refresh_trusted_advisor_check/2</a></td><td>Refreshes the AWS Trusted Advisor check that you specify using the  
+check ID.</td></tr>
+<tr><td valign="top"><a href="#refresh_trusted_advisor_check-3">refresh_trusted_advisor_check/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#resolve_case-2">resolve_case/2</a></td><td>Resolves a support case.</td></tr>
+<tr><td valign="top"><a href="#resolve_case-3">resolve_case/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_attachments_to_set-2">add_attachments_to_set/2</a></h3>
+<div class="spec">
+<p><tt>add_attachments_to_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds one or more attachments to an attachment set.</p>
+ 
+  <p>An attachment set is a temporary container for attachments that you add to
+  a case or case communication. The set is available for 1 hour after it's
+  created. The <code>expiryTime</code> returned in the response is when the set  
+expires.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="add_attachments_to_set-3">add_attachments_to_set/3</a></h3>
+<div class="spec">
+<p><tt>add_attachments_to_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_communication_to_case-2">add_communication_to_case/2</a></h3>
+<div class="spec">
+<p><tt>add_communication_to_case(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds additional customer communication to an AWS Support case.</p>
+ 
+  <p>Use the <code>caseId</code> parameter to identify the case to which to add
+  communication. You can list a set of email addresses to copy on the
+  communication by using the <code>ccEmailAddresses</code> parameter. The
+  <code>communicationBody</code> value contains the text of the communication.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="add_communication_to_case-3">add_communication_to_case/3</a></h3>
+<div class="spec">
+<p><tt>add_communication_to_case(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_case-2">create_case/2</a></h3>
+<div class="spec">
+<p><tt>create_case(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a case in the AWS Support Center.</p>
+ 
+  <p>This operation is similar to how you create a case in the AWS Support  
+Center Create Case page.</p>
+ 
+  <p>The AWS Support API doesn't support requesting service limit increases.  
+You can submit a service limit increase in the following ways:</p>
+ 
+  <ul> <li><p> Submit a request from the AWS Support Center Create Case page.</p>
+ 
+  </li> <li><p> Use the Service Quotas RequestServiceQuotaIncrease operation.</p>
+ 
+  </li> </ul><p> A successful <code>CreateCase</code> request returns an AWS Support case
+  number. You can use the <code>DescribeCases</code> operation and specify the case
+  number to get existing AWS Support cases. After you create a case, use the
+  <code>AddCommunicationToCase</code> operation to add additional communication or  
+attachments to an existing case.</p>
+ 
+  <p>The <code>caseId</code> is separate from the <code>displayId</code> that appears in the AWS
+  Support Center. Use the <code>DescribeCases</code> operation to get the <code>displayId</code>.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="create_case-3">create_case/3</a></h3>
+<div class="spec">
+<p><tt>create_case(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_attachment-2">describe_attachment/2</a></h3>
+<div class="spec">
+<p><tt>describe_attachment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the attachment that has the specified ID.</p>
+ 
+  <p>Attachments can include screenshots, error logs, or other files that
+  describe your issue. Attachment IDs are generated by the case management
+  system when you add an attachment to a case or case communication.
+  Attachment IDs are returned in the <code>AttachmentDetails</code> objects that are
+  returned by the <code>DescribeCommunications</code> operation.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_attachment-3">describe_attachment/3</a></h3>
+<div class="spec">
+<p><tt>describe_attachment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_cases-2">describe_cases/2</a></h3>
+<div class="spec">
+<p><tt>describe_cases(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of cases that you specify by passing one or more case  
+IDs.</p>
+ 
+  <p>You can use the <code>afterTime</code> and <code>beforeTime</code> parameters to filter the
+  cases by date. You can set values for the <code>includeResolvedCases</code> and
+  <code>includeCommunications</code> parameters to specify how much information to  
+return.</p>
+ 
+  <p>The response returns the following in JSON format:</p>
+ 
+  <ul> <li><p> One or more CaseDetails data types.</p>
+ 
+  </li> <li><p> One or more <code>nextToken</code> values, which specify where to paginate
+  the returned records represented by the <code>CaseDetails</code> objects.</p>
+ 
+  </li> </ul><p> Case data is available for 12 months after creation. If a case  
+was created more than 12 months ago, a request might return an error.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_cases-3">describe_cases/3</a></h3>
+<div class="spec">
+<p><tt>describe_cases(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_communications-2">describe_communications/2</a></h3>
+<div class="spec">
+<p><tt>describe_communications(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns communications and attachments for one or more support cases.</p>
+ 
+  <p>Use the <code>afterTime</code> and <code>beforeTime</code> parameters to filter by date. You can
+  use the <code>caseId</code> parameter to restrict the results to a specific case.</p>
+ 
+  <p>Case data is available for 12 months after creation. If a case was created  
+more than 12 months ago, a request for data might cause an error.</p>
+ 
+  <p>You can use the <code>maxResults</code> and <code>nextToken</code> parameters to control the
+  pagination of the results. Set <code>maxResults</code> to the number of cases that
+  you want to display on each page, and use <code>nextToken</code> to specify the  
+resumption of pagination.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_communications-3">describe_communications/3</a></h3>
+<div class="spec">
+<p><tt>describe_communications(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_services-2">describe_services/2</a></h3>
+<div class="spec">
+<p><tt>describe_services(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the current list of AWS services and a list of service  
+categories for each service.</p>
+ 
+  <p>You then use service names and categories in your <code>CreateCase</code> requests.  
+Each AWS service has its own set of categories.</p>
+ 
+  <p>The service codes and category codes correspond to the values that appear
+  in the Service and Category lists on the AWS Support Center Create Case
+  page. The values in those fields don't necessarily match the service codes
+  and categories returned by the <code>DescribeServices</code> operation. Always use
+  the service codes and categories that the <code>DescribeServices</code> operation  
+returns, so that you have the most recent set of service and category  
+codes.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_services-3">describe_services/3</a></h3>
+<div class="spec">
+<p><tt>describe_services(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_severity_levels-2">describe_severity_levels/2</a></h3>
+<div class="spec">
+<p><tt>describe_severity_levels(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the list of severity levels that you can assign to an AWS  
+Support case.</p>
+ 
+  <p>The severity level for a case is also a field in the <code>CaseDetails</code> data
+  type that you include for a <code>CreateCase</code> request.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_severity_levels-3">describe_severity_levels/3</a></h3>
+<div class="spec">
+<p><tt>describe_severity_levels(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_trusted_advisor_check_refresh_statuses-2">describe_trusted_advisor_check_refresh_statuses/2</a></h3>
+<div class="spec">
+<p><tt>describe_trusted_advisor_check_refresh_statuses(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the refresh status of the AWS Trusted Advisor checks that  
+have the specified check IDs.</p>
+ 
+  <p>You can get the check IDs by calling the <code>DescribeTrustedAdvisorChecks</code>  
+operation.</p>
+ 
+  <p>Some checks are refreshed automatically, and you can't return their
+  refresh statuses by using the <code>DescribeTrustedAdvisorCheckRefreshStatuses</code>
+  operation. If you call this operation for these checks, you might see an
+  <code>InvalidParameterValue</code> error.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_trusted_advisor_check_refresh_statuses-3">describe_trusted_advisor_check_refresh_statuses/3</a></h3>
+<div class="spec">
+<p><tt>describe_trusted_advisor_check_refresh_statuses(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_trusted_advisor_check_result-2">describe_trusted_advisor_check_result/2</a></h3>
+<div class="spec">
+<p><tt>describe_trusted_advisor_check_result(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the results of the AWS Trusted Advisor check that has the  
+specified check ID.</p>
+ 
+  <p>You can get the check IDs by calling the <code>DescribeTrustedAdvisorChecks</code>  
+operation.</p>
+ 
+  <p>The response contains a <code>TrustedAdvisorCheckResult</code> object, which contains  
+these three objects:</p>
+ 
+  <ul> <li><p> <code>TrustedAdvisorCategorySpecificSummary</code></p>
+ 
+  </li> <li><p> <code>TrustedAdvisorResourceDetail</code></p>
+ 
+  </li> <li><p> <code>TrustedAdvisorResourcesSummary</code></p>
+ 
+  </li> </ul><p> In addition, the response contains these fields:</p>
+ 
+  <ul> <li><p> status - The alert status of the check: "ok" (green), "warning"  
+(yellow), "error" (red), or "not_available".</p>
+ 
+  </li> <li><p> timestamp - The time of the last refresh of the check.</p>
+ 
+  </li> <li><p> checkId - The unique identifier for the check.</p>
+ 
+  </li> </ul><p> You must have a Business or Enterprise support plan to use the  
+AWS Support API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_trusted_advisor_check_result-3">describe_trusted_advisor_check_result/3</a></h3>
+<div class="spec">
+<p><tt>describe_trusted_advisor_check_result(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_trusted_advisor_check_summaries-2">describe_trusted_advisor_check_summaries/2</a></h3>
+<div class="spec">
+<p><tt>describe_trusted_advisor_check_summaries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the results for the AWS Trusted Advisor check summaries for  
+the check IDs that you specified.</p>
+ 
+  <p>You can get the check IDs by calling the <code>DescribeTrustedAdvisorChecks</code>  
+operation.</p>
+ 
+  <p>The response contains an array of <code>TrustedAdvisorCheckSummary</code> objects.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_trusted_advisor_check_summaries-3">describe_trusted_advisor_check_summaries/3</a></h3>
+<div class="spec">
+<p><tt>describe_trusted_advisor_check_summaries(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_trusted_advisor_checks-2">describe_trusted_advisor_checks/2</a></h3>
+<div class="spec">
+<p><tt>describe_trusted_advisor_checks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about all available AWS Trusted Advisor checks,  
+including the name, ID, category, description, and metadata.</p>
+ 
+  <p>You must specify a language code. The AWS Support API currently supports
+  English ("en") and Japanese ("ja"). The response contains a
+  <code>TrustedAdvisorCheckDescription</code> object for each check. You must set the  
+AWS Region to us-east-1.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="describe_trusted_advisor_checks-3">describe_trusted_advisor_checks/3</a></h3>
+<div class="spec">
+<p><tt>describe_trusted_advisor_checks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="refresh_trusted_advisor_check-2">refresh_trusted_advisor_check/2</a></h3>
+<div class="spec">
+<p><tt>refresh_trusted_advisor_check(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Refreshes the AWS Trusted Advisor check that you specify using the  
+check ID.</p>
+ 
+  <p>You can get the check IDs by calling the <code>DescribeTrustedAdvisorChecks</code>  
+operation.</p>
+ 
+  <p>Some checks are refreshed automatically. If you call the
+  <code>RefreshTrustedAdvisorCheck</code> operation to refresh them, you might see the
+  <code>InvalidParameterValue</code> error.</p>
+ 
+  <p>The response contains a <code>TrustedAdvisorCheckRefreshStatus</code> object.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="refresh_trusted_advisor_check-3">refresh_trusted_advisor_check/3</a></h3>
+<div class="spec">
+<p><tt>refresh_trusted_advisor_check(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="resolve_case-2">resolve_case/2</a></h3>
+<div class="spec">
+<p><tt>resolve_case(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Resolves a support case.</p>
+ 
+  <p>This operation takes a <code>caseId</code> and returns the initial and final state of  
+the case.</p>
+ 
+  <p>You must have a Business or Enterprise support plan to use the AWS Support  
+API.</p>
+ 
+  If you call the AWS Support API from an account that does not have a
+  Business or Enterprise support plan, the <code>SubscriptionRequiredException</code>
+  error message appears. For information about changing your support plan,
+  see AWS Support.</p>
+
+<h3 class="function"><a name="resolve_case-3">resolve_case/3</a></h3>
+<div class="spec">
+<p><tt>resolve_case(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

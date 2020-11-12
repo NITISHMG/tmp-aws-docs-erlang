@@ -1,0 +1,424 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_migration_hub</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_migration_hub</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>The AWS Migration Hub API methods help to obtain server and  
+application migration status and integrate your resource-specific  
+migration tool by providing a programmatic interface to Migration Hub.
+
+
+<h2><a name="description">Description</a></h2><p>The AWS Migration Hub API methods help to obtain server and  
+application migration status and integrate your resource-specific  
+migration tool by providing a programmatic interface to Migration Hub.</p>
+ 
+  Remember that you must set your AWS Migration Hub home region before you
+  call any of these APIs, or a <code>HomeRegionNotSetException</code> error will be
+  returned. Also, you must make the API calls while in your home region.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_created_artifact-2">associate_created_artifact/2</a></td><td>Associates a created artifact of an AWS cloud resource, the target  
+receiving the migration, with the migration task performed by a migration  
+tool.</td></tr>
+<tr><td valign="top"><a href="#associate_created_artifact-3">associate_created_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_discovered_resource-2">associate_discovered_resource/2</a></td><td>Associates a discovered resource ID from Application Discovery
+  Service with a migration task.</td></tr>
+<tr><td valign="top"><a href="#associate_discovered_resource-3">associate_discovered_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_progress_update_stream-2">create_progress_update_stream/2</a></td><td>Creates a progress update stream which is an AWS resource used for  
+access control as well as a namespace for migration task names that is  
+implicitly linked to your AWS account.</td></tr>
+<tr><td valign="top"><a href="#create_progress_update_stream-3">create_progress_update_stream/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_progress_update_stream-2">delete_progress_update_stream/2</a></td><td>Deletes a progress update stream, including all of its tasks, which  
+was previously created as an AWS resource used for access control.</td></tr>
+<tr><td valign="top"><a href="#delete_progress_update_stream-3">delete_progress_update_stream/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_application_state-2">describe_application_state/2</a></td><td>Gets the migration status of an application.</td></tr>
+<tr><td valign="top"><a href="#describe_application_state-3">describe_application_state/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_migration_task-2">describe_migration_task/2</a></td><td>Retrieves a list of all attributes associated with a specific
+  migration task.</td></tr>
+<tr><td valign="top"><a href="#describe_migration_task-3">describe_migration_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_created_artifact-2">disassociate_created_artifact/2</a></td><td>Disassociates a created artifact of an AWS resource with a migration  
+task performed by a migration tool that was previously associated.</td></tr>
+<tr><td valign="top"><a href="#disassociate_created_artifact-3">disassociate_created_artifact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_discovered_resource-2">disassociate_discovered_resource/2</a></td><td>Disassociate an Application Discovery Service discovered resource
+  from a migration task.</td></tr>
+<tr><td valign="top"><a href="#disassociate_discovered_resource-3">disassociate_discovered_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_migration_task-2">import_migration_task/2</a></td><td>Registers a new migration task which represents a server, database,  
+etc., being migrated to AWS by a migration tool.</td></tr>
+<tr><td valign="top"><a href="#import_migration_task-3">import_migration_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_application_states-2">list_application_states/2</a></td><td>Lists all the migration statuses for your applications.</td></tr>
+<tr><td valign="top"><a href="#list_application_states-3">list_application_states/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_created_artifacts-2">list_created_artifacts/2</a></td><td>Lists the created artifacts attached to a given migration task in an  
+update stream.</td></tr>
+<tr><td valign="top"><a href="#list_created_artifacts-3">list_created_artifacts/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_discovered_resources-2">list_discovered_resources/2</a></td><td>Lists discovered resources associated with the given <code>MigrationTask</code>.</td></tr>
+<tr><td valign="top"><a href="#list_discovered_resources-3">list_discovered_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_migration_tasks-2">list_migration_tasks/2</a></td><td>Lists all, or filtered by resource name, migration tasks associated  
+with the user account making this call.</td></tr>
+<tr><td valign="top"><a href="#list_migration_tasks-3">list_migration_tasks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_progress_update_streams-2">list_progress_update_streams/2</a></td><td>Lists progress update streams associated with the user account making
+  this call.</td></tr>
+<tr><td valign="top"><a href="#list_progress_update_streams-3">list_progress_update_streams/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#notify_application_state-2">notify_application_state/2</a></td><td>Sets the migration state of an application.</td></tr>
+<tr><td valign="top"><a href="#notify_application_state-3">notify_application_state/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#notify_migration_task_state-2">notify_migration_task_state/2</a></td><td>Notifies Migration Hub of the current status, progress, or other  
+detail regarding a migration task.</td></tr>
+<tr><td valign="top"><a href="#notify_migration_task_state-3">notify_migration_task_state/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_resource_attributes-2">put_resource_attributes/2</a></td><td>Provides identifying details of the resource being migrated so that  
+it can be associated in the Application Discovery Service repository.</td></tr>
+<tr><td valign="top"><a href="#put_resource_attributes-3">put_resource_attributes/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_created_artifact-2">associate_created_artifact/2</a></h3>
+<div class="spec">
+<p><tt>associate_created_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates a created artifact of an AWS cloud resource, the target  
+receiving the migration, with the migration task performed by a migration  
+tool.</p>
+ 
+  <p>This API has the following traits:</p>
+ 
+  <ul> <li><p> Migration tools can call the <code>AssociateCreatedArtifact</code>  
+operation to indicate which AWS artifact is associated with a migration  
+task.</p>
+ 
+  </li> <li><p> The created artifact name must be provided in ARN (Amazon
+  Resource Name) format which will contain information about type and
+  region; for example:
+  <code>arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b</code>.</p>
+ 
+  </li> <li><p> Examples of the AWS resource behind the created artifact are,  
+AMI's, EC2 instance, or DMS endpoint, etc.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="associate_created_artifact-3">associate_created_artifact/3</a></h3>
+<div class="spec">
+<p><tt>associate_created_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_discovered_resource-2">associate_discovered_resource/2</a></h3>
+<div class="spec">
+<p><tt>associate_discovered_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a discovered resource ID from Application Discovery
+  Service with a migration task.</p>
+
+<h3 class="function"><a name="associate_discovered_resource-3">associate_discovered_resource/3</a></h3>
+<div class="spec">
+<p><tt>associate_discovered_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_progress_update_stream-2">create_progress_update_stream/2</a></h3>
+<div class="spec">
+<p><tt>create_progress_update_stream(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a progress update stream which is an AWS resource used for  
+access control as well as a namespace for migration task names that is  
+implicitly linked to your AWS account.</p>
+ 
+  It must uniquely identify the migration tool as it is used for all updates
+  made by the tool; however, it does not need to be unique for each AWS
+  account because it is scoped to the AWS account.</p>
+
+<h3 class="function"><a name="create_progress_update_stream-3">create_progress_update_stream/3</a></h3>
+<div class="spec">
+<p><tt>create_progress_update_stream(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_progress_update_stream-2">delete_progress_update_stream/2</a></h3>
+<div class="spec">
+<p><tt>delete_progress_update_stream(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a progress update stream, including all of its tasks, which  
+was previously created as an AWS resource used for access control.</p>
+ 
+  <p>This API has the following traits:</p>
+ 
+  <ul> <li><p> The only parameter needed for <code>DeleteProgressUpdateStream</code> is
+  the stream name (same as a <code>CreateProgressUpdateStream</code> call).</p>
+ 
+  </li> <li><p> The call will return, and a background process will  
+asynchronously delete the stream and all of its resources (tasks,  
+associated resources, resource attributes, created artifacts).</p>
+ 
+  </li> <li><p> If the stream takes time to be deleted, it might still show up
+  on a <code>ListProgressUpdateStreams</code> call.</p>
+ 
+  </li> <li><p> <code>CreateProgressUpdateStream</code>, <code>ImportMigrationTask</code>,
+  <code>NotifyMigrationTaskState</code>, and all Associate[*] APIs related to the tasks  
+belonging to the stream will throw "InvalidInputException" if the stream  
+of the same name is in the process of being deleted.</p>
+ 
+  </li> <li><p> Once the stream and all of its resources are deleted,
+  <code>CreateProgressUpdateStream</code> for a stream of the same name will succeed,  
+and that stream will be an entirely new logical resource (without any  
+resources associated with the old stream).</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_progress_update_stream-3">delete_progress_update_stream/3</a></h3>
+<div class="spec">
+<p><tt>delete_progress_update_stream(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_application_state-2">describe_application_state/2</a></h3>
+<div class="spec">
+<p><tt>describe_application_state(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the migration status of an application.</p>
+
+<h3 class="function"><a name="describe_application_state-3">describe_application_state/3</a></h3>
+<div class="spec">
+<p><tt>describe_application_state(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_migration_task-2">describe_migration_task/2</a></h3>
+<div class="spec">
+<p><tt>describe_migration_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of all attributes associated with a specific
+  migration task.</p>
+
+<h3 class="function"><a name="describe_migration_task-3">describe_migration_task/3</a></h3>
+<div class="spec">
+<p><tt>describe_migration_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_created_artifact-2">disassociate_created_artifact/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_created_artifact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates a created artifact of an AWS resource with a migration  
+task performed by a migration tool that was previously associated.</p>
+ 
+  <p>This API has the following traits:</p>
+ 
+  <ul> <li><p> A migration user can call the <code>DisassociateCreatedArtifacts</code>  
+operation to disassociate a created AWS Artifact from a migration task.</p>
+ 
+  </li> <li><p> The created artifact name must be provided in ARN (Amazon
+  Resource Name) format which will contain information about type and
+  region; for example:
+  <code>arn:aws:ec2:us-east-1:488216288981:image/ami-6d0ba87b</code>.</p>
+ 
+  </li> <li><p> Examples of the AWS resource behind the created artifact are,  
+AMI's, EC2 instance, or RDS instance, etc.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="disassociate_created_artifact-3">disassociate_created_artifact/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_created_artifact(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_discovered_resource-2">disassociate_discovered_resource/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_discovered_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociate an Application Discovery Service discovered resource
+  from a migration task.</p>
+
+<h3 class="function"><a name="disassociate_discovered_resource-3">disassociate_discovered_resource/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_discovered_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_migration_task-2">import_migration_task/2</a></h3>
+<div class="spec">
+<p><tt>import_migration_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers a new migration task which represents a server, database,  
+etc., being migrated to AWS by a migration tool.</p>
+ 
+  This API is a prerequisite to calling the <code>NotifyMigrationTaskState</code> API
+  as the migration tool must first register the migration task with
+  Migration Hub.</p>
+
+<h3 class="function"><a name="import_migration_task-3">import_migration_task/3</a></h3>
+<div class="spec">
+<p><tt>import_migration_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_application_states-2">list_application_states/2</a></h3>
+<div class="spec">
+<p><tt>list_application_states(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all the migration statuses for your applications.</p>
+ 
+  If you use the optional <code>ApplicationIds</code> parameter, only the migration
+  statuses for those applications will be returned.</p>
+
+<h3 class="function"><a name="list_application_states-3">list_application_states/3</a></h3>
+<div class="spec">
+<p><tt>list_application_states(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_created_artifacts-2">list_created_artifacts/2</a></h3>
+<div class="spec">
+<p><tt>list_created_artifacts(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the created artifacts attached to a given migration task in an  
+update stream.</p>
+ 
+  <p>This API has the following traits:</p>
+ 
+  <ul> <li><p> Gets the list of the created artifacts while migration is taking  
+place.</p>
+ 
+  </li> <li><p> Shows the artifacts created by the migration tool that was
+  associated by the <code>AssociateCreatedArtifact</code> API.</p>
+ 
+  </li> <li><p> Lists created artifacts in a paginated interface.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="list_created_artifacts-3">list_created_artifacts/3</a></h3>
+<div class="spec">
+<p><tt>list_created_artifacts(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_discovered_resources-2">list_discovered_resources/2</a></h3>
+<div class="spec">
+<p><tt>list_discovered_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists discovered resources associated with the given <code>MigrationTask</code>.</p>
+
+<h3 class="function"><a name="list_discovered_resources-3">list_discovered_resources/3</a></h3>
+<div class="spec">
+<p><tt>list_discovered_resources(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_migration_tasks-2">list_migration_tasks/2</a></h3>
+<div class="spec">
+<p><tt>list_migration_tasks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all, or filtered by resource name, migration tasks associated  
+with the user account making this call.</p>
+ 
+  <p>This API has the following traits:</p>
+ 
+  <ul> <li><p> Can show a summary list of the most recent migration tasks.</p>
+ 
+  </li> <li><p> Can show a summary list of migration tasks associated with a  
+given discovered resource.</p>
+ 
+  </li> <li><p> Lists migration tasks in a paginated interface.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="list_migration_tasks-3">list_migration_tasks/3</a></h3>
+<div class="spec">
+<p><tt>list_migration_tasks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_progress_update_streams-2">list_progress_update_streams/2</a></h3>
+<div class="spec">
+<p><tt>list_progress_update_streams(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists progress update streams associated with the user account making
+  this call.</p>
+
+<h3 class="function"><a name="list_progress_update_streams-3">list_progress_update_streams/3</a></h3>
+<div class="spec">
+<p><tt>list_progress_update_streams(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="notify_application_state-2">notify_application_state/2</a></h3>
+<div class="spec">
+<p><tt>notify_application_state(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the migration state of an application.</p>
+ 
+  For a given application identified by the value passed to <code>ApplicationId</code>,
+  its status is set or updated by passing one of three values to <code>Status</code>:
+  <code>NOT_STARTED | IN_PROGRESS | COMPLETED</code>.</p>
+
+<h3 class="function"><a name="notify_application_state-3">notify_application_state/3</a></h3>
+<div class="spec">
+<p><tt>notify_application_state(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="notify_migration_task_state-2">notify_migration_task_state/2</a></h3>
+<div class="spec">
+<p><tt>notify_migration_task_state(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Notifies Migration Hub of the current status, progress, or other  
+detail regarding a migration task.</p>
+ 
+  <p>This API has the following traits:</p>
+ 
+  <ul> <li><p> Migration tools will call the <code>NotifyMigrationTaskState</code> API to  
+share the latest progress and status.</p>
+ 
+  </li> <li><p> <code>MigrationTaskName</code> is used for addressing updates to the  
+correct target.</p>
+ 
+  </li> <li><p> <code>ProgressUpdateStream</code> is used for access control and to  
+provide a namespace for each migration tool.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="notify_migration_task_state-3">notify_migration_task_state/3</a></h3>
+<div class="spec">
+<p><tt>notify_migration_task_state(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_resource_attributes-2">put_resource_attributes/2</a></h3>
+<div class="spec">
+<p><tt>put_resource_attributes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides identifying details of the resource being migrated so that  
+it can be associated in the Application Discovery Service repository.</p>
+ 
+  <p>This association occurs asynchronously after <code>PutResourceAttributes</code>  
+returns.</p>
+ 
+  <p>Keep in mind that subsequent calls to PutResourceAttributes will override  
+previously stored attributes. For example, if it is first called with a  
+MAC address, but later, it is desired to add an IP address, it will then  
+be required to call it with both the IP and MAC addresses to prevent  
+overriding the MAC address.</p>
+ 
+  <p>Note the instructions regarding the special use case of the
+  <code>ResourceAttributeList</code> parameter when specifying any "VM" related value.</p>
+ 
+  Because this is an asynchronous call, it will always return 200, whether
+  an association occurs or not. To confirm if an association was found based
+  on the provided details, call <code>ListDiscoveredResources</code>.</p>
+
+<h3 class="function"><a name="put_resource_attributes-3">put_resource_attributes/3</a></h3>
+<div class="spec">
+<p><tt>put_resource_attributes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

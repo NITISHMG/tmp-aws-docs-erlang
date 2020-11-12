@@ -1,0 +1,375 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_codestar</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_codestar</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS CodeStar.
+
+
+<h2><a name="description">Description</a></h2><p>AWS CodeStar</p>
+ 
+  <p>This is the API reference for AWS CodeStar.</p>
+ 
+  <p>This reference provides descriptions of the operations and data types for  
+the AWS CodeStar API along with usage examples.</p>
+ 
+  <p>You can use the AWS CodeStar API to work with:</p>
+ 
+  <p>Projects and their resources, by calling the following:</p>
+ 
+  <ul> <li><p> <code>DeleteProject</code>, which deletes a project.</p>
+ 
+  </li> <li><p> <code>DescribeProject</code>, which lists the attributes of a project.</p>
+ 
+  </li> <li><p> <code>ListProjects</code>, which lists all projects associated with your  
+AWS account.</p>
+ 
+  </li> <li><p> <code>ListResources</code>, which lists the resources associated with a  
+project.</p>
+ 
+  </li> <li><p> <code>ListTagsForProject</code>, which lists the tags associated with a  
+project.</p>
+ 
+  </li> <li><p> <code>TagProject</code>, which adds tags to a project.</p>
+ 
+  </li> <li><p> <code>UntagProject</code>, which removes tags from a project.</p>
+ 
+  </li> <li><p> <code>UpdateProject</code>, which updates the attributes of a project.</p>
+ 
+  </li> </ul><p> Teams and team members, by calling the following:</p>
+ 
+  <ul> <li><p> <code>AssociateTeamMember</code>, which adds an IAM user to the team for a  
+project.</p>
+ 
+  </li> <li><p> <code>DisassociateTeamMember</code>, which removes an IAM user from the  
+team for a project.</p>
+ 
+  </li> <li><p> <code>ListTeamMembers</code>, which lists all the IAM users in the team  
+for a project, including their roles and attributes.</p>
+ 
+  </li> <li><p> <code>UpdateTeamMember</code>, which updates a team member's attributes in  
+a project.</p>
+ 
+  </li> </ul><p> Users, by calling the following:</p>
+ 
+  <ul> <li><p> <code>CreateUserProfile</code>, which creates a user profile that contains  
+data associated with the user across all projects.</p>
+ 
+  </li> <li><p> <code>DeleteUserProfile</code>, which deletes all user profile information  
+across all projects.</p>
+ 
+  </li> <li><p> <code>DescribeUserProfile</code>, which describes the profile of a user.</p>
+ 
+  </li> <li><p> <code>ListUserProfiles</code>, which lists all user profiles.</p>
+ 
+  </li> <li><p> <code>UpdateUserProfile</code>, which updates the profile for a user.</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_team_member-2">associate_team_member/2</a></td><td>Adds an IAM user to the team for an AWS CodeStar project.</td></tr>
+<tr><td valign="top"><a href="#associate_team_member-3">associate_team_member/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_project-2">create_project/2</a></td><td>Creates a project, including project resources.</td></tr>
+<tr><td valign="top"><a href="#create_project-3">create_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user_profile-2">create_user_profile/2</a></td><td>Creates a profile for a user that includes user preferences, such as  
+the display name and email address assocciated with the user, in AWS  
+CodeStar.</td></tr>
+<tr><td valign="top"><a href="#create_user_profile-3">create_user_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_project-2">delete_project/2</a></td><td>Deletes a project, including project resources.</td></tr>
+<tr><td valign="top"><a href="#delete_project-3">delete_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user_profile-2">delete_user_profile/2</a></td><td>Deletes a user profile in AWS CodeStar, including all personal  
+preference data associated with that profile, such as display name and  
+email address.</td></tr>
+<tr><td valign="top"><a href="#delete_user_profile-3">delete_user_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_project-2">describe_project/2</a></td><td>Describes a project and its resources.</td></tr>
+<tr><td valign="top"><a href="#describe_project-3">describe_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_profile-2">describe_user_profile/2</a></td><td>Describes a user in AWS CodeStar and the user attributes across all
+  projects.</td></tr>
+<tr><td valign="top"><a href="#describe_user_profile-3">describe_user_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_team_member-2">disassociate_team_member/2</a></td><td>Removes a user from a project.</td></tr>
+<tr><td valign="top"><a href="#disassociate_team_member-3">disassociate_team_member/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_projects-2">list_projects/2</a></td><td>Lists all projects in AWS CodeStar associated with your AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_projects-3">list_projects/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resources-2">list_resources/2</a></td><td>Lists resources associated with a project in AWS CodeStar.</td></tr>
+<tr><td valign="top"><a href="#list_resources-3">list_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_project-2">list_tags_for_project/2</a></td><td>Gets the tags for a project.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_project-3">list_tags_for_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_team_members-2">list_team_members/2</a></td><td>Lists all team members associated with a project.</td></tr>
+<tr><td valign="top"><a href="#list_team_members-3">list_team_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_user_profiles-2">list_user_profiles/2</a></td><td>Lists all the user profiles configured for your AWS account in AWS
+  CodeStar.</td></tr>
+<tr><td valign="top"><a href="#list_user_profiles-3">list_user_profiles/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_project-2">tag_project/2</a></td><td>Adds tags to a project.</td></tr>
+<tr><td valign="top"><a href="#tag_project-3">tag_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_project-2">untag_project/2</a></td><td>Removes tags from a project.</td></tr>
+<tr><td valign="top"><a href="#untag_project-3">untag_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_project-2">update_project/2</a></td><td>Updates a project in AWS CodeStar.</td></tr>
+<tr><td valign="top"><a href="#update_project-3">update_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_team_member-2">update_team_member/2</a></td><td>Updates a team member's attributes in an AWS CodeStar project.</td></tr>
+<tr><td valign="top"><a href="#update_team_member-3">update_team_member/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_profile-2">update_user_profile/2</a></td><td>Updates a user's profile in AWS CodeStar.</td></tr>
+<tr><td valign="top"><a href="#update_user_profile-3">update_user_profile/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_team_member-2">associate_team_member/2</a></h3>
+<div class="spec">
+<p><tt>associate_team_member(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds an IAM user to the team for an AWS CodeStar project.</p>
+
+<h3 class="function"><a name="associate_team_member-3">associate_team_member/3</a></h3>
+<div class="spec">
+<p><tt>associate_team_member(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_project-2">create_project/2</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a project, including project resources.</p>
+ 
+  This action creates a project based on a submitted project request. A set
+  of source code files and a toolchain template file can be included with
+  the project request. If these are not provided, an empty project is
+  created.</p>
+
+<h3 class="function"><a name="create_project-3">create_project/3</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user_profile-2">create_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>create_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a profile for a user that includes user preferences, such as  
+the display name and email address assocciated with the user, in AWS  
+CodeStar.</p>
+ 
+  The user profile is not project-specific. Information in the user profile
+  is displayed wherever the user's information appears to other users in AWS
+  CodeStar.</p>
+
+<h3 class="function"><a name="create_user_profile-3">create_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>create_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_project-2">delete_project/2</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a project, including project resources.</p>
+ 
+  Does not delete users associated with the project, but does delete the IAM
+  roles that allowed access to the project.</p>
+
+<h3 class="function"><a name="delete_project-3">delete_project/3</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user_profile-2">delete_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>delete_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a user profile in AWS CodeStar, including all personal  
+preference data associated with that profile, such as display name and  
+email address.</p>
+ 
+  It does not delete the history of that user, for example the history of
+  commits made by that user.</p>
+
+<h3 class="function"><a name="delete_user_profile-3">delete_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>delete_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_project-2">describe_project/2</a></h3>
+<div class="spec">
+<p><tt>describe_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a project and its resources.</p>
+
+<h3 class="function"><a name="describe_project-3">describe_project/3</a></h3>
+<div class="spec">
+<p><tt>describe_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_profile-2">describe_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>describe_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a user in AWS CodeStar and the user attributes across all
+  projects.</p>
+
+<h3 class="function"><a name="describe_user_profile-3">describe_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_team_member-2">disassociate_team_member/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_team_member(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes a user from a project.</p>
+ 
+  Removing a user from a project also removes the IAM policies from that
+  user that allowed access to the project and its resources. Disassociating
+  a team member does not remove that user's profile from AWS CodeStar. It
+  does not remove the user from IAM.</p>
+
+<h3 class="function"><a name="disassociate_team_member-3">disassociate_team_member/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_team_member(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_projects-2">list_projects/2</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all projects in AWS CodeStar associated with your AWS account.</p>
+
+<h3 class="function"><a name="list_projects-3">list_projects/3</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resources-2">list_resources/2</a></h3>
+<div class="spec">
+<p><tt>list_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists resources associated with a project in AWS CodeStar.</p>
+
+<h3 class="function"><a name="list_resources-3">list_resources/3</a></h3>
+<div class="spec">
+<p><tt>list_resources(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_project-2">list_tags_for_project/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the tags for a project.</p>
+
+<h3 class="function"><a name="list_tags_for_project-3">list_tags_for_project/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_team_members-2">list_team_members/2</a></h3>
+<div class="spec">
+<p><tt>list_team_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all team members associated with a project.</p>
+
+<h3 class="function"><a name="list_team_members-3">list_team_members/3</a></h3>
+<div class="spec">
+<p><tt>list_team_members(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_user_profiles-2">list_user_profiles/2</a></h3>
+<div class="spec">
+<p><tt>list_user_profiles(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the user profiles configured for your AWS account in AWS
+  CodeStar.</p>
+
+<h3 class="function"><a name="list_user_profiles-3">list_user_profiles/3</a></h3>
+<div class="spec">
+<p><tt>list_user_profiles(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_project-2">tag_project/2</a></h3>
+<div class="spec">
+<p><tt>tag_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds tags to a project.</p>
+
+<h3 class="function"><a name="tag_project-3">tag_project/3</a></h3>
+<div class="spec">
+<p><tt>tag_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_project-2">untag_project/2</a></h3>
+<div class="spec">
+<p><tt>untag_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from a project.</p>
+
+<h3 class="function"><a name="untag_project-3">untag_project/3</a></h3>
+<div class="spec">
+<p><tt>untag_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_project-2">update_project/2</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a project in AWS CodeStar.</p>
+
+<h3 class="function"><a name="update_project-3">update_project/3</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_team_member-2">update_team_member/2</a></h3>
+<div class="spec">
+<p><tt>update_team_member(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a team member's attributes in an AWS CodeStar project.</p>
+ 
+  For example, you can change a team member's role in the project, or change
+  whether they have remote access to project resources.</p>
+
+<h3 class="function"><a name="update_team_member-3">update_team_member/3</a></h3>
+<div class="spec">
+<p><tt>update_team_member(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_profile-2">update_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>update_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a user's profile in AWS CodeStar.</p>
+ 
+  The user profile is not project-specific. Information in the user profile
+  is displayed wherever the user's information appears to other users in AWS
+  CodeStar.</p>
+
+<h3 class="function"><a name="update_user_profile-3">update_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>update_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

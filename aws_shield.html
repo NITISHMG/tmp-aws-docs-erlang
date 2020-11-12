@@ -1,0 +1,495 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_shield</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_shield</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Shield Advanced.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Shield Advanced</p>
+ 
+  <p>This is the AWS Shield Advanced API Reference.</p>
+ 
+  This guide is for developers who need detailed information about the AWS
+  Shield Advanced API actions, data types, and errors. For detailed
+  information about AWS WAF and AWS Shield Advanced features and an overview
+  of how to use the AWS WAF and AWS Shield Advanced APIs, see the AWS WAF
+  and AWS Shield Developer Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_d_r_t_log_bucket-2">associate_d_r_t_log_bucket/2</a></td><td>Authorizes the DDoS Response Team (DRT) to access the specified  
+Amazon S3 bucket containing your AWS WAF logs.</td></tr>
+<tr><td valign="top"><a href="#associate_d_r_t_log_bucket-3">associate_d_r_t_log_bucket/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_d_r_t_role-2">associate_d_r_t_role/2</a></td><td>Authorizes the DDoS Response Team (DRT), using the specified role, to  
+access your AWS account to assist with DDoS attack mitigation during  
+potential attacks.</td></tr>
+<tr><td valign="top"><a href="#associate_d_r_t_role-3">associate_d_r_t_role/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_health_check-2">associate_health_check/2</a></td><td>Adds health-based detection to the Shield Advanced protection for a  
+resource.</td></tr>
+<tr><td valign="top"><a href="#associate_health_check-3">associate_health_check/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_proactive_engagement_details-2">associate_proactive_engagement_details/2</a></td><td>Initializes proactive engagement and sets the list of contacts for  
+the DDoS Response Team (DRT) to use.</td></tr>
+<tr><td valign="top"><a href="#associate_proactive_engagement_details-3">associate_proactive_engagement_details/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_protection-2">create_protection/2</a></td><td>Enables AWS Shield Advanced for a specific AWS resource.</td></tr>
+<tr><td valign="top"><a href="#create_protection-3">create_protection/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_subscription-2">create_subscription/2</a></td><td>Activates AWS Shield Advanced for an account.</td></tr>
+<tr><td valign="top"><a href="#create_subscription-3">create_subscription/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_protection-2">delete_protection/2</a></td><td>Deletes an AWS Shield Advanced <code>Protection</code>.</td></tr>
+<tr><td valign="top"><a href="#delete_protection-3">delete_protection/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_subscription-2">delete_subscription/2</a></td><td>Removes AWS Shield Advanced from an account.</td></tr>
+<tr><td valign="top"><a href="#delete_subscription-3">delete_subscription/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_attack-2">describe_attack/2</a></td><td>Describes the details of a DDoS attack.</td></tr>
+<tr><td valign="top"><a href="#describe_attack-3">describe_attack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_d_r_t_access-2">describe_d_r_t_access/2</a></td><td>Returns the current role and list of Amazon S3 log buckets used by
+  the DDoS Response Team (DRT) to access your AWS account while assisting
+  with attack mitigation.</td></tr>
+<tr><td valign="top"><a href="#describe_d_r_t_access-3">describe_d_r_t_access/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_emergency_contact_settings-2">describe_emergency_contact_settings/2</a></td><td>A list of email addresses and phone numbers that the DDoS Response
+  Team (DRT) can use to contact you if you have proactive engagement
+  enabled, for escalations to the DRT and to initiate proactive customer
+  support.</td></tr>
+<tr><td valign="top"><a href="#describe_emergency_contact_settings-3">describe_emergency_contact_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_protection-2">describe_protection/2</a></td><td>Lists the details of a <code>Protection</code> object.</td></tr>
+<tr><td valign="top"><a href="#describe_protection-3">describe_protection/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_subscription-2">describe_subscription/2</a></td><td>Provides details about the AWS Shield Advanced subscription for an
+  account.</td></tr>
+<tr><td valign="top"><a href="#describe_subscription-3">describe_subscription/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disable_proactive_engagement-2">disable_proactive_engagement/2</a></td><td>Removes authorization from the DDoS Response Team (DRT) to notify
+  contacts about escalations to the DRT and to initiate proactive customer
+  support.</td></tr>
+<tr><td valign="top"><a href="#disable_proactive_engagement-3">disable_proactive_engagement/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_d_r_t_log_bucket-2">disassociate_d_r_t_log_bucket/2</a></td><td>Removes the DDoS Response Team's (DRT) access to the specified Amazon  
+S3 bucket containing your AWS WAF logs.</td></tr>
+<tr><td valign="top"><a href="#disassociate_d_r_t_log_bucket-3">disassociate_d_r_t_log_bucket/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_d_r_t_role-2">disassociate_d_r_t_role/2</a></td><td>Removes the DDoS Response Team's (DRT) access to your AWS account.</td></tr>
+<tr><td valign="top"><a href="#disassociate_d_r_t_role-3">disassociate_d_r_t_role/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_health_check-2">disassociate_health_check/2</a></td><td>Removes health-based detection from the Shield Advanced protection  
+for a resource.</td></tr>
+<tr><td valign="top"><a href="#disassociate_health_check-3">disassociate_health_check/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#enable_proactive_engagement-2">enable_proactive_engagement/2</a></td><td>Authorizes the DDoS Response Team (DRT) to use email and phone to
+  notify contacts about escalations to the DRT and to initiate proactive
+  customer support.</td></tr>
+<tr><td valign="top"><a href="#enable_proactive_engagement-3">enable_proactive_engagement/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_subscription_state-2">get_subscription_state/2</a></td><td>Returns the <code>SubscriptionState</code>, either <code>Active</code> or <code>Inactive</code>.</td></tr>
+<tr><td valign="top"><a href="#get_subscription_state-3">get_subscription_state/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_attacks-2">list_attacks/2</a></td><td>Returns all ongoing DDoS attacks or all DDoS attacks during a
+  specified time period.</td></tr>
+<tr><td valign="top"><a href="#list_attacks-3">list_attacks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_protections-2">list_protections/2</a></td><td>Lists all <code>Protection</code> objects for the account.</td></tr>
+<tr><td valign="top"><a href="#list_protections-3">list_protections/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_emergency_contact_settings-2">update_emergency_contact_settings/2</a></td><td>Updates the details of the list of email addresses and phone numbers
+  that the DDoS Response Team (DRT) can use to contact you if you have
+  proactive engagement enabled, for escalations to the DRT and to initiate
+  proactive customer support.</td></tr>
+<tr><td valign="top"><a href="#update_emergency_contact_settings-3">update_emergency_contact_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_subscription-2">update_subscription/2</a></td><td>Updates the details of an existing subscription.</td></tr>
+<tr><td valign="top"><a href="#update_subscription-3">update_subscription/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_d_r_t_log_bucket-2">associate_d_r_t_log_bucket/2</a></h3>
+<div class="spec">
+<p><tt>associate_d_r_t_log_bucket(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Authorizes the DDoS Response Team (DRT) to access the specified  
+Amazon S3 bucket containing your AWS WAF logs.</p>
+ 
+  <p>You can associate up to 10 Amazon S3 buckets with your subscription.</p>
+ 
+  To use the services of the DRT and make an <code>AssociateDRTLogBucket</code>
+  request, you must be subscribed to the Business Support plan or the
+  Enterprise Support plan.</p>
+
+<h3 class="function"><a name="associate_d_r_t_log_bucket-3">associate_d_r_t_log_bucket/3</a></h3>
+<div class="spec">
+<p><tt>associate_d_r_t_log_bucket(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_d_r_t_role-2">associate_d_r_t_role/2</a></h3>
+<div class="spec">
+<p><tt>associate_d_r_t_role(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Authorizes the DDoS Response Team (DRT), using the specified role, to  
+access your AWS account to assist with DDoS attack mitigation during  
+potential attacks.</p>
+ 
+  <p>This enables the DRT to inspect your AWS WAF configuration and create or  
+update AWS WAF rules and web ACLs.</p>
+ 
+  <p>You can associate only one <code>RoleArn</code> with your subscription. If you submit
+  an <code>AssociateDRTRole</code> request for an account that already has an
+  associated role, the new <code>RoleArn</code> will replace the existing <code>RoleArn</code>.</p>
+ 
+  <p>Prior to making the <code>AssociateDRTRole</code> request, you must attach the
+  AWSShieldDRTAccessPolicy managed policy to the role you will specify in
+  the request. For more information see Attaching and Detaching IAM
+  Policies. The role must also trust the service principal <code>drt.shield.amazonaws.com</code>. For more information, see IAM JSON Policy  
+Elements: Principal.</p>
+ 
+  <p>The DRT will have access only to your AWS WAF and Shield resources. By  
+submitting this request, you authorize the DRT to inspect your AWS WAF and  
+Shield configuration and create and update AWS WAF rules and web ACLs on  
+your behalf. The DRT takes these actions only if explicitly authorized by  
+you.</p>
+ 
+  <p>You must have the <code>iam:PassRole</code> permission to make an <code>AssociateDRTRole</code>  
+request. For more information, see Granting a User Permissions to Pass a  
+Role to an AWS Service.</p>
+ 
+  To use the services of the DRT and make an <code>AssociateDRTRole</code> request, you
+  must be subscribed to the Business Support plan or the Enterprise Support
+  plan.</p>
+
+<h3 class="function"><a name="associate_d_r_t_role-3">associate_d_r_t_role/3</a></h3>
+<div class="spec">
+<p><tt>associate_d_r_t_role(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_health_check-2">associate_health_check/2</a></h3>
+<div class="spec">
+<p><tt>associate_health_check(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds health-based detection to the Shield Advanced protection for a  
+resource.</p>
+ 
+  <p>Shield Advanced health-based detection uses the health of your AWS  
+resource to improve responsiveness and accuracy in attack detection and  
+mitigation.</p>
+ 
+  You define the health check in Route 53 and then associate it with your
+  Shield Advanced protection. For more information, see Shield Advanced
+  Health-Based Detection in the AWS WAF and AWS Shield Developer Guide.</p>
+
+<h3 class="function"><a name="associate_health_check-3">associate_health_check/3</a></h3>
+<div class="spec">
+<p><tt>associate_health_check(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_proactive_engagement_details-2">associate_proactive_engagement_details/2</a></h3>
+<div class="spec">
+<p><tt>associate_proactive_engagement_details(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Initializes proactive engagement and sets the list of contacts for  
+the DDoS Response Team (DRT) to use.</p>
+ 
+  <p>You must provide at least one phone number in the emergency contact list.</p>
+ 
+  <p>After you have initialized proactive engagement using this call, to
+  disable or enable proactive engagement, use the calls
+  <code>DisableProactiveEngagement</code> and <code>EnableProactiveEngagement</code>.</p>
+ 
+  <p>This call defines the list of email addresses and phone numbers that the  
+DDoS Response Team (DRT) can use to contact you for escalations to the DRT  
+and to initiate proactive customer support.</p>
+ 
+  The contacts that you provide in the request replace any contacts that
+  were already defined. If you already have contacts defined and want to use
+  them, retrieve the list using <code>DescribeEmergencyContactSettings</code> and then
+  provide it to this call.</p>
+
+<h3 class="function"><a name="associate_proactive_engagement_details-3">associate_proactive_engagement_details/3</a></h3>
+<div class="spec">
+<p><tt>associate_proactive_engagement_details(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_protection-2">create_protection/2</a></h3>
+<div class="spec">
+<p><tt>create_protection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Enables AWS Shield Advanced for a specific AWS resource.</p>
+ 
+  <p>The resource can be an Amazon CloudFront distribution, Elastic Load  
+Balancing load balancer, AWS Global Accelerator accelerator, Elastic IP  
+Address, or an Amazon Route 53 hosted zone.</p>
+ 
+  You can add protection to only a single resource with each
+  CreateProtection request. If you want to add protection to multiple
+  resources at once, use the AWS WAF console. For more information see
+  Getting Started with AWS Shield Advanced and Add AWS Shield Advanced
+  Protection to more AWS Resources.</p>
+
+<h3 class="function"><a name="create_protection-3">create_protection/3</a></h3>
+<div class="spec">
+<p><tt>create_protection(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_subscription-2">create_subscription/2</a></h3>
+<div class="spec">
+<p><tt>create_subscription(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Activates AWS Shield Advanced for an account.</p>
+ 
+  When you initally create a subscription, your subscription is set to be
+  automatically renewed at the end of the existing subscription period. You
+  can change this by submitting an <code>UpdateSubscription</code> request.</p>
+
+<h3 class="function"><a name="create_subscription-3">create_subscription/3</a></h3>
+<div class="spec">
+<p><tt>create_subscription(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_protection-2">delete_protection/2</a></h3>
+<div class="spec">
+<p><tt>delete_protection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an AWS Shield Advanced <code>Protection</code>.</p>
+
+<h3 class="function"><a name="delete_protection-3">delete_protection/3</a></h3>
+<div class="spec">
+<p><tt>delete_protection(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_subscription-2">delete_subscription/2</a></h3>
+<div class="spec">
+<p><tt>delete_subscription(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes AWS Shield Advanced from an account.</p>
+ 
+  AWS Shield Advanced requires a 1-year subscription commitment. You cannot
+  delete a subscription prior to the completion of that commitment.</p>
+
+<h3 class="function"><a name="delete_subscription-3">delete_subscription/3</a></h3>
+<div class="spec">
+<p><tt>delete_subscription(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_attack-2">describe_attack/2</a></h3>
+<div class="spec">
+<p><tt>describe_attack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the details of a DDoS attack.</p>
+
+<h3 class="function"><a name="describe_attack-3">describe_attack/3</a></h3>
+<div class="spec">
+<p><tt>describe_attack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_d_r_t_access-2">describe_d_r_t_access/2</a></h3>
+<div class="spec">
+<p><tt>describe_d_r_t_access(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the current role and list of Amazon S3 log buckets used by
+  the DDoS Response Team (DRT) to access your AWS account while assisting
+  with attack mitigation.</p>
+
+<h3 class="function"><a name="describe_d_r_t_access-3">describe_d_r_t_access/3</a></h3>
+<div class="spec">
+<p><tt>describe_d_r_t_access(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_emergency_contact_settings-2">describe_emergency_contact_settings/2</a></h3>
+<div class="spec">
+<p><tt>describe_emergency_contact_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>A list of email addresses and phone numbers that the DDoS Response
+  Team (DRT) can use to contact you if you have proactive engagement
+  enabled, for escalations to the DRT and to initiate proactive customer
+  support.</p>
+
+<h3 class="function"><a name="describe_emergency_contact_settings-3">describe_emergency_contact_settings/3</a></h3>
+<div class="spec">
+<p><tt>describe_emergency_contact_settings(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_protection-2">describe_protection/2</a></h3>
+<div class="spec">
+<p><tt>describe_protection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the details of a <code>Protection</code> object.</p>
+
+<h3 class="function"><a name="describe_protection-3">describe_protection/3</a></h3>
+<div class="spec">
+<p><tt>describe_protection(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_subscription-2">describe_subscription/2</a></h3>
+<div class="spec">
+<p><tt>describe_subscription(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides details about the AWS Shield Advanced subscription for an
+  account.</p>
+
+<h3 class="function"><a name="describe_subscription-3">describe_subscription/3</a></h3>
+<div class="spec">
+<p><tt>describe_subscription(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disable_proactive_engagement-2">disable_proactive_engagement/2</a></h3>
+<div class="spec">
+<p><tt>disable_proactive_engagement(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes authorization from the DDoS Response Team (DRT) to notify
+  contacts about escalations to the DRT and to initiate proactive customer
+  support.</p>
+
+<h3 class="function"><a name="disable_proactive_engagement-3">disable_proactive_engagement/3</a></h3>
+<div class="spec">
+<p><tt>disable_proactive_engagement(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_d_r_t_log_bucket-2">disassociate_d_r_t_log_bucket/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_d_r_t_log_bucket(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the DDoS Response Team's (DRT) access to the specified Amazon  
+S3 bucket containing your AWS WAF logs.</p>
+ 
+  To make a <code>DisassociateDRTLogBucket</code> request, you must be subscribed to
+  the Business Support plan or the Enterprise Support plan. However, if you
+  are not subscribed to one of these support plans, but had been previously
+  and had granted the DRT access to your account, you can submit a
+  <code>DisassociateDRTLogBucket</code> request to remove this access.</p>
+
+<h3 class="function"><a name="disassociate_d_r_t_log_bucket-3">disassociate_d_r_t_log_bucket/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_d_r_t_log_bucket(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_d_r_t_role-2">disassociate_d_r_t_role/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_d_r_t_role(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the DDoS Response Team's (DRT) access to your AWS account.</p>
+ 
+  To make a <code>DisassociateDRTRole</code> request, you must be subscribed to the
+  Business Support plan or the Enterprise Support plan. However, if you are
+  not subscribed to one of these support plans, but had been previously and
+  had granted the DRT access to your account, you can submit a
+  <code>DisassociateDRTRole</code> request to remove this access.</p>
+
+<h3 class="function"><a name="disassociate_d_r_t_role-3">disassociate_d_r_t_role/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_d_r_t_role(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_health_check-2">disassociate_health_check/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_health_check(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes health-based detection from the Shield Advanced protection  
+for a resource.</p>
+ 
+  <p>Shield Advanced health-based detection uses the health of your AWS  
+resource to improve responsiveness and accuracy in attack detection and  
+mitigation.</p>
+ 
+  You define the health check in Route 53 and then associate or disassociate
+  it with your Shield Advanced protection. For more information, see Shield
+  Advanced Health-Based Detection in the AWS WAF and AWS Shield Developer
+  Guide.</p>
+
+<h3 class="function"><a name="disassociate_health_check-3">disassociate_health_check/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_health_check(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="enable_proactive_engagement-2">enable_proactive_engagement/2</a></h3>
+<div class="spec">
+<p><tt>enable_proactive_engagement(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Authorizes the DDoS Response Team (DRT) to use email and phone to
+  notify contacts about escalations to the DRT and to initiate proactive
+  customer support.</p>
+
+<h3 class="function"><a name="enable_proactive_engagement-3">enable_proactive_engagement/3</a></h3>
+<div class="spec">
+<p><tt>enable_proactive_engagement(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_subscription_state-2">get_subscription_state/2</a></h3>
+<div class="spec">
+<p><tt>get_subscription_state(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the <code>SubscriptionState</code>, either <code>Active</code> or <code>Inactive</code>.</p>
+
+<h3 class="function"><a name="get_subscription_state-3">get_subscription_state/3</a></h3>
+<div class="spec">
+<p><tt>get_subscription_state(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_attacks-2">list_attacks/2</a></h3>
+<div class="spec">
+<p><tt>list_attacks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns all ongoing DDoS attacks or all DDoS attacks during a
+  specified time period.</p>
+
+<h3 class="function"><a name="list_attacks-3">list_attacks/3</a></h3>
+<div class="spec">
+<p><tt>list_attacks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_protections-2">list_protections/2</a></h3>
+<div class="spec">
+<p><tt>list_protections(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all <code>Protection</code> objects for the account.</p>
+
+<h3 class="function"><a name="list_protections-3">list_protections/3</a></h3>
+<div class="spec">
+<p><tt>list_protections(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_emergency_contact_settings-2">update_emergency_contact_settings/2</a></h3>
+<div class="spec">
+<p><tt>update_emergency_contact_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the details of the list of email addresses and phone numbers
+  that the DDoS Response Team (DRT) can use to contact you if you have
+  proactive engagement enabled, for escalations to the DRT and to initiate
+  proactive customer support.</p>
+
+<h3 class="function"><a name="update_emergency_contact_settings-3">update_emergency_contact_settings/3</a></h3>
+<div class="spec">
+<p><tt>update_emergency_contact_settings(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_subscription-2">update_subscription/2</a></h3>
+<div class="spec">
+<p><tt>update_subscription(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the details of an existing subscription.</p>
+ 
+  Only enter values for parameters you want to change. Empty parameters are
+  not updated.</p>
+
+<h3 class="function"><a name="update_subscription-3">update_subscription/3</a></h3>
+<div class="spec">
+<p><tt>update_subscription(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

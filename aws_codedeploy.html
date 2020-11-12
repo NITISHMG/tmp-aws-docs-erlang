@@ -1,0 +1,858 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_codedeploy</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_codedeploy</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS CodeDeploy.
+
+
+<h2><a name="description">Description</a></h2><p>AWS CodeDeploy</p>
+ 
+  <p>AWS CodeDeploy is a deployment service that automates application  
+deployments to Amazon EC2 instances, on-premises instances running in your  
+own facility, serverless AWS Lambda functions, or applications in an  
+Amazon ECS service.</p>
+ 
+  <p>You can deploy a nearly unlimited variety of application content, such as  
+an updated Lambda function, updated applications in an Amazon ECS service,  
+code, web and configuration files, executables, packages, scripts,  
+multimedia files, and so on. AWS CodeDeploy can deploy application content  
+stored in Amazon S3 buckets, GitHub repositories, or Bitbucket  
+repositories. You do not need to make changes to your existing code before  
+you can use AWS CodeDeploy.</p>
+ 
+  <p>AWS CodeDeploy makes it easier for you to rapidly release new features,  
+helps you avoid downtime during application deployment, and handles the  
+complexity of updating your applications, without many of the risks  
+associated with error-prone manual deployments.</p>
+ 
+  <p>AWS CodeDeploy Components</p>
+ 
+  <p>Use the information in this guide to help you work with the following AWS  
+CodeDeploy components:</p>
+ 
+  <ul> <li><p> Application: A name that uniquely identifies the application you  
+want to deploy. AWS CodeDeploy uses this name, which functions as a  
+container, to ensure the correct combination of revision, deployment  
+configuration, and deployment group are referenced during a deployment.</p>
+ 
+  </li> <li><p> Deployment group: A set of individual instances, CodeDeploy  
+Lambda deployment configuration settings, or an Amazon ECS service and  
+network details. A Lambda deployment group specifies how to route traffic  
+to a new version of a Lambda function. An Amazon ECS deployment group  
+specifies the service created in Amazon ECS to deploy, a load balancer,  
+and a listener to reroute production traffic to an updated containerized  
+application. An EC2/On-premises deployment group contains individually  
+tagged instances, Amazon EC2 instances in Amazon EC2 Auto Scaling groups,  
+or both. All deployment groups can specify optional trigger, alarm, and  
+rollback settings.</p>
+ 
+  </li> <li><p> Deployment configuration: A set of deployment rules and  
+deployment success and failure conditions used by AWS CodeDeploy during a  
+deployment.</p>
+ 
+  </li> <li><p> Deployment: The process and the components used when updating a  
+Lambda function, a containerized application in an Amazon ECS service, or  
+of installing content on one or more instances.</p>
+ 
+  </li> <li><p> Application revisions: For an AWS Lambda deployment, this is an  
+AppSpec file that specifies the Lambda function to be updated and one or  
+more functions to validate deployment lifecycle events. For an Amazon ECS  
+deployment, this is an AppSpec file that specifies the Amazon ECS task  
+definition, container, and port where production traffic is rerouted. For  
+an EC2/On-premises deployment, this is an archive file that contains  
+source content—source code, webpages, executable files, and deployment  
+scripts—along with an AppSpec file. Revisions are stored in Amazon S3  
+buckets or GitHub repositories. For Amazon S3, a revision is uniquely  
+identified by its Amazon S3 object key and its ETag, version, or both. For  
+GitHub, a revision is uniquely identified by its commit ID.</p>
+ 
+  </li> </ul><p> This guide also contains information to help you get details  
+about the instances in your deployments, to make on-premises instances  
+available for AWS CodeDeploy deployments, to get details about a Lambda  
+function deployment, and to get details about Amazon ECS service  
+deployments.</p>
+ 
+  <p>AWS CodeDeploy Information Resources</p>
+ 
+  <ul> <li><p> AWS CodeDeploy User Guide</p>
+ 
+  </li> <li><p> AWS CodeDeploy API Reference Guide</p>
+ 
+  </li> <li><p> AWS CLI Reference for AWS CodeDeploy</p>
+ 
+  </li> <li><p> AWS CodeDeploy Developer Forum</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_tags_to_on_premises_instances-2">add_tags_to_on_premises_instances/2</a></td><td>Adds tags to on-premises instances.</td></tr>
+<tr><td valign="top"><a href="#add_tags_to_on_premises_instances-3">add_tags_to_on_premises_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_application_revisions-2">batch_get_application_revisions/2</a></td><td>Gets information about one or more application revisions.</td></tr>
+<tr><td valign="top"><a href="#batch_get_application_revisions-3">batch_get_application_revisions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_applications-2">batch_get_applications/2</a></td><td>Gets information about one or more applications.</td></tr>
+<tr><td valign="top"><a href="#batch_get_applications-3">batch_get_applications/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_deployment_groups-2">batch_get_deployment_groups/2</a></td><td>Gets information about one or more deployment groups.</td></tr>
+<tr><td valign="top"><a href="#batch_get_deployment_groups-3">batch_get_deployment_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_deployment_instances-2">batch_get_deployment_instances/2</a></td><td>This method works, but is deprecated.</td></tr>
+<tr><td valign="top"><a href="#batch_get_deployment_instances-3">batch_get_deployment_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_deployment_targets-2">batch_get_deployment_targets/2</a></td><td>Returns an array of one or more targets associated with a deployment.</td></tr>
+<tr><td valign="top"><a href="#batch_get_deployment_targets-3">batch_get_deployment_targets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_deployments-2">batch_get_deployments/2</a></td><td>Gets information about one or more deployments.</td></tr>
+<tr><td valign="top"><a href="#batch_get_deployments-3">batch_get_deployments/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_on_premises_instances-2">batch_get_on_premises_instances/2</a></td><td>Gets information about one or more on-premises instances.</td></tr>
+<tr><td valign="top"><a href="#batch_get_on_premises_instances-3">batch_get_on_premises_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#continue_deployment-2">continue_deployment/2</a></td><td>For a blue/green deployment, starts the process of rerouting traffic  
+from instances in the original environment to instances in the replacement  
+environment without waiting for a specified wait time to elapse.</td></tr>
+<tr><td valign="top"><a href="#continue_deployment-3">continue_deployment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_application-2">create_application/2</a></td><td>Creates an application.</td></tr>
+<tr><td valign="top"><a href="#create_application-3">create_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment-2">create_deployment/2</a></td><td>Deploys an application revision through the specified deployment
+  group.</td></tr>
+<tr><td valign="top"><a href="#create_deployment-3">create_deployment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment_config-2">create_deployment_config/2</a></td><td>Creates a deployment configuration.</td></tr>
+<tr><td valign="top"><a href="#create_deployment_config-3">create_deployment_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment_group-2">create_deployment_group/2</a></td><td>Creates a deployment group to which application revisions are
+  deployed.</td></tr>
+<tr><td valign="top"><a href="#create_deployment_group-3">create_deployment_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application-2">delete_application/2</a></td><td>Deletes an application.</td></tr>
+<tr><td valign="top"><a href="#delete_application-3">delete_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_deployment_config-2">delete_deployment_config/2</a></td><td>Deletes a deployment configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_deployment_config-3">delete_deployment_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_deployment_group-2">delete_deployment_group/2</a></td><td>Deletes a deployment group.</td></tr>
+<tr><td valign="top"><a href="#delete_deployment_group-3">delete_deployment_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_git_hub_account_token-2">delete_git_hub_account_token/2</a></td><td>Deletes a GitHub account connection.</td></tr>
+<tr><td valign="top"><a href="#delete_git_hub_account_token-3">delete_git_hub_account_token/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resources_by_external_id-2">delete_resources_by_external_id/2</a></td><td>Deletes resources linked to an external ID.</td></tr>
+<tr><td valign="top"><a href="#delete_resources_by_external_id-3">delete_resources_by_external_id/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_on_premises_instance-2">deregister_on_premises_instance/2</a></td><td>Deregisters an on-premises instance.</td></tr>
+<tr><td valign="top"><a href="#deregister_on_premises_instance-3">deregister_on_premises_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_application-2">get_application/2</a></td><td>Gets information about an application.</td></tr>
+<tr><td valign="top"><a href="#get_application-3">get_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_application_revision-2">get_application_revision/2</a></td><td>Gets information about an application revision.</td></tr>
+<tr><td valign="top"><a href="#get_application_revision-3">get_application_revision/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment-2">get_deployment/2</a></td><td>Gets information about a deployment.</td></tr>
+<tr><td valign="top"><a href="#get_deployment-3">get_deployment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment_config-2">get_deployment_config/2</a></td><td>Gets information about a deployment configuration.</td></tr>
+<tr><td valign="top"><a href="#get_deployment_config-3">get_deployment_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment_group-2">get_deployment_group/2</a></td><td>Gets information about a deployment group.</td></tr>
+<tr><td valign="top"><a href="#get_deployment_group-3">get_deployment_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment_instance-2">get_deployment_instance/2</a></td><td>Gets information about an instance as part of a deployment.</td></tr>
+<tr><td valign="top"><a href="#get_deployment_instance-3">get_deployment_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment_target-2">get_deployment_target/2</a></td><td>Returns information about a deployment target.</td></tr>
+<tr><td valign="top"><a href="#get_deployment_target-3">get_deployment_target/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_on_premises_instance-2">get_on_premises_instance/2</a></td><td>Gets information about an on-premises instance.</td></tr>
+<tr><td valign="top"><a href="#get_on_premises_instance-3">get_on_premises_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_application_revisions-2">list_application_revisions/2</a></td><td>Lists information about revisions for an application.</td></tr>
+<tr><td valign="top"><a href="#list_application_revisions-3">list_application_revisions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_applications-2">list_applications/2</a></td><td>Lists the applications registered with the IAM user or AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_applications-3">list_applications/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_deployment_configs-2">list_deployment_configs/2</a></td><td>Lists the deployment configurations with the IAM user or AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_deployment_configs-3">list_deployment_configs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_deployment_groups-2">list_deployment_groups/2</a></td><td>Lists the deployment groups for an application registered with the
+  IAM user or AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_deployment_groups-3">list_deployment_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_deployment_instances-2">list_deployment_instances/2</a></td><td>The newer <code>BatchGetDeploymentTargets</code> should be used instead because  
+it works with all compute types.</td></tr>
+<tr><td valign="top"><a href="#list_deployment_instances-3">list_deployment_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_deployment_targets-2">list_deployment_targets/2</a></td><td>Returns an array of target IDs that are associated a deployment.</td></tr>
+<tr><td valign="top"><a href="#list_deployment_targets-3">list_deployment_targets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_deployments-2">list_deployments/2</a></td><td>Lists the deployments in a deployment group for an application
+  registered with the IAM user or AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_deployments-3">list_deployments/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_git_hub_account_token_names-2">list_git_hub_account_token_names/2</a></td><td>Lists the names of stored connections to GitHub accounts.</td></tr>
+<tr><td valign="top"><a href="#list_git_hub_account_token_names-3">list_git_hub_account_token_names/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_on_premises_instances-2">list_on_premises_instances/2</a></td><td>Gets a list of names for one or more on-premises instances.</td></tr>
+<tr><td valign="top"><a href="#list_on_premises_instances-3">list_on_premises_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of tags for the resource identified by a specified  
+Amazon Resource Name (ARN).</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_lifecycle_event_hook_execution_status-2">put_lifecycle_event_hook_execution_status/2</a></td><td>Sets the result of a Lambda validation function.</td></tr>
+<tr><td valign="top"><a href="#put_lifecycle_event_hook_execution_status-3">put_lifecycle_event_hook_execution_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_application_revision-2">register_application_revision/2</a></td><td>Registers with AWS CodeDeploy a revision for the specified
+  application.</td></tr>
+<tr><td valign="top"><a href="#register_application_revision-3">register_application_revision/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_on_premises_instance-2">register_on_premises_instance/2</a></td><td>Registers an on-premises instance.</td></tr>
+<tr><td valign="top"><a href="#register_on_premises_instance-3">register_on_premises_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_tags_from_on_premises_instances-2">remove_tags_from_on_premises_instances/2</a></td><td>Removes one or more tags from one or more on-premises instances.</td></tr>
+<tr><td valign="top"><a href="#remove_tags_from_on_premises_instances-3">remove_tags_from_on_premises_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#skip_wait_time_for_instance_termination-2">skip_wait_time_for_instance_termination/2</a></td><td>In a blue/green deployment, overrides any specified wait time and
+  starts terminating instances immediately after the traffic routing is
+  complete.</td></tr>
+<tr><td valign="top"><a href="#skip_wait_time_for_instance_termination-3">skip_wait_time_for_instance_termination/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_deployment-2">stop_deployment/2</a></td><td>Attempts to stop an ongoing deployment.</td></tr>
+<tr><td valign="top"><a href="#stop_deployment-3">stop_deployment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Associates the list of tags in the input <code>Tags</code> parameter with the
+  resource identified by the <code>ResourceArn</code> input parameter.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Disassociates a resource from a list of tags.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_application-2">update_application/2</a></td><td>Changes the name of an application.</td></tr>
+<tr><td valign="top"><a href="#update_application-3">update_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_deployment_group-2">update_deployment_group/2</a></td><td>Changes information about a deployment group.</td></tr>
+<tr><td valign="top"><a href="#update_deployment_group-3">update_deployment_group/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_tags_to_on_premises_instances-2">add_tags_to_on_premises_instances/2</a></h3>
+<div class="spec">
+<p><tt>add_tags_to_on_premises_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds tags to on-premises instances.</p>
+
+<h3 class="function"><a name="add_tags_to_on_premises_instances-3">add_tags_to_on_premises_instances/3</a></h3>
+<div class="spec">
+<p><tt>add_tags_to_on_premises_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_application_revisions-2">batch_get_application_revisions/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_application_revisions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about one or more application revisions.</p>
+ 
+  The maximum number of application revisions that can be returned is 25.</p>
+
+<h3 class="function"><a name="batch_get_application_revisions-3">batch_get_application_revisions/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_application_revisions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_applications-2">batch_get_applications/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_applications(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about one or more applications.</p>
+ 
+  The maximum number of applications that can be returned is 100.</p>
+
+<h3 class="function"><a name="batch_get_applications-3">batch_get_applications/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_applications(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_deployment_groups-2">batch_get_deployment_groups/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_deployment_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about one or more deployment groups.</p>
+
+<h3 class="function"><a name="batch_get_deployment_groups-3">batch_get_deployment_groups/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_deployment_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_deployment_instances-2">batch_get_deployment_instances/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_deployment_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This method works, but is deprecated.</p>
+ 
+  <p>Use <code>BatchGetDeploymentTargets</code> instead.</p>
+ 
+  Returns an array of one or more instances associated with a deployment.
+  This method works with EC2/On-premises and AWS Lambda compute platforms.
+  The newer <code>BatchGetDeploymentTargets</code> works with all compute platforms.
+  The maximum number of instances that can be returned is 25.</p>
+
+<h3 class="function"><a name="batch_get_deployment_instances-3">batch_get_deployment_instances/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_deployment_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_deployment_targets-2">batch_get_deployment_targets/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_deployment_targets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns an array of one or more targets associated with a deployment.</p>
+ 
+  <p>This method works with all compute types and should be used instead of the
+  deprecated <code>BatchGetDeploymentInstances</code>. The maximum number of targets  
+that can be returned is 25.</p>
+ 
+  <p>The type of targets returned depends on the deployment's compute platform  
+or deployment method:</p>
+ 
+  <ul> <li><p> EC2/On-premises: Information about EC2 instance targets.</p>
+ 
+  </li> <li><p> AWS Lambda: Information about Lambda functions targets.</p>
+ 
+  </li> <li><p> Amazon ECS: Information about Amazon ECS service targets.</p>
+ 
+  </li> <li><p> CloudFormation: Information about targets of blue/green  
+deployments initiated by a CloudFormation stack update.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="batch_get_deployment_targets-3">batch_get_deployment_targets/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_deployment_targets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_deployments-2">batch_get_deployments/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_deployments(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about one or more deployments.</p>
+ 
+  The maximum number of deployments that can be returned is 25.</p>
+
+<h3 class="function"><a name="batch_get_deployments-3">batch_get_deployments/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_deployments(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_on_premises_instances-2">batch_get_on_premises_instances/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_on_premises_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about one or more on-premises instances.</p>
+ 
+  The maximum number of on-premises instances that can be returned is 25.</p>
+
+<h3 class="function"><a name="batch_get_on_premises_instances-3">batch_get_on_premises_instances/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_on_premises_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="continue_deployment-2">continue_deployment/2</a></h3>
+<div class="spec">
+<p><tt>continue_deployment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>For a blue/green deployment, starts the process of rerouting traffic  
+from instances in the original environment to instances in the replacement  
+environment without waiting for a specified wait time to elapse.</p>
+ 
+  (Traffic rerouting, which is achieved by registering instances in the
+  replacement environment with the load balancer, can start as soon as all
+  instances have a status of Ready.)</p>
+
+<h3 class="function"><a name="continue_deployment-3">continue_deployment/3</a></h3>
+<div class="spec">
+<p><tt>continue_deployment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_application-2">create_application/2</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an application.</p>
+
+<h3 class="function"><a name="create_application-3">create_application/3</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment-2">create_deployment/2</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deploys an application revision through the specified deployment
+  group.</p>
+
+<h3 class="function"><a name="create_deployment-3">create_deployment/3</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment_config-2">create_deployment_config/2</a></h3>
+<div class="spec">
+<p><tt>create_deployment_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a deployment configuration.</p>
+
+<h3 class="function"><a name="create_deployment_config-3">create_deployment_config/3</a></h3>
+<div class="spec">
+<p><tt>create_deployment_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment_group-2">create_deployment_group/2</a></h3>
+<div class="spec">
+<p><tt>create_deployment_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a deployment group to which application revisions are
+  deployed.</p>
+
+<h3 class="function"><a name="create_deployment_group-3">create_deployment_group/3</a></h3>
+<div class="spec">
+<p><tt>create_deployment_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application-2">delete_application/2</a></h3>
+<div class="spec">
+<p><tt>delete_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an application.</p>
+
+<h3 class="function"><a name="delete_application-3">delete_application/3</a></h3>
+<div class="spec">
+<p><tt>delete_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_deployment_config-2">delete_deployment_config/2</a></h3>
+<div class="spec">
+<p><tt>delete_deployment_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a deployment configuration.</p>
+ 
+  A deployment configuration cannot be deleted if it is currently in use.
+  Predefined configurations cannot be deleted.</p>
+
+<h3 class="function"><a name="delete_deployment_config-3">delete_deployment_config/3</a></h3>
+<div class="spec">
+<p><tt>delete_deployment_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_deployment_group-2">delete_deployment_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_deployment_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a deployment group.</p>
+
+<h3 class="function"><a name="delete_deployment_group-3">delete_deployment_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_deployment_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_git_hub_account_token-2">delete_git_hub_account_token/2</a></h3>
+<div class="spec">
+<p><tt>delete_git_hub_account_token(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a GitHub account connection.</p>
+
+<h3 class="function"><a name="delete_git_hub_account_token-3">delete_git_hub_account_token/3</a></h3>
+<div class="spec">
+<p><tt>delete_git_hub_account_token(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resources_by_external_id-2">delete_resources_by_external_id/2</a></h3>
+<div class="spec">
+<p><tt>delete_resources_by_external_id(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes resources linked to an external ID.</p>
+
+<h3 class="function"><a name="delete_resources_by_external_id-3">delete_resources_by_external_id/3</a></h3>
+<div class="spec">
+<p><tt>delete_resources_by_external_id(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_on_premises_instance-2">deregister_on_premises_instance/2</a></h3>
+<div class="spec">
+<p><tt>deregister_on_premises_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deregisters an on-premises instance.</p>
+
+<h3 class="function"><a name="deregister_on_premises_instance-3">deregister_on_premises_instance/3</a></h3>
+<div class="spec">
+<p><tt>deregister_on_premises_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_application-2">get_application/2</a></h3>
+<div class="spec">
+<p><tt>get_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about an application.</p>
+
+<h3 class="function"><a name="get_application-3">get_application/3</a></h3>
+<div class="spec">
+<p><tt>get_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_application_revision-2">get_application_revision/2</a></h3>
+<div class="spec">
+<p><tt>get_application_revision(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about an application revision.</p>
+
+<h3 class="function"><a name="get_application_revision-3">get_application_revision/3</a></h3>
+<div class="spec">
+<p><tt>get_application_revision(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment-2">get_deployment/2</a></h3>
+<div class="spec">
+<p><tt>get_deployment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about a deployment.</p>
+ 
+  The <code>content</code> property of the <code>appSpecContent</code> object in the returned
+  revision is always null. Use <code>GetApplicationRevision</code> and the <code>sha256</code>
+  property of the returned <code>appSpecContent</code> object to get the content of the
+  deployment’s AppSpec file.</p>
+
+<h3 class="function"><a name="get_deployment-3">get_deployment/3</a></h3>
+<div class="spec">
+<p><tt>get_deployment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment_config-2">get_deployment_config/2</a></h3>
+<div class="spec">
+<p><tt>get_deployment_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a deployment configuration.</p>
+
+<h3 class="function"><a name="get_deployment_config-3">get_deployment_config/3</a></h3>
+<div class="spec">
+<p><tt>get_deployment_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment_group-2">get_deployment_group/2</a></h3>
+<div class="spec">
+<p><tt>get_deployment_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a deployment group.</p>
+
+<h3 class="function"><a name="get_deployment_group-3">get_deployment_group/3</a></h3>
+<div class="spec">
+<p><tt>get_deployment_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment_instance-2">get_deployment_instance/2</a></h3>
+<div class="spec">
+<p><tt>get_deployment_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about an instance as part of a deployment.</p>
+
+<h3 class="function"><a name="get_deployment_instance-3">get_deployment_instance/3</a></h3>
+<div class="spec">
+<p><tt>get_deployment_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment_target-2">get_deployment_target/2</a></h3>
+<div class="spec">
+<p><tt>get_deployment_target(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a deployment target.</p>
+
+<h3 class="function"><a name="get_deployment_target-3">get_deployment_target/3</a></h3>
+<div class="spec">
+<p><tt>get_deployment_target(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_on_premises_instance-2">get_on_premises_instance/2</a></h3>
+<div class="spec">
+<p><tt>get_on_premises_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about an on-premises instance.</p>
+
+<h3 class="function"><a name="get_on_premises_instance-3">get_on_premises_instance/3</a></h3>
+<div class="spec">
+<p><tt>get_on_premises_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_application_revisions-2">list_application_revisions/2</a></h3>
+<div class="spec">
+<p><tt>list_application_revisions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists information about revisions for an application.</p>
+
+<h3 class="function"><a name="list_application_revisions-3">list_application_revisions/3</a></h3>
+<div class="spec">
+<p><tt>list_application_revisions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_applications-2">list_applications/2</a></h3>
+<div class="spec">
+<p><tt>list_applications(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the applications registered with the IAM user or AWS account.</p>
+
+<h3 class="function"><a name="list_applications-3">list_applications/3</a></h3>
+<div class="spec">
+<p><tt>list_applications(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_deployment_configs-2">list_deployment_configs/2</a></h3>
+<div class="spec">
+<p><tt>list_deployment_configs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the deployment configurations with the IAM user or AWS account.</p>
+
+<h3 class="function"><a name="list_deployment_configs-3">list_deployment_configs/3</a></h3>
+<div class="spec">
+<p><tt>list_deployment_configs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_deployment_groups-2">list_deployment_groups/2</a></h3>
+<div class="spec">
+<p><tt>list_deployment_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the deployment groups for an application registered with the
+  IAM user or AWS account.</p>
+
+<h3 class="function"><a name="list_deployment_groups-3">list_deployment_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_deployment_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_deployment_instances-2">list_deployment_instances/2</a></h3>
+<div class="spec">
+<p><tt>list_deployment_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>The newer <code>BatchGetDeploymentTargets</code> should be used instead because  
+it works with all compute types.</p>
+ 
+  <p><code>ListDeploymentInstances</code> throws an exception if it is used with a compute  
+platform other than EC2/On-premises or AWS Lambda.</p>
+ 
+  Lists the instance for a deployment associated with the IAM user or AWS
+  account.</p>
+
+<h3 class="function"><a name="list_deployment_instances-3">list_deployment_instances/3</a></h3>
+<div class="spec">
+<p><tt>list_deployment_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_deployment_targets-2">list_deployment_targets/2</a></h3>
+<div class="spec">
+<p><tt>list_deployment_targets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array of target IDs that are associated a deployment.</p>
+
+<h3 class="function"><a name="list_deployment_targets-3">list_deployment_targets/3</a></h3>
+<div class="spec">
+<p><tt>list_deployment_targets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_deployments-2">list_deployments/2</a></h3>
+<div class="spec">
+<p><tt>list_deployments(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the deployments in a deployment group for an application
+  registered with the IAM user or AWS account.</p>
+
+<h3 class="function"><a name="list_deployments-3">list_deployments/3</a></h3>
+<div class="spec">
+<p><tt>list_deployments(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_git_hub_account_token_names-2">list_git_hub_account_token_names/2</a></h3>
+<div class="spec">
+<p><tt>list_git_hub_account_token_names(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the names of stored connections to GitHub accounts.</p>
+
+<h3 class="function"><a name="list_git_hub_account_token_names-3">list_git_hub_account_token_names/3</a></h3>
+<div class="spec">
+<p><tt>list_git_hub_account_token_names(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_on_premises_instances-2">list_on_premises_instances/2</a></h3>
+<div class="spec">
+<p><tt>list_on_premises_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of names for one or more on-premises instances.</p>
+ 
+  Unless otherwise specified, both registered and deregistered on-premises
+  instance names are listed. To list only registered or deregistered
+  on-premises instance names, use the registration status parameter.</p>
+
+<h3 class="function"><a name="list_on_premises_instances-3">list_on_premises_instances/3</a></h3>
+<div class="spec">
+<p><tt>list_on_premises_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of tags for the resource identified by a specified  
+Amazon Resource Name (ARN).</p>
+ 
+  Tags are used to organize and categorize your CodeDeploy resources.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_lifecycle_event_hook_execution_status-2">put_lifecycle_event_hook_execution_status/2</a></h3>
+<div class="spec">
+<p><tt>put_lifecycle_event_hook_execution_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the result of a Lambda validation function.</p>
+ 
+  The function validates lifecycle hooks during a deployment that uses the
+  AWS Lambda or Amazon ECS compute platform. For AWS Lambda deployments, the
+  available lifecycle hooks are <code>BeforeAllowTraffic</code> and
+  <code>AfterAllowTraffic</code>. For Amazon ECS deployments, the available lifecycle
+  hooks are <code>BeforeInstall</code>, <code>AfterInstall</code>, <code>AfterAllowTestTraffic</code>,
+  <code>BeforeAllowTraffic</code>, and <code>AfterAllowTraffic</code>. Lambda validation functions
+  return <code>Succeeded</code> or <code>Failed</code>. For more information, see AppSpec 'hooks'
+  Section for an AWS Lambda Deployment and AppSpec 'hooks' Section for an
+  Amazon ECS Deployment.</p>
+
+<h3 class="function"><a name="put_lifecycle_event_hook_execution_status-3">put_lifecycle_event_hook_execution_status/3</a></h3>
+<div class="spec">
+<p><tt>put_lifecycle_event_hook_execution_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_application_revision-2">register_application_revision/2</a></h3>
+<div class="spec">
+<p><tt>register_application_revision(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Registers with AWS CodeDeploy a revision for the specified
+  application.</p>
+
+<h3 class="function"><a name="register_application_revision-3">register_application_revision/3</a></h3>
+<div class="spec">
+<p><tt>register_application_revision(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_on_premises_instance-2">register_on_premises_instance/2</a></h3>
+<div class="spec">
+<p><tt>register_on_premises_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers an on-premises instance.</p>
+ 
+  Only one IAM ARN (an IAM session ARN or IAM user ARN) is supported in the
+  request. You cannot use both.</p>
+
+<h3 class="function"><a name="register_on_premises_instance-3">register_on_premises_instance/3</a></h3>
+<div class="spec">
+<p><tt>register_on_premises_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="remove_tags_from_on_premises_instances-2">remove_tags_from_on_premises_instances/2</a></h3>
+<div class="spec">
+<p><tt>remove_tags_from_on_premises_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags from one or more on-premises instances.</p>
+
+<h3 class="function"><a name="remove_tags_from_on_premises_instances-3">remove_tags_from_on_premises_instances/3</a></h3>
+<div class="spec">
+<p><tt>remove_tags_from_on_premises_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="skip_wait_time_for_instance_termination-2">skip_wait_time_for_instance_termination/2</a></h3>
+<div class="spec">
+<p><tt>skip_wait_time_for_instance_termination(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>In a blue/green deployment, overrides any specified wait time and
+  starts terminating instances immediately after the traffic routing is
+  complete.</p>
+
+<h3 class="function"><a name="skip_wait_time_for_instance_termination-3">skip_wait_time_for_instance_termination/3</a></h3>
+<div class="spec">
+<p><tt>skip_wait_time_for_instance_termination(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_deployment-2">stop_deployment/2</a></h3>
+<div class="spec">
+<p><tt>stop_deployment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Attempts to stop an ongoing deployment.</p>
+
+<h3 class="function"><a name="stop_deployment-3">stop_deployment/3</a></h3>
+<div class="spec">
+<p><tt>stop_deployment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates the list of tags in the input <code>Tags</code> parameter with the
+  resource identified by the <code>ResourceArn</code> input parameter.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates a resource from a list of tags.</p>
+ 
+  The resource is identified by the <code>ResourceArn</code> input parameter. The tags
+  are identified by the list of keys in the <code>TagKeys</code> input parameter.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_application-2">update_application/2</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes the name of an application.</p>
+
+<h3 class="function"><a name="update_application-3">update_application/3</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_deployment_group-2">update_deployment_group/2</a></h3>
+<div class="spec">
+<p><tt>update_deployment_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes information about a deployment group.</p>
+
+<h3 class="function"><a name="update_deployment_group-3">update_deployment_group/3</a></h3>
+<div class="spec">
+<p><tt>update_deployment_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

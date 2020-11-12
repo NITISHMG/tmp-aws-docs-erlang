@@ -1,0 +1,1040 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_apigatewayv2</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_apigatewayv2</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon API Gateway V2.
+
+
+<h2><a name="description">Description</a></h2>Amazon API Gateway V2
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_api-2">create_api/2</a></td><td>Creates an Api resource.</td></tr>
+<tr><td valign="top"><a href="#create_api-3">create_api/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_api_mapping-3">create_api_mapping/3</a></td><td>Creates an API mapping.</td></tr>
+<tr><td valign="top"><a href="#create_api_mapping-4">create_api_mapping/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_authorizer-3">create_authorizer/3</a></td><td>Creates an Authorizer for an API.</td></tr>
+<tr><td valign="top"><a href="#create_authorizer-4">create_authorizer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment-3">create_deployment/3</a></td><td>Creates a Deployment for an API.</td></tr>
+<tr><td valign="top"><a href="#create_deployment-4">create_deployment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_domain_name-2">create_domain_name/2</a></td><td>Creates a domain name.</td></tr>
+<tr><td valign="top"><a href="#create_domain_name-3">create_domain_name/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_integration-3">create_integration/3</a></td><td>Creates an Integration.</td></tr>
+<tr><td valign="top"><a href="#create_integration-4">create_integration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_integration_response-4">create_integration_response/4</a></td><td>Creates an IntegrationResponses.</td></tr>
+<tr><td valign="top"><a href="#create_integration_response-5">create_integration_response/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_model-3">create_model/3</a></td><td>Creates a Model for an API.</td></tr>
+<tr><td valign="top"><a href="#create_model-4">create_model/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_route-3">create_route/3</a></td><td>Creates a Route for an API.</td></tr>
+<tr><td valign="top"><a href="#create_route-4">create_route/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_route_response-4">create_route_response/4</a></td><td>Creates a RouteResponse for a Route.</td></tr>
+<tr><td valign="top"><a href="#create_route_response-5">create_route_response/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_stage-3">create_stage/3</a></td><td>Creates a Stage for an API.</td></tr>
+<tr><td valign="top"><a href="#create_stage-4">create_stage/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_vpc_link-2">create_vpc_link/2</a></td><td>Creates a VPC link.</td></tr>
+<tr><td valign="top"><a href="#create_vpc_link-3">create_vpc_link/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_access_log_settings-4">delete_access_log_settings/4</a></td><td>Deletes the AccessLogSettings for a Stage.</td></tr>
+<tr><td valign="top"><a href="#delete_access_log_settings-5">delete_access_log_settings/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_api-3">delete_api/3</a></td><td>Deletes an Api resource.</td></tr>
+<tr><td valign="top"><a href="#delete_api-4">delete_api/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_api_mapping-4">delete_api_mapping/4</a></td><td>Deletes an API mapping.</td></tr>
+<tr><td valign="top"><a href="#delete_api_mapping-5">delete_api_mapping/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_authorizer-4">delete_authorizer/4</a></td><td>Deletes an Authorizer.</td></tr>
+<tr><td valign="top"><a href="#delete_authorizer-5">delete_authorizer/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_cors_configuration-3">delete_cors_configuration/3</a></td><td>Deletes a CORS configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_cors_configuration-4">delete_cors_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_deployment-4">delete_deployment/4</a></td><td>Deletes a Deployment.</td></tr>
+<tr><td valign="top"><a href="#delete_deployment-5">delete_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_domain_name-3">delete_domain_name/3</a></td><td>Deletes a domain name.</td></tr>
+<tr><td valign="top"><a href="#delete_domain_name-4">delete_domain_name/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_integration-4">delete_integration/4</a></td><td>Deletes an Integration.</td></tr>
+<tr><td valign="top"><a href="#delete_integration-5">delete_integration/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_integration_response-5">delete_integration_response/5</a></td><td>Deletes an IntegrationResponses.</td></tr>
+<tr><td valign="top"><a href="#delete_integration_response-6">delete_integration_response/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_model-4">delete_model/4</a></td><td>Deletes a Model.</td></tr>
+<tr><td valign="top"><a href="#delete_model-5">delete_model/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_route-4">delete_route/4</a></td><td>Deletes a Route.</td></tr>
+<tr><td valign="top"><a href="#delete_route-5">delete_route/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_route_request_parameter-5">delete_route_request_parameter/5</a></td><td>Deletes a route request parameter.</td></tr>
+<tr><td valign="top"><a href="#delete_route_request_parameter-6">delete_route_request_parameter/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_route_response-5">delete_route_response/5</a></td><td>Deletes a RouteResponse.</td></tr>
+<tr><td valign="top"><a href="#delete_route_response-6">delete_route_response/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_route_settings-5">delete_route_settings/5</a></td><td>Deletes the RouteSettings for a stage.</td></tr>
+<tr><td valign="top"><a href="#delete_route_settings-6">delete_route_settings/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_stage-4">delete_stage/4</a></td><td>Deletes a Stage.</td></tr>
+<tr><td valign="top"><a href="#delete_stage-5">delete_stage/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_vpc_link-3">delete_vpc_link/3</a></td><td>Deletes a VPC link.</td></tr>
+<tr><td valign="top"><a href="#delete_vpc_link-4">delete_vpc_link/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#export_api-7">export_api/7</a></td><td>Exports a definition of an API in a particular output format and
+  specification.</td></tr>
+<tr><td valign="top"><a href="#export_api-8">export_api/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_api-2">get_api/2</a></td><td>Gets an Api resource.</td></tr>
+<tr><td valign="top"><a href="#get_api-3">get_api/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_api_mapping-3">get_api_mapping/3</a></td><td>Gets an API mapping.</td></tr>
+<tr><td valign="top"><a href="#get_api_mapping-4">get_api_mapping/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_api_mappings-4">get_api_mappings/4</a></td><td>Gets API mappings.</td></tr>
+<tr><td valign="top"><a href="#get_api_mappings-5">get_api_mappings/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_apis-3">get_apis/3</a></td><td>Gets a collection of Api resources.</td></tr>
+<tr><td valign="top"><a href="#get_apis-4">get_apis/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_authorizer-3">get_authorizer/3</a></td><td>Gets an Authorizer.</td></tr>
+<tr><td valign="top"><a href="#get_authorizer-4">get_authorizer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_authorizers-4">get_authorizers/4</a></td><td>Gets the Authorizers for an API.</td></tr>
+<tr><td valign="top"><a href="#get_authorizers-5">get_authorizers/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment-3">get_deployment/3</a></td><td>Gets a Deployment.</td></tr>
+<tr><td valign="top"><a href="#get_deployment-4">get_deployment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployments-4">get_deployments/4</a></td><td>Gets the Deployments for an API.</td></tr>
+<tr><td valign="top"><a href="#get_deployments-5">get_deployments/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_domain_name-2">get_domain_name/2</a></td><td>Gets a domain name.</td></tr>
+<tr><td valign="top"><a href="#get_domain_name-3">get_domain_name/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_domain_names-3">get_domain_names/3</a></td><td>Gets the domain names for an AWS account.</td></tr>
+<tr><td valign="top"><a href="#get_domain_names-4">get_domain_names/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_integration-3">get_integration/3</a></td><td>Gets an Integration.</td></tr>
+<tr><td valign="top"><a href="#get_integration-4">get_integration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_integration_response-4">get_integration_response/4</a></td><td>Gets an IntegrationResponses.</td></tr>
+<tr><td valign="top"><a href="#get_integration_response-5">get_integration_response/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_integration_responses-5">get_integration_responses/5</a></td><td>Gets the IntegrationResponses for an Integration.</td></tr>
+<tr><td valign="top"><a href="#get_integration_responses-6">get_integration_responses/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_integrations-4">get_integrations/4</a></td><td>Gets the Integrations for an API.</td></tr>
+<tr><td valign="top"><a href="#get_integrations-5">get_integrations/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_model-3">get_model/3</a></td><td>Gets a Model.</td></tr>
+<tr><td valign="top"><a href="#get_model-4">get_model/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_model_template-3">get_model_template/3</a></td><td>Gets a model template.</td></tr>
+<tr><td valign="top"><a href="#get_model_template-4">get_model_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_models-4">get_models/4</a></td><td>Gets the Models for an API.</td></tr>
+<tr><td valign="top"><a href="#get_models-5">get_models/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_route-3">get_route/3</a></td><td>Gets a Route.</td></tr>
+<tr><td valign="top"><a href="#get_route-4">get_route/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_route_response-4">get_route_response/4</a></td><td>Gets a RouteResponse.</td></tr>
+<tr><td valign="top"><a href="#get_route_response-5">get_route_response/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_route_responses-5">get_route_responses/5</a></td><td>Gets the RouteResponses for a Route.</td></tr>
+<tr><td valign="top"><a href="#get_route_responses-6">get_route_responses/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_routes-4">get_routes/4</a></td><td>Gets the Routes for an API.</td></tr>
+<tr><td valign="top"><a href="#get_routes-5">get_routes/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_stage-3">get_stage/3</a></td><td>Gets a Stage.</td></tr>
+<tr><td valign="top"><a href="#get_stage-4">get_stage/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_stages-4">get_stages/4</a></td><td>Gets the Stages for an API.</td></tr>
+<tr><td valign="top"><a href="#get_stages-5">get_stages/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_tags-2">get_tags/2</a></td><td>Gets a collection of Tag resources.</td></tr>
+<tr><td valign="top"><a href="#get_tags-3">get_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_vpc_link-2">get_vpc_link/2</a></td><td>Gets a VPC link.</td></tr>
+<tr><td valign="top"><a href="#get_vpc_link-3">get_vpc_link/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_vpc_links-3">get_vpc_links/3</a></td><td>Gets a collection of VPC links.</td></tr>
+<tr><td valign="top"><a href="#get_vpc_links-4">get_vpc_links/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_api-2">import_api/2</a></td><td>Imports an API.</td></tr>
+<tr><td valign="top"><a href="#import_api-3">import_api/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reimport_api-3">reimport_api/3</a></td><td>Puts an Api resource.</td></tr>
+<tr><td valign="top"><a href="#reimport_api-4">reimport_api/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reset_authorizers_cache-4">reset_authorizers_cache/4</a></td><td>Resets all authorizer cache entries for the specified stage.</td></tr>
+<tr><td valign="top"><a href="#reset_authorizers_cache-5">reset_authorizers_cache/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Creates a new Tag resource to represent a tag.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Deletes a Tag.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_api-3">update_api/3</a></td><td>Updates an Api resource.</td></tr>
+<tr><td valign="top"><a href="#update_api-4">update_api/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_api_mapping-4">update_api_mapping/4</a></td><td>The API mapping.</td></tr>
+<tr><td valign="top"><a href="#update_api_mapping-5">update_api_mapping/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_authorizer-4">update_authorizer/4</a></td><td>Updates an Authorizer.</td></tr>
+<tr><td valign="top"><a href="#update_authorizer-5">update_authorizer/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_deployment-4">update_deployment/4</a></td><td>Updates a Deployment.</td></tr>
+<tr><td valign="top"><a href="#update_deployment-5">update_deployment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_domain_name-3">update_domain_name/3</a></td><td>Updates a domain name.</td></tr>
+<tr><td valign="top"><a href="#update_domain_name-4">update_domain_name/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_integration-4">update_integration/4</a></td><td>Updates an Integration.</td></tr>
+<tr><td valign="top"><a href="#update_integration-5">update_integration/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_integration_response-5">update_integration_response/5</a></td><td>Updates an IntegrationResponses.</td></tr>
+<tr><td valign="top"><a href="#update_integration_response-6">update_integration_response/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_model-4">update_model/4</a></td><td>Updates a Model.</td></tr>
+<tr><td valign="top"><a href="#update_model-5">update_model/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_route-4">update_route/4</a></td><td>Updates a Route.</td></tr>
+<tr><td valign="top"><a href="#update_route-5">update_route/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_route_response-5">update_route_response/5</a></td><td>Updates a RouteResponse.</td></tr>
+<tr><td valign="top"><a href="#update_route_response-6">update_route_response/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_stage-4">update_stage/4</a></td><td>Updates a Stage.</td></tr>
+<tr><td valign="top"><a href="#update_stage-5">update_stage/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_vpc_link-3">update_vpc_link/3</a></td><td>Updates a VPC link.</td></tr>
+<tr><td valign="top"><a href="#update_vpc_link-4">update_vpc_link/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_api-2">create_api/2</a></h3>
+<div class="spec">
+<p><tt>create_api(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an Api resource.</p>
+
+<h3 class="function"><a name="create_api-3">create_api/3</a></h3>
+<div class="spec">
+<p><tt>create_api(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_api_mapping-3">create_api_mapping/3</a></h3>
+<div class="spec">
+<p><tt>create_api_mapping(Client, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an API mapping.</p>
+
+<h3 class="function"><a name="create_api_mapping-4">create_api_mapping/4</a></h3>
+<div class="spec">
+<p><tt>create_api_mapping(Client, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_authorizer-3">create_authorizer/3</a></h3>
+<div class="spec">
+<p><tt>create_authorizer(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an Authorizer for an API.</p>
+
+<h3 class="function"><a name="create_authorizer-4">create_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>create_authorizer(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment-3">create_deployment/3</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a Deployment for an API.</p>
+
+<h3 class="function"><a name="create_deployment-4">create_deployment/4</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_domain_name-2">create_domain_name/2</a></h3>
+<div class="spec">
+<p><tt>create_domain_name(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a domain name.</p>
+
+<h3 class="function"><a name="create_domain_name-3">create_domain_name/3</a></h3>
+<div class="spec">
+<p><tt>create_domain_name(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_integration-3">create_integration/3</a></h3>
+<div class="spec">
+<p><tt>create_integration(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an Integration.</p>
+
+<h3 class="function"><a name="create_integration-4">create_integration/4</a></h3>
+<div class="spec">
+<p><tt>create_integration(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_integration_response-4">create_integration_response/4</a></h3>
+<div class="spec">
+<p><tt>create_integration_response(Client, ApiId, IntegrationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an IntegrationResponses.</p>
+
+<h3 class="function"><a name="create_integration_response-5">create_integration_response/5</a></h3>
+<div class="spec">
+<p><tt>create_integration_response(Client, ApiId, IntegrationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_model-3">create_model/3</a></h3>
+<div class="spec">
+<p><tt>create_model(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a Model for an API.</p>
+
+<h3 class="function"><a name="create_model-4">create_model/4</a></h3>
+<div class="spec">
+<p><tt>create_model(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_route-3">create_route/3</a></h3>
+<div class="spec">
+<p><tt>create_route(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a Route for an API.</p>
+
+<h3 class="function"><a name="create_route-4">create_route/4</a></h3>
+<div class="spec">
+<p><tt>create_route(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_route_response-4">create_route_response/4</a></h3>
+<div class="spec">
+<p><tt>create_route_response(Client, ApiId, RouteId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a RouteResponse for a Route.</p>
+
+<h3 class="function"><a name="create_route_response-5">create_route_response/5</a></h3>
+<div class="spec">
+<p><tt>create_route_response(Client, ApiId, RouteId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_stage-3">create_stage/3</a></h3>
+<div class="spec">
+<p><tt>create_stage(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a Stage for an API.</p>
+
+<h3 class="function"><a name="create_stage-4">create_stage/4</a></h3>
+<div class="spec">
+<p><tt>create_stage(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_vpc_link-2">create_vpc_link/2</a></h3>
+<div class="spec">
+<p><tt>create_vpc_link(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a VPC link.</p>
+
+<h3 class="function"><a name="create_vpc_link-3">create_vpc_link/3</a></h3>
+<div class="spec">
+<p><tt>create_vpc_link(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_access_log_settings-4">delete_access_log_settings/4</a></h3>
+<div class="spec">
+<p><tt>delete_access_log_settings(Client, ApiId, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the AccessLogSettings for a Stage.</p>
+ 
+  To disable access logging for a Stage, delete its AccessLogSettings.</p>
+
+<h3 class="function"><a name="delete_access_log_settings-5">delete_access_log_settings/5</a></h3>
+<div class="spec">
+<p><tt>delete_access_log_settings(Client, ApiId, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_api-3">delete_api/3</a></h3>
+<div class="spec">
+<p><tt>delete_api(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an Api resource.</p>
+
+<h3 class="function"><a name="delete_api-4">delete_api/4</a></h3>
+<div class="spec">
+<p><tt>delete_api(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_api_mapping-4">delete_api_mapping/4</a></h3>
+<div class="spec">
+<p><tt>delete_api_mapping(Client, ApiMappingId, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an API mapping.</p>
+
+<h3 class="function"><a name="delete_api_mapping-5">delete_api_mapping/5</a></h3>
+<div class="spec">
+<p><tt>delete_api_mapping(Client, ApiMappingId, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_authorizer-4">delete_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>delete_authorizer(Client, ApiId, AuthorizerId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an Authorizer.</p>
+
+<h3 class="function"><a name="delete_authorizer-5">delete_authorizer/5</a></h3>
+<div class="spec">
+<p><tt>delete_authorizer(Client, ApiId, AuthorizerId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_cors_configuration-3">delete_cors_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_cors_configuration(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a CORS configuration.</p>
+
+<h3 class="function"><a name="delete_cors_configuration-4">delete_cors_configuration/4</a></h3>
+<div class="spec">
+<p><tt>delete_cors_configuration(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_deployment-4">delete_deployment/4</a></h3>
+<div class="spec">
+<p><tt>delete_deployment(Client, ApiId, DeploymentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a Deployment.</p>
+
+<h3 class="function"><a name="delete_deployment-5">delete_deployment/5</a></h3>
+<div class="spec">
+<p><tt>delete_deployment(Client, ApiId, DeploymentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_domain_name-3">delete_domain_name/3</a></h3>
+<div class="spec">
+<p><tt>delete_domain_name(Client, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a domain name.</p>
+
+<h3 class="function"><a name="delete_domain_name-4">delete_domain_name/4</a></h3>
+<div class="spec">
+<p><tt>delete_domain_name(Client, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_integration-4">delete_integration/4</a></h3>
+<div class="spec">
+<p><tt>delete_integration(Client, ApiId, IntegrationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an Integration.</p>
+
+<h3 class="function"><a name="delete_integration-5">delete_integration/5</a></h3>
+<div class="spec">
+<p><tt>delete_integration(Client, ApiId, IntegrationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_integration_response-5">delete_integration_response/5</a></h3>
+<div class="spec">
+<p><tt>delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an IntegrationResponses.</p>
+
+<h3 class="function"><a name="delete_integration_response-6">delete_integration_response/6</a></h3>
+<div class="spec">
+<p><tt>delete_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_model-4">delete_model/4</a></h3>
+<div class="spec">
+<p><tt>delete_model(Client, ApiId, ModelId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a Model.</p>
+
+<h3 class="function"><a name="delete_model-5">delete_model/5</a></h3>
+<div class="spec">
+<p><tt>delete_model(Client, ApiId, ModelId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_route-4">delete_route/4</a></h3>
+<div class="spec">
+<p><tt>delete_route(Client, ApiId, RouteId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a Route.</p>
+
+<h3 class="function"><a name="delete_route-5">delete_route/5</a></h3>
+<div class="spec">
+<p><tt>delete_route(Client, ApiId, RouteId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_route_request_parameter-5">delete_route_request_parameter/5</a></h3>
+<div class="spec">
+<p><tt>delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a route request parameter.</p>
+
+<h3 class="function"><a name="delete_route_request_parameter-6">delete_route_request_parameter/6</a></h3>
+<div class="spec">
+<p><tt>delete_route_request_parameter(Client, ApiId, RequestParameterKey, RouteId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_route_response-5">delete_route_response/5</a></h3>
+<div class="spec">
+<p><tt>delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a RouteResponse.</p>
+
+<h3 class="function"><a name="delete_route_response-6">delete_route_response/6</a></h3>
+<div class="spec">
+<p><tt>delete_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_route_settings-5">delete_route_settings/5</a></h3>
+<div class="spec">
+<p><tt>delete_route_settings(Client, ApiId, RouteKey, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the RouteSettings for a stage.</p>
+
+<h3 class="function"><a name="delete_route_settings-6">delete_route_settings/6</a></h3>
+<div class="spec">
+<p><tt>delete_route_settings(Client, ApiId, RouteKey, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_stage-4">delete_stage/4</a></h3>
+<div class="spec">
+<p><tt>delete_stage(Client, ApiId, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a Stage.</p>
+
+<h3 class="function"><a name="delete_stage-5">delete_stage/5</a></h3>
+<div class="spec">
+<p><tt>delete_stage(Client, ApiId, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_vpc_link-3">delete_vpc_link/3</a></h3>
+<div class="spec">
+<p><tt>delete_vpc_link(Client, VpcLinkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a VPC link.</p>
+
+<h3 class="function"><a name="delete_vpc_link-4">delete_vpc_link/4</a></h3>
+<div class="spec">
+<p><tt>delete_vpc_link(Client, VpcLinkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="export_api-7">export_api/7</a></h3>
+<div class="spec">
+<p><tt>export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, OutputType, StageName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Exports a definition of an API in a particular output format and
+  specification.</p>
+
+<h3 class="function"><a name="export_api-8">export_api/8</a></h3>
+<div class="spec">
+<p><tt>export_api(Client, ApiId, Specification, ExportVersion, IncludeExtensions, OutputType, StageName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_api-2">get_api/2</a></h3>
+<div class="spec">
+<p><tt>get_api(Client, ApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an Api resource.</p>
+
+<h3 class="function"><a name="get_api-3">get_api/3</a></h3>
+<div class="spec">
+<p><tt>get_api(Client, ApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_api_mapping-3">get_api_mapping/3</a></h3>
+<div class="spec">
+<p><tt>get_api_mapping(Client, ApiMappingId, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an API mapping.</p>
+
+<h3 class="function"><a name="get_api_mapping-4">get_api_mapping/4</a></h3>
+<div class="spec">
+<p><tt>get_api_mapping(Client, ApiMappingId, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_api_mappings-4">get_api_mappings/4</a></h3>
+<div class="spec">
+<p><tt>get_api_mappings(Client, DomainName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets API mappings.</p>
+
+<h3 class="function"><a name="get_api_mappings-5">get_api_mappings/5</a></h3>
+<div class="spec">
+<p><tt>get_api_mappings(Client, DomainName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_apis-3">get_apis/3</a></h3>
+<div class="spec">
+<p><tt>get_apis(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a collection of Api resources.</p>
+
+<h3 class="function"><a name="get_apis-4">get_apis/4</a></h3>
+<div class="spec">
+<p><tt>get_apis(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_authorizer-3">get_authorizer/3</a></h3>
+<div class="spec">
+<p><tt>get_authorizer(Client, ApiId, AuthorizerId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an Authorizer.</p>
+
+<h3 class="function"><a name="get_authorizer-4">get_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>get_authorizer(Client, ApiId, AuthorizerId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_authorizers-4">get_authorizers/4</a></h3>
+<div class="spec">
+<p><tt>get_authorizers(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the Authorizers for an API.</p>
+
+<h3 class="function"><a name="get_authorizers-5">get_authorizers/5</a></h3>
+<div class="spec">
+<p><tt>get_authorizers(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment-3">get_deployment/3</a></h3>
+<div class="spec">
+<p><tt>get_deployment(Client, ApiId, DeploymentId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a Deployment.</p>
+
+<h3 class="function"><a name="get_deployment-4">get_deployment/4</a></h3>
+<div class="spec">
+<p><tt>get_deployment(Client, ApiId, DeploymentId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployments-4">get_deployments/4</a></h3>
+<div class="spec">
+<p><tt>get_deployments(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the Deployments for an API.</p>
+
+<h3 class="function"><a name="get_deployments-5">get_deployments/5</a></h3>
+<div class="spec">
+<p><tt>get_deployments(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_domain_name-2">get_domain_name/2</a></h3>
+<div class="spec">
+<p><tt>get_domain_name(Client, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a domain name.</p>
+
+<h3 class="function"><a name="get_domain_name-3">get_domain_name/3</a></h3>
+<div class="spec">
+<p><tt>get_domain_name(Client, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_domain_names-3">get_domain_names/3</a></h3>
+<div class="spec">
+<p><tt>get_domain_names(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the domain names for an AWS account.</p>
+
+<h3 class="function"><a name="get_domain_names-4">get_domain_names/4</a></h3>
+<div class="spec">
+<p><tt>get_domain_names(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_integration-3">get_integration/3</a></h3>
+<div class="spec">
+<p><tt>get_integration(Client, ApiId, IntegrationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an Integration.</p>
+
+<h3 class="function"><a name="get_integration-4">get_integration/4</a></h3>
+<div class="spec">
+<p><tt>get_integration(Client, ApiId, IntegrationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_integration_response-4">get_integration_response/4</a></h3>
+<div class="spec">
+<p><tt>get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an IntegrationResponses.</p>
+
+<h3 class="function"><a name="get_integration_response-5">get_integration_response/5</a></h3>
+<div class="spec">
+<p><tt>get_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_integration_responses-5">get_integration_responses/5</a></h3>
+<div class="spec">
+<p><tt>get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the IntegrationResponses for an Integration.</p>
+
+<h3 class="function"><a name="get_integration_responses-6">get_integration_responses/6</a></h3>
+<div class="spec">
+<p><tt>get_integration_responses(Client, ApiId, IntegrationId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_integrations-4">get_integrations/4</a></h3>
+<div class="spec">
+<p><tt>get_integrations(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the Integrations for an API.</p>
+
+<h3 class="function"><a name="get_integrations-5">get_integrations/5</a></h3>
+<div class="spec">
+<p><tt>get_integrations(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_model-3">get_model/3</a></h3>
+<div class="spec">
+<p><tt>get_model(Client, ApiId, ModelId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a Model.</p>
+
+<h3 class="function"><a name="get_model-4">get_model/4</a></h3>
+<div class="spec">
+<p><tt>get_model(Client, ApiId, ModelId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_model_template-3">get_model_template/3</a></h3>
+<div class="spec">
+<p><tt>get_model_template(Client, ApiId, ModelId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a model template.</p>
+
+<h3 class="function"><a name="get_model_template-4">get_model_template/4</a></h3>
+<div class="spec">
+<p><tt>get_model_template(Client, ApiId, ModelId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_models-4">get_models/4</a></h3>
+<div class="spec">
+<p><tt>get_models(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the Models for an API.</p>
+
+<h3 class="function"><a name="get_models-5">get_models/5</a></h3>
+<div class="spec">
+<p><tt>get_models(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_route-3">get_route/3</a></h3>
+<div class="spec">
+<p><tt>get_route(Client, ApiId, RouteId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a Route.</p>
+
+<h3 class="function"><a name="get_route-4">get_route/4</a></h3>
+<div class="spec">
+<p><tt>get_route(Client, ApiId, RouteId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_route_response-4">get_route_response/4</a></h3>
+<div class="spec">
+<p><tt>get_route_response(Client, ApiId, RouteId, RouteResponseId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a RouteResponse.</p>
+
+<h3 class="function"><a name="get_route_response-5">get_route_response/5</a></h3>
+<div class="spec">
+<p><tt>get_route_response(Client, ApiId, RouteId, RouteResponseId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_route_responses-5">get_route_responses/5</a></h3>
+<div class="spec">
+<p><tt>get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the RouteResponses for a Route.</p>
+
+<h3 class="function"><a name="get_route_responses-6">get_route_responses/6</a></h3>
+<div class="spec">
+<p><tt>get_route_responses(Client, ApiId, RouteId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_routes-4">get_routes/4</a></h3>
+<div class="spec">
+<p><tt>get_routes(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the Routes for an API.</p>
+
+<h3 class="function"><a name="get_routes-5">get_routes/5</a></h3>
+<div class="spec">
+<p><tt>get_routes(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_stage-3">get_stage/3</a></h3>
+<div class="spec">
+<p><tt>get_stage(Client, ApiId, StageName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a Stage.</p>
+
+<h3 class="function"><a name="get_stage-4">get_stage/4</a></h3>
+<div class="spec">
+<p><tt>get_stage(Client, ApiId, StageName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_stages-4">get_stages/4</a></h3>
+<div class="spec">
+<p><tt>get_stages(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the Stages for an API.</p>
+
+<h3 class="function"><a name="get_stages-5">get_stages/5</a></h3>
+<div class="spec">
+<p><tt>get_stages(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_tags-2">get_tags/2</a></h3>
+<div class="spec">
+<p><tt>get_tags(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a collection of Tag resources.</p>
+
+<h3 class="function"><a name="get_tags-3">get_tags/3</a></h3>
+<div class="spec">
+<p><tt>get_tags(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_vpc_link-2">get_vpc_link/2</a></h3>
+<div class="spec">
+<p><tt>get_vpc_link(Client, VpcLinkId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a VPC link.</p>
+
+<h3 class="function"><a name="get_vpc_link-3">get_vpc_link/3</a></h3>
+<div class="spec">
+<p><tt>get_vpc_link(Client, VpcLinkId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_vpc_links-3">get_vpc_links/3</a></h3>
+<div class="spec">
+<p><tt>get_vpc_links(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a collection of VPC links.</p>
+
+<h3 class="function"><a name="get_vpc_links-4">get_vpc_links/4</a></h3>
+<div class="spec">
+<p><tt>get_vpc_links(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_api-2">import_api/2</a></h3>
+<div class="spec">
+<p><tt>import_api(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Imports an API.</p>
+
+<h3 class="function"><a name="import_api-3">import_api/3</a></h3>
+<div class="spec">
+<p><tt>import_api(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reimport_api-3">reimport_api/3</a></h3>
+<div class="spec">
+<p><tt>reimport_api(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Puts an Api resource.</p>
+
+<h3 class="function"><a name="reimport_api-4">reimport_api/4</a></h3>
+<div class="spec">
+<p><tt>reimport_api(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reset_authorizers_cache-4">reset_authorizers_cache/4</a></h3>
+<div class="spec">
+<p><tt>reset_authorizers_cache(Client, ApiId, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Resets all authorizer cache entries for the specified stage.</p>
+ 
+  Supported only for HTTP API Lambda authorizers.</p>
+
+<h3 class="function"><a name="reset_authorizers_cache-5">reset_authorizers_cache/5</a></h3>
+<div class="spec">
+<p><tt>reset_authorizers_cache(Client, ApiId, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new Tag resource to represent a tag.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a Tag.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_api-3">update_api/3</a></h3>
+<div class="spec">
+<p><tt>update_api(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an Api resource.</p>
+
+<h3 class="function"><a name="update_api-4">update_api/4</a></h3>
+<div class="spec">
+<p><tt>update_api(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_api_mapping-4">update_api_mapping/4</a></h3>
+<div class="spec">
+<p><tt>update_api_mapping(Client, ApiMappingId, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The API mapping.</p>
+
+<h3 class="function"><a name="update_api_mapping-5">update_api_mapping/5</a></h3>
+<div class="spec">
+<p><tt>update_api_mapping(Client, ApiMappingId, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_authorizer-4">update_authorizer/4</a></h3>
+<div class="spec">
+<p><tt>update_authorizer(Client, ApiId, AuthorizerId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an Authorizer.</p>
+
+<h3 class="function"><a name="update_authorizer-5">update_authorizer/5</a></h3>
+<div class="spec">
+<p><tt>update_authorizer(Client, ApiId, AuthorizerId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_deployment-4">update_deployment/4</a></h3>
+<div class="spec">
+<p><tt>update_deployment(Client, ApiId, DeploymentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a Deployment.</p>
+
+<h3 class="function"><a name="update_deployment-5">update_deployment/5</a></h3>
+<div class="spec">
+<p><tt>update_deployment(Client, ApiId, DeploymentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_domain_name-3">update_domain_name/3</a></h3>
+<div class="spec">
+<p><tt>update_domain_name(Client, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a domain name.</p>
+
+<h3 class="function"><a name="update_domain_name-4">update_domain_name/4</a></h3>
+<div class="spec">
+<p><tt>update_domain_name(Client, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_integration-4">update_integration/4</a></h3>
+<div class="spec">
+<p><tt>update_integration(Client, ApiId, IntegrationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an Integration.</p>
+
+<h3 class="function"><a name="update_integration-5">update_integration/5</a></h3>
+<div class="spec">
+<p><tt>update_integration(Client, ApiId, IntegrationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_integration_response-5">update_integration_response/5</a></h3>
+<div class="spec">
+<p><tt>update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an IntegrationResponses.</p>
+
+<h3 class="function"><a name="update_integration_response-6">update_integration_response/6</a></h3>
+<div class="spec">
+<p><tt>update_integration_response(Client, ApiId, IntegrationId, IntegrationResponseId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_model-4">update_model/4</a></h3>
+<div class="spec">
+<p><tt>update_model(Client, ApiId, ModelId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a Model.</p>
+
+<h3 class="function"><a name="update_model-5">update_model/5</a></h3>
+<div class="spec">
+<p><tt>update_model(Client, ApiId, ModelId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_route-4">update_route/4</a></h3>
+<div class="spec">
+<p><tt>update_route(Client, ApiId, RouteId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a Route.</p>
+
+<h3 class="function"><a name="update_route-5">update_route/5</a></h3>
+<div class="spec">
+<p><tt>update_route(Client, ApiId, RouteId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_route_response-5">update_route_response/5</a></h3>
+<div class="spec">
+<p><tt>update_route_response(Client, ApiId, RouteId, RouteResponseId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a RouteResponse.</p>
+
+<h3 class="function"><a name="update_route_response-6">update_route_response/6</a></h3>
+<div class="spec">
+<p><tt>update_route_response(Client, ApiId, RouteId, RouteResponseId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_stage-4">update_stage/4</a></h3>
+<div class="spec">
+<p><tt>update_stage(Client, ApiId, StageName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a Stage.</p>
+
+<h3 class="function"><a name="update_stage-5">update_stage/5</a></h3>
+<div class="spec">
+<p><tt>update_stage(Client, ApiId, StageName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_vpc_link-3">update_vpc_link/3</a></h3>
+<div class="spec">
+<p><tt>update_vpc_link(Client, VpcLinkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a VPC link.</p>
+
+<h3 class="function"><a name="update_vpc_link-4">update_vpc_link/4</a></h3>
+<div class="spec">
+<p><tt>update_vpc_link(Client, VpcLinkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

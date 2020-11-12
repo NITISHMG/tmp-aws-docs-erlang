@@ -1,0 +1,397 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_dax</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_dax</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>DAX is a managed caching service engineered for Amazon DynamoDB.
+
+
+<h2><a name="description">Description</a></h2><p>DAX is a managed caching service engineered for Amazon DynamoDB.</p>
+ 
+  DAX dramatically speeds up database reads by caching frequently-accessed
+  data from DynamoDB, so applications can access that data with
+  sub-millisecond latency. You can create a DAX cluster easily, using the
+  AWS Management Console. With a few simple modifications to your code, your
+  application can begin taking advantage of the DAX cluster and realize
+  significant improvements in read performance.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_cluster-2">create_cluster/2</a></td><td>Creates a DAX cluster.</td></tr>
+<tr><td valign="top"><a href="#create_cluster-3">create_cluster/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_parameter_group-2">create_parameter_group/2</a></td><td>Creates a new parameter group.</td></tr>
+<tr><td valign="top"><a href="#create_parameter_group-3">create_parameter_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_subnet_group-2">create_subnet_group/2</a></td><td>Creates a new subnet group.</td></tr>
+<tr><td valign="top"><a href="#create_subnet_group-3">create_subnet_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#decrease_replication_factor-2">decrease_replication_factor/2</a></td><td>Removes one or more nodes from a DAX cluster.</td></tr>
+<tr><td valign="top"><a href="#decrease_replication_factor-3">decrease_replication_factor/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_cluster-2">delete_cluster/2</a></td><td>Deletes a previously provisioned DAX cluster.</td></tr>
+<tr><td valign="top"><a href="#delete_cluster-3">delete_cluster/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_parameter_group-2">delete_parameter_group/2</a></td><td>Deletes the specified parameter group.</td></tr>
+<tr><td valign="top"><a href="#delete_parameter_group-3">delete_parameter_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_subnet_group-2">delete_subnet_group/2</a></td><td>Deletes a subnet group.</td></tr>
+<tr><td valign="top"><a href="#delete_subnet_group-3">delete_subnet_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_clusters-2">describe_clusters/2</a></td><td>Returns information about all provisioned DAX clusters if no cluster  
+identifier is specified, or about a specific DAX cluster if a cluster  
+identifier is supplied.</td></tr>
+<tr><td valign="top"><a href="#describe_clusters-3">describe_clusters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_default_parameters-2">describe_default_parameters/2</a></td><td>Returns the default system parameter information for the DAX caching
+  software.</td></tr>
+<tr><td valign="top"><a href="#describe_default_parameters-3">describe_default_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_events-2">describe_events/2</a></td><td>Returns events related to DAX clusters and parameter groups.</td></tr>
+<tr><td valign="top"><a href="#describe_events-3">describe_events/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_parameter_groups-2">describe_parameter_groups/2</a></td><td>Returns a list of parameter group descriptions.</td></tr>
+<tr><td valign="top"><a href="#describe_parameter_groups-3">describe_parameter_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_parameters-2">describe_parameters/2</a></td><td>Returns the detailed parameter list for a particular parameter group.</td></tr>
+<tr><td valign="top"><a href="#describe_parameters-3">describe_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_subnet_groups-2">describe_subnet_groups/2</a></td><td>Returns a list of subnet group descriptions.</td></tr>
+<tr><td valign="top"><a href="#describe_subnet_groups-3">describe_subnet_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#increase_replication_factor-2">increase_replication_factor/2</a></td><td>Adds one or more nodes to a DAX cluster.</td></tr>
+<tr><td valign="top"><a href="#increase_replication_factor-3">increase_replication_factor/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags-2">list_tags/2</a></td><td>List all of the tags for a DAX cluster.</td></tr>
+<tr><td valign="top"><a href="#list_tags-3">list_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reboot_node-2">reboot_node/2</a></td><td>Reboots a single node of a DAX cluster.</td></tr>
+<tr><td valign="top"><a href="#reboot_node-3">reboot_node/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Associates a set of tags with a DAX resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes the association of tags from a DAX resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_cluster-2">update_cluster/2</a></td><td>Modifies the settings for a DAX cluster.</td></tr>
+<tr><td valign="top"><a href="#update_cluster-3">update_cluster/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_parameter_group-2">update_parameter_group/2</a></td><td>Modifies the parameters of a parameter group.</td></tr>
+<tr><td valign="top"><a href="#update_parameter_group-3">update_parameter_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_subnet_group-2">update_subnet_group/2</a></td><td>Modifies an existing subnet group.</td></tr>
+<tr><td valign="top"><a href="#update_subnet_group-3">update_subnet_group/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_cluster-2">create_cluster/2</a></h3>
+<div class="spec">
+<p><tt>create_cluster(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a DAX cluster.</p>
+ 
+  All nodes in the cluster run the same DAX caching software.</p>
+
+<h3 class="function"><a name="create_cluster-3">create_cluster/3</a></h3>
+<div class="spec">
+<p><tt>create_cluster(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_parameter_group-2">create_parameter_group/2</a></h3>
+<div class="spec">
+<p><tt>create_parameter_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new parameter group.</p>
+ 
+  A parameter group is a collection of parameters that you apply to all of
+  the nodes in a DAX cluster.</p>
+
+<h3 class="function"><a name="create_parameter_group-3">create_parameter_group/3</a></h3>
+<div class="spec">
+<p><tt>create_parameter_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_subnet_group-2">create_subnet_group/2</a></h3>
+<div class="spec">
+<p><tt>create_subnet_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new subnet group.</p>
+
+<h3 class="function"><a name="create_subnet_group-3">create_subnet_group/3</a></h3>
+<div class="spec">
+<p><tt>create_subnet_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="decrease_replication_factor-2">decrease_replication_factor/2</a></h3>
+<div class="spec">
+<p><tt>decrease_replication_factor(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes one or more nodes from a DAX cluster.</p>
+ 
+  You cannot use <code>DecreaseReplicationFactor</code> to remove the last node in a
+  DAX cluster. If you need to do this, use <code>DeleteCluster</code> instead.</p>
+
+<h3 class="function"><a name="decrease_replication_factor-3">decrease_replication_factor/3</a></h3>
+<div class="spec">
+<p><tt>decrease_replication_factor(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_cluster-2">delete_cluster/2</a></h3>
+<div class="spec">
+<p><tt>delete_cluster(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a previously provisioned DAX cluster.</p>
+ 
+  DeleteCluster deletes all associated nodes, node endpoints and the DAX
+  cluster itself. When you receive a successful response from this action,
+  DAX immediately begins deleting the cluster; you cannot cancel or revert
+  this action.</p>
+
+<h3 class="function"><a name="delete_cluster-3">delete_cluster/3</a></h3>
+<div class="spec">
+<p><tt>delete_cluster(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_parameter_group-2">delete_parameter_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_parameter_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified parameter group.</p>
+ 
+  You cannot delete a parameter group if it is associated with any DAX
+  clusters.</p>
+
+<h3 class="function"><a name="delete_parameter_group-3">delete_parameter_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_parameter_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_subnet_group-2">delete_subnet_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_subnet_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a subnet group.</p>
+ 
+  You cannot delete a subnet group if it is associated with any DAX
+  clusters.</p>
+
+<h3 class="function"><a name="delete_subnet_group-3">delete_subnet_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_subnet_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_clusters-2">describe_clusters/2</a></h3>
+<div class="spec">
+<p><tt>describe_clusters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about all provisioned DAX clusters if no cluster  
+identifier is specified, or about a specific DAX cluster if a cluster  
+identifier is supplied.</p>
+ 
+  <p>If the cluster is in the CREATING state, only cluster level information  
+will be displayed until all of the nodes are successfully provisioned.</p>
+ 
+  <p>If the cluster is in the DELETING state, only cluster level information  
+will be displayed.</p>
+ 
+  <p>If nodes are currently being added to the DAX cluster, node endpoint  
+information and creation time for the additional nodes will not be  
+displayed until they are completely provisioned. When the DAX cluster  
+state is available, the cluster is ready for use.</p>
+ 
+  If nodes are currently being removed from the DAX cluster, no endpoint
+  information for the removed nodes is displayed.</p>
+
+<h3 class="function"><a name="describe_clusters-3">describe_clusters/3</a></h3>
+<div class="spec">
+<p><tt>describe_clusters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_default_parameters-2">describe_default_parameters/2</a></h3>
+<div class="spec">
+<p><tt>describe_default_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the default system parameter information for the DAX caching
+  software.</p>
+
+<h3 class="function"><a name="describe_default_parameters-3">describe_default_parameters/3</a></h3>
+<div class="spec">
+<p><tt>describe_default_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_events-2">describe_events/2</a></h3>
+<div class="spec">
+<p><tt>describe_events(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns events related to DAX clusters and parameter groups.</p>
+ 
+  <p>You can obtain events specific to a particular DAX cluster or parameter  
+group by providing the name as a parameter.</p>
+ 
+  By default, only the events occurring within the last 24 hours are
+  returned; however, you can retrieve up to 14 days' worth of events if
+  necessary.</p>
+
+<h3 class="function"><a name="describe_events-3">describe_events/3</a></h3>
+<div class="spec">
+<p><tt>describe_events(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_parameter_groups-2">describe_parameter_groups/2</a></h3>
+<div class="spec">
+<p><tt>describe_parameter_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of parameter group descriptions.</p>
+ 
+  If a parameter group name is specified, the list will contain only the
+  descriptions for that group.</p>
+
+<h3 class="function"><a name="describe_parameter_groups-3">describe_parameter_groups/3</a></h3>
+<div class="spec">
+<p><tt>describe_parameter_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_parameters-2">describe_parameters/2</a></h3>
+<div class="spec">
+<p><tt>describe_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the detailed parameter list for a particular parameter group.</p>
+
+<h3 class="function"><a name="describe_parameters-3">describe_parameters/3</a></h3>
+<div class="spec">
+<p><tt>describe_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_subnet_groups-2">describe_subnet_groups/2</a></h3>
+<div class="spec">
+<p><tt>describe_subnet_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of subnet group descriptions.</p>
+ 
+  If a subnet group name is specified, the list will contain only the
+  description of that group.</p>
+
+<h3 class="function"><a name="describe_subnet_groups-3">describe_subnet_groups/3</a></h3>
+<div class="spec">
+<p><tt>describe_subnet_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="increase_replication_factor-2">increase_replication_factor/2</a></h3>
+<div class="spec">
+<p><tt>increase_replication_factor(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds one or more nodes to a DAX cluster.</p>
+
+<h3 class="function"><a name="increase_replication_factor-3">increase_replication_factor/3</a></h3>
+<div class="spec">
+<p><tt>increase_replication_factor(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags-2">list_tags/2</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>List all of the tags for a DAX cluster.</p>
+ 
+  You can call <code>ListTags</code> up to 10 times per second, per account.</p>
+
+<h3 class="function"><a name="list_tags-3">list_tags/3</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reboot_node-2">reboot_node/2</a></h3>
+<div class="spec">
+<p><tt>reboot_node(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Reboots a single node of a DAX cluster.</p>
+ 
+  <p>The reboot action takes place as soon as possible. During the reboot, the  
+node status is set to REBOOTING.</p>
+ 
+  <code>RebootNode</code> restarts the DAX engine process and does not remove the
+  contents of the cache.</p>
+
+<h3 class="function"><a name="reboot_node-3">reboot_node/3</a></h3>
+<div class="spec">
+<p><tt>reboot_node(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates a set of tags with a DAX resource.</p>
+ 
+  You can call <code>TagResource</code> up to 5 times per second, per account.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the association of tags from a DAX resource.</p>
+ 
+  You can call <code>UntagResource</code> up to 5 times per second, per account.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_cluster-2">update_cluster/2</a></h3>
+<div class="spec">
+<p><tt>update_cluster(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Modifies the settings for a DAX cluster.</p>
+ 
+  You can use this action to change one or more cluster configuration
+  parameters by specifying the parameters and the new values.</p>
+
+<h3 class="function"><a name="update_cluster-3">update_cluster/3</a></h3>
+<div class="spec">
+<p><tt>update_cluster(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_parameter_group-2">update_parameter_group/2</a></h3>
+<div class="spec">
+<p><tt>update_parameter_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Modifies the parameters of a parameter group.</p>
+ 
+  You can modify up to 20 parameters in a single request by submitting a
+  list parameter name and value pairs.</p>
+
+<h3 class="function"><a name="update_parameter_group-3">update_parameter_group/3</a></h3>
+<div class="spec">
+<p><tt>update_parameter_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_subnet_group-2">update_subnet_group/2</a></h3>
+<div class="spec">
+<p><tt>update_subnet_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies an existing subnet group.</p>
+
+<h3 class="function"><a name="update_subnet_group-3">update_subnet_group/3</a></h3>
+<div class="spec">
+<p><tt>update_subnet_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,423 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_mediaconvert</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_mediaconvert</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Elemental MediaConvert.
+
+
+<h2><a name="description">Description</a></h2>AWS Elemental MediaConvert
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_certificate-2">associate_certificate/2</a></td><td>Associates an AWS Certificate Manager (ACM) Amazon Resource Name
+  (ARN) with AWS Elemental MediaConvert.</td></tr>
+<tr><td valign="top"><a href="#associate_certificate-3">associate_certificate/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cancel_job-3">cancel_job/3</a></td><td>Permanently cancel a job.</td></tr>
+<tr><td valign="top"><a href="#cancel_job-4">cancel_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_job-2">create_job/2</a></td><td>Create a new transcoding job.</td></tr>
+<tr><td valign="top"><a href="#create_job-3">create_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_job_template-2">create_job_template/2</a></td><td>Create a new job template.</td></tr>
+<tr><td valign="top"><a href="#create_job_template-3">create_job_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_preset-2">create_preset/2</a></td><td>Create a new preset.</td></tr>
+<tr><td valign="top"><a href="#create_preset-3">create_preset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_queue-2">create_queue/2</a></td><td>Create a new transcoding queue.</td></tr>
+<tr><td valign="top"><a href="#create_queue-3">create_queue/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_job_template-3">delete_job_template/3</a></td><td>Permanently delete a job template you have created.</td></tr>
+<tr><td valign="top"><a href="#delete_job_template-4">delete_job_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_preset-3">delete_preset/3</a></td><td>Permanently delete a preset you have created.</td></tr>
+<tr><td valign="top"><a href="#delete_preset-4">delete_preset/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_queue-3">delete_queue/3</a></td><td>Permanently delete a queue you have created.</td></tr>
+<tr><td valign="top"><a href="#delete_queue-4">delete_queue/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_endpoints-2">describe_endpoints/2</a></td><td>Send an request with an empty body to the regional API endpoint to
+  get your account API endpoint.</td></tr>
+<tr><td valign="top"><a href="#describe_endpoints-3">describe_endpoints/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_certificate-3">disassociate_certificate/3</a></td><td>Removes an association between the Amazon Resource Name (ARN) of an
+  AWS Certificate Manager (ACM) certificate and an AWS Elemental
+  MediaConvert resource.</td></tr>
+<tr><td valign="top"><a href="#disassociate_certificate-4">disassociate_certificate/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_job-2">get_job/2</a></td><td>Retrieve the JSON for a specific completed transcoding job.</td></tr>
+<tr><td valign="top"><a href="#get_job-3">get_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_job_template-2">get_job_template/2</a></td><td>Retrieve the JSON for a specific job template.</td></tr>
+<tr><td valign="top"><a href="#get_job_template-3">get_job_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_preset-2">get_preset/2</a></td><td>Retrieve the JSON for a specific preset.</td></tr>
+<tr><td valign="top"><a href="#get_preset-3">get_preset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_queue-2">get_queue/2</a></td><td>Retrieve the JSON for a specific queue.</td></tr>
+<tr><td valign="top"><a href="#get_queue-3">get_queue/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_job_templates-6">list_job_templates/6</a></td><td>Retrieve a JSON array of up to twenty of your job templates.</td></tr>
+<tr><td valign="top"><a href="#list_job_templates-7">list_job_templates/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_jobs-6">list_jobs/6</a></td><td>Retrieve a JSON array of up to twenty of your most recently created  
+jobs.</td></tr>
+<tr><td valign="top"><a href="#list_jobs-7">list_jobs/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_presets-6">list_presets/6</a></td><td>Retrieve a JSON array of up to twenty of your presets.</td></tr>
+<tr><td valign="top"><a href="#list_presets-7">list_presets/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_queues-5">list_queues/5</a></td><td>Retrieve a JSON array of up to twenty of your queues.</td></tr>
+<tr><td valign="top"><a href="#list_queues-6">list_queues/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieve the tags for a MediaConvert resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Add tags to a MediaConvert queue, preset, or job template.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Remove tags from a MediaConvert queue, preset, or job template.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_job_template-3">update_job_template/3</a></td><td>Modify one of your existing job templates.</td></tr>
+<tr><td valign="top"><a href="#update_job_template-4">update_job_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_preset-3">update_preset/3</a></td><td>Modify one of your existing presets.</td></tr>
+<tr><td valign="top"><a href="#update_preset-4">update_preset/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_queue-3">update_queue/3</a></td><td>Modify one of your existing queues.</td></tr>
+<tr><td valign="top"><a href="#update_queue-4">update_queue/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_certificate-2">associate_certificate/2</a></h3>
+<div class="spec">
+<p><tt>associate_certificate(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates an AWS Certificate Manager (ACM) Amazon Resource Name
+  (ARN) with AWS Elemental MediaConvert.</p>
+
+<h3 class="function"><a name="associate_certificate-3">associate_certificate/3</a></h3>
+<div class="spec">
+<p><tt>associate_certificate(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="cancel_job-3">cancel_job/3</a></h3>
+<div class="spec">
+<p><tt>cancel_job(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Permanently cancel a job.</p>
+ 
+  Once you have canceled a job, you can't start it again.</p>
+
+<h3 class="function"><a name="cancel_job-4">cancel_job/4</a></h3>
+<div class="spec">
+<p><tt>cancel_job(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_job-2">create_job/2</a></h3>
+<div class="spec">
+<p><tt>create_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Create a new transcoding job.</p>
+ 
+  For information about jobs and job settings, see the User Guide at
+  http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html</p>
+
+<h3 class="function"><a name="create_job-3">create_job/3</a></h3>
+<div class="spec">
+<p><tt>create_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_job_template-2">create_job_template/2</a></h3>
+<div class="spec">
+<p><tt>create_job_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Create a new job template.</p>
+ 
+  For information about job templates see the User Guide at
+  http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html</p>
+
+<h3 class="function"><a name="create_job_template-3">create_job_template/3</a></h3>
+<div class="spec">
+<p><tt>create_job_template(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_preset-2">create_preset/2</a></h3>
+<div class="spec">
+<p><tt>create_preset(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Create a new preset.</p>
+ 
+  For information about job templates see the User Guide at
+  http://docs.aws.amazon.com/mediaconvert/latest/ug/what-is.html</p>
+
+<h3 class="function"><a name="create_preset-3">create_preset/3</a></h3>
+<div class="spec">
+<p><tt>create_preset(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_queue-2">create_queue/2</a></h3>
+<div class="spec">
+<p><tt>create_queue(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Create a new transcoding queue.</p>
+ 
+  For information about queues, see Working With Queues in the User Guide at
+  https://docs.aws.amazon.com/mediaconvert/latest/ug/working-with-queues.html</p>
+
+<h3 class="function"><a name="create_queue-3">create_queue/3</a></h3>
+<div class="spec">
+<p><tt>create_queue(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_job_template-3">delete_job_template/3</a></h3>
+<div class="spec">
+<p><tt>delete_job_template(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Permanently delete a job template you have created.</p>
+
+<h3 class="function"><a name="delete_job_template-4">delete_job_template/4</a></h3>
+<div class="spec">
+<p><tt>delete_job_template(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_preset-3">delete_preset/3</a></h3>
+<div class="spec">
+<p><tt>delete_preset(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Permanently delete a preset you have created.</p>
+
+<h3 class="function"><a name="delete_preset-4">delete_preset/4</a></h3>
+<div class="spec">
+<p><tt>delete_preset(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_queue-3">delete_queue/3</a></h3>
+<div class="spec">
+<p><tt>delete_queue(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Permanently delete a queue you have created.</p>
+
+<h3 class="function"><a name="delete_queue-4">delete_queue/4</a></h3>
+<div class="spec">
+<p><tt>delete_queue(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_endpoints-2">describe_endpoints/2</a></h3>
+<div class="spec">
+<p><tt>describe_endpoints(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Send an request with an empty body to the regional API endpoint to
+  get your account API endpoint.</p>
+
+<h3 class="function"><a name="describe_endpoints-3">describe_endpoints/3</a></h3>
+<div class="spec">
+<p><tt>describe_endpoints(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_certificate-3">disassociate_certificate/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_certificate(Client, Arn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes an association between the Amazon Resource Name (ARN) of an
+  AWS Certificate Manager (ACM) certificate and an AWS Elemental
+  MediaConvert resource.</p>
+
+<h3 class="function"><a name="disassociate_certificate-4">disassociate_certificate/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_certificate(Client, Arn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_job-2">get_job/2</a></h3>
+<div class="spec">
+<p><tt>get_job(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve the JSON for a specific completed transcoding job.</p>
+
+<h3 class="function"><a name="get_job-3">get_job/3</a></h3>
+<div class="spec">
+<p><tt>get_job(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_job_template-2">get_job_template/2</a></h3>
+<div class="spec">
+<p><tt>get_job_template(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve the JSON for a specific job template.</p>
+
+<h3 class="function"><a name="get_job_template-3">get_job_template/3</a></h3>
+<div class="spec">
+<p><tt>get_job_template(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_preset-2">get_preset/2</a></h3>
+<div class="spec">
+<p><tt>get_preset(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve the JSON for a specific preset.</p>
+
+<h3 class="function"><a name="get_preset-3">get_preset/3</a></h3>
+<div class="spec">
+<p><tt>get_preset(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_queue-2">get_queue/2</a></h3>
+<div class="spec">
+<p><tt>get_queue(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve the JSON for a specific queue.</p>
+
+<h3 class="function"><a name="get_queue-3">get_queue/3</a></h3>
+<div class="spec">
+<p><tt>get_queue(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_job_templates-6">list_job_templates/6</a></h3>
+<div class="spec">
+<p><tt>list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieve a JSON array of up to twenty of your job templates.</p>
+ 
+  This will return the templates themselves, not just a list of them. To
+  retrieve the next twenty templates, use the nextToken string returned with
+  the array</p>
+
+<h3 class="function"><a name="list_job_templates-7">list_job_templates/7</a></h3>
+<div class="spec">
+<p><tt>list_job_templates(Client, Category, ListBy, MaxResults, NextToken, Order, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_jobs-6">list_jobs/6</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, MaxResults, NextToken, Order, Queue, Status) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieve a JSON array of up to twenty of your most recently created  
+jobs.</p>
+ 
+  This array includes in-process, completed, and errored jobs. This will
+  return the jobs themselves, not just a list of the jobs. To retrieve the
+  twenty next most recent jobs, use the nextToken string returned with the
+  array.</p>
+
+<h3 class="function"><a name="list_jobs-7">list_jobs/7</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, MaxResults, NextToken, Order, Queue, Status, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_presets-6">list_presets/6</a></h3>
+<div class="spec">
+<p><tt>list_presets(Client, Category, ListBy, MaxResults, NextToken, Order) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieve a JSON array of up to twenty of your presets.</p>
+ 
+  This will return the presets themselves, not just a list of them. To
+  retrieve the next twenty presets, use the nextToken string returned with
+  the array.</p>
+
+<h3 class="function"><a name="list_presets-7">list_presets/7</a></h3>
+<div class="spec">
+<p><tt>list_presets(Client, Category, ListBy, MaxResults, NextToken, Order, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_queues-5">list_queues/5</a></h3>
+<div class="spec">
+<p><tt>list_queues(Client, ListBy, MaxResults, NextToken, Order) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieve a JSON array of up to twenty of your queues.</p>
+ 
+  This will return the queues themselves, not just a list of them. To
+  retrieve the next twenty queues, use the nextToken string returned with
+  the array.</p>
+
+<h3 class="function"><a name="list_queues-6">list_queues/6</a></h3>
+<div class="spec">
+<p><tt>list_queues(Client, ListBy, MaxResults, NextToken, Order, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Arn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve the tags for a MediaConvert resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Arn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Add tags to a MediaConvert queue, preset, or job template.</p>
+ 
+  For information about tagging, see the User Guide at
+  https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Arn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Remove tags from a MediaConvert queue, preset, or job template.</p>
+ 
+  For information about tagging, see the User Guide at
+  https://docs.aws.amazon.com/mediaconvert/latest/ug/tagging-resources.html</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Arn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_job_template-3">update_job_template/3</a></h3>
+<div class="spec">
+<p><tt>update_job_template(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modify one of your existing job templates.</p>
+
+<h3 class="function"><a name="update_job_template-4">update_job_template/4</a></h3>
+<div class="spec">
+<p><tt>update_job_template(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_preset-3">update_preset/3</a></h3>
+<div class="spec">
+<p><tt>update_preset(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modify one of your existing presets.</p>
+
+<h3 class="function"><a name="update_preset-4">update_preset/4</a></h3>
+<div class="spec">
+<p><tt>update_preset(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_queue-3">update_queue/3</a></h3>
+<div class="spec">
+<p><tt>update_queue(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modify one of your existing queues.</p>
+
+<h3 class="function"><a name="update_queue-4">update_queue/4</a></h3>
+<div class="spec">
+<p><tt>update_queue(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

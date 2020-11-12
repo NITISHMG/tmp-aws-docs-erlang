@@ -1,0 +1,491 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_networkmanager</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_networkmanager</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Transit Gateway Network Manager (Network Manager) enables you to
+  create a global network, in which you can monitor your AWS and on-premises
+  networks that are built around transit gateways.
+
+
+<h2><a name="description">Description</a></h2>Transit Gateway Network Manager (Network Manager) enables you to
+  create a global network, in which you can monitor your AWS and on-premises
+  networks that are built around transit gateways.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_customer_gateway-3">associate_customer_gateway/3</a></td><td>Associates a customer gateway with a device and optionally, with a  
+link.</td></tr>
+<tr><td valign="top"><a href="#associate_customer_gateway-4">associate_customer_gateway/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_link-3">associate_link/3</a></td><td>Associates a link to a device.</td></tr>
+<tr><td valign="top"><a href="#associate_link-4">associate_link/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_device-3">create_device/3</a></td><td>Creates a new device in a global network.</td></tr>
+<tr><td valign="top"><a href="#create_device-4">create_device/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_global_network-2">create_global_network/2</a></td><td>Creates a new, empty global network.</td></tr>
+<tr><td valign="top"><a href="#create_global_network-3">create_global_network/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_link-3">create_link/3</a></td><td>Creates a new link for a specified site.</td></tr>
+<tr><td valign="top"><a href="#create_link-4">create_link/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_site-3">create_site/3</a></td><td>Creates a new site in a global network.</td></tr>
+<tr><td valign="top"><a href="#create_site-4">create_site/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_device-4">delete_device/4</a></td><td>Deletes an existing device.</td></tr>
+<tr><td valign="top"><a href="#delete_device-5">delete_device/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_global_network-3">delete_global_network/3</a></td><td>Deletes an existing global network.</td></tr>
+<tr><td valign="top"><a href="#delete_global_network-4">delete_global_network/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_link-4">delete_link/4</a></td><td>Deletes an existing link.</td></tr>
+<tr><td valign="top"><a href="#delete_link-5">delete_link/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_site-4">delete_site/4</a></td><td>Deletes an existing site.</td></tr>
+<tr><td valign="top"><a href="#delete_site-5">delete_site/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_transit_gateway-4">deregister_transit_gateway/4</a></td><td>Deregisters a transit gateway from your global network.</td></tr>
+<tr><td valign="top"><a href="#deregister_transit_gateway-5">deregister_transit_gateway/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_global_networks-4">describe_global_networks/4</a></td><td>Describes one or more global networks.</td></tr>
+<tr><td valign="top"><a href="#describe_global_networks-5">describe_global_networks/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_customer_gateway-4">disassociate_customer_gateway/4</a></td><td>Disassociates a customer gateway from a device and a link.</td></tr>
+<tr><td valign="top"><a href="#disassociate_customer_gateway-5">disassociate_customer_gateway/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_link-3">disassociate_link/3</a></td><td>Disassociates an existing device from a link.</td></tr>
+<tr><td valign="top"><a href="#disassociate_link-4">disassociate_link/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_customer_gateway_associations-5">get_customer_gateway_associations/5</a></td><td>Gets the association information for customer gateways that are
+  associated with devices and links in your global network.</td></tr>
+<tr><td valign="top"><a href="#get_customer_gateway_associations-6">get_customer_gateway_associations/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_devices-6">get_devices/6</a></td><td>Gets information about one or more of your devices in a global
+  network.</td></tr>
+<tr><td valign="top"><a href="#get_devices-7">get_devices/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_link_associations-6">get_link_associations/6</a></td><td>Gets the link associations for a device or a link.</td></tr>
+<tr><td valign="top"><a href="#get_link_associations-7">get_link_associations/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_links-8">get_links/8</a></td><td>Gets information about one or more links in a specified global  
+network.</td></tr>
+<tr><td valign="top"><a href="#get_links-9">get_links/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sites-5">get_sites/5</a></td><td>Gets information about one or more of your sites in a global network.</td></tr>
+<tr><td valign="top"><a href="#get_sites-6">get_sites/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_transit_gateway_registrations-5">get_transit_gateway_registrations/5</a></td><td>Gets information about the transit gateway registrations in a
+  specified global network.</td></tr>
+<tr><td valign="top"><a href="#get_transit_gateway_registrations-6">get_transit_gateway_registrations/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags for a specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_transit_gateway-3">register_transit_gateway/3</a></td><td>Registers a transit gateway in your global network.</td></tr>
+<tr><td valign="top"><a href="#register_transit_gateway-4">register_transit_gateway/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Tags a specified resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes tags from a specified resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_device-4">update_device/4</a></td><td>Updates the details for an existing device.</td></tr>
+<tr><td valign="top"><a href="#update_device-5">update_device/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_global_network-3">update_global_network/3</a></td><td>Updates an existing global network.</td></tr>
+<tr><td valign="top"><a href="#update_global_network-4">update_global_network/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_link-4">update_link/4</a></td><td>Updates the details for an existing link.</td></tr>
+<tr><td valign="top"><a href="#update_link-5">update_link/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_site-4">update_site/4</a></td><td>Updates the information for an existing site.</td></tr>
+<tr><td valign="top"><a href="#update_site-5">update_site/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_customer_gateway-3">associate_customer_gateway/3</a></h3>
+<div class="spec">
+<p><tt>associate_customer_gateway(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates a customer gateway with a device and optionally, with a  
+link.</p>
+ 
+  <p>If you specify a link, it must be associated with the specified device.</p>
+ 
+  <p>You can only associate customer gateways that are connected to a VPN
+  attachment on a transit gateway. The transit gateway must be registered in
+  your global network. When you register a transit gateway, customer
+  gateways that are connected to the transit gateway are automatically
+  included in the global network. To list customer gateways that are
+  connected to a transit gateway, use the DescribeVpnConnections EC2 API and
+  filter by <code>transit-gateway-id</code>.</p>
+ 
+  You cannot associate a customer gateway with more than one device and
+  link.</p>
+
+<h3 class="function"><a name="associate_customer_gateway-4">associate_customer_gateway/4</a></h3>
+<div class="spec">
+<p><tt>associate_customer_gateway(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_link-3">associate_link/3</a></h3>
+<div class="spec">
+<p><tt>associate_link(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates a link to a device.</p>
+ 
+  A device can be associated to multiple links and a link can be associated
+  to multiple devices. The device and link must be in the same global
+  network and the same site.</p>
+
+<h3 class="function"><a name="associate_link-4">associate_link/4</a></h3>
+<div class="spec">
+<p><tt>associate_link(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_device-3">create_device/3</a></h3>
+<div class="spec">
+<p><tt>create_device(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new device in a global network.</p>
+ 
+  If you specify both a site ID and a location, the location of the site is
+  used for visualization in the Network Manager console.</p>
+
+<h3 class="function"><a name="create_device-4">create_device/4</a></h3>
+<div class="spec">
+<p><tt>create_device(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_global_network-2">create_global_network/2</a></h3>
+<div class="spec">
+<p><tt>create_global_network(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new, empty global network.</p>
+
+<h3 class="function"><a name="create_global_network-3">create_global_network/3</a></h3>
+<div class="spec">
+<p><tt>create_global_network(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_link-3">create_link/3</a></h3>
+<div class="spec">
+<p><tt>create_link(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new link for a specified site.</p>
+
+<h3 class="function"><a name="create_link-4">create_link/4</a></h3>
+<div class="spec">
+<p><tt>create_link(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_site-3">create_site/3</a></h3>
+<div class="spec">
+<p><tt>create_site(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new site in a global network.</p>
+
+<h3 class="function"><a name="create_site-4">create_site/4</a></h3>
+<div class="spec">
+<p><tt>create_site(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_device-4">delete_device/4</a></h3>
+<div class="spec">
+<p><tt>delete_device(Client, DeviceId, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an existing device.</p>
+ 
+  You must first disassociate the device from any links and customer
+  gateways.</p>
+
+<h3 class="function"><a name="delete_device-5">delete_device/5</a></h3>
+<div class="spec">
+<p><tt>delete_device(Client, DeviceId, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_global_network-3">delete_global_network/3</a></h3>
+<div class="spec">
+<p><tt>delete_global_network(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an existing global network.</p>
+ 
+  You must first delete all global network objects (devices, links, and
+  sites) and deregister all transit gateways.</p>
+
+<h3 class="function"><a name="delete_global_network-4">delete_global_network/4</a></h3>
+<div class="spec">
+<p><tt>delete_global_network(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_link-4">delete_link/4</a></h3>
+<div class="spec">
+<p><tt>delete_link(Client, GlobalNetworkId, LinkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an existing link.</p>
+ 
+  You must first disassociate the link from any devices and customer
+  gateways.</p>
+
+<h3 class="function"><a name="delete_link-5">delete_link/5</a></h3>
+<div class="spec">
+<p><tt>delete_link(Client, GlobalNetworkId, LinkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_site-4">delete_site/4</a></h3>
+<div class="spec">
+<p><tt>delete_site(Client, GlobalNetworkId, SiteId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an existing site.</p>
+ 
+  The site cannot be associated with any device or link.</p>
+
+<h3 class="function"><a name="delete_site-5">delete_site/5</a></h3>
+<div class="spec">
+<p><tt>delete_site(Client, GlobalNetworkId, SiteId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_transit_gateway-4">deregister_transit_gateway/4</a></h3>
+<div class="spec">
+<p><tt>deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregisters a transit gateway from your global network.</p>
+ 
+  This action does not delete your transit gateway, or modify any of its
+  attachments. This action removes any customer gateway associations.</p>
+
+<h3 class="function"><a name="deregister_transit_gateway-5">deregister_transit_gateway/5</a></h3>
+<div class="spec">
+<p><tt>deregister_transit_gateway(Client, GlobalNetworkId, TransitGatewayArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_global_networks-4">describe_global_networks/4</a></h3>
+<div class="spec">
+<p><tt>describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes one or more global networks.</p>
+ 
+  By default, all global networks are described. To describe the objects in
+  your global network, you must use the appropriate <code>Get*</code> action. For
+  example, to list the transit gateways in your global network, use
+  <code>GetTransitGatewayRegistrations</code>.</p>
+
+<h3 class="function"><a name="describe_global_networks-5">describe_global_networks/5</a></h3>
+<div class="spec">
+<p><tt>describe_global_networks(Client, GlobalNetworkIds, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_customer_gateway-4">disassociate_customer_gateway/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates a customer gateway from a device and a link.</p>
+
+<h3 class="function"><a name="disassociate_customer_gateway-5">disassociate_customer_gateway/5</a></h3>
+<div class="spec">
+<p><tt>disassociate_customer_gateway(Client, CustomerGatewayArn, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_link-3">disassociate_link/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_link(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates an existing device from a link.</p>
+ 
+  You must first disassociate any customer gateways that are associated with
+  the link.</p>
+
+<h3 class="function"><a name="disassociate_link-4">disassociate_link/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_link(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_customer_gateway_associations-5">get_customer_gateway_associations/5</a></h3>
+<div class="spec">
+<p><tt>get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the association information for customer gateways that are
+  associated with devices and links in your global network.</p>
+
+<h3 class="function"><a name="get_customer_gateway_associations-6">get_customer_gateway_associations/6</a></h3>
+<div class="spec">
+<p><tt>get_customer_gateway_associations(Client, GlobalNetworkId, CustomerGatewayArns, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_devices-6">get_devices/6</a></h3>
+<div class="spec">
+<p><tt>get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about one or more of your devices in a global
+  network.</p>
+
+<h3 class="function"><a name="get_devices-7">get_devices/7</a></h3>
+<div class="spec">
+<p><tt>get_devices(Client, GlobalNetworkId, DeviceIds, MaxResults, NextToken, SiteId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_link_associations-6">get_link_associations/6</a></h3>
+<div class="spec">
+<p><tt>get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the link associations for a device or a link.</p>
+ 
+  Either the device ID or the link ID must be specified.</p>
+
+<h3 class="function"><a name="get_link_associations-7">get_link_associations/7</a></h3>
+<div class="spec">
+<p><tt>get_link_associations(Client, GlobalNetworkId, DeviceId, LinkId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_links-8">get_links/8</a></h3>
+<div class="spec">
+<p><tt>get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, SiteId, Type) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about one or more links in a specified global  
+network.</p>
+ 
+  If you specify the site ID, you cannot specify the type or provider in the
+  same request. You can specify the type and provider in the same request.</p>
+
+<h3 class="function"><a name="get_links-9">get_links/9</a></h3>
+<div class="spec">
+<p><tt>get_links(Client, GlobalNetworkId, LinkIds, MaxResults, NextToken, Provider, SiteId, Type, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sites-5">get_sites/5</a></h3>
+<div class="spec">
+<p><tt>get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about one or more of your sites in a global network.</p>
+
+<h3 class="function"><a name="get_sites-6">get_sites/6</a></h3>
+<div class="spec">
+<p><tt>get_sites(Client, GlobalNetworkId, MaxResults, NextToken, SiteIds, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_transit_gateway_registrations-5">get_transit_gateway_registrations/5</a></h3>
+<div class="spec">
+<p><tt>get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayArns) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the transit gateway registrations in a
+  specified global network.</p>
+
+<h3 class="function"><a name="get_transit_gateway_registrations-6">get_transit_gateway_registrations/6</a></h3>
+<div class="spec">
+<p><tt>get_transit_gateway_registrations(Client, GlobalNetworkId, MaxResults, NextToken, TransitGatewayArns, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags for a specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_transit_gateway-3">register_transit_gateway/3</a></h3>
+<div class="spec">
+<p><tt>register_transit_gateway(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers a transit gateway in your global network.</p>
+ 
+  The transit gateway can be in any AWS Region, but it must be owned by the
+  same AWS account that owns the global network. You cannot register a
+  transit gateway in more than one global network.</p>
+
+<h3 class="function"><a name="register_transit_gateway-4">register_transit_gateway/4</a></h3>
+<div class="spec">
+<p><tt>register_transit_gateway(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Tags a specified resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from a specified resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_device-4">update_device/4</a></h3>
+<div class="spec">
+<p><tt>update_device(Client, DeviceId, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the details for an existing device.</p>
+ 
+  To remove information for any of the parameters, specify an empty string.</p>
+
+<h3 class="function"><a name="update_device-5">update_device/5</a></h3>
+<div class="spec">
+<p><tt>update_device(Client, DeviceId, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_global_network-3">update_global_network/3</a></h3>
+<div class="spec">
+<p><tt>update_global_network(Client, GlobalNetworkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an existing global network.</p>
+ 
+  To remove information for any of the parameters, specify an empty string.</p>
+
+<h3 class="function"><a name="update_global_network-4">update_global_network/4</a></h3>
+<div class="spec">
+<p><tt>update_global_network(Client, GlobalNetworkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_link-4">update_link/4</a></h3>
+<div class="spec">
+<p><tt>update_link(Client, GlobalNetworkId, LinkId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the details for an existing link.</p>
+ 
+  To remove information for any of the parameters, specify an empty string.</p>
+
+<h3 class="function"><a name="update_link-5">update_link/5</a></h3>
+<div class="spec">
+<p><tt>update_link(Client, GlobalNetworkId, LinkId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_site-4">update_site/4</a></h3>
+<div class="spec">
+<p><tt>update_site(Client, GlobalNetworkId, SiteId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the information for an existing site.</p>
+ 
+  To remove information for any of the parameters, specify an empty string.</p>
+
+<h3 class="function"><a name="update_site-5">update_site/5</a></h3>
+<div class="spec">
+<p><tt>update_site(Client, GlobalNetworkId, SiteId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

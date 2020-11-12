@@ -1,0 +1,2420 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_ssm</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_ssm</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Systems Manager.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Systems Manager</p>
+ 
+  <p>AWS Systems Manager is a collection of capabilities that helps you  
+automate management tasks such as collecting system inventory, applying  
+operating system (OS) patches, automating the creation of Amazon Machine  
+Images (AMIs), and configuring operating systems (OSs) and applications at  
+scale.</p>
+ 
+  <p>Systems Manager lets you remotely and securely manage the configuration of  
+your managed instances. A managed instance is any Amazon Elastic Compute  
+Cloud instance (EC2 instance), or any on-premises server or virtual  
+machine (VM) in your hybrid environment that has been configured for  
+Systems Manager.</p>
+ 
+  <p>This reference is intended to be used with the AWS Systems Manager User  
+Guide.</p>
+ 
+  <p>To get started, verify prerequisites and configure managed instances. For  
+more information, see Setting up AWS Systems Manager in the AWS Systems  
+Manager User Guide.</p>
+ 
+  For information about other API actions you can perform on EC2 instances,
+  see the Amazon EC2 API Reference. For information about how to use a Query
+  API, see Making API requests.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_tags_to_resource-2">add_tags_to_resource/2</a></td><td>Adds or overwrites one or more tags for the specified resource.</td></tr>
+<tr><td valign="top"><a href="#add_tags_to_resource-3">add_tags_to_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cancel_command-2">cancel_command/2</a></td><td>Attempts to cancel the command specified by the Command ID.</td></tr>
+<tr><td valign="top"><a href="#cancel_command-3">cancel_command/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cancel_maintenance_window_execution-2">cancel_maintenance_window_execution/2</a></td><td>Stops a maintenance window execution that is already in progress and  
+cancels any tasks in the window that have not already starting running.</td></tr>
+<tr><td valign="top"><a href="#cancel_maintenance_window_execution-3">cancel_maintenance_window_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_activation-2">create_activation/2</a></td><td>Generates an activation code and activation ID you can use to  
+register your on-premises server or virtual machine (VM) with Systems  
+Manager.</td></tr>
+<tr><td valign="top"><a href="#create_activation-3">create_activation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_association-2">create_association/2</a></td><td>A State Manager association defines the state that you want to  
+maintain on your instances.</td></tr>
+<tr><td valign="top"><a href="#create_association-3">create_association/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_association_batch-2">create_association_batch/2</a></td><td>Associates the specified Systems Manager document with the specified  
+instances or targets.</td></tr>
+<tr><td valign="top"><a href="#create_association_batch-3">create_association_batch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_document-2">create_document/2</a></td><td>Creates a Systems Manager (SSM) document.</td></tr>
+<tr><td valign="top"><a href="#create_document-3">create_document/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_maintenance_window-2">create_maintenance_window/2</a></td><td>Creates a new maintenance window.</td></tr>
+<tr><td valign="top"><a href="#create_maintenance_window-3">create_maintenance_window/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_ops_item-2">create_ops_item/2</a></td><td>Creates a new OpsItem.</td></tr>
+<tr><td valign="top"><a href="#create_ops_item-3">create_ops_item/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_patch_baseline-2">create_patch_baseline/2</a></td><td>Creates a patch baseline.</td></tr>
+<tr><td valign="top"><a href="#create_patch_baseline-3">create_patch_baseline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resource_data_sync-2">create_resource_data_sync/2</a></td><td>A resource data sync helps you view data from multiple sources in a  
+single location.</td></tr>
+<tr><td valign="top"><a href="#create_resource_data_sync-3">create_resource_data_sync/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_activation-2">delete_activation/2</a></td><td>Deletes an activation.</td></tr>
+<tr><td valign="top"><a href="#delete_activation-3">delete_activation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_association-2">delete_association/2</a></td><td>Disassociates the specified Systems Manager document from the  
+specified instance.</td></tr>
+<tr><td valign="top"><a href="#delete_association-3">delete_association/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_document-2">delete_document/2</a></td><td>Deletes the Systems Manager document and all instance associations to  
+the document.</td></tr>
+<tr><td valign="top"><a href="#delete_document-3">delete_document/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_inventory-2">delete_inventory/2</a></td><td>Delete a custom inventory type or the data associated with a custom  
+Inventory type.</td></tr>
+<tr><td valign="top"><a href="#delete_inventory-3">delete_inventory/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_maintenance_window-2">delete_maintenance_window/2</a></td><td>Deletes a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#delete_maintenance_window-3">delete_maintenance_window/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_parameter-2">delete_parameter/2</a></td><td>Delete a parameter from the system.</td></tr>
+<tr><td valign="top"><a href="#delete_parameter-3">delete_parameter/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_parameters-2">delete_parameters/2</a></td><td>Delete a list of parameters.</td></tr>
+<tr><td valign="top"><a href="#delete_parameters-3">delete_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_patch_baseline-2">delete_patch_baseline/2</a></td><td>Deletes a patch baseline.</td></tr>
+<tr><td valign="top"><a href="#delete_patch_baseline-3">delete_patch_baseline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resource_data_sync-2">delete_resource_data_sync/2</a></td><td>Deletes a Resource Data Sync configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_resource_data_sync-3">delete_resource_data_sync/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_managed_instance-2">deregister_managed_instance/2</a></td><td>Removes the server or virtual machine from the list of registered  
+servers.</td></tr>
+<tr><td valign="top"><a href="#deregister_managed_instance-3">deregister_managed_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_patch_baseline_for_patch_group-2">deregister_patch_baseline_for_patch_group/2</a></td><td>Removes a patch group from a patch baseline.</td></tr>
+<tr><td valign="top"><a href="#deregister_patch_baseline_for_patch_group-3">deregister_patch_baseline_for_patch_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_target_from_maintenance_window-2">deregister_target_from_maintenance_window/2</a></td><td>Removes a target from a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#deregister_target_from_maintenance_window-3">deregister_target_from_maintenance_window/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_task_from_maintenance_window-2">deregister_task_from_maintenance_window/2</a></td><td>Removes a task from a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#deregister_task_from_maintenance_window-3">deregister_task_from_maintenance_window/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_activations-2">describe_activations/2</a></td><td>Describes details about the activation, such as the date and time the
+  activation was created, its expiration date, the IAM role assigned to the
+  instances in the activation, and the number of instances registered by
+  using this activation.</td></tr>
+<tr><td valign="top"><a href="#describe_activations-3">describe_activations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_association-2">describe_association/2</a></td><td>Describes the association for the specified target or instance.</td></tr>
+<tr><td valign="top"><a href="#describe_association-3">describe_association/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_association_execution_targets-2">describe_association_execution_targets/2</a></td><td>Use this API action to view information about a specific execution of
+  a specific association.</td></tr>
+<tr><td valign="top"><a href="#describe_association_execution_targets-3">describe_association_execution_targets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_association_executions-2">describe_association_executions/2</a></td><td>Use this API action to view all executions for a specific association
+  ID.</td></tr>
+<tr><td valign="top"><a href="#describe_association_executions-3">describe_association_executions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_automation_executions-2">describe_automation_executions/2</a></td><td>Provides details about all active and terminated Automation
+  executions.</td></tr>
+<tr><td valign="top"><a href="#describe_automation_executions-3">describe_automation_executions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_automation_step_executions-2">describe_automation_step_executions/2</a></td><td>Information about all active and terminated step executions in an
+  Automation workflow.</td></tr>
+<tr><td valign="top"><a href="#describe_automation_step_executions-3">describe_automation_step_executions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_available_patches-2">describe_available_patches/2</a></td><td>Lists all patches eligible to be included in a patch baseline.</td></tr>
+<tr><td valign="top"><a href="#describe_available_patches-3">describe_available_patches/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_document-2">describe_document/2</a></td><td>Describes the specified Systems Manager document.</td></tr>
+<tr><td valign="top"><a href="#describe_document-3">describe_document/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_document_permission-2">describe_document_permission/2</a></td><td>Describes the permissions for a Systems Manager document.</td></tr>
+<tr><td valign="top"><a href="#describe_document_permission-3">describe_document_permission/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_effective_instance_associations-2">describe_effective_instance_associations/2</a></td><td>All associations for the instance(s).</td></tr>
+<tr><td valign="top"><a href="#describe_effective_instance_associations-3">describe_effective_instance_associations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_effective_patches_for_patch_baseline-2">describe_effective_patches_for_patch_baseline/2</a></td><td>Retrieves the current effective patches (the patch and the approval  
+state) for the specified patch baseline.</td></tr>
+<tr><td valign="top"><a href="#describe_effective_patches_for_patch_baseline-3">describe_effective_patches_for_patch_baseline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_instance_associations_status-2">describe_instance_associations_status/2</a></td><td>The status of the associations for the instance(s).</td></tr>
+<tr><td valign="top"><a href="#describe_instance_associations_status-3">describe_instance_associations_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_instance_information-2">describe_instance_information/2</a></td><td>Describes one or more of your instances, including information about  
+the operating system platform, the version of SSM Agent installed on the  
+instance, instance status, and so on.</td></tr>
+<tr><td valign="top"><a href="#describe_instance_information-3">describe_instance_information/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_instance_patch_states-2">describe_instance_patch_states/2</a></td><td>Retrieves the high-level patch state of one or more instances.</td></tr>
+<tr><td valign="top"><a href="#describe_instance_patch_states-3">describe_instance_patch_states/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_instance_patch_states_for_patch_group-2">describe_instance_patch_states_for_patch_group/2</a></td><td>Retrieves the high-level patch state for the instances in the
+  specified patch group.</td></tr>
+<tr><td valign="top"><a href="#describe_instance_patch_states_for_patch_group-3">describe_instance_patch_states_for_patch_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_instance_patches-2">describe_instance_patches/2</a></td><td>Retrieves information about the patches on the specified instance and
+  their state relative to the patch baseline being used for the instance.</td></tr>
+<tr><td valign="top"><a href="#describe_instance_patches-3">describe_instance_patches/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_inventory_deletions-2">describe_inventory_deletions/2</a></td><td>Describes a specific delete inventory operation.</td></tr>
+<tr><td valign="top"><a href="#describe_inventory_deletions-3">describe_inventory_deletions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_execution_task_invocations-2">describe_maintenance_window_execution_task_invocations/2</a></td><td>Retrieves the individual task executions (one per target) for a
+  particular task run as part of a maintenance window execution.</td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_execution_task_invocations-3">describe_maintenance_window_execution_task_invocations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_execution_tasks-2">describe_maintenance_window_execution_tasks/2</a></td><td>For a given maintenance window execution, lists the tasks that were
+  run.</td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_execution_tasks-3">describe_maintenance_window_execution_tasks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_executions-2">describe_maintenance_window_executions/2</a></td><td>Lists the executions of a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_executions-3">describe_maintenance_window_executions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_schedule-2">describe_maintenance_window_schedule/2</a></td><td>Retrieves information about upcoming executions of a maintenance
+  window.</td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_schedule-3">describe_maintenance_window_schedule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_targets-2">describe_maintenance_window_targets/2</a></td><td>Lists the targets registered with the maintenance window.</td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_targets-3">describe_maintenance_window_targets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_tasks-2">describe_maintenance_window_tasks/2</a></td><td>Lists the tasks in a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_window_tasks-3">describe_maintenance_window_tasks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_windows-2">describe_maintenance_windows/2</a></td><td>Retrieves the maintenance windows in an AWS account.</td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_windows-3">describe_maintenance_windows/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_windows_for_target-2">describe_maintenance_windows_for_target/2</a></td><td>Retrieves information about the maintenance window targets or tasks
+  that an instance is associated with.</td></tr>
+<tr><td valign="top"><a href="#describe_maintenance_windows_for_target-3">describe_maintenance_windows_for_target/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_ops_items-2">describe_ops_items/2</a></td><td>Query a set of OpsItems.</td></tr>
+<tr><td valign="top"><a href="#describe_ops_items-3">describe_ops_items/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_parameters-2">describe_parameters/2</a></td><td>Get information about a parameter.</td></tr>
+<tr><td valign="top"><a href="#describe_parameters-3">describe_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_patch_baselines-2">describe_patch_baselines/2</a></td><td>Lists the patch baselines in your AWS account.</td></tr>
+<tr><td valign="top"><a href="#describe_patch_baselines-3">describe_patch_baselines/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_patch_group_state-2">describe_patch_group_state/2</a></td><td>Returns high-level aggregated patch compliance state for a patch
+  group.</td></tr>
+<tr><td valign="top"><a href="#describe_patch_group_state-3">describe_patch_group_state/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_patch_groups-2">describe_patch_groups/2</a></td><td>Lists all patch groups that have been registered with patch
+  baselines.</td></tr>
+<tr><td valign="top"><a href="#describe_patch_groups-3">describe_patch_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_patch_properties-2">describe_patch_properties/2</a></td><td>Lists the properties of available patches organized by product,  
+product family, classification, severity, and other properties of  
+available patches.</td></tr>
+<tr><td valign="top"><a href="#describe_patch_properties-3">describe_patch_properties/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_sessions-2">describe_sessions/2</a></td><td>Retrieves a list of all active sessions (both connected and
+  disconnected) or terminated sessions from the past 30 days.</td></tr>
+<tr><td valign="top"><a href="#describe_sessions-3">describe_sessions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_automation_execution-2">get_automation_execution/2</a></td><td>Get detailed information about a particular Automation execution.</td></tr>
+<tr><td valign="top"><a href="#get_automation_execution-3">get_automation_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_calendar_state-2">get_calendar_state/2</a></td><td>Gets the state of the AWS Systems Manager Change Calendar at an  
+optional, specified time.</td></tr>
+<tr><td valign="top"><a href="#get_calendar_state-3">get_calendar_state/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_command_invocation-2">get_command_invocation/2</a></td><td>Returns detailed information about command execution for an
+  invocation or plugin.</td></tr>
+<tr><td valign="top"><a href="#get_command_invocation-3">get_command_invocation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_connection_status-2">get_connection_status/2</a></td><td>Retrieves the Session Manager connection status for an instance to
+  determine whether it is running and ready to receive Session Manager
+  connections.</td></tr>
+<tr><td valign="top"><a href="#get_connection_status-3">get_connection_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_default_patch_baseline-2">get_default_patch_baseline/2</a></td><td>Retrieves the default patch baseline.</td></tr>
+<tr><td valign="top"><a href="#get_default_patch_baseline-3">get_default_patch_baseline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployable_patch_snapshot_for_instance-2">get_deployable_patch_snapshot_for_instance/2</a></td><td>Retrieves the current snapshot for the patch baseline the instance  
+uses.</td></tr>
+<tr><td valign="top"><a href="#get_deployable_patch_snapshot_for_instance-3">get_deployable_patch_snapshot_for_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_document-2">get_document/2</a></td><td>Gets the contents of the specified Systems Manager document.</td></tr>
+<tr><td valign="top"><a href="#get_document-3">get_document/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_inventory-2">get_inventory/2</a></td><td>Query inventory information.</td></tr>
+<tr><td valign="top"><a href="#get_inventory-3">get_inventory/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_inventory_schema-2">get_inventory_schema/2</a></td><td>Return a list of inventory type names for the account, or return a
+  list of attribute names for a specific Inventory item type.</td></tr>
+<tr><td valign="top"><a href="#get_inventory_schema-3">get_inventory_schema/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window-2">get_maintenance_window/2</a></td><td>Retrieves a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window-3">get_maintenance_window/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window_execution-2">get_maintenance_window_execution/2</a></td><td>Retrieves details about a specific a maintenance window execution.</td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window_execution-3">get_maintenance_window_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window_execution_task-2">get_maintenance_window_execution_task/2</a></td><td>Retrieves the details about a specific task run as part of a
+  maintenance window execution.</td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window_execution_task-3">get_maintenance_window_execution_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window_execution_task_invocation-2">get_maintenance_window_execution_task_invocation/2</a></td><td>Retrieves information about a specific task running on a specific
+  target.</td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window_execution_task_invocation-3">get_maintenance_window_execution_task_invocation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window_task-2">get_maintenance_window_task/2</a></td><td>Lists the tasks in a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#get_maintenance_window_task-3">get_maintenance_window_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_ops_item-2">get_ops_item/2</a></td><td>Get information about an OpsItem by using the ID.</td></tr>
+<tr><td valign="top"><a href="#get_ops_item-3">get_ops_item/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_ops_summary-2">get_ops_summary/2</a></td><td>View a summary of OpsItems based on specified filters and
+  aggregators.</td></tr>
+<tr><td valign="top"><a href="#get_ops_summary-3">get_ops_summary/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_parameter-2">get_parameter/2</a></td><td>Get information about a parameter by using the parameter name.</td></tr>
+<tr><td valign="top"><a href="#get_parameter-3">get_parameter/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_parameter_history-2">get_parameter_history/2</a></td><td>Retrieves the history of all changes to a parameter.</td></tr>
+<tr><td valign="top"><a href="#get_parameter_history-3">get_parameter_history/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_parameters-2">get_parameters/2</a></td><td>Get details of a parameter.</td></tr>
+<tr><td valign="top"><a href="#get_parameters-3">get_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_parameters_by_path-2">get_parameters_by_path/2</a></td><td>Retrieve information about one or more parameters in a specific  
+hierarchy.</td></tr>
+<tr><td valign="top"><a href="#get_parameters_by_path-3">get_parameters_by_path/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_patch_baseline-2">get_patch_baseline/2</a></td><td>Retrieves information about a patch baseline.</td></tr>
+<tr><td valign="top"><a href="#get_patch_baseline-3">get_patch_baseline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_patch_baseline_for_patch_group-2">get_patch_baseline_for_patch_group/2</a></td><td>Retrieves the patch baseline that should be used for the specified
+  patch group.</td></tr>
+<tr><td valign="top"><a href="#get_patch_baseline_for_patch_group-3">get_patch_baseline_for_patch_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_service_setting-2">get_service_setting/2</a></td><td><code>ServiceSetting</code> is an account-level setting for an AWS service.</td></tr>
+<tr><td valign="top"><a href="#get_service_setting-3">get_service_setting/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#label_parameter_version-2">label_parameter_version/2</a></td><td>A parameter label is a user-defined alias to help you manage  
+different versions of a parameter.</td></tr>
+<tr><td valign="top"><a href="#label_parameter_version-3">label_parameter_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_association_versions-2">list_association_versions/2</a></td><td>Retrieves all versions of an association for a specific association
+  ID.</td></tr>
+<tr><td valign="top"><a href="#list_association_versions-3">list_association_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_associations-2">list_associations/2</a></td><td>Returns all State Manager associations in the current AWS account and  
+Region.</td></tr>
+<tr><td valign="top"><a href="#list_associations-3">list_associations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_command_invocations-2">list_command_invocations/2</a></td><td>An invocation is copy of a command sent to a specific instance.</td></tr>
+<tr><td valign="top"><a href="#list_command_invocations-3">list_command_invocations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_commands-2">list_commands/2</a></td><td>Lists the commands requested by users of the AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_commands-3">list_commands/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_compliance_items-2">list_compliance_items/2</a></td><td>For a specified resource ID, this API action returns a list of  
+compliance statuses for different resource types.</td></tr>
+<tr><td valign="top"><a href="#list_compliance_items-3">list_compliance_items/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_compliance_summaries-2">list_compliance_summaries/2</a></td><td>Returns a summary count of compliant and non-compliant resources for  
+a compliance type.</td></tr>
+<tr><td valign="top"><a href="#list_compliance_summaries-3">list_compliance_summaries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_document_versions-2">list_document_versions/2</a></td><td>List all versions for a document.</td></tr>
+<tr><td valign="top"><a href="#list_document_versions-3">list_document_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_documents-2">list_documents/2</a></td><td>Returns all Systems Manager (SSM) documents in the current AWS  
+account and Region.</td></tr>
+<tr><td valign="top"><a href="#list_documents-3">list_documents/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_inventory_entries-2">list_inventory_entries/2</a></td><td>A list of inventory items returned by the request.</td></tr>
+<tr><td valign="top"><a href="#list_inventory_entries-3">list_inventory_entries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resource_compliance_summaries-2">list_resource_compliance_summaries/2</a></td><td>Returns a resource-level summary count.</td></tr>
+<tr><td valign="top"><a href="#list_resource_compliance_summaries-3">list_resource_compliance_summaries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resource_data_sync-2">list_resource_data_sync/2</a></td><td>Lists your resource data sync configurations.</td></tr>
+<tr><td valign="top"><a href="#list_resource_data_sync-3">list_resource_data_sync/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of the tags assigned to the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#modify_document_permission-2">modify_document_permission/2</a></td><td>Shares a Systems Manager document publicly or privately.</td></tr>
+<tr><td valign="top"><a href="#modify_document_permission-3">modify_document_permission/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_compliance_items-2">put_compliance_items/2</a></td><td>Registers a compliance type and other compliance details on a  
+designated resource.</td></tr>
+<tr><td valign="top"><a href="#put_compliance_items-3">put_compliance_items/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_inventory-2">put_inventory/2</a></td><td>Bulk update custom inventory items on one more instance.</td></tr>
+<tr><td valign="top"><a href="#put_inventory-3">put_inventory/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_parameter-2">put_parameter/2</a></td><td>Add a parameter to the system.</td></tr>
+<tr><td valign="top"><a href="#put_parameter-3">put_parameter/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_default_patch_baseline-2">register_default_patch_baseline/2</a></td><td>Defines the default patch baseline for the relevant operating system.</td></tr>
+<tr><td valign="top"><a href="#register_default_patch_baseline-3">register_default_patch_baseline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_patch_baseline_for_patch_group-2">register_patch_baseline_for_patch_group/2</a></td><td>Registers a patch baseline for a patch group.</td></tr>
+<tr><td valign="top"><a href="#register_patch_baseline_for_patch_group-3">register_patch_baseline_for_patch_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_target_with_maintenance_window-2">register_target_with_maintenance_window/2</a></td><td>Registers a target with a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#register_target_with_maintenance_window-3">register_target_with_maintenance_window/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_task_with_maintenance_window-2">register_task_with_maintenance_window/2</a></td><td>Adds a new task to a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#register_task_with_maintenance_window-3">register_task_with_maintenance_window/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_tags_from_resource-2">remove_tags_from_resource/2</a></td><td>Removes tag keys from the specified resource.</td></tr>
+<tr><td valign="top"><a href="#remove_tags_from_resource-3">remove_tags_from_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reset_service_setting-2">reset_service_setting/2</a></td><td><code>ServiceSetting</code> is an account-level setting for an AWS service.</td></tr>
+<tr><td valign="top"><a href="#reset_service_setting-3">reset_service_setting/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#resume_session-2">resume_session/2</a></td><td>Reconnects a session to an instance after it has been disconnected.</td></tr>
+<tr><td valign="top"><a href="#resume_session-3">resume_session/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_automation_signal-2">send_automation_signal/2</a></td><td>Sends a signal to an Automation execution to change the current
+  behavior or status of the execution.</td></tr>
+<tr><td valign="top"><a href="#send_automation_signal-3">send_automation_signal/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_command-2">send_command/2</a></td><td>Runs commands on one or more managed instances.</td></tr>
+<tr><td valign="top"><a href="#send_command-3">send_command/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_associations_once-2">start_associations_once/2</a></td><td>Use this API action to run an association immediately and only one  
+time.</td></tr>
+<tr><td valign="top"><a href="#start_associations_once-3">start_associations_once/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_automation_execution-2">start_automation_execution/2</a></td><td>Initiates execution of an Automation document.</td></tr>
+<tr><td valign="top"><a href="#start_automation_execution-3">start_automation_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_session-2">start_session/2</a></td><td>Initiates a connection to a target (for example, an instance) for a  
+Session Manager session.</td></tr>
+<tr><td valign="top"><a href="#start_session-3">start_session/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_automation_execution-2">stop_automation_execution/2</a></td><td>Stop an Automation that is currently running.</td></tr>
+<tr><td valign="top"><a href="#stop_automation_execution-3">stop_automation_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#terminate_session-2">terminate_session/2</a></td><td>Permanently ends a session and closes the data connection between the  
+Session Manager client and SSM Agent on the instance.</td></tr>
+<tr><td valign="top"><a href="#terminate_session-3">terminate_session/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_association-2">update_association/2</a></td><td>Updates an association.</td></tr>
+<tr><td valign="top"><a href="#update_association-3">update_association/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_association_status-2">update_association_status/2</a></td><td>Updates the status of the Systems Manager document associated with
+  the specified instance.</td></tr>
+<tr><td valign="top"><a href="#update_association_status-3">update_association_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_document-2">update_document/2</a></td><td>Updates one or more values for an SSM document.</td></tr>
+<tr><td valign="top"><a href="#update_document-3">update_document/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_document_default_version-2">update_document_default_version/2</a></td><td>Set the default version of a document.</td></tr>
+<tr><td valign="top"><a href="#update_document_default_version-3">update_document_default_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_maintenance_window-2">update_maintenance_window/2</a></td><td>Updates an existing maintenance window.</td></tr>
+<tr><td valign="top"><a href="#update_maintenance_window-3">update_maintenance_window/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_maintenance_window_target-2">update_maintenance_window_target/2</a></td><td>Modifies the target of an existing maintenance window.</td></tr>
+<tr><td valign="top"><a href="#update_maintenance_window_target-3">update_maintenance_window_target/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_maintenance_window_task-2">update_maintenance_window_task/2</a></td><td>Modifies a task assigned to a maintenance window.</td></tr>
+<tr><td valign="top"><a href="#update_maintenance_window_task-3">update_maintenance_window_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_managed_instance_role-2">update_managed_instance_role/2</a></td><td>Changes the Amazon Identity and Access Management (IAM) role that is  
+assigned to the on-premises instance or virtual machines (VM).</td></tr>
+<tr><td valign="top"><a href="#update_managed_instance_role-3">update_managed_instance_role/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_ops_item-2">update_ops_item/2</a></td><td>Edit or change an OpsItem.</td></tr>
+<tr><td valign="top"><a href="#update_ops_item-3">update_ops_item/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_patch_baseline-2">update_patch_baseline/2</a></td><td>Modifies an existing patch baseline.</td></tr>
+<tr><td valign="top"><a href="#update_patch_baseline-3">update_patch_baseline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_resource_data_sync-2">update_resource_data_sync/2</a></td><td>Update a resource data sync.</td></tr>
+<tr><td valign="top"><a href="#update_resource_data_sync-3">update_resource_data_sync/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_service_setting-2">update_service_setting/2</a></td><td><code>ServiceSetting</code> is an account-level setting for an AWS service.</td></tr>
+<tr><td valign="top"><a href="#update_service_setting-3">update_service_setting/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_tags_to_resource-2">add_tags_to_resource/2</a></h3>
+<div class="spec">
+<p><tt>add_tags_to_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds or overwrites one or more tags for the specified resource.</p>
+ 
+  <p>Tags are metadata that you can assign to your documents, managed  
+instances, maintenance windows, Parameter Store parameters, and patch  
+baselines. Tags enable you to categorize your resources in different ways,  
+for example, by purpose, owner, or environment. Each tag consists of a key  
+and an optional value, both of which you define. For example, you could  
+define a set of tags for your account's managed instances that helps you  
+track each instance's owner and stack level. For example: Key=Owner and  
+Value=DbAdmin, SysAdmin, or Dev. Or Key=Stack and Value=Production,  
+Pre-Production, or Test.</p>
+ 
+  <p>Each resource can have a maximum of 50 tags.</p>
+ 
+  <p>We recommend that you devise a set of tag keys that meets your needs for  
+each resource type. Using a consistent set of tag keys makes it easier for  
+you to manage your resources. You can search and filter the resources  
+based on the tags you add. Tags don't have any semantic meaning to and are  
+interpreted strictly as a string of characters.</p>
+ 
+  For more information about using tags with EC2 instances, see Tagging your
+  Amazon EC2 resources in the Amazon EC2 User Guide.</p>
+
+<h3 class="function"><a name="add_tags_to_resource-3">add_tags_to_resource/3</a></h3>
+<div class="spec">
+<p><tt>add_tags_to_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="cancel_command-2">cancel_command/2</a></h3>
+<div class="spec">
+<p><tt>cancel_command(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Attempts to cancel the command specified by the Command ID.</p>
+ 
+  There is no guarantee that the command will be terminated and the
+  underlying process stopped.</p>
+
+<h3 class="function"><a name="cancel_command-3">cancel_command/3</a></h3>
+<div class="spec">
+<p><tt>cancel_command(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="cancel_maintenance_window_execution-2">cancel_maintenance_window_execution/2</a></h3>
+<div class="spec">
+<p><tt>cancel_maintenance_window_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops a maintenance window execution that is already in progress and  
+cancels any tasks in the window that have not already starting running.</p>
+ 
+  (Tasks already in progress will continue to completion.)</p>
+
+<h3 class="function"><a name="cancel_maintenance_window_execution-3">cancel_maintenance_window_execution/3</a></h3>
+<div class="spec">
+<p><tt>cancel_maintenance_window_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_activation-2">create_activation/2</a></h3>
+<div class="spec">
+<p><tt>create_activation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Generates an activation code and activation ID you can use to  
+register your on-premises server or virtual machine (VM) with Systems  
+Manager.</p>
+ 
+  <p>Registering these machines with Systems Manager makes it possible to  
+manage them using Systems Manager capabilities. You use the activation  
+code and ID when installing SSM Agent on machines in your hybrid  
+environment. For more information about requirements for managing  
+on-premises instances and VMs using Systems Manager, see Setting up AWS  
+Systems Manager for hybrid environments in the AWS Systems Manager User  
+Guide.</p>
+ 
+  On-premises servers or VMs that are registered with Systems Manager and
+  EC2 instances that you manage with Systems Manager are all called managed
+  instances.</p>
+
+<h3 class="function"><a name="create_activation-3">create_activation/3</a></h3>
+<div class="spec">
+<p><tt>create_activation(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_association-2">create_association/2</a></h3>
+<div class="spec">
+<p><tt>create_association(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>A State Manager association defines the state that you want to  
+maintain on your instances.</p>
+ 
+  For example, an association can specify that anti-virus software must be
+  installed and running on your instances, or that certain ports must be
+  closed. For static targets, the association specifies a schedule for when
+  the configuration is reapplied. For dynamic targets, such as an AWS
+  Resource Group or an AWS Autoscaling Group, State Manager applies the
+  configuration when new instances are added to the group. The association
+  also specifies actions to take when applying the configuration. For
+  example, an association for anti-virus software might run once a day. If
+  the software is not installed, then State Manager installs it. If the
+  software is installed, but the service is not running, then the
+  association might instruct State Manager to start the service.</p>
+
+<h3 class="function"><a name="create_association-3">create_association/3</a></h3>
+<div class="spec">
+<p><tt>create_association(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_association_batch-2">create_association_batch/2</a></h3>
+<div class="spec">
+<p><tt>create_association_batch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates the specified Systems Manager document with the specified  
+instances or targets.</p>
+ 
+  <p>When you associate a document with one or more instances using instance  
+IDs or tags, SSM Agent running on the instance processes the document and  
+configures the instance as specified.</p>
+ 
+  If you associate a document with an instance that already has an
+  associated document, the system returns the AssociationAlreadyExists
+  exception.</p>
+
+<h3 class="function"><a name="create_association_batch-3">create_association_batch/3</a></h3>
+<div class="spec">
+<p><tt>create_association_batch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_document-2">create_document/2</a></h3>
+<div class="spec">
+<p><tt>create_document(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a Systems Manager (SSM) document.</p>
+ 
+  An SSM document defines the actions that Systems Manager performs on your
+  managed instances. For more information about SSM documents, including
+  information about supported schemas, features, and syntax, see AWS Systems
+  Manager Documents in the AWS Systems Manager User Guide.</p>
+
+<h3 class="function"><a name="create_document-3">create_document/3</a></h3>
+<div class="spec">
+<p><tt>create_document(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_maintenance_window-2">create_maintenance_window/2</a></h3>
+<div class="spec">
+<p><tt>create_maintenance_window(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new maintenance window.</p>
+ 
+  The value you specify for <code>Duration</code> determines the specific end time for
+  the maintenance window based on the time it begins. No maintenance window
+  tasks are permitted to start after the resulting endtime minus the number
+  of hours you specify for <code>Cutoff</code>. For example, if the maintenance window
+  starts at 3 PM, the duration is three hours, and the value you specify for
+  <code>Cutoff</code> is one hour, no maintenance window tasks can start after 5 PM.</p>
+
+<h3 class="function"><a name="create_maintenance_window-3">create_maintenance_window/3</a></h3>
+<div class="spec">
+<p><tt>create_maintenance_window(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_ops_item-2">create_ops_item/2</a></h3>
+<div class="spec">
+<p><tt>create_ops_item(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new OpsItem.</p>
+ 
+  <p>You must have permission in AWS Identity and Access Management (IAM) to  
+create a new OpsItem. For more information, see Getting started with  
+OpsCenter in the AWS Systems Manager User Guide.</p>
+ 
+  Operations engineers and IT professionals use OpsCenter to view,
+  investigate, and remediate operational issues impacting the performance
+  and health of their AWS resources. For more information, see AWS Systems
+  Manager OpsCenter in the AWS Systems Manager User Guide.</p>
+
+<h3 class="function"><a name="create_ops_item-3">create_ops_item/3</a></h3>
+<div class="spec">
+<p><tt>create_ops_item(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_patch_baseline-2">create_patch_baseline/2</a></h3>
+<div class="spec">
+<p><tt>create_patch_baseline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a patch baseline.</p>
+ 
+  For information about valid key and value pairs in <code>PatchFilters</code> for each
+  supported operating system type, see PatchFilter.</p>
+
+<h3 class="function"><a name="create_patch_baseline-3">create_patch_baseline/3</a></h3>
+<div class="spec">
+<p><tt>create_patch_baseline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resource_data_sync-2">create_resource_data_sync/2</a></h3>
+<div class="spec">
+<p><tt>create_resource_data_sync(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>A resource data sync helps you view data from multiple sources in a  
+single location.</p>
+ 
+  <p>Systems Manager offers two types of resource data sync:
+  <code>SyncToDestination</code> and <code>SyncFromSource</code>.</p>
+ 
+  <p>You can configure Systems Manager Inventory to use the <code>SyncToDestination</code>  
+type to synchronize Inventory data from multiple AWS Regions to a single  
+S3 bucket. For more information, see Configuring Resource Data Sync for  
+Inventory in the AWS Systems Manager User Guide.</p>
+ 
+  <p>You can configure Systems Manager Explorer to use the <code>SyncFromSource</code>
+  type to synchronize operational work items (OpsItems) and operational data
+  (OpsData) from multiple AWS Regions to a single S3 bucket. This type can
+  synchronize OpsItems and OpsData from multiple AWS accounts and Regions or
+  <code>EntireOrganization</code> by using AWS Organizations. For more information, see  
+Setting up Systems Manager Explorer to display data from multiple accounts  
+and Regions in the AWS Systems Manager User Guide.</p>
+ 
+  <p>A resource data sync is an asynchronous operation that returns
+  immediately. After a successful initial sync is completed, the system
+  continuously syncs data. To check the status of a sync, use the
+  <code>ListResourceDataSync</code>.</p>
+ 
+  By default, data is not encrypted in Amazon S3. We strongly recommend that
+  you enable encryption in Amazon S3 to ensure secure data storage. We also
+  recommend that you secure access to the Amazon S3 bucket by creating a
+  restrictive bucket policy.</p>
+
+<h3 class="function"><a name="create_resource_data_sync-3">create_resource_data_sync/3</a></h3>
+<div class="spec">
+<p><tt>create_resource_data_sync(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_activation-2">delete_activation/2</a></h3>
+<div class="spec">
+<p><tt>delete_activation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an activation.</p>
+ 
+  You are not required to delete an activation. If you delete an activation,
+  you can no longer use it to register additional managed instances.
+  Deleting an activation does not de-register managed instances. You must
+  manually de-register managed instances.</p>
+
+<h3 class="function"><a name="delete_activation-3">delete_activation/3</a></h3>
+<div class="spec">
+<p><tt>delete_activation(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_association-2">delete_association/2</a></h3>
+<div class="spec">
+<p><tt>delete_association(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates the specified Systems Manager document from the  
+specified instance.</p>
+ 
+  When you disassociate a document from an instance, it does not change the
+  configuration of the instance. To change the configuration state of an
+  instance after you disassociate a document, you must create a new document
+  with the desired configuration and associate it with the instance.</p>
+
+<h3 class="function"><a name="delete_association-3">delete_association/3</a></h3>
+<div class="spec">
+<p><tt>delete_association(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_document-2">delete_document/2</a></h3>
+<div class="spec">
+<p><tt>delete_document(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the Systems Manager document and all instance associations to  
+the document.</p>
+ 
+  Before you delete the document, we recommend that you use
+  <code>DeleteAssociation</code> to disassociate all instances that are associated with
+  the document.</p>
+
+<h3 class="function"><a name="delete_document-3">delete_document/3</a></h3>
+<div class="spec">
+<p><tt>delete_document(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_inventory-2">delete_inventory/2</a></h3>
+<div class="spec">
+<p><tt>delete_inventory(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Delete a custom inventory type or the data associated with a custom  
+Inventory type.</p>
+ 
+  Deleting a custom inventory type is also referred to as deleting a custom
+  inventory schema.</p>
+
+<h3 class="function"><a name="delete_inventory-3">delete_inventory/3</a></h3>
+<div class="spec">
+<p><tt>delete_inventory(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_maintenance_window-2">delete_maintenance_window/2</a></h3>
+<div class="spec">
+<p><tt>delete_maintenance_window(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a maintenance window.</p>
+
+<h3 class="function"><a name="delete_maintenance_window-3">delete_maintenance_window/3</a></h3>
+<div class="spec">
+<p><tt>delete_maintenance_window(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_parameter-2">delete_parameter/2</a></h3>
+<div class="spec">
+<p><tt>delete_parameter(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete a parameter from the system.</p>
+
+<h3 class="function"><a name="delete_parameter-3">delete_parameter/3</a></h3>
+<div class="spec">
+<p><tt>delete_parameter(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_parameters-2">delete_parameters/2</a></h3>
+<div class="spec">
+<p><tt>delete_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete a list of parameters.</p>
+
+<h3 class="function"><a name="delete_parameters-3">delete_parameters/3</a></h3>
+<div class="spec">
+<p><tt>delete_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_patch_baseline-2">delete_patch_baseline/2</a></h3>
+<div class="spec">
+<p><tt>delete_patch_baseline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a patch baseline.</p>
+
+<h3 class="function"><a name="delete_patch_baseline-3">delete_patch_baseline/3</a></h3>
+<div class="spec">
+<p><tt>delete_patch_baseline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resource_data_sync-2">delete_resource_data_sync/2</a></h3>
+<div class="spec">
+<p><tt>delete_resource_data_sync(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a Resource Data Sync configuration.</p>
+ 
+  After the configuration is deleted, changes to data on managed instances
+  are no longer synced to or from the target. Deleting a sync configuration
+  does not delete data.</p>
+
+<h3 class="function"><a name="delete_resource_data_sync-3">delete_resource_data_sync/3</a></h3>
+<div class="spec">
+<p><tt>delete_resource_data_sync(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_managed_instance-2">deregister_managed_instance/2</a></h3>
+<div class="spec">
+<p><tt>deregister_managed_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the server or virtual machine from the list of registered  
+servers.</p>
+ 
+  You can reregister the instance again at any time. If you don't plan to
+  use Run Command on the server, we suggest uninstalling SSM Agent first.</p>
+
+<h3 class="function"><a name="deregister_managed_instance-3">deregister_managed_instance/3</a></h3>
+<div class="spec">
+<p><tt>deregister_managed_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_patch_baseline_for_patch_group-2">deregister_patch_baseline_for_patch_group/2</a></h3>
+<div class="spec">
+<p><tt>deregister_patch_baseline_for_patch_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a patch group from a patch baseline.</p>
+
+<h3 class="function"><a name="deregister_patch_baseline_for_patch_group-3">deregister_patch_baseline_for_patch_group/3</a></h3>
+<div class="spec">
+<p><tt>deregister_patch_baseline_for_patch_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_target_from_maintenance_window-2">deregister_target_from_maintenance_window/2</a></h3>
+<div class="spec">
+<p><tt>deregister_target_from_maintenance_window(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a target from a maintenance window.</p>
+
+<h3 class="function"><a name="deregister_target_from_maintenance_window-3">deregister_target_from_maintenance_window/3</a></h3>
+<div class="spec">
+<p><tt>deregister_target_from_maintenance_window(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_task_from_maintenance_window-2">deregister_task_from_maintenance_window/2</a></h3>
+<div class="spec">
+<p><tt>deregister_task_from_maintenance_window(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a task from a maintenance window.</p>
+
+<h3 class="function"><a name="deregister_task_from_maintenance_window-3">deregister_task_from_maintenance_window/3</a></h3>
+<div class="spec">
+<p><tt>deregister_task_from_maintenance_window(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_activations-2">describe_activations/2</a></h3>
+<div class="spec">
+<p><tt>describe_activations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes details about the activation, such as the date and time the
+  activation was created, its expiration date, the IAM role assigned to the
+  instances in the activation, and the number of instances registered by
+  using this activation.</p>
+
+<h3 class="function"><a name="describe_activations-3">describe_activations/3</a></h3>
+<div class="spec">
+<p><tt>describe_activations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_association-2">describe_association/2</a></h3>
+<div class="spec">
+<p><tt>describe_association(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the association for the specified target or instance.</p>
+ 
+  If you created the association by using the <code>Targets</code> parameter, then you
+  must retrieve the association by using the association ID. If you created
+  the association by specifying an instance ID and a Systems Manager
+  document, then you retrieve the association by specifying the document
+  name and the instance ID.</p>
+
+<h3 class="function"><a name="describe_association-3">describe_association/3</a></h3>
+<div class="spec">
+<p><tt>describe_association(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_association_execution_targets-2">describe_association_execution_targets/2</a></h3>
+<div class="spec">
+<p><tt>describe_association_execution_targets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Use this API action to view information about a specific execution of
+  a specific association.</p>
+
+<h3 class="function"><a name="describe_association_execution_targets-3">describe_association_execution_targets/3</a></h3>
+<div class="spec">
+<p><tt>describe_association_execution_targets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_association_executions-2">describe_association_executions/2</a></h3>
+<div class="spec">
+<p><tt>describe_association_executions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Use this API action to view all executions for a specific association
+  ID.</p>
+
+<h3 class="function"><a name="describe_association_executions-3">describe_association_executions/3</a></h3>
+<div class="spec">
+<p><tt>describe_association_executions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_automation_executions-2">describe_automation_executions/2</a></h3>
+<div class="spec">
+<p><tt>describe_automation_executions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides details about all active and terminated Automation
+  executions.</p>
+
+<h3 class="function"><a name="describe_automation_executions-3">describe_automation_executions/3</a></h3>
+<div class="spec">
+<p><tt>describe_automation_executions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_automation_step_executions-2">describe_automation_step_executions/2</a></h3>
+<div class="spec">
+<p><tt>describe_automation_step_executions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Information about all active and terminated step executions in an
+  Automation workflow.</p>
+
+<h3 class="function"><a name="describe_automation_step_executions-3">describe_automation_step_executions/3</a></h3>
+<div class="spec">
+<p><tt>describe_automation_step_executions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_available_patches-2">describe_available_patches/2</a></h3>
+<div class="spec">
+<p><tt>describe_available_patches(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all patches eligible to be included in a patch baseline.</p>
+
+<h3 class="function"><a name="describe_available_patches-3">describe_available_patches/3</a></h3>
+<div class="spec">
+<p><tt>describe_available_patches(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_document-2">describe_document/2</a></h3>
+<div class="spec">
+<p><tt>describe_document(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the specified Systems Manager document.</p>
+
+<h3 class="function"><a name="describe_document-3">describe_document/3</a></h3>
+<div class="spec">
+<p><tt>describe_document(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_document_permission-2">describe_document_permission/2</a></h3>
+<div class="spec">
+<p><tt>describe_document_permission(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the permissions for a Systems Manager document.</p>
+ 
+  If you created the document, you are the owner. If a document is shared,
+  it can either be shared privately (by specifying a user's AWS account ID)
+  or publicly (All).</p>
+
+<h3 class="function"><a name="describe_document_permission-3">describe_document_permission/3</a></h3>
+<div class="spec">
+<p><tt>describe_document_permission(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_effective_instance_associations-2">describe_effective_instance_associations/2</a></h3>
+<div class="spec">
+<p><tt>describe_effective_instance_associations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>All associations for the instance(s).</p>
+
+<h3 class="function"><a name="describe_effective_instance_associations-3">describe_effective_instance_associations/3</a></h3>
+<div class="spec">
+<p><tt>describe_effective_instance_associations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_effective_patches_for_patch_baseline-2">describe_effective_patches_for_patch_baseline/2</a></h3>
+<div class="spec">
+<p><tt>describe_effective_patches_for_patch_baseline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the current effective patches (the patch and the approval  
+state) for the specified patch baseline.</p>
+ 
+  Note that this API applies only to Windows patch baselines.</p>
+
+<h3 class="function"><a name="describe_effective_patches_for_patch_baseline-3">describe_effective_patches_for_patch_baseline/3</a></h3>
+<div class="spec">
+<p><tt>describe_effective_patches_for_patch_baseline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_instance_associations_status-2">describe_instance_associations_status/2</a></h3>
+<div class="spec">
+<p><tt>describe_instance_associations_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The status of the associations for the instance(s).</p>
+
+<h3 class="function"><a name="describe_instance_associations_status-3">describe_instance_associations_status/3</a></h3>
+<div class="spec">
+<p><tt>describe_instance_associations_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_instance_information-2">describe_instance_information/2</a></h3>
+<div class="spec">
+<p><tt>describe_instance_information(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes one or more of your instances, including information about  
+the operating system platform, the version of SSM Agent installed on the  
+instance, instance status, and so on.</p>
+ 
+  <p>If you specify one or more instance IDs, it returns information for those  
+instances. If you do not specify instance IDs, it returns information for  
+all your instances. If you specify an instance ID that is not valid or an  
+instance that you do not own, you receive an error.</p>
+ 
+  The IamRole field for this API action is the Amazon Identity and Access
+  Management (IAM) role assigned to on-premises instances. This call does
+  not return the IAM role for EC2 instances.</p>
+
+<h3 class="function"><a name="describe_instance_information-3">describe_instance_information/3</a></h3>
+<div class="spec">
+<p><tt>describe_instance_information(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_instance_patch_states-2">describe_instance_patch_states/2</a></h3>
+<div class="spec">
+<p><tt>describe_instance_patch_states(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the high-level patch state of one or more instances.</p>
+
+<h3 class="function"><a name="describe_instance_patch_states-3">describe_instance_patch_states/3</a></h3>
+<div class="spec">
+<p><tt>describe_instance_patch_states(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_instance_patch_states_for_patch_group-2">describe_instance_patch_states_for_patch_group/2</a></h3>
+<div class="spec">
+<p><tt>describe_instance_patch_states_for_patch_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the high-level patch state for the instances in the
+  specified patch group.</p>
+
+<h3 class="function"><a name="describe_instance_patch_states_for_patch_group-3">describe_instance_patch_states_for_patch_group/3</a></h3>
+<div class="spec">
+<p><tt>describe_instance_patch_states_for_patch_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_instance_patches-2">describe_instance_patches/2</a></h3>
+<div class="spec">
+<p><tt>describe_instance_patches(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the patches on the specified instance and
+  their state relative to the patch baseline being used for the instance.</p>
+
+<h3 class="function"><a name="describe_instance_patches-3">describe_instance_patches/3</a></h3>
+<div class="spec">
+<p><tt>describe_instance_patches(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_inventory_deletions-2">describe_inventory_deletions/2</a></h3>
+<div class="spec">
+<p><tt>describe_inventory_deletions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a specific delete inventory operation.</p>
+
+<h3 class="function"><a name="describe_inventory_deletions-3">describe_inventory_deletions/3</a></h3>
+<div class="spec">
+<p><tt>describe_inventory_deletions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_maintenance_window_execution_task_invocations-2">describe_maintenance_window_execution_task_invocations/2</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_execution_task_invocations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the individual task executions (one per target) for a
+  particular task run as part of a maintenance window execution.</p>
+
+<h3 class="function"><a name="describe_maintenance_window_execution_task_invocations-3">describe_maintenance_window_execution_task_invocations/3</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_execution_task_invocations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_maintenance_window_execution_tasks-2">describe_maintenance_window_execution_tasks/2</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_execution_tasks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>For a given maintenance window execution, lists the tasks that were
+  run.</p>
+
+<h3 class="function"><a name="describe_maintenance_window_execution_tasks-3">describe_maintenance_window_execution_tasks/3</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_execution_tasks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_maintenance_window_executions-2">describe_maintenance_window_executions/2</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_executions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the executions of a maintenance window.</p>
+ 
+  This includes information about when the maintenance window was scheduled
+  to be active, and information about tasks registered and run with the
+  maintenance window.</p>
+
+<h3 class="function"><a name="describe_maintenance_window_executions-3">describe_maintenance_window_executions/3</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_executions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_maintenance_window_schedule-2">describe_maintenance_window_schedule/2</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_schedule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about upcoming executions of a maintenance
+  window.</p>
+
+<h3 class="function"><a name="describe_maintenance_window_schedule-3">describe_maintenance_window_schedule/3</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_schedule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_maintenance_window_targets-2">describe_maintenance_window_targets/2</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_targets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the targets registered with the maintenance window.</p>
+
+<h3 class="function"><a name="describe_maintenance_window_targets-3">describe_maintenance_window_targets/3</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_targets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_maintenance_window_tasks-2">describe_maintenance_window_tasks/2</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_tasks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tasks in a maintenance window.</p>
+
+<h3 class="function"><a name="describe_maintenance_window_tasks-3">describe_maintenance_window_tasks/3</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_window_tasks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_maintenance_windows-2">describe_maintenance_windows/2</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_windows(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the maintenance windows in an AWS account.</p>
+
+<h3 class="function"><a name="describe_maintenance_windows-3">describe_maintenance_windows/3</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_windows(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_maintenance_windows_for_target-2">describe_maintenance_windows_for_target/2</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_windows_for_target(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the maintenance window targets or tasks
+  that an instance is associated with.</p>
+
+<h3 class="function"><a name="describe_maintenance_windows_for_target-3">describe_maintenance_windows_for_target/3</a></h3>
+<div class="spec">
+<p><tt>describe_maintenance_windows_for_target(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_ops_items-2">describe_ops_items/2</a></h3>
+<div class="spec">
+<p><tt>describe_ops_items(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Query a set of OpsItems.</p>
+ 
+  <p>You must have permission in AWS Identity and Access Management (IAM) to  
+query a list of OpsItems. For more information, see Getting started with  
+OpsCenter in the AWS Systems Manager User Guide.</p>
+ 
+  Operations engineers and IT professionals use OpsCenter to view,
+  investigate, and remediate operational issues impacting the performance
+  and health of their AWS resources. For more information, see AWS Systems
+  Manager OpsCenter in the AWS Systems Manager User Guide.</p>
+
+<h3 class="function"><a name="describe_ops_items-3">describe_ops_items/3</a></h3>
+<div class="spec">
+<p><tt>describe_ops_items(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_parameters-2">describe_parameters/2</a></h3>
+<div class="spec">
+<p><tt>describe_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Get information about a parameter.</p>
+ 
+  Request results are returned on a best-effort basis. If you specify
+  <code>MaxResults</code> in the request, the response includes information up to the
+  limit specified. The number of items returned, however, can be between
+  zero and the value of <code>MaxResults</code>. If the service reaches an internal
+  limit while processing the results, it stops the operation and returns the
+  matching values up to that point and a <code>NextToken</code>. You can specify the
+  <code>NextToken</code> in a subsequent call to get the next set of results.</p>
+
+<h3 class="function"><a name="describe_parameters-3">describe_parameters/3</a></h3>
+<div class="spec">
+<p><tt>describe_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_patch_baselines-2">describe_patch_baselines/2</a></h3>
+<div class="spec">
+<p><tt>describe_patch_baselines(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the patch baselines in your AWS account.</p>
+
+<h3 class="function"><a name="describe_patch_baselines-3">describe_patch_baselines/3</a></h3>
+<div class="spec">
+<p><tt>describe_patch_baselines(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_patch_group_state-2">describe_patch_group_state/2</a></h3>
+<div class="spec">
+<p><tt>describe_patch_group_state(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns high-level aggregated patch compliance state for a patch
+  group.</p>
+
+<h3 class="function"><a name="describe_patch_group_state-3">describe_patch_group_state/3</a></h3>
+<div class="spec">
+<p><tt>describe_patch_group_state(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_patch_groups-2">describe_patch_groups/2</a></h3>
+<div class="spec">
+<p><tt>describe_patch_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all patch groups that have been registered with patch
+  baselines.</p>
+
+<h3 class="function"><a name="describe_patch_groups-3">describe_patch_groups/3</a></h3>
+<div class="spec">
+<p><tt>describe_patch_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_patch_properties-2">describe_patch_properties/2</a></h3>
+<div class="spec">
+<p><tt>describe_patch_properties(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the properties of available patches organized by product,  
+product family, classification, severity, and other properties of  
+available patches.</p>
+ 
+  <p>You can use the reported properties in the filters you specify in requests
+  for actions such as <code>CreatePatchBaseline</code>, <code>UpdatePatchBaseline</code>,
+  <code>DescribeAvailablePatches</code>, and <code>DescribePatchBaselines</code>.</p>
+ 
+  <p>The following section lists the properties that can be used in filters for  
+each major operating system type:</p>
+ 
+  <dl> <dt>AMAZON_LINUX</dt> <dd><p> Valid properties: PRODUCT, CLASSIFICATION,  
+SEVERITY</p>
+ 
+  </dd> <dt>AMAZON_LINUX_2</dt> <dd><p> Valid properties: PRODUCT,  
+CLASSIFICATION, SEVERITY</p>
+ 
+  </dd> <dt>CENTOS</dt> <dd><p> Valid properties: PRODUCT, CLASSIFICATION,  
+SEVERITY</p>
+ 
+  </dd> <dt>DEBIAN</dt> <dd><p> Valid properties: PRODUCT, PRIORITY</p>
+ 
+  </dd> <dt>ORACLE_LINUX</dt> <dd><p> Valid properties: PRODUCT,  
+CLASSIFICATION, SEVERITY</p>
+ 
+  </dd> <dt>REDHAT_ENTERPRISE_LINUX</dt> <dd><p> Valid properties: PRODUCT,  
+CLASSIFICATION, SEVERITY</p>
+ 
+  </dd> <dt>SUSE</dt> <dd><p> Valid properties: PRODUCT, CLASSIFICATION,  
+SEVERITY</p>
+ 
+  </dd> <dt>UBUNTU</dt> <dd><p> Valid properties: PRODUCT, PRIORITY</p>
+ 
+  </dd> <dt>WINDOWS</dt> <dd><p> Valid properties: PRODUCT, PRODUCT_FAMILY,  
+CLASSIFICATION, MSRC_SEVERITY</p>
+ 
+  </dd> </dl></p>
+
+<h3 class="function"><a name="describe_patch_properties-3">describe_patch_properties/3</a></h3>
+<div class="spec">
+<p><tt>describe_patch_properties(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_sessions-2">describe_sessions/2</a></h3>
+<div class="spec">
+<p><tt>describe_sessions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of all active sessions (both connected and
+  disconnected) or terminated sessions from the past 30 days.</p>
+
+<h3 class="function"><a name="describe_sessions-3">describe_sessions/3</a></h3>
+<div class="spec">
+<p><tt>describe_sessions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_automation_execution-2">get_automation_execution/2</a></h3>
+<div class="spec">
+<p><tt>get_automation_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get detailed information about a particular Automation execution.</p>
+
+<h3 class="function"><a name="get_automation_execution-3">get_automation_execution/3</a></h3>
+<div class="spec">
+<p><tt>get_automation_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_calendar_state-2">get_calendar_state/2</a></h3>
+<div class="spec">
+<p><tt>get_calendar_state(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the state of the AWS Systems Manager Change Calendar at an  
+optional, specified time.</p>
+ 
+  <p>If you specify a time, <code>GetCalendarState</code> returns the state of the
+  calendar at a specific time, and returns the next time that the Change
+  Calendar state will transition. If you do not specify a time,
+  <code>GetCalendarState</code> assumes the current time. Change Calendar entries have
+  two possible states: <code>OPEN</code> or <code>CLOSED</code>.</p>
+ 
+  <p>If you specify more than one calendar in a request, the command returns
+  the status of <code>OPEN</code> only if all calendars in the request are open. If one
+  or more calendars in the request are closed, the status returned is
+  <code>CLOSED</code>.</p>
+ 
+  For more information about Systems Manager Change Calendar, see AWS
+  Systems Manager Change Calendar in the AWS Systems Manager User Guide.</p>
+
+<h3 class="function"><a name="get_calendar_state-3">get_calendar_state/3</a></h3>
+<div class="spec">
+<p><tt>get_calendar_state(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_command_invocation-2">get_command_invocation/2</a></h3>
+<div class="spec">
+<p><tt>get_command_invocation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns detailed information about command execution for an
+  invocation or plugin.</p>
+
+<h3 class="function"><a name="get_command_invocation-3">get_command_invocation/3</a></h3>
+<div class="spec">
+<p><tt>get_command_invocation(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_connection_status-2">get_connection_status/2</a></h3>
+<div class="spec">
+<p><tt>get_connection_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the Session Manager connection status for an instance to
+  determine whether it is running and ready to receive Session Manager
+  connections.</p>
+
+<h3 class="function"><a name="get_connection_status-3">get_connection_status/3</a></h3>
+<div class="spec">
+<p><tt>get_connection_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_default_patch_baseline-2">get_default_patch_baseline/2</a></h3>
+<div class="spec">
+<p><tt>get_default_patch_baseline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the default patch baseline.</p>
+ 
+  <p>Note that Systems Manager supports creating multiple default patch  
+baselines. For example, you can create a default patch baseline for each  
+operating system.</p>
+ 
+  If you do not specify an operating system value, the default patch
+  baseline for Windows is returned.</p>
+
+<h3 class="function"><a name="get_default_patch_baseline-3">get_default_patch_baseline/3</a></h3>
+<div class="spec">
+<p><tt>get_default_patch_baseline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployable_patch_snapshot_for_instance-2">get_deployable_patch_snapshot_for_instance/2</a></h3>
+<div class="spec">
+<p><tt>get_deployable_patch_snapshot_for_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the current snapshot for the patch baseline the instance  
+uses.</p>
+ 
+  This API is primarily used by the AWS-RunPatchBaseline Systems Manager
+  document.</p>
+
+<h3 class="function"><a name="get_deployable_patch_snapshot_for_instance-3">get_deployable_patch_snapshot_for_instance/3</a></h3>
+<div class="spec">
+<p><tt>get_deployable_patch_snapshot_for_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_document-2">get_document/2</a></h3>
+<div class="spec">
+<p><tt>get_document(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the contents of the specified Systems Manager document.</p>
+
+<h3 class="function"><a name="get_document-3">get_document/3</a></h3>
+<div class="spec">
+<p><tt>get_document(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_inventory-2">get_inventory/2</a></h3>
+<div class="spec">
+<p><tt>get_inventory(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Query inventory information.</p>
+
+<h3 class="function"><a name="get_inventory-3">get_inventory/3</a></h3>
+<div class="spec">
+<p><tt>get_inventory(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_inventory_schema-2">get_inventory_schema/2</a></h3>
+<div class="spec">
+<p><tt>get_inventory_schema(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Return a list of inventory type names for the account, or return a
+  list of attribute names for a specific Inventory item type.</p>
+
+<h3 class="function"><a name="get_inventory_schema-3">get_inventory_schema/3</a></h3>
+<div class="spec">
+<p><tt>get_inventory_schema(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_maintenance_window-2">get_maintenance_window/2</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a maintenance window.</p>
+
+<h3 class="function"><a name="get_maintenance_window-3">get_maintenance_window/3</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_maintenance_window_execution-2">get_maintenance_window_execution/2</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves details about a specific a maintenance window execution.</p>
+
+<h3 class="function"><a name="get_maintenance_window_execution-3">get_maintenance_window_execution/3</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_maintenance_window_execution_task-2">get_maintenance_window_execution_task/2</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window_execution_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the details about a specific task run as part of a
+  maintenance window execution.</p>
+
+<h3 class="function"><a name="get_maintenance_window_execution_task-3">get_maintenance_window_execution_task/3</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window_execution_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_maintenance_window_execution_task_invocation-2">get_maintenance_window_execution_task_invocation/2</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window_execution_task_invocation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a specific task running on a specific
+  target.</p>
+
+<h3 class="function"><a name="get_maintenance_window_execution_task_invocation-3">get_maintenance_window_execution_task_invocation/3</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window_execution_task_invocation(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_maintenance_window_task-2">get_maintenance_window_task/2</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tasks in a maintenance window.</p>
+
+<h3 class="function"><a name="get_maintenance_window_task-3">get_maintenance_window_task/3</a></h3>
+<div class="spec">
+<p><tt>get_maintenance_window_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_ops_item-2">get_ops_item/2</a></h3>
+<div class="spec">
+<p><tt>get_ops_item(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Get information about an OpsItem by using the ID.</p>
+ 
+  <p>You must have permission in AWS Identity and Access Management (IAM) to  
+view information about an OpsItem. For more information, see Getting  
+started with OpsCenter in the AWS Systems Manager User Guide.</p>
+ 
+  Operations engineers and IT professionals use OpsCenter to view,
+  investigate, and remediate operational issues impacting the performance
+  and health of their AWS resources. For more information, see AWS Systems
+  Manager OpsCenter in the AWS Systems Manager User Guide.</p>
+
+<h3 class="function"><a name="get_ops_item-3">get_ops_item/3</a></h3>
+<div class="spec">
+<p><tt>get_ops_item(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_ops_summary-2">get_ops_summary/2</a></h3>
+<div class="spec">
+<p><tt>get_ops_summary(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>View a summary of OpsItems based on specified filters and
+  aggregators.</p>
+
+<h3 class="function"><a name="get_ops_summary-3">get_ops_summary/3</a></h3>
+<div class="spec">
+<p><tt>get_ops_summary(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_parameter-2">get_parameter/2</a></h3>
+<div class="spec">
+<p><tt>get_parameter(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Get information about a parameter by using the parameter name.</p>
+ 
+  Don't confuse this API action with the <code>GetParameters</code> API action.</p>
+
+<h3 class="function"><a name="get_parameter-3">get_parameter/3</a></h3>
+<div class="spec">
+<p><tt>get_parameter(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_parameter_history-2">get_parameter_history/2</a></h3>
+<div class="spec">
+<p><tt>get_parameter_history(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the history of all changes to a parameter.</p>
+
+<h3 class="function"><a name="get_parameter_history-3">get_parameter_history/3</a></h3>
+<div class="spec">
+<p><tt>get_parameter_history(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_parameters-2">get_parameters/2</a></h3>
+<div class="spec">
+<p><tt>get_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Get details of a parameter.</p>
+ 
+  Don't confuse this API action with the <code>GetParameter</code> API action.</p>
+
+<h3 class="function"><a name="get_parameters-3">get_parameters/3</a></h3>
+<div class="spec">
+<p><tt>get_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_parameters_by_path-2">get_parameters_by_path/2</a></h3>
+<div class="spec">
+<p><tt>get_parameters_by_path(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieve information about one or more parameters in a specific  
+hierarchy.</p>
+ 
+  Request results are returned on a best-effort basis. If you specify
+  <code>MaxResults</code> in the request, the response includes information up to the
+  limit specified. The number of items returned, however, can be between
+  zero and the value of <code>MaxResults</code>. If the service reaches an internal
+  limit while processing the results, it stops the operation and returns the
+  matching values up to that point and a <code>NextToken</code>. You can specify the
+  <code>NextToken</code> in a subsequent call to get the next set of results.</p>
+
+<h3 class="function"><a name="get_parameters_by_path-3">get_parameters_by_path/3</a></h3>
+<div class="spec">
+<p><tt>get_parameters_by_path(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_patch_baseline-2">get_patch_baseline/2</a></h3>
+<div class="spec">
+<p><tt>get_patch_baseline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a patch baseline.</p>
+
+<h3 class="function"><a name="get_patch_baseline-3">get_patch_baseline/3</a></h3>
+<div class="spec">
+<p><tt>get_patch_baseline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_patch_baseline_for_patch_group-2">get_patch_baseline_for_patch_group/2</a></h3>
+<div class="spec">
+<p><tt>get_patch_baseline_for_patch_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the patch baseline that should be used for the specified
+  patch group.</p>
+
+<h3 class="function"><a name="get_patch_baseline_for_patch_group-3">get_patch_baseline_for_patch_group/3</a></h3>
+<div class="spec">
+<p><tt>get_patch_baseline_for_patch_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_service_setting-2">get_service_setting/2</a></h3>
+<div class="spec">
+<p><tt>get_service_setting(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p><code>ServiceSetting</code> is an account-level setting for an AWS service.</p>
+ 
+  <p>This setting defines how a user interacts with or uses a service or a  
+feature of a service. For example, if an AWS service charges money to the  
+account based on feature or service usage, then the AWS service team might  
+create a default setting of "false". This means the user can't use this  
+feature unless they change the setting to "true" and intentionally opt in  
+for a paid feature.</p>
+ 
+  <p>Services map a <code>SettingId</code> object to a setting value. AWS services teams
+  define the default value for a <code>SettingId</code>. You can't create a new
+  <code>SettingId</code>, but you can overwrite the default value if you have the
+  <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+  <code>UpdateServiceSetting</code> API action to change the default setting. Or use
+  the <code>ResetServiceSetting</code> to change the value back to the original value  
+defined by the AWS service team.</p>
+ 
+  Query the current service setting for the account.</p>
+
+<h3 class="function"><a name="get_service_setting-3">get_service_setting/3</a></h3>
+<div class="spec">
+<p><tt>get_service_setting(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="label_parameter_version-2">label_parameter_version/2</a></h3>
+<div class="spec">
+<p><tt>label_parameter_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>A parameter label is a user-defined alias to help you manage  
+different versions of a parameter.</p>
+ 
+  <p>When you modify a parameter, Systems Manager automatically saves a new  
+version and increments the version number by one. A label can help you  
+remember the purpose of a parameter when there are multiple versions.</p>
+ 
+  <p>Parameter labels have the following requirements and restrictions.</p>
+ 
+  <ul> <li><p> A version of a parameter can have a maximum of 10 labels.</p>
+ 
+  </li> <li><p> You can't attach the same label to different versions of the  
+same parameter. For example, if version 1 has the label Production, then  
+you can't attach Production to version 2.</p>
+ 
+  </li> <li><p> You can move a label from one version of a parameter to  
+another.</p>
+ 
+  </li> <li><p> You can't create a label when you create a new parameter. You  
+must attach a label to a specific version of a parameter.</p>
+ 
+  </li> <li><p> You can't delete a parameter label. If you no longer want to  
+use a parameter label, then you must move it to a different version of a  
+parameter.</p>
+ 
+  </li> <li><p> A label can have a maximum of 100 characters.</p>
+ 
+  </li> <li><p> Labels can contain letters (case sensitive), numbers, periods  
+(.), hyphens (-), or underscores (_).</p>
+ 
+  </li> <li><p> Labels can't begin with a number, "aws," or "ssm" (not case  
+sensitive). If a label fails to meet these requirements, then the label is  
+not associated with a parameter and the system displays it in the list of  
+InvalidLabels.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="label_parameter_version-3">label_parameter_version/3</a></h3>
+<div class="spec">
+<p><tt>label_parameter_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_association_versions-2">list_association_versions/2</a></h3>
+<div class="spec">
+<p><tt>list_association_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves all versions of an association for a specific association
+  ID.</p>
+
+<h3 class="function"><a name="list_association_versions-3">list_association_versions/3</a></h3>
+<div class="spec">
+<p><tt>list_association_versions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_associations-2">list_associations/2</a></h3>
+<div class="spec">
+<p><tt>list_associations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns all State Manager associations in the current AWS account and  
+Region.</p>
+ 
+  You can limit the results to a specific State Manager association document
+  or instance by specifying a filter.</p>
+
+<h3 class="function"><a name="list_associations-3">list_associations/3</a></h3>
+<div class="spec">
+<p><tt>list_associations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_command_invocations-2">list_command_invocations/2</a></h3>
+<div class="spec">
+<p><tt>list_command_invocations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>An invocation is copy of a command sent to a specific instance.</p>
+ 
+  A command can apply to one or more instances. A command invocation applies
+  to one instance. For example, if a user runs SendCommand against three
+  instances, then a command invocation is created for each requested
+  instance ID. ListCommandInvocations provide status about command
+  execution.</p>
+
+<h3 class="function"><a name="list_command_invocations-3">list_command_invocations/3</a></h3>
+<div class="spec">
+<p><tt>list_command_invocations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_commands-2">list_commands/2</a></h3>
+<div class="spec">
+<p><tt>list_commands(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the commands requested by users of the AWS account.</p>
+
+<h3 class="function"><a name="list_commands-3">list_commands/3</a></h3>
+<div class="spec">
+<p><tt>list_commands(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_compliance_items-2">list_compliance_items/2</a></h3>
+<div class="spec">
+<p><tt>list_compliance_items(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>For a specified resource ID, this API action returns a list of  
+compliance statuses for different resource types.</p>
+ 
+  Currently, you can only specify one resource ID per call. List results
+  depend on the criteria specified in the filter.</p>
+
+<h3 class="function"><a name="list_compliance_items-3">list_compliance_items/3</a></h3>
+<div class="spec">
+<p><tt>list_compliance_items(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_compliance_summaries-2">list_compliance_summaries/2</a></h3>
+<div class="spec">
+<p><tt>list_compliance_summaries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a summary count of compliant and non-compliant resources for  
+a compliance type.</p>
+ 
+  For example, this call can return State Manager associations, patches, or
+  custom compliance types according to the filter criteria that you specify.</p>
+
+<h3 class="function"><a name="list_compliance_summaries-3">list_compliance_summaries/3</a></h3>
+<div class="spec">
+<p><tt>list_compliance_summaries(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_document_versions-2">list_document_versions/2</a></h3>
+<div class="spec">
+<p><tt>list_document_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List all versions for a document.</p>
+
+<h3 class="function"><a name="list_document_versions-3">list_document_versions/3</a></h3>
+<div class="spec">
+<p><tt>list_document_versions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_documents-2">list_documents/2</a></h3>
+<div class="spec">
+<p><tt>list_documents(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns all Systems Manager (SSM) documents in the current AWS  
+account and Region.</p>
+ 
+  You can limit the results of this request by using a filter.</p>
+
+<h3 class="function"><a name="list_documents-3">list_documents/3</a></h3>
+<div class="spec">
+<p><tt>list_documents(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_inventory_entries-2">list_inventory_entries/2</a></h3>
+<div class="spec">
+<p><tt>list_inventory_entries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>A list of inventory items returned by the request.</p>
+
+<h3 class="function"><a name="list_inventory_entries-3">list_inventory_entries/3</a></h3>
+<div class="spec">
+<p><tt>list_inventory_entries(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resource_compliance_summaries-2">list_resource_compliance_summaries/2</a></h3>
+<div class="spec">
+<p><tt>list_resource_compliance_summaries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a resource-level summary count.</p>
+ 
+  The summary includes information about compliant and non-compliant
+  statuses and detailed compliance-item severity counts, according to the
+  filter criteria you specify.</p>
+
+<h3 class="function"><a name="list_resource_compliance_summaries-3">list_resource_compliance_summaries/3</a></h3>
+<div class="spec">
+<p><tt>list_resource_compliance_summaries(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resource_data_sync-2">list_resource_data_sync/2</a></h3>
+<div class="spec">
+<p><tt>list_resource_data_sync(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists your resource data sync configurations.</p>
+ 
+  <p>Includes information about the last time a sync attempted to start, the  
+last sync status, and the last time a sync successfully completed.</p>
+ 
+  The number of sync configurations might be too large to return using a
+  single call to <code>ListResourceDataSync</code>. You can limit the number of sync
+  configurations returned by using the <code>MaxResults</code> parameter. To determine
+  whether there are more sync configurations to list, check the value of
+  <code>NextToken</code> in the output. If there are more sync configurations to list,
+  you can request them by specifying the <code>NextToken</code> returned in the call to
+  the parameter of a subsequent call.</p>
+
+<h3 class="function"><a name="list_resource_data_sync-3">list_resource_data_sync/3</a></h3>
+<div class="spec">
+<p><tt>list_resource_data_sync(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the tags assigned to the specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="modify_document_permission-2">modify_document_permission/2</a></h3>
+<div class="spec">
+<p><tt>modify_document_permission(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Shares a Systems Manager document publicly or privately.</p>
+ 
+  If you share a document privately, you must specify the AWS user account
+  IDs for those people who can use the document. If you share a document
+  publicly, you must specify All as the account ID.</p>
+
+<h3 class="function"><a name="modify_document_permission-3">modify_document_permission/3</a></h3>
+<div class="spec">
+<p><tt>modify_document_permission(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_compliance_items-2">put_compliance_items/2</a></h3>
+<div class="spec">
+<p><tt>put_compliance_items(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers a compliance type and other compliance details on a  
+designated resource.</p>
+ 
+  <p>This action lets you register custom compliance details with a resource.  
+This call overwrites existing compliance information on the resource, so  
+you must provide a full list of compliance items each time that you send  
+the request.</p>
+ 
+  <p>ComplianceType can be one of the following:</p>
+ 
+  <ul> <li><p> ExecutionId: The execution ID when the patch, association, or  
+custom compliance item was applied.</p>
+ 
+  </li> <li><p> ExecutionType: Specify patch, association, or Custom:<code>string</code>.</p>
+ 
+  </li> <li><p> ExecutionTime. The time the patch, association, or custom  
+compliance item was applied to the instance.</p>
+ 
+  </li> <li><p> Id: The patch, association, or custom compliance ID.</p>
+ 
+  </li> <li><p> Title: A title.</p>
+ 
+  </li> <li><p> Status: The status of the compliance item. For example,
+  <code>approved</code> for patches, or <code>Failed</code> for associations.</p>
+ 
+  </li> <li><p> Severity: A patch severity. For example, <code>critical</code>.</p>
+ 
+  </li> <li><p> DocumentName: A SSM document name. For example,  
+AWS-RunPatchBaseline.</p>
+ 
+  </li> <li><p> DocumentVersion: An SSM document version number. For example,  
+4.</p>
+ 
+  </li> <li><p> Classification: A patch classification. For example, <code>security
+  updates</code>.</p>
+ 
+  </li> <li><p> PatchBaselineId: A patch baseline ID.</p>
+ 
+  </li> <li><p> PatchSeverity: A patch severity. For example, <code>Critical</code>.</p>
+ 
+  </li> <li><p> PatchState: A patch state. For example,
+  <code>InstancesWithFailedPatches</code>.</p>
+ 
+  </li> <li><p> PatchGroup: The name of a patch group.</p>
+ 
+  </li> <li><p> InstalledTime: The time the association, patch, or custom  
+compliance item was applied to the resource. Specify the time by using the  
+following format: yyyy-MM-dd'T'HH:mm:ss'Z'</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="put_compliance_items-3">put_compliance_items/3</a></h3>
+<div class="spec">
+<p><tt>put_compliance_items(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_inventory-2">put_inventory/2</a></h3>
+<div class="spec">
+<p><tt>put_inventory(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Bulk update custom inventory items on one more instance.</p>
+ 
+  The request adds an inventory item, if it doesn't already exist, or
+  updates an inventory item, if it does exist.</p>
+
+<h3 class="function"><a name="put_inventory-3">put_inventory/3</a></h3>
+<div class="spec">
+<p><tt>put_inventory(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_parameter-2">put_parameter/2</a></h3>
+<div class="spec">
+<p><tt>put_parameter(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Add a parameter to the system.</p>
+
+<h3 class="function"><a name="put_parameter-3">put_parameter/3</a></h3>
+<div class="spec">
+<p><tt>put_parameter(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_default_patch_baseline-2">register_default_patch_baseline/2</a></h3>
+<div class="spec">
+<p><tt>register_default_patch_baseline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Defines the default patch baseline for the relevant operating system.</p>
+ 
+  To reset the AWS predefined patch baseline as the default, specify the
+  full patch baseline ARN as the baseline ID value. For example, for CentOS,
+  specify
+  <code>arn:aws:ssm:us-east-2:733109147000:patchbaseline/pb-0574b43a65ea646ed</code>
+  instead of <code>pb-0574b43a65ea646ed</code>.</p>
+
+<h3 class="function"><a name="register_default_patch_baseline-3">register_default_patch_baseline/3</a></h3>
+<div class="spec">
+<p><tt>register_default_patch_baseline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_patch_baseline_for_patch_group-2">register_patch_baseline_for_patch_group/2</a></h3>
+<div class="spec">
+<p><tt>register_patch_baseline_for_patch_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Registers a patch baseline for a patch group.</p>
+
+<h3 class="function"><a name="register_patch_baseline_for_patch_group-3">register_patch_baseline_for_patch_group/3</a></h3>
+<div class="spec">
+<p><tt>register_patch_baseline_for_patch_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_target_with_maintenance_window-2">register_target_with_maintenance_window/2</a></h3>
+<div class="spec">
+<p><tt>register_target_with_maintenance_window(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Registers a target with a maintenance window.</p>
+
+<h3 class="function"><a name="register_target_with_maintenance_window-3">register_target_with_maintenance_window/3</a></h3>
+<div class="spec">
+<p><tt>register_target_with_maintenance_window(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_task_with_maintenance_window-2">register_task_with_maintenance_window/2</a></h3>
+<div class="spec">
+<p><tt>register_task_with_maintenance_window(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds a new task to a maintenance window.</p>
+
+<h3 class="function"><a name="register_task_with_maintenance_window-3">register_task_with_maintenance_window/3</a></h3>
+<div class="spec">
+<p><tt>register_task_with_maintenance_window(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="remove_tags_from_resource-2">remove_tags_from_resource/2</a></h3>
+<div class="spec">
+<p><tt>remove_tags_from_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tag keys from the specified resource.</p>
+
+<h3 class="function"><a name="remove_tags_from_resource-3">remove_tags_from_resource/3</a></h3>
+<div class="spec">
+<p><tt>remove_tags_from_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reset_service_setting-2">reset_service_setting/2</a></h3>
+<div class="spec">
+<p><tt>reset_service_setting(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p><code>ServiceSetting</code> is an account-level setting for an AWS service.</p>
+ 
+  <p>This setting defines how a user interacts with or uses a service or a  
+feature of a service. For example, if an AWS service charges money to the  
+account based on feature or service usage, then the AWS service team might  
+create a default setting of "false". This means the user can't use this  
+feature unless they change the setting to "true" and intentionally opt in  
+for a paid feature.</p>
+ 
+  <p>Services map a <code>SettingId</code> object to a setting value. AWS services teams
+  define the default value for a <code>SettingId</code>. You can't create a new
+  <code>SettingId</code>, but you can overwrite the default value if you have the
+  <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+  <code>GetServiceSetting</code> API action to view the current value. Use the
+  <code>UpdateServiceSetting</code> API action to change the default setting.</p>
+ 
+  Reset the service setting for the account to the default value as
+  provisioned by the AWS service team.</p>
+
+<h3 class="function"><a name="reset_service_setting-3">reset_service_setting/3</a></h3>
+<div class="spec">
+<p><tt>reset_service_setting(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="resume_session-2">resume_session/2</a></h3>
+<div class="spec">
+<p><tt>resume_session(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Reconnects a session to an instance after it has been disconnected.</p>
+ 
+  <p>Connections can be resumed for disconnected sessions, but not terminated  
+sessions.</p>
+ 
+  This command is primarily for use by client machines to automatically
+  reconnect during intermittent network issues. It is not intended for any
+  other use.</p>
+
+<h3 class="function"><a name="resume_session-3">resume_session/3</a></h3>
+<div class="spec">
+<p><tt>resume_session(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_automation_signal-2">send_automation_signal/2</a></h3>
+<div class="spec">
+<p><tt>send_automation_signal(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Sends a signal to an Automation execution to change the current
+  behavior or status of the execution.</p>
+
+<h3 class="function"><a name="send_automation_signal-3">send_automation_signal/3</a></h3>
+<div class="spec">
+<p><tt>send_automation_signal(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_command-2">send_command/2</a></h3>
+<div class="spec">
+<p><tt>send_command(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Runs commands on one or more managed instances.</p>
+
+<h3 class="function"><a name="send_command-3">send_command/3</a></h3>
+<div class="spec">
+<p><tt>send_command(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_associations_once-2">start_associations_once/2</a></h3>
+<div class="spec">
+<p><tt>start_associations_once(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Use this API action to run an association immediately and only one  
+time.</p>
+ 
+  This action can be helpful when troubleshooting associations.</p>
+
+<h3 class="function"><a name="start_associations_once-3">start_associations_once/3</a></h3>
+<div class="spec">
+<p><tt>start_associations_once(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_automation_execution-2">start_automation_execution/2</a></h3>
+<div class="spec">
+<p><tt>start_automation_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Initiates execution of an Automation document.</p>
+
+<h3 class="function"><a name="start_automation_execution-3">start_automation_execution/3</a></h3>
+<div class="spec">
+<p><tt>start_automation_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_session-2">start_session/2</a></h3>
+<div class="spec">
+<p><tt>start_session(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Initiates a connection to a target (for example, an instance) for a  
+Session Manager session.</p>
+ 
+  <p>Returns a URL and token that can be used to open a WebSocket connection  
+for sending input and receiving outputs.</p>
+ 
+  <p>AWS CLI usage: <code>start-session</code> is an interactive command that requires the  
+Session Manager plugin to be installed on the client machine making the  
+call. For information, see Install the Session Manager plugin for the AWS  
+CLI in the AWS Systems Manager User Guide.</p>
+ 
+  AWS Tools for PowerShell usage: Start-SSMSession is not currently
+  supported by AWS Tools for PowerShell on Windows local machines.</p>
+
+<h3 class="function"><a name="start_session-3">start_session/3</a></h3>
+<div class="spec">
+<p><tt>start_session(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_automation_execution-2">stop_automation_execution/2</a></h3>
+<div class="spec">
+<p><tt>stop_automation_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stop an Automation that is currently running.</p>
+
+<h3 class="function"><a name="stop_automation_execution-3">stop_automation_execution/3</a></h3>
+<div class="spec">
+<p><tt>stop_automation_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="terminate_session-2">terminate_session/2</a></h3>
+<div class="spec">
+<p><tt>terminate_session(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Permanently ends a session and closes the data connection between the  
+Session Manager client and SSM Agent on the instance.</p>
+ 
+  A terminated session cannot be resumed.</p>
+
+<h3 class="function"><a name="terminate_session-3">terminate_session/3</a></h3>
+<div class="spec">
+<p><tt>terminate_session(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_association-2">update_association/2</a></h3>
+<div class="spec">
+<p><tt>update_association(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an association.</p>
+ 
+  <p>You can update the association name and version, the document version,  
+schedule, parameters, and Amazon S3 output.</p>
+ 
+  <p>In order to call this API action, your IAM user account, group, or role
+  must be configured with permission to call the <code>DescribeAssociation</code> API
+  action. If you don't have permission to call DescribeAssociation, then you
+  receive the following error: <code>An error occurred (AccessDeniedException)
+  when calling the UpdateAssociation operation: User: &lt;user_arn&gt; is not
+  authorized to perform: ssm:DescribeAssociation on resource:
+  &lt;resource_arn&gt;</code></p>
+ 
+  When you update an association, the association immediately runs against
+  the specified targets.</p>
+
+<h3 class="function"><a name="update_association-3">update_association/3</a></h3>
+<div class="spec">
+<p><tt>update_association(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_association_status-2">update_association_status/2</a></h3>
+<div class="spec">
+<p><tt>update_association_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the status of the Systems Manager document associated with
+  the specified instance.</p>
+
+<h3 class="function"><a name="update_association_status-3">update_association_status/3</a></h3>
+<div class="spec">
+<p><tt>update_association_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_document-2">update_document/2</a></h3>
+<div class="spec">
+<p><tt>update_document(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates one or more values for an SSM document.</p>
+
+<h3 class="function"><a name="update_document-3">update_document/3</a></h3>
+<div class="spec">
+<p><tt>update_document(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_document_default_version-2">update_document_default_version/2</a></h3>
+<div class="spec">
+<p><tt>update_document_default_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Set the default version of a document.</p>
+
+<h3 class="function"><a name="update_document_default_version-3">update_document_default_version/3</a></h3>
+<div class="spec">
+<p><tt>update_document_default_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_maintenance_window-2">update_maintenance_window/2</a></h3>
+<div class="spec">
+<p><tt>update_maintenance_window(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an existing maintenance window.</p>
+ 
+  <p>Only specified parameters are modified.</p>
+ 
+  The value you specify for <code>Duration</code> determines the specific end time for
+  the maintenance window based on the time it begins. No maintenance window
+  tasks are permitted to start after the resulting endtime minus the number
+  of hours you specify for <code>Cutoff</code>. For example, if the maintenance window
+  starts at 3 PM, the duration is three hours, and the value you specify for
+  <code>Cutoff</code> is one hour, no maintenance window tasks can start after 5 PM.</p>
+
+<h3 class="function"><a name="update_maintenance_window-3">update_maintenance_window/3</a></h3>
+<div class="spec">
+<p><tt>update_maintenance_window(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_maintenance_window_target-2">update_maintenance_window_target/2</a></h3>
+<div class="spec">
+<p><tt>update_maintenance_window_target(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Modifies the target of an existing maintenance window.</p>
+ 
+  <p>You can change the following:</p>
+ 
+  <ul> <li><p> Name</p>
+ 
+  </li> <li><p> Description</p>
+ 
+  </li> <li><p> Owner</p>
+ 
+  </li> <li><p> IDs for an ID target</p>
+ 
+  </li> <li><p> Tags for a Tag target</p>
+ 
+  </li> <li><p> From any supported tag type to another. The three supported tag
+  types are ID target, Tag target, and resource group. For more information,
+  see <code>Target</code>.</p>
+ 
+  </li> </ul> If a parameter is null, then the corresponding field is not
+  modified.</p>
+
+<h3 class="function"><a name="update_maintenance_window_target-3">update_maintenance_window_target/3</a></h3>
+<div class="spec">
+<p><tt>update_maintenance_window_target(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_maintenance_window_task-2">update_maintenance_window_task/2</a></h3>
+<div class="spec">
+<p><tt>update_maintenance_window_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Modifies a task assigned to a maintenance window.</p>
+ 
+  <p>You can't change the task type, but you can change the following values:</p>
+ 
+  <ul> <li><p> TaskARN. For example, you can change a RUN_COMMAND task from  
+AWS-RunPowerShellScript to AWS-RunShellScript.</p>
+ 
+  </li> <li><p> ServiceRoleArn</p>
+ 
+  </li> <li><p> TaskInvocationParameters</p>
+ 
+  </li> <li><p> Priority</p>
+ 
+  </li> <li><p> MaxConcurrency</p>
+ 
+  </li> <li><p> MaxErrors</p>
+ 
+  </li> </ul><p> If the value for a parameter in <code>UpdateMaintenanceWindowTask</code>
+  is null, then the corresponding field is not modified. If you set
+  <code>Replace</code> to true, then all fields required by the
+  <code>RegisterTaskWithMaintenanceWindow</code> action are required for this request.  
+Optional fields that aren't specified are set to null.</p>
+ 
+  When you update a maintenance window task that has options specified in
+  <code>TaskInvocationParameters</code>, you must provide again all the
+  <code>TaskInvocationParameters</code> values that you want to retain. The values you
+  do not specify again are removed. For example, suppose that when you
+  registered a Run Command task, you specified <code>TaskInvocationParameters</code>
+  values for <code>Comment</code>, <code>NotificationConfig</code>, and <code>OutputS3BucketName</code>. If
+  you update the maintenance window task and specify only a different
+  <code>OutputS3BucketName</code> value, the values for <code>Comment</code> and
+  <code>NotificationConfig</code> are removed.</p>
+
+<h3 class="function"><a name="update_maintenance_window_task-3">update_maintenance_window_task/3</a></h3>
+<div class="spec">
+<p><tt>update_maintenance_window_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_managed_instance_role-2">update_managed_instance_role/2</a></h3>
+<div class="spec">
+<p><tt>update_managed_instance_role(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Changes the Amazon Identity and Access Management (IAM) role that is  
+assigned to the on-premises instance or virtual machines (VM).</p>
+ 
+  IAM roles are first assigned to these hybrid instances during the
+  activation process. For more information, see <code>CreateActivation</code>.</p>
+
+<h3 class="function"><a name="update_managed_instance_role-3">update_managed_instance_role/3</a></h3>
+<div class="spec">
+<p><tt>update_managed_instance_role(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_ops_item-2">update_ops_item/2</a></h3>
+<div class="spec">
+<p><tt>update_ops_item(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Edit or change an OpsItem.</p>
+ 
+  <p>You must have permission in AWS Identity and Access Management (IAM) to  
+update an OpsItem. For more information, see Getting started with  
+OpsCenter in the AWS Systems Manager User Guide.</p>
+ 
+  Operations engineers and IT professionals use OpsCenter to view,
+  investigate, and remediate operational issues impacting the performance
+  and health of their AWS resources. For more information, see AWS Systems
+  Manager OpsCenter in the AWS Systems Manager User Guide.</p>
+
+<h3 class="function"><a name="update_ops_item-3">update_ops_item/3</a></h3>
+<div class="spec">
+<p><tt>update_ops_item(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_patch_baseline-2">update_patch_baseline/2</a></h3>
+<div class="spec">
+<p><tt>update_patch_baseline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Modifies an existing patch baseline.</p>
+ 
+  <p>Fields not specified in the request are left unchanged.</p>
+ 
+  For information about valid key and value pairs in <code>PatchFilters</code> for each
+  supported operating system type, see PatchFilter.</p>
+
+<h3 class="function"><a name="update_patch_baseline-3">update_patch_baseline/3</a></h3>
+<div class="spec">
+<p><tt>update_patch_baseline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_resource_data_sync-2">update_resource_data_sync/2</a></h3>
+<div class="spec">
+<p><tt>update_resource_data_sync(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Update a resource data sync.</p>
+ 
+  <p>After you create a resource data sync for a Region, you can't change the  
+account options for that sync. For example, if you create a sync in the  
+us-east-2 (Ohio) Region and you choose the Include only the current  
+account option, you can't edit that sync later and choose the Include all  
+accounts from my AWS Organizations configuration option. Instead, you must  
+delete the first resource data sync, and create a new one.</p>
+ 
+  This API action only supports a resource data sync that was created with a
+  SyncFromSource <code>SyncType</code>.</p>
+
+<h3 class="function"><a name="update_resource_data_sync-3">update_resource_data_sync/3</a></h3>
+<div class="spec">
+<p><tt>update_resource_data_sync(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_service_setting-2">update_service_setting/2</a></h3>
+<div class="spec">
+<p><tt>update_service_setting(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p><code>ServiceSetting</code> is an account-level setting for an AWS service.</p>
+ 
+  <p>This setting defines how a user interacts with or uses a service or a  
+feature of a service. For example, if an AWS service charges money to the  
+account based on feature or service usage, then the AWS service team might  
+create a default setting of "false". This means the user can't use this  
+feature unless they change the setting to "true" and intentionally opt in  
+for a paid feature.</p>
+ 
+  <p>Services map a <code>SettingId</code> object to a setting value. AWS services teams
+  define the default value for a <code>SettingId</code>. You can't create a new
+  <code>SettingId</code>, but you can overwrite the default value if you have the
+  <code>ssm:UpdateServiceSetting</code> permission for the setting. Use the
+  <code>GetServiceSetting</code> API action to view the current value. Or, use the
+  <code>ResetServiceSetting</code> to change the value back to the original value  
+defined by the AWS service team.</p>
+ 
+  Update the service setting for the account.</p>
+
+<h3 class="function"><a name="update_service_setting-3">update_service_setting/3</a></h3>
+<div class="spec">
+<p><tt>update_service_setting(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

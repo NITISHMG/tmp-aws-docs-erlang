@@ -1,0 +1,1552 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_cloudfront</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_cloudfront</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon CloudFront.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon CloudFront</p>
+ 
+  <p>This is the Amazon CloudFront API Reference.</p>
+ 
+  This guide is for developers who need detailed information about
+  CloudFront API actions, data types, and errors. For detailed information
+  about CloudFront features, see the Amazon CloudFront Developer Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_cache_policy-2">create_cache_policy/2</a></td><td>Creates a cache policy.</td></tr>
+<tr><td valign="top"><a href="#create_cache_policy-3">create_cache_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_cloud_front_origin_access_identity-2">create_cloud_front_origin_access_identity/2</a></td><td>Creates a new origin access identity.</td></tr>
+<tr><td valign="top"><a href="#create_cloud_front_origin_access_identity-3">create_cloud_front_origin_access_identity/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_distribution-2">create_distribution/2</a></td><td>Creates a new web distribution.</td></tr>
+<tr><td valign="top"><a href="#create_distribution-3">create_distribution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_distribution_with_tags-2">create_distribution_with_tags/2</a></td><td>Create a new distribution with tags.</td></tr>
+<tr><td valign="top"><a href="#create_distribution_with_tags-3">create_distribution_with_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_field_level_encryption_config-2">create_field_level_encryption_config/2</a></td><td>Create a new field-level encryption configuration.</td></tr>
+<tr><td valign="top"><a href="#create_field_level_encryption_config-3">create_field_level_encryption_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_field_level_encryption_profile-2">create_field_level_encryption_profile/2</a></td><td>Create a field-level encryption profile.</td></tr>
+<tr><td valign="top"><a href="#create_field_level_encryption_profile-3">create_field_level_encryption_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_invalidation-3">create_invalidation/3</a></td><td>Create a new invalidation.</td></tr>
+<tr><td valign="top"><a href="#create_invalidation-4">create_invalidation/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_key_group-2">create_key_group/2</a></td><td>Creates a key group that you can use with CloudFront signed URLs and  
+signed cookies.</td></tr>
+<tr><td valign="top"><a href="#create_key_group-3">create_key_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_monitoring_subscription-3">create_monitoring_subscription/3</a></td><td>Enables additional CloudWatch metrics for the specified CloudFront  
+distribution.</td></tr>
+<tr><td valign="top"><a href="#create_monitoring_subscription-4">create_monitoring_subscription/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_origin_request_policy-2">create_origin_request_policy/2</a></td><td>Creates an origin request policy.</td></tr>
+<tr><td valign="top"><a href="#create_origin_request_policy-3">create_origin_request_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_public_key-2">create_public_key/2</a></td><td>Uploads a public key to CloudFront that you can use with signed URLs
+  and signed cookies, or with field-level encryption.</td></tr>
+<tr><td valign="top"><a href="#create_public_key-3">create_public_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_realtime_log_config-2">create_realtime_log_config/2</a></td><td>Creates a real-time log configuration.</td></tr>
+<tr><td valign="top"><a href="#create_realtime_log_config-3">create_realtime_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_streaming_distribution-2">create_streaming_distribution/2</a></td><td>Creates a new RTMP distribution.</td></tr>
+<tr><td valign="top"><a href="#create_streaming_distribution-3">create_streaming_distribution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_streaming_distribution_with_tags-2">create_streaming_distribution_with_tags/2</a></td><td>Create a new streaming distribution with tags.</td></tr>
+<tr><td valign="top"><a href="#create_streaming_distribution_with_tags-3">create_streaming_distribution_with_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_cache_policy-3">delete_cache_policy/3</a></td><td>Deletes a cache policy.</td></tr>
+<tr><td valign="top"><a href="#delete_cache_policy-4">delete_cache_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_cloud_front_origin_access_identity-3">delete_cloud_front_origin_access_identity/3</a></td><td>Delete an origin access identity.</td></tr>
+<tr><td valign="top"><a href="#delete_cloud_front_origin_access_identity-4">delete_cloud_front_origin_access_identity/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_distribution-3">delete_distribution/3</a></td><td>Delete a distribution.</td></tr>
+<tr><td valign="top"><a href="#delete_distribution-4">delete_distribution/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_field_level_encryption_config-3">delete_field_level_encryption_config/3</a></td><td>Remove a field-level encryption configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_field_level_encryption_config-4">delete_field_level_encryption_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_field_level_encryption_profile-3">delete_field_level_encryption_profile/3</a></td><td>Remove a field-level encryption profile.</td></tr>
+<tr><td valign="top"><a href="#delete_field_level_encryption_profile-4">delete_field_level_encryption_profile/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_key_group-3">delete_key_group/3</a></td><td>Deletes a key group.</td></tr>
+<tr><td valign="top"><a href="#delete_key_group-4">delete_key_group/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_monitoring_subscription-3">delete_monitoring_subscription/3</a></td><td>Disables additional CloudWatch metrics for the specified CloudFront
+  distribution.</td></tr>
+<tr><td valign="top"><a href="#delete_monitoring_subscription-4">delete_monitoring_subscription/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_origin_request_policy-3">delete_origin_request_policy/3</a></td><td>Deletes an origin request policy.</td></tr>
+<tr><td valign="top"><a href="#delete_origin_request_policy-4">delete_origin_request_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_public_key-3">delete_public_key/3</a></td><td>Remove a public key you previously added to CloudFront.</td></tr>
+<tr><td valign="top"><a href="#delete_public_key-4">delete_public_key/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_realtime_log_config-2">delete_realtime_log_config/2</a></td><td>Deletes a real-time log configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_realtime_log_config-3">delete_realtime_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_streaming_distribution-3">delete_streaming_distribution/3</a></td><td>Delete a streaming distribution.</td></tr>
+<tr><td valign="top"><a href="#delete_streaming_distribution-4">delete_streaming_distribution/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_cache_policy-2">get_cache_policy/2</a></td><td>Gets a cache policy, including the following metadata:.</td></tr>
+<tr><td valign="top"><a href="#get_cache_policy-3">get_cache_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_cache_policy_config-2">get_cache_policy_config/2</a></td><td>Gets a cache policy configuration.</td></tr>
+<tr><td valign="top"><a href="#get_cache_policy_config-3">get_cache_policy_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_cloud_front_origin_access_identity-2">get_cloud_front_origin_access_identity/2</a></td><td>Get the information about an origin access identity.</td></tr>
+<tr><td valign="top"><a href="#get_cloud_front_origin_access_identity-3">get_cloud_front_origin_access_identity/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_cloud_front_origin_access_identity_config-2">get_cloud_front_origin_access_identity_config/2</a></td><td>Get the configuration information about an origin access identity.</td></tr>
+<tr><td valign="top"><a href="#get_cloud_front_origin_access_identity_config-3">get_cloud_front_origin_access_identity_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_distribution-2">get_distribution/2</a></td><td>Get the information about a distribution.</td></tr>
+<tr><td valign="top"><a href="#get_distribution-3">get_distribution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_distribution_config-2">get_distribution_config/2</a></td><td>Get the configuration information about a distribution.</td></tr>
+<tr><td valign="top"><a href="#get_distribution_config-3">get_distribution_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_field_level_encryption-2">get_field_level_encryption/2</a></td><td>Get the field-level encryption configuration information.</td></tr>
+<tr><td valign="top"><a href="#get_field_level_encryption-3">get_field_level_encryption/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_field_level_encryption_config-2">get_field_level_encryption_config/2</a></td><td>Get the field-level encryption configuration information.</td></tr>
+<tr><td valign="top"><a href="#get_field_level_encryption_config-3">get_field_level_encryption_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_field_level_encryption_profile-2">get_field_level_encryption_profile/2</a></td><td>Get the field-level encryption profile information.</td></tr>
+<tr><td valign="top"><a href="#get_field_level_encryption_profile-3">get_field_level_encryption_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_field_level_encryption_profile_config-2">get_field_level_encryption_profile_config/2</a></td><td>Get the field-level encryption profile configuration information.</td></tr>
+<tr><td valign="top"><a href="#get_field_level_encryption_profile_config-3">get_field_level_encryption_profile_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_invalidation-3">get_invalidation/3</a></td><td>Get the information about an invalidation.</td></tr>
+<tr><td valign="top"><a href="#get_invalidation-4">get_invalidation/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_key_group-2">get_key_group/2</a></td><td>Gets a key group, including the date and time when the key group was  
+last modified.</td></tr>
+<tr><td valign="top"><a href="#get_key_group-3">get_key_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_key_group_config-2">get_key_group_config/2</a></td><td>Gets a key group configuration.</td></tr>
+<tr><td valign="top"><a href="#get_key_group_config-3">get_key_group_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_monitoring_subscription-2">get_monitoring_subscription/2</a></td><td>Gets information about whether additional CloudWatch metrics are
+  enabled for the specified CloudFront distribution.</td></tr>
+<tr><td valign="top"><a href="#get_monitoring_subscription-3">get_monitoring_subscription/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_origin_request_policy-2">get_origin_request_policy/2</a></td><td>Gets an origin request policy, including the following metadata:.</td></tr>
+<tr><td valign="top"><a href="#get_origin_request_policy-3">get_origin_request_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_origin_request_policy_config-2">get_origin_request_policy_config/2</a></td><td>Gets an origin request policy configuration.</td></tr>
+<tr><td valign="top"><a href="#get_origin_request_policy_config-3">get_origin_request_policy_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_public_key-2">get_public_key/2</a></td><td>Gets a public key.</td></tr>
+<tr><td valign="top"><a href="#get_public_key-3">get_public_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_public_key_config-2">get_public_key_config/2</a></td><td>Gets a public key configuration.</td></tr>
+<tr><td valign="top"><a href="#get_public_key_config-3">get_public_key_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_realtime_log_config-2">get_realtime_log_config/2</a></td><td>Gets a real-time log configuration.</td></tr>
+<tr><td valign="top"><a href="#get_realtime_log_config-3">get_realtime_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_streaming_distribution-2">get_streaming_distribution/2</a></td><td>Gets information about a specified RTMP distribution, including the
+  distribution configuration.</td></tr>
+<tr><td valign="top"><a href="#get_streaming_distribution-3">get_streaming_distribution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_streaming_distribution_config-2">get_streaming_distribution_config/2</a></td><td>Get the configuration information about a streaming distribution.</td></tr>
+<tr><td valign="top"><a href="#get_streaming_distribution_config-3">get_streaming_distribution_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_cache_policies-4">list_cache_policies/4</a></td><td>Gets a list of cache policies.</td></tr>
+<tr><td valign="top"><a href="#list_cache_policies-5">list_cache_policies/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_cloud_front_origin_access_identities-3">list_cloud_front_origin_access_identities/3</a></td><td>Lists origin access identities.</td></tr>
+<tr><td valign="top"><a href="#list_cloud_front_origin_access_identities-4">list_cloud_front_origin_access_identities/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_distributions-3">list_distributions/3</a></td><td>List CloudFront distributions.</td></tr>
+<tr><td valign="top"><a href="#list_distributions-4">list_distributions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_cache_policy_id-4">list_distributions_by_cache_policy_id/4</a></td><td>Gets a list of distribution IDs for distributions that have a cache  
+behavior that’s associated with the specified cache policy.</td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_cache_policy_id-5">list_distributions_by_cache_policy_id/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_key_group-4">list_distributions_by_key_group/4</a></td><td>Gets a list of distribution IDs for distributions that have a cache  
+behavior that references the specified key group.</td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_key_group-5">list_distributions_by_key_group/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_origin_request_policy_id-4">list_distributions_by_origin_request_policy_id/4</a></td><td>Gets a list of distribution IDs for distributions that have a cache  
+behavior that’s associated with the specified origin request policy.</td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_origin_request_policy_id-5">list_distributions_by_origin_request_policy_id/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_realtime_log_config-2">list_distributions_by_realtime_log_config/2</a></td><td>Gets a list of distributions that have a cache behavior that’s  
+associated with the specified real-time log configuration.</td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_realtime_log_config-3">list_distributions_by_realtime_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_web_a_c_l_id-4">list_distributions_by_web_a_c_l_id/4</a></td><td>List the distributions that are associated with a specified AWS WAF
+  web ACL.</td></tr>
+<tr><td valign="top"><a href="#list_distributions_by_web_a_c_l_id-5">list_distributions_by_web_a_c_l_id/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_field_level_encryption_configs-3">list_field_level_encryption_configs/3</a></td><td>List all field-level encryption configurations that have been created
+  in CloudFront for this account.</td></tr>
+<tr><td valign="top"><a href="#list_field_level_encryption_configs-4">list_field_level_encryption_configs/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_field_level_encryption_profiles-3">list_field_level_encryption_profiles/3</a></td><td>Request a list of field-level encryption profiles that have been
+  created in CloudFront for this account.</td></tr>
+<tr><td valign="top"><a href="#list_field_level_encryption_profiles-4">list_field_level_encryption_profiles/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_invalidations-4">list_invalidations/4</a></td><td>Lists invalidation batches.</td></tr>
+<tr><td valign="top"><a href="#list_invalidations-5">list_invalidations/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_key_groups-3">list_key_groups/3</a></td><td>Gets a list of key groups.</td></tr>
+<tr><td valign="top"><a href="#list_key_groups-4">list_key_groups/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_origin_request_policies-4">list_origin_request_policies/4</a></td><td>Gets a list of origin request policies.</td></tr>
+<tr><td valign="top"><a href="#list_origin_request_policies-5">list_origin_request_policies/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_public_keys-3">list_public_keys/3</a></td><td>List all public keys that have been added to CloudFront for this
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_public_keys-4">list_public_keys/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_realtime_log_configs-3">list_realtime_log_configs/3</a></td><td>Gets a list of real-time log configurations.</td></tr>
+<tr><td valign="top"><a href="#list_realtime_log_configs-4">list_realtime_log_configs/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_streaming_distributions-3">list_streaming_distributions/3</a></td><td>List streaming distributions.</td></tr>
+<tr><td valign="top"><a href="#list_streaming_distributions-4">list_streaming_distributions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>List tags for a CloudFront resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Add tags to a CloudFront resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Remove tags from a CloudFront resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_cache_policy-3">update_cache_policy/3</a></td><td>Updates a cache policy configuration.</td></tr>
+<tr><td valign="top"><a href="#update_cache_policy-4">update_cache_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_cloud_front_origin_access_identity-3">update_cloud_front_origin_access_identity/3</a></td><td>Update an origin access identity.</td></tr>
+<tr><td valign="top"><a href="#update_cloud_front_origin_access_identity-4">update_cloud_front_origin_access_identity/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_distribution-3">update_distribution/3</a></td><td>Updates the configuration for a web distribution.</td></tr>
+<tr><td valign="top"><a href="#update_distribution-4">update_distribution/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_field_level_encryption_config-3">update_field_level_encryption_config/3</a></td><td>Update a field-level encryption configuration.</td></tr>
+<tr><td valign="top"><a href="#update_field_level_encryption_config-4">update_field_level_encryption_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_field_level_encryption_profile-3">update_field_level_encryption_profile/3</a></td><td>Update a field-level encryption profile.</td></tr>
+<tr><td valign="top"><a href="#update_field_level_encryption_profile-4">update_field_level_encryption_profile/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_key_group-3">update_key_group/3</a></td><td>Updates a key group.</td></tr>
+<tr><td valign="top"><a href="#update_key_group-4">update_key_group/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_origin_request_policy-3">update_origin_request_policy/3</a></td><td>Updates an origin request policy configuration.</td></tr>
+<tr><td valign="top"><a href="#update_origin_request_policy-4">update_origin_request_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_public_key-3">update_public_key/3</a></td><td>Update public key information.</td></tr>
+<tr><td valign="top"><a href="#update_public_key-4">update_public_key/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_realtime_log_config-2">update_realtime_log_config/2</a></td><td>Updates a real-time log configuration.</td></tr>
+<tr><td valign="top"><a href="#update_realtime_log_config-3">update_realtime_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_streaming_distribution-3">update_streaming_distribution/3</a></td><td>Update a streaming distribution.</td></tr>
+<tr><td valign="top"><a href="#update_streaming_distribution-4">update_streaming_distribution/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_cache_policy-2">create_cache_policy/2</a></h3>
+<div class="spec">
+<p><tt>create_cache_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a cache policy.</p>
+ 
+  <p>After you create a cache policy, you can attach it to one or more cache  
+behaviors. When it’s attached to a cache behavior, the cache policy  
+determines the following:</p>
+ 
+  <ul> <li><p> The values that CloudFront includes in the cache key. These  
+values can include HTTP headers, cookies, and URL query strings.  
+CloudFront uses the cache key to find an object in its cache that it can  
+return to the viewer.</p>
+ 
+  </li> <li><p> The default, minimum, and maximum time to live (TTL) values  
+that you want objects to stay in the CloudFront cache.</p>
+ 
+  </li> </ul><p> The headers, cookies, and query strings that are included in
+  the cache key are automatically included in requests that CloudFront sends
+  to the origin. CloudFront sends a request when it can’t find an object in
+  its cache that matches the request’s cache key. If you want to send values
+  to the origin but not include them in the cache key, use
+  <code>OriginRequestPolicy</code>.</p>
+ 
+  For more information about cache policies, see Controlling the cache key
+  in the Amazon CloudFront Developer Guide.</p>
+
+<h3 class="function"><a name="create_cache_policy-3">create_cache_policy/3</a></h3>
+<div class="spec">
+<p><tt>create_cache_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_cloud_front_origin_access_identity-2">create_cloud_front_origin_access_identity/2</a></h3>
+<div class="spec">
+<p><tt>create_cloud_front_origin_access_identity(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new origin access identity.</p>
+ 
+  If you're using Amazon S3 for your origin, you can use an origin access
+  identity to require users to access your content using a CloudFront URL
+  instead of the Amazon S3 URL. For more information about how to use origin
+  access identities, see Serving Private Content through CloudFront in the
+  Amazon CloudFront Developer Guide.</p>
+
+<h3 class="function"><a name="create_cloud_front_origin_access_identity-3">create_cloud_front_origin_access_identity/3</a></h3>
+<div class="spec">
+<p><tt>create_cloud_front_origin_access_identity(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_distribution-2">create_distribution/2</a></h3>
+<div class="spec">
+<p><tt>create_distribution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new web distribution.</p>
+ 
+  <p>You create a CloudFront distribution to tell CloudFront where you want
+  content to be delivered from, and the details about how to track and
+  manage content delivery. Send a <code>POST</code> request to the <code>/CloudFront API
+  version/distribution</code>/<code>distribution ID</code> resource.</p>
+ 
+  When you update a distribution, there are more required fields than when
+  you create a distribution. When you update your distribution by using
+  UpdateDistribution, follow the steps included in the documentation to get
+  the current configuration and then make your updates. This helps to make
+  sure that you include all of the required fields. To view a summary, see
+  Required Fields for Create Distribution and Update Distribution in the
+  Amazon CloudFront Developer Guide.</p>
+
+<h3 class="function"><a name="create_distribution-3">create_distribution/3</a></h3>
+<div class="spec">
+<p><tt>create_distribution(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_distribution_with_tags-2">create_distribution_with_tags/2</a></h3>
+<div class="spec">
+<p><tt>create_distribution_with_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create a new distribution with tags.</p>
+
+<h3 class="function"><a name="create_distribution_with_tags-3">create_distribution_with_tags/3</a></h3>
+<div class="spec">
+<p><tt>create_distribution_with_tags(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_field_level_encryption_config-2">create_field_level_encryption_config/2</a></h3>
+<div class="spec">
+<p><tt>create_field_level_encryption_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create a new field-level encryption configuration.</p>
+
+<h3 class="function"><a name="create_field_level_encryption_config-3">create_field_level_encryption_config/3</a></h3>
+<div class="spec">
+<p><tt>create_field_level_encryption_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_field_level_encryption_profile-2">create_field_level_encryption_profile/2</a></h3>
+<div class="spec">
+<p><tt>create_field_level_encryption_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create a field-level encryption profile.</p>
+
+<h3 class="function"><a name="create_field_level_encryption_profile-3">create_field_level_encryption_profile/3</a></h3>
+<div class="spec">
+<p><tt>create_field_level_encryption_profile(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_invalidation-3">create_invalidation/3</a></h3>
+<div class="spec">
+<p><tt>create_invalidation(Client, DistributionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create a new invalidation.</p>
+
+<h3 class="function"><a name="create_invalidation-4">create_invalidation/4</a></h3>
+<div class="spec">
+<p><tt>create_invalidation(Client, DistributionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_key_group-2">create_key_group/2</a></h3>
+<div class="spec">
+<p><tt>create_key_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a key group that you can use with CloudFront signed URLs and  
+signed cookies.</p>
+ 
+  To create a key group, you must specify at least one public key for the
+  key group. After you create a key group, you can reference it from one or
+  more cache behaviors. When you reference a key group in a cache behavior,
+  CloudFront requires signed URLs or signed cookies for all requests that
+  match the cache behavior. The URLs or cookies must be signed with a
+  private key whose corresponding public key is in the key group. The signed
+  URL or cookie contains information about which public key CloudFront
+  should use to verify the signature. For more information, see Serving
+  private content in the Amazon CloudFront Developer Guide.</p>
+
+<h3 class="function"><a name="create_key_group-3">create_key_group/3</a></h3>
+<div class="spec">
+<p><tt>create_key_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_monitoring_subscription-3">create_monitoring_subscription/3</a></h3>
+<div class="spec">
+<p><tt>create_monitoring_subscription(Client, DistributionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Enables additional CloudWatch metrics for the specified CloudFront  
+distribution.</p>
+ 
+  <p>The additional metrics incur an additional cost.</p>
+ 
+  For more information, see Viewing additional CloudFront distribution
+  metrics in the Amazon CloudFront Developer Guide.</p>
+
+<h3 class="function"><a name="create_monitoring_subscription-4">create_monitoring_subscription/4</a></h3>
+<div class="spec">
+<p><tt>create_monitoring_subscription(Client, DistributionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_origin_request_policy-2">create_origin_request_policy/2</a></h3>
+<div class="spec">
+<p><tt>create_origin_request_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an origin request policy.</p>
+ 
+  <p>After you create an origin request policy, you can attach it to one or  
+more cache behaviors. When it’s attached to a cache behavior, the origin  
+request policy determines the values that CloudFront includes in requests  
+that it sends to the origin. Each request that CloudFront sends to the  
+origin includes the following:</p>
+ 
+  <ul> <li><p> The request body and the URL path (without the domain name) from  
+the viewer request.</p>
+ 
+  </li> <li><p> The headers that CloudFront automatically includes in every
+  origin request, including <code>Host</code>, <code>User-Agent</code>, and <code>X-Amz-Cf-Id</code>.</p>
+ 
+  </li> <li><p> All HTTP headers, cookies, and URL query strings that are  
+specified in the cache policy or the origin request policy. These can  
+include items from the viewer request and, in the case of headers,  
+additional ones that are added by CloudFront.</p>
+ 
+  </li> </ul><p> CloudFront sends a request when it can’t find a valid object
+  in its cache that matches the request. If you want to send values to the
+  origin and also include them in the cache key, use <code>CachePolicy</code>.</p>
+ 
+  For more information about origin request policies, see Controlling origin
+  requests in the Amazon CloudFront Developer Guide.</p>
+
+<h3 class="function"><a name="create_origin_request_policy-3">create_origin_request_policy/3</a></h3>
+<div class="spec">
+<p><tt>create_origin_request_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_public_key-2">create_public_key/2</a></h3>
+<div class="spec">
+<p><tt>create_public_key(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Uploads a public key to CloudFront that you can use with signed URLs
+  and signed cookies, or with field-level encryption.</p>
+
+<h3 class="function"><a name="create_public_key-3">create_public_key/3</a></h3>
+<div class="spec">
+<p><tt>create_public_key(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_realtime_log_config-2">create_realtime_log_config/2</a></h3>
+<div class="spec">
+<p><tt>create_realtime_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a real-time log configuration.</p>
+ 
+  <p>After you create a real-time log configuration, you can attach it to one  
+or more cache behaviors to send real-time log data to the specified Amazon  
+Kinesis data stream.</p>
+ 
+  For more information about real-time log configurations, see Real-time
+  logs in the Amazon CloudFront Developer Guide.</p>
+
+<h3 class="function"><a name="create_realtime_log_config-3">create_realtime_log_config/3</a></h3>
+<div class="spec">
+<p><tt>create_realtime_log_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_streaming_distribution-2">create_streaming_distribution/2</a></h3>
+<div class="spec">
+<p><tt>create_streaming_distribution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new RTMP distribution.</p>
+ 
+  <p>An RTMP distribution is similar to a web distribution, but an RTMP  
+distribution streams media files using the Adobe Real-Time Messaging  
+Protocol (RTMP) instead of serving files using HTTP.</p>
+ 
+  <p>To create a new distribution, submit a <code>POST</code> request to the CloudFront
+  API version/distribution resource. The request body must include a
+  document with a StreamingDistributionConfig element. The response echoes
+  the <code>StreamingDistributionConfig</code> element and returns other information  
+about the RTMP distribution.</p>
+ 
+  <p>To get the status of your request, use the GET StreamingDistribution API
+  action. When the value of <code>Enabled</code> is <code>true</code> and the value of <code>Status</code> is
+  <code>Deployed</code>, your distribution is ready. A distribution usually deploys in  
+less than 15 minutes.</p>
+ 
+  <p>For more information about web distributions, see Working with RTMP  
+Distributions in the Amazon CloudFront Developer Guide.</p>
+ 
+  Beginning with the 2012-05-05 version of the CloudFront API, we made
+  substantial changes to the format of the XML document that you include in
+  the request body when you create or update a web distribution or an RTMP
+  distribution, and when you invalidate objects. With previous versions of
+  the API, we discovered that it was too easy to accidentally delete one or
+  more values for an element that accepts multiple values, for example,
+  CNAMEs and trusted signers. Our changes for the 2012-05-05 release are
+  intended to prevent these accidental deletions and to notify you when
+  there's a mismatch between the number of values you say you're specifying
+  in the <code>Quantity</code> element and the number of values specified.</p>
+
+<h3 class="function"><a name="create_streaming_distribution-3">create_streaming_distribution/3</a></h3>
+<div class="spec">
+<p><tt>create_streaming_distribution(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_streaming_distribution_with_tags-2">create_streaming_distribution_with_tags/2</a></h3>
+<div class="spec">
+<p><tt>create_streaming_distribution_with_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create a new streaming distribution with tags.</p>
+
+<h3 class="function"><a name="create_streaming_distribution_with_tags-3">create_streaming_distribution_with_tags/3</a></h3>
+<div class="spec">
+<p><tt>create_streaming_distribution_with_tags(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_cache_policy-3">delete_cache_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_cache_policy(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a cache policy.</p>
+ 
+  <p>You cannot delete a cache policy if it’s attached to a cache behavior.  
+First update your distributions to remove the cache policy from all cache  
+behaviors, then delete the cache policy.</p>
+ 
+  To delete a cache policy, you must provide the policy’s identifier and
+  version. To get these values, you can use <code>ListCachePolicies</code> or
+  <code>GetCachePolicy</code>.</p>
+
+<h3 class="function"><a name="delete_cache_policy-4">delete_cache_policy/4</a></h3>
+<div class="spec">
+<p><tt>delete_cache_policy(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_cloud_front_origin_access_identity-3">delete_cloud_front_origin_access_identity/3</a></h3>
+<div class="spec">
+<p><tt>delete_cloud_front_origin_access_identity(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete an origin access identity.</p>
+
+<h3 class="function"><a name="delete_cloud_front_origin_access_identity-4">delete_cloud_front_origin_access_identity/4</a></h3>
+<div class="spec">
+<p><tt>delete_cloud_front_origin_access_identity(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_distribution-3">delete_distribution/3</a></h3>
+<div class="spec">
+<p><tt>delete_distribution(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete a distribution.</p>
+
+<h3 class="function"><a name="delete_distribution-4">delete_distribution/4</a></h3>
+<div class="spec">
+<p><tt>delete_distribution(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_field_level_encryption_config-3">delete_field_level_encryption_config/3</a></h3>
+<div class="spec">
+<p><tt>delete_field_level_encryption_config(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Remove a field-level encryption configuration.</p>
+
+<h3 class="function"><a name="delete_field_level_encryption_config-4">delete_field_level_encryption_config/4</a></h3>
+<div class="spec">
+<p><tt>delete_field_level_encryption_config(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_field_level_encryption_profile-3">delete_field_level_encryption_profile/3</a></h3>
+<div class="spec">
+<p><tt>delete_field_level_encryption_profile(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Remove a field-level encryption profile.</p>
+
+<h3 class="function"><a name="delete_field_level_encryption_profile-4">delete_field_level_encryption_profile/4</a></h3>
+<div class="spec">
+<p><tt>delete_field_level_encryption_profile(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_key_group-3">delete_key_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_key_group(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a key group.</p>
+ 
+  <p>You cannot delete a key group that is referenced in a cache behavior.  
+First update your distributions to remove the key group from all cache  
+behaviors, then delete the key group.</p>
+ 
+  To delete a key group, you must provide the key group’s identifier and
+  version. To get these values, use <code>ListKeyGroups</code> followed by
+  <code>GetKeyGroup</code> or <code>GetKeyGroupConfig</code>.</p>
+
+<h3 class="function"><a name="delete_key_group-4">delete_key_group/4</a></h3>
+<div class="spec">
+<p><tt>delete_key_group(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_monitoring_subscription-3">delete_monitoring_subscription/3</a></h3>
+<div class="spec">
+<p><tt>delete_monitoring_subscription(Client, DistributionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables additional CloudWatch metrics for the specified CloudFront
+  distribution.</p>
+
+<h3 class="function"><a name="delete_monitoring_subscription-4">delete_monitoring_subscription/4</a></h3>
+<div class="spec">
+<p><tt>delete_monitoring_subscription(Client, DistributionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_origin_request_policy-3">delete_origin_request_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_origin_request_policy(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an origin request policy.</p>
+ 
+  <p>You cannot delete an origin request policy if it’s attached to any cache  
+behaviors. First update your distributions to remove the origin request  
+policy from all cache behaviors, then delete the origin request policy.</p>
+ 
+  To delete an origin request policy, you must provide the policy’s
+  identifier and version. To get the identifier, you can use
+  <code>ListOriginRequestPolicies</code> or <code>GetOriginRequestPolicy</code>.</p>
+
+<h3 class="function"><a name="delete_origin_request_policy-4">delete_origin_request_policy/4</a></h3>
+<div class="spec">
+<p><tt>delete_origin_request_policy(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_public_key-3">delete_public_key/3</a></h3>
+<div class="spec">
+<p><tt>delete_public_key(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Remove a public key you previously added to CloudFront.</p>
+
+<h3 class="function"><a name="delete_public_key-4">delete_public_key/4</a></h3>
+<div class="spec">
+<p><tt>delete_public_key(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_realtime_log_config-2">delete_realtime_log_config/2</a></h3>
+<div class="spec">
+<p><tt>delete_realtime_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a real-time log configuration.</p>
+ 
+  <p>You cannot delete a real-time log configuration if it’s attached to a  
+cache behavior. First update your distributions to remove the real-time  
+log configuration from all cache behaviors, then delete the real-time log  
+configuration.</p>
+ 
+  To delete a real-time log configuration, you can provide the
+  configuration’s name or its Amazon Resource Name (ARN). You must provide
+  at least one. If you provide both, CloudFront uses the name to identify
+  the real-time log configuration to delete.</p>
+
+<h3 class="function"><a name="delete_realtime_log_config-3">delete_realtime_log_config/3</a></h3>
+<div class="spec">
+<p><tt>delete_realtime_log_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_streaming_distribution-3">delete_streaming_distribution/3</a></h3>
+<div class="spec">
+<p><tt>delete_streaming_distribution(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Delete a streaming distribution.</p>
+ 
+  <p>To delete an RTMP distribution using the CloudFront API, perform the  
+following steps.</p>
+ 
+  <p>To delete an RTMP distribution using the CloudFront API:</p>
+ 
+  <ol> <li><p> Disable the RTMP distribution.</p>
+ 
+  </li> <li><p> Submit a <code>GET Streaming Distribution Config</code> request to get the
+  current configuration and the <code>Etag</code> header for the distribution.</p>
+ 
+  </li> <li><p> Update the XML document that was returned in the response to
+  your <code>GET Streaming Distribution Config</code> request to change the value of
+  <code>Enabled</code> to <code>false</code>.</p>
+ 
+  </li> <li><p> Submit a <code>PUT Streaming Distribution Config</code> request to update
+  the configuration for your distribution. In the request body, include the
+  XML document that you updated in Step 3. Then set the value of the HTTP
+  <code>If-Match</code> header to the value of the <code>ETag</code> header that CloudFront
+  returned when you submitted the <code>GET Streaming Distribution Config</code>  
+request in Step 2.</p>
+ 
+  </li> <li><p> Review the response to the <code>PUT Streaming Distribution Config</code>  
+request to confirm that the distribution was successfully disabled.</p>
+ 
+  </li> <li><p> Submit a <code>GET Streaming Distribution Config</code> request to confirm
+  that your changes have propagated. When propagation is complete, the value
+  of <code>Status</code> is <code>Deployed</code>.</p>
+ 
+  </li> <li><p> Submit a <code>DELETE Streaming Distribution</code> request. Set the value
+  of the HTTP <code>If-Match</code> header to the value of the <code>ETag</code> header that
+  CloudFront returned when you submitted the <code>GET Streaming Distribution
+  Config</code> request in Step 2.</p>
+ 
+  </li> <li><p> Review the response to your <code>DELETE Streaming Distribution</code>  
+request to confirm that the distribution was successfully deleted.</p>
+ 
+  </li> </ol> For information about deleting a distribution using the
+  CloudFront console, see Deleting a Distribution in the Amazon CloudFront
+  Developer Guide.</p>
+
+<h3 class="function"><a name="delete_streaming_distribution-4">delete_streaming_distribution/4</a></h3>
+<div class="spec">
+<p><tt>delete_streaming_distribution(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_cache_policy-2">get_cache_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_cache_policy(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a cache policy, including the following metadata:</p>
+ 
+  <ul> <li><p> The policy’s identifier.</p>
+ 
+  </li> <li><p> The date and time when the policy was last modified.</p>
+ 
+  </li> </ul> To get a cache policy, you must provide the policy’s
+  identifier. If the cache policy is attached to a distribution’s cache
+  behavior, you can get the policy’s identifier using <code>ListDistributions</code> or
+  <code>GetDistribution</code>. If the cache policy is not attached to a cache
+  behavior, you can get the identifier using <code>ListCachePolicies</code>.</p>
+
+<h3 class="function"><a name="get_cache_policy-3">get_cache_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_cache_policy(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_cache_policy_config-2">get_cache_policy_config/2</a></h3>
+<div class="spec">
+<p><tt>get_cache_policy_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a cache policy configuration.</p>
+ 
+  To get a cache policy configuration, you must provide the policy’s
+  identifier. If the cache policy is attached to a distribution’s cache
+  behavior, you can get the policy’s identifier using <code>ListDistributions</code> or
+  <code>GetDistribution</code>. If the cache policy is not attached to a cache
+  behavior, you can get the identifier using <code>ListCachePolicies</code>.</p>
+
+<h3 class="function"><a name="get_cache_policy_config-3">get_cache_policy_config/3</a></h3>
+<div class="spec">
+<p><tt>get_cache_policy_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_cloud_front_origin_access_identity-2">get_cloud_front_origin_access_identity/2</a></h3>
+<div class="spec">
+<p><tt>get_cloud_front_origin_access_identity(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the information about an origin access identity.</p>
+
+<h3 class="function"><a name="get_cloud_front_origin_access_identity-3">get_cloud_front_origin_access_identity/3</a></h3>
+<div class="spec">
+<p><tt>get_cloud_front_origin_access_identity(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_cloud_front_origin_access_identity_config-2">get_cloud_front_origin_access_identity_config/2</a></h3>
+<div class="spec">
+<p><tt>get_cloud_front_origin_access_identity_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the configuration information about an origin access identity.</p>
+
+<h3 class="function"><a name="get_cloud_front_origin_access_identity_config-3">get_cloud_front_origin_access_identity_config/3</a></h3>
+<div class="spec">
+<p><tt>get_cloud_front_origin_access_identity_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_distribution-2">get_distribution/2</a></h3>
+<div class="spec">
+<p><tt>get_distribution(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the information about a distribution.</p>
+
+<h3 class="function"><a name="get_distribution-3">get_distribution/3</a></h3>
+<div class="spec">
+<p><tt>get_distribution(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_distribution_config-2">get_distribution_config/2</a></h3>
+<div class="spec">
+<p><tt>get_distribution_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the configuration information about a distribution.</p>
+
+<h3 class="function"><a name="get_distribution_config-3">get_distribution_config/3</a></h3>
+<div class="spec">
+<p><tt>get_distribution_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_field_level_encryption-2">get_field_level_encryption/2</a></h3>
+<div class="spec">
+<p><tt>get_field_level_encryption(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the field-level encryption configuration information.</p>
+
+<h3 class="function"><a name="get_field_level_encryption-3">get_field_level_encryption/3</a></h3>
+<div class="spec">
+<p><tt>get_field_level_encryption(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_field_level_encryption_config-2">get_field_level_encryption_config/2</a></h3>
+<div class="spec">
+<p><tt>get_field_level_encryption_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the field-level encryption configuration information.</p>
+
+<h3 class="function"><a name="get_field_level_encryption_config-3">get_field_level_encryption_config/3</a></h3>
+<div class="spec">
+<p><tt>get_field_level_encryption_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_field_level_encryption_profile-2">get_field_level_encryption_profile/2</a></h3>
+<div class="spec">
+<p><tt>get_field_level_encryption_profile(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the field-level encryption profile information.</p>
+
+<h3 class="function"><a name="get_field_level_encryption_profile-3">get_field_level_encryption_profile/3</a></h3>
+<div class="spec">
+<p><tt>get_field_level_encryption_profile(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_field_level_encryption_profile_config-2">get_field_level_encryption_profile_config/2</a></h3>
+<div class="spec">
+<p><tt>get_field_level_encryption_profile_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the field-level encryption profile configuration information.</p>
+
+<h3 class="function"><a name="get_field_level_encryption_profile_config-3">get_field_level_encryption_profile_config/3</a></h3>
+<div class="spec">
+<p><tt>get_field_level_encryption_profile_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_invalidation-3">get_invalidation/3</a></h3>
+<div class="spec">
+<p><tt>get_invalidation(Client, DistributionId, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the information about an invalidation.</p>
+
+<h3 class="function"><a name="get_invalidation-4">get_invalidation/4</a></h3>
+<div class="spec">
+<p><tt>get_invalidation(Client, DistributionId, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_key_group-2">get_key_group/2</a></h3>
+<div class="spec">
+<p><tt>get_key_group(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a key group, including the date and time when the key group was  
+last modified.</p>
+ 
+  To get a key group, you must provide the key group’s identifier. If the
+  key group is referenced in a distribution’s cache behavior, you can get
+  the key group’s identifier using <code>ListDistributions</code> or <code>GetDistribution</code>.
+  If the key group is not referenced in a cache behavior, you can get the
+  identifier using <code>ListKeyGroups</code>.</p>
+
+<h3 class="function"><a name="get_key_group-3">get_key_group/3</a></h3>
+<div class="spec">
+<p><tt>get_key_group(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_key_group_config-2">get_key_group_config/2</a></h3>
+<div class="spec">
+<p><tt>get_key_group_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a key group configuration.</p>
+ 
+  To get a key group configuration, you must provide the key group’s
+  identifier. If the key group is referenced in a distribution’s cache
+  behavior, you can get the key group’s identifier using <code>ListDistributions</code>
+  or <code>GetDistribution</code>. If the key group is not referenced in a cache
+  behavior, you can get the identifier using <code>ListKeyGroups</code>.</p>
+
+<h3 class="function"><a name="get_key_group_config-3">get_key_group_config/3</a></h3>
+<div class="spec">
+<p><tt>get_key_group_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_monitoring_subscription-2">get_monitoring_subscription/2</a></h3>
+<div class="spec">
+<p><tt>get_monitoring_subscription(Client, DistributionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about whether additional CloudWatch metrics are
+  enabled for the specified CloudFront distribution.</p>
+
+<h3 class="function"><a name="get_monitoring_subscription-3">get_monitoring_subscription/3</a></h3>
+<div class="spec">
+<p><tt>get_monitoring_subscription(Client, DistributionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_origin_request_policy-2">get_origin_request_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_origin_request_policy(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets an origin request policy, including the following metadata:</p>
+ 
+  <ul> <li><p> The policy’s identifier.</p>
+ 
+  </li> <li><p> The date and time when the policy was last modified.</p>
+ 
+  </li> </ul> To get an origin request policy, you must provide the policy’s
+  identifier. If the origin request policy is attached to a distribution’s
+  cache behavior, you can get the policy’s identifier using
+  <code>ListDistributions</code> or <code>GetDistribution</code>. If the origin request policy is
+  not attached to a cache behavior, you can get the identifier using
+  <code>ListOriginRequestPolicies</code>.</p>
+
+<h3 class="function"><a name="get_origin_request_policy-3">get_origin_request_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_origin_request_policy(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_origin_request_policy_config-2">get_origin_request_policy_config/2</a></h3>
+<div class="spec">
+<p><tt>get_origin_request_policy_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets an origin request policy configuration.</p>
+ 
+  To get an origin request policy configuration, you must provide the
+  policy’s identifier. If the origin request policy is attached to a
+  distribution’s cache behavior, you can get the policy’s identifier using
+  <code>ListDistributions</code> or <code>GetDistribution</code>. If the origin request policy is
+  not attached to a cache behavior, you can get the identifier using
+  <code>ListOriginRequestPolicies</code>.</p>
+
+<h3 class="function"><a name="get_origin_request_policy_config-3">get_origin_request_policy_config/3</a></h3>
+<div class="spec">
+<p><tt>get_origin_request_policy_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_public_key-2">get_public_key/2</a></h3>
+<div class="spec">
+<p><tt>get_public_key(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a public key.</p>
+
+<h3 class="function"><a name="get_public_key-3">get_public_key/3</a></h3>
+<div class="spec">
+<p><tt>get_public_key(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_public_key_config-2">get_public_key_config/2</a></h3>
+<div class="spec">
+<p><tt>get_public_key_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a public key configuration.</p>
+
+<h3 class="function"><a name="get_public_key_config-3">get_public_key_config/3</a></h3>
+<div class="spec">
+<p><tt>get_public_key_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_realtime_log_config-2">get_realtime_log_config/2</a></h3>
+<div class="spec">
+<p><tt>get_realtime_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a real-time log configuration.</p>
+ 
+  To get a real-time log configuration, you can provide the configuration’s
+  name or its Amazon Resource Name (ARN). You must provide at least one. If
+  you provide both, CloudFront uses the name to identify the real-time log
+  configuration to get.</p>
+
+<h3 class="function"><a name="get_realtime_log_config-3">get_realtime_log_config/3</a></h3>
+<div class="spec">
+<p><tt>get_realtime_log_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_streaming_distribution-2">get_streaming_distribution/2</a></h3>
+<div class="spec">
+<p><tt>get_streaming_distribution(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a specified RTMP distribution, including the
+  distribution configuration.</p>
+
+<h3 class="function"><a name="get_streaming_distribution-3">get_streaming_distribution/3</a></h3>
+<div class="spec">
+<p><tt>get_streaming_distribution(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_streaming_distribution_config-2">get_streaming_distribution_config/2</a></h3>
+<div class="spec">
+<p><tt>get_streaming_distribution_config(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the configuration information about a streaming distribution.</p>
+
+<h3 class="function"><a name="get_streaming_distribution_config-3">get_streaming_distribution_config/3</a></h3>
+<div class="spec">
+<p><tt>get_streaming_distribution_config(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_cache_policies-4">list_cache_policies/4</a></h3>
+<div class="spec">
+<p><tt>list_cache_policies(Client, Marker, MaxItems, Type) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of cache policies.</p>
+ 
+  <p>You can optionally apply a filter to return only the managed policies  
+created by AWS, or only the custom policies created in your AWS account.</p>
+ 
+  You can optionally specify the maximum number of items to receive in the
+  response. If the total number of items in the list exceeds the maximum
+  that you specify, or the default maximum, the response is paginated. To
+  get the next page of items, send a subsequent request that specifies the
+  <code>NextMarker</code> value from the current response as the <code>Marker</code> value in the
+  subsequent request.</p>
+
+<h3 class="function"><a name="list_cache_policies-5">list_cache_policies/5</a></h3>
+<div class="spec">
+<p><tt>list_cache_policies(Client, Marker, MaxItems, Type, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_cloud_front_origin_access_identities-3">list_cloud_front_origin_access_identities/3</a></h3>
+<div class="spec">
+<p><tt>list_cloud_front_origin_access_identities(Client, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists origin access identities.</p>
+
+<h3 class="function"><a name="list_cloud_front_origin_access_identities-4">list_cloud_front_origin_access_identities/4</a></h3>
+<div class="spec">
+<p><tt>list_cloud_front_origin_access_identities(Client, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_distributions-3">list_distributions/3</a></h3>
+<div class="spec">
+<p><tt>list_distributions(Client, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List CloudFront distributions.</p>
+
+<h3 class="function"><a name="list_distributions-4">list_distributions/4</a></h3>
+<div class="spec">
+<p><tt>list_distributions(Client, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_distributions_by_cache_policy_id-4">list_distributions_by_cache_policy_id/4</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of distribution IDs for distributions that have a cache  
+behavior that’s associated with the specified cache policy.</p>
+ 
+  You can optionally specify the maximum number of items to receive in the
+  response. If the total number of items in the list exceeds the maximum
+  that you specify, or the default maximum, the response is paginated. To
+  get the next page of items, send a subsequent request that specifies the
+  <code>NextMarker</code> value from the current response as the <code>Marker</code> value in the
+  subsequent request.</p>
+
+<h3 class="function"><a name="list_distributions_by_cache_policy_id-5">list_distributions_by_cache_policy_id/5</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_cache_policy_id(Client, CachePolicyId, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_distributions_by_key_group-4">list_distributions_by_key_group/4</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of distribution IDs for distributions that have a cache  
+behavior that references the specified key group.</p>
+ 
+  You can optionally specify the maximum number of items to receive in the
+  response. If the total number of items in the list exceeds the maximum
+  that you specify, or the default maximum, the response is paginated. To
+  get the next page of items, send a subsequent request that specifies the
+  <code>NextMarker</code> value from the current response as the <code>Marker</code> value in the
+  subsequent request.</p>
+
+<h3 class="function"><a name="list_distributions_by_key_group-5">list_distributions_by_key_group/5</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_key_group(Client, KeyGroupId, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_distributions_by_origin_request_policy_id-4">list_distributions_by_origin_request_policy_id/4</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of distribution IDs for distributions that have a cache  
+behavior that’s associated with the specified origin request policy.</p>
+ 
+  You can optionally specify the maximum number of items to receive in the
+  response. If the total number of items in the list exceeds the maximum
+  that you specify, or the default maximum, the response is paginated. To
+  get the next page of items, send a subsequent request that specifies the
+  <code>NextMarker</code> value from the current response as the <code>Marker</code> value in the
+  subsequent request.</p>
+
+<h3 class="function"><a name="list_distributions_by_origin_request_policy_id-5">list_distributions_by_origin_request_policy_id/5</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_origin_request_policy_id(Client, OriginRequestPolicyId, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_distributions_by_realtime_log_config-2">list_distributions_by_realtime_log_config/2</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_realtime_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of distributions that have a cache behavior that’s  
+associated with the specified real-time log configuration.</p>
+ 
+  <p>You can specify the real-time log configuration by its name or its Amazon  
+Resource Name (ARN). You must provide at least one. If you provide both,  
+CloudFront uses the name to identify the real-time log configuration to  
+list distributions for.</p>
+ 
+  You can optionally specify the maximum number of items to receive in the
+  response. If the total number of items in the list exceeds the maximum
+  that you specify, or the default maximum, the response is paginated. To
+  get the next page of items, send a subsequent request that specifies the
+  <code>NextMarker</code> value from the current response as the <code>Marker</code> value in the
+  subsequent request.</p>
+
+<h3 class="function"><a name="list_distributions_by_realtime_log_config-3">list_distributions_by_realtime_log_config/3</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_realtime_log_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_distributions_by_web_a_c_l_id-4">list_distributions_by_web_a_c_l_id/4</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List the distributions that are associated with a specified AWS WAF
+  web ACL.</p>
+
+<h3 class="function"><a name="list_distributions_by_web_a_c_l_id-5">list_distributions_by_web_a_c_l_id/5</a></h3>
+<div class="spec">
+<p><tt>list_distributions_by_web_a_c_l_id(Client, WebACLId, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_field_level_encryption_configs-3">list_field_level_encryption_configs/3</a></h3>
+<div class="spec">
+<p><tt>list_field_level_encryption_configs(Client, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List all field-level encryption configurations that have been created
+  in CloudFront for this account.</p>
+
+<h3 class="function"><a name="list_field_level_encryption_configs-4">list_field_level_encryption_configs/4</a></h3>
+<div class="spec">
+<p><tt>list_field_level_encryption_configs(Client, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_field_level_encryption_profiles-3">list_field_level_encryption_profiles/3</a></h3>
+<div class="spec">
+<p><tt>list_field_level_encryption_profiles(Client, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Request a list of field-level encryption profiles that have been
+  created in CloudFront for this account.</p>
+
+<h3 class="function"><a name="list_field_level_encryption_profiles-4">list_field_level_encryption_profiles/4</a></h3>
+<div class="spec">
+<p><tt>list_field_level_encryption_profiles(Client, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_invalidations-4">list_invalidations/4</a></h3>
+<div class="spec">
+<p><tt>list_invalidations(Client, DistributionId, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists invalidation batches.</p>
+
+<h3 class="function"><a name="list_invalidations-5">list_invalidations/5</a></h3>
+<div class="spec">
+<p><tt>list_invalidations(Client, DistributionId, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_key_groups-3">list_key_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_key_groups(Client, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of key groups.</p>
+ 
+  You can optionally specify the maximum number of items to receive in the
+  response. If the total number of items in the list exceeds the maximum
+  that you specify, or the default maximum, the response is paginated. To
+  get the next page of items, send a subsequent request that specifies the
+  <code>NextMarker</code> value from the current response as the <code>Marker</code> value in the
+  subsequent request.</p>
+
+<h3 class="function"><a name="list_key_groups-4">list_key_groups/4</a></h3>
+<div class="spec">
+<p><tt>list_key_groups(Client, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_origin_request_policies-4">list_origin_request_policies/4</a></h3>
+<div class="spec">
+<p><tt>list_origin_request_policies(Client, Marker, MaxItems, Type) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of origin request policies.</p>
+ 
+  <p>You can optionally apply a filter to return only the managed policies  
+created by AWS, or only the custom policies created in your AWS account.</p>
+ 
+  You can optionally specify the maximum number of items to receive in the
+  response. If the total number of items in the list exceeds the maximum
+  that you specify, or the default maximum, the response is paginated. To
+  get the next page of items, send a subsequent request that specifies the
+  <code>NextMarker</code> value from the current response as the <code>Marker</code> value in the
+  subsequent request.</p>
+
+<h3 class="function"><a name="list_origin_request_policies-5">list_origin_request_policies/5</a></h3>
+<div class="spec">
+<p><tt>list_origin_request_policies(Client, Marker, MaxItems, Type, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_public_keys-3">list_public_keys/3</a></h3>
+<div class="spec">
+<p><tt>list_public_keys(Client, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List all public keys that have been added to CloudFront for this
+  account.</p>
+
+<h3 class="function"><a name="list_public_keys-4">list_public_keys/4</a></h3>
+<div class="spec">
+<p><tt>list_public_keys(Client, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_realtime_log_configs-3">list_realtime_log_configs/3</a></h3>
+<div class="spec">
+<p><tt>list_realtime_log_configs(Client, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of real-time log configurations.</p>
+ 
+  You can optionally specify the maximum number of items to receive in the
+  response. If the total number of items in the list exceeds the maximum
+  that you specify, or the default maximum, the response is paginated. To
+  get the next page of items, send a subsequent request that specifies the
+  <code>NextMarker</code> value from the current response as the <code>Marker</code> value in the
+  subsequent request.</p>
+
+<h3 class="function"><a name="list_realtime_log_configs-4">list_realtime_log_configs/4</a></h3>
+<div class="spec">
+<p><tt>list_realtime_log_configs(Client, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_streaming_distributions-3">list_streaming_distributions/3</a></h3>
+<div class="spec">
+<p><tt>list_streaming_distributions(Client, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List streaming distributions.</p>
+
+<h3 class="function"><a name="list_streaming_distributions-4">list_streaming_distributions/4</a></h3>
+<div class="spec">
+<p><tt>list_streaming_distributions(Client, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Resource) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List tags for a CloudFront resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Resource, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Add tags to a CloudFront resource.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Remove tags from a CloudFront resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_cache_policy-3">update_cache_policy/3</a></h3>
+<div class="spec">
+<p><tt>update_cache_policy(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a cache policy configuration.</p>
+ 
+  <p>When you update a cache policy configuration, all the fields are updated  
+with the values provided in the request. You cannot update some fields  
+independent of others. To update a cache policy configuration:</p>
+ 
+  <ol> <li><p> Use <code>GetCachePolicyConfig</code> to get the current configuration.</p>
+ 
+  </li> <li><p> Locally modify the fields in the cache policy configuration  
+that you want to update.</p>
+ 
+  </li> <li><p> Call <code>UpdateCachePolicy</code> by providing the entire cache policy  
+configuration, including the fields that you modified and those that you  
+didn’t.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="update_cache_policy-4">update_cache_policy/4</a></h3>
+<div class="spec">
+<p><tt>update_cache_policy(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_cloud_front_origin_access_identity-3">update_cloud_front_origin_access_identity/3</a></h3>
+<div class="spec">
+<p><tt>update_cloud_front_origin_access_identity(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Update an origin access identity.</p>
+
+<h3 class="function"><a name="update_cloud_front_origin_access_identity-4">update_cloud_front_origin_access_identity/4</a></h3>
+<div class="spec">
+<p><tt>update_cloud_front_origin_access_identity(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_distribution-3">update_distribution/3</a></h3>
+<div class="spec">
+<p><tt>update_distribution(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the configuration for a web distribution.</p>
+ 
+  <p>When you update a distribution, there are more required fields than when  
+you create a distribution. When you update your distribution by using this  
+API action, follow the steps here to get the current configuration and  
+then make your updates, to make sure that you include all of the required  
+fields. To view a summary, see Required Fields for Create Distribution and  
+Update Distribution in the Amazon CloudFront Developer Guide.</p>
+ 
+  <p>The update process includes getting the current distribution
+  configuration, updating the XML document that is returned to make your
+  changes, and then submitting an <code>UpdateDistribution</code> request to make the  
+updates.</p>
+ 
+  <p>For information about updating a distribution using the CloudFront console  
+instead, see Creating a Distribution in the Amazon CloudFront Developer  
+Guide.</p>
+ 
+  <p>To update a web distribution using the CloudFront API</p>
+ 
+  <ol> <li><p> Submit a GetDistributionConfig request to get the current
+  configuration and an <code>Etag</code> header for the distribution.</p>
+ 
+  <p>If you update the distribution again, you must get a new <code>Etag</code> header.</p>
+ 
+  </li> <li><p> Update the XML document that was returned in the response to
+  your <code>GetDistributionConfig</code> request to include your changes.</p>
+ 
+  <p>When you edit the XML file, be aware of the following:</p>
+ 
+  <p>You must strip out the ETag parameter that is returned.</p>
+ 
+  <p>Additional fields are required when you update a distribution. There may  
+be fields included in the XML file for features that you haven't  
+configured for your distribution. This is expected and required to  
+successfully update the distribution.</p>
+ 
+  <p>You can't change the value of <code>CallerReference</code>. If you try to change this
+  value, CloudFront returns an <code>IllegalUpdate</code> error.</p>
+ 
+  <p>The new configuration replaces the existing configuration; the values that
+  you specify in an <code>UpdateDistribution</code> request are not merged into your
+  existing configuration. When you add, delete, or replace values in an
+  element that allows multiple values (for example, <code>CNAME</code>), you must
+  specify all of the values that you want to appear in the updated
+  distribution. In addition, you must update the corresponding <code>Quantity</code>  
+element.</p>
+ 
+  </li> <li><p> Submit an <code>UpdateDistribution</code> request to update the  
+configuration for your distribution:</p>
+ 
+  <ul> <li><p> In the request body, include the XML document that you updated
+  in Step 2. The request body must include an XML document with a
+  <code>DistributionConfig</code> element.</p>
+ 
+  </li> <li><p> Set the value of the HTTP <code>If-Match</code> header to the value of the
+  <code>ETag</code> header that CloudFront returned when you submitted the
+  <code>GetDistributionConfig</code> request in Step 1.</p>
+ 
+  </li> </ul> </li> <li><p> Review the response to the <code>UpdateDistribution</code>  
+request to confirm that the configuration was successfully updated.</p>
+ 
+  </li> <li><p> Optional: Submit a GetDistribution request to confirm that your
+  changes have propagated. When propagation is complete, the value of
+  <code>Status</code> is <code>Deployed</code>.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="update_distribution-4">update_distribution/4</a></h3>
+<div class="spec">
+<p><tt>update_distribution(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_field_level_encryption_config-3">update_field_level_encryption_config/3</a></h3>
+<div class="spec">
+<p><tt>update_field_level_encryption_config(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Update a field-level encryption configuration.</p>
+
+<h3 class="function"><a name="update_field_level_encryption_config-4">update_field_level_encryption_config/4</a></h3>
+<div class="spec">
+<p><tt>update_field_level_encryption_config(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_field_level_encryption_profile-3">update_field_level_encryption_profile/3</a></h3>
+<div class="spec">
+<p><tt>update_field_level_encryption_profile(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Update a field-level encryption profile.</p>
+
+<h3 class="function"><a name="update_field_level_encryption_profile-4">update_field_level_encryption_profile/4</a></h3>
+<div class="spec">
+<p><tt>update_field_level_encryption_profile(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_key_group-3">update_key_group/3</a></h3>
+<div class="spec">
+<p><tt>update_key_group(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a key group.</p>
+ 
+  <p>When you update a key group, all the fields are updated with the values  
+provided in the request. You cannot update some fields independent of  
+others. To update a key group:</p>
+ 
+  <ol> <li><p> Get the current key group with <code>GetKeyGroup</code> or
+  <code>GetKeyGroupConfig</code>.</p>
+ 
+  </li> <li><p> Locally modify the fields in the key group that you want to  
+update. For example, add or remove public key IDs.</p>
+ 
+  </li> <li><p> Call <code>UpdateKeyGroup</code> with the entire key group object,  
+including the fields that you modified and those that you didn’t.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="update_key_group-4">update_key_group/4</a></h3>
+<div class="spec">
+<p><tt>update_key_group(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_origin_request_policy-3">update_origin_request_policy/3</a></h3>
+<div class="spec">
+<p><tt>update_origin_request_policy(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an origin request policy configuration.</p>
+ 
+  <p>When you update an origin request policy configuration, all the fields are  
+updated with the values provided in the request. You cannot update some  
+fields independent of others. To update an origin request policy  
+configuration:</p>
+ 
+  <ol> <li><p> Use <code>GetOriginRequestPolicyConfig</code> to get the current  
+configuration.</p>
+ 
+  </li> <li><p> Locally modify the fields in the origin request policy  
+configuration that you want to update.</p>
+ 
+  </li> <li><p> Call <code>UpdateOriginRequestPolicy</code> by providing the entire origin  
+request policy configuration, including the fields that you modified and  
+those that you didn’t.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="update_origin_request_policy-4">update_origin_request_policy/4</a></h3>
+<div class="spec">
+<p><tt>update_origin_request_policy(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_public_key-3">update_public_key/3</a></h3>
+<div class="spec">
+<p><tt>update_public_key(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Update public key information.</p>
+ 
+  Note that the only value you can change is the comment.</p>
+
+<h3 class="function"><a name="update_public_key-4">update_public_key/4</a></h3>
+<div class="spec">
+<p><tt>update_public_key(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_realtime_log_config-2">update_realtime_log_config/2</a></h3>
+<div class="spec">
+<p><tt>update_realtime_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a real-time log configuration.</p>
+ 
+  <p>When you update a real-time log configuration, all the parameters are  
+updated with the values provided in the request. You cannot update some  
+parameters independent of others. To update a real-time log configuration:</p>
+ 
+  <ol> <li><p> Call <code>GetRealtimeLogConfig</code> to get the current real-time log  
+configuration.</p>
+ 
+  </li> <li><p> Locally modify the parameters in the real-time log  
+configuration that you want to update.</p>
+ 
+  </li> <li><p> Call this API (<code>UpdateRealtimeLogConfig</code>) by providing the  
+entire real-time log configuration, including the parameters that you  
+modified and those that you didn’t.</p>
+ 
+  </li> </ol> You cannot update a real-time log configuration’s <code>Name</code> or
+  <code>ARN</code>.</p>
+
+<h3 class="function"><a name="update_realtime_log_config-3">update_realtime_log_config/3</a></h3>
+<div class="spec">
+<p><tt>update_realtime_log_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_streaming_distribution-3">update_streaming_distribution/3</a></h3>
+<div class="spec">
+<p><tt>update_streaming_distribution(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Update a streaming distribution.</p>
+
+<h3 class="function"><a name="update_streaming_distribution-4">update_streaming_distribution/4</a></h3>
+<div class="spec">
+<p><tt>update_streaming_distribution(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

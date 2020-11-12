@@ -1,0 +1,1794 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_pinpoint</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_pinpoint</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Doc Engage API - Amazon Pinpoint API.
+
+
+<h2><a name="description">Description</a></h2>Doc Engage API - Amazon Pinpoint API
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_app-2">create_app/2</a></td><td>Creates an application.</td></tr>
+<tr><td valign="top"><a href="#create_app-3">create_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_campaign-3">create_campaign/3</a></td><td>Creates a new campaign for an application or updates the settings of
+  an existing campaign for an application.</td></tr>
+<tr><td valign="top"><a href="#create_campaign-4">create_campaign/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_email_template-3">create_email_template/3</a></td><td>Creates a message template for messages that are sent through the
+  email channel.</td></tr>
+<tr><td valign="top"><a href="#create_email_template-4">create_email_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_export_job-3">create_export_job/3</a></td><td>Creates an export job for an application.</td></tr>
+<tr><td valign="top"><a href="#create_export_job-4">create_export_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_import_job-3">create_import_job/3</a></td><td>Creates an import job for an application.</td></tr>
+<tr><td valign="top"><a href="#create_import_job-4">create_import_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_journey-3">create_journey/3</a></td><td>Creates a journey for an application.</td></tr>
+<tr><td valign="top"><a href="#create_journey-4">create_journey/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_push_template-3">create_push_template/3</a></td><td>Creates a message template for messages that are sent through a push
+  notification channel.</td></tr>
+<tr><td valign="top"><a href="#create_push_template-4">create_push_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_recommender_configuration-2">create_recommender_configuration/2</a></td><td>Creates an Amazon Pinpoint configuration for a recommender model.</td></tr>
+<tr><td valign="top"><a href="#create_recommender_configuration-3">create_recommender_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_segment-3">create_segment/3</a></td><td>Creates a new segment for an application or updates the
+  configuration, dimension, and other settings for an existing segment
+  that's associated with an application.</td></tr>
+<tr><td valign="top"><a href="#create_segment-4">create_segment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_sms_template-3">create_sms_template/3</a></td><td>Creates a message template for messages that are sent through the SMS
+  channel.</td></tr>
+<tr><td valign="top"><a href="#create_sms_template-4">create_sms_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_voice_template-3">create_voice_template/3</a></td><td>Creates a message template for messages that are sent through the
+  voice channel.</td></tr>
+<tr><td valign="top"><a href="#create_voice_template-4">create_voice_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_adm_channel-3">delete_adm_channel/3</a></td><td>Disables the ADM channel for an application and deletes any existing
+  settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_adm_channel-4">delete_adm_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_apns_channel-3">delete_apns_channel/3</a></td><td>Disables the APNs channel for an application and deletes any existing
+  settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_apns_channel-4">delete_apns_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_apns_sandbox_channel-3">delete_apns_sandbox_channel/3</a></td><td>Disables the APNs sandbox channel for an application and deletes any
+  existing settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_apns_sandbox_channel-4">delete_apns_sandbox_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_apns_voip_channel-3">delete_apns_voip_channel/3</a></td><td>Disables the APNs VoIP channel for an application and deletes any
+  existing settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_apns_voip_channel-4">delete_apns_voip_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_apns_voip_sandbox_channel-3">delete_apns_voip_sandbox_channel/3</a></td><td>Disables the APNs VoIP sandbox channel for an application and deletes
+  any existing settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_apns_voip_sandbox_channel-4">delete_apns_voip_sandbox_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_app-3">delete_app/3</a></td><td>Deletes an application.</td></tr>
+<tr><td valign="top"><a href="#delete_app-4">delete_app/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_baidu_channel-3">delete_baidu_channel/3</a></td><td>Disables the Baidu channel for an application and deletes any
+  existing settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_baidu_channel-4">delete_baidu_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_campaign-4">delete_campaign/4</a></td><td>Deletes a campaign from an application.</td></tr>
+<tr><td valign="top"><a href="#delete_campaign-5">delete_campaign/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_email_channel-3">delete_email_channel/3</a></td><td>Disables the email channel for an application and deletes any
+  existing settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_email_channel-4">delete_email_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_email_template-3">delete_email_template/3</a></td><td>Deletes a message template for messages that were sent through the
+  email channel.</td></tr>
+<tr><td valign="top"><a href="#delete_email_template-4">delete_email_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_endpoint-4">delete_endpoint/4</a></td><td>Deletes an endpoint from an application.</td></tr>
+<tr><td valign="top"><a href="#delete_endpoint-5">delete_endpoint/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_event_stream-3">delete_event_stream/3</a></td><td>Deletes the event stream for an application.</td></tr>
+<tr><td valign="top"><a href="#delete_event_stream-4">delete_event_stream/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_gcm_channel-3">delete_gcm_channel/3</a></td><td>Disables the GCM channel for an application and deletes any existing
+  settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_gcm_channel-4">delete_gcm_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_journey-4">delete_journey/4</a></td><td>Deletes a journey from an application.</td></tr>
+<tr><td valign="top"><a href="#delete_journey-5">delete_journey/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_push_template-3">delete_push_template/3</a></td><td>Deletes a message template for messages that were sent through a push
+  notification channel.</td></tr>
+<tr><td valign="top"><a href="#delete_push_template-4">delete_push_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_recommender_configuration-3">delete_recommender_configuration/3</a></td><td>Deletes an Amazon Pinpoint configuration for a recommender model.</td></tr>
+<tr><td valign="top"><a href="#delete_recommender_configuration-4">delete_recommender_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_segment-4">delete_segment/4</a></td><td>Deletes a segment from an application.</td></tr>
+<tr><td valign="top"><a href="#delete_segment-5">delete_segment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_sms_channel-3">delete_sms_channel/3</a></td><td>Disables the SMS channel for an application and deletes any existing
+  settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_sms_channel-4">delete_sms_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_sms_template-3">delete_sms_template/3</a></td><td>Deletes a message template for messages that were sent through the
+  SMS channel.</td></tr>
+<tr><td valign="top"><a href="#delete_sms_template-4">delete_sms_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user_endpoints-4">delete_user_endpoints/4</a></td><td>Deletes all the endpoints that are associated with a specific user
+  ID.</td></tr>
+<tr><td valign="top"><a href="#delete_user_endpoints-5">delete_user_endpoints/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_voice_channel-3">delete_voice_channel/3</a></td><td>Disables the voice channel for an application and deletes any
+  existing settings for the channel.</td></tr>
+<tr><td valign="top"><a href="#delete_voice_channel-4">delete_voice_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_voice_template-3">delete_voice_template/3</a></td><td>Deletes a message template for messages that were sent through the
+  voice channel.</td></tr>
+<tr><td valign="top"><a href="#delete_voice_template-4">delete_voice_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_adm_channel-2">get_adm_channel/2</a></td><td>Retrieves information about the status and settings of the ADM
+  channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_adm_channel-3">get_adm_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_apns_channel-2">get_apns_channel/2</a></td><td>Retrieves information about the status and settings of the APNs
+  channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_apns_channel-3">get_apns_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_apns_sandbox_channel-2">get_apns_sandbox_channel/2</a></td><td>Retrieves information about the status and settings of the APNs
+  sandbox channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_apns_sandbox_channel-3">get_apns_sandbox_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_apns_voip_channel-2">get_apns_voip_channel/2</a></td><td>Retrieves information about the status and settings of the APNs VoIP
+  channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_apns_voip_channel-3">get_apns_voip_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_apns_voip_sandbox_channel-2">get_apns_voip_sandbox_channel/2</a></td><td>Retrieves information about the status and settings of the APNs VoIP
+  sandbox channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_apns_voip_sandbox_channel-3">get_apns_voip_sandbox_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_app-2">get_app/2</a></td><td>Retrieves information about an application.</td></tr>
+<tr><td valign="top"><a href="#get_app-3">get_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_application_date_range_kpi-7">get_application_date_range_kpi/7</a></td><td>Retrieves (queries) pre-aggregated data for a standard metric that
+  applies to an application.</td></tr>
+<tr><td valign="top"><a href="#get_application_date_range_kpi-8">get_application_date_range_kpi/8</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_application_settings-2">get_application_settings/2</a></td><td>Retrieves information about the settings for an application.</td></tr>
+<tr><td valign="top"><a href="#get_application_settings-3">get_application_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_apps-3">get_apps/3</a></td><td>Retrieves information about all the applications that are associated
+  with your Amazon Pinpoint account.</td></tr>
+<tr><td valign="top"><a href="#get_apps-4">get_apps/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_baidu_channel-2">get_baidu_channel/2</a></td><td>Retrieves information about the status and settings of the Baidu
+  channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_baidu_channel-3">get_baidu_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_campaign-3">get_campaign/3</a></td><td>Retrieves information about the status, configuration, and other
+  settings for a campaign.</td></tr>
+<tr><td valign="top"><a href="#get_campaign-4">get_campaign/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_campaign_activities-5">get_campaign_activities/5</a></td><td>Retrieves information about all the activities for a campaign.</td></tr>
+<tr><td valign="top"><a href="#get_campaign_activities-6">get_campaign_activities/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_campaign_date_range_kpi-8">get_campaign_date_range_kpi/8</a></td><td>Retrieves (queries) pre-aggregated data for a standard metric that
+  applies to a campaign.</td></tr>
+<tr><td valign="top"><a href="#get_campaign_date_range_kpi-9">get_campaign_date_range_kpi/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_campaign_version-4">get_campaign_version/4</a></td><td>Retrieves information about the status, configuration, and other
+  settings for a specific version of a campaign.</td></tr>
+<tr><td valign="top"><a href="#get_campaign_version-5">get_campaign_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_campaign_versions-5">get_campaign_versions/5</a></td><td>Retrieves information about the status, configuration, and other
+  settings for all versions of a campaign.</td></tr>
+<tr><td valign="top"><a href="#get_campaign_versions-6">get_campaign_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_campaigns-4">get_campaigns/4</a></td><td>Retrieves information about the status, configuration, and other
+  settings for all the campaigns that are associated with an application.</td></tr>
+<tr><td valign="top"><a href="#get_campaigns-5">get_campaigns/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_channels-2">get_channels/2</a></td><td>Retrieves information about the history and status of each channel
+  for an application.</td></tr>
+<tr><td valign="top"><a href="#get_channels-3">get_channels/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_email_channel-2">get_email_channel/2</a></td><td>Retrieves information about the status and settings of the email
+  channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_email_channel-3">get_email_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_email_template-3">get_email_template/3</a></td><td>Retrieves the content and settings of a message template for messages
+  that are sent through the email channel.</td></tr>
+<tr><td valign="top"><a href="#get_email_template-4">get_email_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_endpoint-3">get_endpoint/3</a></td><td>Retrieves information about the settings and attributes of a specific
+  endpoint for an application.</td></tr>
+<tr><td valign="top"><a href="#get_endpoint-4">get_endpoint/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_event_stream-2">get_event_stream/2</a></td><td>Retrieves information about the event stream settings for an
+  application.</td></tr>
+<tr><td valign="top"><a href="#get_event_stream-3">get_event_stream/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_export_job-3">get_export_job/3</a></td><td>Retrieves information about the status and settings of a specific
+  export job for an application.</td></tr>
+<tr><td valign="top"><a href="#get_export_job-4">get_export_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_export_jobs-4">get_export_jobs/4</a></td><td>Retrieves information about the status and settings of all the export
+  jobs for an application.</td></tr>
+<tr><td valign="top"><a href="#get_export_jobs-5">get_export_jobs/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_gcm_channel-2">get_gcm_channel/2</a></td><td>Retrieves information about the status and settings of the GCM
+  channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_gcm_channel-3">get_gcm_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_import_job-3">get_import_job/3</a></td><td>Retrieves information about the status and settings of a specific
+  import job for an application.</td></tr>
+<tr><td valign="top"><a href="#get_import_job-4">get_import_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_import_jobs-4">get_import_jobs/4</a></td><td>Retrieves information about the status and settings of all the import
+  jobs for an application.</td></tr>
+<tr><td valign="top"><a href="#get_import_jobs-5">get_import_jobs/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_journey-3">get_journey/3</a></td><td>Retrieves information about the status, configuration, and other
+  settings for a journey.</td></tr>
+<tr><td valign="top"><a href="#get_journey-4">get_journey/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_journey_date_range_kpi-8">get_journey_date_range_kpi/8</a></td><td>Retrieves (queries) pre-aggregated data for a standard engagement
+  metric that applies to a journey.</td></tr>
+<tr><td valign="top"><a href="#get_journey_date_range_kpi-9">get_journey_date_range_kpi/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_journey_execution_activity_metrics-6">get_journey_execution_activity_metrics/6</a></td><td>Retrieves (queries) pre-aggregated data for a standard execution
+  metric that applies to a journey activity.</td></tr>
+<tr><td valign="top"><a href="#get_journey_execution_activity_metrics-7">get_journey_execution_activity_metrics/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_journey_execution_metrics-5">get_journey_execution_metrics/5</a></td><td>Retrieves (queries) pre-aggregated data for a standard execution
+  metric that applies to a journey.</td></tr>
+<tr><td valign="top"><a href="#get_journey_execution_metrics-6">get_journey_execution_metrics/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_push_template-3">get_push_template/3</a></td><td>Retrieves the content and settings of a message template for messages
+  that are sent through a push notification channel.</td></tr>
+<tr><td valign="top"><a href="#get_push_template-4">get_push_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_recommender_configuration-2">get_recommender_configuration/2</a></td><td>Retrieves information about an Amazon Pinpoint configuration for a
+  recommender model.</td></tr>
+<tr><td valign="top"><a href="#get_recommender_configuration-3">get_recommender_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_recommender_configurations-3">get_recommender_configurations/3</a></td><td>Retrieves information about all the recommender model configurations
+  that are associated with your Amazon Pinpoint account.</td></tr>
+<tr><td valign="top"><a href="#get_recommender_configurations-4">get_recommender_configurations/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_segment-3">get_segment/3</a></td><td>Retrieves information about the configuration, dimension, and other
+  settings for a specific segment that's associated with an application.</td></tr>
+<tr><td valign="top"><a href="#get_segment-4">get_segment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_segment_export_jobs-5">get_segment_export_jobs/5</a></td><td>Retrieves information about the status and settings of the export
+  jobs for a segment.</td></tr>
+<tr><td valign="top"><a href="#get_segment_export_jobs-6">get_segment_export_jobs/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_segment_import_jobs-5">get_segment_import_jobs/5</a></td><td>Retrieves information about the status and settings of the import
+  jobs for a segment.</td></tr>
+<tr><td valign="top"><a href="#get_segment_import_jobs-6">get_segment_import_jobs/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_segment_version-4">get_segment_version/4</a></td><td>Retrieves information about the configuration, dimension, and other
+  settings for a specific version of a segment that's associated with an
+  application.</td></tr>
+<tr><td valign="top"><a href="#get_segment_version-5">get_segment_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_segment_versions-5">get_segment_versions/5</a></td><td>Retrieves information about the configuration, dimension, and other
+  settings for all the versions of a specific segment that's associated with
+  an application.</td></tr>
+<tr><td valign="top"><a href="#get_segment_versions-6">get_segment_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_segments-4">get_segments/4</a></td><td>Retrieves information about the configuration, dimension, and other
+  settings for all the segments that are associated with an application.</td></tr>
+<tr><td valign="top"><a href="#get_segments-5">get_segments/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sms_channel-2">get_sms_channel/2</a></td><td>Retrieves information about the status and settings of the SMS
+  channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_sms_channel-3">get_sms_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_sms_template-3">get_sms_template/3</a></td><td>Retrieves the content and settings of a message template for messages
+  that are sent through the SMS channel.</td></tr>
+<tr><td valign="top"><a href="#get_sms_template-4">get_sms_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_user_endpoints-3">get_user_endpoints/3</a></td><td>Retrieves information about all the endpoints that are associated
+  with a specific user ID.</td></tr>
+<tr><td valign="top"><a href="#get_user_endpoints-4">get_user_endpoints/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_voice_channel-2">get_voice_channel/2</a></td><td>Retrieves information about the status and settings of the voice
+  channel for an application.</td></tr>
+<tr><td valign="top"><a href="#get_voice_channel-3">get_voice_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_voice_template-3">get_voice_template/3</a></td><td>Retrieves the content and settings of a message template for messages
+  that are sent through the voice channel.</td></tr>
+<tr><td valign="top"><a href="#get_voice_template-4">get_voice_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_journeys-4">list_journeys/4</a></td><td>Retrieves information about the status, configuration, and other
+  settings for all the journeys that are associated with an application.</td></tr>
+<tr><td valign="top"><a href="#list_journeys-5">list_journeys/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieves all the tags (keys and values) that are associated with an
+  application, campaign, message template, or segment.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_template_versions-5">list_template_versions/5</a></td><td>Retrieves information about all the versions of a specific message
+  template.</td></tr>
+<tr><td valign="top"><a href="#list_template_versions-6">list_template_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_templates-5">list_templates/5</a></td><td>Retrieves information about all the message templates that are
+  associated with your Amazon Pinpoint account.</td></tr>
+<tr><td valign="top"><a href="#list_templates-6">list_templates/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#phone_number_validate-2">phone_number_validate/2</a></td><td>Retrieves information about a phone number.</td></tr>
+<tr><td valign="top"><a href="#phone_number_validate-3">phone_number_validate/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_event_stream-3">put_event_stream/3</a></td><td>Creates a new event stream for an application or updates the settings
+  of an existing event stream for an application.</td></tr>
+<tr><td valign="top"><a href="#put_event_stream-4">put_event_stream/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_events-3">put_events/3</a></td><td>Creates a new event to record for endpoints, or creates or updates
+  endpoint data that existing events are associated with.</td></tr>
+<tr><td valign="top"><a href="#put_events-4">put_events/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_attributes-4">remove_attributes/4</a></td><td>Removes one or more attributes, of the same attribute type, from all
+  the endpoints that are associated with an application.</td></tr>
+<tr><td valign="top"><a href="#remove_attributes-5">remove_attributes/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_messages-3">send_messages/3</a></td><td>Creates and sends a direct message.</td></tr>
+<tr><td valign="top"><a href="#send_messages-4">send_messages/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_users_messages-3">send_users_messages/3</a></td><td>Creates and sends a message to a list of users.</td></tr>
+<tr><td valign="top"><a href="#send_users_messages-4">send_users_messages/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds one or more tags (keys and values) to an application, campaign,
+  message template, or segment.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes one or more tags (keys and values) from an application,
+  campaign, message template, or segment.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_adm_channel-3">update_adm_channel/3</a></td><td>Enables the ADM channel for an application or updates the status and
+  settings of the ADM channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_adm_channel-4">update_adm_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_apns_channel-3">update_apns_channel/3</a></td><td>Enables the APNs channel for an application or updates the status and
+  settings of the APNs channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_apns_channel-4">update_apns_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_apns_sandbox_channel-3">update_apns_sandbox_channel/3</a></td><td>Enables the APNs sandbox channel for an application or updates the
+  status and settings of the APNs sandbox channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_apns_sandbox_channel-4">update_apns_sandbox_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_apns_voip_channel-3">update_apns_voip_channel/3</a></td><td>Enables the APNs VoIP channel for an application or updates the
+  status and settings of the APNs VoIP channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_apns_voip_channel-4">update_apns_voip_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_apns_voip_sandbox_channel-3">update_apns_voip_sandbox_channel/3</a></td><td>Enables the APNs VoIP sandbox channel for an application or updates
+  the status and settings of the APNs VoIP sandbox channel for an
+  application.</td></tr>
+<tr><td valign="top"><a href="#update_apns_voip_sandbox_channel-4">update_apns_voip_sandbox_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_application_settings-3">update_application_settings/3</a></td><td>Updates the settings for an application.</td></tr>
+<tr><td valign="top"><a href="#update_application_settings-4">update_application_settings/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_baidu_channel-3">update_baidu_channel/3</a></td><td>Enables the Baidu channel for an application or updates the status
+  and settings of the Baidu channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_baidu_channel-4">update_baidu_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_campaign-4">update_campaign/4</a></td><td>Updates the configuration and other settings for a campaign.</td></tr>
+<tr><td valign="top"><a href="#update_campaign-5">update_campaign/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_email_channel-3">update_email_channel/3</a></td><td>Enables the email channel for an application or updates the status
+  and settings of the email channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_email_channel-4">update_email_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_email_template-3">update_email_template/3</a></td><td>Updates an existing message template for messages that are sent
+  through the email channel.</td></tr>
+<tr><td valign="top"><a href="#update_email_template-4">update_email_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_endpoint-4">update_endpoint/4</a></td><td>Creates a new endpoint for an application or updates the settings and  
+attributes of an existing endpoint for an application.</td></tr>
+<tr><td valign="top"><a href="#update_endpoint-5">update_endpoint/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_endpoints_batch-3">update_endpoints_batch/3</a></td><td>Creates a new batch of endpoints for an application or updates the  
+settings and attributes of a batch of existing endpoints for an  
+application.</td></tr>
+<tr><td valign="top"><a href="#update_endpoints_batch-4">update_endpoints_batch/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_gcm_channel-3">update_gcm_channel/3</a></td><td>Enables the GCM channel for an application or updates the status and
+  settings of the GCM channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_gcm_channel-4">update_gcm_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_journey-4">update_journey/4</a></td><td>Updates the configuration and other settings for a journey.</td></tr>
+<tr><td valign="top"><a href="#update_journey-5">update_journey/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_journey_state-4">update_journey_state/4</a></td><td>Cancels (stops) an active journey.</td></tr>
+<tr><td valign="top"><a href="#update_journey_state-5">update_journey_state/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_push_template-3">update_push_template/3</a></td><td>Updates an existing message template for messages that are sent
+  through a push notification channel.</td></tr>
+<tr><td valign="top"><a href="#update_push_template-4">update_push_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_recommender_configuration-3">update_recommender_configuration/3</a></td><td>Updates an Amazon Pinpoint configuration for a recommender model.</td></tr>
+<tr><td valign="top"><a href="#update_recommender_configuration-4">update_recommender_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_segment-4">update_segment/4</a></td><td>Creates a new segment for an application or updates the
+  configuration, dimension, and other settings for an existing segment
+  that's associated with an application.</td></tr>
+<tr><td valign="top"><a href="#update_segment-5">update_segment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_sms_channel-3">update_sms_channel/3</a></td><td>Enables the SMS channel for an application or updates the status and
+  settings of the SMS channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_sms_channel-4">update_sms_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_sms_template-3">update_sms_template/3</a></td><td>Updates an existing message template for messages that are sent
+  through the SMS channel.</td></tr>
+<tr><td valign="top"><a href="#update_sms_template-4">update_sms_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_template_active_version-4">update_template_active_version/4</a></td><td>Changes the status of a specific version of a message template to
+  active.</td></tr>
+<tr><td valign="top"><a href="#update_template_active_version-5">update_template_active_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_voice_channel-3">update_voice_channel/3</a></td><td>Enables the voice channel for an application or updates the status
+  and settings of the voice channel for an application.</td></tr>
+<tr><td valign="top"><a href="#update_voice_channel-4">update_voice_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_voice_template-3">update_voice_template/3</a></td><td>Updates an existing message template for messages that are sent
+  through the voice channel.</td></tr>
+<tr><td valign="top"><a href="#update_voice_template-4">update_voice_template/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_app-2">create_app/2</a></h3>
+<div class="spec">
+<p><tt>create_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an application.</p>
+
+<h3 class="function"><a name="create_app-3">create_app/3</a></h3>
+<div class="spec">
+<p><tt>create_app(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_campaign-3">create_campaign/3</a></h3>
+<div class="spec">
+<p><tt>create_campaign(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new campaign for an application or updates the settings of
+  an existing campaign for an application.</p>
+
+<h3 class="function"><a name="create_campaign-4">create_campaign/4</a></h3>
+<div class="spec">
+<p><tt>create_campaign(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_email_template-3">create_email_template/3</a></h3>
+<div class="spec">
+<p><tt>create_email_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a message template for messages that are sent through the
+  email channel.</p>
+
+<h3 class="function"><a name="create_email_template-4">create_email_template/4</a></h3>
+<div class="spec">
+<p><tt>create_email_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_export_job-3">create_export_job/3</a></h3>
+<div class="spec">
+<p><tt>create_export_job(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an export job for an application.</p>
+
+<h3 class="function"><a name="create_export_job-4">create_export_job/4</a></h3>
+<div class="spec">
+<p><tt>create_export_job(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_import_job-3">create_import_job/3</a></h3>
+<div class="spec">
+<p><tt>create_import_job(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an import job for an application.</p>
+
+<h3 class="function"><a name="create_import_job-4">create_import_job/4</a></h3>
+<div class="spec">
+<p><tt>create_import_job(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_journey-3">create_journey/3</a></h3>
+<div class="spec">
+<p><tt>create_journey(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a journey for an application.</p>
+
+<h3 class="function"><a name="create_journey-4">create_journey/4</a></h3>
+<div class="spec">
+<p><tt>create_journey(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_push_template-3">create_push_template/3</a></h3>
+<div class="spec">
+<p><tt>create_push_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a message template for messages that are sent through a push
+  notification channel.</p>
+
+<h3 class="function"><a name="create_push_template-4">create_push_template/4</a></h3>
+<div class="spec">
+<p><tt>create_push_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_recommender_configuration-2">create_recommender_configuration/2</a></h3>
+<div class="spec">
+<p><tt>create_recommender_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an Amazon Pinpoint configuration for a recommender model.</p>
+
+<h3 class="function"><a name="create_recommender_configuration-3">create_recommender_configuration/3</a></h3>
+<div class="spec">
+<p><tt>create_recommender_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_segment-3">create_segment/3</a></h3>
+<div class="spec">
+<p><tt>create_segment(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new segment for an application or updates the
+  configuration, dimension, and other settings for an existing segment
+  that's associated with an application.</p>
+
+<h3 class="function"><a name="create_segment-4">create_segment/4</a></h3>
+<div class="spec">
+<p><tt>create_segment(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_sms_template-3">create_sms_template/3</a></h3>
+<div class="spec">
+<p><tt>create_sms_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a message template for messages that are sent through the SMS
+  channel.</p>
+
+<h3 class="function"><a name="create_sms_template-4">create_sms_template/4</a></h3>
+<div class="spec">
+<p><tt>create_sms_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_voice_template-3">create_voice_template/3</a></h3>
+<div class="spec">
+<p><tt>create_voice_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a message template for messages that are sent through the
+  voice channel.</p>
+
+<h3 class="function"><a name="create_voice_template-4">create_voice_template/4</a></h3>
+<div class="spec">
+<p><tt>create_voice_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_adm_channel-3">delete_adm_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_adm_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the ADM channel for an application and deletes any existing
+  settings for the channel.</p>
+
+<h3 class="function"><a name="delete_adm_channel-4">delete_adm_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_adm_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_apns_channel-3">delete_apns_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_apns_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the APNs channel for an application and deletes any existing
+  settings for the channel.</p>
+
+<h3 class="function"><a name="delete_apns_channel-4">delete_apns_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_apns_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_apns_sandbox_channel-3">delete_apns_sandbox_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_apns_sandbox_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the APNs sandbox channel for an application and deletes any
+  existing settings for the channel.</p>
+
+<h3 class="function"><a name="delete_apns_sandbox_channel-4">delete_apns_sandbox_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_apns_sandbox_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_apns_voip_channel-3">delete_apns_voip_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_apns_voip_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the APNs VoIP channel for an application and deletes any
+  existing settings for the channel.</p>
+
+<h3 class="function"><a name="delete_apns_voip_channel-4">delete_apns_voip_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_apns_voip_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_apns_voip_sandbox_channel-3">delete_apns_voip_sandbox_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_apns_voip_sandbox_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the APNs VoIP sandbox channel for an application and deletes
+  any existing settings for the channel.</p>
+
+<h3 class="function"><a name="delete_apns_voip_sandbox_channel-4">delete_apns_voip_sandbox_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_app-3">delete_app/3</a></h3>
+<div class="spec">
+<p><tt>delete_app(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an application.</p>
+
+<h3 class="function"><a name="delete_app-4">delete_app/4</a></h3>
+<div class="spec">
+<p><tt>delete_app(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_baidu_channel-3">delete_baidu_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_baidu_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the Baidu channel for an application and deletes any
+  existing settings for the channel.</p>
+
+<h3 class="function"><a name="delete_baidu_channel-4">delete_baidu_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_baidu_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_campaign-4">delete_campaign/4</a></h3>
+<div class="spec">
+<p><tt>delete_campaign(Client, ApplicationId, CampaignId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a campaign from an application.</p>
+
+<h3 class="function"><a name="delete_campaign-5">delete_campaign/5</a></h3>
+<div class="spec">
+<p><tt>delete_campaign(Client, ApplicationId, CampaignId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_email_channel-3">delete_email_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_email_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the email channel for an application and deletes any
+  existing settings for the channel.</p>
+
+<h3 class="function"><a name="delete_email_channel-4">delete_email_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_email_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_email_template-3">delete_email_template/3</a></h3>
+<div class="spec">
+<p><tt>delete_email_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a message template for messages that were sent through the
+  email channel.</p>
+
+<h3 class="function"><a name="delete_email_template-4">delete_email_template/4</a></h3>
+<div class="spec">
+<p><tt>delete_email_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_endpoint-4">delete_endpoint/4</a></h3>
+<div class="spec">
+<p><tt>delete_endpoint(Client, ApplicationId, EndpointId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an endpoint from an application.</p>
+
+<h3 class="function"><a name="delete_endpoint-5">delete_endpoint/5</a></h3>
+<div class="spec">
+<p><tt>delete_endpoint(Client, ApplicationId, EndpointId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_event_stream-3">delete_event_stream/3</a></h3>
+<div class="spec">
+<p><tt>delete_event_stream(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the event stream for an application.</p>
+
+<h3 class="function"><a name="delete_event_stream-4">delete_event_stream/4</a></h3>
+<div class="spec">
+<p><tt>delete_event_stream(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_gcm_channel-3">delete_gcm_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_gcm_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the GCM channel for an application and deletes any existing
+  settings for the channel.</p>
+
+<h3 class="function"><a name="delete_gcm_channel-4">delete_gcm_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_gcm_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_journey-4">delete_journey/4</a></h3>
+<div class="spec">
+<p><tt>delete_journey(Client, ApplicationId, JourneyId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a journey from an application.</p>
+
+<h3 class="function"><a name="delete_journey-5">delete_journey/5</a></h3>
+<div class="spec">
+<p><tt>delete_journey(Client, ApplicationId, JourneyId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_push_template-3">delete_push_template/3</a></h3>
+<div class="spec">
+<p><tt>delete_push_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a message template for messages that were sent through a push
+  notification channel.</p>
+
+<h3 class="function"><a name="delete_push_template-4">delete_push_template/4</a></h3>
+<div class="spec">
+<p><tt>delete_push_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_recommender_configuration-3">delete_recommender_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_recommender_configuration(Client, RecommenderId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an Amazon Pinpoint configuration for a recommender model.</p>
+
+<h3 class="function"><a name="delete_recommender_configuration-4">delete_recommender_configuration/4</a></h3>
+<div class="spec">
+<p><tt>delete_recommender_configuration(Client, RecommenderId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_segment-4">delete_segment/4</a></h3>
+<div class="spec">
+<p><tt>delete_segment(Client, ApplicationId, SegmentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a segment from an application.</p>
+
+<h3 class="function"><a name="delete_segment-5">delete_segment/5</a></h3>
+<div class="spec">
+<p><tt>delete_segment(Client, ApplicationId, SegmentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_sms_channel-3">delete_sms_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_sms_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the SMS channel for an application and deletes any existing
+  settings for the channel.</p>
+
+<h3 class="function"><a name="delete_sms_channel-4">delete_sms_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_sms_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_sms_template-3">delete_sms_template/3</a></h3>
+<div class="spec">
+<p><tt>delete_sms_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a message template for messages that were sent through the
+  SMS channel.</p>
+
+<h3 class="function"><a name="delete_sms_template-4">delete_sms_template/4</a></h3>
+<div class="spec">
+<p><tt>delete_sms_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user_endpoints-4">delete_user_endpoints/4</a></h3>
+<div class="spec">
+<p><tt>delete_user_endpoints(Client, ApplicationId, UserId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes all the endpoints that are associated with a specific user
+  ID.</p>
+
+<h3 class="function"><a name="delete_user_endpoints-5">delete_user_endpoints/5</a></h3>
+<div class="spec">
+<p><tt>delete_user_endpoints(Client, ApplicationId, UserId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_voice_channel-3">delete_voice_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_voice_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables the voice channel for an application and deletes any
+  existing settings for the channel.</p>
+
+<h3 class="function"><a name="delete_voice_channel-4">delete_voice_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_voice_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_voice_template-3">delete_voice_template/3</a></h3>
+<div class="spec">
+<p><tt>delete_voice_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a message template for messages that were sent through the
+  voice channel.</p>
+
+<h3 class="function"><a name="delete_voice_template-4">delete_voice_template/4</a></h3>
+<div class="spec">
+<p><tt>delete_voice_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_adm_channel-2">get_adm_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_adm_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the ADM
+  channel for an application.</p>
+
+<h3 class="function"><a name="get_adm_channel-3">get_adm_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_adm_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_apns_channel-2">get_apns_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_apns_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the APNs
+  channel for an application.</p>
+
+<h3 class="function"><a name="get_apns_channel-3">get_apns_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_apns_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_apns_sandbox_channel-2">get_apns_sandbox_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_apns_sandbox_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the APNs
+  sandbox channel for an application.</p>
+
+<h3 class="function"><a name="get_apns_sandbox_channel-3">get_apns_sandbox_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_apns_sandbox_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_apns_voip_channel-2">get_apns_voip_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_apns_voip_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the APNs VoIP
+  channel for an application.</p>
+
+<h3 class="function"><a name="get_apns_voip_channel-3">get_apns_voip_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_apns_voip_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_apns_voip_sandbox_channel-2">get_apns_voip_sandbox_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_apns_voip_sandbox_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the APNs VoIP
+  sandbox channel for an application.</p>
+
+<h3 class="function"><a name="get_apns_voip_sandbox_channel-3">get_apns_voip_sandbox_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_apns_voip_sandbox_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_app-2">get_app/2</a></h3>
+<div class="spec">
+<p><tt>get_app(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about an application.</p>
+
+<h3 class="function"><a name="get_app-3">get_app/3</a></h3>
+<div class="spec">
+<p><tt>get_app(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_application_date_range_kpi-7">get_application_date_range_kpi/7</a></h3>
+<div class="spec">
+<p><tt>get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToken, PageSize, StartTime) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves (queries) pre-aggregated data for a standard metric that
+  applies to an application.</p>
+
+<h3 class="function"><a name="get_application_date_range_kpi-8">get_application_date_range_kpi/8</a></h3>
+<div class="spec">
+<p><tt>get_application_date_range_kpi(Client, ApplicationId, KpiName, EndTime, NextToken, PageSize, StartTime, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_application_settings-2">get_application_settings/2</a></h3>
+<div class="spec">
+<p><tt>get_application_settings(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the settings for an application.</p>
+
+<h3 class="function"><a name="get_application_settings-3">get_application_settings/3</a></h3>
+<div class="spec">
+<p><tt>get_application_settings(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_apps-3">get_apps/3</a></h3>
+<div class="spec">
+<p><tt>get_apps(Client, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about all the applications that are associated
+  with your Amazon Pinpoint account.</p>
+
+<h3 class="function"><a name="get_apps-4">get_apps/4</a></h3>
+<div class="spec">
+<p><tt>get_apps(Client, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_baidu_channel-2">get_baidu_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_baidu_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the Baidu
+  channel for an application.</p>
+
+<h3 class="function"><a name="get_baidu_channel-3">get_baidu_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_baidu_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_campaign-3">get_campaign/3</a></h3>
+<div class="spec">
+<p><tt>get_campaign(Client, ApplicationId, CampaignId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status, configuration, and other
+  settings for a campaign.</p>
+
+<h3 class="function"><a name="get_campaign-4">get_campaign/4</a></h3>
+<div class="spec">
+<p><tt>get_campaign(Client, ApplicationId, CampaignId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_campaign_activities-5">get_campaign_activities/5</a></h3>
+<div class="spec">
+<p><tt>get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about all the activities for a campaign.</p>
+
+<h3 class="function"><a name="get_campaign_activities-6">get_campaign_activities/6</a></h3>
+<div class="spec">
+<p><tt>get_campaign_activities(Client, ApplicationId, CampaignId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_campaign_date_range_kpi-8">get_campaign_date_range_kpi/8</a></h3>
+<div class="spec">
+<p><tt>get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime, NextToken, PageSize, StartTime) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves (queries) pre-aggregated data for a standard metric that
+  applies to a campaign.</p>
+
+<h3 class="function"><a name="get_campaign_date_range_kpi-9">get_campaign_date_range_kpi/9</a></h3>
+<div class="spec">
+<p><tt>get_campaign_date_range_kpi(Client, ApplicationId, CampaignId, KpiName, EndTime, NextToken, PageSize, StartTime, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_campaign_version-4">get_campaign_version/4</a></h3>
+<div class="spec">
+<p><tt>get_campaign_version(Client, ApplicationId, CampaignId, Version) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status, configuration, and other
+  settings for a specific version of a campaign.</p>
+
+<h3 class="function"><a name="get_campaign_version-5">get_campaign_version/5</a></h3>
+<div class="spec">
+<p><tt>get_campaign_version(Client, ApplicationId, CampaignId, Version, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_campaign_versions-5">get_campaign_versions/5</a></h3>
+<div class="spec">
+<p><tt>get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status, configuration, and other
+  settings for all versions of a campaign.</p>
+
+<h3 class="function"><a name="get_campaign_versions-6">get_campaign_versions/6</a></h3>
+<div class="spec">
+<p><tt>get_campaign_versions(Client, ApplicationId, CampaignId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_campaigns-4">get_campaigns/4</a></h3>
+<div class="spec">
+<p><tt>get_campaigns(Client, ApplicationId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status, configuration, and other
+  settings for all the campaigns that are associated with an application.</p>
+
+<h3 class="function"><a name="get_campaigns-5">get_campaigns/5</a></h3>
+<div class="spec">
+<p><tt>get_campaigns(Client, ApplicationId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_channels-2">get_channels/2</a></h3>
+<div class="spec">
+<p><tt>get_channels(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the history and status of each channel
+  for an application.</p>
+
+<h3 class="function"><a name="get_channels-3">get_channels/3</a></h3>
+<div class="spec">
+<p><tt>get_channels(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_email_channel-2">get_email_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_email_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the email
+  channel for an application.</p>
+
+<h3 class="function"><a name="get_email_channel-3">get_email_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_email_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_email_template-3">get_email_template/3</a></h3>
+<div class="spec">
+<p><tt>get_email_template(Client, TemplateName, Version) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the content and settings of a message template for messages
+  that are sent through the email channel.</p>
+
+<h3 class="function"><a name="get_email_template-4">get_email_template/4</a></h3>
+<div class="spec">
+<p><tt>get_email_template(Client, TemplateName, Version, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_endpoint-3">get_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>get_endpoint(Client, ApplicationId, EndpointId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the settings and attributes of a specific
+  endpoint for an application.</p>
+
+<h3 class="function"><a name="get_endpoint-4">get_endpoint/4</a></h3>
+<div class="spec">
+<p><tt>get_endpoint(Client, ApplicationId, EndpointId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_event_stream-2">get_event_stream/2</a></h3>
+<div class="spec">
+<p><tt>get_event_stream(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the event stream settings for an
+  application.</p>
+
+<h3 class="function"><a name="get_event_stream-3">get_event_stream/3</a></h3>
+<div class="spec">
+<p><tt>get_event_stream(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_export_job-3">get_export_job/3</a></h3>
+<div class="spec">
+<p><tt>get_export_job(Client, ApplicationId, JobId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of a specific
+  export job for an application.</p>
+
+<h3 class="function"><a name="get_export_job-4">get_export_job/4</a></h3>
+<div class="spec">
+<p><tt>get_export_job(Client, ApplicationId, JobId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_export_jobs-4">get_export_jobs/4</a></h3>
+<div class="spec">
+<p><tt>get_export_jobs(Client, ApplicationId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of all the export
+  jobs for an application.</p>
+
+<h3 class="function"><a name="get_export_jobs-5">get_export_jobs/5</a></h3>
+<div class="spec">
+<p><tt>get_export_jobs(Client, ApplicationId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_gcm_channel-2">get_gcm_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_gcm_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the GCM
+  channel for an application.</p>
+
+<h3 class="function"><a name="get_gcm_channel-3">get_gcm_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_gcm_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_import_job-3">get_import_job/3</a></h3>
+<div class="spec">
+<p><tt>get_import_job(Client, ApplicationId, JobId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of a specific
+  import job for an application.</p>
+
+<h3 class="function"><a name="get_import_job-4">get_import_job/4</a></h3>
+<div class="spec">
+<p><tt>get_import_job(Client, ApplicationId, JobId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_import_jobs-4">get_import_jobs/4</a></h3>
+<div class="spec">
+<p><tt>get_import_jobs(Client, ApplicationId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of all the import
+  jobs for an application.</p>
+
+<h3 class="function"><a name="get_import_jobs-5">get_import_jobs/5</a></h3>
+<div class="spec">
+<p><tt>get_import_jobs(Client, ApplicationId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_journey-3">get_journey/3</a></h3>
+<div class="spec">
+<p><tt>get_journey(Client, ApplicationId, JourneyId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status, configuration, and other
+  settings for a journey.</p>
+
+<h3 class="function"><a name="get_journey-4">get_journey/4</a></h3>
+<div class="spec">
+<p><tt>get_journey(Client, ApplicationId, JourneyId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_journey_date_range_kpi-8">get_journey_date_range_kpi/8</a></h3>
+<div class="spec">
+<p><tt>get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, NextToken, PageSize, StartTime) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves (queries) pre-aggregated data for a standard engagement
+  metric that applies to a journey.</p>
+
+<h3 class="function"><a name="get_journey_date_range_kpi-9">get_journey_date_range_kpi/9</a></h3>
+<div class="spec">
+<p><tt>get_journey_date_range_kpi(Client, ApplicationId, JourneyId, KpiName, EndTime, NextToken, PageSize, StartTime, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_journey_execution_activity_metrics-6">get_journey_execution_activity_metrics/6</a></h3>
+<div class="spec">
+<p><tt>get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, NextToken, PageSize) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves (queries) pre-aggregated data for a standard execution
+  metric that applies to a journey activity.</p>
+
+<h3 class="function"><a name="get_journey_execution_activity_metrics-7">get_journey_execution_activity_metrics/7</a></h3>
+<div class="spec">
+<p><tt>get_journey_execution_activity_metrics(Client, ApplicationId, JourneyActivityId, JourneyId, NextToken, PageSize, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_journey_execution_metrics-5">get_journey_execution_metrics/5</a></h3>
+<div class="spec">
+<p><tt>get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageSize) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves (queries) pre-aggregated data for a standard execution
+  metric that applies to a journey.</p>
+
+<h3 class="function"><a name="get_journey_execution_metrics-6">get_journey_execution_metrics/6</a></h3>
+<div class="spec">
+<p><tt>get_journey_execution_metrics(Client, ApplicationId, JourneyId, NextToken, PageSize, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_push_template-3">get_push_template/3</a></h3>
+<div class="spec">
+<p><tt>get_push_template(Client, TemplateName, Version) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the content and settings of a message template for messages
+  that are sent through a push notification channel.</p>
+
+<h3 class="function"><a name="get_push_template-4">get_push_template/4</a></h3>
+<div class="spec">
+<p><tt>get_push_template(Client, TemplateName, Version, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_recommender_configuration-2">get_recommender_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_recommender_configuration(Client, RecommenderId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about an Amazon Pinpoint configuration for a
+  recommender model.</p>
+
+<h3 class="function"><a name="get_recommender_configuration-3">get_recommender_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_recommender_configuration(Client, RecommenderId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_recommender_configurations-3">get_recommender_configurations/3</a></h3>
+<div class="spec">
+<p><tt>get_recommender_configurations(Client, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about all the recommender model configurations
+  that are associated with your Amazon Pinpoint account.</p>
+
+<h3 class="function"><a name="get_recommender_configurations-4">get_recommender_configurations/4</a></h3>
+<div class="spec">
+<p><tt>get_recommender_configurations(Client, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_segment-3">get_segment/3</a></h3>
+<div class="spec">
+<p><tt>get_segment(Client, ApplicationId, SegmentId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the configuration, dimension, and other
+  settings for a specific segment that's associated with an application.</p>
+
+<h3 class="function"><a name="get_segment-4">get_segment/4</a></h3>
+<div class="spec">
+<p><tt>get_segment(Client, ApplicationId, SegmentId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_segment_export_jobs-5">get_segment_export_jobs/5</a></h3>
+<div class="spec">
+<p><tt>get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the export
+  jobs for a segment.</p>
+
+<h3 class="function"><a name="get_segment_export_jobs-6">get_segment_export_jobs/6</a></h3>
+<div class="spec">
+<p><tt>get_segment_export_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_segment_import_jobs-5">get_segment_import_jobs/5</a></h3>
+<div class="spec">
+<p><tt>get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the import
+  jobs for a segment.</p>
+
+<h3 class="function"><a name="get_segment_import_jobs-6">get_segment_import_jobs/6</a></h3>
+<div class="spec">
+<p><tt>get_segment_import_jobs(Client, ApplicationId, SegmentId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_segment_version-4">get_segment_version/4</a></h3>
+<div class="spec">
+<p><tt>get_segment_version(Client, ApplicationId, SegmentId, Version) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the configuration, dimension, and other
+  settings for a specific version of a segment that's associated with an
+  application.</p>
+
+<h3 class="function"><a name="get_segment_version-5">get_segment_version/5</a></h3>
+<div class="spec">
+<p><tt>get_segment_version(Client, ApplicationId, SegmentId, Version, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_segment_versions-5">get_segment_versions/5</a></h3>
+<div class="spec">
+<p><tt>get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the configuration, dimension, and other
+  settings for all the versions of a specific segment that's associated with
+  an application.</p>
+
+<h3 class="function"><a name="get_segment_versions-6">get_segment_versions/6</a></h3>
+<div class="spec">
+<p><tt>get_segment_versions(Client, ApplicationId, SegmentId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_segments-4">get_segments/4</a></h3>
+<div class="spec">
+<p><tt>get_segments(Client, ApplicationId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the configuration, dimension, and other
+  settings for all the segments that are associated with an application.</p>
+
+<h3 class="function"><a name="get_segments-5">get_segments/5</a></h3>
+<div class="spec">
+<p><tt>get_segments(Client, ApplicationId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sms_channel-2">get_sms_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_sms_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the SMS
+  channel for an application.</p>
+
+<h3 class="function"><a name="get_sms_channel-3">get_sms_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_sms_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_sms_template-3">get_sms_template/3</a></h3>
+<div class="spec">
+<p><tt>get_sms_template(Client, TemplateName, Version) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the content and settings of a message template for messages
+  that are sent through the SMS channel.</p>
+
+<h3 class="function"><a name="get_sms_template-4">get_sms_template/4</a></h3>
+<div class="spec">
+<p><tt>get_sms_template(Client, TemplateName, Version, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_user_endpoints-3">get_user_endpoints/3</a></h3>
+<div class="spec">
+<p><tt>get_user_endpoints(Client, ApplicationId, UserId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about all the endpoints that are associated
+  with a specific user ID.</p>
+
+<h3 class="function"><a name="get_user_endpoints-4">get_user_endpoints/4</a></h3>
+<div class="spec">
+<p><tt>get_user_endpoints(Client, ApplicationId, UserId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_voice_channel-2">get_voice_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_voice_channel(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status and settings of the voice
+  channel for an application.</p>
+
+<h3 class="function"><a name="get_voice_channel-3">get_voice_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_voice_channel(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_voice_template-3">get_voice_template/3</a></h3>
+<div class="spec">
+<p><tt>get_voice_template(Client, TemplateName, Version) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the content and settings of a message template for messages
+  that are sent through the voice channel.</p>
+
+<h3 class="function"><a name="get_voice_template-4">get_voice_template/4</a></h3>
+<div class="spec">
+<p><tt>get_voice_template(Client, TemplateName, Version, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_journeys-4">list_journeys/4</a></h3>
+<div class="spec">
+<p><tt>list_journeys(Client, ApplicationId, PageSize, Token) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about the status, configuration, and other
+  settings for all the journeys that are associated with an application.</p>
+
+<h3 class="function"><a name="list_journeys-5">list_journeys/5</a></h3>
+<div class="spec">
+<p><tt>list_journeys(Client, ApplicationId, PageSize, Token, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves all the tags (keys and values) that are associated with an
+  application, campaign, message template, or segment.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_template_versions-5">list_template_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about all the versions of a specific message
+  template.</p>
+
+<h3 class="function"><a name="list_template_versions-6">list_template_versions/6</a></h3>
+<div class="spec">
+<p><tt>list_template_versions(Client, TemplateName, TemplateType, NextToken, PageSize, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_templates-5">list_templates/5</a></h3>
+<div class="spec">
+<p><tt>list_templates(Client, NextToken, PageSize, Prefix, TemplateType) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about all the message templates that are
+  associated with your Amazon Pinpoint account.</p>
+
+<h3 class="function"><a name="list_templates-6">list_templates/6</a></h3>
+<div class="spec">
+<p><tt>list_templates(Client, NextToken, PageSize, Prefix, TemplateType, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="phone_number_validate-2">phone_number_validate/2</a></h3>
+<div class="spec">
+<p><tt>phone_number_validate(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a phone number.</p>
+
+<h3 class="function"><a name="phone_number_validate-3">phone_number_validate/3</a></h3>
+<div class="spec">
+<p><tt>phone_number_validate(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_event_stream-3">put_event_stream/3</a></h3>
+<div class="spec">
+<p><tt>put_event_stream(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new event stream for an application or updates the settings
+  of an existing event stream for an application.</p>
+
+<h3 class="function"><a name="put_event_stream-4">put_event_stream/4</a></h3>
+<div class="spec">
+<p><tt>put_event_stream(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_events-3">put_events/3</a></h3>
+<div class="spec">
+<p><tt>put_events(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new event to record for endpoints, or creates or updates
+  endpoint data that existing events are associated with.</p>
+
+<h3 class="function"><a name="put_events-4">put_events/4</a></h3>
+<div class="spec">
+<p><tt>put_events(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="remove_attributes-4">remove_attributes/4</a></h3>
+<div class="spec">
+<p><tt>remove_attributes(Client, ApplicationId, AttributeType, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more attributes, of the same attribute type, from all
+  the endpoints that are associated with an application.</p>
+
+<h3 class="function"><a name="remove_attributes-5">remove_attributes/5</a></h3>
+<div class="spec">
+<p><tt>remove_attributes(Client, ApplicationId, AttributeType, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_messages-3">send_messages/3</a></h3>
+<div class="spec">
+<p><tt>send_messages(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates and sends a direct message.</p>
+
+<h3 class="function"><a name="send_messages-4">send_messages/4</a></h3>
+<div class="spec">
+<p><tt>send_messages(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_users_messages-3">send_users_messages/3</a></h3>
+<div class="spec">
+<p><tt>send_users_messages(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates and sends a message to a list of users.</p>
+
+<h3 class="function"><a name="send_users_messages-4">send_users_messages/4</a></h3>
+<div class="spec">
+<p><tt>send_users_messages(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds one or more tags (keys and values) to an application, campaign,
+  message template, or segment.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags (keys and values) from an application,
+  campaign, message template, or segment.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_adm_channel-3">update_adm_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_adm_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the ADM channel for an application or updates the status and
+  settings of the ADM channel for an application.</p>
+
+<h3 class="function"><a name="update_adm_channel-4">update_adm_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_adm_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_apns_channel-3">update_apns_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_apns_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the APNs channel for an application or updates the status and
+  settings of the APNs channel for an application.</p>
+
+<h3 class="function"><a name="update_apns_channel-4">update_apns_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_apns_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_apns_sandbox_channel-3">update_apns_sandbox_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_apns_sandbox_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the APNs sandbox channel for an application or updates the
+  status and settings of the APNs sandbox channel for an application.</p>
+
+<h3 class="function"><a name="update_apns_sandbox_channel-4">update_apns_sandbox_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_apns_sandbox_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_apns_voip_channel-3">update_apns_voip_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_apns_voip_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the APNs VoIP channel for an application or updates the
+  status and settings of the APNs VoIP channel for an application.</p>
+
+<h3 class="function"><a name="update_apns_voip_channel-4">update_apns_voip_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_apns_voip_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_apns_voip_sandbox_channel-3">update_apns_voip_sandbox_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_apns_voip_sandbox_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the APNs VoIP sandbox channel for an application or updates
+  the status and settings of the APNs VoIP sandbox channel for an
+  application.</p>
+
+<h3 class="function"><a name="update_apns_voip_sandbox_channel-4">update_apns_voip_sandbox_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_apns_voip_sandbox_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_application_settings-3">update_application_settings/3</a></h3>
+<div class="spec">
+<p><tt>update_application_settings(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the settings for an application.</p>
+
+<h3 class="function"><a name="update_application_settings-4">update_application_settings/4</a></h3>
+<div class="spec">
+<p><tt>update_application_settings(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_baidu_channel-3">update_baidu_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_baidu_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the Baidu channel for an application or updates the status
+  and settings of the Baidu channel for an application.</p>
+
+<h3 class="function"><a name="update_baidu_channel-4">update_baidu_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_baidu_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_campaign-4">update_campaign/4</a></h3>
+<div class="spec">
+<p><tt>update_campaign(Client, ApplicationId, CampaignId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the configuration and other settings for a campaign.</p>
+
+<h3 class="function"><a name="update_campaign-5">update_campaign/5</a></h3>
+<div class="spec">
+<p><tt>update_campaign(Client, ApplicationId, CampaignId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_email_channel-3">update_email_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_email_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the email channel for an application or updates the status
+  and settings of the email channel for an application.</p>
+
+<h3 class="function"><a name="update_email_channel-4">update_email_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_email_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_email_template-3">update_email_template/3</a></h3>
+<div class="spec">
+<p><tt>update_email_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing message template for messages that are sent
+  through the email channel.</p>
+
+<h3 class="function"><a name="update_email_template-4">update_email_template/4</a></h3>
+<div class="spec">
+<p><tt>update_email_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_endpoint-4">update_endpoint/4</a></h3>
+<div class="spec">
+<p><tt>update_endpoint(Client, ApplicationId, EndpointId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new endpoint for an application or updates the settings and  
+attributes of an existing endpoint for an application.</p>
+ 
+  You can also use this operation to define custom attributes for an
+  endpoint. If an update includes one or more values for a custom attribute,
+  Amazon Pinpoint replaces (overwrites) any existing values with the new
+  values.</p>
+
+<h3 class="function"><a name="update_endpoint-5">update_endpoint/5</a></h3>
+<div class="spec">
+<p><tt>update_endpoint(Client, ApplicationId, EndpointId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_endpoints_batch-3">update_endpoints_batch/3</a></h3>
+<div class="spec">
+<p><tt>update_endpoints_batch(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new batch of endpoints for an application or updates the  
+settings and attributes of a batch of existing endpoints for an  
+application.</p>
+ 
+  You can also use this operation to define custom attributes for a batch of
+  endpoints. If an update includes one or more values for a custom
+  attribute, Amazon Pinpoint replaces (overwrites) any existing values with
+  the new values.</p>
+
+<h3 class="function"><a name="update_endpoints_batch-4">update_endpoints_batch/4</a></h3>
+<div class="spec">
+<p><tt>update_endpoints_batch(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_gcm_channel-3">update_gcm_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_gcm_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the GCM channel for an application or updates the status and
+  settings of the GCM channel for an application.</p>
+
+<h3 class="function"><a name="update_gcm_channel-4">update_gcm_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_gcm_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_journey-4">update_journey/4</a></h3>
+<div class="spec">
+<p><tt>update_journey(Client, ApplicationId, JourneyId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the configuration and other settings for a journey.</p>
+
+<h3 class="function"><a name="update_journey-5">update_journey/5</a></h3>
+<div class="spec">
+<p><tt>update_journey(Client, ApplicationId, JourneyId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_journey_state-4">update_journey_state/4</a></h3>
+<div class="spec">
+<p><tt>update_journey_state(Client, ApplicationId, JourneyId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Cancels (stops) an active journey.</p>
+
+<h3 class="function"><a name="update_journey_state-5">update_journey_state/5</a></h3>
+<div class="spec">
+<p><tt>update_journey_state(Client, ApplicationId, JourneyId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_push_template-3">update_push_template/3</a></h3>
+<div class="spec">
+<p><tt>update_push_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing message template for messages that are sent
+  through a push notification channel.</p>
+
+<h3 class="function"><a name="update_push_template-4">update_push_template/4</a></h3>
+<div class="spec">
+<p><tt>update_push_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_recommender_configuration-3">update_recommender_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_recommender_configuration(Client, RecommenderId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an Amazon Pinpoint configuration for a recommender model.</p>
+
+<h3 class="function"><a name="update_recommender_configuration-4">update_recommender_configuration/4</a></h3>
+<div class="spec">
+<p><tt>update_recommender_configuration(Client, RecommenderId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_segment-4">update_segment/4</a></h3>
+<div class="spec">
+<p><tt>update_segment(Client, ApplicationId, SegmentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new segment for an application or updates the
+  configuration, dimension, and other settings for an existing segment
+  that's associated with an application.</p>
+
+<h3 class="function"><a name="update_segment-5">update_segment/5</a></h3>
+<div class="spec">
+<p><tt>update_segment(Client, ApplicationId, SegmentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_sms_channel-3">update_sms_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_sms_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the SMS channel for an application or updates the status and
+  settings of the SMS channel for an application.</p>
+
+<h3 class="function"><a name="update_sms_channel-4">update_sms_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_sms_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_sms_template-3">update_sms_template/3</a></h3>
+<div class="spec">
+<p><tt>update_sms_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing message template for messages that are sent
+  through the SMS channel.</p>
+
+<h3 class="function"><a name="update_sms_template-4">update_sms_template/4</a></h3>
+<div class="spec">
+<p><tt>update_sms_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_template_active_version-4">update_template_active_version/4</a></h3>
+<div class="spec">
+<p><tt>update_template_active_version(Client, TemplateName, TemplateType, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes the status of a specific version of a message template to
+  active.</p>
+
+<h3 class="function"><a name="update_template_active_version-5">update_template_active_version/5</a></h3>
+<div class="spec">
+<p><tt>update_template_active_version(Client, TemplateName, TemplateType, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_voice_channel-3">update_voice_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_voice_channel(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Enables the voice channel for an application or updates the status
+  and settings of the voice channel for an application.</p>
+
+<h3 class="function"><a name="update_voice_channel-4">update_voice_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_voice_channel(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_voice_template-3">update_voice_template/3</a></h3>
+<div class="spec">
+<p><tt>update_voice_template(Client, TemplateName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing message template for messages that are sent
+  through the voice channel.</p>
+
+<h3 class="function"><a name="update_voice_template-4">update_voice_template/4</a></h3>
+<div class="spec">
+<p><tt>update_voice_template(Client, TemplateName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,244 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_redshift_data</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_redshift_data</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>You can use the Amazon Redshift Data API to run queries on Amazon  
+Redshift tables.
+
+
+<h2><a name="description">Description</a></h2><p>You can use the Amazon Redshift Data API to run queries on Amazon  
+Redshift tables.</p>
+ 
+  You can run individual SQL statements, which are committed if the
+  statement succeeds.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_statement-2">cancel_statement/2</a></td><td>Cancels a running query.</td></tr>
+<tr><td valign="top"><a href="#cancel_statement-3">cancel_statement/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_statement-2">describe_statement/2</a></td><td>Describes the details about a specific instance when a query was run  
+by the Amazon Redshift Data API.</td></tr>
+<tr><td valign="top"><a href="#describe_statement-3">describe_statement/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_table-2">describe_table/2</a></td><td>Describes the detailed information about a table from metadata in the  
+cluster.</td></tr>
+<tr><td valign="top"><a href="#describe_table-3">describe_table/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#execute_statement-2">execute_statement/2</a></td><td>Runs an SQL statement, which can be data manipulation language (DML)  
+or data definition language (DDL).</td></tr>
+<tr><td valign="top"><a href="#execute_statement-3">execute_statement/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_statement_result-2">get_statement_result/2</a></td><td>Fetches the temporarily cached result of an SQL statement.</td></tr>
+<tr><td valign="top"><a href="#get_statement_result-3">get_statement_result/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_databases-2">list_databases/2</a></td><td>List the databases in a cluster.</td></tr>
+<tr><td valign="top"><a href="#list_databases-3">list_databases/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_schemas-2">list_schemas/2</a></td><td>Lists the schemas in a database.</td></tr>
+<tr><td valign="top"><a href="#list_schemas-3">list_schemas/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_statements-2">list_statements/2</a></td><td>List of SQL statements.</td></tr>
+<tr><td valign="top"><a href="#list_statements-3">list_statements/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tables-2">list_tables/2</a></td><td>List the tables in a database.</td></tr>
+<tr><td valign="top"><a href="#list_tables-3">list_tables/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_statement-2">cancel_statement/2</a></h3>
+<div class="spec">
+<p><tt>cancel_statement(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Cancels a running query.</p>
+ 
+  To be canceled, a query must be running.</p>
+
+<h3 class="function"><a name="cancel_statement-3">cancel_statement/3</a></h3>
+<div class="spec">
+<p><tt>cancel_statement(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_statement-2">describe_statement/2</a></h3>
+<div class="spec">
+<p><tt>describe_statement(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the details about a specific instance when a query was run  
+by the Amazon Redshift Data API.</p>
+ 
+  The information includes when the query started, when it finished, the
+  query status, the number of rows returned, and the SQL statement.</p>
+
+<h3 class="function"><a name="describe_statement-3">describe_statement/3</a></h3>
+<div class="spec">
+<p><tt>describe_statement(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_table-2">describe_table/2</a></h3>
+<div class="spec">
+<p><tt>describe_table(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the detailed information about a table from metadata in the  
+cluster.</p>
+ 
+  <p>The information includes its columns. A token is returned to page through  
+the column list. Depending on the authorization method, use one of the  
+following combinations of request parameters:</p>
+ 
+  <ul> <li><p> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of  
+the secret and the cluster identifier that matches the cluster in the  
+secret.</p>
+ 
+  </li> <li><p> Temporary credentials - specify the cluster identifier, the
+  database name, and the database user name. Permission to call the
+  <code>redshift:GetClusterCredentials</code> operation is required to use this method.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="describe_table-3">describe_table/3</a></h3>
+<div class="spec">
+<p><tt>describe_table(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="execute_statement-2">execute_statement/2</a></h3>
+<div class="spec">
+<p><tt>execute_statement(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Runs an SQL statement, which can be data manipulation language (DML)  
+or data definition language (DDL).</p>
+ 
+  <p>This statement must be a single SQL statement. Depending on the  
+authorization method, use one of the following combinations of request  
+parameters:</p>
+ 
+  <ul> <li><p> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of  
+the secret and the cluster identifier that matches the cluster in the  
+secret.</p>
+ 
+  </li> <li><p> Temporary credentials - specify the cluster identifier, the
+  database name, and the database user name. Permission to call the
+  <code>redshift:GetClusterCredentials</code> operation is required to use this method.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="execute_statement-3">execute_statement/3</a></h3>
+<div class="spec">
+<p><tt>execute_statement(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_statement_result-2">get_statement_result/2</a></h3>
+<div class="spec">
+<p><tt>get_statement_result(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Fetches the temporarily cached result of an SQL statement.</p>
+ 
+  A token is returned to page through the statement results.</p>
+
+<h3 class="function"><a name="get_statement_result-3">get_statement_result/3</a></h3>
+<div class="spec">
+<p><tt>get_statement_result(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_databases-2">list_databases/2</a></h3>
+<div class="spec">
+<p><tt>list_databases(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>List the databases in a cluster.</p>
+ 
+  <p>A token is returned to page through the database list. Depending on the  
+authorization method, use one of the following combinations of request  
+parameters:</p>
+ 
+  <ul> <li><p> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of  
+the secret and the cluster identifier that matches the cluster in the  
+secret.</p>
+ 
+  </li> <li><p> Temporary credentials - specify the cluster identifier, the
+  database name, and the database user name. Permission to call the
+  <code>redshift:GetClusterCredentials</code> operation is required to use this method.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="list_databases-3">list_databases/3</a></h3>
+<div class="spec">
+<p><tt>list_databases(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_schemas-2">list_schemas/2</a></h3>
+<div class="spec">
+<p><tt>list_schemas(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the schemas in a database.</p>
+ 
+  <p>A token is returned to page through the schema list. Depending on the  
+authorization method, use one of the following combinations of request  
+parameters:</p>
+ 
+  <ul> <li><p> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of  
+the secret and the cluster identifier that matches the cluster in the  
+secret.</p>
+ 
+  </li> <li><p> Temporary credentials - specify the cluster identifier, the
+  database name, and the database user name. Permission to call the
+  <code>redshift:GetClusterCredentials</code> operation is required to use this method.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="list_schemas-3">list_schemas/3</a></h3>
+<div class="spec">
+<p><tt>list_schemas(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_statements-2">list_statements/2</a></h3>
+<div class="spec">
+<p><tt>list_statements(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>List of SQL statements.</p>
+ 
+  By default, only finished statements are shown. A token is returned to
+  page through the statement list.</p>
+
+<h3 class="function"><a name="list_statements-3">list_statements/3</a></h3>
+<div class="spec">
+<p><tt>list_statements(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tables-2">list_tables/2</a></h3>
+<div class="spec">
+<p><tt>list_tables(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>List the tables in a database.</p>
+ 
+  <p>If neither <code>SchemaPattern</code> nor <code>TablePattern</code> are specified, then all  
+tables in the database are returned. A token is returned to page through  
+the table list. Depending on the authorization method, use one of the  
+following combinations of request parameters:</p>
+ 
+  <ul> <li><p> AWS Secrets Manager - specify the Amazon Resource Name (ARN) of  
+the secret and the cluster identifier that matches the cluster in the  
+secret.</p>
+ 
+  </li> <li><p> Temporary credentials - specify the cluster identifier, the
+  database name, and the database user name. Permission to call the
+  <code>redshift:GetClusterCredentials</code> operation is required to use this method.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="list_tables-3">list_tables/3</a></h3>
+<div class="spec">
+<p><tt>list_tables(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

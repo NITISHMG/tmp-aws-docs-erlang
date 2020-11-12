@@ -1,0 +1,618 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_databrew</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_databrew</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Glue DataBrew is a visual, cloud-scale data-preparation service.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Glue DataBrew is a visual, cloud-scale data-preparation service.</p>
+ 
+  DataBrew simplifies data preparation tasks, targeting data issues that are
+  hard to spot and time-consuming to fix. DataBrew empowers users of all
+  technical levels to visualize the data and perform one-click data
+  transformations, with no coding required.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#batch_delete_recipe_version-3">batch_delete_recipe_version/3</a></td><td>Deletes one or more versions of a recipe at a time.</td></tr>
+<tr><td valign="top"><a href="#batch_delete_recipe_version-4">batch_delete_recipe_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_dataset-2">create_dataset/2</a></td><td>Creates a new AWS Glue DataBrew dataset for this AWS account.</td></tr>
+<tr><td valign="top"><a href="#create_dataset-3">create_dataset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_profile_job-2">create_profile_job/2</a></td><td>Creates a new job to profile an AWS Glue DataBrew dataset that exists
+  in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#create_profile_job-3">create_profile_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_project-2">create_project/2</a></td><td>Creates a new AWS Glue DataBrew project in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#create_project-3">create_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_recipe-2">create_recipe/2</a></td><td>Creates a new AWS Glue DataBrew recipe for the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#create_recipe-3">create_recipe/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_recipe_job-2">create_recipe_job/2</a></td><td>Creates a new job for an existing AWS Glue DataBrew recipe in the  
+current AWS account.</td></tr>
+<tr><td valign="top"><a href="#create_recipe_job-3">create_recipe_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_schedule-2">create_schedule/2</a></td><td>Creates a new schedule for one or more AWS Glue DataBrew jobs.</td></tr>
+<tr><td valign="top"><a href="#create_schedule-3">create_schedule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_dataset-3">delete_dataset/3</a></td><td>Deletes a dataset from AWS Glue DataBrew.</td></tr>
+<tr><td valign="top"><a href="#delete_dataset-4">delete_dataset/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_job-3">delete_job/3</a></td><td>Deletes the specified AWS Glue DataBrew job from the current AWS  
+account.</td></tr>
+<tr><td valign="top"><a href="#delete_job-4">delete_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_project-3">delete_project/3</a></td><td>Deletes an existing AWS Glue DataBrew project from the current AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#delete_project-4">delete_project/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_recipe_version-4">delete_recipe_version/4</a></td><td>Deletes a single version of an AWS Glue DataBrew recipe.</td></tr>
+<tr><td valign="top"><a href="#delete_recipe_version-5">delete_recipe_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_schedule-3">delete_schedule/3</a></td><td>Deletes the specified AWS Glue DataBrew schedule from the current AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#delete_schedule-4">delete_schedule/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_dataset-2">describe_dataset/2</a></td><td>Returns the definition of a specific AWS Glue DataBrew dataset that
+  is in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#describe_dataset-3">describe_dataset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_job-2">describe_job/2</a></td><td>Returns the definition of a specific AWS Glue DataBrew job that is in
+  the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#describe_job-3">describe_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_project-2">describe_project/2</a></td><td>Returns the definition of a specific AWS Glue DataBrew project that
+  is in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#describe_project-3">describe_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_recipe-3">describe_recipe/3</a></td><td>Returns the definition of a specific AWS Glue DataBrew recipe that is
+  in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#describe_recipe-4">describe_recipe/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_schedule-2">describe_schedule/2</a></td><td>Returns the definition of a specific AWS Glue DataBrew schedule that
+  is in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#describe_schedule-3">describe_schedule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_datasets-3">list_datasets/3</a></td><td>Lists all of the AWS Glue DataBrew datasets for the current AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_datasets-4">list_datasets/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_job_runs-4">list_job_runs/4</a></td><td>Lists all of the previous runs of a particular AWS Glue DataBrew job
+  in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_job_runs-5">list_job_runs/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_jobs-5">list_jobs/5</a></td><td>Lists the AWS Glue DataBrew jobs in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_jobs-6">list_jobs/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_projects-3">list_projects/3</a></td><td>Lists all of the DataBrew projects in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_projects-4">list_projects/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_recipe_versions-4">list_recipe_versions/4</a></td><td>Lists all of the versions of a particular AWS Glue DataBrew recipe in
+  the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_recipe_versions-5">list_recipe_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_recipes-4">list_recipes/4</a></td><td>Lists all of the AWS Glue DataBrew recipes in the current AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_recipes-5">list_recipes/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_schedules-4">list_schedules/4</a></td><td>Lists the AWS Glue DataBrew schedules in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_schedules-5">list_schedules/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists all the tags for an AWS Glue DataBrew resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#publish_recipe-3">publish_recipe/3</a></td><td>Publishes a new major version of an AWS Glue DataBrew recipe that
+  exists in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#publish_recipe-4">publish_recipe/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_project_session_action-3">send_project_session_action/3</a></td><td>Performs a recipe step within an interactive AWS Glue DataBrew
+  session that's currently open.</td></tr>
+<tr><td valign="top"><a href="#send_project_session_action-4">send_project_session_action/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_job_run-3">start_job_run/3</a></td><td>Runs an AWS Glue DataBrew job that exists in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#start_job_run-4">start_job_run/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_project_session-3">start_project_session/3</a></td><td>Creates an interactive session, enabling you to manipulate an AWS
+  Glue DataBrew project.</td></tr>
+<tr><td valign="top"><a href="#start_project_session-4">start_project_session/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_job_run-4">stop_job_run/4</a></td><td>Stops the specified job from running in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#stop_job_run-5">stop_job_run/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds metadata tags to an AWS Glue DataBrew resource, such as a
+  dataset, job, project, or recipe.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes metadata tags from an AWS Glue DataBrew resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_dataset-3">update_dataset/3</a></td><td>Modifies the definition of an existing AWS Glue DataBrew dataset in
+  the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#update_dataset-4">update_dataset/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_profile_job-3">update_profile_job/3</a></td><td>Modifies the definition of an existing AWS Glue DataBrew job in the
+  current AWS account.</td></tr>
+<tr><td valign="top"><a href="#update_profile_job-4">update_profile_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_project-3">update_project/3</a></td><td>Modifies the definition of an existing AWS Glue DataBrew project in
+  the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#update_project-4">update_project/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_recipe-3">update_recipe/3</a></td><td>Modifies the definition of the latest working version of an AWS Glue
+  DataBrew recipe in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#update_recipe-4">update_recipe/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_recipe_job-3">update_recipe_job/3</a></td><td>Modifies the definition of an existing AWS Glue DataBrew recipe job
+  in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#update_recipe_job-4">update_recipe_job/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_schedule-3">update_schedule/3</a></td><td>Modifies the definition of an existing AWS Glue DataBrew schedule in
+  the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#update_schedule-4">update_schedule/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="batch_delete_recipe_version-3">batch_delete_recipe_version/3</a></h3>
+<div class="spec">
+<p><tt>batch_delete_recipe_version(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes one or more versions of a recipe at a time.</p>
+
+<h3 class="function"><a name="batch_delete_recipe_version-4">batch_delete_recipe_version/4</a></h3>
+<div class="spec">
+<p><tt>batch_delete_recipe_version(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_dataset-2">create_dataset/2</a></h3>
+<div class="spec">
+<p><tt>create_dataset(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new AWS Glue DataBrew dataset for this AWS account.</p>
+
+<h3 class="function"><a name="create_dataset-3">create_dataset/3</a></h3>
+<div class="spec">
+<p><tt>create_dataset(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_profile_job-2">create_profile_job/2</a></h3>
+<div class="spec">
+<p><tt>create_profile_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new job to profile an AWS Glue DataBrew dataset that exists
+  in the current AWS account.</p>
+
+<h3 class="function"><a name="create_profile_job-3">create_profile_job/3</a></h3>
+<div class="spec">
+<p><tt>create_profile_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_project-2">create_project/2</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new AWS Glue DataBrew project in the current AWS account.</p>
+
+<h3 class="function"><a name="create_project-3">create_project/3</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_recipe-2">create_recipe/2</a></h3>
+<div class="spec">
+<p><tt>create_recipe(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new AWS Glue DataBrew recipe for the current AWS account.</p>
+
+<h3 class="function"><a name="create_recipe-3">create_recipe/3</a></h3>
+<div class="spec">
+<p><tt>create_recipe(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_recipe_job-2">create_recipe_job/2</a></h3>
+<div class="spec">
+<p><tt>create_recipe_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new job for an existing AWS Glue DataBrew recipe in the  
+current AWS account.</p>
+ 
+  You can create a standalone job using either a project, or a combination
+  of a recipe and a dataset.</p>
+
+<h3 class="function"><a name="create_recipe_job-3">create_recipe_job/3</a></h3>
+<div class="spec">
+<p><tt>create_recipe_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_schedule-2">create_schedule/2</a></h3>
+<div class="spec">
+<p><tt>create_schedule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new schedule for one or more AWS Glue DataBrew jobs.</p>
+ 
+  Jobs can be run at a specific date and time, or at regular intervals.</p>
+
+<h3 class="function"><a name="create_schedule-3">create_schedule/3</a></h3>
+<div class="spec">
+<p><tt>create_schedule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_dataset-3">delete_dataset/3</a></h3>
+<div class="spec">
+<p><tt>delete_dataset(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a dataset from AWS Glue DataBrew.</p>
+
+<h3 class="function"><a name="delete_dataset-4">delete_dataset/4</a></h3>
+<div class="spec">
+<p><tt>delete_dataset(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_job-3">delete_job/3</a></h3>
+<div class="spec">
+<p><tt>delete_job(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified AWS Glue DataBrew job from the current AWS  
+account.</p>
+ 
+  The job can be for a recipe or for a profile.</p>
+
+<h3 class="function"><a name="delete_job-4">delete_job/4</a></h3>
+<div class="spec">
+<p><tt>delete_job(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_project-3">delete_project/3</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing AWS Glue DataBrew project from the current AWS
+  account.</p>
+
+<h3 class="function"><a name="delete_project-4">delete_project/4</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_recipe_version-4">delete_recipe_version/4</a></h3>
+<div class="spec">
+<p><tt>delete_recipe_version(Client, Name, RecipeVersion, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a single version of an AWS Glue DataBrew recipe.</p>
+
+<h3 class="function"><a name="delete_recipe_version-5">delete_recipe_version/5</a></h3>
+<div class="spec">
+<p><tt>delete_recipe_version(Client, Name, RecipeVersion, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_schedule-3">delete_schedule/3</a></h3>
+<div class="spec">
+<p><tt>delete_schedule(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified AWS Glue DataBrew schedule from the current AWS
+  account.</p>
+
+<h3 class="function"><a name="delete_schedule-4">delete_schedule/4</a></h3>
+<div class="spec">
+<p><tt>delete_schedule(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_dataset-2">describe_dataset/2</a></h3>
+<div class="spec">
+<p><tt>describe_dataset(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the definition of a specific AWS Glue DataBrew dataset that
+  is in the current AWS account.</p>
+
+<h3 class="function"><a name="describe_dataset-3">describe_dataset/3</a></h3>
+<div class="spec">
+<p><tt>describe_dataset(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_job-2">describe_job/2</a></h3>
+<div class="spec">
+<p><tt>describe_job(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the definition of a specific AWS Glue DataBrew job that is in
+  the current AWS account.</p>
+
+<h3 class="function"><a name="describe_job-3">describe_job/3</a></h3>
+<div class="spec">
+<p><tt>describe_job(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_project-2">describe_project/2</a></h3>
+<div class="spec">
+<p><tt>describe_project(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the definition of a specific AWS Glue DataBrew project that
+  is in the current AWS account.</p>
+
+<h3 class="function"><a name="describe_project-3">describe_project/3</a></h3>
+<div class="spec">
+<p><tt>describe_project(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_recipe-3">describe_recipe/3</a></h3>
+<div class="spec">
+<p><tt>describe_recipe(Client, Name, RecipeVersion) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the definition of a specific AWS Glue DataBrew recipe that is
+  in the current AWS account.</p>
+
+<h3 class="function"><a name="describe_recipe-4">describe_recipe/4</a></h3>
+<div class="spec">
+<p><tt>describe_recipe(Client, Name, RecipeVersion, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_schedule-2">describe_schedule/2</a></h3>
+<div class="spec">
+<p><tt>describe_schedule(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the definition of a specific AWS Glue DataBrew schedule that
+  is in the current AWS account.</p>
+
+<h3 class="function"><a name="describe_schedule-3">describe_schedule/3</a></h3>
+<div class="spec">
+<p><tt>describe_schedule(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_datasets-3">list_datasets/3</a></h3>
+<div class="spec">
+<p><tt>list_datasets(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all of the AWS Glue DataBrew datasets for the current AWS
+  account.</p>
+
+<h3 class="function"><a name="list_datasets-4">list_datasets/4</a></h3>
+<div class="spec">
+<p><tt>list_datasets(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_job_runs-4">list_job_runs/4</a></h3>
+<div class="spec">
+<p><tt>list_job_runs(Client, Name, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all of the previous runs of a particular AWS Glue DataBrew job
+  in the current AWS account.</p>
+
+<h3 class="function"><a name="list_job_runs-5">list_job_runs/5</a></h3>
+<div class="spec">
+<p><tt>list_job_runs(Client, Name, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_jobs-5">list_jobs/5</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, DatasetName, MaxResults, NextToken, ProjectName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the AWS Glue DataBrew jobs in the current AWS account.</p>
+
+<h3 class="function"><a name="list_jobs-6">list_jobs/6</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, DatasetName, MaxResults, NextToken, ProjectName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_projects-3">list_projects/3</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all of the DataBrew projects in the current AWS account.</p>
+
+<h3 class="function"><a name="list_projects-4">list_projects/4</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_recipe_versions-4">list_recipe_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_recipe_versions(Client, MaxResults, Name, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all of the versions of a particular AWS Glue DataBrew recipe in
+  the current AWS account.</p>
+
+<h3 class="function"><a name="list_recipe_versions-5">list_recipe_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_recipe_versions(Client, MaxResults, Name, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_recipes-4">list_recipes/4</a></h3>
+<div class="spec">
+<p><tt>list_recipes(Client, MaxResults, NextToken, RecipeVersion) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all of the AWS Glue DataBrew recipes in the current AWS
+  account.</p>
+
+<h3 class="function"><a name="list_recipes-5">list_recipes/5</a></h3>
+<div class="spec">
+<p><tt>list_recipes(Client, MaxResults, NextToken, RecipeVersion, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_schedules-4">list_schedules/4</a></h3>
+<div class="spec">
+<p><tt>list_schedules(Client, JobName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the AWS Glue DataBrew schedules in the current AWS account.</p>
+
+<h3 class="function"><a name="list_schedules-5">list_schedules/5</a></h3>
+<div class="spec">
+<p><tt>list_schedules(Client, JobName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the tags for an AWS Glue DataBrew resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="publish_recipe-3">publish_recipe/3</a></h3>
+<div class="spec">
+<p><tt>publish_recipe(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Publishes a new major version of an AWS Glue DataBrew recipe that
+  exists in the current AWS account.</p>
+
+<h3 class="function"><a name="publish_recipe-4">publish_recipe/4</a></h3>
+<div class="spec">
+<p><tt>publish_recipe(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_project_session_action-3">send_project_session_action/3</a></h3>
+<div class="spec">
+<p><tt>send_project_session_action(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Performs a recipe step within an interactive AWS Glue DataBrew
+  session that's currently open.</p>
+
+<h3 class="function"><a name="send_project_session_action-4">send_project_session_action/4</a></h3>
+<div class="spec">
+<p><tt>send_project_session_action(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_job_run-3">start_job_run/3</a></h3>
+<div class="spec">
+<p><tt>start_job_run(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Runs an AWS Glue DataBrew job that exists in the current AWS account.</p>
+
+<h3 class="function"><a name="start_job_run-4">start_job_run/4</a></h3>
+<div class="spec">
+<p><tt>start_job_run(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_project_session-3">start_project_session/3</a></h3>
+<div class="spec">
+<p><tt>start_project_session(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an interactive session, enabling you to manipulate an AWS
+  Glue DataBrew project.</p>
+
+<h3 class="function"><a name="start_project_session-4">start_project_session/4</a></h3>
+<div class="spec">
+<p><tt>start_project_session(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_job_run-4">stop_job_run/4</a></h3>
+<div class="spec">
+<p><tt>stop_job_run(Client, Name, RunId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stops the specified job from running in the current AWS account.</p>
+
+<h3 class="function"><a name="stop_job_run-5">stop_job_run/5</a></h3>
+<div class="spec">
+<p><tt>stop_job_run(Client, Name, RunId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds metadata tags to an AWS Glue DataBrew resource, such as a
+  dataset, job, project, or recipe.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes metadata tags from an AWS Glue DataBrew resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_dataset-3">update_dataset/3</a></h3>
+<div class="spec">
+<p><tt>update_dataset(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies the definition of an existing AWS Glue DataBrew dataset in
+  the current AWS account.</p>
+
+<h3 class="function"><a name="update_dataset-4">update_dataset/4</a></h3>
+<div class="spec">
+<p><tt>update_dataset(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_profile_job-3">update_profile_job/3</a></h3>
+<div class="spec">
+<p><tt>update_profile_job(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies the definition of an existing AWS Glue DataBrew job in the
+  current AWS account.</p>
+
+<h3 class="function"><a name="update_profile_job-4">update_profile_job/4</a></h3>
+<div class="spec">
+<p><tt>update_profile_job(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_project-3">update_project/3</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies the definition of an existing AWS Glue DataBrew project in
+  the current AWS account.</p>
+
+<h3 class="function"><a name="update_project-4">update_project/4</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_recipe-3">update_recipe/3</a></h3>
+<div class="spec">
+<p><tt>update_recipe(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies the definition of the latest working version of an AWS Glue
+  DataBrew recipe in the current AWS account.</p>
+
+<h3 class="function"><a name="update_recipe-4">update_recipe/4</a></h3>
+<div class="spec">
+<p><tt>update_recipe(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_recipe_job-3">update_recipe_job/3</a></h3>
+<div class="spec">
+<p><tt>update_recipe_job(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies the definition of an existing AWS Glue DataBrew recipe job
+  in the current AWS account.</p>
+
+<h3 class="function"><a name="update_recipe_job-4">update_recipe_job/4</a></h3>
+<div class="spec">
+<p><tt>update_recipe_job(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_schedule-3">update_schedule/3</a></h3>
+<div class="spec">
+<p><tt>update_schedule(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies the definition of an existing AWS Glue DataBrew schedule in
+  the current AWS account.</p>
+
+<h3 class="function"><a name="update_schedule-4">update_schedule/4</a></h3>
+<div class="spec">
+<p><tt>update_schedule(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

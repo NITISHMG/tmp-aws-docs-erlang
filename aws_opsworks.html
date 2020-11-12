@@ -1,0 +1,1675 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_opsworks</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_opsworks</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS OpsWorks.
+
+
+<h2><a name="description">Description</a></h2><p>AWS OpsWorks</p>
+ 
+  <p>Welcome to the AWS OpsWorks Stacks API Reference.</p>
+ 
+  <p>This guide provides descriptions, syntax, and usage examples for AWS  
+OpsWorks Stacks actions and data types, including common parameters and  
+error codes.</p>
+ 
+  <p>AWS OpsWorks Stacks is an application management service that provides an  
+integrated experience for overseeing the complete application lifecycle.  
+For information about this product, go to the AWS OpsWorks details page.</p>
+ 
+  <p>SDKs and CLI</p>
+ 
+  <p>The most common way to use the AWS OpsWorks Stacks API is by using the AWS  
+Command Line Interface (CLI) or by using one of the AWS SDKs to implement  
+applications in your preferred language. For more information, see:</p>
+ 
+  <ul> <li><p> AWS CLI</p>
+ 
+  </li> <li><p> AWS SDK for Java</p>
+ 
+  </li> <li><p> AWS SDK for .NET</p>
+ 
+  </li> <li><p> AWS SDK for PHP 2</p>
+ 
+  </li> <li><p> AWS SDK for Ruby</p>
+ 
+  </li> <li><p> AWS SDK for Node.js</p>
+ 
+  </li> <li><p> AWS SDK for Python(Boto)</p>
+ 
+  </li> </ul><p> Endpoints</p>
+ 
+  <p>AWS OpsWorks Stacks supports the following endpoints, all HTTPS. You must  
+connect to one of the following endpoints. Stacks can only be accessed or  
+managed within the endpoint in which they are created.</p>
+ 
+  <ul> <li><p> opsworks.us-east-1.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.us-east-2.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.us-west-1.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.us-west-2.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.ca-central-1.amazonaws.com (API only; not available in  
+the AWS console)</p>
+ 
+  </li> <li><p> opsworks.eu-west-1.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.eu-west-2.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.eu-west-3.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.eu-central-1.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.ap-northeast-1.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.ap-northeast-2.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.ap-south-1.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.ap-southeast-1.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.ap-southeast-2.amazonaws.com</p>
+ 
+  </li> <li><p> opsworks.sa-east-1.amazonaws.com</p>
+ 
+  </li> </ul><p> Chef Versions</p>
+ 
+  <p>When you call <code>CreateStack</code>, <code>CloneStack</code>, or <code>UpdateStack</code> we recommend
+  you use the <code>ConfigurationManager</code> parameter to specify the Chef version.  
+The recommended and default value for Linux stacks is currently 12.  
+Windows stacks use Chef 12.2. For more information, see Chef Versions.</p>
+ 
+  You can specify Chef 12, 11.10, or 11.4 for your Linux stack. We recommend
+  migrating your existing Linux stacks to Chef 12 as soon as possible.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#assign_instance-2">assign_instance/2</a></td><td>Assign a registered instance to a layer.</td></tr>
+<tr><td valign="top"><a href="#assign_instance-3">assign_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#assign_volume-2">assign_volume/2</a></td><td>Assigns one of the stack's registered Amazon EBS volumes to a  
+specified instance.</td></tr>
+<tr><td valign="top"><a href="#assign_volume-3">assign_volume/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_elastic_ip-2">associate_elastic_ip/2</a></td><td>Associates one of the stack's registered Elastic IP addresses with a  
+specified instance.</td></tr>
+<tr><td valign="top"><a href="#associate_elastic_ip-3">associate_elastic_ip/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#attach_elastic_load_balancer-2">attach_elastic_load_balancer/2</a></td><td>Attaches an Elastic Load Balancing load balancer to a specified  
+layer.</td></tr>
+<tr><td valign="top"><a href="#attach_elastic_load_balancer-3">attach_elastic_load_balancer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#clone_stack-2">clone_stack/2</a></td><td>Creates a clone of a specified stack.</td></tr>
+<tr><td valign="top"><a href="#clone_stack-3">clone_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_app-2">create_app/2</a></td><td>Creates an app for a specified stack.</td></tr>
+<tr><td valign="top"><a href="#create_app-3">create_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment-2">create_deployment/2</a></td><td>Runs deployment or stack commands.</td></tr>
+<tr><td valign="top"><a href="#create_deployment-3">create_deployment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_instance-2">create_instance/2</a></td><td>Creates an instance in a specified stack.</td></tr>
+<tr><td valign="top"><a href="#create_instance-3">create_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_layer-2">create_layer/2</a></td><td>Creates a layer.</td></tr>
+<tr><td valign="top"><a href="#create_layer-3">create_layer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_stack-2">create_stack/2</a></td><td>Creates a new stack.</td></tr>
+<tr><td valign="top"><a href="#create_stack-3">create_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user_profile-2">create_user_profile/2</a></td><td>Creates a new user profile.</td></tr>
+<tr><td valign="top"><a href="#create_user_profile-3">create_user_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_app-2">delete_app/2</a></td><td>Deletes a specified app.</td></tr>
+<tr><td valign="top"><a href="#delete_app-3">delete_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_instance-2">delete_instance/2</a></td><td>Deletes a specified instance, which terminates the associated Amazon  
+EC2 instance.</td></tr>
+<tr><td valign="top"><a href="#delete_instance-3">delete_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_layer-2">delete_layer/2</a></td><td>Deletes a specified layer.</td></tr>
+<tr><td valign="top"><a href="#delete_layer-3">delete_layer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_stack-2">delete_stack/2</a></td><td>Deletes a specified stack.</td></tr>
+<tr><td valign="top"><a href="#delete_stack-3">delete_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user_profile-2">delete_user_profile/2</a></td><td>Deletes a user profile.</td></tr>
+<tr><td valign="top"><a href="#delete_user_profile-3">delete_user_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_ecs_cluster-2">deregister_ecs_cluster/2</a></td><td>Deregisters a specified Amazon ECS cluster from a stack.</td></tr>
+<tr><td valign="top"><a href="#deregister_ecs_cluster-3">deregister_ecs_cluster/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_elastic_ip-2">deregister_elastic_ip/2</a></td><td>Deregisters a specified Elastic IP address.</td></tr>
+<tr><td valign="top"><a href="#deregister_elastic_ip-3">deregister_elastic_ip/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_instance-2">deregister_instance/2</a></td><td>Deregister a registered Amazon EC2 or on-premises instance.</td></tr>
+<tr><td valign="top"><a href="#deregister_instance-3">deregister_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_rds_db_instance-2">deregister_rds_db_instance/2</a></td><td>Deregisters an Amazon RDS instance.</td></tr>
+<tr><td valign="top"><a href="#deregister_rds_db_instance-3">deregister_rds_db_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_volume-2">deregister_volume/2</a></td><td>Deregisters an Amazon EBS volume.</td></tr>
+<tr><td valign="top"><a href="#deregister_volume-3">deregister_volume/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_agent_versions-2">describe_agent_versions/2</a></td><td>Describes the available AWS OpsWorks Stacks agent versions.</td></tr>
+<tr><td valign="top"><a href="#describe_agent_versions-3">describe_agent_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_apps-2">describe_apps/2</a></td><td>Requests a description of a specified set of apps.</td></tr>
+<tr><td valign="top"><a href="#describe_apps-3">describe_apps/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_commands-2">describe_commands/2</a></td><td>Describes the results of specified commands.</td></tr>
+<tr><td valign="top"><a href="#describe_commands-3">describe_commands/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_deployments-2">describe_deployments/2</a></td><td>Requests a description of a specified set of deployments.</td></tr>
+<tr><td valign="top"><a href="#describe_deployments-3">describe_deployments/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_ecs_clusters-2">describe_ecs_clusters/2</a></td><td>Describes Amazon ECS clusters that are registered with a stack.</td></tr>
+<tr><td valign="top"><a href="#describe_ecs_clusters-3">describe_ecs_clusters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_elastic_ips-2">describe_elastic_ips/2</a></td><td>Describes Elastic IP addresses.</td></tr>
+<tr><td valign="top"><a href="#describe_elastic_ips-3">describe_elastic_ips/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_elastic_load_balancers-2">describe_elastic_load_balancers/2</a></td><td>Describes a stack's Elastic Load Balancing instances.</td></tr>
+<tr><td valign="top"><a href="#describe_elastic_load_balancers-3">describe_elastic_load_balancers/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_instances-2">describe_instances/2</a></td><td>Requests a description of a set of instances.</td></tr>
+<tr><td valign="top"><a href="#describe_instances-3">describe_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_layers-2">describe_layers/2</a></td><td>Requests a description of one or more layers in a specified stack.</td></tr>
+<tr><td valign="top"><a href="#describe_layers-3">describe_layers/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_load_based_auto_scaling-2">describe_load_based_auto_scaling/2</a></td><td>Describes load-based auto scaling configurations for specified  
+layers.</td></tr>
+<tr><td valign="top"><a href="#describe_load_based_auto_scaling-3">describe_load_based_auto_scaling/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_my_user_profile-2">describe_my_user_profile/2</a></td><td>Describes a user's SSH information.</td></tr>
+<tr><td valign="top"><a href="#describe_my_user_profile-3">describe_my_user_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_operating_systems-2">describe_operating_systems/2</a></td><td>Describes the operating systems that are supported by AWS OpsWorks
+  Stacks.</td></tr>
+<tr><td valign="top"><a href="#describe_operating_systems-3">describe_operating_systems/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_permissions-2">describe_permissions/2</a></td><td>Describes the permissions for a specified stack.</td></tr>
+<tr><td valign="top"><a href="#describe_permissions-3">describe_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_raid_arrays-2">describe_raid_arrays/2</a></td><td>Describe an instance's RAID arrays.</td></tr>
+<tr><td valign="top"><a href="#describe_raid_arrays-3">describe_raid_arrays/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_rds_db_instances-2">describe_rds_db_instances/2</a></td><td>Describes Amazon RDS instances.</td></tr>
+<tr><td valign="top"><a href="#describe_rds_db_instances-3">describe_rds_db_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_service_errors-2">describe_service_errors/2</a></td><td>Describes AWS OpsWorks Stacks service errors.</td></tr>
+<tr><td valign="top"><a href="#describe_service_errors-3">describe_service_errors/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_stack_provisioning_parameters-2">describe_stack_provisioning_parameters/2</a></td><td>Requests a description of a stack's provisioning parameters.</td></tr>
+<tr><td valign="top"><a href="#describe_stack_provisioning_parameters-3">describe_stack_provisioning_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_stack_summary-2">describe_stack_summary/2</a></td><td>Describes the number of layers and apps in a specified stack, and the
+  number of instances in each state, such as <code>running_setup</code> or <code>online</code>.</td></tr>
+<tr><td valign="top"><a href="#describe_stack_summary-3">describe_stack_summary/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_stacks-2">describe_stacks/2</a></td><td>Requests a description of one or more stacks.</td></tr>
+<tr><td valign="top"><a href="#describe_stacks-3">describe_stacks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_time_based_auto_scaling-2">describe_time_based_auto_scaling/2</a></td><td>Describes time-based auto scaling configurations for specified  
+instances.</td></tr>
+<tr><td valign="top"><a href="#describe_time_based_auto_scaling-3">describe_time_based_auto_scaling/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_profiles-2">describe_user_profiles/2</a></td><td>Describe specified users.</td></tr>
+<tr><td valign="top"><a href="#describe_user_profiles-3">describe_user_profiles/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_volumes-2">describe_volumes/2</a></td><td>Describes an instance's Amazon EBS volumes.</td></tr>
+<tr><td valign="top"><a href="#describe_volumes-3">describe_volumes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#detach_elastic_load_balancer-2">detach_elastic_load_balancer/2</a></td><td>Detaches a specified Elastic Load Balancing instance from its layer.</td></tr>
+<tr><td valign="top"><a href="#detach_elastic_load_balancer-3">detach_elastic_load_balancer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_elastic_ip-2">disassociate_elastic_ip/2</a></td><td>Disassociates an Elastic IP address from its instance.</td></tr>
+<tr><td valign="top"><a href="#disassociate_elastic_ip-3">disassociate_elastic_ip/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_hostname_suggestion-2">get_hostname_suggestion/2</a></td><td>Gets a generated host name for the specified layer, based on the  
+current host name theme.</td></tr>
+<tr><td valign="top"><a href="#get_hostname_suggestion-3">get_hostname_suggestion/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#grant_access-2">grant_access/2</a></td><td>This action can be used only with Windows stacks.</td></tr>
+<tr><td valign="top"><a href="#grant_access-3">grant_access/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags-2">list_tags/2</a></td><td>Returns a list of tags that are applied to the specified stack or
+  layer.</td></tr>
+<tr><td valign="top"><a href="#list_tags-3">list_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reboot_instance-2">reboot_instance/2</a></td><td>Reboots a specified instance.</td></tr>
+<tr><td valign="top"><a href="#reboot_instance-3">reboot_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_ecs_cluster-2">register_ecs_cluster/2</a></td><td>Registers a specified Amazon ECS cluster with a stack.</td></tr>
+<tr><td valign="top"><a href="#register_ecs_cluster-3">register_ecs_cluster/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_elastic_ip-2">register_elastic_ip/2</a></td><td>Registers an Elastic IP address with a specified stack.</td></tr>
+<tr><td valign="top"><a href="#register_elastic_ip-3">register_elastic_ip/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_instance-2">register_instance/2</a></td><td>Registers instances that were created outside of AWS OpsWorks Stacks  
+with a specified stack.</td></tr>
+<tr><td valign="top"><a href="#register_instance-3">register_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_rds_db_instance-2">register_rds_db_instance/2</a></td><td>Registers an Amazon RDS instance with a stack.</td></tr>
+<tr><td valign="top"><a href="#register_rds_db_instance-3">register_rds_db_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_volume-2">register_volume/2</a></td><td>Registers an Amazon EBS volume with a specified stack.</td></tr>
+<tr><td valign="top"><a href="#register_volume-3">register_volume/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_load_based_auto_scaling-2">set_load_based_auto_scaling/2</a></td><td>Specify the load-based auto scaling configuration for a specified  
+layer.</td></tr>
+<tr><td valign="top"><a href="#set_load_based_auto_scaling-3">set_load_based_auto_scaling/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_permission-2">set_permission/2</a></td><td>Specifies a user's permissions.</td></tr>
+<tr><td valign="top"><a href="#set_permission-3">set_permission/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_time_based_auto_scaling-2">set_time_based_auto_scaling/2</a></td><td>Specify the time-based auto scaling configuration for a specified  
+instance.</td></tr>
+<tr><td valign="top"><a href="#set_time_based_auto_scaling-3">set_time_based_auto_scaling/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_instance-2">start_instance/2</a></td><td>Starts a specified instance.</td></tr>
+<tr><td valign="top"><a href="#start_instance-3">start_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_stack-2">start_stack/2</a></td><td>Starts a stack's instances.</td></tr>
+<tr><td valign="top"><a href="#start_stack-3">start_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_instance-2">stop_instance/2</a></td><td>Stops a specified instance.</td></tr>
+<tr><td valign="top"><a href="#stop_instance-3">stop_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_stack-2">stop_stack/2</a></td><td>Stops a specified stack.</td></tr>
+<tr><td valign="top"><a href="#stop_stack-3">stop_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Apply cost-allocation tags to a specified stack or layer in AWS  
+OpsWorks Stacks.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unassign_instance-2">unassign_instance/2</a></td><td>Unassigns a registered instance from all layers that are using the  
+instance.</td></tr>
+<tr><td valign="top"><a href="#unassign_instance-3">unassign_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unassign_volume-2">unassign_volume/2</a></td><td>Unassigns an assigned Amazon EBS volume.</td></tr>
+<tr><td valign="top"><a href="#unassign_volume-3">unassign_volume/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes tags from a specified stack or layer.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_app-2">update_app/2</a></td><td>Updates a specified app.</td></tr>
+<tr><td valign="top"><a href="#update_app-3">update_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_elastic_ip-2">update_elastic_ip/2</a></td><td>Updates a registered Elastic IP address's name.</td></tr>
+<tr><td valign="top"><a href="#update_elastic_ip-3">update_elastic_ip/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_instance-2">update_instance/2</a></td><td>Updates a specified instance.</td></tr>
+<tr><td valign="top"><a href="#update_instance-3">update_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_layer-2">update_layer/2</a></td><td>Updates a specified layer.</td></tr>
+<tr><td valign="top"><a href="#update_layer-3">update_layer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_my_user_profile-2">update_my_user_profile/2</a></td><td>Updates a user's SSH public key.</td></tr>
+<tr><td valign="top"><a href="#update_my_user_profile-3">update_my_user_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_rds_db_instance-2">update_rds_db_instance/2</a></td><td>Updates an Amazon RDS instance.</td></tr>
+<tr><td valign="top"><a href="#update_rds_db_instance-3">update_rds_db_instance/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_stack-2">update_stack/2</a></td><td>Updates a specified stack.</td></tr>
+<tr><td valign="top"><a href="#update_stack-3">update_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_profile-2">update_user_profile/2</a></td><td>Updates a specified user profile.</td></tr>
+<tr><td valign="top"><a href="#update_user_profile-3">update_user_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_volume-2">update_volume/2</a></td><td>Updates an Amazon EBS volume's name or mount point.</td></tr>
+<tr><td valign="top"><a href="#update_volume-3">update_volume/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="assign_instance-2">assign_instance/2</a></h3>
+<div class="spec">
+<p><tt>assign_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Assign a registered instance to a layer.</p>
+ 
+  <ul> <li><p> You can assign registered on-premises instances to any layer  
+type.</p>
+ 
+  </li> <li><p> You can assign registered Amazon EC2 instances only to custom  
+layers.</p>
+ 
+  </li> <li><p> You cannot use this action with instances that were created  
+with AWS OpsWorks Stacks.</p>
+ 
+  </li> </ul> Required Permissions: To use this action, an AWS Identity and
+  Access Management (IAM) user must have a Manage permissions level for the
+  stack or an attached policy that explicitly grants permissions. For more
+  information on user permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="assign_instance-3">assign_instance/3</a></h3>
+<div class="spec">
+<p><tt>assign_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="assign_volume-2">assign_volume/2</a></h3>
+<div class="spec">
+<p><tt>assign_volume(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Assigns one of the stack's registered Amazon EBS volumes to a  
+specified instance.</p>
+ 
+  <p>The volume must first be registered with the stack by calling
+  <code>RegisterVolume</code>. After you register the volume, you must call
+  <code>UpdateVolume</code> to specify a mount point before calling <code>AssignVolume</code>. For  
+more information, see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="assign_volume-3">assign_volume/3</a></h3>
+<div class="spec">
+<p><tt>assign_volume(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_elastic_ip-2">associate_elastic_ip/2</a></h3>
+<div class="spec">
+<p><tt>associate_elastic_ip(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates one of the stack's registered Elastic IP addresses with a  
+specified instance.</p>
+ 
+  <p>The address must first be registered with the stack by calling
+  <code>RegisterElasticIp</code>. For more information, see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="associate_elastic_ip-3">associate_elastic_ip/3</a></h3>
+<div class="spec">
+<p><tt>associate_elastic_ip(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="attach_elastic_load_balancer-2">attach_elastic_load_balancer/2</a></h3>
+<div class="spec">
+<p><tt>attach_elastic_load_balancer(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Attaches an Elastic Load Balancing load balancer to a specified  
+layer.</p>
+ 
+  <p>AWS OpsWorks Stacks does not support Application Load Balancer. You can  
+only use Classic Load Balancer with AWS OpsWorks Stacks. For more  
+information, see Elastic Load Balancing.</p>
+ 
+  <p>You must create the Elastic Load Balancing instance separately, by using  
+the Elastic Load Balancing console, API, or CLI. For more information, see  
+Elastic Load Balancing Developer Guide.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="attach_elastic_load_balancer-3">attach_elastic_load_balancer/3</a></h3>
+<div class="spec">
+<p><tt>attach_elastic_load_balancer(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="clone_stack-2">clone_stack/2</a></h3>
+<div class="spec">
+<p><tt>clone_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a clone of a specified stack.</p>
+ 
+  <p>For more information, see Clone a Stack. By default, all parameters are  
+set to the values used by the parent stack.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have an
+  attached policy that explicitly grants permissions. For more information
+  about user permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="clone_stack-3">clone_stack/3</a></h3>
+<div class="spec">
+<p><tt>clone_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_app-2">create_app/2</a></h3>
+<div class="spec">
+<p><tt>create_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an app for a specified stack.</p>
+ 
+  <p>For more information, see Creating Apps.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="create_app-3">create_app/3</a></h3>
+<div class="spec">
+<p><tt>create_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment-2">create_deployment/2</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Runs deployment or stack commands.</p>
+ 
+  <p>For more information, see Deploying Apps and Run Stack Commands.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Deploy
+  or Manage permissions level for the stack, or an attached policy that
+  explicitly grants permissions. For more information on user permissions,
+  see Managing User Permissions.</p>
+
+<h3 class="function"><a name="create_deployment-3">create_deployment/3</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_instance-2">create_instance/2</a></h3>
+<div class="spec">
+<p><tt>create_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an instance in a specified stack.</p>
+ 
+  <p>For more information, see Adding an Instance to a Layer.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="create_instance-3">create_instance/3</a></h3>
+<div class="spec">
+<p><tt>create_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_layer-2">create_layer/2</a></h3>
+<div class="spec">
+<p><tt>create_layer(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a layer.</p>
+ 
+  <p>For more information, see How to Create a Layer.</p>
+ 
+  <p>You should use CreateLayer for noncustom layer types such as PHP App  
+Server only if the stack does not have an existing layer of that type. A  
+stack can have at most one instance of each noncustom layer; if you  
+attempt to create a second instance, CreateLayer fails. A stack can have  
+an arbitrary number of custom layers, so you can call CreateLayer as many  
+times as you like for that layer type.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="create_layer-3">create_layer/3</a></h3>
+<div class="spec">
+<p><tt>create_layer(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_stack-2">create_stack/2</a></h3>
+<div class="spec">
+<p><tt>create_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new stack.</p>
+ 
+  <p>For more information, see Create a New Stack.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have an
+  attached policy that explicitly grants permissions. For more information
+  about user permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="create_stack-3">create_stack/3</a></h3>
+<div class="spec">
+<p><tt>create_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user_profile-2">create_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>create_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new user profile.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have an
+  attached policy that explicitly grants permissions. For more information
+  about user permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="create_user_profile-3">create_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>create_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_app-2">delete_app/2</a></h3>
+<div class="spec">
+<p><tt>delete_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified app.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="delete_app-3">delete_app/3</a></h3>
+<div class="spec">
+<p><tt>delete_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_instance-2">delete_instance/2</a></h3>
+<div class="spec">
+<p><tt>delete_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified instance, which terminates the associated Amazon  
+EC2 instance.</p>
+ 
+  <p>You must stop an instance before you can delete it.</p>
+ 
+  <p>For more information, see Deleting Instances.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="delete_instance-3">delete_instance/3</a></h3>
+<div class="spec">
+<p><tt>delete_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_layer-2">delete_layer/2</a></h3>
+<div class="spec">
+<p><tt>delete_layer(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified layer.</p>
+ 
+  <p>You must first stop and then delete all associated instances or unassign  
+registered instances. For more information, see How to Delete a Layer.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="delete_layer-3">delete_layer/3</a></h3>
+<div class="spec">
+<p><tt>delete_layer(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_stack-2">delete_stack/2</a></h3>
+<div class="spec">
+<p><tt>delete_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified stack.</p>
+ 
+  <p>You must first delete all instances, layers, and apps or deregister  
+registered instances. For more information, see Shut Down a Stack.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="delete_stack-3">delete_stack/3</a></h3>
+<div class="spec">
+<p><tt>delete_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user_profile-2">delete_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>delete_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a user profile.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have an
+  attached policy that explicitly grants permissions. For more information
+  about user permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="delete_user_profile-3">delete_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>delete_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_ecs_cluster-2">deregister_ecs_cluster/2</a></h3>
+<div class="spec">
+<p><tt>deregister_ecs_cluster(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregisters a specified Amazon ECS cluster from a stack.</p>
+ 
+  <p>For more information, see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see
+  <a href="https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html" target="_top"><tt>https://docs.aws.amazon.com/opsworks/latest/userguide/opsworks-security-users.html</tt></a>.</p>
+
+<h3 class="function"><a name="deregister_ecs_cluster-3">deregister_ecs_cluster/3</a></h3>
+<div class="spec">
+<p><tt>deregister_ecs_cluster(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_elastic_ip-2">deregister_elastic_ip/2</a></h3>
+<div class="spec">
+<p><tt>deregister_elastic_ip(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregisters a specified Elastic IP address.</p>
+ 
+  <p>The address can then be registered by another stack. For more information,  
+see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="deregister_elastic_ip-3">deregister_elastic_ip/3</a></h3>
+<div class="spec">
+<p><tt>deregister_elastic_ip(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_instance-2">deregister_instance/2</a></h3>
+<div class="spec">
+<p><tt>deregister_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregister a registered Amazon EC2 or on-premises instance.</p>
+ 
+  <p>This action removes the instance from the stack and returns it to your  
+control. This action cannot be used with instances that were created with  
+AWS OpsWorks Stacks.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="deregister_instance-3">deregister_instance/3</a></h3>
+<div class="spec">
+<p><tt>deregister_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_rds_db_instance-2">deregister_rds_db_instance/2</a></h3>
+<div class="spec">
+<p><tt>deregister_rds_db_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregisters an Amazon RDS instance.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="deregister_rds_db_instance-3">deregister_rds_db_instance/3</a></h3>
+<div class="spec">
+<p><tt>deregister_rds_db_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_volume-2">deregister_volume/2</a></h3>
+<div class="spec">
+<p><tt>deregister_volume(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregisters an Amazon EBS volume.</p>
+ 
+  <p>The volume can then be registered by another stack. For more information,  
+see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="deregister_volume-3">deregister_volume/3</a></h3>
+<div class="spec">
+<p><tt>deregister_volume(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_agent_versions-2">describe_agent_versions/2</a></h3>
+<div class="spec">
+<p><tt>describe_agent_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the available AWS OpsWorks Stacks agent versions.</p>
+ 
+  You must specify a stack ID or a configuration manager.
+  <code>DescribeAgentVersions</code> returns a list of available agent versions for the
+  specified stack or configuration manager.</p>
+
+<h3 class="function"><a name="describe_agent_versions-3">describe_agent_versions/3</a></h3>
+<div class="spec">
+<p><tt>describe_agent_versions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_apps-2">describe_apps/2</a></h3>
+<div class="spec">
+<p><tt>describe_apps(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests a description of a specified set of apps.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_apps-3">describe_apps/3</a></h3>
+<div class="spec">
+<p><tt>describe_apps(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_commands-2">describe_commands/2</a></h3>
+<div class="spec">
+<p><tt>describe_commands(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the results of specified commands.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_commands-3">describe_commands/3</a></h3>
+<div class="spec">
+<p><tt>describe_commands(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_deployments-2">describe_deployments/2</a></h3>
+<div class="spec">
+<p><tt>describe_deployments(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests a description of a specified set of deployments.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_deployments-3">describe_deployments/3</a></h3>
+<div class="spec">
+<p><tt>describe_deployments(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_ecs_clusters-2">describe_ecs_clusters/2</a></h3>
+<div class="spec">
+<p><tt>describe_ecs_clusters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes Amazon ECS clusters that are registered with a stack.</p>
+ 
+  <p>If you specify only a stack ID, you can use the <code>MaxResults</code> and
+  <code>NextToken</code> parameters to paginate the response. However, AWS OpsWorks  
+Stacks currently supports only one cluster per layer, so the result set  
+has a maximum of one element.</p>
+ 
+  <p>Required Permissions: To use this action, an IAM user must have a Show,  
+Deploy, or Manage permissions level for the stack or an attached policy  
+that explicitly grants permission. For more information about user  
+permissions, see Managing User Permissions.</p>
+ 
+  This call accepts only one resource-identifying parameter.</p>
+
+<h3 class="function"><a name="describe_ecs_clusters-3">describe_ecs_clusters/3</a></h3>
+<div class="spec">
+<p><tt>describe_ecs_clusters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_elastic_ips-2">describe_elastic_ips/2</a></h3>
+<div class="spec">
+<p><tt>describe_elastic_ips(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes Elastic IP addresses.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_elastic_ips-3">describe_elastic_ips/3</a></h3>
+<div class="spec">
+<p><tt>describe_elastic_ips(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_elastic_load_balancers-2">describe_elastic_load_balancers/2</a></h3>
+<div class="spec">
+<p><tt>describe_elastic_load_balancers(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes a stack's Elastic Load Balancing instances.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_elastic_load_balancers-3">describe_elastic_load_balancers/3</a></h3>
+<div class="spec">
+<p><tt>describe_elastic_load_balancers(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_instances-2">describe_instances/2</a></h3>
+<div class="spec">
+<p><tt>describe_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests a description of a set of instances.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_instances-3">describe_instances/3</a></h3>
+<div class="spec">
+<p><tt>describe_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_layers-2">describe_layers/2</a></h3>
+<div class="spec">
+<p><tt>describe_layers(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests a description of one or more layers in a specified stack.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_layers-3">describe_layers/3</a></h3>
+<div class="spec">
+<p><tt>describe_layers(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_load_based_auto_scaling-2">describe_load_based_auto_scaling/2</a></h3>
+<div class="spec">
+<p><tt>describe_load_based_auto_scaling(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes load-based auto scaling configurations for specified  
+layers.</p>
+ 
+  <p>You must specify at least one of the parameters.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_load_based_auto_scaling-3">describe_load_based_auto_scaling/3</a></h3>
+<div class="spec">
+<p><tt>describe_load_based_auto_scaling(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_my_user_profile-2">describe_my_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>describe_my_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes a user's SSH information.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have
+  self-management enabled or an attached policy that explicitly grants
+  permissions. For more information about user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="describe_my_user_profile-3">describe_my_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>describe_my_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_operating_systems-2">describe_operating_systems/2</a></h3>
+<div class="spec">
+<p><tt>describe_operating_systems(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the operating systems that are supported by AWS OpsWorks
+  Stacks.</p>
+
+<h3 class="function"><a name="describe_operating_systems-3">describe_operating_systems/3</a></h3>
+<div class="spec">
+<p><tt>describe_operating_systems(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_permissions-2">describe_permissions/2</a></h3>
+<div class="spec">
+<p><tt>describe_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the permissions for a specified stack.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="describe_permissions-3">describe_permissions/3</a></h3>
+<div class="spec">
+<p><tt>describe_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_raid_arrays-2">describe_raid_arrays/2</a></h3>
+<div class="spec">
+<p><tt>describe_raid_arrays(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describe an instance's RAID arrays.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_raid_arrays-3">describe_raid_arrays/3</a></h3>
+<div class="spec">
+<p><tt>describe_raid_arrays(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_rds_db_instances-2">describe_rds_db_instances/2</a></h3>
+<div class="spec">
+<p><tt>describe_rds_db_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes Amazon RDS instances.</p>
+ 
+  <p>Required Permissions: To use this action, an IAM user must have a Show,  
+Deploy, or Manage permissions level for the stack, or an attached policy  
+that explicitly grants permissions. For more information about user  
+permissions, see Managing User Permissions.</p>
+ 
+  This call accepts only one resource-identifying parameter.</p>
+
+<h3 class="function"><a name="describe_rds_db_instances-3">describe_rds_db_instances/3</a></h3>
+<div class="spec">
+<p><tt>describe_rds_db_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_service_errors-2">describe_service_errors/2</a></h3>
+<div class="spec">
+<p><tt>describe_service_errors(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes AWS OpsWorks Stacks service errors.</p>
+ 
+  <p>Required Permissions: To use this action, an IAM user must have a Show,  
+Deploy, or Manage permissions level for the stack, or an attached policy  
+that explicitly grants permissions. For more information about user  
+permissions, see Managing User Permissions.</p>
+ 
+  This call accepts only one resource-identifying parameter.</p>
+
+<h3 class="function"><a name="describe_service_errors-3">describe_service_errors/3</a></h3>
+<div class="spec">
+<p><tt>describe_service_errors(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_stack_provisioning_parameters-2">describe_stack_provisioning_parameters/2</a></h3>
+<div class="spec">
+<p><tt>describe_stack_provisioning_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests a description of a stack's provisioning parameters.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_stack_provisioning_parameters-3">describe_stack_provisioning_parameters/3</a></h3>
+<div class="spec">
+<p><tt>describe_stack_provisioning_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_stack_summary-2">describe_stack_summary/2</a></h3>
+<div class="spec">
+<p><tt>describe_stack_summary(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the number of layers and apps in a specified stack, and the
+  number of instances in each state, such as <code>running_setup</code> or <code>online</code>.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_stack_summary-3">describe_stack_summary/3</a></h3>
+<div class="spec">
+<p><tt>describe_stack_summary(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_stacks-2">describe_stacks/2</a></h3>
+<div class="spec">
+<p><tt>describe_stacks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests a description of one or more stacks.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_stacks-3">describe_stacks/3</a></h3>
+<div class="spec">
+<p><tt>describe_stacks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_time_based_auto_scaling-2">describe_time_based_auto_scaling/2</a></h3>
+<div class="spec">
+<p><tt>describe_time_based_auto_scaling(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes time-based auto scaling configurations for specified  
+instances.</p>
+ 
+  <p>You must specify at least one of the parameters.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_time_based_auto_scaling-3">describe_time_based_auto_scaling/3</a></h3>
+<div class="spec">
+<p><tt>describe_time_based_auto_scaling(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_profiles-2">describe_user_profiles/2</a></h3>
+<div class="spec">
+<p><tt>describe_user_profiles(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describe specified users.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have an
+  attached policy that explicitly grants permissions. For more information
+  about user permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_user_profiles-3">describe_user_profiles/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_profiles(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_volumes-2">describe_volumes/2</a></h3>
+<div class="spec">
+<p><tt>describe_volumes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes an instance's Amazon EBS volumes.</p>
+ 
+  <p>This call accepts only one resource-identifying parameter.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Show,
+  Deploy, or Manage permissions level for the stack, or an attached policy
+  that explicitly grants permissions. For more information about user
+  permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="describe_volumes-3">describe_volumes/3</a></h3>
+<div class="spec">
+<p><tt>describe_volumes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="detach_elastic_load_balancer-2">detach_elastic_load_balancer/2</a></h3>
+<div class="spec">
+<p><tt>detach_elastic_load_balancer(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Detaches a specified Elastic Load Balancing instance from its layer.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="detach_elastic_load_balancer-3">detach_elastic_load_balancer/3</a></h3>
+<div class="spec">
+<p><tt>detach_elastic_load_balancer(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_elastic_ip-2">disassociate_elastic_ip/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_elastic_ip(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates an Elastic IP address from its instance.</p>
+ 
+  <p>The address remains registered with the stack. For more information, see  
+Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="disassociate_elastic_ip-3">disassociate_elastic_ip/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_elastic_ip(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_hostname_suggestion-2">get_hostname_suggestion/2</a></h3>
+<div class="spec">
+<p><tt>get_hostname_suggestion(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a generated host name for the specified layer, based on the  
+current host name theme.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="get_hostname_suggestion-3">get_hostname_suggestion/3</a></h3>
+<div class="spec">
+<p><tt>get_hostname_suggestion(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="grant_access-2">grant_access/2</a></h3>
+<div class="spec">
+<p><tt>grant_access(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This action can be used only with Windows stacks.</p>
+ 
+  Grants RDP access to a Windows instance for a specified time period.</p>
+
+<h3 class="function"><a name="grant_access-3">grant_access/3</a></h3>
+<div class="spec">
+<p><tt>grant_access(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags-2">list_tags/2</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of tags that are applied to the specified stack or
+  layer.</p>
+
+<h3 class="function"><a name="list_tags-3">list_tags/3</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reboot_instance-2">reboot_instance/2</a></h3>
+<div class="spec">
+<p><tt>reboot_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Reboots a specified instance.</p>
+ 
+  <p>For more information, see Starting, Stopping, and Rebooting Instances.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="reboot_instance-3">reboot_instance/3</a></h3>
+<div class="spec">
+<p><tt>reboot_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_ecs_cluster-2">register_ecs_cluster/2</a></h3>
+<div class="spec">
+<p><tt>register_ecs_cluster(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers a specified Amazon ECS cluster with a stack.</p>
+ 
+  <p>You can register only one cluster with a stack. A cluster can be  
+registered with only one stack. For more information, see Resource  
+Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="register_ecs_cluster-3">register_ecs_cluster/3</a></h3>
+<div class="spec">
+<p><tt>register_ecs_cluster(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_elastic_ip-2">register_elastic_ip/2</a></h3>
+<div class="spec">
+<p><tt>register_elastic_ip(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers an Elastic IP address with a specified stack.</p>
+ 
+  <p>An address can be registered with only one stack at a time. If the address
+  is already registered, you must first deregister it by calling
+  <code>DeregisterElasticIp</code>. For more information, see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="register_elastic_ip-3">register_elastic_ip/3</a></h3>
+<div class="spec">
+<p><tt>register_elastic_ip(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_instance-2">register_instance/2</a></h3>
+<div class="spec">
+<p><tt>register_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers instances that were created outside of AWS OpsWorks Stacks  
+with a specified stack.</p>
+ 
+  <p>We do not recommend using this action to register instances. The complete
+  registration operation includes two tasks: installing the AWS OpsWorks
+  Stacks agent on the instance, and registering the instance with the stack.
+  <code>RegisterInstance</code> handles only the second step. You should instead use
+  the AWS CLI <code>register</code> command, which performs the entire registration  
+operation. For more information, see Registering an Instance with an AWS  
+OpsWorks Stacks Stack.</p>
+ 
+  <p>Registered instances have the same requirements as instances that are
+  created by using the <code>CreateInstance</code> API. For example, registered  
+instances must be running a supported Linux-based operating system, and  
+they must have a supported instance type. For more information about  
+requirements for instances that you want to register, see Preparing the  
+Instance.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="register_instance-3">register_instance/3</a></h3>
+<div class="spec">
+<p><tt>register_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_rds_db_instance-2">register_rds_db_instance/2</a></h3>
+<div class="spec">
+<p><tt>register_rds_db_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers an Amazon RDS instance with a stack.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="register_rds_db_instance-3">register_rds_db_instance/3</a></h3>
+<div class="spec">
+<p><tt>register_rds_db_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_volume-2">register_volume/2</a></h3>
+<div class="spec">
+<p><tt>register_volume(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers an Amazon EBS volume with a specified stack.</p>
+ 
+  <p>A volume can be registered with only one stack at a time. If the volume is
+  already registered, you must first deregister it by calling
+  <code>DeregisterVolume</code>. For more information, see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="register_volume-3">register_volume/3</a></h3>
+<div class="spec">
+<p><tt>register_volume(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_load_based_auto_scaling-2">set_load_based_auto_scaling/2</a></h3>
+<div class="spec">
+<p><tt>set_load_based_auto_scaling(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Specify the load-based auto scaling configuration for a specified  
+layer.</p>
+ 
+  <p>For more information, see Managing Load with Time-based and Load-based  
+Instances.</p>
+ 
+  <p>To use load-based auto scaling, you must create a set of load-based auto  
+scaling instances. Load-based auto scaling operates only on the instances  
+from that set, so you must ensure that you have created enough instances  
+to handle the maximum anticipated load.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="set_load_based_auto_scaling-3">set_load_based_auto_scaling/3</a></h3>
+<div class="spec">
+<p><tt>set_load_based_auto_scaling(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_permission-2">set_permission/2</a></h3>
+<div class="spec">
+<p><tt>set_permission(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Specifies a user's permissions.</p>
+ 
+  <p>For more information, see Security and Permissions.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="set_permission-3">set_permission/3</a></h3>
+<div class="spec">
+<p><tt>set_permission(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_time_based_auto_scaling-2">set_time_based_auto_scaling/2</a></h3>
+<div class="spec">
+<p><tt>set_time_based_auto_scaling(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Specify the time-based auto scaling configuration for a specified  
+instance.</p>
+ 
+  <p>For more information, see Managing Load with Time-based and Load-based  
+Instances.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="set_time_based_auto_scaling-3">set_time_based_auto_scaling/3</a></h3>
+<div class="spec">
+<p><tt>set_time_based_auto_scaling(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_instance-2">start_instance/2</a></h3>
+<div class="spec">
+<p><tt>start_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts a specified instance.</p>
+ 
+  <p>For more information, see Starting, Stopping, and Rebooting Instances.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="start_instance-3">start_instance/3</a></h3>
+<div class="spec">
+<p><tt>start_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_stack-2">start_stack/2</a></h3>
+<div class="spec">
+<p><tt>start_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts a stack's instances.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="start_stack-3">start_stack/3</a></h3>
+<div class="spec">
+<p><tt>start_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_instance-2">stop_instance/2</a></h3>
+<div class="spec">
+<p><tt>stop_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops a specified instance.</p>
+ 
+  <p>When you stop a standard instance, the data disappears and must be  
+reinstalled when you restart the instance. You can stop an Amazon  
+EBS-backed instance without losing data. For more information, see  
+Starting, Stopping, and Rebooting Instances.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="stop_instance-3">stop_instance/3</a></h3>
+<div class="spec">
+<p><tt>stop_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_stack-2">stop_stack/2</a></h3>
+<div class="spec">
+<p><tt>stop_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops a specified stack.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="stop_stack-3">stop_stack/3</a></h3>
+<div class="spec">
+<p><tt>stop_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Apply cost-allocation tags to a specified stack or layer in AWS  
+OpsWorks Stacks.</p>
+ 
+  For more information about how tagging works, see Tags in the AWS OpsWorks
+  User Guide.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="unassign_instance-2">unassign_instance/2</a></h3>
+<div class="spec">
+<p><tt>unassign_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Unassigns a registered instance from all layers that are using the  
+instance.</p>
+ 
+  <p>The instance remains in the stack as an unassigned instance, and can be  
+assigned to another layer as needed. You cannot use this action with  
+instances that were created with AWS OpsWorks Stacks.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack or an attached policy that explicitly
+  grants permissions. For more information about user permissions, see
+  Managing User Permissions.</p>
+
+<h3 class="function"><a name="unassign_instance-3">unassign_instance/3</a></h3>
+<div class="spec">
+<p><tt>unassign_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="unassign_volume-2">unassign_volume/2</a></h3>
+<div class="spec">
+<p><tt>unassign_volume(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Unassigns an assigned Amazon EBS volume.</p>
+ 
+  <p>The volume remains registered with the stack. For more information, see  
+Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="unassign_volume-3">unassign_volume/3</a></h3>
+<div class="spec">
+<p><tt>unassign_volume(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from a specified stack or layer.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_app-2">update_app/2</a></h3>
+<div class="spec">
+<p><tt>update_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a specified app.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Deploy
+  or Manage permissions level for the stack, or an attached policy that
+  explicitly grants permissions. For more information on user permissions,
+  see Managing User Permissions.</p>
+
+<h3 class="function"><a name="update_app-3">update_app/3</a></h3>
+<div class="spec">
+<p><tt>update_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_elastic_ip-2">update_elastic_ip/2</a></h3>
+<div class="spec">
+<p><tt>update_elastic_ip(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a registered Elastic IP address's name.</p>
+ 
+  <p>For more information, see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="update_elastic_ip-3">update_elastic_ip/3</a></h3>
+<div class="spec">
+<p><tt>update_elastic_ip(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_instance-2">update_instance/2</a></h3>
+<div class="spec">
+<p><tt>update_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a specified instance.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="update_instance-3">update_instance/3</a></h3>
+<div class="spec">
+<p><tt>update_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_layer-2">update_layer/2</a></h3>
+<div class="spec">
+<p><tt>update_layer(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a specified layer.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="update_layer-3">update_layer/3</a></h3>
+<div class="spec">
+<p><tt>update_layer(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_my_user_profile-2">update_my_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>update_my_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a user's SSH public key.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have
+  self-management enabled or an attached policy that explicitly grants
+  permissions. For more information about user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="update_my_user_profile-3">update_my_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>update_my_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_rds_db_instance-2">update_rds_db_instance/2</a></h3>
+<div class="spec">
+<p><tt>update_rds_db_instance(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an Amazon RDS instance.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="update_rds_db_instance-3">update_rds_db_instance/3</a></h3>
+<div class="spec">
+<p><tt>update_rds_db_instance(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_stack-2">update_stack/2</a></h3>
+<div class="spec">
+<p><tt>update_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a specified stack.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="update_stack-3">update_stack/3</a></h3>
+<div class="spec">
+<p><tt>update_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_profile-2">update_user_profile/2</a></h3>
+<div class="spec">
+<p><tt>update_user_profile(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a specified user profile.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have an
+  attached policy that explicitly grants permissions. For more information
+  about user permissions, see Managing User Permissions.</p>
+
+<h3 class="function"><a name="update_user_profile-3">update_user_profile/3</a></h3>
+<div class="spec">
+<p><tt>update_user_profile(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_volume-2">update_volume/2</a></h3>
+<div class="spec">
+<p><tt>update_volume(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an Amazon EBS volume's name or mount point.</p>
+ 
+  <p>For more information, see Resource Management.</p>
+ 
+  Required Permissions: To use this action, an IAM user must have a Manage
+  permissions level for the stack, or an attached policy that explicitly
+  grants permissions. For more information on user permissions, see Managing
+  User Permissions.</p>
+
+<h3 class="function"><a name="update_volume-3">update_volume/3</a></h3>
+<div class="spec">
+<p><tt>update_volume(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

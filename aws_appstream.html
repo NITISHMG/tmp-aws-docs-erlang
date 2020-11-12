@@ -1,0 +1,842 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_appstream</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_appstream</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon AppStream 2.0.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon AppStream 2.0</p>
+ 
+  <p>This is the Amazon AppStream 2.0 API Reference.</p>
+ 
+  <p>This documentation provides descriptions and syntax for each of the  
+actions and data types in AppStream 2.0. AppStream 2.0 is a fully managed,  
+secure application streaming service that lets you stream desktop  
+applications to users without rewriting applications. AppStream 2.0  
+manages the AWS resources that are required to host and run your  
+applications, scales automatically, and provides access to your users on  
+demand.</p>
+ 
+  <p>You can call the AppStream 2.0 API operations by using an interface VPC  
+endpoint (interface endpoint). For more information, see Access AppStream  
+2.0 API Operations and CLI Commands Through an Interface VPC Endpoint in  
+the Amazon AppStream 2.0 Administration Guide.</p>
+ 
+  <p>To learn more about AppStream 2.0, see the following resources:</p>
+ 
+  <ul> <li><p> Amazon AppStream 2.0 product page</p>
+ 
+  </li> <li><p> Amazon AppStream 2.0 documentation</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_fleet-2">associate_fleet/2</a></td><td>Associates the specified fleet with the specified stack.</td></tr>
+<tr><td valign="top"><a href="#associate_fleet-3">associate_fleet/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_associate_user_stack-2">batch_associate_user_stack/2</a></td><td>Associates the specified users with the specified stacks.</td></tr>
+<tr><td valign="top"><a href="#batch_associate_user_stack-3">batch_associate_user_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_disassociate_user_stack-2">batch_disassociate_user_stack/2</a></td><td>Disassociates the specified users from the specified stacks.</td></tr>
+<tr><td valign="top"><a href="#batch_disassociate_user_stack-3">batch_disassociate_user_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#copy_image-2">copy_image/2</a></td><td>Copies the image within the same region or to a new region within the  
+same AWS account.</td></tr>
+<tr><td valign="top"><a href="#copy_image-3">copy_image/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_directory_config-2">create_directory_config/2</a></td><td>Creates a Directory Config object in AppStream 2.0.</td></tr>
+<tr><td valign="top"><a href="#create_directory_config-3">create_directory_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_fleet-2">create_fleet/2</a></td><td>Creates a fleet.</td></tr>
+<tr><td valign="top"><a href="#create_fleet-3">create_fleet/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_image_builder-2">create_image_builder/2</a></td><td>Creates an image builder.</td></tr>
+<tr><td valign="top"><a href="#create_image_builder-3">create_image_builder/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_image_builder_streaming_u_r_l-2">create_image_builder_streaming_u_r_l/2</a></td><td>Creates a URL to start an image builder streaming session.</td></tr>
+<tr><td valign="top"><a href="#create_image_builder_streaming_u_r_l-3">create_image_builder_streaming_u_r_l/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_stack-2">create_stack/2</a></td><td>Creates a stack to start streaming applications to users.</td></tr>
+<tr><td valign="top"><a href="#create_stack-3">create_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_streaming_u_r_l-2">create_streaming_u_r_l/2</a></td><td>Creates a temporary URL to start an AppStream 2.0 streaming session  
+for the specified user.</td></tr>
+<tr><td valign="top"><a href="#create_streaming_u_r_l-3">create_streaming_u_r_l/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_usage_report_subscription-2">create_usage_report_subscription/2</a></td><td>Creates a usage report subscription.</td></tr>
+<tr><td valign="top"><a href="#create_usage_report_subscription-3">create_usage_report_subscription/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user-2">create_user/2</a></td><td>Creates a new user in the user pool.</td></tr>
+<tr><td valign="top"><a href="#create_user-3">create_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_directory_config-2">delete_directory_config/2</a></td><td>Deletes the specified Directory Config object from AppStream 2.0.</td></tr>
+<tr><td valign="top"><a href="#delete_directory_config-3">delete_directory_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_fleet-2">delete_fleet/2</a></td><td>Deletes the specified fleet.</td></tr>
+<tr><td valign="top"><a href="#delete_fleet-3">delete_fleet/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_image-2">delete_image/2</a></td><td>Deletes the specified image.</td></tr>
+<tr><td valign="top"><a href="#delete_image-3">delete_image/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_image_builder-2">delete_image_builder/2</a></td><td>Deletes the specified image builder and releases the capacity.</td></tr>
+<tr><td valign="top"><a href="#delete_image_builder-3">delete_image_builder/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_image_permissions-2">delete_image_permissions/2</a></td><td>Deletes permissions for the specified private image.</td></tr>
+<tr><td valign="top"><a href="#delete_image_permissions-3">delete_image_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_stack-2">delete_stack/2</a></td><td>Deletes the specified stack.</td></tr>
+<tr><td valign="top"><a href="#delete_stack-3">delete_stack/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_usage_report_subscription-2">delete_usage_report_subscription/2</a></td><td>Disables usage report generation.</td></tr>
+<tr><td valign="top"><a href="#delete_usage_report_subscription-3">delete_usage_report_subscription/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user-2">delete_user/2</a></td><td>Deletes a user from the user pool.</td></tr>
+<tr><td valign="top"><a href="#delete_user-3">delete_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_directory_configs-2">describe_directory_configs/2</a></td><td>Retrieves a list that describes one or more specified Directory  
+Config objects for AppStream 2.0, if the names for these objects are  
+provided.</td></tr>
+<tr><td valign="top"><a href="#describe_directory_configs-3">describe_directory_configs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_fleets-2">describe_fleets/2</a></td><td>Retrieves a list that describes one or more specified fleets, if the  
+fleet names are provided.</td></tr>
+<tr><td valign="top"><a href="#describe_fleets-3">describe_fleets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_image_builders-2">describe_image_builders/2</a></td><td>Retrieves a list that describes one or more specified image builders,  
+if the image builder names are provided.</td></tr>
+<tr><td valign="top"><a href="#describe_image_builders-3">describe_image_builders/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_image_permissions-2">describe_image_permissions/2</a></td><td>Retrieves a list that describes the permissions for shared AWS
+  account IDs on a private image that you own.</td></tr>
+<tr><td valign="top"><a href="#describe_image_permissions-3">describe_image_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_images-2">describe_images/2</a></td><td>Retrieves a list that describes one or more specified images, if the  
+image names or image ARNs are provided.</td></tr>
+<tr><td valign="top"><a href="#describe_images-3">describe_images/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_sessions-2">describe_sessions/2</a></td><td>Retrieves a list that describes the streaming sessions for a  
+specified stack and fleet.</td></tr>
+<tr><td valign="top"><a href="#describe_sessions-3">describe_sessions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_stacks-2">describe_stacks/2</a></td><td>Retrieves a list that describes one or more specified stacks, if the  
+stack names are provided.</td></tr>
+<tr><td valign="top"><a href="#describe_stacks-3">describe_stacks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_usage_report_subscriptions-2">describe_usage_report_subscriptions/2</a></td><td>Retrieves a list that describes one or more usage report
+  subscriptions.</td></tr>
+<tr><td valign="top"><a href="#describe_usage_report_subscriptions-3">describe_usage_report_subscriptions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_stack_associations-2">describe_user_stack_associations/2</a></td><td>Retrieves a list that describes the UserStackAssociation objects.</td></tr>
+<tr><td valign="top"><a href="#describe_user_stack_associations-3">describe_user_stack_associations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_users-2">describe_users/2</a></td><td>Retrieves a list that describes one or more specified users in the
+  user pool.</td></tr>
+<tr><td valign="top"><a href="#describe_users-3">describe_users/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disable_user-2">disable_user/2</a></td><td>Disables the specified user in the user pool.</td></tr>
+<tr><td valign="top"><a href="#disable_user-3">disable_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_fleet-2">disassociate_fleet/2</a></td><td>Disassociates the specified fleet from the specified stack.</td></tr>
+<tr><td valign="top"><a href="#disassociate_fleet-3">disassociate_fleet/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#enable_user-2">enable_user/2</a></td><td>Enables a user in the user pool.</td></tr>
+<tr><td valign="top"><a href="#enable_user-3">enable_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#expire_session-2">expire_session/2</a></td><td>Immediately stops the specified streaming session.</td></tr>
+<tr><td valign="top"><a href="#expire_session-3">expire_session/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_associated_fleets-2">list_associated_fleets/2</a></td><td>Retrieves the name of the fleet that is associated with the specified
+  stack.</td></tr>
+<tr><td valign="top"><a href="#list_associated_fleets-3">list_associated_fleets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_associated_stacks-2">list_associated_stacks/2</a></td><td>Retrieves the name of the stack with which the specified fleet is
+  associated.</td></tr>
+<tr><td valign="top"><a href="#list_associated_stacks-3">list_associated_stacks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieves a list of all tags for the specified AppStream 2.0  
+resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_fleet-2">start_fleet/2</a></td><td>Starts the specified fleet.</td></tr>
+<tr><td valign="top"><a href="#start_fleet-3">start_fleet/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_image_builder-2">start_image_builder/2</a></td><td>Starts the specified image builder.</td></tr>
+<tr><td valign="top"><a href="#start_image_builder-3">start_image_builder/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_fleet-2">stop_fleet/2</a></td><td>Stops the specified fleet.</td></tr>
+<tr><td valign="top"><a href="#stop_fleet-3">stop_fleet/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_image_builder-2">stop_image_builder/2</a></td><td>Stops the specified image builder.</td></tr>
+<tr><td valign="top"><a href="#stop_image_builder-3">stop_image_builder/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds or overwrites one or more tags for the specified AppStream 2.0  
+resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Disassociates one or more specified tags from the specified AppStream  
+2.0 resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_directory_config-2">update_directory_config/2</a></td><td>Updates the specified Directory Config object in AppStream 2.0.</td></tr>
+<tr><td valign="top"><a href="#update_directory_config-3">update_directory_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_fleet-2">update_fleet/2</a></td><td>Updates the specified fleet.</td></tr>
+<tr><td valign="top"><a href="#update_fleet-3">update_fleet/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_image_permissions-2">update_image_permissions/2</a></td><td>Adds or updates permissions for the specified private image.</td></tr>
+<tr><td valign="top"><a href="#update_image_permissions-3">update_image_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_stack-2">update_stack/2</a></td><td>Updates the specified fields for the specified stack.</td></tr>
+<tr><td valign="top"><a href="#update_stack-3">update_stack/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_fleet-2">associate_fleet/2</a></h3>
+<div class="spec">
+<p><tt>associate_fleet(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates the specified fleet with the specified stack.</p>
+
+<h3 class="function"><a name="associate_fleet-3">associate_fleet/3</a></h3>
+<div class="spec">
+<p><tt>associate_fleet(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_associate_user_stack-2">batch_associate_user_stack/2</a></h3>
+<div class="spec">
+<p><tt>batch_associate_user_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates the specified users with the specified stacks.</p>
+ 
+  Users in a user pool cannot be assigned to stacks with fleets that are
+  joined to an Active Directory domain.</p>
+
+<h3 class="function"><a name="batch_associate_user_stack-3">batch_associate_user_stack/3</a></h3>
+<div class="spec">
+<p><tt>batch_associate_user_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_disassociate_user_stack-2">batch_disassociate_user_stack/2</a></h3>
+<div class="spec">
+<p><tt>batch_disassociate_user_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the specified users from the specified stacks.</p>
+
+<h3 class="function"><a name="batch_disassociate_user_stack-3">batch_disassociate_user_stack/3</a></h3>
+<div class="spec">
+<p><tt>batch_disassociate_user_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="copy_image-2">copy_image/2</a></h3>
+<div class="spec">
+<p><tt>copy_image(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Copies the image within the same region or to a new region within the  
+same AWS account.</p>
+ 
+  Note that any tags you added to the image will not be copied.</p>
+
+<h3 class="function"><a name="copy_image-3">copy_image/3</a></h3>
+<div class="spec">
+<p><tt>copy_image(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_directory_config-2">create_directory_config/2</a></h3>
+<div class="spec">
+<p><tt>create_directory_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a Directory Config object in AppStream 2.0.</p>
+ 
+  This object includes the configuration information required to join fleets
+  and image builders to Microsoft Active Directory domains.</p>
+
+<h3 class="function"><a name="create_directory_config-3">create_directory_config/3</a></h3>
+<div class="spec">
+<p><tt>create_directory_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_fleet-2">create_fleet/2</a></h3>
+<div class="spec">
+<p><tt>create_fleet(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a fleet.</p>
+ 
+  A fleet consists of streaming instances that run a specified image.</p>
+
+<h3 class="function"><a name="create_fleet-3">create_fleet/3</a></h3>
+<div class="spec">
+<p><tt>create_fleet(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_image_builder-2">create_image_builder/2</a></h3>
+<div class="spec">
+<p><tt>create_image_builder(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an image builder.</p>
+ 
+  <p>An image builder is a virtual machine that is used to create an image.</p>
+ 
+  The initial state of the builder is <code>PENDING</code>. When it is ready, the state
+  is <code>RUNNING</code>.</p>
+
+<h3 class="function"><a name="create_image_builder-3">create_image_builder/3</a></h3>
+<div class="spec">
+<p><tt>create_image_builder(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_image_builder_streaming_u_r_l-2">create_image_builder_streaming_u_r_l/2</a></h3>
+<div class="spec">
+<p><tt>create_image_builder_streaming_u_r_l(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a URL to start an image builder streaming session.</p>
+
+<h3 class="function"><a name="create_image_builder_streaming_u_r_l-3">create_image_builder_streaming_u_r_l/3</a></h3>
+<div class="spec">
+<p><tt>create_image_builder_streaming_u_r_l(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_stack-2">create_stack/2</a></h3>
+<div class="spec">
+<p><tt>create_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a stack to start streaming applications to users.</p>
+ 
+  A stack consists of an associated fleet, user access policies, and storage
+  configurations.</p>
+
+<h3 class="function"><a name="create_stack-3">create_stack/3</a></h3>
+<div class="spec">
+<p><tt>create_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_streaming_u_r_l-2">create_streaming_u_r_l/2</a></h3>
+<div class="spec">
+<p><tt>create_streaming_u_r_l(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a temporary URL to start an AppStream 2.0 streaming session  
+for the specified user.</p>
+ 
+  A streaming URL enables application streaming to be tested without user
+  setup.</p>
+
+<h3 class="function"><a name="create_streaming_u_r_l-3">create_streaming_u_r_l/3</a></h3>
+<div class="spec">
+<p><tt>create_streaming_u_r_l(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_usage_report_subscription-2">create_usage_report_subscription/2</a></h3>
+<div class="spec">
+<p><tt>create_usage_report_subscription(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a usage report subscription.</p>
+ 
+  Usage reports are generated daily.</p>
+
+<h3 class="function"><a name="create_usage_report_subscription-3">create_usage_report_subscription/3</a></h3>
+<div class="spec">
+<p><tt>create_usage_report_subscription(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user-2">create_user/2</a></h3>
+<div class="spec">
+<p><tt>create_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new user in the user pool.</p>
+
+<h3 class="function"><a name="create_user-3">create_user/3</a></h3>
+<div class="spec">
+<p><tt>create_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_directory_config-2">delete_directory_config/2</a></h3>
+<div class="spec">
+<p><tt>delete_directory_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified Directory Config object from AppStream 2.0.</p>
+ 
+  This object includes the information required to join streaming instances
+  to an Active Directory domain.</p>
+
+<h3 class="function"><a name="delete_directory_config-3">delete_directory_config/3</a></h3>
+<div class="spec">
+<p><tt>delete_directory_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_fleet-2">delete_fleet/2</a></h3>
+<div class="spec">
+<p><tt>delete_fleet(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified fleet.</p>
+
+<h3 class="function"><a name="delete_fleet-3">delete_fleet/3</a></h3>
+<div class="spec">
+<p><tt>delete_fleet(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_image-2">delete_image/2</a></h3>
+<div class="spec">
+<p><tt>delete_image(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified image.</p>
+ 
+  You cannot delete an image when it is in use. After you delete an image,
+  you cannot provision new capacity using the image.</p>
+
+<h3 class="function"><a name="delete_image-3">delete_image/3</a></h3>
+<div class="spec">
+<p><tt>delete_image(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_image_builder-2">delete_image_builder/2</a></h3>
+<div class="spec">
+<p><tt>delete_image_builder(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified image builder and releases the capacity.</p>
+
+<h3 class="function"><a name="delete_image_builder-3">delete_image_builder/3</a></h3>
+<div class="spec">
+<p><tt>delete_image_builder(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_image_permissions-2">delete_image_permissions/2</a></h3>
+<div class="spec">
+<p><tt>delete_image_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes permissions for the specified private image.</p>
+ 
+  After you delete permissions for an image, AWS accounts to which you
+  previously granted these permissions can no longer use the image.</p>
+
+<h3 class="function"><a name="delete_image_permissions-3">delete_image_permissions/3</a></h3>
+<div class="spec">
+<p><tt>delete_image_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_stack-2">delete_stack/2</a></h3>
+<div class="spec">
+<p><tt>delete_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified stack.</p>
+ 
+  After the stack is deleted, the application streaming environment provided
+  by the stack is no longer available to users. Also, any reservations made
+  for application streaming sessions for the stack are released.</p>
+
+<h3 class="function"><a name="delete_stack-3">delete_stack/3</a></h3>
+<div class="spec">
+<p><tt>delete_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_usage_report_subscription-2">delete_usage_report_subscription/2</a></h3>
+<div class="spec">
+<p><tt>delete_usage_report_subscription(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disables usage report generation.</p>
+
+<h3 class="function"><a name="delete_usage_report_subscription-3">delete_usage_report_subscription/3</a></h3>
+<div class="spec">
+<p><tt>delete_usage_report_subscription(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user-2">delete_user/2</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a user from the user pool.</p>
+
+<h3 class="function"><a name="delete_user-3">delete_user/3</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_directory_configs-2">describe_directory_configs/2</a></h3>
+<div class="spec">
+<p><tt>describe_directory_configs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list that describes one or more specified Directory  
+Config objects for AppStream 2.0, if the names for these objects are  
+provided.</p>
+ 
+  <p>Otherwise, all Directory Config objects in the account are described.  
+These objects include the configuration information required to join  
+fleets and image builders to Microsoft Active Directory domains.</p>
+ 
+  Although the response syntax in this topic includes the account password,
+  this password is not returned in the actual response.</p>
+
+<h3 class="function"><a name="describe_directory_configs-3">describe_directory_configs/3</a></h3>
+<div class="spec">
+<p><tt>describe_directory_configs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_fleets-2">describe_fleets/2</a></h3>
+<div class="spec">
+<p><tt>describe_fleets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list that describes one or more specified fleets, if the  
+fleet names are provided.</p>
+ 
+  Otherwise, all fleets in the account are described.</p>
+
+<h3 class="function"><a name="describe_fleets-3">describe_fleets/3</a></h3>
+<div class="spec">
+<p><tt>describe_fleets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_image_builders-2">describe_image_builders/2</a></h3>
+<div class="spec">
+<p><tt>describe_image_builders(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list that describes one or more specified image builders,  
+if the image builder names are provided.</p>
+ 
+  Otherwise, all image builders in the account are described.</p>
+
+<h3 class="function"><a name="describe_image_builders-3">describe_image_builders/3</a></h3>
+<div class="spec">
+<p><tt>describe_image_builders(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_image_permissions-2">describe_image_permissions/2</a></h3>
+<div class="spec">
+<p><tt>describe_image_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list that describes the permissions for shared AWS
+  account IDs on a private image that you own.</p>
+
+<h3 class="function"><a name="describe_image_permissions-3">describe_image_permissions/3</a></h3>
+<div class="spec">
+<p><tt>describe_image_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_images-2">describe_images/2</a></h3>
+<div class="spec">
+<p><tt>describe_images(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list that describes one or more specified images, if the  
+image names or image ARNs are provided.</p>
+ 
+  Otherwise, all images in the account are described.</p>
+
+<h3 class="function"><a name="describe_images-3">describe_images/3</a></h3>
+<div class="spec">
+<p><tt>describe_images(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_sessions-2">describe_sessions/2</a></h3>
+<div class="spec">
+<p><tt>describe_sessions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list that describes the streaming sessions for a  
+specified stack and fleet.</p>
+ 
+  If a UserId is provided for the stack and fleet, only streaming sessions
+  for that user are described. If an authentication type is not provided,
+  the default is to authenticate users using a streaming URL.</p>
+
+<h3 class="function"><a name="describe_sessions-3">describe_sessions/3</a></h3>
+<div class="spec">
+<p><tt>describe_sessions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_stacks-2">describe_stacks/2</a></h3>
+<div class="spec">
+<p><tt>describe_stacks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list that describes one or more specified stacks, if the  
+stack names are provided.</p>
+ 
+  Otherwise, all stacks in the account are described.</p>
+
+<h3 class="function"><a name="describe_stacks-3">describe_stacks/3</a></h3>
+<div class="spec">
+<p><tt>describe_stacks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_usage_report_subscriptions-2">describe_usage_report_subscriptions/2</a></h3>
+<div class="spec">
+<p><tt>describe_usage_report_subscriptions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list that describes one or more usage report
+  subscriptions.</p>
+
+<h3 class="function"><a name="describe_usage_report_subscriptions-3">describe_usage_report_subscriptions/3</a></h3>
+<div class="spec">
+<p><tt>describe_usage_report_subscriptions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_stack_associations-2">describe_user_stack_associations/2</a></h3>
+<div class="spec">
+<p><tt>describe_user_stack_associations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list that describes the UserStackAssociation objects.</p>
+ 
+  <p>You must specify either or both of the following:</p>
+ 
+  <ul> <li><p> The stack name</p>
+ 
+  </li> <li><p> The user name (email address of the user associated with the  
+stack) and the authentication type for the user</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="describe_user_stack_associations-3">describe_user_stack_associations/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_stack_associations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_users-2">describe_users/2</a></h3>
+<div class="spec">
+<p><tt>describe_users(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list that describes one or more specified users in the
+  user pool.</p>
+
+<h3 class="function"><a name="describe_users-3">describe_users/3</a></h3>
+<div class="spec">
+<p><tt>describe_users(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disable_user-2">disable_user/2</a></h3>
+<div class="spec">
+<p><tt>disable_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disables the specified user in the user pool.</p>
+ 
+  Users can't sign in to AppStream 2.0 until they are re-enabled. This
+  action does not delete the user.</p>
+
+<h3 class="function"><a name="disable_user-3">disable_user/3</a></h3>
+<div class="spec">
+<p><tt>disable_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_fleet-2">disassociate_fleet/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_fleet(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the specified fleet from the specified stack.</p>
+
+<h3 class="function"><a name="disassociate_fleet-3">disassociate_fleet/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_fleet(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="enable_user-2">enable_user/2</a></h3>
+<div class="spec">
+<p><tt>enable_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Enables a user in the user pool.</p>
+ 
+  After being enabled, users can sign in to AppStream 2.0 and open
+  applications from the stacks to which they are assigned.</p>
+
+<h3 class="function"><a name="enable_user-3">enable_user/3</a></h3>
+<div class="spec">
+<p><tt>enable_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="expire_session-2">expire_session/2</a></h3>
+<div class="spec">
+<p><tt>expire_session(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Immediately stops the specified streaming session.</p>
+
+<h3 class="function"><a name="expire_session-3">expire_session/3</a></h3>
+<div class="spec">
+<p><tt>expire_session(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_associated_fleets-2">list_associated_fleets/2</a></h3>
+<div class="spec">
+<p><tt>list_associated_fleets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the name of the fleet that is associated with the specified
+  stack.</p>
+
+<h3 class="function"><a name="list_associated_fleets-3">list_associated_fleets/3</a></h3>
+<div class="spec">
+<p><tt>list_associated_fleets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_associated_stacks-2">list_associated_stacks/2</a></h3>
+<div class="spec">
+<p><tt>list_associated_stacks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the name of the stack with which the specified fleet is
+  associated.</p>
+
+<h3 class="function"><a name="list_associated_stacks-3">list_associated_stacks/3</a></h3>
+<div class="spec">
+<p><tt>list_associated_stacks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list of all tags for the specified AppStream 2.0  
+resource.</p>
+ 
+  <p>You can tag AppStream 2.0 image builders, images, fleets, and stacks.</p>
+ 
+  For more information about tags, see Tagging Your Resources in the Amazon
+  AppStream 2.0 Administration Guide.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_fleet-2">start_fleet/2</a></h3>
+<div class="spec">
+<p><tt>start_fleet(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts the specified fleet.</p>
+
+<h3 class="function"><a name="start_fleet-3">start_fleet/3</a></h3>
+<div class="spec">
+<p><tt>start_fleet(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_image_builder-2">start_image_builder/2</a></h3>
+<div class="spec">
+<p><tt>start_image_builder(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts the specified image builder.</p>
+
+<h3 class="function"><a name="start_image_builder-3">start_image_builder/3</a></h3>
+<div class="spec">
+<p><tt>start_image_builder(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_fleet-2">stop_fleet/2</a></h3>
+<div class="spec">
+<p><tt>stop_fleet(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stops the specified fleet.</p>
+
+<h3 class="function"><a name="stop_fleet-3">stop_fleet/3</a></h3>
+<div class="spec">
+<p><tt>stop_fleet(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_image_builder-2">stop_image_builder/2</a></h3>
+<div class="spec">
+<p><tt>stop_image_builder(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stops the specified image builder.</p>
+
+<h3 class="function"><a name="stop_image_builder-3">stop_image_builder/3</a></h3>
+<div class="spec">
+<p><tt>stop_image_builder(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds or overwrites one or more tags for the specified AppStream 2.0  
+resource.</p>
+ 
+  <p>You can tag AppStream 2.0 image builders, images, fleets, and stacks.</p>
+ 
+  <p>Each tag consists of a key and an optional value. If a resource already  
+has a tag with the same key, this operation updates its value.</p>
+ 
+  <p>To list the current tags for your resources, use <code>ListTagsForResource</code>. To
+  disassociate tags from your resources, use <code>UntagResource</code>.</p>
+ 
+  For more information about tags, see Tagging Your Resources in the Amazon
+  AppStream 2.0 Administration Guide.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates one or more specified tags from the specified AppStream  
+2.0 resource.</p>
+ 
+  <p>To list the current tags for your resources, use <code>ListTagsForResource</code>.</p>
+ 
+  For more information about tags, see Tagging Your Resources in the Amazon
+  AppStream 2.0 Administration Guide.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_directory_config-2">update_directory_config/2</a></h3>
+<div class="spec">
+<p><tt>update_directory_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified Directory Config object in AppStream 2.0.</p>
+ 
+  This object includes the configuration information required to join fleets
+  and image builders to Microsoft Active Directory domains.</p>
+
+<h3 class="function"><a name="update_directory_config-3">update_directory_config/3</a></h3>
+<div class="spec">
+<p><tt>update_directory_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_fleet-2">update_fleet/2</a></h3>
+<div class="spec">
+<p><tt>update_fleet(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified fleet.</p>
+ 
+  If the fleet is in the <code>STOPPED</code> state, you can update any attribute
+  except the fleet name. If the fleet is in the <code>RUNNING</code> state, you can
+  update the <code>DisplayName</code>, <code>ComputeCapacity</code>, <code>ImageARN</code>, <code>ImageName</code>,
+  <code>IdleDisconnectTimeoutInSeconds</code>, and <code>DisconnectTimeoutInSeconds</code>
+  attributes. If the fleet is in the <code>STARTING</code> or <code>STOPPING</code> state, you
+  can't update it.</p>
+
+<h3 class="function"><a name="update_fleet-3">update_fleet/3</a></h3>
+<div class="spec">
+<p><tt>update_fleet(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_image_permissions-2">update_image_permissions/2</a></h3>
+<div class="spec">
+<p><tt>update_image_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds or updates permissions for the specified private image.</p>
+
+<h3 class="function"><a name="update_image_permissions-3">update_image_permissions/3</a></h3>
+<div class="spec">
+<p><tt>update_image_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_stack-2">update_stack/2</a></h3>
+<div class="spec">
+<p><tt>update_stack(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the specified fields for the specified stack.</p>
+
+<h3 class="function"><a name="update_stack-3">update_stack/3</a></h3>
+<div class="spec">
+<p><tt>update_stack(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

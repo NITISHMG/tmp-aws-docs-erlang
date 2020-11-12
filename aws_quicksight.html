@@ -1,0 +1,1744 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_quicksight</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_quicksight</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon QuickSight API Reference.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon QuickSight API Reference</p>
+ 
+  <p>Amazon QuickSight is a fully managed, serverless business intelligence  
+service for the AWS Cloud that makes it easy to extend data and insights  
+to every user in your organization.</p>
+ 
+  This API reference contains documentation for a programming interface that
+  you can use to manage Amazon QuickSight.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_ingestion-5">cancel_ingestion/5</a></td><td>Cancels an ongoing ingestion of data into SPICE.</td></tr>
+<tr><td valign="top"><a href="#cancel_ingestion-6">cancel_ingestion/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_account_customization-3">create_account_customization/3</a></td><td>Creates Amazon QuickSight customizations the current AWS Region.</td></tr>
+<tr><td valign="top"><a href="#create_account_customization-4">create_account_customization/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_analysis-4">create_analysis/4</a></td><td>Creates an analysis in Amazon QuickSight.</td></tr>
+<tr><td valign="top"><a href="#create_analysis-5">create_analysis/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_dashboard-4">create_dashboard/4</a></td><td>Creates a dashboard from a template.</td></tr>
+<tr><td valign="top"><a href="#create_dashboard-5">create_dashboard/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_data_set-3">create_data_set/3</a></td><td>Creates a dataset.</td></tr>
+<tr><td valign="top"><a href="#create_data_set-4">create_data_set/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_data_source-3">create_data_source/3</a></td><td>Creates a data source.</td></tr>
+<tr><td valign="top"><a href="#create_data_source-4">create_data_source/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_group-4">create_group/4</a></td><td>Creates an Amazon QuickSight group.</td></tr>
+<tr><td valign="top"><a href="#create_group-5">create_group/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_group_membership-6">create_group_membership/6</a></td><td>Adds an Amazon QuickSight user to an Amazon QuickSight group.</td></tr>
+<tr><td valign="top"><a href="#create_group_membership-7">create_group_membership/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_i_a_m_policy_assignment-4">create_i_a_m_policy_assignment/4</a></td><td>Creates an assignment with one specified IAM policy, identified by  
+its Amazon Resource Name (ARN).</td></tr>
+<tr><td valign="top"><a href="#create_i_a_m_policy_assignment-5">create_i_a_m_policy_assignment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_ingestion-5">create_ingestion/5</a></td><td>Creates and starts a new SPICE ingestion on a dataset.</td></tr>
+<tr><td valign="top"><a href="#create_ingestion-6">create_ingestion/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_namespace-3">create_namespace/3</a></td><td>(Enterprise edition only) Creates a new namespace for you to use with  
+Amazon QuickSight.</td></tr>
+<tr><td valign="top"><a href="#create_namespace-4">create_namespace/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_template-4">create_template/4</a></td><td>Creates a template from an existing QuickSight analysis or template.</td></tr>
+<tr><td valign="top"><a href="#create_template-5">create_template/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_template_alias-5">create_template_alias/5</a></td><td>Creates a template alias for a template.</td></tr>
+<tr><td valign="top"><a href="#create_template_alias-6">create_template_alias/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_theme-4">create_theme/4</a></td><td>Creates a theme.</td></tr>
+<tr><td valign="top"><a href="#create_theme-5">create_theme/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_theme_alias-5">create_theme_alias/5</a></td><td>Creates a theme alias for a theme.</td></tr>
+<tr><td valign="top"><a href="#create_theme_alias-6">create_theme_alias/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_account_customization-3">delete_account_customization/3</a></td><td>Deletes all Amazon QuickSight customizations in this AWS Region for
+  the specified AWS account and QuickSight namespace.</td></tr>
+<tr><td valign="top"><a href="#delete_account_customization-4">delete_account_customization/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_analysis-4">delete_analysis/4</a></td><td>Deletes an analysis from Amazon QuickSight.</td></tr>
+<tr><td valign="top"><a href="#delete_analysis-5">delete_analysis/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_dashboard-4">delete_dashboard/4</a></td><td>Deletes a dashboard.</td></tr>
+<tr><td valign="top"><a href="#delete_dashboard-5">delete_dashboard/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_data_set-4">delete_data_set/4</a></td><td>Deletes a dataset.</td></tr>
+<tr><td valign="top"><a href="#delete_data_set-5">delete_data_set/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_data_source-4">delete_data_source/4</a></td><td>Deletes the data source permanently.</td></tr>
+<tr><td valign="top"><a href="#delete_data_source-5">delete_data_source/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_group-5">delete_group/5</a></td><td>Removes a user group from Amazon QuickSight.</td></tr>
+<tr><td valign="top"><a href="#delete_group-6">delete_group/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_group_membership-6">delete_group_membership/6</a></td><td>Removes a user from a group so that the user is no longer a member of
+  the group.</td></tr>
+<tr><td valign="top"><a href="#delete_group_membership-7">delete_group_membership/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_i_a_m_policy_assignment-5">delete_i_a_m_policy_assignment/5</a></td><td>Deletes an existing IAM policy assignment.</td></tr>
+<tr><td valign="top"><a href="#delete_i_a_m_policy_assignment-6">delete_i_a_m_policy_assignment/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_namespace-4">delete_namespace/4</a></td><td>Deletes a namespace and the users and groups that are associated with  
+the namespace.</td></tr>
+<tr><td valign="top"><a href="#delete_namespace-5">delete_namespace/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_template-4">delete_template/4</a></td><td>Deletes a template.</td></tr>
+<tr><td valign="top"><a href="#delete_template-5">delete_template/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_template_alias-5">delete_template_alias/5</a></td><td>Deletes the item that the specified template alias points to.</td></tr>
+<tr><td valign="top"><a href="#delete_template_alias-6">delete_template_alias/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_theme-4">delete_theme/4</a></td><td>Deletes a theme.</td></tr>
+<tr><td valign="top"><a href="#delete_theme-5">delete_theme/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_theme_alias-5">delete_theme_alias/5</a></td><td>Deletes the version of the theme that the specified theme alias  
+points to.</td></tr>
+<tr><td valign="top"><a href="#delete_theme_alias-6">delete_theme_alias/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user-5">delete_user/5</a></td><td>Deletes the Amazon QuickSight user that is associated with the  
+identity of the AWS Identity and Access Management (IAM) user or role  
+that's making the call.</td></tr>
+<tr><td valign="top"><a href="#delete_user-6">delete_user/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user_by_principal_id-5">delete_user_by_principal_id/5</a></td><td>Deletes a user identified by its principal ID.</td></tr>
+<tr><td valign="top"><a href="#delete_user_by_principal_id-6">delete_user_by_principal_id/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_account_customization-4">describe_account_customization/4</a></td><td>Describes the customizations associated with the provided AWS account  
+and Amazon QuickSight namespace in an AWS Region.</td></tr>
+<tr><td valign="top"><a href="#describe_account_customization-5">describe_account_customization/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_account_settings-2">describe_account_settings/2</a></td><td>Describes the settings that were used when your QuickSight
+  subscription was first created in this AWS account.</td></tr>
+<tr><td valign="top"><a href="#describe_account_settings-3">describe_account_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_analysis-3">describe_analysis/3</a></td><td>Provides a summary of the metadata for an analysis.</td></tr>
+<tr><td valign="top"><a href="#describe_analysis-4">describe_analysis/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_analysis_permissions-3">describe_analysis_permissions/3</a></td><td>Provides the read and write permissions for an analysis.</td></tr>
+<tr><td valign="top"><a href="#describe_analysis_permissions-4">describe_analysis_permissions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_dashboard-5">describe_dashboard/5</a></td><td>Provides a summary for a dashboard.</td></tr>
+<tr><td valign="top"><a href="#describe_dashboard-6">describe_dashboard/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_dashboard_permissions-3">describe_dashboard_permissions/3</a></td><td>Describes read and write permissions for a dashboard.</td></tr>
+<tr><td valign="top"><a href="#describe_dashboard_permissions-4">describe_dashboard_permissions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_data_set-3">describe_data_set/3</a></td><td>Describes a dataset.</td></tr>
+<tr><td valign="top"><a href="#describe_data_set-4">describe_data_set/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_data_set_permissions-3">describe_data_set_permissions/3</a></td><td>Describes the permissions on a dataset.</td></tr>
+<tr><td valign="top"><a href="#describe_data_set_permissions-4">describe_data_set_permissions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_data_source-3">describe_data_source/3</a></td><td>Describes a data source.</td></tr>
+<tr><td valign="top"><a href="#describe_data_source-4">describe_data_source/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_data_source_permissions-3">describe_data_source_permissions/3</a></td><td>Describes the resource permissions for a data source.</td></tr>
+<tr><td valign="top"><a href="#describe_data_source_permissions-4">describe_data_source_permissions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_group-4">describe_group/4</a></td><td>Returns an Amazon QuickSight group's description and Amazon Resource
+  Name (ARN).</td></tr>
+<tr><td valign="top"><a href="#describe_group-5">describe_group/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_i_a_m_policy_assignment-4">describe_i_a_m_policy_assignment/4</a></td><td>Describes an existing IAM policy assignment, as specified by the
+  assignment name.</td></tr>
+<tr><td valign="top"><a href="#describe_i_a_m_policy_assignment-5">describe_i_a_m_policy_assignment/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_ingestion-4">describe_ingestion/4</a></td><td>Describes a SPICE ingestion.</td></tr>
+<tr><td valign="top"><a href="#describe_ingestion-5">describe_ingestion/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_namespace-3">describe_namespace/3</a></td><td>Describes the current namespace.</td></tr>
+<tr><td valign="top"><a href="#describe_namespace-4">describe_namespace/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_template-5">describe_template/5</a></td><td>Describes a template's metadata.</td></tr>
+<tr><td valign="top"><a href="#describe_template-6">describe_template/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_template_alias-4">describe_template_alias/4</a></td><td>Describes the template alias for a template.</td></tr>
+<tr><td valign="top"><a href="#describe_template_alias-5">describe_template_alias/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_template_permissions-3">describe_template_permissions/3</a></td><td>Describes read and write permissions on a template.</td></tr>
+<tr><td valign="top"><a href="#describe_template_permissions-4">describe_template_permissions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_theme-5">describe_theme/5</a></td><td>Describes a theme.</td></tr>
+<tr><td valign="top"><a href="#describe_theme-6">describe_theme/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_theme_alias-4">describe_theme_alias/4</a></td><td>Describes the alias for a theme.</td></tr>
+<tr><td valign="top"><a href="#describe_theme_alias-5">describe_theme_alias/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_theme_permissions-3">describe_theme_permissions/3</a></td><td>Describes the read and write permissions for a theme.</td></tr>
+<tr><td valign="top"><a href="#describe_theme_permissions-4">describe_theme_permissions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user-4">describe_user/4</a></td><td>Returns information about a user, given the user name.</td></tr>
+<tr><td valign="top"><a href="#describe_user-5">describe_user/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_dashboard_embed_url-8">get_dashboard_embed_url/8</a></td><td>Generates a session URL and authorization code that you can use to  
+embed an Amazon QuickSight read-only dashboard in your web server code.</td></tr>
+<tr><td valign="top"><a href="#get_dashboard_embed_url-9">get_dashboard_embed_url/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_session_embed_url-5">get_session_embed_url/5</a></td><td>Generates a session URL and authorization code that you can use to  
+embed the Amazon QuickSight console in your web server code.</td></tr>
+<tr><td valign="top"><a href="#get_session_embed_url-6">get_session_embed_url/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_analyses-4">list_analyses/4</a></td><td>Lists Amazon QuickSight analyses that exist in the specified AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_analyses-5">list_analyses/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_dashboard_versions-5">list_dashboard_versions/5</a></td><td>Lists all the versions of the dashboards in the QuickSight
+  subscription.</td></tr>
+<tr><td valign="top"><a href="#list_dashboard_versions-6">list_dashboard_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_dashboards-4">list_dashboards/4</a></td><td>Lists dashboards in an AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_dashboards-5">list_dashboards/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_data_sets-4">list_data_sets/4</a></td><td>Lists all of the datasets belonging to the current AWS account in an  
+AWS Region.</td></tr>
+<tr><td valign="top"><a href="#list_data_sets-5">list_data_sets/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_data_sources-4">list_data_sources/4</a></td><td>Lists data sources in current AWS Region that belong to this AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_data_sources-5">list_data_sources/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_group_memberships-6">list_group_memberships/6</a></td><td>Lists member users in a group.</td></tr>
+<tr><td valign="top"><a href="#list_group_memberships-7">list_group_memberships/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_groups-5">list_groups/5</a></td><td>Lists all user groups in Amazon QuickSight.</td></tr>
+<tr><td valign="top"><a href="#list_groups-6">list_groups/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_i_a_m_policy_assignments-5">list_i_a_m_policy_assignments/5</a></td><td>Lists IAM policy assignments in the current Amazon QuickSight
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_i_a_m_policy_assignments-6">list_i_a_m_policy_assignments/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_i_a_m_policy_assignments_for_user-6">list_i_a_m_policy_assignments_for_user/6</a></td><td>Lists all the IAM policy assignments, including the Amazon Resource
+  Names (ARNs) for the IAM policies assigned to the specified user and group
+  or groups that the user belongs to.</td></tr>
+<tr><td valign="top"><a href="#list_i_a_m_policy_assignments_for_user-7">list_i_a_m_policy_assignments_for_user/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_ingestions-5">list_ingestions/5</a></td><td>Lists the history of SPICE ingestions for a dataset.</td></tr>
+<tr><td valign="top"><a href="#list_ingestions-6">list_ingestions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_namespaces-4">list_namespaces/4</a></td><td>Lists the namespaces for the specified AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_namespaces-5">list_namespaces/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags assigned to a resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_template_aliases-5">list_template_aliases/5</a></td><td>Lists all the aliases of a template.</td></tr>
+<tr><td valign="top"><a href="#list_template_aliases-6">list_template_aliases/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_template_versions-5">list_template_versions/5</a></td><td>Lists all the versions of the templates in the current Amazon
+  QuickSight account.</td></tr>
+<tr><td valign="top"><a href="#list_template_versions-6">list_template_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_templates-4">list_templates/4</a></td><td>Lists all the templates in the current Amazon QuickSight account.</td></tr>
+<tr><td valign="top"><a href="#list_templates-5">list_templates/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_theme_aliases-5">list_theme_aliases/5</a></td><td>Lists all the aliases of a theme.</td></tr>
+<tr><td valign="top"><a href="#list_theme_aliases-6">list_theme_aliases/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_theme_versions-5">list_theme_versions/5</a></td><td>Lists all the versions of the themes in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_theme_versions-6">list_theme_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_themes-5">list_themes/5</a></td><td>Lists all the themes in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_themes-6">list_themes/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_user_groups-6">list_user_groups/6</a></td><td>Lists the Amazon QuickSight groups that an Amazon QuickSight user is
+  a member of.</td></tr>
+<tr><td valign="top"><a href="#list_user_groups-7">list_user_groups/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_users-5">list_users/5</a></td><td>Returns a list of all of the Amazon QuickSight users belonging to
+  this account.</td></tr>
+<tr><td valign="top"><a href="#list_users-6">list_users/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_user-4">register_user/4</a></td><td>Creates an Amazon QuickSight user, whose identity is associated with
+  the AWS Identity and Access Management (IAM) identity or role specified in
+  the request.</td></tr>
+<tr><td valign="top"><a href="#register_user-5">register_user/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#restore_analysis-4">restore_analysis/4</a></td><td>Restores an analysis.</td></tr>
+<tr><td valign="top"><a href="#restore_analysis-5">restore_analysis/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#search_analyses-3">search_analyses/3</a></td><td>Searches for analyses that belong to the user specified in the
+  filter.</td></tr>
+<tr><td valign="top"><a href="#search_analyses-4">search_analyses/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#search_dashboards-3">search_dashboards/3</a></td><td>Searches for dashboards that belong to a user.</td></tr>
+<tr><td valign="top"><a href="#search_dashboards-4">search_dashboards/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Assigns one or more tags (key-value pairs) to the specified  
+QuickSight resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes a tag or tags from a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_account_customization-3">update_account_customization/3</a></td><td>Updates Amazon QuickSight customizations the current AWS Region.</td></tr>
+<tr><td valign="top"><a href="#update_account_customization-4">update_account_customization/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_account_settings-3">update_account_settings/3</a></td><td>Updates the Amazon QuickSight settings in your AWS account.</td></tr>
+<tr><td valign="top"><a href="#update_account_settings-4">update_account_settings/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_analysis-4">update_analysis/4</a></td><td>Updates an analysis in Amazon QuickSight.</td></tr>
+<tr><td valign="top"><a href="#update_analysis-5">update_analysis/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_analysis_permissions-4">update_analysis_permissions/4</a></td><td>Updates the read and write permissions for an analysis.</td></tr>
+<tr><td valign="top"><a href="#update_analysis_permissions-5">update_analysis_permissions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_dashboard-4">update_dashboard/4</a></td><td>Updates a dashboard in an AWS account.</td></tr>
+<tr><td valign="top"><a href="#update_dashboard-5">update_dashboard/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_dashboard_permissions-4">update_dashboard_permissions/4</a></td><td>Updates read and write permissions on a dashboard.</td></tr>
+<tr><td valign="top"><a href="#update_dashboard_permissions-5">update_dashboard_permissions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_dashboard_published_version-5">update_dashboard_published_version/5</a></td><td>Updates the published version of a dashboard.</td></tr>
+<tr><td valign="top"><a href="#update_dashboard_published_version-6">update_dashboard_published_version/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_data_set-4">update_data_set/4</a></td><td>Updates a dataset.</td></tr>
+<tr><td valign="top"><a href="#update_data_set-5">update_data_set/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_data_set_permissions-4">update_data_set_permissions/4</a></td><td>Updates the permissions on a dataset.</td></tr>
+<tr><td valign="top"><a href="#update_data_set_permissions-5">update_data_set_permissions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_data_source-4">update_data_source/4</a></td><td>Updates a data source.</td></tr>
+<tr><td valign="top"><a href="#update_data_source-5">update_data_source/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_data_source_permissions-4">update_data_source_permissions/4</a></td><td>Updates the permissions to a data source.</td></tr>
+<tr><td valign="top"><a href="#update_data_source_permissions-5">update_data_source_permissions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_group-5">update_group/5</a></td><td>Changes a group description.</td></tr>
+<tr><td valign="top"><a href="#update_group-6">update_group/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_i_a_m_policy_assignment-5">update_i_a_m_policy_assignment/5</a></td><td>Updates an existing IAM policy assignment.</td></tr>
+<tr><td valign="top"><a href="#update_i_a_m_policy_assignment-6">update_i_a_m_policy_assignment/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_template-4">update_template/4</a></td><td>Updates a template from an existing Amazon QuickSight analysis or
+  another template.</td></tr>
+<tr><td valign="top"><a href="#update_template-5">update_template/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_template_alias-5">update_template_alias/5</a></td><td>Updates the template alias of a template.</td></tr>
+<tr><td valign="top"><a href="#update_template_alias-6">update_template_alias/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_template_permissions-4">update_template_permissions/4</a></td><td>Updates the resource permissions for a template.</td></tr>
+<tr><td valign="top"><a href="#update_template_permissions-5">update_template_permissions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_theme-4">update_theme/4</a></td><td>Updates a theme.</td></tr>
+<tr><td valign="top"><a href="#update_theme-5">update_theme/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_theme_alias-5">update_theme_alias/5</a></td><td>Updates an alias of a theme.</td></tr>
+<tr><td valign="top"><a href="#update_theme_alias-6">update_theme_alias/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_theme_permissions-4">update_theme_permissions/4</a></td><td>Updates the resource permissions for a theme.</td></tr>
+<tr><td valign="top"><a href="#update_theme_permissions-5">update_theme_permissions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user-5">update_user/5</a></td><td>Updates an Amazon QuickSight user.</td></tr>
+<tr><td valign="top"><a href="#update_user-6">update_user/6</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_ingestion-5">cancel_ingestion/5</a></h3>
+<div class="spec">
+<p><tt>cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Cancels an ongoing ingestion of data into SPICE.</p>
+
+<h3 class="function"><a name="cancel_ingestion-6">cancel_ingestion/6</a></h3>
+<div class="spec">
+<p><tt>cancel_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_account_customization-3">create_account_customization/3</a></h3>
+<div class="spec">
+<p><tt>create_account_customization(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates Amazon QuickSight customizations the current AWS Region.</p>
+ 
+  <p>Currently, you can add a custom default theme by using the
+  <code>CreateAccountCustomization</code> or <code>UpdateAccountCustomization</code> API  
+operation. To further customize QuickSight by removing QuickSight sample  
+assets and videos for all new users, see Customizing QuickSight in the  
+Amazon QuickSight User Guide.</p>
+ 
+  <p>You can create customizations for your AWS account or, if you specify a
+  namespace, for a QuickSight namespace instead. Customizations that apply
+  to a namespace always override customizations that apply to an AWS
+  account. To find out which customizations apply, use the
+  <code>DescribeAccountCustomization</code> API operation.</p>
+ 
+  Before you use the <code>CreateAccountCustomization</code> API operation to add a
+  theme as the namespace default, make sure that you first share the theme
+  with the namespace. If you don't share it with the namespace, the theme
+  isn't visible to your users even if you make it the default theme. To
+  check if the theme is shared, view the current permissions by using the <code>`DescribeThemePermissions</code> ' API operation. To share the theme, grant
+  permissions by using the <code>`UpdateThemePermissions</code> ' API operation.</p>
+
+<h3 class="function"><a name="create_account_customization-4">create_account_customization/4</a></h3>
+<div class="spec">
+<p><tt>create_account_customization(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_analysis-4">create_analysis/4</a></h3>
+<div class="spec">
+<p><tt>create_analysis(Client, AnalysisId, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an analysis in Amazon QuickSight.</p>
+
+<h3 class="function"><a name="create_analysis-5">create_analysis/5</a></h3>
+<div class="spec">
+<p><tt>create_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_dashboard-4">create_dashboard/4</a></h3>
+<div class="spec">
+<p><tt>create_dashboard(Client, AwsAccountId, DashboardId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a dashboard from a template.</p>
+ 
+  <p>To first create a template, see the <code>`CreateTemplate</code> ' API operation.</p>
+ 
+  A dashboard is an entity in QuickSight that identifies QuickSight reports,
+  created from analyses. You can share QuickSight dashboards. With the right
+  permissions, you can create scheduled email reports from them. If you have
+  the correct permissions, you can create a dashboard from a template that
+  exists in a different AWS account.</p>
+
+<h3 class="function"><a name="create_dashboard-5">create_dashboard/5</a></h3>
+<div class="spec">
+<p><tt>create_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_data_set-3">create_data_set/3</a></h3>
+<div class="spec">
+<p><tt>create_data_set(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a dataset.</p>
+
+<h3 class="function"><a name="create_data_set-4">create_data_set/4</a></h3>
+<div class="spec">
+<p><tt>create_data_set(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_data_source-3">create_data_source/3</a></h3>
+<div class="spec">
+<p><tt>create_data_source(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a data source.</p>
+
+<h3 class="function"><a name="create_data_source-4">create_data_source/4</a></h3>
+<div class="spec">
+<p><tt>create_data_source(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_group-4">create_group/4</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, AwsAccountId, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an Amazon QuickSight group.</p>
+ 
+  <p>The permissions resource is
+  <code>arn:aws:quicksight:us-east-1:&lt;relevant-aws-account-id&gt;:group/default/&lt;group-name&gt;</code>.</p>
+ 
+  The response is a group object.</p>
+
+<h3 class="function"><a name="create_group-5">create_group/5</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, AwsAccountId, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_group_membership-6">create_group_membership/6</a></h3>
+<div class="spec">
+<p><tt>create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds an Amazon QuickSight user to an Amazon QuickSight group.</p>
+
+<h3 class="function"><a name="create_group_membership-7">create_group_membership/7</a></h3>
+<div class="spec">
+<p><tt>create_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_i_a_m_policy_assignment-4">create_i_a_m_policy_assignment/4</a></h3>
+<div class="spec">
+<p><tt>create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an assignment with one specified IAM policy, identified by  
+its Amazon Resource Name (ARN).</p>
+ 
+  This policy assignment is attached to the specified groups or users of
+  Amazon QuickSight. Assignment names are unique per AWS account. To avoid
+  overwriting rules in other namespaces, use assignment names that are
+  unique.</p>
+
+<h3 class="function"><a name="create_i_a_m_policy_assignment-5">create_i_a_m_policy_assignment/5</a></h3>
+<div class="spec">
+<p><tt>create_i_a_m_policy_assignment(Client, AwsAccountId, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_ingestion-5">create_ingestion/5</a></h3>
+<div class="spec">
+<p><tt>create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates and starts a new SPICE ingestion on a dataset</p>
+ 
+  <p>Any ingestions operating on tagged datasets inherit the same tags  
+automatically for use in access control.</p>
+ 
+  For an example, see How do I create an IAM policy to control access to
+  Amazon EC2 resources using tags? in the AWS Knowledge Center. Tags are
+  visible on the tagged dataset, but not on the ingestion resource.</p>
+
+<h3 class="function"><a name="create_ingestion-6">create_ingestion/6</a></h3>
+<div class="spec">
+<p><tt>create_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_namespace-3">create_namespace/3</a></h3>
+<div class="spec">
+<p><tt>create_namespace(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>(Enterprise edition only) Creates a new namespace for you to use with  
+Amazon QuickSight.</p>
+ 
+  A namespace allows you to isolate the QuickSight users and groups that are
+  registered for that namespace. Users that access the namespace can share
+  assets only with other users or groups in the same namespace. They can't
+  see users and groups in other namespaces. You can create a namespace after
+  your AWS account is subscribed to QuickSight. The namespace must be unique
+  within the AWS account. By default, there is a limit of 100 namespaces per
+  AWS account. To increase your limit, create a ticket with AWS Support.</p>
+
+<h3 class="function"><a name="create_namespace-4">create_namespace/4</a></h3>
+<div class="spec">
+<p><tt>create_namespace(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_template-4">create_template/4</a></h3>
+<div class="spec">
+<p><tt>create_template(Client, AwsAccountId, TemplateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a template from an existing QuickSight analysis or template.</p>
+ 
+  <p>You can use the resulting template to create a dashboard.</p>
+ 
+  A template is an entity in QuickSight that encapsulates the metadata
+  required to create an analysis and that you can use to create s dashboard.
+  A template adds a layer of abstraction by using placeholders to replace
+  the dataset associated with the analysis. You can use templates to create
+  dashboards by replacing dataset placeholders with datasets that follow the
+  same schema that was used to create the source analysis and template.</p>
+
+<h3 class="function"><a name="create_template-5">create_template/5</a></h3>
+<div class="spec">
+<p><tt>create_template(Client, AwsAccountId, TemplateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_template_alias-5">create_template_alias/5</a></h3>
+<div class="spec">
+<p><tt>create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a template alias for a template.</p>
+
+<h3 class="function"><a name="create_template_alias-6">create_template_alias/6</a></h3>
+<div class="spec">
+<p><tt>create_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_theme-4">create_theme/4</a></h3>
+<div class="spec">
+<p><tt>create_theme(Client, AwsAccountId, ThemeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a theme.</p>
+ 
+  A theme is set of configuration options for color and layout. Themes apply
+  to analyses and dashboards. For more information, see Using Themes in
+  Amazon QuickSight in the Amazon QuickSight User Guide.</p>
+
+<h3 class="function"><a name="create_theme-5">create_theme/5</a></h3>
+<div class="spec">
+<p><tt>create_theme(Client, AwsAccountId, ThemeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_theme_alias-5">create_theme_alias/5</a></h3>
+<div class="spec">
+<p><tt>create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a theme alias for a theme.</p>
+
+<h3 class="function"><a name="create_theme_alias-6">create_theme_alias/6</a></h3>
+<div class="spec">
+<p><tt>create_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_account_customization-3">delete_account_customization/3</a></h3>
+<div class="spec">
+<p><tt>delete_account_customization(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes all Amazon QuickSight customizations in this AWS Region for
+  the specified AWS account and QuickSight namespace.</p>
+
+<h3 class="function"><a name="delete_account_customization-4">delete_account_customization/4</a></h3>
+<div class="spec">
+<p><tt>delete_account_customization(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_analysis-4">delete_analysis/4</a></h3>
+<div class="spec">
+<p><tt>delete_analysis(Client, AnalysisId, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an analysis from Amazon QuickSight.</p>
+ 
+  <p>You can optionally include a recovery window during which you can restore
+  the analysis. If you don't specify a recovery window value, the operation
+  defaults to 30 days. QuickSight attaches a <code>DeletionTime</code> stamp to the  
+response that specifies the end of the recovery window. At the end of the  
+recovery window, QuickSight deletes the analysis permanently.</p>
+ 
+  <p>At any time before recovery window ends, you can use the <code>RestoreAnalysis</code>
+  API operation to remove the <code>DeletionTime</code> stamp and cancel the deletion  
+of the analysis. The analysis remains visible in the API until it's  
+deleted, so you can describe it but you can't make a template from it.</p>
+ 
+  An analysis that's scheduled for deletion isn't accessible in the
+  QuickSight console. To access it in the console, restore it. Deleting an
+  analysis doesn't delete the dashboards that you publish from it.</p>
+
+<h3 class="function"><a name="delete_analysis-5">delete_analysis/5</a></h3>
+<div class="spec">
+<p><tt>delete_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_dashboard-4">delete_dashboard/4</a></h3>
+<div class="spec">
+<p><tt>delete_dashboard(Client, AwsAccountId, DashboardId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a dashboard.</p>
+
+<h3 class="function"><a name="delete_dashboard-5">delete_dashboard/5</a></h3>
+<div class="spec">
+<p><tt>delete_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_data_set-4">delete_data_set/4</a></h3>
+<div class="spec">
+<p><tt>delete_data_set(Client, AwsAccountId, DataSetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a dataset.</p>
+
+<h3 class="function"><a name="delete_data_set-5">delete_data_set/5</a></h3>
+<div class="spec">
+<p><tt>delete_data_set(Client, AwsAccountId, DataSetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_data_source-4">delete_data_source/4</a></h3>
+<div class="spec">
+<p><tt>delete_data_source(Client, AwsAccountId, DataSourceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the data source permanently.</p>
+ 
+  This operation breaks all the datasets that reference the deleted data
+  source.</p>
+
+<h3 class="function"><a name="delete_data_source-5">delete_data_source/5</a></h3>
+<div class="spec">
+<p><tt>delete_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_group-5">delete_group/5</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, AwsAccountId, GroupName, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a user group from Amazon QuickSight.</p>
+
+<h3 class="function"><a name="delete_group-6">delete_group/6</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_group_membership-6">delete_group_membership/6</a></h3>
+<div class="spec">
+<p><tt>delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a user from a group so that the user is no longer a member of
+  the group.</p>
+
+<h3 class="function"><a name="delete_group_membership-7">delete_group_membership/7</a></h3>
+<div class="spec">
+<p><tt>delete_group_membership(Client, AwsAccountId, GroupName, MemberName, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_i_a_m_policy_assignment-5">delete_i_a_m_policy_assignment/5</a></h3>
+<div class="spec">
+<p><tt>delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing IAM policy assignment.</p>
+
+<h3 class="function"><a name="delete_i_a_m_policy_assignment-6">delete_i_a_m_policy_assignment/6</a></h3>
+<div class="spec">
+<p><tt>delete_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_namespace-4">delete_namespace/4</a></h3>
+<div class="spec">
+<p><tt>delete_namespace(Client, AwsAccountId, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a namespace and the users and groups that are associated with  
+the namespace.</p>
+ 
+  This is an asynchronous process. Assets including dashboards, analyses,
+  datasets and data sources are not deleted. To delete these assets, you use
+  the API operations for the relevant asset.</p>
+
+<h3 class="function"><a name="delete_namespace-5">delete_namespace/5</a></h3>
+<div class="spec">
+<p><tt>delete_namespace(Client, AwsAccountId, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_template-4">delete_template/4</a></h3>
+<div class="spec">
+<p><tt>delete_template(Client, AwsAccountId, TemplateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a template.</p>
+
+<h3 class="function"><a name="delete_template-5">delete_template/5</a></h3>
+<div class="spec">
+<p><tt>delete_template(Client, AwsAccountId, TemplateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_template_alias-5">delete_template_alias/5</a></h3>
+<div class="spec">
+<p><tt>delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the item that the specified template alias points to.</p>
+ 
+  If you provide a specific alias, you delete the version of the template
+  that the alias points to.</p>
+
+<h3 class="function"><a name="delete_template_alias-6">delete_template_alias/6</a></h3>
+<div class="spec">
+<p><tt>delete_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_theme-4">delete_theme/4</a></h3>
+<div class="spec">
+<p><tt>delete_theme(Client, AwsAccountId, ThemeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a theme.</p>
+
+<h3 class="function"><a name="delete_theme-5">delete_theme/5</a></h3>
+<div class="spec">
+<p><tt>delete_theme(Client, AwsAccountId, ThemeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_theme_alias-5">delete_theme_alias/5</a></h3>
+<div class="spec">
+<p><tt>delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the version of the theme that the specified theme alias  
+points to.</p>
+ 
+  If you provide a specific alias, you delete the version of the theme that
+  the alias points to.</p>
+
+<h3 class="function"><a name="delete_theme_alias-6">delete_theme_alias/6</a></h3>
+<div class="spec">
+<p><tt>delete_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user-5">delete_user/5</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, AwsAccountId, Namespace, UserName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the Amazon QuickSight user that is associated with the  
+identity of the AWS Identity and Access Management (IAM) user or role  
+that's making the call.</p>
+ 
+  The IAM user isn't deleted as a result of this call.</p>
+
+<h3 class="function"><a name="delete_user-6">delete_user/6</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, AwsAccountId, Namespace, UserName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user_by_principal_id-5">delete_user_by_principal_id/5</a></h3>
+<div class="spec">
+<p><tt>delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a user identified by its principal ID.</p>
+
+<h3 class="function"><a name="delete_user_by_principal_id-6">delete_user_by_principal_id/6</a></h3>
+<div class="spec">
+<p><tt>delete_user_by_principal_id(Client, AwsAccountId, Namespace, PrincipalId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_account_customization-4">describe_account_customization/4</a></h3>
+<div class="spec">
+<p><tt>describe_account_customization(Client, AwsAccountId, Namespace, Resolved) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the customizations associated with the provided AWS account  
+and Amazon QuickSight namespace in an AWS Region.</p>
+ 
+  <p>The QuickSight console evaluates which customizations to apply by running
+  this API operation with the <code>Resolved</code> flag included.</p>
+ 
+  <p>To determine what customizations display when you run this command, it can  
+help to visualize the relationship of the entities involved.</p>
+ 
+  <ul> <li><p> <code>AWS Account</code> - The AWS account exists at the top of the  
+hierarchy. It has the potential to use all of the AWS Regions and AWS  
+Services. When you subscribe to QuickSight, you choose one AWS Region to  
+use as your home Region. That's where your free SPICE capacity is located.  
+You can use QuickSight in any supported AWS Region.</p>
+ 
+  </li> <li><p> <code>AWS Region</code> - In each AWS Region where you sign in to  
+QuickSight at least once, QuickSight acts as a separate instance of the  
+same service. If you have a user directory, it resides in us-east-1, which  
+is the US East (N. Virginia). Generally speaking, these users have access  
+to QuickSight in any AWS Region, unless they are constrained to a  
+namespace.</p>
+ 
+  <p>To run the command in a different AWS Region, you change your Region  
+settings. If you're using the AWS CLI, you can use one of the following  
+options:</p>
+ 
+  <ul> <li><p> Use command line options.</p>
+ 
+  </li> <li><p> Use named profiles.</p>
+ 
+  </li> <li><p> Run <code>aws configure</code> to change your default AWS Region. Use  
+Enter to key the same settings for your keys. For more information, see  
+Configuring the AWS CLI.</p>
+ 
+  </li> </ul> </li> <li><p> <code>Namespace</code> - A QuickSight namespace is a partition  
+that contains users and assets (data sources, datasets, dashboards, and so  
+on). To access assets that are in a specific namespace, users and groups  
+must also be part of the same namespace. People who share a namespace are  
+completely isolated from users and assets in other namespaces, even if  
+they are in the same AWS account and AWS Region.</p>
+ 
+  </li> <li><p> <code>Applied customizations</code> - Within an AWS Region, a set of
+  QuickSight customizations can apply to an AWS account or to a namespace.
+  Settings that you apply to a namespace override settings that you apply to
+  an AWS account. All settings are isolated to a single AWS Region. To apply
+  them in other AWS Regions, run the <code>CreateAccountCustomization</code> command in  
+each AWS Region where you want to apply the same customizations.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="describe_account_customization-5">describe_account_customization/5</a></h3>
+<div class="spec">
+<p><tt>describe_account_customization(Client, AwsAccountId, Namespace, Resolved, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_account_settings-2">describe_account_settings/2</a></h3>
+<div class="spec">
+<p><tt>describe_account_settings(Client, AwsAccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the settings that were used when your QuickSight
+  subscription was first created in this AWS account.</p>
+
+<h3 class="function"><a name="describe_account_settings-3">describe_account_settings/3</a></h3>
+<div class="spec">
+<p><tt>describe_account_settings(Client, AwsAccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_analysis-3">describe_analysis/3</a></h3>
+<div class="spec">
+<p><tt>describe_analysis(Client, AnalysisId, AwsAccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides a summary of the metadata for an analysis.</p>
+
+<h3 class="function"><a name="describe_analysis-4">describe_analysis/4</a></h3>
+<div class="spec">
+<p><tt>describe_analysis(Client, AnalysisId, AwsAccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_analysis_permissions-3">describe_analysis_permissions/3</a></h3>
+<div class="spec">
+<p><tt>describe_analysis_permissions(Client, AnalysisId, AwsAccountId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides the read and write permissions for an analysis.</p>
+
+<h3 class="function"><a name="describe_analysis_permissions-4">describe_analysis_permissions/4</a></h3>
+<div class="spec">
+<p><tt>describe_analysis_permissions(Client, AnalysisId, AwsAccountId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_dashboard-5">describe_dashboard/5</a></h3>
+<div class="spec">
+<p><tt>describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides a summary for a dashboard.</p>
+
+<h3 class="function"><a name="describe_dashboard-6">describe_dashboard/6</a></h3>
+<div class="spec">
+<p><tt>describe_dashboard(Client, AwsAccountId, DashboardId, AliasName, VersionNumber, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_dashboard_permissions-3">describe_dashboard_permissions/3</a></h3>
+<div class="spec">
+<p><tt>describe_dashboard_permissions(Client, AwsAccountId, DashboardId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes read and write permissions for a dashboard.</p>
+
+<h3 class="function"><a name="describe_dashboard_permissions-4">describe_dashboard_permissions/4</a></h3>
+<div class="spec">
+<p><tt>describe_dashboard_permissions(Client, AwsAccountId, DashboardId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_data_set-3">describe_data_set/3</a></h3>
+<div class="spec">
+<p><tt>describe_data_set(Client, AwsAccountId, DataSetId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a dataset.</p>
+
+<h3 class="function"><a name="describe_data_set-4">describe_data_set/4</a></h3>
+<div class="spec">
+<p><tt>describe_data_set(Client, AwsAccountId, DataSetId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_data_set_permissions-3">describe_data_set_permissions/3</a></h3>
+<div class="spec">
+<p><tt>describe_data_set_permissions(Client, AwsAccountId, DataSetId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the permissions on a dataset.</p>
+ 
+  The permissions resource is
+  <code>arn:aws:quicksight:region:aws-account-id:dataset/data-set-id</code>.</p>
+
+<h3 class="function"><a name="describe_data_set_permissions-4">describe_data_set_permissions/4</a></h3>
+<div class="spec">
+<p><tt>describe_data_set_permissions(Client, AwsAccountId, DataSetId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_data_source-3">describe_data_source/3</a></h3>
+<div class="spec">
+<p><tt>describe_data_source(Client, AwsAccountId, DataSourceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a data source.</p>
+
+<h3 class="function"><a name="describe_data_source-4">describe_data_source/4</a></h3>
+<div class="spec">
+<p><tt>describe_data_source(Client, AwsAccountId, DataSourceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_data_source_permissions-3">describe_data_source_permissions/3</a></h3>
+<div class="spec">
+<p><tt>describe_data_source_permissions(Client, AwsAccountId, DataSourceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the resource permissions for a data source.</p>
+
+<h3 class="function"><a name="describe_data_source_permissions-4">describe_data_source_permissions/4</a></h3>
+<div class="spec">
+<p><tt>describe_data_source_permissions(Client, AwsAccountId, DataSourceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_group-4">describe_group/4</a></h3>
+<div class="spec">
+<p><tt>describe_group(Client, AwsAccountId, GroupName, Namespace) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an Amazon QuickSight group's description and Amazon Resource
+  Name (ARN).</p>
+
+<h3 class="function"><a name="describe_group-5">describe_group/5</a></h3>
+<div class="spec">
+<p><tt>describe_group(Client, AwsAccountId, GroupName, Namespace, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_i_a_m_policy_assignment-4">describe_i_a_m_policy_assignment/4</a></h3>
+<div class="spec">
+<p><tt>describe_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes an existing IAM policy assignment, as specified by the
+  assignment name.</p>
+
+<h3 class="function"><a name="describe_i_a_m_policy_assignment-5">describe_i_a_m_policy_assignment/5</a></h3>
+<div class="spec">
+<p><tt>describe_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_ingestion-4">describe_ingestion/4</a></h3>
+<div class="spec">
+<p><tt>describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a SPICE ingestion.</p>
+
+<h3 class="function"><a name="describe_ingestion-5">describe_ingestion/5</a></h3>
+<div class="spec">
+<p><tt>describe_ingestion(Client, AwsAccountId, DataSetId, IngestionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_namespace-3">describe_namespace/3</a></h3>
+<div class="spec">
+<p><tt>describe_namespace(Client, AwsAccountId, Namespace) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the current namespace.</p>
+
+<h3 class="function"><a name="describe_namespace-4">describe_namespace/4</a></h3>
+<div class="spec">
+<p><tt>describe_namespace(Client, AwsAccountId, Namespace, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_template-5">describe_template/5</a></h3>
+<div class="spec">
+<p><tt>describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a template's metadata.</p>
+
+<h3 class="function"><a name="describe_template-6">describe_template/6</a></h3>
+<div class="spec">
+<p><tt>describe_template(Client, AwsAccountId, TemplateId, AliasName, VersionNumber, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_template_alias-4">describe_template_alias/4</a></h3>
+<div class="spec">
+<p><tt>describe_template_alias(Client, AliasName, AwsAccountId, TemplateId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the template alias for a template.</p>
+
+<h3 class="function"><a name="describe_template_alias-5">describe_template_alias/5</a></h3>
+<div class="spec">
+<p><tt>describe_template_alias(Client, AliasName, AwsAccountId, TemplateId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_template_permissions-3">describe_template_permissions/3</a></h3>
+<div class="spec">
+<p><tt>describe_template_permissions(Client, AwsAccountId, TemplateId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes read and write permissions on a template.</p>
+
+<h3 class="function"><a name="describe_template_permissions-4">describe_template_permissions/4</a></h3>
+<div class="spec">
+<p><tt>describe_template_permissions(Client, AwsAccountId, TemplateId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_theme-5">describe_theme/5</a></h3>
+<div class="spec">
+<p><tt>describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a theme.</p>
+
+<h3 class="function"><a name="describe_theme-6">describe_theme/6</a></h3>
+<div class="spec">
+<p><tt>describe_theme(Client, AwsAccountId, ThemeId, AliasName, VersionNumber, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_theme_alias-4">describe_theme_alias/4</a></h3>
+<div class="spec">
+<p><tt>describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the alias for a theme.</p>
+
+<h3 class="function"><a name="describe_theme_alias-5">describe_theme_alias/5</a></h3>
+<div class="spec">
+<p><tt>describe_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_theme_permissions-3">describe_theme_permissions/3</a></h3>
+<div class="spec">
+<p><tt>describe_theme_permissions(Client, AwsAccountId, ThemeId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the read and write permissions for a theme.</p>
+
+<h3 class="function"><a name="describe_theme_permissions-4">describe_theme_permissions/4</a></h3>
+<div class="spec">
+<p><tt>describe_theme_permissions(Client, AwsAccountId, ThemeId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user-4">describe_user/4</a></h3>
+<div class="spec">
+<p><tt>describe_user(Client, AwsAccountId, Namespace, UserName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a user, given the user name.</p>
+
+<h3 class="function"><a name="describe_user-5">describe_user/5</a></h3>
+<div class="spec">
+<p><tt>describe_user(Client, AwsAccountId, Namespace, UserName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_dashboard_embed_url-8">get_dashboard_embed_url/8</a></h3>
+<div class="spec">
+<p><tt>get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Generates a session URL and authorization code that you can use to  
+embed an Amazon QuickSight read-only dashboard in your web server code.</p>
+ 
+  <p>Before you use this command, make sure that you have configured the  
+dashboards and permissions.</p>
+ 
+  <p>Currently, you can use <code>GetDashboardEmbedURL</code> only from the server, not  
+from the user's browser. The following rules apply to the combination of  
+URL and authorization code:</p>
+ 
+  <ul> <li><p> They must be used together.</p>
+ 
+  </li> <li><p> They can be used one time only.</p>
+ 
+  </li> <li><p> They are valid for 5 minutes after you run this command.</p>
+ 
+  </li> <li><p> The resulting user session is valid for 10 hours.</p>
+ 
+  </li> </ul> For more information, see Embedding Amazon QuickSight in the
+  Amazon QuickSight User Guide .</p>
+
+<h3 class="function"><a name="get_dashboard_embed_url-9">get_dashboard_embed_url/9</a></h3>
+<div class="spec">
+<p><tt>get_dashboard_embed_url(Client, AwsAccountId, DashboardId, IdentityType, ResetDisabled, SessionLifetimeInMinutes, UndoRedoDisabled, UserArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_session_embed_url-5">get_session_embed_url/5</a></h3>
+<div class="spec">
+<p><tt>get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Generates a session URL and authorization code that you can use to  
+embed the Amazon QuickSight console in your web server code.</p>
+ 
+  <p>Use <code>GetSessionEmbedUrl</code> where you want to provide an authoring portal
+  that allows users to create data sources, datasets, analyses, and
+  dashboards. The users who access an embedded QuickSight console need
+  belong to the author or admin security cohort. If you want to restrict
+  permissions to some of these features, add a custom permissions profile to
+  the user with the <code>`UpdateUser</code> ' API operation. Use <code>`RegisterUser</code> '  
+API operation to add a new user with a custom permission profile attached.  
+For more information, see the following sections in the Amazon QuickSight  
+User Guide:</p>
+ 
+  <ul> <li><p> Embedding the Amazon QuickSight Console</p>
+ 
+  </li> <li><p> Customizing Access to the Amazon QuickSight Console</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_session_embed_url-6">get_session_embed_url/6</a></h3>
+<div class="spec">
+<p><tt>get_session_embed_url(Client, AwsAccountId, EntryPoint, SessionLifetimeInMinutes, UserArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_analyses-4">list_analyses/4</a></h3>
+<div class="spec">
+<p><tt>list_analyses(Client, AwsAccountId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists Amazon QuickSight analyses that exist in the specified AWS
+  account.</p>
+
+<h3 class="function"><a name="list_analyses-5">list_analyses/5</a></h3>
+<div class="spec">
+<p><tt>list_analyses(Client, AwsAccountId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_dashboard_versions-5">list_dashboard_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the versions of the dashboards in the QuickSight
+  subscription.</p>
+
+<h3 class="function"><a name="list_dashboard_versions-6">list_dashboard_versions/6</a></h3>
+<div class="spec">
+<p><tt>list_dashboard_versions(Client, AwsAccountId, DashboardId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_dashboards-4">list_dashboards/4</a></h3>
+<div class="spec">
+<p><tt>list_dashboards(Client, AwsAccountId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists dashboards in an AWS account.</p>
+
+<h3 class="function"><a name="list_dashboards-5">list_dashboards/5</a></h3>
+<div class="spec">
+<p><tt>list_dashboards(Client, AwsAccountId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_data_sets-4">list_data_sets/4</a></h3>
+<div class="spec">
+<p><tt>list_data_sets(Client, AwsAccountId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all of the datasets belonging to the current AWS account in an  
+AWS Region.</p>
+ 
+  The permissions resource is
+  <code>arn:aws:quicksight:region:aws-account-id:dataset/*</code>.</p>
+
+<h3 class="function"><a name="list_data_sets-5">list_data_sets/5</a></h3>
+<div class="spec">
+<p><tt>list_data_sets(Client, AwsAccountId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_data_sources-4">list_data_sources/4</a></h3>
+<div class="spec">
+<p><tt>list_data_sources(Client, AwsAccountId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists data sources in current AWS Region that belong to this AWS
+  account.</p>
+
+<h3 class="function"><a name="list_data_sources-5">list_data_sources/5</a></h3>
+<div class="spec">
+<p><tt>list_data_sources(Client, AwsAccountId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_group_memberships-6">list_group_memberships/6</a></h3>
+<div class="spec">
+<p><tt>list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists member users in a group.</p>
+
+<h3 class="function"><a name="list_group_memberships-7">list_group_memberships/7</a></h3>
+<div class="spec">
+<p><tt>list_group_memberships(Client, AwsAccountId, GroupName, Namespace, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_groups-5">list_groups/5</a></h3>
+<div class="spec">
+<p><tt>list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all user groups in Amazon QuickSight.</p>
+
+<h3 class="function"><a name="list_groups-6">list_groups/6</a></h3>
+<div class="spec">
+<p><tt>list_groups(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_i_a_m_policy_assignments-5">list_i_a_m_policy_assignments/5</a></h3>
+<div class="spec">
+<p><tt>list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists IAM policy assignments in the current Amazon QuickSight
+  account.</p>
+
+<h3 class="function"><a name="list_i_a_m_policy_assignments-6">list_i_a_m_policy_assignments/6</a></h3>
+<div class="spec">
+<p><tt>list_i_a_m_policy_assignments(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_i_a_m_policy_assignments_for_user-6">list_i_a_m_policy_assignments_for_user/6</a></h3>
+<div class="spec">
+<p><tt>list_i_a_m_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the IAM policy assignments, including the Amazon Resource
+  Names (ARNs) for the IAM policies assigned to the specified user and group
+  or groups that the user belongs to.</p>
+
+<h3 class="function"><a name="list_i_a_m_policy_assignments_for_user-7">list_i_a_m_policy_assignments_for_user/7</a></h3>
+<div class="spec">
+<p><tt>list_i_a_m_policy_assignments_for_user(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_ingestions-5">list_ingestions/5</a></h3>
+<div class="spec">
+<p><tt>list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the history of SPICE ingestions for a dataset.</p>
+
+<h3 class="function"><a name="list_ingestions-6">list_ingestions/6</a></h3>
+<div class="spec">
+<p><tt>list_ingestions(Client, AwsAccountId, DataSetId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_namespaces-4">list_namespaces/4</a></h3>
+<div class="spec">
+<p><tt>list_namespaces(Client, AwsAccountId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the namespaces for the specified AWS account.</p>
+
+<h3 class="function"><a name="list_namespaces-5">list_namespaces/5</a></h3>
+<div class="spec">
+<p><tt>list_namespaces(Client, AwsAccountId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags assigned to a resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_template_aliases-5">list_template_aliases/5</a></h3>
+<div class="spec">
+<p><tt>list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the aliases of a template.</p>
+
+<h3 class="function"><a name="list_template_aliases-6">list_template_aliases/6</a></h3>
+<div class="spec">
+<p><tt>list_template_aliases(Client, AwsAccountId, TemplateId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_template_versions-5">list_template_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the versions of the templates in the current Amazon
+  QuickSight account.</p>
+
+<h3 class="function"><a name="list_template_versions-6">list_template_versions/6</a></h3>
+<div class="spec">
+<p><tt>list_template_versions(Client, AwsAccountId, TemplateId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_templates-4">list_templates/4</a></h3>
+<div class="spec">
+<p><tt>list_templates(Client, AwsAccountId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the templates in the current Amazon QuickSight account.</p>
+
+<h3 class="function"><a name="list_templates-5">list_templates/5</a></h3>
+<div class="spec">
+<p><tt>list_templates(Client, AwsAccountId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_theme_aliases-5">list_theme_aliases/5</a></h3>
+<div class="spec">
+<p><tt>list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the aliases of a theme.</p>
+
+<h3 class="function"><a name="list_theme_aliases-6">list_theme_aliases/6</a></h3>
+<div class="spec">
+<p><tt>list_theme_aliases(Client, AwsAccountId, ThemeId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_theme_versions-5">list_theme_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the versions of the themes in the current AWS account.</p>
+
+<h3 class="function"><a name="list_theme_versions-6">list_theme_versions/6</a></h3>
+<div class="spec">
+<p><tt>list_theme_versions(Client, AwsAccountId, ThemeId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_themes-5">list_themes/5</a></h3>
+<div class="spec">
+<p><tt>list_themes(Client, AwsAccountId, MaxResults, NextToken, Type) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the themes in the current AWS account.</p>
+
+<h3 class="function"><a name="list_themes-6">list_themes/6</a></h3>
+<div class="spec">
+<p><tt>list_themes(Client, AwsAccountId, MaxResults, NextToken, Type, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_user_groups-6">list_user_groups/6</a></h3>
+<div class="spec">
+<p><tt>list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the Amazon QuickSight groups that an Amazon QuickSight user is
+  a member of.</p>
+
+<h3 class="function"><a name="list_user_groups-7">list_user_groups/7</a></h3>
+<div class="spec">
+<p><tt>list_user_groups(Client, AwsAccountId, Namespace, UserName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_users-5">list_users/5</a></h3>
+<div class="spec">
+<p><tt>list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of all of the Amazon QuickSight users belonging to
+  this account.</p>
+
+<h3 class="function"><a name="list_users-6">list_users/6</a></h3>
+<div class="spec">
+<p><tt>list_users(Client, AwsAccountId, Namespace, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_user-4">register_user/4</a></h3>
+<div class="spec">
+<p><tt>register_user(Client, AwsAccountId, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an Amazon QuickSight user, whose identity is associated with
+  the AWS Identity and Access Management (IAM) identity or role specified in
+  the request.</p>
+
+<h3 class="function"><a name="register_user-5">register_user/5</a></h3>
+<div class="spec">
+<p><tt>register_user(Client, AwsAccountId, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="restore_analysis-4">restore_analysis/4</a></h3>
+<div class="spec">
+<p><tt>restore_analysis(Client, AnalysisId, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Restores an analysis.</p>
+
+<h3 class="function"><a name="restore_analysis-5">restore_analysis/5</a></h3>
+<div class="spec">
+<p><tt>restore_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="search_analyses-3">search_analyses/3</a></h3>
+<div class="spec">
+<p><tt>search_analyses(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Searches for analyses that belong to the user specified in the
+  filter.</p>
+
+<h3 class="function"><a name="search_analyses-4">search_analyses/4</a></h3>
+<div class="spec">
+<p><tt>search_analyses(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="search_dashboards-3">search_dashboards/3</a></h3>
+<div class="spec">
+<p><tt>search_dashboards(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Searches for dashboards that belong to a user.</p>
+
+<h3 class="function"><a name="search_dashboards-4">search_dashboards/4</a></h3>
+<div class="spec">
+<p><tt>search_dashboards(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Assigns one or more tags (key-value pairs) to the specified  
+QuickSight resource.</p>
+ 
+  <p>Tags can help you organize and categorize your resources. You can also use
+  them to scope user permissions, by granting a user permission to access or
+  change only resources with certain tag values. You can use the
+  <code>TagResource</code> operation with a resource that already has tags. If you  
+specify a new tag key for the resource, this tag is appended to the list  
+of tags associated with the resource. If you specify a tag key that is  
+already associated with the resource, the new tag value that you specify  
+replaces the previous value for that tag.</p>
+ 
+  <p>You can associate as many as 50 tags with a resource. QuickSight supports  
+tagging on data set, data source, dashboard, and template.</p>
+ 
+  <p>Tagging for QuickSight works in a similar way to tagging for other AWS  
+services, except for the following:</p>
+ 
+  <ul> <li><p> You can't use tags to track AWS costs for QuickSight. This  
+restriction is because QuickSight costs are based on users and SPICE  
+capacity, which aren't taggable resources.</p>
+ 
+  </li> <li><p> QuickSight doesn't currently support the Tag Editor for AWS  
+Resource Groups.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a tag or tags from a resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_account_customization-3">update_account_customization/3</a></h3>
+<div class="spec">
+<p><tt>update_account_customization(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates Amazon QuickSight customizations the current AWS Region.</p>
+ 
+  <p>Currently, the only customization you can use is a theme.</p>
+ 
+  You can use customizations for your AWS account or, if you specify a
+  namespace, for a QuickSight namespace instead. Customizations that apply
+  to a namespace override customizations that apply to an AWS account. To
+  find out which customizations apply, use the
+  <code>DescribeAccountCustomization</code> API operation.</p>
+
+<h3 class="function"><a name="update_account_customization-4">update_account_customization/4</a></h3>
+<div class="spec">
+<p><tt>update_account_customization(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_account_settings-3">update_account_settings/3</a></h3>
+<div class="spec">
+<p><tt>update_account_settings(Client, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the Amazon QuickSight settings in your AWS account.</p>
+
+<h3 class="function"><a name="update_account_settings-4">update_account_settings/4</a></h3>
+<div class="spec">
+<p><tt>update_account_settings(Client, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_analysis-4">update_analysis/4</a></h3>
+<div class="spec">
+<p><tt>update_analysis(Client, AnalysisId, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an analysis in Amazon QuickSight</p>
+
+<h3 class="function"><a name="update_analysis-5">update_analysis/5</a></h3>
+<div class="spec">
+<p><tt>update_analysis(Client, AnalysisId, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_analysis_permissions-4">update_analysis_permissions/4</a></h3>
+<div class="spec">
+<p><tt>update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the read and write permissions for an analysis.</p>
+
+<h3 class="function"><a name="update_analysis_permissions-5">update_analysis_permissions/5</a></h3>
+<div class="spec">
+<p><tt>update_analysis_permissions(Client, AnalysisId, AwsAccountId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_dashboard-4">update_dashboard/4</a></h3>
+<div class="spec">
+<p><tt>update_dashboard(Client, AwsAccountId, DashboardId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a dashboard in an AWS account.</p>
+
+<h3 class="function"><a name="update_dashboard-5">update_dashboard/5</a></h3>
+<div class="spec">
+<p><tt>update_dashboard(Client, AwsAccountId, DashboardId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_dashboard_permissions-4">update_dashboard_permissions/4</a></h3>
+<div class="spec">
+<p><tt>update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates read and write permissions on a dashboard.</p>
+
+<h3 class="function"><a name="update_dashboard_permissions-5">update_dashboard_permissions/5</a></h3>
+<div class="spec">
+<p><tt>update_dashboard_permissions(Client, AwsAccountId, DashboardId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_dashboard_published_version-5">update_dashboard_published_version/5</a></h3>
+<div class="spec">
+<p><tt>update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the published version of a dashboard.</p>
+
+<h3 class="function"><a name="update_dashboard_published_version-6">update_dashboard_published_version/6</a></h3>
+<div class="spec">
+<p><tt>update_dashboard_published_version(Client, AwsAccountId, DashboardId, VersionNumber, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_data_set-4">update_data_set/4</a></h3>
+<div class="spec">
+<p><tt>update_data_set(Client, AwsAccountId, DataSetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a dataset.</p>
+
+<h3 class="function"><a name="update_data_set-5">update_data_set/5</a></h3>
+<div class="spec">
+<p><tt>update_data_set(Client, AwsAccountId, DataSetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_data_set_permissions-4">update_data_set_permissions/4</a></h3>
+<div class="spec">
+<p><tt>update_data_set_permissions(Client, AwsAccountId, DataSetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the permissions on a dataset.</p>
+ 
+  The permissions resource is
+  <code>arn:aws:quicksight:region:aws-account-id:dataset/data-set-id</code>.</p>
+
+<h3 class="function"><a name="update_data_set_permissions-5">update_data_set_permissions/5</a></h3>
+<div class="spec">
+<p><tt>update_data_set_permissions(Client, AwsAccountId, DataSetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_data_source-4">update_data_source/4</a></h3>
+<div class="spec">
+<p><tt>update_data_source(Client, AwsAccountId, DataSourceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a data source.</p>
+
+<h3 class="function"><a name="update_data_source-5">update_data_source/5</a></h3>
+<div class="spec">
+<p><tt>update_data_source(Client, AwsAccountId, DataSourceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_data_source_permissions-4">update_data_source_permissions/4</a></h3>
+<div class="spec">
+<p><tt>update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the permissions to a data source.</p>
+
+<h3 class="function"><a name="update_data_source_permissions-5">update_data_source_permissions/5</a></h3>
+<div class="spec">
+<p><tt>update_data_source_permissions(Client, AwsAccountId, DataSourceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_group-5">update_group/5</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, AwsAccountId, GroupName, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes a group description.</p>
+
+<h3 class="function"><a name="update_group-6">update_group/6</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, AwsAccountId, GroupName, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_i_a_m_policy_assignment-5">update_i_a_m_policy_assignment/5</a></h3>
+<div class="spec">
+<p><tt>update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an existing IAM policy assignment.</p>
+ 
+  This operation updates only the optional parameter or parameters that are
+  specified in the request. This overwrites all of the users included in
+  <code>Identities</code>.</p>
+
+<h3 class="function"><a name="update_i_a_m_policy_assignment-6">update_i_a_m_policy_assignment/6</a></h3>
+<div class="spec">
+<p><tt>update_i_a_m_policy_assignment(Client, AssignmentName, AwsAccountId, Namespace, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_template-4">update_template/4</a></h3>
+<div class="spec">
+<p><tt>update_template(Client, AwsAccountId, TemplateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a template from an existing Amazon QuickSight analysis or
+  another template.</p>
+
+<h3 class="function"><a name="update_template-5">update_template/5</a></h3>
+<div class="spec">
+<p><tt>update_template(Client, AwsAccountId, TemplateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_template_alias-5">update_template_alias/5</a></h3>
+<div class="spec">
+<p><tt>update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the template alias of a template.</p>
+
+<h3 class="function"><a name="update_template_alias-6">update_template_alias/6</a></h3>
+<div class="spec">
+<p><tt>update_template_alias(Client, AliasName, AwsAccountId, TemplateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_template_permissions-4">update_template_permissions/4</a></h3>
+<div class="spec">
+<p><tt>update_template_permissions(Client, AwsAccountId, TemplateId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the resource permissions for a template.</p>
+
+<h3 class="function"><a name="update_template_permissions-5">update_template_permissions/5</a></h3>
+<div class="spec">
+<p><tt>update_template_permissions(Client, AwsAccountId, TemplateId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_theme-4">update_theme/4</a></h3>
+<div class="spec">
+<p><tt>update_theme(Client, AwsAccountId, ThemeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a theme.</p>
+
+<h3 class="function"><a name="update_theme-5">update_theme/5</a></h3>
+<div class="spec">
+<p><tt>update_theme(Client, AwsAccountId, ThemeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_theme_alias-5">update_theme_alias/5</a></h3>
+<div class="spec">
+<p><tt>update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an alias of a theme.</p>
+
+<h3 class="function"><a name="update_theme_alias-6">update_theme_alias/6</a></h3>
+<div class="spec">
+<p><tt>update_theme_alias(Client, AliasName, AwsAccountId, ThemeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_theme_permissions-4">update_theme_permissions/4</a></h3>
+<div class="spec">
+<p><tt>update_theme_permissions(Client, AwsAccountId, ThemeId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the resource permissions for a theme.</p>
+ 
+  <p>Permissions apply to the action to grant or revoke permissions on, for
+  example <code>"quicksight:DescribeTheme"</code>.</p>
+ 
+  <p>Theme permissions apply in groupings. Valid groupings include the  
+following for the three levels of permissions, which are user, owner, or  
+no permissions:</p>
+ 
+  <ul> <li><p> User</p>
+ 
+  <ul> <li><p> <code>"quicksight:DescribeTheme"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:DescribeThemeAlias"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:ListThemeAliases"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:ListThemeVersions"</code></p>
+ 
+  </li> </ul> </li> <li><p> Owner</p>
+ 
+  <ul> <li><p> <code>"quicksight:DescribeTheme"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:DescribeThemeAlias"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:ListThemeAliases"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:ListThemeVersions"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:DeleteTheme"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:UpdateTheme"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:CreateThemeAlias"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:DeleteThemeAlias"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:UpdateThemeAlias"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:UpdateThemePermissions"</code></p>
+ 
+  </li> <li><p> <code>"quicksight:DescribeThemePermissions"</code></p>
+ 
+  </li> </ul> </li> <li><p> To specify no permissions, omit the permissions  
+list.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="update_theme_permissions-5">update_theme_permissions/5</a></h3>
+<div class="spec">
+<p><tt>update_theme_permissions(Client, AwsAccountId, ThemeId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user-5">update_user/5</a></h3>
+<div class="spec">
+<p><tt>update_user(Client, AwsAccountId, Namespace, UserName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an Amazon QuickSight user.</p>
+
+<h3 class="function"><a name="update_user-6">update_user/6</a></h3>
+<div class="spec">
+<p><tt>update_user(Client, AwsAccountId, Namespace, UserName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

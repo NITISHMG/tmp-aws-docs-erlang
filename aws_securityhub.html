@@ -1,0 +1,890 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_securityhub</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_securityhub</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Security Hub provides you with a comprehensive view of the security  
+state of your AWS environment and resources.
+
+
+<h2><a name="description">Description</a></h2><p>Security Hub provides you with a comprehensive view of the security  
+state of your AWS environment and resources.</p>
+ 
+  <p>It also provides you with the readiness status of your environment based  
+on controls from supported security standards. Security Hub collects  
+security data from AWS accounts, services, and integrated third-party  
+products and helps you analyze security trends in your environment to  
+identify the highest priority security issues. For more information about  
+Security Hub, see the AWS Security Hub User Guide .</p>
+ 
+  <p>When you use operations in the Security Hub API, the requests are executed  
+only in the AWS Region that is currently active or in the specific AWS  
+Region that you specify in your request. Any configuration or settings  
+change that results from the operation is applied only to that Region. To  
+make the same change in other Regions, execute the same command for each  
+Region to apply the change to.</p>
+ 
+  <p>For example, if your Region is set to <code>us-west-2</code>, when you use <code>`CreateMembers</code> ' to add a member account to Security Hub, the association
+  of the member account with the master account is created only in the
+  <code>us-west-2</code> Region. Security Hub must be enabled for the member account in  
+the same Region that the invitation was sent from.</p>
+ 
+  <p>The following throttling limits apply to using Security Hub API  
+operations.</p>
+ 
+  <ul> <li><p> <code>`BatchEnableStandards</code> ' - <code>RateLimit</code> of 1 request per
+  second, <code>BurstLimit</code> of 1 request per second.</p>
+ 
+  </li> <li><p> <code>`GetFindings</code> ' - <code>RateLimit</code> of 3 requests per second.
+  <code>BurstLimit</code> of 6 requests per second.</p>
+ 
+  </li> <li><p> <code>`UpdateFindings</code> ' - <code>RateLimit</code> of 1 request per second.
+  <code>BurstLimit</code> of 5 requests per second.</p>
+ 
+  </li> <li><p> <code>`UpdateStandardsControl</code> ' - <code>RateLimit</code> of 1 request per
+  second, <code>BurstLimit</code> of 5 requests per second.</p>
+ 
+  </li> <li><p> All other operations - <code>RateLimit</code> of 10 requests per second.
+  <code>BurstLimit</code> of 30 requests per second.</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#accept_invitation-2">accept_invitation/2</a></td><td>Accepts the invitation to be a member account and be monitored by the  
+Security Hub master account that the invitation was sent from.</td></tr>
+<tr><td valign="top"><a href="#accept_invitation-3">accept_invitation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_disable_standards-2">batch_disable_standards/2</a></td><td>Disables the standards specified by the provided
+  <code>StandardsSubscriptionArns</code>.</td></tr>
+<tr><td valign="top"><a href="#batch_disable_standards-3">batch_disable_standards/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_enable_standards-2">batch_enable_standards/2</a></td><td>Enables the standards specified by the provided <code>StandardsArn</code>.</td></tr>
+<tr><td valign="top"><a href="#batch_enable_standards-3">batch_enable_standards/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_import_findings-2">batch_import_findings/2</a></td><td>Imports security findings generated from an integrated third-party  
+product into Security Hub.</td></tr>
+<tr><td valign="top"><a href="#batch_import_findings-3">batch_import_findings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_update_findings-2">batch_update_findings/2</a></td><td>Used by Security Hub customers to update information about their  
+investigation into a finding.</td></tr>
+<tr><td valign="top"><a href="#batch_update_findings-3">batch_update_findings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_action_target-2">create_action_target/2</a></td><td>Creates a custom action target in Security Hub.</td></tr>
+<tr><td valign="top"><a href="#create_action_target-3">create_action_target/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_insight-2">create_insight/2</a></td><td>Creates a custom insight in Security Hub.</td></tr>
+<tr><td valign="top"><a href="#create_insight-3">create_insight/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_members-2">create_members/2</a></td><td>Creates a member association in Security Hub between the specified  
+accounts and the account used to make the request, which is the master  
+account.</td></tr>
+<tr><td valign="top"><a href="#create_members-3">create_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#decline_invitations-2">decline_invitations/2</a></td><td>Declines invitations to become a member account.</td></tr>
+<tr><td valign="top"><a href="#decline_invitations-3">decline_invitations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_action_target-3">delete_action_target/3</a></td><td>Deletes a custom action target from Security Hub.</td></tr>
+<tr><td valign="top"><a href="#delete_action_target-4">delete_action_target/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_insight-3">delete_insight/3</a></td><td>Deletes the insight specified by the <code>InsightArn</code>.</td></tr>
+<tr><td valign="top"><a href="#delete_insight-4">delete_insight/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_invitations-2">delete_invitations/2</a></td><td>Deletes invitations received by the AWS account to become a member
+  account.</td></tr>
+<tr><td valign="top"><a href="#delete_invitations-3">delete_invitations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_members-2">delete_members/2</a></td><td>Deletes the specified member accounts from Security Hub.</td></tr>
+<tr><td valign="top"><a href="#delete_members-3">delete_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_action_targets-2">describe_action_targets/2</a></td><td>Returns a list of the custom action targets in Security Hub in your
+  account.</td></tr>
+<tr><td valign="top"><a href="#describe_action_targets-3">describe_action_targets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_hub-2">describe_hub/2</a></td><td>Returns details about the Hub resource in your account, including the
+  <code>HubArn</code> and the time when you enabled Security Hub.</td></tr>
+<tr><td valign="top"><a href="#describe_hub-3">describe_hub/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_products-3">describe_products/3</a></td><td>Returns information about the available products that you can
+  subscribe to and integrate with Security Hub in order to consolidate
+  findings.</td></tr>
+<tr><td valign="top"><a href="#describe_products-4">describe_products/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_standards-3">describe_standards/3</a></td><td>Returns a list of the available standards in Security Hub.</td></tr>
+<tr><td valign="top"><a href="#describe_standards-4">describe_standards/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_standards_controls-4">describe_standards_controls/4</a></td><td>Returns a list of security standards controls.</td></tr>
+<tr><td valign="top"><a href="#describe_standards_controls-5">describe_standards_controls/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disable_import_findings_for_product-3">disable_import_findings_for_product/3</a></td><td>Disables the integration of the specified product with Security Hub.</td></tr>
+<tr><td valign="top"><a href="#disable_import_findings_for_product-4">disable_import_findings_for_product/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disable_security_hub-2">disable_security_hub/2</a></td><td>Disables Security Hub in your account only in the current Region.</td></tr>
+<tr><td valign="top"><a href="#disable_security_hub-3">disable_security_hub/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_from_master_account-2">disassociate_from_master_account/2</a></td><td>Disassociates the current Security Hub member account from the
+  associated master account.</td></tr>
+<tr><td valign="top"><a href="#disassociate_from_master_account-3">disassociate_from_master_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_members-2">disassociate_members/2</a></td><td>Disassociates the specified member accounts from the associated
+  master account.</td></tr>
+<tr><td valign="top"><a href="#disassociate_members-3">disassociate_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#enable_import_findings_for_product-2">enable_import_findings_for_product/2</a></td><td>Enables the integration of a partner product with Security Hub.</td></tr>
+<tr><td valign="top"><a href="#enable_import_findings_for_product-3">enable_import_findings_for_product/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#enable_security_hub-2">enable_security_hub/2</a></td><td>Enables Security Hub for your account in the current Region or the  
+Region you specify in the request.</td></tr>
+<tr><td valign="top"><a href="#enable_security_hub-3">enable_security_hub/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_enabled_standards-2">get_enabled_standards/2</a></td><td>Returns a list of the standards that are currently enabled.</td></tr>
+<tr><td valign="top"><a href="#get_enabled_standards-3">get_enabled_standards/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_findings-2">get_findings/2</a></td><td>Returns a list of findings that match the specified criteria.</td></tr>
+<tr><td valign="top"><a href="#get_findings-3">get_findings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_insight_results-2">get_insight_results/2</a></td><td>Lists the results of the Security Hub insight specified by the
+  insight ARN.</td></tr>
+<tr><td valign="top"><a href="#get_insight_results-3">get_insight_results/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_insights-2">get_insights/2</a></td><td>Lists and describes insights for the specified insight ARNs.</td></tr>
+<tr><td valign="top"><a href="#get_insights-3">get_insights/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_invitations_count-1">get_invitations_count/1</a></td><td>Returns the count of all Security Hub membership invitations that
+  were sent to the current member account, not including the currently
+  accepted invitation.</td></tr>
+<tr><td valign="top"><a href="#get_invitations_count-2">get_invitations_count/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_master_account-1">get_master_account/1</a></td><td>Provides the details for the Security Hub master account for the
+  current member account.</td></tr>
+<tr><td valign="top"><a href="#get_master_account-2">get_master_account/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_members-2">get_members/2</a></td><td>Returns the details for the Security Hub member accounts for the
+  specified account IDs.</td></tr>
+<tr><td valign="top"><a href="#get_members-3">get_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#invite_members-2">invite_members/2</a></td><td>Invites other AWS accounts to become member accounts for the Security  
+Hub master account that the invitation is sent from.</td></tr>
+<tr><td valign="top"><a href="#invite_members-3">invite_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_enabled_products_for_import-3">list_enabled_products_for_import/3</a></td><td>Lists all findings-generating solutions (products) that you are
+  subscribed to receive findings from in Security Hub.</td></tr>
+<tr><td valign="top"><a href="#list_enabled_products_for_import-4">list_enabled_products_for_import/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_invitations-3">list_invitations/3</a></td><td>Lists all Security Hub membership invitations that were sent to the
+  current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_invitations-4">list_invitations/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_members-4">list_members/4</a></td><td>Lists details about all member accounts for the current Security Hub
+  master account.</td></tr>
+<tr><td valign="top"><a href="#list_members-5">list_members/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of tags associated with a resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds one or more tags to a resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes one or more tags from a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_action_target-3">update_action_target/3</a></td><td>Updates the name and description of a custom action target in
+  Security Hub.</td></tr>
+<tr><td valign="top"><a href="#update_action_target-4">update_action_target/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_findings-2">update_findings/2</a></td><td><code>UpdateFindings</code> is deprecated.</td></tr>
+<tr><td valign="top"><a href="#update_findings-3">update_findings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_insight-3">update_insight/3</a></td><td>Updates the Security Hub insight identified by the specified insight
+  ARN.</td></tr>
+<tr><td valign="top"><a href="#update_insight-4">update_insight/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_security_hub_configuration-2">update_security_hub_configuration/2</a></td><td>Updates configuration options for Security Hub.</td></tr>
+<tr><td valign="top"><a href="#update_security_hub_configuration-3">update_security_hub_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_standards_control-3">update_standards_control/3</a></td><td>Used to control whether an individual security standard control is
+  enabled or disabled.</td></tr>
+<tr><td valign="top"><a href="#update_standards_control-4">update_standards_control/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="accept_invitation-2">accept_invitation/2</a></h3>
+<div class="spec">
+<p><tt>accept_invitation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Accepts the invitation to be a member account and be monitored by the  
+Security Hub master account that the invitation was sent from.</p>
+ 
+  When the member account accepts the invitation, permission is granted to
+  the master account to view findings generated in the member account.</p>
+
+<h3 class="function"><a name="accept_invitation-3">accept_invitation/3</a></h3>
+<div class="spec">
+<p><tt>accept_invitation(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_disable_standards-2">batch_disable_standards/2</a></h3>
+<div class="spec">
+<p><tt>batch_disable_standards(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disables the standards specified by the provided
+  <code>StandardsSubscriptionArns</code>.</p>
+ 
+  For more information, see Security Standards section of the AWS Security
+  Hub User Guide.</p>
+
+<h3 class="function"><a name="batch_disable_standards-3">batch_disable_standards/3</a></h3>
+<div class="spec">
+<p><tt>batch_disable_standards(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_enable_standards-2">batch_enable_standards/2</a></h3>
+<div class="spec">
+<p><tt>batch_enable_standards(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Enables the standards specified by the provided <code>StandardsArn</code>.</p>
+ 
+  <p>To obtain the ARN for a standard, use the <code>`DescribeStandards</code> '  
+operation.</p>
+ 
+  For more information, see the Security Standards section of the AWS
+  Security Hub User Guide.</p>
+
+<h3 class="function"><a name="batch_enable_standards-3">batch_enable_standards/3</a></h3>
+<div class="spec">
+<p><tt>batch_enable_standards(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_import_findings-2">batch_import_findings/2</a></h3>
+<div class="spec">
+<p><tt>batch_import_findings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Imports security findings generated from an integrated third-party  
+product into Security Hub.</p>
+ 
+  <p>This action is requested by the integrated product to import its findings  
+into Security Hub.</p>
+ 
+  <p>The maximum allowed size for a finding is 240 Kb. An error is returned for  
+any finding larger than 240 Kb.</p>
+ 
+  <p>After a finding is created, <code>BatchImportFindings</code> cannot be used to update  
+the following finding fields and objects, which Security Hub customers use  
+to manage their investigation workflow.</p>
+ 
+  <ul> <li><p> <code>Confidence</code></p>
+ 
+  </li> <li><p> <code>Criticality</code></p>
+ 
+  </li> <li><p> <code>Note</code></p>
+ 
+  </li> <li><p> <code>RelatedFindings</code></p>
+ 
+  </li> <li><p> <code>Severity</code></p>
+ 
+  </li> <li><p> <code>Types</code></p>
+ 
+  </li> <li><p> <code>UserDefinedFields</code></p>
+ 
+  </li> <li><p> <code>VerificationState</code></p>
+ 
+  </li> <li><p> <code>Workflow</code></p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="batch_import_findings-3">batch_import_findings/3</a></h3>
+<div class="spec">
+<p><tt>batch_import_findings(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_update_findings-2">batch_update_findings/2</a></h3>
+<div class="spec">
+<p><tt>batch_update_findings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Used by Security Hub customers to update information about their  
+investigation into a finding.</p>
+ 
+  <p>Requested by master accounts or member accounts. Master accounts can  
+update findings for their account and their member accounts. Member  
+accounts can update findings for their account.</p>
+ 
+  <p>Updates from <code>BatchUpdateFindings</code> do not affect the value of <code>UpdatedAt</code>  
+for a finding.</p>
+ 
+  <p>Master and member accounts can use <code>BatchUpdateFindings</code> to update the  
+following finding fields and objects.</p>
+ 
+  <ul> <li><p> <code>Confidence</code></p>
+ 
+  </li> <li><p> <code>Criticality</code></p>
+ 
+  </li> <li><p> <code>Note</code></p>
+ 
+  </li> <li><p> <code>RelatedFindings</code></p>
+ 
+  </li> <li><p> <code>Severity</code></p>
+ 
+  </li> <li><p> <code>Types</code></p>
+ 
+  </li> <li><p> <code>UserDefinedFields</code></p>
+ 
+  </li> <li><p> <code>VerificationState</code></p>
+ 
+  </li> <li><p> <code>Workflow</code></p>
+ 
+  </li> </ul> You can configure IAM policies to restrict access to fields
+  and field values. For example, you might not want member accounts to be
+  able to suppress findings or change the finding severity. See Configuring
+  access to BatchUpdateFindings in the AWS Security Hub User Guide.</p>
+
+<h3 class="function"><a name="batch_update_findings-3">batch_update_findings/3</a></h3>
+<div class="spec">
+<p><tt>batch_update_findings(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_action_target-2">create_action_target/2</a></h3>
+<div class="spec">
+<p><tt>create_action_target(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a custom action target in Security Hub.</p>
+ 
+  You can use custom actions on findings and insights in Security Hub to
+  trigger target actions in Amazon CloudWatch Events.</p>
+
+<h3 class="function"><a name="create_action_target-3">create_action_target/3</a></h3>
+<div class="spec">
+<p><tt>create_action_target(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_insight-2">create_insight/2</a></h3>
+<div class="spec">
+<p><tt>create_insight(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a custom insight in Security Hub.</p>
+ 
+  <p>An insight is a consolidation of findings that relate to a security issue  
+that requires attention or remediation.</p>
+ 
+  To group the related findings in the insight, use the <code>GroupByAttribute</code>.</p>
+
+<h3 class="function"><a name="create_insight-3">create_insight/3</a></h3>
+<div class="spec">
+<p><tt>create_insight(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_members-2">create_members/2</a></h3>
+<div class="spec">
+<p><tt>create_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a member association in Security Hub between the specified  
+accounts and the account used to make the request, which is the master  
+account.</p>
+ 
+  <p>To successfully create a member, you must use this action from an account
+  that already has Security Hub enabled. To enable Security Hub, you can use
+  the <code>`EnableSecurityHub</code> ' operation.</p>
+ 
+  <p>After you use <code>CreateMembers</code> to create member account associations in
+  Security Hub, you must use the <code>`InviteMembers</code> ' operation to invite the  
+accounts to enable Security Hub and become member accounts in Security  
+Hub.</p>
+ 
+  <p>If the account owner accepts the invitation, the account becomes a member  
+account in Security Hub. A permissions policy is added that permits the  
+master account to view the findings generated in the member account. When  
+Security Hub is enabled in the invited account, findings start to be sent  
+to both the member and master accounts.</p>
+ 
+  To remove the association between the master and member accounts, use the
+  <code>`DisassociateFromMasterAccount</code> ' or <code>`DisassociateMembers</code> '
+  operation.</p>
+
+<h3 class="function"><a name="create_members-3">create_members/3</a></h3>
+<div class="spec">
+<p><tt>create_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="decline_invitations-2">decline_invitations/2</a></h3>
+<div class="spec">
+<p><tt>decline_invitations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Declines invitations to become a member account.</p>
+
+<h3 class="function"><a name="decline_invitations-3">decline_invitations/3</a></h3>
+<div class="spec">
+<p><tt>decline_invitations(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_action_target-3">delete_action_target/3</a></h3>
+<div class="spec">
+<p><tt>delete_action_target(Client, ActionTargetArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a custom action target from Security Hub.</p>
+ 
+  Deleting a custom action target does not affect any findings or insights
+  that were already sent to Amazon CloudWatch Events using the custom
+  action.</p>
+
+<h3 class="function"><a name="delete_action_target-4">delete_action_target/4</a></h3>
+<div class="spec">
+<p><tt>delete_action_target(Client, ActionTargetArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_insight-3">delete_insight/3</a></h3>
+<div class="spec">
+<p><tt>delete_insight(Client, InsightArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the insight specified by the <code>InsightArn</code>.</p>
+
+<h3 class="function"><a name="delete_insight-4">delete_insight/4</a></h3>
+<div class="spec">
+<p><tt>delete_insight(Client, InsightArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_invitations-2">delete_invitations/2</a></h3>
+<div class="spec">
+<p><tt>delete_invitations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes invitations received by the AWS account to become a member
+  account.</p>
+
+<h3 class="function"><a name="delete_invitations-3">delete_invitations/3</a></h3>
+<div class="spec">
+<p><tt>delete_invitations(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_members-2">delete_members/2</a></h3>
+<div class="spec">
+<p><tt>delete_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified member accounts from Security Hub.</p>
+
+<h3 class="function"><a name="delete_members-3">delete_members/3</a></h3>
+<div class="spec">
+<p><tt>delete_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_action_targets-2">describe_action_targets/2</a></h3>
+<div class="spec">
+<p><tt>describe_action_targets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the custom action targets in Security Hub in your
+  account.</p>
+
+<h3 class="function"><a name="describe_action_targets-3">describe_action_targets/3</a></h3>
+<div class="spec">
+<p><tt>describe_action_targets(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_hub-2">describe_hub/2</a></h3>
+<div class="spec">
+<p><tt>describe_hub(Client, HubArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns details about the Hub resource in your account, including the
+  <code>HubArn</code> and the time when you enabled Security Hub.</p>
+
+<h3 class="function"><a name="describe_hub-3">describe_hub/3</a></h3>
+<div class="spec">
+<p><tt>describe_hub(Client, HubArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_products-3">describe_products/3</a></h3>
+<div class="spec">
+<p><tt>describe_products(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the available products that you can
+  subscribe to and integrate with Security Hub in order to consolidate
+  findings.</p>
+
+<h3 class="function"><a name="describe_products-4">describe_products/4</a></h3>
+<div class="spec">
+<p><tt>describe_products(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_standards-3">describe_standards/3</a></h3>
+<div class="spec">
+<p><tt>describe_standards(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of the available standards in Security Hub.</p>
+ 
+  For each standard, the results include the standard ARN, the name, and a
+  description.</p>
+
+<h3 class="function"><a name="describe_standards-4">describe_standards/4</a></h3>
+<div class="spec">
+<p><tt>describe_standards(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_standards_controls-4">describe_standards_controls/4</a></h3>
+<div class="spec">
+<p><tt>describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of security standards controls.</p>
+ 
+  For each control, the results include information about whether it is
+  currently enabled, the severity, and a link to remediation information.</p>
+
+<h3 class="function"><a name="describe_standards_controls-5">describe_standards_controls/5</a></h3>
+<div class="spec">
+<p><tt>describe_standards_controls(Client, StandardsSubscriptionArn, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disable_import_findings_for_product-3">disable_import_findings_for_product/3</a></h3>
+<div class="spec">
+<p><tt>disable_import_findings_for_product(Client, ProductSubscriptionArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disables the integration of the specified product with Security Hub.</p>
+ 
+  After the integration is disabled, findings from that product are no
+  longer sent to Security Hub.</p>
+
+<h3 class="function"><a name="disable_import_findings_for_product-4">disable_import_findings_for_product/4</a></h3>
+<div class="spec">
+<p><tt>disable_import_findings_for_product(Client, ProductSubscriptionArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disable_security_hub-2">disable_security_hub/2</a></h3>
+<div class="spec">
+<p><tt>disable_security_hub(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disables Security Hub in your account only in the current Region.</p>
+ 
+  <p>To disable Security Hub in all Regions, you must submit one request per  
+Region where you have enabled Security Hub.</p>
+ 
+  <p>When you disable Security Hub for a master account, it doesn't disable  
+Security Hub for any associated member accounts.</p>
+ 
+  <p>When you disable Security Hub, your existing findings and insights and any  
+Security Hub configuration settings are deleted after 90 days and cannot  
+be recovered. Any standards that were enabled are disabled, and your  
+master and member account associations are removed.</p>
+ 
+  If you want to save your existing findings, you must export them before
+  you disable Security Hub.</p>
+
+<h3 class="function"><a name="disable_security_hub-3">disable_security_hub/3</a></h3>
+<div class="spec">
+<p><tt>disable_security_hub(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_from_master_account-2">disassociate_from_master_account/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_from_master_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the current Security Hub member account from the
+  associated master account.</p>
+
+<h3 class="function"><a name="disassociate_from_master_account-3">disassociate_from_master_account/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_from_master_account(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_members-2">disassociate_members/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the specified member accounts from the associated
+  master account.</p>
+
+<h3 class="function"><a name="disassociate_members-3">disassociate_members/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="enable_import_findings_for_product-2">enable_import_findings_for_product/2</a></h3>
+<div class="spec">
+<p><tt>enable_import_findings_for_product(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Enables the integration of a partner product with Security Hub.</p>
+ 
+  <p>Integrated products send findings to Security Hub.</p>
+ 
+  When you enable a product integration, a permissions policy that grants
+  permission for the product to send findings to Security Hub is applied.</p>
+
+<h3 class="function"><a name="enable_import_findings_for_product-3">enable_import_findings_for_product/3</a></h3>
+<div class="spec">
+<p><tt>enable_import_findings_for_product(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="enable_security_hub-2">enable_security_hub/2</a></h3>
+<div class="spec">
+<p><tt>enable_security_hub(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Enables Security Hub for your account in the current Region or the  
+Region you specify in the request.</p>
+ 
+  <p>When you enable Security Hub, you grant to Security Hub the permissions  
+necessary to gather findings from other services that are integrated with  
+Security Hub.</p>
+ 
+  <p>When you use the <code>EnableSecurityHub</code> operation to enable Security Hub, you  
+also automatically enable the following standards.</p>
+ 
+  <ul> <li><p> CIS AWS Foundations</p>
+ 
+  </li> <li><p> AWS Foundational Security Best Practices</p>
+ 
+  </li> </ul><p> You do not enable the Payment Card Industry Data Security  
+Standard (PCI DSS) standard.</p>
+ 
+  <p>To not enable the automatically enabled standards, set
+  <code>EnableDefaultStandards</code> to <code>false</code>.</p>
+ 
+  <p>After you enable Security Hub, to enable a standard, use the <code>`BatchEnableStandards</code> ' operation. To disable a standard, use the <code>`BatchDisableStandards</code> ' operation.</p>
+ 
+  To learn more, see Setting Up AWS Security Hub in the AWS Security Hub
+  User Guide.</p>
+
+<h3 class="function"><a name="enable_security_hub-3">enable_security_hub/3</a></h3>
+<div class="spec">
+<p><tt>enable_security_hub(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_enabled_standards-2">get_enabled_standards/2</a></h3>
+<div class="spec">
+<p><tt>get_enabled_standards(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the standards that are currently enabled.</p>
+
+<h3 class="function"><a name="get_enabled_standards-3">get_enabled_standards/3</a></h3>
+<div class="spec">
+<p><tt>get_enabled_standards(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_findings-2">get_findings/2</a></h3>
+<div class="spec">
+<p><tt>get_findings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of findings that match the specified criteria.</p>
+
+<h3 class="function"><a name="get_findings-3">get_findings/3</a></h3>
+<div class="spec">
+<p><tt>get_findings(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_insight_results-2">get_insight_results/2</a></h3>
+<div class="spec">
+<p><tt>get_insight_results(Client, InsightArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the results of the Security Hub insight specified by the
+  insight ARN.</p>
+
+<h3 class="function"><a name="get_insight_results-3">get_insight_results/3</a></h3>
+<div class="spec">
+<p><tt>get_insight_results(Client, InsightArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_insights-2">get_insights/2</a></h3>
+<div class="spec">
+<p><tt>get_insights(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists and describes insights for the specified insight ARNs.</p>
+
+<h3 class="function"><a name="get_insights-3">get_insights/3</a></h3>
+<div class="spec">
+<p><tt>get_insights(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_invitations_count-1">get_invitations_count/1</a></h3>
+<div class="spec">
+<p><tt>get_invitations_count(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the count of all Security Hub membership invitations that
+  were sent to the current member account, not including the currently
+  accepted invitation.</p>
+
+<h3 class="function"><a name="get_invitations_count-2">get_invitations_count/2</a></h3>
+<div class="spec">
+<p><tt>get_invitations_count(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_master_account-1">get_master_account/1</a></h3>
+<div class="spec">
+<p><tt>get_master_account(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides the details for the Security Hub master account for the
+  current member account.</p>
+
+<h3 class="function"><a name="get_master_account-2">get_master_account/2</a></h3>
+<div class="spec">
+<p><tt>get_master_account(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_members-2">get_members/2</a></h3>
+<div class="spec">
+<p><tt>get_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the details for the Security Hub member accounts for the
+  specified account IDs.</p>
+
+<h3 class="function"><a name="get_members-3">get_members/3</a></h3>
+<div class="spec">
+<p><tt>get_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="invite_members-2">invite_members/2</a></h3>
+<div class="spec">
+<p><tt>invite_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Invites other AWS accounts to become member accounts for the Security  
+Hub master account that the invitation is sent from.</p>
+ 
+  <p>Before you can use this action to invite a member, you must first use the
+  <code>`CreateMembers</code> ' action to create the member account in Security Hub.</p>
+ 
+  When the account owner accepts the invitation to become a member account
+  and enables Security Hub, the master account can view the findings
+  generated from the member account.</p>
+
+<h3 class="function"><a name="invite_members-3">invite_members/3</a></h3>
+<div class="spec">
+<p><tt>invite_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_enabled_products_for_import-3">list_enabled_products_for_import/3</a></h3>
+<div class="spec">
+<p><tt>list_enabled_products_for_import(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all findings-generating solutions (products) that you are
+  subscribed to receive findings from in Security Hub.</p>
+
+<h3 class="function"><a name="list_enabled_products_for_import-4">list_enabled_products_for_import/4</a></h3>
+<div class="spec">
+<p><tt>list_enabled_products_for_import(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_invitations-3">list_invitations/3</a></h3>
+<div class="spec">
+<p><tt>list_invitations(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all Security Hub membership invitations that were sent to the
+  current AWS account.</p>
+
+<h3 class="function"><a name="list_invitations-4">list_invitations/4</a></h3>
+<div class="spec">
+<p><tt>list_invitations(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_members-4">list_members/4</a></h3>
+<div class="spec">
+<p><tt>list_members(Client, MaxResults, NextToken, OnlyAssociated) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists details about all member accounts for the current Security Hub
+  master account.</p>
+
+<h3 class="function"><a name="list_members-5">list_members/5</a></h3>
+<div class="spec">
+<p><tt>list_members(Client, MaxResults, NextToken, OnlyAssociated, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of tags associated with a resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds one or more tags to a resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags from a resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_action_target-3">update_action_target/3</a></h3>
+<div class="spec">
+<p><tt>update_action_target(Client, ActionTargetArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the name and description of a custom action target in
+  Security Hub.</p>
+
+<h3 class="function"><a name="update_action_target-4">update_action_target/4</a></h3>
+<div class="spec">
+<p><tt>update_action_target(Client, ActionTargetArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_findings-2">update_findings/2</a></h3>
+<div class="spec">
+<p><tt>update_findings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p><code>UpdateFindings</code> is deprecated.</p>
+ 
+  <p>Instead of <code>UpdateFindings</code>, use <code>BatchUpdateFindings</code>.</p>
+ 
+  Updates the <code>Note</code> and <code>RecordState</code> of the Security Hub-aggregated
+  findings that the filter attributes specify. Any member account that can
+  view the finding also sees the update to the finding.</p>
+
+<h3 class="function"><a name="update_findings-3">update_findings/3</a></h3>
+<div class="spec">
+<p><tt>update_findings(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_insight-3">update_insight/3</a></h3>
+<div class="spec">
+<p><tt>update_insight(Client, InsightArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the Security Hub insight identified by the specified insight
+  ARN.</p>
+
+<h3 class="function"><a name="update_insight-4">update_insight/4</a></h3>
+<div class="spec">
+<p><tt>update_insight(Client, InsightArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_security_hub_configuration-2">update_security_hub_configuration/2</a></h3>
+<div class="spec">
+<p><tt>update_security_hub_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates configuration options for Security Hub.</p>
+
+<h3 class="function"><a name="update_security_hub_configuration-3">update_security_hub_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_security_hub_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_standards_control-3">update_standards_control/3</a></h3>
+<div class="spec">
+<p><tt>update_standards_control(Client, StandardsControlArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Used to control whether an individual security standard control is
+  enabled or disabled.</p>
+
+<h3 class="function"><a name="update_standards_control-4">update_standards_control/4</a></h3>
+<div class="spec">
+<p><tt>update_standards_control(Client, StandardsControlArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

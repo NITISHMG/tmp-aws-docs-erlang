@@ -1,0 +1,280 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_serverlessapplicationrepository</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_serverlessapplicationrepository</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>The AWS Serverless Application Repository makes it easy for  
+developers and enterprises to quickly find  
+and deploy serverless applications in the AWS Cloud.
+
+
+<h2><a name="description">Description</a></h2><p>The AWS Serverless Application Repository makes it easy for  
+developers and enterprises to quickly find  
+and deploy serverless applications in the AWS Cloud.</p>
+ 
+  <p>For more information about serverless applications,  
+see Serverless Computing and Applications on the AWS website.</p>
+ 
+  <p>The AWS Serverless Application Repository is deeply integrated with the  
+AWS Lambda console, so that developers of  
+all levels can get started with serverless computing without needing to  
+learn anything new. You can use category  
+keywords to browse for applications such as web and mobile backends, data  
+processing applications, or chatbots.  
+You can also search for applications by name, publisher, or event source.  
+To use an application, you simply choose it,  
+configure any required fields, and deploy it with a few clicks.</p>
+ 
+  <p>You can also easily publish applications, sharing them publicly with the  
+community at large, or privately  
+within your team or across your organization. To publish a serverless  
+application (or app), you can use the  
+AWS Management Console, AWS Command Line Interface (AWS CLI), or AWS SDKs  
+to upload the code. Along with the  
+code, you upload a simple manifest file, also known as the AWS Serverless  
+Application Model (AWS SAM) template.  
+For more information about AWS SAM, see AWS Serverless Application Model  
+(AWS SAM) on the AWS Labs  
+GitHub repository.</p>
+ 
+  <p>The AWS Serverless Application Repository Developer Guide contains more  
+information about the two developer  
+experiences available:</p>
+ 
+  <ul>
+  <li><p>  
+Consuming Applications – Browse for applications and view information  
+about them, including  
+source code and readme files. Also install, configure, and deploy  
+applications of your choosing.</p>
+ 
+  <p>Publishing Applications – Configure and upload applications to make them  
+available to other  
+developers, and publish new versions of applications.</p>
+ 
+  </li>
+  </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_application-2">create_application/2</a></td><td>Creates an application, optionally including an AWS SAM file to
+  create the first application version in the same call.</td></tr>
+<tr><td valign="top"><a href="#create_application-3">create_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_application_version-4">create_application_version/4</a></td><td>Creates an application version.</td></tr>
+<tr><td valign="top"><a href="#create_application_version-5">create_application_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_cloud_formation_change_set-3">create_cloud_formation_change_set/3</a></td><td>Creates an AWS CloudFormation change set for the given application.</td></tr>
+<tr><td valign="top"><a href="#create_cloud_formation_change_set-4">create_cloud_formation_change_set/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_cloud_formation_template-3">create_cloud_formation_template/3</a></td><td>Creates an AWS CloudFormation template.</td></tr>
+<tr><td valign="top"><a href="#create_cloud_formation_template-4">create_cloud_formation_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application-3">delete_application/3</a></td><td>Deletes the specified application.</td></tr>
+<tr><td valign="top"><a href="#delete_application-4">delete_application/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_application-3">get_application/3</a></td><td>Gets the specified application.</td></tr>
+<tr><td valign="top"><a href="#get_application-4">get_application/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_application_policy-2">get_application_policy/2</a></td><td>Retrieves the policy for the application.</td></tr>
+<tr><td valign="top"><a href="#get_application_policy-3">get_application_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_cloud_formation_template-3">get_cloud_formation_template/3</a></td><td>Gets the specified AWS CloudFormation template.</td></tr>
+<tr><td valign="top"><a href="#get_cloud_formation_template-4">get_cloud_formation_template/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_application_dependencies-5">list_application_dependencies/5</a></td><td>Retrieves the list of applications nested in the containing
+  application.</td></tr>
+<tr><td valign="top"><a href="#list_application_dependencies-6">list_application_dependencies/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_application_versions-4">list_application_versions/4</a></td><td>Lists versions for the specified application.</td></tr>
+<tr><td valign="top"><a href="#list_application_versions-5">list_application_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_applications-3">list_applications/3</a></td><td>Lists applications owned by the requester.</td></tr>
+<tr><td valign="top"><a href="#list_applications-4">list_applications/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_application_policy-3">put_application_policy/3</a></td><td>Sets the permission policy for an application.</td></tr>
+<tr><td valign="top"><a href="#put_application_policy-4">put_application_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unshare_application-3">unshare_application/3</a></td><td>Unshares an application from an AWS Organization.</td></tr>
+<tr><td valign="top"><a href="#unshare_application-4">unshare_application/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_application-3">update_application/3</a></td><td>Updates the specified application.</td></tr>
+<tr><td valign="top"><a href="#update_application-4">update_application/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_application-2">create_application/2</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an application, optionally including an AWS SAM file to
+  create the first application version in the same call.</p>
+
+<h3 class="function"><a name="create_application-3">create_application/3</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_application_version-4">create_application_version/4</a></h3>
+<div class="spec">
+<p><tt>create_application_version(Client, ApplicationId, SemanticVersion, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an application version.</p>
+
+<h3 class="function"><a name="create_application_version-5">create_application_version/5</a></h3>
+<div class="spec">
+<p><tt>create_application_version(Client, ApplicationId, SemanticVersion, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_cloud_formation_change_set-3">create_cloud_formation_change_set/3</a></h3>
+<div class="spec">
+<p><tt>create_cloud_formation_change_set(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an AWS CloudFormation change set for the given application.</p>
+
+<h3 class="function"><a name="create_cloud_formation_change_set-4">create_cloud_formation_change_set/4</a></h3>
+<div class="spec">
+<p><tt>create_cloud_formation_change_set(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_cloud_formation_template-3">create_cloud_formation_template/3</a></h3>
+<div class="spec">
+<p><tt>create_cloud_formation_template(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an AWS CloudFormation template.</p>
+
+<h3 class="function"><a name="create_cloud_formation_template-4">create_cloud_formation_template/4</a></h3>
+<div class="spec">
+<p><tt>create_cloud_formation_template(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application-3">delete_application/3</a></h3>
+<div class="spec">
+<p><tt>delete_application(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified application.</p>
+
+<h3 class="function"><a name="delete_application-4">delete_application/4</a></h3>
+<div class="spec">
+<p><tt>delete_application(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_application-3">get_application/3</a></h3>
+<div class="spec">
+<p><tt>get_application(Client, ApplicationId, SemanticVersion) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the specified application.</p>
+
+<h3 class="function"><a name="get_application-4">get_application/4</a></h3>
+<div class="spec">
+<p><tt>get_application(Client, ApplicationId, SemanticVersion, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_application_policy-2">get_application_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_application_policy(Client, ApplicationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the policy for the application.</p>
+
+<h3 class="function"><a name="get_application_policy-3">get_application_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_application_policy(Client, ApplicationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_cloud_formation_template-3">get_cloud_formation_template/3</a></h3>
+<div class="spec">
+<p><tt>get_cloud_formation_template(Client, ApplicationId, TemplateId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the specified AWS CloudFormation template.</p>
+
+<h3 class="function"><a name="get_cloud_formation_template-4">get_cloud_formation_template/4</a></h3>
+<div class="spec">
+<p><tt>get_cloud_formation_template(Client, ApplicationId, TemplateId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_application_dependencies-5">list_application_dependencies/5</a></h3>
+<div class="spec">
+<p><tt>list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the list of applications nested in the containing
+  application.</p>
+
+<h3 class="function"><a name="list_application_dependencies-6">list_application_dependencies/6</a></h3>
+<div class="spec">
+<p><tt>list_application_dependencies(Client, ApplicationId, MaxItems, NextToken, SemanticVersion, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_application_versions-4">list_application_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_application_versions(Client, ApplicationId, MaxItems, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists versions for the specified application.</p>
+
+<h3 class="function"><a name="list_application_versions-5">list_application_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_application_versions(Client, ApplicationId, MaxItems, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_applications-3">list_applications/3</a></h3>
+<div class="spec">
+<p><tt>list_applications(Client, MaxItems, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists applications owned by the requester.</p>
+
+<h3 class="function"><a name="list_applications-4">list_applications/4</a></h3>
+<div class="spec">
+<p><tt>list_applications(Client, MaxItems, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_application_policy-3">put_application_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_application_policy(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the permission policy for an application.</p>
+ 
+  For the list of actions supported for this operation, see
+  Application
+  Permissions
+  .</p>
+
+<h3 class="function"><a name="put_application_policy-4">put_application_policy/4</a></h3>
+<div class="spec">
+<p><tt>put_application_policy(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="unshare_application-3">unshare_application/3</a></h3>
+<div class="spec">
+<p><tt>unshare_application(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Unshares an application from an AWS Organization.</p>
+ 
+  This operation can be called only from the organization's master account.</p>
+
+<h3 class="function"><a name="unshare_application-4">unshare_application/4</a></h3>
+<div class="spec">
+<p><tt>unshare_application(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_application-3">update_application/3</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, ApplicationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the specified application.</p>
+
+<h3 class="function"><a name="update_application-4">update_application/4</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, ApplicationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

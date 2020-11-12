@@ -1,0 +1,435 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_datapipeline</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_datapipeline</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Data Pipeline configures and manages a data-driven workflow  
+called a pipeline.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Data Pipeline configures and manages a data-driven workflow  
+called a pipeline.</p>
+ 
+  <p>AWS Data Pipeline handles the details of scheduling and ensuring that data  
+dependencies are met so that your application can focus on processing the  
+data.</p>
+ 
+  <p>AWS Data Pipeline provides a JAR implementation of a task runner called  
+AWS Data Pipeline Task Runner. AWS Data Pipeline Task Runner provides  
+logic for common data management scenarios, such as performing database  
+queries and running data analysis using Amazon Elastic MapReduce (Amazon  
+EMR). You can use AWS Data Pipeline Task Runner as your task runner, or  
+you can write your own task runner to provide custom data management.</p>
+ 
+  AWS Data Pipeline implements two main sets of functionality. Use the first
+  set to create a pipeline and define data sources, schedules, dependencies,
+  and the transforms to be performed on the data. Use the second set in your
+  task runner application to receive the next task ready for processing. The
+  logic for performing the task, such as querying the data, running data
+  analysis, or converting the data from one format to another, is contained
+  within the task runner. The task runner performs the task assigned to it
+  by the web service, reporting progress to the web service as it does so.
+  When the task is done, the task runner reports the final success or
+  failure of the task to the web service.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#activate_pipeline-2">activate_pipeline/2</a></td><td>Validates the specified pipeline and starts processing pipeline  
+tasks.</td></tr>
+<tr><td valign="top"><a href="#activate_pipeline-3">activate_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_tags-2">add_tags/2</a></td><td>Adds or modifies tags for the specified pipeline.</td></tr>
+<tr><td valign="top"><a href="#add_tags-3">add_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_pipeline-2">create_pipeline/2</a></td><td>Creates a new, empty pipeline.</td></tr>
+<tr><td valign="top"><a href="#create_pipeline-3">create_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deactivate_pipeline-2">deactivate_pipeline/2</a></td><td>Deactivates the specified running pipeline.</td></tr>
+<tr><td valign="top"><a href="#deactivate_pipeline-3">deactivate_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_pipeline-2">delete_pipeline/2</a></td><td>Deletes a pipeline, its pipeline definition, and its run history.</td></tr>
+<tr><td valign="top"><a href="#delete_pipeline-3">delete_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_objects-2">describe_objects/2</a></td><td>Gets the object definitions for a set of objects associated with the  
+pipeline.</td></tr>
+<tr><td valign="top"><a href="#describe_objects-3">describe_objects/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_pipelines-2">describe_pipelines/2</a></td><td>Retrieves metadata about one or more pipelines.</td></tr>
+<tr><td valign="top"><a href="#describe_pipelines-3">describe_pipelines/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#evaluate_expression-2">evaluate_expression/2</a></td><td>Task runners call <code>EvaluateExpression</code> to evaluate a string in the  
+context of the specified object.</td></tr>
+<tr><td valign="top"><a href="#evaluate_expression-3">evaluate_expression/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_pipeline_definition-2">get_pipeline_definition/2</a></td><td>Gets the definition of the specified pipeline.</td></tr>
+<tr><td valign="top"><a href="#get_pipeline_definition-3">get_pipeline_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_pipelines-2">list_pipelines/2</a></td><td>Lists the pipeline identifiers for all active pipelines that you have
+  permission to access.</td></tr>
+<tr><td valign="top"><a href="#list_pipelines-3">list_pipelines/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#poll_for_task-2">poll_for_task/2</a></td><td>Task runners call <code>PollForTask</code> to receive a task to perform from AWS  
+Data Pipeline.</td></tr>
+<tr><td valign="top"><a href="#poll_for_task-3">poll_for_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_pipeline_definition-2">put_pipeline_definition/2</a></td><td>Adds tasks, schedules, and preconditions to the specified pipeline.</td></tr>
+<tr><td valign="top"><a href="#put_pipeline_definition-3">put_pipeline_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#query_objects-2">query_objects/2</a></td><td>Queries the specified pipeline for the names of objects that match
+  the specified set of conditions.</td></tr>
+<tr><td valign="top"><a href="#query_objects-3">query_objects/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_tags-2">remove_tags/2</a></td><td>Removes existing tags from the specified pipeline.</td></tr>
+<tr><td valign="top"><a href="#remove_tags-3">remove_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#report_task_progress-2">report_task_progress/2</a></td><td>Task runners call <code>ReportTaskProgress</code> when assigned a task to  
+acknowledge that it has the task.</td></tr>
+<tr><td valign="top"><a href="#report_task_progress-3">report_task_progress/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#report_task_runner_heartbeat-2">report_task_runner_heartbeat/2</a></td><td>Task runners call <code>ReportTaskRunnerHeartbeat</code> every 15 minutes to  
+indicate that they are operational.</td></tr>
+<tr><td valign="top"><a href="#report_task_runner_heartbeat-3">report_task_runner_heartbeat/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_status-2">set_status/2</a></td><td>Requests that the status of the specified physical or logical  
+pipeline objects be updated in the specified pipeline.</td></tr>
+<tr><td valign="top"><a href="#set_status-3">set_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_task_status-2">set_task_status/2</a></td><td>Task runners call <code>SetTaskStatus</code> to notify AWS Data Pipeline that a  
+task is completed and provide information about the final status.</td></tr>
+<tr><td valign="top"><a href="#set_task_status-3">set_task_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#validate_pipeline_definition-2">validate_pipeline_definition/2</a></td><td>Validates the specified pipeline definition to ensure that it is well
+  formed and can be run without error.</td></tr>
+<tr><td valign="top"><a href="#validate_pipeline_definition-3">validate_pipeline_definition/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="activate_pipeline-2">activate_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>activate_pipeline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Validates the specified pipeline and starts processing pipeline  
+tasks.</p>
+ 
+  <p>If the pipeline does not pass validation, activation fails.</p>
+ 
+  <p>If you need to pause the pipeline to investigate an issue with a
+  component, such as a data source or script, call <code>DeactivatePipeline</code>.</p>
+ 
+  To activate a finished pipeline, modify the end date for the pipeline and
+  then activate it.</p>
+
+<h3 class="function"><a name="activate_pipeline-3">activate_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>activate_pipeline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_tags-2">add_tags/2</a></h3>
+<div class="spec">
+<p><tt>add_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds or modifies tags for the specified pipeline.</p>
+
+<h3 class="function"><a name="add_tags-3">add_tags/3</a></h3>
+<div class="spec">
+<p><tt>add_tags(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_pipeline-2">create_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>create_pipeline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new, empty pipeline.</p>
+ 
+  Use <code>PutPipelineDefinition</code> to populate the pipeline.</p>
+
+<h3 class="function"><a name="create_pipeline-3">create_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>create_pipeline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deactivate_pipeline-2">deactivate_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>deactivate_pipeline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deactivates the specified running pipeline.</p>
+ 
+  <p>The pipeline is set to the <code>DEACTIVATING</code> state until the deactivation  
+process completes.</p>
+ 
+  To resume a deactivated pipeline, use <code>ActivatePipeline</code>. By default, the
+  pipeline resumes from the last completed execution. Optionally, you can
+  specify the date and time to resume the pipeline.</p>
+
+<h3 class="function"><a name="deactivate_pipeline-3">deactivate_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>deactivate_pipeline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_pipeline-2">delete_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>delete_pipeline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a pipeline, its pipeline definition, and its run history.</p>
+ 
+  <p>AWS Data Pipeline attempts to cancel instances associated with the  
+pipeline that are currently being processed by task runners.</p>
+ 
+  Deleting a pipeline cannot be undone. You cannot query or restore a
+  deleted pipeline. To temporarily pause a pipeline instead of deleting it,
+  call <code>SetStatus</code> with the status set to <code>PAUSE</code> on individual components.
+  Components that are paused by <code>SetStatus</code> can be resumed.</p>
+
+<h3 class="function"><a name="delete_pipeline-3">delete_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>delete_pipeline(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_objects-2">describe_objects/2</a></h3>
+<div class="spec">
+<p><tt>describe_objects(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the object definitions for a set of objects associated with the  
+pipeline.</p>
+ 
+  Object definitions are composed of a set of fields that define the
+  properties of the object.</p>
+
+<h3 class="function"><a name="describe_objects-3">describe_objects/3</a></h3>
+<div class="spec">
+<p><tt>describe_objects(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_pipelines-2">describe_pipelines/2</a></h3>
+<div class="spec">
+<p><tt>describe_pipelines(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves metadata about one or more pipelines.</p>
+ 
+  <p>The information retrieved includes the name of the pipeline, the pipeline  
+identifier, its current state, and the user account that owns the  
+pipeline. Using account credentials, you can retrieve metadata about  
+pipelines that you or your IAM users have created. If you are using an IAM  
+user account, you can retrieve metadata about only those pipelines for  
+which you have read permissions.</p>
+ 
+  To retrieve the full pipeline definition instead of metadata about the
+  pipeline, call <code>GetPipelineDefinition</code>.</p>
+
+<h3 class="function"><a name="describe_pipelines-3">describe_pipelines/3</a></h3>
+<div class="spec">
+<p><tt>describe_pipelines(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="evaluate_expression-2">evaluate_expression/2</a></h3>
+<div class="spec">
+<p><tt>evaluate_expression(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Task runners call <code>EvaluateExpression</code> to evaluate a string in the  
+context of the specified object.</p>
+ 
+  For example, a task runner can evaluate SQL queries stored in Amazon S3.</p>
+
+<h3 class="function"><a name="evaluate_expression-3">evaluate_expression/3</a></h3>
+<div class="spec">
+<p><tt>evaluate_expression(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_pipeline_definition-2">get_pipeline_definition/2</a></h3>
+<div class="spec">
+<p><tt>get_pipeline_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the definition of the specified pipeline.</p>
+ 
+  You can call <code>GetPipelineDefinition</code> to retrieve the pipeline definition
+  that you provided using <code>PutPipelineDefinition</code>.</p>
+
+<h3 class="function"><a name="get_pipeline_definition-3">get_pipeline_definition/3</a></h3>
+<div class="spec">
+<p><tt>get_pipeline_definition(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_pipelines-2">list_pipelines/2</a></h3>
+<div class="spec">
+<p><tt>list_pipelines(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the pipeline identifiers for all active pipelines that you have
+  permission to access.</p>
+
+<h3 class="function"><a name="list_pipelines-3">list_pipelines/3</a></h3>
+<div class="spec">
+<p><tt>list_pipelines(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="poll_for_task-2">poll_for_task/2</a></h3>
+<div class="spec">
+<p><tt>poll_for_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Task runners call <code>PollForTask</code> to receive a task to perform from AWS  
+Data Pipeline.</p>
+ 
+  <p>The task runner specifies which tasks it can perform by setting a value
+  for the <code>workerGroup</code> parameter. The task returned can come from any of
+  the pipelines that match the <code>workerGroup</code> value passed in by the task  
+runner and that was launched using the IAM user credentials specified by  
+the task runner.</p>
+ 
+  If tasks are ready in the work queue, <code>PollForTask</code> returns a response
+  immediately. If no tasks are available in the queue, <code>PollForTask</code> uses
+  long-polling and holds on to a poll connection for up to a 90 seconds,
+  during which time the first newly scheduled task is handed to the task
+  runner. To accomodate this, set the socket timeout in your task runner to
+  90 seconds. The task runner should not call <code>PollForTask</code> again on the
+  same <code>workerGroup</code> until it receives a response, and this can take up to
+  90 seconds.</p>
+
+<h3 class="function"><a name="poll_for_task-3">poll_for_task/3</a></h3>
+<div class="spec">
+<p><tt>poll_for_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_pipeline_definition-2">put_pipeline_definition/2</a></h3>
+<div class="spec">
+<p><tt>put_pipeline_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds tasks, schedules, and preconditions to the specified pipeline.</p>
+ 
+  <p>You can use <code>PutPipelineDefinition</code> to populate a new pipeline.</p>
+ 
+  <p><code>PutPipelineDefinition</code> also validates the configuration as it adds it to  
+the pipeline. Changes to the pipeline are saved unless one of the  
+following three validation errors exists in the pipeline.</p>
+ 
+  <ol> <li>An object is missing a name or identifier field.</li> <li>A
+  string or reference field is empty.</li> <li>The number of objects in the
+  pipeline exceeds the maximum allowed objects.</li> <li>The pipeline is in
+  a FINISHED state.</li> </ol> Pipeline object definitions are passed to the
+  <code>PutPipelineDefinition</code> action and returned by the <code>GetPipelineDefinition</code>
+  action.</p>
+
+<h3 class="function"><a name="put_pipeline_definition-3">put_pipeline_definition/3</a></h3>
+<div class="spec">
+<p><tt>put_pipeline_definition(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="query_objects-2">query_objects/2</a></h3>
+<div class="spec">
+<p><tt>query_objects(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Queries the specified pipeline for the names of objects that match
+  the specified set of conditions.</p>
+
+<h3 class="function"><a name="query_objects-3">query_objects/3</a></h3>
+<div class="spec">
+<p><tt>query_objects(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="remove_tags-2">remove_tags/2</a></h3>
+<div class="spec">
+<p><tt>remove_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes existing tags from the specified pipeline.</p>
+
+<h3 class="function"><a name="remove_tags-3">remove_tags/3</a></h3>
+<div class="spec">
+<p><tt>remove_tags(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="report_task_progress-2">report_task_progress/2</a></h3>
+<div class="spec">
+<p><tt>report_task_progress(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Task runners call <code>ReportTaskProgress</code> when assigned a task to  
+acknowledge that it has the task.</p>
+ 
+  <p>If the web service does not receive this acknowledgement within 2 minutes,
+  it assigns the task in a subsequent <code>PollForTask</code> call. After this initial
+  acknowledgement, the task runner only needs to report progress every 15
+  minutes to maintain its ownership of the task. You can change this
+  reporting time from 15 minutes by specifying a <code>reportProgressTimeout</code>  
+field in your pipeline.</p>
+ 
+  If a task runner does not report its status after 5 minutes, AWS Data
+  Pipeline assumes that the task runner is unable to process the task and
+  reassigns the task in a subsequent response to <code>PollForTask</code>. Task runners
+  should call <code>ReportTaskProgress</code> every 60 seconds.</p>
+
+<h3 class="function"><a name="report_task_progress-3">report_task_progress/3</a></h3>
+<div class="spec">
+<p><tt>report_task_progress(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="report_task_runner_heartbeat-2">report_task_runner_heartbeat/2</a></h3>
+<div class="spec">
+<p><tt>report_task_runner_heartbeat(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Task runners call <code>ReportTaskRunnerHeartbeat</code> every 15 minutes to  
+indicate that they are operational.</p>
+ 
+  If the AWS Data Pipeline Task Runner is launched on a resource managed by
+  AWS Data Pipeline, the web service can use this call to detect when the
+  task runner application has failed and restart a new instance.</p>
+
+<h3 class="function"><a name="report_task_runner_heartbeat-3">report_task_runner_heartbeat/3</a></h3>
+<div class="spec">
+<p><tt>report_task_runner_heartbeat(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_status-2">set_status/2</a></h3>
+<div class="spec">
+<p><tt>set_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Requests that the status of the specified physical or logical  
+pipeline objects be updated in the specified pipeline.</p>
+ 
+  This update might not occur immediately, but is eventually consistent. The
+  status that can be set depends on the type of object (for example,
+  DataNode or Activity). You cannot perform this operation on <code>FINISHED</code>
+  pipelines and attempting to do so returns <code>InvalidRequestException</code>.</p>
+
+<h3 class="function"><a name="set_status-3">set_status/3</a></h3>
+<div class="spec">
+<p><tt>set_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_task_status-2">set_task_status/2</a></h3>
+<div class="spec">
+<p><tt>set_task_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Task runners call <code>SetTaskStatus</code> to notify AWS Data Pipeline that a  
+task is completed and provide information about the final status.</p>
+ 
+  A task runner makes this call regardless of whether the task was
+  sucessful. A task runner does not need to call <code>SetTaskStatus</code> for tasks
+  that are canceled by the web service during a call to
+  <code>ReportTaskProgress</code>.</p>
+
+<h3 class="function"><a name="set_task_status-3">set_task_status/3</a></h3>
+<div class="spec">
+<p><tt>set_task_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="validate_pipeline_definition-2">validate_pipeline_definition/2</a></h3>
+<div class="spec">
+<p><tt>validate_pipeline_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Validates the specified pipeline definition to ensure that it is well
+  formed and can be run without error.</p>
+
+<h3 class="function"><a name="validate_pipeline_definition-3">validate_pipeline_definition/3</a></h3>
+<div class="spec">
+<p><tt>validate_pipeline_definition(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

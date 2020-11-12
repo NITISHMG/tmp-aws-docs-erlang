@@ -1,0 +1,282 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_license_manager</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_license_manager</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS License Manager.
+
+
+<h2><a name="description">Description</a></h2><p>AWS License Manager</p>
+ 
+  AWS License Manager makes it easier to manage licenses from software
+  vendors across multiple AWS accounts and on-premises servers.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_license_configuration-2">create_license_configuration/2</a></td><td>Creates a license configuration.</td></tr>
+<tr><td valign="top"><a href="#create_license_configuration-3">create_license_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_license_configuration-2">delete_license_configuration/2</a></td><td>Deletes the specified license configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_license_configuration-3">delete_license_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_license_configuration-2">get_license_configuration/2</a></td><td>Gets detailed information about the specified license configuration.</td></tr>
+<tr><td valign="top"><a href="#get_license_configuration-3">get_license_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_service_settings-2">get_service_settings/2</a></td><td>Gets the License Manager settings for the current Region.</td></tr>
+<tr><td valign="top"><a href="#get_service_settings-3">get_service_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_associations_for_license_configuration-2">list_associations_for_license_configuration/2</a></td><td>Lists the resource associations for the specified license  
+configuration.</td></tr>
+<tr><td valign="top"><a href="#list_associations_for_license_configuration-3">list_associations_for_license_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_failures_for_license_configuration_operations-2">list_failures_for_license_configuration_operations/2</a></td><td>Lists the license configuration operations that failed.</td></tr>
+<tr><td valign="top"><a href="#list_failures_for_license_configuration_operations-3">list_failures_for_license_configuration_operations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_license_configurations-2">list_license_configurations/2</a></td><td>Lists the license configurations for your account.</td></tr>
+<tr><td valign="top"><a href="#list_license_configurations-3">list_license_configurations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_license_specifications_for_resource-2">list_license_specifications_for_resource/2</a></td><td>Describes the license configurations for the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_license_specifications_for_resource-3">list_license_specifications_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resource_inventory-2">list_resource_inventory/2</a></td><td>Lists resources managed using Systems Manager inventory.</td></tr>
+<tr><td valign="top"><a href="#list_resource_inventory-3">list_resource_inventory/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags for the specified license configuration.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_usage_for_license_configuration-2">list_usage_for_license_configuration/2</a></td><td>Lists all license usage records for a license configuration,  
+displaying license consumption details by resource at a selected point in  
+time.</td></tr>
+<tr><td valign="top"><a href="#list_usage_for_license_configuration-3">list_usage_for_license_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds the specified tags to the specified license configuration.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes the specified tags from the specified license configuration.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_license_configuration-2">update_license_configuration/2</a></td><td>Modifies the attributes of an existing license configuration.</td></tr>
+<tr><td valign="top"><a href="#update_license_configuration-3">update_license_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_license_specifications_for_resource-2">update_license_specifications_for_resource/2</a></td><td>Adds or removes the specified license configurations for the  
+specified AWS resource.</td></tr>
+<tr><td valign="top"><a href="#update_license_specifications_for_resource-3">update_license_specifications_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_service_settings-2">update_service_settings/2</a></td><td>Updates License Manager settings for the current Region.</td></tr>
+<tr><td valign="top"><a href="#update_service_settings-3">update_service_settings/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_license_configuration-2">create_license_configuration/2</a></h3>
+<div class="spec">
+<p><tt>create_license_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a license configuration.</p>
+ 
+  A license configuration is an abstraction of a customer license agreement
+  that can be consumed and enforced by License Manager. Components include
+  specifications for the license type (licensing by instance, socket, CPU,
+  or vCPU), allowed tenancy (shared tenancy, Dedicated Instance, Dedicated
+  Host, or all of these), license affinity to host (how long a license must
+  be associated with a host), and the number of licenses purchased and used.</p>
+
+<h3 class="function"><a name="create_license_configuration-3">create_license_configuration/3</a></h3>
+<div class="spec">
+<p><tt>create_license_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_license_configuration-2">delete_license_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_license_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified license configuration.</p>
+ 
+  You cannot delete a license configuration that is in use.</p>
+
+<h3 class="function"><a name="delete_license_configuration-3">delete_license_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_license_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_license_configuration-2">get_license_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_license_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets detailed information about the specified license configuration.</p>
+
+<h3 class="function"><a name="get_license_configuration-3">get_license_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_license_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_service_settings-2">get_service_settings/2</a></h3>
+<div class="spec">
+<p><tt>get_service_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the License Manager settings for the current Region.</p>
+
+<h3 class="function"><a name="get_service_settings-3">get_service_settings/3</a></h3>
+<div class="spec">
+<p><tt>get_service_settings(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_associations_for_license_configuration-2">list_associations_for_license_configuration/2</a></h3>
+<div class="spec">
+<p><tt>list_associations_for_license_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the resource associations for the specified license  
+configuration.</p>
+ 
+  Resource associations need not consume licenses from a license
+  configuration. For example, an AMI or a stopped instance might not consume
+  a license (depending on the license rules).</p>
+
+<h3 class="function"><a name="list_associations_for_license_configuration-3">list_associations_for_license_configuration/3</a></h3>
+<div class="spec">
+<p><tt>list_associations_for_license_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_failures_for_license_configuration_operations-2">list_failures_for_license_configuration_operations/2</a></h3>
+<div class="spec">
+<p><tt>list_failures_for_license_configuration_operations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the license configuration operations that failed.</p>
+
+<h3 class="function"><a name="list_failures_for_license_configuration_operations-3">list_failures_for_license_configuration_operations/3</a></h3>
+<div class="spec">
+<p><tt>list_failures_for_license_configuration_operations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_license_configurations-2">list_license_configurations/2</a></h3>
+<div class="spec">
+<p><tt>list_license_configurations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the license configurations for your account.</p>
+
+<h3 class="function"><a name="list_license_configurations-3">list_license_configurations/3</a></h3>
+<div class="spec">
+<p><tt>list_license_configurations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_license_specifications_for_resource-2">list_license_specifications_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_license_specifications_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the license configurations for the specified resource.</p>
+
+<h3 class="function"><a name="list_license_specifications_for_resource-3">list_license_specifications_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_license_specifications_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resource_inventory-2">list_resource_inventory/2</a></h3>
+<div class="spec">
+<p><tt>list_resource_inventory(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists resources managed using Systems Manager inventory.</p>
+
+<h3 class="function"><a name="list_resource_inventory-3">list_resource_inventory/3</a></h3>
+<div class="spec">
+<p><tt>list_resource_inventory(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags for the specified license configuration.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_usage_for_license_configuration-2">list_usage_for_license_configuration/2</a></h3>
+<div class="spec">
+<p><tt>list_usage_for_license_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all license usage records for a license configuration,  
+displaying license consumption details by resource at a selected point in  
+time.</p>
+ 
+  Use this action to audit the current license consumption for any license
+  inventory and configuration.</p>
+
+<h3 class="function"><a name="list_usage_for_license_configuration-3">list_usage_for_license_configuration/3</a></h3>
+<div class="spec">
+<p><tt>list_usage_for_license_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds the specified tags to the specified license configuration.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the specified tags from the specified license configuration.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_license_configuration-2">update_license_configuration/2</a></h3>
+<div class="spec">
+<p><tt>update_license_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies the attributes of an existing license configuration.</p>
+
+<h3 class="function"><a name="update_license_configuration-3">update_license_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_license_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_license_specifications_for_resource-2">update_license_specifications_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>update_license_specifications_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds or removes the specified license configurations for the  
+specified AWS resource.</p>
+ 
+  You can update the license specifications of AMIs, instances, and hosts.
+  You cannot update the license specifications for launch templates and AWS
+  CloudFormation templates, as they send license configurations to the
+  operation that creates the resource.</p>
+
+<h3 class="function"><a name="update_license_specifications_for_resource-3">update_license_specifications_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>update_license_specifications_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_service_settings-2">update_service_settings/2</a></h3>
+<div class="spec">
+<p><tt>update_service_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates License Manager settings for the current Region.</p>
+
+<h3 class="function"><a name="update_service_settings-3">update_service_settings/3</a></h3>
+<div class="spec">
+<p><tt>update_service_settings(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

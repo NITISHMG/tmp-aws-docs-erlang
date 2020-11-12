@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_sso_oidc</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_sso_oidc</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Single Sign-On (SSO) OpenID Connect (OIDC) is a web service that  
+enables a client (such as AWS CLI or a native application) to register  
+with AWS SSO.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Single Sign-On (SSO) OpenID Connect (OIDC) is a web service that  
+enables a client (such as AWS CLI or a native application) to register  
+with AWS SSO.</p>
+ 
+  <p>The service also enables the client to fetch the user’s access token upon
+  successful authentication and authorization with AWS SSO. This service
+  conforms with the OAuth 2.0 based implementation of the device
+  authorization grant standard (<a href="https://tools.ietf.org/html/rfc8628" target="_top"><tt>https://tools.ietf.org/html/rfc8628</tt></a>).</p>
+ 
+  <p>For general information about AWS SSO, see What is AWS Single Sign-On? in  
+the AWS SSO User Guide.</p>
+ 
+  <p>This API reference guide describes the AWS SSO OIDC operations that you  
+can call programatically and includes detailed information on data types  
+and errors.</p>
+ 
+  AWS provides SDKs that consist of libraries and sample code for various
+  programming languages and platforms such as Java, Ruby, .Net, iOS, and
+  Android. The SDKs provide a convenient way to create programmatic access
+  to AWS SSO and other AWS services. For more information about the AWS
+  SDKs, including how to download and install them, see Tools for Amazon Web
+  Services.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_token-2">create_token/2</a></td><td>Creates and returns an access token for the authorized client.</td></tr>
+<tr><td valign="top"><a href="#create_token-3">create_token/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_client-2">register_client/2</a></td><td>Registers a client with AWS SSO.</td></tr>
+<tr><td valign="top"><a href="#register_client-3">register_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_device_authorization-2">start_device_authorization/2</a></td><td>Initiates device authorization by requesting a pair of verification
+  codes from the authorization service.</td></tr>
+<tr><td valign="top"><a href="#start_device_authorization-3">start_device_authorization/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_token-2">create_token/2</a></h3>
+<div class="spec">
+<p><tt>create_token(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates and returns an access token for the authorized client.</p>
+ 
+  The access token issued will be used to fetch short-term credentials for
+  the assigned roles in the AWS account.</p>
+
+<h3 class="function"><a name="create_token-3">create_token/3</a></h3>
+<div class="spec">
+<p><tt>create_token(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_client-2">register_client/2</a></h3>
+<div class="spec">
+<p><tt>register_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers a client with AWS SSO.</p>
+ 
+  This allows clients to initiate device authorization. The output should be
+  persisted for reuse through many authentication requests.</p>
+
+<h3 class="function"><a name="register_client-3">register_client/3</a></h3>
+<div class="spec">
+<p><tt>register_client(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_device_authorization-2">start_device_authorization/2</a></h3>
+<div class="spec">
+<p><tt>start_device_authorization(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Initiates device authorization by requesting a pair of verification
+  codes from the authorization service.</p>
+
+<h3 class="function"><a name="start_device_authorization-3">start_device_authorization/3</a></h3>
+<div class="spec">
+<p><tt>start_device_authorization(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

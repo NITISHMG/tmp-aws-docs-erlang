@@ -1,0 +1,1798 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_cognito_identity_provider</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_cognito_identity_provider</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Using the Amazon Cognito User Pools API, you can create a user pool  
+to manage directories and users.
+
+
+<h2><a name="description">Description</a></h2><p>Using the Amazon Cognito User Pools API, you can create a user pool  
+to manage directories and users.</p>
+ 
+  <p>You can authenticate a user to obtain tokens related to user identity and  
+access policies.</p>
+ 
+  <p>This API reference provides information about user pools in Amazon Cognito  
+User Pools.</p>
+ 
+  For more information, see the Amazon Cognito Documentation.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_custom_attributes-2">add_custom_attributes/2</a></td><td>Adds additional user attributes to the user pool schema.</td></tr>
+<tr><td valign="top"><a href="#add_custom_attributes-3">add_custom_attributes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_add_user_to_group-2">admin_add_user_to_group/2</a></td><td>Adds the specified user to the specified group.</td></tr>
+<tr><td valign="top"><a href="#admin_add_user_to_group-3">admin_add_user_to_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_confirm_sign_up-2">admin_confirm_sign_up/2</a></td><td>Confirms user registration as an admin without using a confirmation  
+code.</td></tr>
+<tr><td valign="top"><a href="#admin_confirm_sign_up-3">admin_confirm_sign_up/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_create_user-2">admin_create_user/2</a></td><td>Creates a new user in the specified user pool.</td></tr>
+<tr><td valign="top"><a href="#admin_create_user-3">admin_create_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_delete_user-2">admin_delete_user/2</a></td><td>Deletes a user as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_delete_user-3">admin_delete_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_delete_user_attributes-2">admin_delete_user_attributes/2</a></td><td>Deletes the user attributes in a user pool as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_delete_user_attributes-3">admin_delete_user_attributes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_disable_provider_for_user-2">admin_disable_provider_for_user/2</a></td><td>Disables the user from signing in with the specified external (SAML  
+or social) identity provider.</td></tr>
+<tr><td valign="top"><a href="#admin_disable_provider_for_user-3">admin_disable_provider_for_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_disable_user-2">admin_disable_user/2</a></td><td>Disables the specified user.</td></tr>
+<tr><td valign="top"><a href="#admin_disable_user-3">admin_disable_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_enable_user-2">admin_enable_user/2</a></td><td>Enables the specified user as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_enable_user-3">admin_enable_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_forget_device-2">admin_forget_device/2</a></td><td>Forgets the device, as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_forget_device-3">admin_forget_device/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_get_device-2">admin_get_device/2</a></td><td>Gets the device, as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_get_device-3">admin_get_device/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_get_user-2">admin_get_user/2</a></td><td>Gets the specified user by user name in a user pool as an  
+administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_get_user-3">admin_get_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_initiate_auth-2">admin_initiate_auth/2</a></td><td>Initiates the authentication flow, as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_initiate_auth-3">admin_initiate_auth/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_link_provider_for_user-2">admin_link_provider_for_user/2</a></td><td>Links an existing user account in a user pool (<code>DestinationUser</code>) to
+  an identity from an external identity provider (<code>SourceUser</code>) based on a  
+specified attribute name and value from the external identity provider.</td></tr>
+<tr><td valign="top"><a href="#admin_link_provider_for_user-3">admin_link_provider_for_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_list_devices-2">admin_list_devices/2</a></td><td>Lists devices, as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_list_devices-3">admin_list_devices/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_list_groups_for_user-2">admin_list_groups_for_user/2</a></td><td>Lists the groups that the user belongs to.</td></tr>
+<tr><td valign="top"><a href="#admin_list_groups_for_user-3">admin_list_groups_for_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_list_user_auth_events-2">admin_list_user_auth_events/2</a></td><td>Lists a history of user activity and any risks detected as part of
+  Amazon Cognito advanced security.</td></tr>
+<tr><td valign="top"><a href="#admin_list_user_auth_events-3">admin_list_user_auth_events/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_remove_user_from_group-2">admin_remove_user_from_group/2</a></td><td>Removes the specified user from the specified group.</td></tr>
+<tr><td valign="top"><a href="#admin_remove_user_from_group-3">admin_remove_user_from_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_reset_user_password-2">admin_reset_user_password/2</a></td><td>Resets the specified user's password in a user pool as an  
+administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_reset_user_password-3">admin_reset_user_password/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_respond_to_auth_challenge-2">admin_respond_to_auth_challenge/2</a></td><td>Responds to an authentication challenge, as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_respond_to_auth_challenge-3">admin_respond_to_auth_challenge/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_set_user_m_f_a_preference-2">admin_set_user_m_f_a_preference/2</a></td><td>Sets the user's multi-factor authentication (MFA) preference,  
+including which MFA options are enabled and if any are preferred.</td></tr>
+<tr><td valign="top"><a href="#admin_set_user_m_f_a_preference-3">admin_set_user_m_f_a_preference/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_set_user_password-2">admin_set_user_password/2</a></td><td>Sets the specified user's password in a user pool as an  
+administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_set_user_password-3">admin_set_user_password/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_set_user_settings-2">admin_set_user_settings/2</a></td><td>This action is no longer supported.</td></tr>
+<tr><td valign="top"><a href="#admin_set_user_settings-3">admin_set_user_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_update_auth_event_feedback-2">admin_update_auth_event_feedback/2</a></td><td>Provides feedback for an authentication event as to whether it was  
+from a valid user.</td></tr>
+<tr><td valign="top"><a href="#admin_update_auth_event_feedback-3">admin_update_auth_event_feedback/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_update_device_status-2">admin_update_device_status/2</a></td><td>Updates the device status as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_update_device_status-3">admin_update_device_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_update_user_attributes-2">admin_update_user_attributes/2</a></td><td>Updates the specified user's attributes, including developer  
+attributes, as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_update_user_attributes-3">admin_update_user_attributes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#admin_user_global_sign_out-2">admin_user_global_sign_out/2</a></td><td>Signs out users from all devices, as an administrator.</td></tr>
+<tr><td valign="top"><a href="#admin_user_global_sign_out-3">admin_user_global_sign_out/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_software_token-2">associate_software_token/2</a></td><td>Returns a unique generated shared secret key code for the user  
+account.</td></tr>
+<tr><td valign="top"><a href="#associate_software_token-3">associate_software_token/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#change_password-2">change_password/2</a></td><td>Changes the password for a specified user in a user pool.</td></tr>
+<tr><td valign="top"><a href="#change_password-3">change_password/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#confirm_device-2">confirm_device/2</a></td><td>Confirms tracking of the device.</td></tr>
+<tr><td valign="top"><a href="#confirm_device-3">confirm_device/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#confirm_forgot_password-2">confirm_forgot_password/2</a></td><td>Allows a user to enter a confirmation code to reset a forgotten
+  password.</td></tr>
+<tr><td valign="top"><a href="#confirm_forgot_password-3">confirm_forgot_password/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#confirm_sign_up-2">confirm_sign_up/2</a></td><td>Confirms registration of a user and handles the existing alias from a
+  previous user.</td></tr>
+<tr><td valign="top"><a href="#confirm_sign_up-3">confirm_sign_up/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_group-2">create_group/2</a></td><td>Creates a new group in the specified user pool.</td></tr>
+<tr><td valign="top"><a href="#create_group-3">create_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_identity_provider-2">create_identity_provider/2</a></td><td>Creates an identity provider for a user pool.</td></tr>
+<tr><td valign="top"><a href="#create_identity_provider-3">create_identity_provider/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resource_server-2">create_resource_server/2</a></td><td>Creates a new OAuth2.0 resource server and defines custom scopes in
+  it.</td></tr>
+<tr><td valign="top"><a href="#create_resource_server-3">create_resource_server/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user_import_job-2">create_user_import_job/2</a></td><td>Creates the user import job.</td></tr>
+<tr><td valign="top"><a href="#create_user_import_job-3">create_user_import_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user_pool-2">create_user_pool/2</a></td><td>Creates a new Amazon Cognito user pool and sets the password policy
+  for the pool.</td></tr>
+<tr><td valign="top"><a href="#create_user_pool-3">create_user_pool/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user_pool_client-2">create_user_pool_client/2</a></td><td>Creates the user pool client.</td></tr>
+<tr><td valign="top"><a href="#create_user_pool_client-3">create_user_pool_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user_pool_domain-2">create_user_pool_domain/2</a></td><td>Creates a new domain for a user pool.</td></tr>
+<tr><td valign="top"><a href="#create_user_pool_domain-3">create_user_pool_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_group-2">delete_group/2</a></td><td>Deletes a group.</td></tr>
+<tr><td valign="top"><a href="#delete_group-3">delete_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_identity_provider-2">delete_identity_provider/2</a></td><td>Deletes an identity provider for a user pool.</td></tr>
+<tr><td valign="top"><a href="#delete_identity_provider-3">delete_identity_provider/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resource_server-2">delete_resource_server/2</a></td><td>Deletes a resource server.</td></tr>
+<tr><td valign="top"><a href="#delete_resource_server-3">delete_resource_server/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user-2">delete_user/2</a></td><td>Allows a user to delete himself or herself.</td></tr>
+<tr><td valign="top"><a href="#delete_user-3">delete_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user_attributes-2">delete_user_attributes/2</a></td><td>Deletes the attributes for a user.</td></tr>
+<tr><td valign="top"><a href="#delete_user_attributes-3">delete_user_attributes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user_pool-2">delete_user_pool/2</a></td><td>Deletes the specified Amazon Cognito user pool.</td></tr>
+<tr><td valign="top"><a href="#delete_user_pool-3">delete_user_pool/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user_pool_client-2">delete_user_pool_client/2</a></td><td>Allows the developer to delete the user pool client.</td></tr>
+<tr><td valign="top"><a href="#delete_user_pool_client-3">delete_user_pool_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user_pool_domain-2">delete_user_pool_domain/2</a></td><td>Deletes a domain for a user pool.</td></tr>
+<tr><td valign="top"><a href="#delete_user_pool_domain-3">delete_user_pool_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_identity_provider-2">describe_identity_provider/2</a></td><td>Gets information about a specific identity provider.</td></tr>
+<tr><td valign="top"><a href="#describe_identity_provider-3">describe_identity_provider/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_resource_server-2">describe_resource_server/2</a></td><td>Describes a resource server.</td></tr>
+<tr><td valign="top"><a href="#describe_resource_server-3">describe_resource_server/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_risk_configuration-2">describe_risk_configuration/2</a></td><td>Describes the risk configuration.</td></tr>
+<tr><td valign="top"><a href="#describe_risk_configuration-3">describe_risk_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_import_job-2">describe_user_import_job/2</a></td><td>Describes the user import job.</td></tr>
+<tr><td valign="top"><a href="#describe_user_import_job-3">describe_user_import_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_pool-2">describe_user_pool/2</a></td><td>Returns the configuration information and metadata of the specified
+  user pool.</td></tr>
+<tr><td valign="top"><a href="#describe_user_pool-3">describe_user_pool/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_pool_client-2">describe_user_pool_client/2</a></td><td>Client method for returning the configuration information and
+  metadata of the specified user pool app client.</td></tr>
+<tr><td valign="top"><a href="#describe_user_pool_client-3">describe_user_pool_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_pool_domain-2">describe_user_pool_domain/2</a></td><td>Gets information about a domain.</td></tr>
+<tr><td valign="top"><a href="#describe_user_pool_domain-3">describe_user_pool_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#forget_device-2">forget_device/2</a></td><td>Forgets the specified device.</td></tr>
+<tr><td valign="top"><a href="#forget_device-3">forget_device/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#forgot_password-2">forgot_password/2</a></td><td>Calling this API causes a message to be sent to the end user with a  
+confirmation code that is required to change the user's password.</td></tr>
+<tr><td valign="top"><a href="#forgot_password-3">forgot_password/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_csv_header-2">get_csv_header/2</a></td><td>Gets the header information for the .csv file to be used as input for
+  the user import job.</td></tr>
+<tr><td valign="top"><a href="#get_csv_header-3">get_csv_header/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_device-2">get_device/2</a></td><td>Gets the device.</td></tr>
+<tr><td valign="top"><a href="#get_device-3">get_device/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group-2">get_group/2</a></td><td>Gets a group.</td></tr>
+<tr><td valign="top"><a href="#get_group-3">get_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_identity_provider_by_identifier-2">get_identity_provider_by_identifier/2</a></td><td>Gets the specified identity provider.</td></tr>
+<tr><td valign="top"><a href="#get_identity_provider_by_identifier-3">get_identity_provider_by_identifier/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_signing_certificate-2">get_signing_certificate/2</a></td><td>This method takes a user pool ID, and returns the signing
+  certificate.</td></tr>
+<tr><td valign="top"><a href="#get_signing_certificate-3">get_signing_certificate/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_u_i_customization-2">get_u_i_customization/2</a></td><td>Gets the UI Customization information for a particular app client's  
+app UI, if there is something set.</td></tr>
+<tr><td valign="top"><a href="#get_u_i_customization-3">get_u_i_customization/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_user-2">get_user/2</a></td><td>Gets the user attributes and metadata for a user.</td></tr>
+<tr><td valign="top"><a href="#get_user-3">get_user/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_user_attribute_verification_code-2">get_user_attribute_verification_code/2</a></td><td>Gets the user attribute verification code for the specified attribute
+  name.</td></tr>
+<tr><td valign="top"><a href="#get_user_attribute_verification_code-3">get_user_attribute_verification_code/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_user_pool_mfa_config-2">get_user_pool_mfa_config/2</a></td><td>Gets the user pool multi-factor authentication (MFA) configuration.</td></tr>
+<tr><td valign="top"><a href="#get_user_pool_mfa_config-3">get_user_pool_mfa_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#global_sign_out-2">global_sign_out/2</a></td><td>Signs out users from all devices.</td></tr>
+<tr><td valign="top"><a href="#global_sign_out-3">global_sign_out/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#initiate_auth-2">initiate_auth/2</a></td><td>Initiates the authentication flow.</td></tr>
+<tr><td valign="top"><a href="#initiate_auth-3">initiate_auth/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_devices-2">list_devices/2</a></td><td>Lists the devices.</td></tr>
+<tr><td valign="top"><a href="#list_devices-3">list_devices/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_groups-2">list_groups/2</a></td><td>Lists the groups associated with a user pool.</td></tr>
+<tr><td valign="top"><a href="#list_groups-3">list_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_identity_providers-2">list_identity_providers/2</a></td><td>Lists information about all identity providers for a user pool.</td></tr>
+<tr><td valign="top"><a href="#list_identity_providers-3">list_identity_providers/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resource_servers-2">list_resource_servers/2</a></td><td>Lists the resource servers for a user pool.</td></tr>
+<tr><td valign="top"><a href="#list_resource_servers-3">list_resource_servers/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags that are assigned to an Amazon Cognito user pool.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_user_import_jobs-2">list_user_import_jobs/2</a></td><td>Lists the user import jobs.</td></tr>
+<tr><td valign="top"><a href="#list_user_import_jobs-3">list_user_import_jobs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_user_pool_clients-2">list_user_pool_clients/2</a></td><td>Lists the clients that have been created for the specified user pool.</td></tr>
+<tr><td valign="top"><a href="#list_user_pool_clients-3">list_user_pool_clients/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_user_pools-2">list_user_pools/2</a></td><td>Lists the user pools associated with an AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_user_pools-3">list_user_pools/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_users-2">list_users/2</a></td><td>Lists the users in the Amazon Cognito user pool.</td></tr>
+<tr><td valign="top"><a href="#list_users-3">list_users/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_users_in_group-2">list_users_in_group/2</a></td><td>Lists the users in the specified group.</td></tr>
+<tr><td valign="top"><a href="#list_users_in_group-3">list_users_in_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#resend_confirmation_code-2">resend_confirmation_code/2</a></td><td>Resends the confirmation (for confirmation of registration) to a
+  specific user in the user pool.</td></tr>
+<tr><td valign="top"><a href="#resend_confirmation_code-3">resend_confirmation_code/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#respond_to_auth_challenge-2">respond_to_auth_challenge/2</a></td><td>Responds to the authentication challenge.</td></tr>
+<tr><td valign="top"><a href="#respond_to_auth_challenge-3">respond_to_auth_challenge/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_risk_configuration-2">set_risk_configuration/2</a></td><td>Configures actions on detected risks.</td></tr>
+<tr><td valign="top"><a href="#set_risk_configuration-3">set_risk_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_u_i_customization-2">set_u_i_customization/2</a></td><td>Sets the UI customization information for a user pool's built-in app  
+UI.</td></tr>
+<tr><td valign="top"><a href="#set_u_i_customization-3">set_u_i_customization/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_user_m_f_a_preference-2">set_user_m_f_a_preference/2</a></td><td>Set the user's multi-factor authentication (MFA) method preference,  
+including which MFA factors are enabled and if any are preferred.</td></tr>
+<tr><td valign="top"><a href="#set_user_m_f_a_preference-3">set_user_m_f_a_preference/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_user_pool_mfa_config-2">set_user_pool_mfa_config/2</a></td><td>Set the user pool multi-factor authentication (MFA) configuration.</td></tr>
+<tr><td valign="top"><a href="#set_user_pool_mfa_config-3">set_user_pool_mfa_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#set_user_settings-2">set_user_settings/2</a></td><td>This action is no longer supported.</td></tr>
+<tr><td valign="top"><a href="#set_user_settings-3">set_user_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#sign_up-2">sign_up/2</a></td><td>Registers the user in the specified user pool and creates a user
+  name, password, and user attributes.</td></tr>
+<tr><td valign="top"><a href="#sign_up-3">sign_up/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_user_import_job-2">start_user_import_job/2</a></td><td>Starts the user import.</td></tr>
+<tr><td valign="top"><a href="#start_user_import_job-3">start_user_import_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_user_import_job-2">stop_user_import_job/2</a></td><td>Stops the user import job.</td></tr>
+<tr><td valign="top"><a href="#stop_user_import_job-3">stop_user_import_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Assigns a set of tags to an Amazon Cognito user pool.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes the specified tags from an Amazon Cognito user pool.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_auth_event_feedback-2">update_auth_event_feedback/2</a></td><td>Provides the feedback for an authentication event whether it was from  
+a valid user or not.</td></tr>
+<tr><td valign="top"><a href="#update_auth_event_feedback-3">update_auth_event_feedback/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_device_status-2">update_device_status/2</a></td><td>Updates the device status.</td></tr>
+<tr><td valign="top"><a href="#update_device_status-3">update_device_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_group-2">update_group/2</a></td><td>Updates the specified group with the specified attributes.</td></tr>
+<tr><td valign="top"><a href="#update_group-3">update_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_identity_provider-2">update_identity_provider/2</a></td><td>Updates identity provider information for a user pool.</td></tr>
+<tr><td valign="top"><a href="#update_identity_provider-3">update_identity_provider/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_resource_server-2">update_resource_server/2</a></td><td>Updates the name and scopes of resource server.</td></tr>
+<tr><td valign="top"><a href="#update_resource_server-3">update_resource_server/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_attributes-2">update_user_attributes/2</a></td><td>Allows a user to update a specific attribute (one at a time).</td></tr>
+<tr><td valign="top"><a href="#update_user_attributes-3">update_user_attributes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_pool-2">update_user_pool/2</a></td><td>Updates the specified user pool with the specified attributes.</td></tr>
+<tr><td valign="top"><a href="#update_user_pool-3">update_user_pool/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_pool_client-2">update_user_pool_client/2</a></td><td>Updates the specified user pool app client with the specified  
+attributes.</td></tr>
+<tr><td valign="top"><a href="#update_user_pool_client-3">update_user_pool_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_pool_domain-2">update_user_pool_domain/2</a></td><td>Updates the Secure Sockets Layer (SSL) certificate for the custom  
+domain for your user pool.</td></tr>
+<tr><td valign="top"><a href="#update_user_pool_domain-3">update_user_pool_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#verify_software_token-2">verify_software_token/2</a></td><td>Use this API to register a user's entered TOTP code and mark the  
+user's software token MFA status as "verified" if successful.</td></tr>
+<tr><td valign="top"><a href="#verify_software_token-3">verify_software_token/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#verify_user_attribute-2">verify_user_attribute/2</a></td><td>Verifies the specified user attributes in the user pool.</td></tr>
+<tr><td valign="top"><a href="#verify_user_attribute-3">verify_user_attribute/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_custom_attributes-2">add_custom_attributes/2</a></h3>
+<div class="spec">
+<p><tt>add_custom_attributes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds additional user attributes to the user pool schema.</p>
+
+<h3 class="function"><a name="add_custom_attributes-3">add_custom_attributes/3</a></h3>
+<div class="spec">
+<p><tt>add_custom_attributes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_add_user_to_group-2">admin_add_user_to_group/2</a></h3>
+<div class="spec">
+<p><tt>admin_add_user_to_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds the specified user to the specified group.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_add_user_to_group-3">admin_add_user_to_group/3</a></h3>
+<div class="spec">
+<p><tt>admin_add_user_to_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_confirm_sign_up-2">admin_confirm_sign_up/2</a></h3>
+<div class="spec">
+<p><tt>admin_confirm_sign_up(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Confirms user registration as an admin without using a confirmation  
+code.</p>
+ 
+  <p>Works on any user.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_confirm_sign_up-3">admin_confirm_sign_up/3</a></h3>
+<div class="spec">
+<p><tt>admin_confirm_sign_up(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_create_user-2">admin_create_user/2</a></h3>
+<div class="spec">
+<p><tt>admin_create_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new user in the specified user pool.</p>
+ 
+  <p>If <code>MessageAction</code> is not set, the default is to send a welcome message  
+via email or phone (SMS).</p>
+ 
+  <p>This message is based on a template that you configured in your call to  
+create or update a user pool. This template includes your custom sign-up  
+instructions and placeholders for user name and temporary password.</p>
+ 
+  <p>Alternatively, you can call <code>AdminCreateUser</code> with “SUPPRESS” for the
+  <code>MessageAction</code> parameter, and Amazon Cognito will not send any email.</p>
+ 
+  <p>In either case, the user will be in the <code>FORCE_CHANGE_PASSWORD</code> state  
+until they sign in and change their password.</p>
+ 
+  <code>AdminCreateUser</code> requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_create_user-3">admin_create_user/3</a></h3>
+<div class="spec">
+<p><tt>admin_create_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_delete_user-2">admin_delete_user/2</a></h3>
+<div class="spec">
+<p><tt>admin_delete_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a user as an administrator.</p>
+ 
+  <p>Works on any user.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_delete_user-3">admin_delete_user/3</a></h3>
+<div class="spec">
+<p><tt>admin_delete_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_delete_user_attributes-2">admin_delete_user_attributes/2</a></h3>
+<div class="spec">
+<p><tt>admin_delete_user_attributes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the user attributes in a user pool as an administrator.</p>
+ 
+  <p>Works on any user.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_delete_user_attributes-3">admin_delete_user_attributes/3</a></h3>
+<div class="spec">
+<p><tt>admin_delete_user_attributes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_disable_provider_for_user-2">admin_disable_provider_for_user/2</a></h3>
+<div class="spec">
+<p><tt>admin_disable_provider_for_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disables the user from signing in with the specified external (SAML  
+or social) identity provider.</p>
+ 
+  <p>If the user to disable is a Cognito User Pools native username + password
+  user, they are not permitted to use their password to sign-in. If the user
+  to disable is a linked external IdP user, any link between that user and
+  an existing user is removed. The next time the external user (no longer
+  attached to the previously linked <code>DestinationUser</code>) signs in, they must  
+create a new user account. See AdminLinkProviderForUser.</p>
+ 
+  <p>This action is enabled only for admin access and requires developer  
+credentials.</p>
+ 
+  <p>The <code>ProviderName</code> must match the value specified when creating an IdP for  
+the pool.</p>
+ 
+  <p>To disable a native username + password user, the <code>ProviderName</code> value
+  must be <code>Cognito</code> and the <code>ProviderAttributeName</code> must be
+  <code>Cognito_Subject</code>, with the <code>ProviderAttributeValue</code> being the name that  
+is used in the user pool for the user.</p>
+ 
+  <p>The <code>ProviderAttributeName</code> must always be <code>Cognito_Subject</code> for social
+  identity providers. The <code>ProviderAttributeValue</code> must always be the exact  
+subject that was used when the user was originally linked as a source  
+user.</p>
+ 
+  For de-linking a SAML identity, there are two scenarios. If the linked
+  identity has not yet been used to sign-in, the <code>ProviderAttributeName</code> and
+  <code>ProviderAttributeValue</code> must be the same values that were used for the
+  <code>SourceUser</code> when the identities were originally linked using <code>AdminLinkProviderForUser</code> call. (If the linking was done with
+  <code>ProviderAttributeName</code> set to <code>Cognito_Subject</code>, the same applies here).
+  However, if the user has already signed in, the <code>ProviderAttributeName</code>
+  must be <code>Cognito_Subject</code> and <code>ProviderAttributeValue</code> must be the subject
+  of the SAML assertion.</p>
+
+<h3 class="function"><a name="admin_disable_provider_for_user-3">admin_disable_provider_for_user/3</a></h3>
+<div class="spec">
+<p><tt>admin_disable_provider_for_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_disable_user-2">admin_disable_user/2</a></h3>
+<div class="spec">
+<p><tt>admin_disable_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disables the specified user.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_disable_user-3">admin_disable_user/3</a></h3>
+<div class="spec">
+<p><tt>admin_disable_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_enable_user-2">admin_enable_user/2</a></h3>
+<div class="spec">
+<p><tt>admin_enable_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Enables the specified user as an administrator.</p>
+ 
+  <p>Works on any user.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_enable_user-3">admin_enable_user/3</a></h3>
+<div class="spec">
+<p><tt>admin_enable_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_forget_device-2">admin_forget_device/2</a></h3>
+<div class="spec">
+<p><tt>admin_forget_device(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Forgets the device, as an administrator.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_forget_device-3">admin_forget_device/3</a></h3>
+<div class="spec">
+<p><tt>admin_forget_device(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_get_device-2">admin_get_device/2</a></h3>
+<div class="spec">
+<p><tt>admin_get_device(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the device, as an administrator.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_get_device-3">admin_get_device/3</a></h3>
+<div class="spec">
+<p><tt>admin_get_device(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_get_user-2">admin_get_user/2</a></h3>
+<div class="spec">
+<p><tt>admin_get_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the specified user by user name in a user pool as an  
+administrator.</p>
+ 
+  <p>Works on any user.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_get_user-3">admin_get_user/3</a></h3>
+<div class="spec">
+<p><tt>admin_get_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_initiate_auth-2">admin_initiate_auth/2</a></h3>
+<div class="spec">
+<p><tt>admin_initiate_auth(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Initiates the authentication flow, as an administrator.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_initiate_auth-3">admin_initiate_auth/3</a></h3>
+<div class="spec">
+<p><tt>admin_initiate_auth(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_link_provider_for_user-2">admin_link_provider_for_user/2</a></h3>
+<div class="spec">
+<p><tt>admin_link_provider_for_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Links an existing user account in a user pool (<code>DestinationUser</code>) to
+  an identity from an external identity provider (<code>SourceUser</code>) based on a  
+specified attribute name and value from the external identity provider.</p>
+ 
+  <p>This allows you to create a link from the existing user account to an  
+external federated user identity that has not yet been used to sign in, so  
+that the federated user identity can be used to sign in as the existing  
+user account.</p>
+ 
+  <p>For example, if there is an existing user with a username and password,  
+this API links that user to a federated user identity, so that when the  
+federated user identity is used, the user signs in as the existing user  
+account.</p>
+ 
+  <p>The maximum number of federated identities linked to a user is 5.</p>
+ 
+  <p>Because this API allows a user with an external federated identity to sign  
+in as an existing user in the user pool, it is critical that it only be  
+used with external identity providers and provider attributes that have  
+been trusted by the application owner.</p>
+ 
+  This action is enabled only for admin access and requires developer
+  credentials.</p>
+
+<h3 class="function"><a name="admin_link_provider_for_user-3">admin_link_provider_for_user/3</a></h3>
+<div class="spec">
+<p><tt>admin_link_provider_for_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_list_devices-2">admin_list_devices/2</a></h3>
+<div class="spec">
+<p><tt>admin_list_devices(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists devices, as an administrator.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_list_devices-3">admin_list_devices/3</a></h3>
+<div class="spec">
+<p><tt>admin_list_devices(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_list_groups_for_user-2">admin_list_groups_for_user/2</a></h3>
+<div class="spec">
+<p><tt>admin_list_groups_for_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the groups that the user belongs to.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_list_groups_for_user-3">admin_list_groups_for_user/3</a></h3>
+<div class="spec">
+<p><tt>admin_list_groups_for_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_list_user_auth_events-2">admin_list_user_auth_events/2</a></h3>
+<div class="spec">
+<p><tt>admin_list_user_auth_events(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists a history of user activity and any risks detected as part of
+  Amazon Cognito advanced security.</p>
+
+<h3 class="function"><a name="admin_list_user_auth_events-3">admin_list_user_auth_events/3</a></h3>
+<div class="spec">
+<p><tt>admin_list_user_auth_events(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_remove_user_from_group-2">admin_remove_user_from_group/2</a></h3>
+<div class="spec">
+<p><tt>admin_remove_user_from_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the specified user from the specified group.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_remove_user_from_group-3">admin_remove_user_from_group/3</a></h3>
+<div class="spec">
+<p><tt>admin_remove_user_from_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_reset_user_password-2">admin_reset_user_password/2</a></h3>
+<div class="spec">
+<p><tt>admin_reset_user_password(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Resets the specified user's password in a user pool as an  
+administrator.</p>
+ 
+  <p>Works on any user.</p>
+ 
+  <p>When a developer calls this API, the current password is invalidated, so  
+it must be changed. If a user tries to sign in after the API is called,  
+the app will get a PasswordResetRequiredException exception back and  
+should direct the user down the flow to reset the password, which is the  
+same as the forgot password flow. In addition, if the user pool has phone  
+verification selected and a verified phone number exists for the user, or  
+if email verification is selected and a verified email exists for the  
+user, calling this API will also result in sending a message to the end  
+user with the code to change their password.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_reset_user_password-3">admin_reset_user_password/3</a></h3>
+<div class="spec">
+<p><tt>admin_reset_user_password(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_respond_to_auth_challenge-2">admin_respond_to_auth_challenge/2</a></h3>
+<div class="spec">
+<p><tt>admin_respond_to_auth_challenge(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Responds to an authentication challenge, as an administrator.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_respond_to_auth_challenge-3">admin_respond_to_auth_challenge/3</a></h3>
+<div class="spec">
+<p><tt>admin_respond_to_auth_challenge(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_set_user_m_f_a_preference-2">admin_set_user_m_f_a_preference/2</a></h3>
+<div class="spec">
+<p><tt>admin_set_user_m_f_a_preference(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the user's multi-factor authentication (MFA) preference,  
+including which MFA options are enabled and if any are preferred.</p>
+ 
+  Only one factor can be set as preferred. The preferred MFA factor will be
+  used to authenticate a user if multiple factors are enabled. If multiple
+  options are enabled and no preference is set, a challenge to choose an MFA
+  option will be returned during sign in.</p>
+
+<h3 class="function"><a name="admin_set_user_m_f_a_preference-3">admin_set_user_m_f_a_preference/3</a></h3>
+<div class="spec">
+<p><tt>admin_set_user_m_f_a_preference(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_set_user_password-2">admin_set_user_password/2</a></h3>
+<div class="spec">
+<p><tt>admin_set_user_password(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the specified user's password in a user pool as an  
+administrator.</p>
+ 
+  <p>Works on any user.</p>
+ 
+  <p>The password can be temporary or permanent. If it is temporary, the user
+  status will be placed into the <code>FORCE_CHANGE_PASSWORD</code> state. When the
+  user next tries to sign in, the InitiateAuth/AdminInitiateAuth response
+  will contain the <code>NEW_PASSWORD_REQUIRED</code> challenge. If the user does not  
+sign in before it expires, the user will not be able to sign in and their  
+password will need to be reset by an administrator.</p>
+ 
+  Once the user has set a new password, or the password is permanent, the
+  user status will be set to <code>Confirmed</code>.</p>
+
+<h3 class="function"><a name="admin_set_user_password-3">admin_set_user_password/3</a></h3>
+<div class="spec">
+<p><tt>admin_set_user_password(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_set_user_settings-2">admin_set_user_settings/2</a></h3>
+<div class="spec">
+<p><tt>admin_set_user_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This action is no longer supported.</p>
+ 
+  You can use it to configure only SMS MFA. You can't use it to configure
+  TOTP software token MFA. To configure either type of MFA, use
+  AdminSetUserMFAPreference instead.</p>
+
+<h3 class="function"><a name="admin_set_user_settings-3">admin_set_user_settings/3</a></h3>
+<div class="spec">
+<p><tt>admin_set_user_settings(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_update_auth_event_feedback-2">admin_update_auth_event_feedback/2</a></h3>
+<div class="spec">
+<p><tt>admin_update_auth_event_feedback(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides feedback for an authentication event as to whether it was  
+from a valid user.</p>
+ 
+  This feedback is used for improving the risk evaluation decision for the
+  user pool as part of Amazon Cognito advanced security.</p>
+
+<h3 class="function"><a name="admin_update_auth_event_feedback-3">admin_update_auth_event_feedback/3</a></h3>
+<div class="spec">
+<p><tt>admin_update_auth_event_feedback(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_update_device_status-2">admin_update_device_status/2</a></h3>
+<div class="spec">
+<p><tt>admin_update_device_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the device status as an administrator.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_update_device_status-3">admin_update_device_status/3</a></h3>
+<div class="spec">
+<p><tt>admin_update_device_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_update_user_attributes-2">admin_update_user_attributes/2</a></h3>
+<div class="spec">
+<p><tt>admin_update_user_attributes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified user's attributes, including developer  
+attributes, as an administrator.</p>
+ 
+  <p>Works on any user.</p>
+ 
+  <p>For custom attributes, you must prepend the <code>custom:</code> prefix to the  
+attribute name.</p>
+ 
+  <p>In addition to updating user attributes, this API can also be used to mark  
+phone and email as verified.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_update_user_attributes-3">admin_update_user_attributes/3</a></h3>
+<div class="spec">
+<p><tt>admin_update_user_attributes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="admin_user_global_sign_out-2">admin_user_global_sign_out/2</a></h3>
+<div class="spec">
+<p><tt>admin_user_global_sign_out(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Signs out users from all devices, as an administrator.</p>
+ 
+  <p>It also invalidates all refresh tokens issued to a user. The user's  
+current access and Id tokens remain valid until their expiry. Access and  
+Id tokens expire one hour after they are issued.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="admin_user_global_sign_out-3">admin_user_global_sign_out/3</a></h3>
+<div class="spec">
+<p><tt>admin_user_global_sign_out(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_software_token-2">associate_software_token/2</a></h3>
+<div class="spec">
+<p><tt>associate_software_token(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a unique generated shared secret key code for the user  
+account.</p>
+ 
+  The request takes an access token or a session string, but not both.</p>
+
+<h3 class="function"><a name="associate_software_token-3">associate_software_token/3</a></h3>
+<div class="spec">
+<p><tt>associate_software_token(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="change_password-2">change_password/2</a></h3>
+<div class="spec">
+<p><tt>change_password(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes the password for a specified user in a user pool.</p>
+
+<h3 class="function"><a name="change_password-3">change_password/3</a></h3>
+<div class="spec">
+<p><tt>change_password(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="confirm_device-2">confirm_device/2</a></h3>
+<div class="spec">
+<p><tt>confirm_device(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Confirms tracking of the device.</p>
+ 
+  This API call is the call that begins device tracking.</p>
+
+<h3 class="function"><a name="confirm_device-3">confirm_device/3</a></h3>
+<div class="spec">
+<p><tt>confirm_device(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="confirm_forgot_password-2">confirm_forgot_password/2</a></h3>
+<div class="spec">
+<p><tt>confirm_forgot_password(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows a user to enter a confirmation code to reset a forgotten
+  password.</p>
+
+<h3 class="function"><a name="confirm_forgot_password-3">confirm_forgot_password/3</a></h3>
+<div class="spec">
+<p><tt>confirm_forgot_password(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="confirm_sign_up-2">confirm_sign_up/2</a></h3>
+<div class="spec">
+<p><tt>confirm_sign_up(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Confirms registration of a user and handles the existing alias from a
+  previous user.</p>
+
+<h3 class="function"><a name="confirm_sign_up-3">confirm_sign_up/3</a></h3>
+<div class="spec">
+<p><tt>confirm_sign_up(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_group-2">create_group/2</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new group in the specified user pool.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="create_group-3">create_group/3</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_identity_provider-2">create_identity_provider/2</a></h3>
+<div class="spec">
+<p><tt>create_identity_provider(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an identity provider for a user pool.</p>
+
+<h3 class="function"><a name="create_identity_provider-3">create_identity_provider/3</a></h3>
+<div class="spec">
+<p><tt>create_identity_provider(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resource_server-2">create_resource_server/2</a></h3>
+<div class="spec">
+<p><tt>create_resource_server(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new OAuth2.0 resource server and defines custom scopes in
+  it.</p>
+
+<h3 class="function"><a name="create_resource_server-3">create_resource_server/3</a></h3>
+<div class="spec">
+<p><tt>create_resource_server(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user_import_job-2">create_user_import_job/2</a></h3>
+<div class="spec">
+<p><tt>create_user_import_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates the user import job.</p>
+
+<h3 class="function"><a name="create_user_import_job-3">create_user_import_job/3</a></h3>
+<div class="spec">
+<p><tt>create_user_import_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user_pool-2">create_user_pool/2</a></h3>
+<div class="spec">
+<p><tt>create_user_pool(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new Amazon Cognito user pool and sets the password policy
+  for the pool.</p>
+
+<h3 class="function"><a name="create_user_pool-3">create_user_pool/3</a></h3>
+<div class="spec">
+<p><tt>create_user_pool(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user_pool_client-2">create_user_pool_client/2</a></h3>
+<div class="spec">
+<p><tt>create_user_pool_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates the user pool client.</p>
+
+<h3 class="function"><a name="create_user_pool_client-3">create_user_pool_client/3</a></h3>
+<div class="spec">
+<p><tt>create_user_pool_client(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user_pool_domain-2">create_user_pool_domain/2</a></h3>
+<div class="spec">
+<p><tt>create_user_pool_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new domain for a user pool.</p>
+
+<h3 class="function"><a name="create_user_pool_domain-3">create_user_pool_domain/3</a></h3>
+<div class="spec">
+<p><tt>create_user_pool_domain(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_group-2">delete_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a group.</p>
+ 
+  <p>Currently only groups with no members can be deleted.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="delete_group-3">delete_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_identity_provider-2">delete_identity_provider/2</a></h3>
+<div class="spec">
+<p><tt>delete_identity_provider(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an identity provider for a user pool.</p>
+
+<h3 class="function"><a name="delete_identity_provider-3">delete_identity_provider/3</a></h3>
+<div class="spec">
+<p><tt>delete_identity_provider(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resource_server-2">delete_resource_server/2</a></h3>
+<div class="spec">
+<p><tt>delete_resource_server(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a resource server.</p>
+
+<h3 class="function"><a name="delete_resource_server-3">delete_resource_server/3</a></h3>
+<div class="spec">
+<p><tt>delete_resource_server(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user-2">delete_user/2</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows a user to delete himself or herself.</p>
+
+<h3 class="function"><a name="delete_user-3">delete_user/3</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user_attributes-2">delete_user_attributes/2</a></h3>
+<div class="spec">
+<p><tt>delete_user_attributes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the attributes for a user.</p>
+
+<h3 class="function"><a name="delete_user_attributes-3">delete_user_attributes/3</a></h3>
+<div class="spec">
+<p><tt>delete_user_attributes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user_pool-2">delete_user_pool/2</a></h3>
+<div class="spec">
+<p><tt>delete_user_pool(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified Amazon Cognito user pool.</p>
+
+<h3 class="function"><a name="delete_user_pool-3">delete_user_pool/3</a></h3>
+<div class="spec">
+<p><tt>delete_user_pool(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user_pool_client-2">delete_user_pool_client/2</a></h3>
+<div class="spec">
+<p><tt>delete_user_pool_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows the developer to delete the user pool client.</p>
+
+<h3 class="function"><a name="delete_user_pool_client-3">delete_user_pool_client/3</a></h3>
+<div class="spec">
+<p><tt>delete_user_pool_client(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user_pool_domain-2">delete_user_pool_domain/2</a></h3>
+<div class="spec">
+<p><tt>delete_user_pool_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a domain for a user pool.</p>
+
+<h3 class="function"><a name="delete_user_pool_domain-3">delete_user_pool_domain/3</a></h3>
+<div class="spec">
+<p><tt>delete_user_pool_domain(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_identity_provider-2">describe_identity_provider/2</a></h3>
+<div class="spec">
+<p><tt>describe_identity_provider(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a specific identity provider.</p>
+
+<h3 class="function"><a name="describe_identity_provider-3">describe_identity_provider/3</a></h3>
+<div class="spec">
+<p><tt>describe_identity_provider(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_resource_server-2">describe_resource_server/2</a></h3>
+<div class="spec">
+<p><tt>describe_resource_server(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a resource server.</p>
+
+<h3 class="function"><a name="describe_resource_server-3">describe_resource_server/3</a></h3>
+<div class="spec">
+<p><tt>describe_resource_server(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_risk_configuration-2">describe_risk_configuration/2</a></h3>
+<div class="spec">
+<p><tt>describe_risk_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the risk configuration.</p>
+
+<h3 class="function"><a name="describe_risk_configuration-3">describe_risk_configuration/3</a></h3>
+<div class="spec">
+<p><tt>describe_risk_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_import_job-2">describe_user_import_job/2</a></h3>
+<div class="spec">
+<p><tt>describe_user_import_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the user import job.</p>
+
+<h3 class="function"><a name="describe_user_import_job-3">describe_user_import_job/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_import_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_pool-2">describe_user_pool/2</a></h3>
+<div class="spec">
+<p><tt>describe_user_pool(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the configuration information and metadata of the specified
+  user pool.</p>
+
+<h3 class="function"><a name="describe_user_pool-3">describe_user_pool/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_pool(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_pool_client-2">describe_user_pool_client/2</a></h3>
+<div class="spec">
+<p><tt>describe_user_pool_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Client method for returning the configuration information and
+  metadata of the specified user pool app client.</p>
+
+<h3 class="function"><a name="describe_user_pool_client-3">describe_user_pool_client/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_pool_client(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_pool_domain-2">describe_user_pool_domain/2</a></h3>
+<div class="spec">
+<p><tt>describe_user_pool_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a domain.</p>
+
+<h3 class="function"><a name="describe_user_pool_domain-3">describe_user_pool_domain/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_pool_domain(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="forget_device-2">forget_device/2</a></h3>
+<div class="spec">
+<p><tt>forget_device(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Forgets the specified device.</p>
+
+<h3 class="function"><a name="forget_device-3">forget_device/3</a></h3>
+<div class="spec">
+<p><tt>forget_device(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="forgot_password-2">forgot_password/2</a></h3>
+<div class="spec">
+<p><tt>forgot_password(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Calling this API causes a message to be sent to the end user with a  
+confirmation code that is required to change the user's password.</p>
+ 
+  For the <code>Username</code> parameter, you can use the username or user alias. The
+  method used to send the confirmation code is sent according to the
+  specified AccountRecoverySetting. For more information, see Recovering
+  User Accounts in the Amazon Cognito Developer Guide. If neither a verified
+  phone number nor a verified email exists, an <code>InvalidParameterException</code>
+  is thrown. To use the confirmation code for resetting the password, call
+  ConfirmForgotPassword.</p>
+
+<h3 class="function"><a name="forgot_password-3">forgot_password/3</a></h3>
+<div class="spec">
+<p><tt>forgot_password(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_csv_header-2">get_csv_header/2</a></h3>
+<div class="spec">
+<p><tt>get_csv_header(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the header information for the .csv file to be used as input for
+  the user import job.</p>
+
+<h3 class="function"><a name="get_csv_header-3">get_csv_header/3</a></h3>
+<div class="spec">
+<p><tt>get_csv_header(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_device-2">get_device/2</a></h3>
+<div class="spec">
+<p><tt>get_device(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the device.</p>
+
+<h3 class="function"><a name="get_device-3">get_device/3</a></h3>
+<div class="spec">
+<p><tt>get_device(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group-2">get_group/2</a></h3>
+<div class="spec">
+<p><tt>get_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a group.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="get_group-3">get_group/3</a></h3>
+<div class="spec">
+<p><tt>get_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_identity_provider_by_identifier-2">get_identity_provider_by_identifier/2</a></h3>
+<div class="spec">
+<p><tt>get_identity_provider_by_identifier(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the specified identity provider.</p>
+
+<h3 class="function"><a name="get_identity_provider_by_identifier-3">get_identity_provider_by_identifier/3</a></h3>
+<div class="spec">
+<p><tt>get_identity_provider_by_identifier(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_signing_certificate-2">get_signing_certificate/2</a></h3>
+<div class="spec">
+<p><tt>get_signing_certificate(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>This method takes a user pool ID, and returns the signing
+  certificate.</p>
+
+<h3 class="function"><a name="get_signing_certificate-3">get_signing_certificate/3</a></h3>
+<div class="spec">
+<p><tt>get_signing_certificate(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_u_i_customization-2">get_u_i_customization/2</a></h3>
+<div class="spec">
+<p><tt>get_u_i_customization(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the UI Customization information for a particular app client's  
+app UI, if there is something set.</p>
+ 
+  If nothing is set for the particular client, but there is an existing pool
+  level customization (app <code>clientId</code> will be <code>ALL</code>), then that is returned.
+  If nothing is present, then an empty shape is returned.</p>
+
+<h3 class="function"><a name="get_u_i_customization-3">get_u_i_customization/3</a></h3>
+<div class="spec">
+<p><tt>get_u_i_customization(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_user-2">get_user/2</a></h3>
+<div class="spec">
+<p><tt>get_user(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the user attributes and metadata for a user.</p>
+
+<h3 class="function"><a name="get_user-3">get_user/3</a></h3>
+<div class="spec">
+<p><tt>get_user(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_user_attribute_verification_code-2">get_user_attribute_verification_code/2</a></h3>
+<div class="spec">
+<p><tt>get_user_attribute_verification_code(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the user attribute verification code for the specified attribute
+  name.</p>
+
+<h3 class="function"><a name="get_user_attribute_verification_code-3">get_user_attribute_verification_code/3</a></h3>
+<div class="spec">
+<p><tt>get_user_attribute_verification_code(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_user_pool_mfa_config-2">get_user_pool_mfa_config/2</a></h3>
+<div class="spec">
+<p><tt>get_user_pool_mfa_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the user pool multi-factor authentication (MFA) configuration.</p>
+
+<h3 class="function"><a name="get_user_pool_mfa_config-3">get_user_pool_mfa_config/3</a></h3>
+<div class="spec">
+<p><tt>get_user_pool_mfa_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="global_sign_out-2">global_sign_out/2</a></h3>
+<div class="spec">
+<p><tt>global_sign_out(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Signs out users from all devices.</p>
+ 
+  It also invalidates all refresh tokens issued to a user. The user's
+  current access and Id tokens remain valid until their expiry. Access and
+  Id tokens expire one hour after they are issued.</p>
+
+<h3 class="function"><a name="global_sign_out-3">global_sign_out/3</a></h3>
+<div class="spec">
+<p><tt>global_sign_out(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="initiate_auth-2">initiate_auth/2</a></h3>
+<div class="spec">
+<p><tt>initiate_auth(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Initiates the authentication flow.</p>
+
+<h3 class="function"><a name="initiate_auth-3">initiate_auth/3</a></h3>
+<div class="spec">
+<p><tt>initiate_auth(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_devices-2">list_devices/2</a></h3>
+<div class="spec">
+<p><tt>list_devices(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the devices.</p>
+
+<h3 class="function"><a name="list_devices-3">list_devices/3</a></h3>
+<div class="spec">
+<p><tt>list_devices(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_groups-2">list_groups/2</a></h3>
+<div class="spec">
+<p><tt>list_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the groups associated with a user pool.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="list_groups-3">list_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_identity_providers-2">list_identity_providers/2</a></h3>
+<div class="spec">
+<p><tt>list_identity_providers(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists information about all identity providers for a user pool.</p>
+
+<h3 class="function"><a name="list_identity_providers-3">list_identity_providers/3</a></h3>
+<div class="spec">
+<p><tt>list_identity_providers(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resource_servers-2">list_resource_servers/2</a></h3>
+<div class="spec">
+<p><tt>list_resource_servers(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the resource servers for a user pool.</p>
+
+<h3 class="function"><a name="list_resource_servers-3">list_resource_servers/3</a></h3>
+<div class="spec">
+<p><tt>list_resource_servers(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the tags that are assigned to an Amazon Cognito user pool.</p>
+ 
+  <p>A tag is a label that you can apply to user pools to categorize and manage  
+them in different ways, such as by purpose, owner, environment, or other  
+criteria.</p>
+ 
+  You can use this action up to 10 times per second, per account.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_user_import_jobs-2">list_user_import_jobs/2</a></h3>
+<div class="spec">
+<p><tt>list_user_import_jobs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the user import jobs.</p>
+
+<h3 class="function"><a name="list_user_import_jobs-3">list_user_import_jobs/3</a></h3>
+<div class="spec">
+<p><tt>list_user_import_jobs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_user_pool_clients-2">list_user_pool_clients/2</a></h3>
+<div class="spec">
+<p><tt>list_user_pool_clients(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the clients that have been created for the specified user pool.</p>
+
+<h3 class="function"><a name="list_user_pool_clients-3">list_user_pool_clients/3</a></h3>
+<div class="spec">
+<p><tt>list_user_pool_clients(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_user_pools-2">list_user_pools/2</a></h3>
+<div class="spec">
+<p><tt>list_user_pools(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the user pools associated with an AWS account.</p>
+
+<h3 class="function"><a name="list_user_pools-3">list_user_pools/3</a></h3>
+<div class="spec">
+<p><tt>list_user_pools(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_users-2">list_users/2</a></h3>
+<div class="spec">
+<p><tt>list_users(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the users in the Amazon Cognito user pool.</p>
+
+<h3 class="function"><a name="list_users-3">list_users/3</a></h3>
+<div class="spec">
+<p><tt>list_users(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_users_in_group-2">list_users_in_group/2</a></h3>
+<div class="spec">
+<p><tt>list_users_in_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the users in the specified group.</p>
+ 
+  Calling this action requires developer credentials.</p>
+
+<h3 class="function"><a name="list_users_in_group-3">list_users_in_group/3</a></h3>
+<div class="spec">
+<p><tt>list_users_in_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="resend_confirmation_code-2">resend_confirmation_code/2</a></h3>
+<div class="spec">
+<p><tt>resend_confirmation_code(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Resends the confirmation (for confirmation of registration) to a
+  specific user in the user pool.</p>
+
+<h3 class="function"><a name="resend_confirmation_code-3">resend_confirmation_code/3</a></h3>
+<div class="spec">
+<p><tt>resend_confirmation_code(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="respond_to_auth_challenge-2">respond_to_auth_challenge/2</a></h3>
+<div class="spec">
+<p><tt>respond_to_auth_challenge(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Responds to the authentication challenge.</p>
+
+<h3 class="function"><a name="respond_to_auth_challenge-3">respond_to_auth_challenge/3</a></h3>
+<div class="spec">
+<p><tt>respond_to_auth_challenge(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_risk_configuration-2">set_risk_configuration/2</a></h3>
+<div class="spec">
+<p><tt>set_risk_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures actions on detected risks.</p>
+ 
+  <p>To delete the risk configuration for <code>UserPoolId</code> or <code>ClientId</code>, pass null  
+values for all four configuration types.</p>
+ 
+  To enable Amazon Cognito advanced security features, update the user pool
+  to include the <code>UserPoolAddOns</code> key<code>AdvancedSecurityMode</code>.</p>
+
+<h3 class="function"><a name="set_risk_configuration-3">set_risk_configuration/3</a></h3>
+<div class="spec">
+<p><tt>set_risk_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_u_i_customization-2">set_u_i_customization/2</a></h3>
+<div class="spec">
+<p><tt>set_u_i_customization(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the UI customization information for a user pool's built-in app  
+UI.</p>
+ 
+  <p>You can specify app UI customization settings for a single client (with a
+  specific <code>clientId</code>) or for all clients (by setting the <code>clientId</code> to
+  <code>ALL</code>). If you specify <code>ALL</code>, the default configuration will be used for
+  every client that has no UI customization set previously. If you specify
+  UI customization settings for a particular client, it will no longer fall
+  back to the <code>ALL</code> configuration.</p>
+ 
+  To use this API, your user pool must have a domain associated with it.
+  Otherwise, there is no place to host the app's pages, and the service will
+  throw an error.</p>
+
+<h3 class="function"><a name="set_u_i_customization-3">set_u_i_customization/3</a></h3>
+<div class="spec">
+<p><tt>set_u_i_customization(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_user_m_f_a_preference-2">set_user_m_f_a_preference/2</a></h3>
+<div class="spec">
+<p><tt>set_user_m_f_a_preference(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Set the user's multi-factor authentication (MFA) method preference,  
+including which MFA factors are enabled and if any are preferred.</p>
+ 
+  Only one factor can be set as preferred. The preferred MFA factor will be
+  used to authenticate a user if multiple factors are enabled. If multiple
+  options are enabled and no preference is set, a challenge to choose an MFA
+  option will be returned during sign in.</p>
+
+<h3 class="function"><a name="set_user_m_f_a_preference-3">set_user_m_f_a_preference/3</a></h3>
+<div class="spec">
+<p><tt>set_user_m_f_a_preference(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_user_pool_mfa_config-2">set_user_pool_mfa_config/2</a></h3>
+<div class="spec">
+<p><tt>set_user_pool_mfa_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Set the user pool multi-factor authentication (MFA) configuration.</p>
+
+<h3 class="function"><a name="set_user_pool_mfa_config-3">set_user_pool_mfa_config/3</a></h3>
+<div class="spec">
+<p><tt>set_user_pool_mfa_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="set_user_settings-2">set_user_settings/2</a></h3>
+<div class="spec">
+<p><tt>set_user_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This action is no longer supported.</p>
+ 
+  You can use it to configure only SMS MFA. You can't use it to configure
+  TOTP software token MFA. To configure either type of MFA, use
+  SetUserMFAPreference instead.</p>
+
+<h3 class="function"><a name="set_user_settings-3">set_user_settings/3</a></h3>
+<div class="spec">
+<p><tt>set_user_settings(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="sign_up-2">sign_up/2</a></h3>
+<div class="spec">
+<p><tt>sign_up(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Registers the user in the specified user pool and creates a user
+  name, password, and user attributes.</p>
+
+<h3 class="function"><a name="sign_up-3">sign_up/3</a></h3>
+<div class="spec">
+<p><tt>sign_up(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_user_import_job-2">start_user_import_job/2</a></h3>
+<div class="spec">
+<p><tt>start_user_import_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts the user import.</p>
+
+<h3 class="function"><a name="start_user_import_job-3">start_user_import_job/3</a></h3>
+<div class="spec">
+<p><tt>start_user_import_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_user_import_job-2">stop_user_import_job/2</a></h3>
+<div class="spec">
+<p><tt>stop_user_import_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stops the user import job.</p>
+
+<h3 class="function"><a name="stop_user_import_job-3">stop_user_import_job/3</a></h3>
+<div class="spec">
+<p><tt>stop_user_import_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Assigns a set of tags to an Amazon Cognito user pool.</p>
+ 
+  <p>A tag is a label that you can use to categorize and manage user pools in  
+different ways, such as by purpose, owner, environment, or other criteria.</p>
+ 
+  <p>Each tag consists of a key and value, both of which you define. A key is a
+  general category for more specific values. For example, if you have two
+  versions of a user pool, one for testing and another for production, you
+  might assign an <code>Environment</code> tag key to both user pools. The value of
+  this key might be <code>Test</code> for one user pool and <code>Production</code> for the other.</p>
+ 
+  <p>Tags are useful for cost tracking and access control. You can activate  
+your tags so that they appear on the Billing and Cost Management console,  
+where you can track the costs associated with your user pools. In an IAM  
+policy, you can constrain permissions for user pools based on specific  
+tags or tag values.</p>
+ 
+  You can use this action up to 5 times per second, per account. A user pool
+  can have as many as 50 tags.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the specified tags from an Amazon Cognito user pool.</p>
+ 
+  You can use this action up to 5 times per second, per account</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_auth_event_feedback-2">update_auth_event_feedback/2</a></h3>
+<div class="spec">
+<p><tt>update_auth_event_feedback(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides the feedback for an authentication event whether it was from  
+a valid user or not.</p>
+ 
+  This feedback is used for improving the risk evaluation decision for the
+  user pool as part of Amazon Cognito advanced security.</p>
+
+<h3 class="function"><a name="update_auth_event_feedback-3">update_auth_event_feedback/3</a></h3>
+<div class="spec">
+<p><tt>update_auth_event_feedback(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_device_status-2">update_device_status/2</a></h3>
+<div class="spec">
+<p><tt>update_device_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the device status.</p>
+
+<h3 class="function"><a name="update_device_status-3">update_device_status/3</a></h3>
+<div class="spec">
+<p><tt>update_device_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_group-2">update_group/2</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified group with the specified attributes.</p>
+ 
+  <p>Calling this action requires developer credentials.</p>
+ 
+  If you don't provide a value for an attribute, it will be set to the
+  default value.</p>
+
+<h3 class="function"><a name="update_group-3">update_group/3</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_identity_provider-2">update_identity_provider/2</a></h3>
+<div class="spec">
+<p><tt>update_identity_provider(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates identity provider information for a user pool.</p>
+
+<h3 class="function"><a name="update_identity_provider-3">update_identity_provider/3</a></h3>
+<div class="spec">
+<p><tt>update_identity_provider(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_resource_server-2">update_resource_server/2</a></h3>
+<div class="spec">
+<p><tt>update_resource_server(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the name and scopes of resource server.</p>
+ 
+  <p>All other fields are read-only.</p>
+ 
+  If you don't provide a value for an attribute, it will be set to the
+  default value.</p>
+
+<h3 class="function"><a name="update_resource_server-3">update_resource_server/3</a></h3>
+<div class="spec">
+<p><tt>update_resource_server(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_attributes-2">update_user_attributes/2</a></h3>
+<div class="spec">
+<p><tt>update_user_attributes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows a user to update a specific attribute (one at a time).</p>
+
+<h3 class="function"><a name="update_user_attributes-3">update_user_attributes/3</a></h3>
+<div class="spec">
+<p><tt>update_user_attributes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_pool-2">update_user_pool/2</a></h3>
+<div class="spec">
+<p><tt>update_user_pool(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified user pool with the specified attributes.</p>
+ 
+  <p>You can get a list of the current user pool settings using  
+DescribeUserPool.</p>
+ 
+  If you don't provide a value for an attribute, it will be set to the
+  default value.</p>
+
+<h3 class="function"><a name="update_user_pool-3">update_user_pool/3</a></h3>
+<div class="spec">
+<p><tt>update_user_pool(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_pool_client-2">update_user_pool_client/2</a></h3>
+<div class="spec">
+<p><tt>update_user_pool_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified user pool app client with the specified  
+attributes.</p>
+ 
+  <p>You can get a list of the current user pool app client settings using  
+DescribeUserPoolClient.</p>
+ 
+  If you don't provide a value for an attribute, it will be set to the
+  default value.</p>
+
+<h3 class="function"><a name="update_user_pool_client-3">update_user_pool_client/3</a></h3>
+<div class="spec">
+<p><tt>update_user_pool_client(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_pool_domain-2">update_user_pool_domain/2</a></h3>
+<div class="spec">
+<p><tt>update_user_pool_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the Secure Sockets Layer (SSL) certificate for the custom  
+domain for your user pool.</p>
+ 
+  <p>You can use this operation to provide the Amazon Resource Name (ARN) of a  
+new certificate to Amazon Cognito. You cannot use it to change the domain  
+for a user pool.</p>
+ 
+  <p>A custom domain is used to host the Amazon Cognito hosted UI, which  
+provides sign-up and sign-in pages for your application. When you set up a  
+custom domain, you provide a certificate that you manage with AWS  
+Certificate Manager (ACM). When necessary, you can use this operation to  
+change the certificate that you applied to your custom domain.</p>
+ 
+  <p>Usually, this is unnecessary following routine certificate renewal with  
+ACM. When you renew your existing certificate in ACM, the ARN for your  
+certificate remains the same, and your custom domain uses the new  
+certificate automatically.</p>
+ 
+  <p>However, if you replace your existing certificate with a new one, ACM  
+gives the new certificate a new ARN. To apply the new certificate to your  
+custom domain, you must provide this ARN to Amazon Cognito.</p>
+ 
+  <p>When you add your new certificate in ACM, you must choose US East (N.  
+Virginia) as the AWS Region.</p>
+ 
+  <p>After you submit your request, Amazon Cognito requires up to 1 hour to  
+distribute your new certificate to your custom domain.</p>
+ 
+  For more information about adding a custom domain to your user pool, see
+  Using Your Own Domain for the Hosted UI.</p>
+
+<h3 class="function"><a name="update_user_pool_domain-3">update_user_pool_domain/3</a></h3>
+<div class="spec">
+<p><tt>update_user_pool_domain(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="verify_software_token-2">verify_software_token/2</a></h3>
+<div class="spec">
+<p><tt>verify_software_token(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Use this API to register a user's entered TOTP code and mark the  
+user's software token MFA status as "verified" if successful.</p>
+ 
+  The request takes an access token or a session string, but not both.</p>
+
+<h3 class="function"><a name="verify_software_token-3">verify_software_token/3</a></h3>
+<div class="spec">
+<p><tt>verify_software_token(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="verify_user_attribute-2">verify_user_attribute/2</a></h3>
+<div class="spec">
+<p><tt>verify_user_attribute(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Verifies the specified user attributes in the user pool.</p>
+
+<h3 class="function"><a name="verify_user_attribute-3">verify_user_attribute/3</a></h3>
+<div class="spec">
+<p><tt>verify_user_attribute(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

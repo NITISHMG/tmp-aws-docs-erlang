@@ -1,0 +1,283 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_codestar_notifications</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_codestar_notifications</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>This AWS CodeStar Notifications API Reference provides descriptions  
+and usage examples of the operations and data types for the AWS CodeStar  
+Notifications API.
+
+
+<h2><a name="description">Description</a></h2><p>This AWS CodeStar Notifications API Reference provides descriptions  
+and usage examples of the operations and data types for the AWS CodeStar  
+Notifications API.</p>
+ 
+  <p>You can use the AWS CodeStar Notifications API to work with the following  
+objects:</p>
+ 
+  <p>Notification rules, by calling the following:</p>
+ 
+  <ul> <li><p> <code>CreateNotificationRule</code>, which creates a notification rule for  
+a resource in your account.</p>
+ 
+  </li> <li><p> <code>DeleteNotificationRule</code>, which deletes a notification rule.</p>
+ 
+  </li> <li><p> <code>DescribeNotificationRule</code>, which provides information about a  
+notification rule.</p>
+ 
+  </li> <li><p> <code>ListNotificationRules</code>, which lists the notification rules  
+associated with your account.</p>
+ 
+  </li> <li><p> <code>UpdateNotificationRule</code>, which changes the name, events, or  
+targets associated with a notification rule.</p>
+ 
+  </li> <li><p> <code>Subscribe</code>, which subscribes a target to a notification rule.</p>
+ 
+  </li> <li><p> <code>Unsubscribe</code>, which removes a target from a notification rule.</p>
+ 
+  </li> </ul><p> Targets, by calling the following:</p>
+ 
+  <ul> <li><p> <code>DeleteTarget</code>, which removes a notification rule target (SNS  
+topic) from a notification rule.</p>
+ 
+  </li> <li><p> <code>ListTargets</code>, which lists the targets associated with a  
+notification rule.</p>
+ 
+  </li> </ul><p> Events, by calling the following:</p>
+ 
+  <ul> <li><p> <code>ListEventTypes</code>, which lists the event types you can include in  
+a notification rule.</p>
+ 
+  </li> </ul><p> Tags, by calling the following:</p>
+ 
+  <ul> <li><p> <code>ListTagsForResource</code>, which lists the tags already associated  
+with a notification rule in your account.</p>
+ 
+  </li> <li><p> <code>TagResource</code>, which associates a tag you provide with a  
+notification rule in your account.</p>
+ 
+  </li> <li><p> <code>UntagResource</code>, which removes a tag from a notification rule  
+in your account.</p>
+ 
+  </li> </ul> For information about how to use AWS CodeStar Notifications,
+  see link in the CodeStarNotifications User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_notification_rule-2">create_notification_rule/2</a></td><td>Creates a notification rule for a resource.</td></tr>
+<tr><td valign="top"><a href="#create_notification_rule-3">create_notification_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_notification_rule-2">delete_notification_rule/2</a></td><td>Deletes a notification rule for a resource.</td></tr>
+<tr><td valign="top"><a href="#delete_notification_rule-3">delete_notification_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_target-2">delete_target/2</a></td><td>Deletes a specified target for notifications.</td></tr>
+<tr><td valign="top"><a href="#delete_target-3">delete_target/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_notification_rule-2">describe_notification_rule/2</a></td><td>Returns information about a specified notification rule.</td></tr>
+<tr><td valign="top"><a href="#describe_notification_rule-3">describe_notification_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_event_types-2">list_event_types/2</a></td><td>Returns information about the event types available for configuring
+  notifications.</td></tr>
+<tr><td valign="top"><a href="#list_event_types-3">list_event_types/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_notification_rules-2">list_notification_rules/2</a></td><td>Returns a list of the notification rules for an AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_notification_rules-3">list_notification_rules/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of the tags associated with a notification rule.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_targets-2">list_targets/2</a></td><td>Returns a list of the notification rule targets for an AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_targets-3">list_targets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#subscribe-2">subscribe/2</a></td><td>Creates an association between a notification rule and an SNS topic
+  so that the associated target can receive notifications when the events
+  described in the rule are triggered.</td></tr>
+<tr><td valign="top"><a href="#subscribe-3">subscribe/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Associates a set of provided tags with a notification rule.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unsubscribe-2">unsubscribe/2</a></td><td>Removes an association between a notification rule and an Amazon SNS
+  topic so that subscribers to that topic stop receiving notifications when
+  the events described in the rule are triggered.</td></tr>
+<tr><td valign="top"><a href="#unsubscribe-3">unsubscribe/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes the association between one or more provided tags and a
+  notification rule.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_notification_rule-2">update_notification_rule/2</a></td><td>Updates a notification rule for a resource.</td></tr>
+<tr><td valign="top"><a href="#update_notification_rule-3">update_notification_rule/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_notification_rule-2">create_notification_rule/2</a></h3>
+<div class="spec">
+<p><tt>create_notification_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a notification rule for a resource.</p>
+ 
+  The rule specifies the events you want notifications about and the targets
+  (such as SNS topics) where you want to receive them.</p>
+
+<h3 class="function"><a name="create_notification_rule-3">create_notification_rule/3</a></h3>
+<div class="spec">
+<p><tt>create_notification_rule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_notification_rule-2">delete_notification_rule/2</a></h3>
+<div class="spec">
+<p><tt>delete_notification_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a notification rule for a resource.</p>
+
+<h3 class="function"><a name="delete_notification_rule-3">delete_notification_rule/3</a></h3>
+<div class="spec">
+<p><tt>delete_notification_rule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_target-2">delete_target/2</a></h3>
+<div class="spec">
+<p><tt>delete_target(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a specified target for notifications.</p>
+
+<h3 class="function"><a name="delete_target-3">delete_target/3</a></h3>
+<div class="spec">
+<p><tt>delete_target(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_notification_rule-2">describe_notification_rule/2</a></h3>
+<div class="spec">
+<p><tt>describe_notification_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a specified notification rule.</p>
+
+<h3 class="function"><a name="describe_notification_rule-3">describe_notification_rule/3</a></h3>
+<div class="spec">
+<p><tt>describe_notification_rule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_event_types-2">list_event_types/2</a></h3>
+<div class="spec">
+<p><tt>list_event_types(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the event types available for configuring
+  notifications.</p>
+
+<h3 class="function"><a name="list_event_types-3">list_event_types/3</a></h3>
+<div class="spec">
+<p><tt>list_event_types(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_notification_rules-2">list_notification_rules/2</a></h3>
+<div class="spec">
+<p><tt>list_notification_rules(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the notification rules for an AWS account.</p>
+
+<h3 class="function"><a name="list_notification_rules-3">list_notification_rules/3</a></h3>
+<div class="spec">
+<p><tt>list_notification_rules(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the tags associated with a notification rule.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_targets-2">list_targets/2</a></h3>
+<div class="spec">
+<p><tt>list_targets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the notification rule targets for an AWS account.</p>
+
+<h3 class="function"><a name="list_targets-3">list_targets/3</a></h3>
+<div class="spec">
+<p><tt>list_targets(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="subscribe-2">subscribe/2</a></h3>
+<div class="spec">
+<p><tt>subscribe(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an association between a notification rule and an SNS topic
+  so that the associated target can receive notifications when the events
+  described in the rule are triggered.</p>
+
+<h3 class="function"><a name="subscribe-3">subscribe/3</a></h3>
+<div class="spec">
+<p><tt>subscribe(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a set of provided tags with a notification rule.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="unsubscribe-2">unsubscribe/2</a></h3>
+<div class="spec">
+<p><tt>unsubscribe(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes an association between a notification rule and an Amazon SNS
+  topic so that subscribers to that topic stop receiving notifications when
+  the events described in the rule are triggered.</p>
+
+<h3 class="function"><a name="unsubscribe-3">unsubscribe/3</a></h3>
+<div class="spec">
+<p><tt>unsubscribe(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the association between one or more provided tags and a
+  notification rule.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_notification_rule-2">update_notification_rule/2</a></h3>
+<div class="spec">
+<p><tt>update_notification_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a notification rule for a resource.</p>
+ 
+  <p>You can change the events that trigger the notification rule, the status  
+of the rule, and the targets that receive the notifications.</p>
+ 
+  To add or remove tags for a notification rule, you must use <code>TagResource</code>
+  and <code>UntagResource</code>.</p>
+
+<h3 class="function"><a name="update_notification_rule-3">update_notification_rule/3</a></h3>
+<div class="spec">
+<p><tt>update_notification_rule(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

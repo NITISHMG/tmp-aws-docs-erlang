@@ -1,0 +1,450 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_sso_admin</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_sso_admin</h1>
+<ul class="index"><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+
+
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#attach_managed_policy_to_permission_set-2">attach_managed_policy_to_permission_set/2</a></td><td>Attaches an IAM managed policy ARN to a permission set.</td></tr>
+<tr><td valign="top"><a href="#attach_managed_policy_to_permission_set-3">attach_managed_policy_to_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_account_assignment-2">create_account_assignment/2</a></td><td>Assigns access to a principal for a specified AWS account using a  
+specified permission set.</td></tr>
+<tr><td valign="top"><a href="#create_account_assignment-3">create_account_assignment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_permission_set-2">create_permission_set/2</a></td><td>Creates a permission set within a specified SSO instance.</td></tr>
+<tr><td valign="top"><a href="#create_permission_set-3">create_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_account_assignment-2">delete_account_assignment/2</a></td><td>Deletes a principal's access from a specified AWS account using a
+  specified permission set.</td></tr>
+<tr><td valign="top"><a href="#delete_account_assignment-3">delete_account_assignment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_inline_policy_from_permission_set-2">delete_inline_policy_from_permission_set/2</a></td><td>Deletes the inline policy from a specified permission set.</td></tr>
+<tr><td valign="top"><a href="#delete_inline_policy_from_permission_set-3">delete_inline_policy_from_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_permission_set-2">delete_permission_set/2</a></td><td>Deletes the specified permission set.</td></tr>
+<tr><td valign="top"><a href="#delete_permission_set-3">delete_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_account_assignment_creation_status-2">describe_account_assignment_creation_status/2</a></td><td>Describes the status of the assignment creation request.</td></tr>
+<tr><td valign="top"><a href="#describe_account_assignment_creation_status-3">describe_account_assignment_creation_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_account_assignment_deletion_status-2">describe_account_assignment_deletion_status/2</a></td><td>Describes the status of the assignment deletion request.</td></tr>
+<tr><td valign="top"><a href="#describe_account_assignment_deletion_status-3">describe_account_assignment_deletion_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_permission_set-2">describe_permission_set/2</a></td><td>Gets the details of the permission set.</td></tr>
+<tr><td valign="top"><a href="#describe_permission_set-3">describe_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_permission_set_provisioning_status-2">describe_permission_set_provisioning_status/2</a></td><td>Describes the status for the given permission set provisioning
+  request.</td></tr>
+<tr><td valign="top"><a href="#describe_permission_set_provisioning_status-3">describe_permission_set_provisioning_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#detach_managed_policy_from_permission_set-2">detach_managed_policy_from_permission_set/2</a></td><td>Detaches the attached IAM managed policy ARN from the specified
+  permission set.</td></tr>
+<tr><td valign="top"><a href="#detach_managed_policy_from_permission_set-3">detach_managed_policy_from_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_inline_policy_for_permission_set-2">get_inline_policy_for_permission_set/2</a></td><td>Obtains the inline policy assigned to the permission set.</td></tr>
+<tr><td valign="top"><a href="#get_inline_policy_for_permission_set-3">get_inline_policy_for_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_account_assignment_creation_status-2">list_account_assignment_creation_status/2</a></td><td>Lists the status of the AWS account assignment creation requests for
+  a specified SSO instance.</td></tr>
+<tr><td valign="top"><a href="#list_account_assignment_creation_status-3">list_account_assignment_creation_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_account_assignment_deletion_status-2">list_account_assignment_deletion_status/2</a></td><td>Lists the status of the AWS account assignment deletion requests for
+  a specified SSO instance.</td></tr>
+<tr><td valign="top"><a href="#list_account_assignment_deletion_status-3">list_account_assignment_deletion_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_account_assignments-2">list_account_assignments/2</a></td><td>Lists the assignee of the specified AWS account with the specified
+  permission set.</td></tr>
+<tr><td valign="top"><a href="#list_account_assignments-3">list_account_assignments/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_accounts_for_provisioned_permission_set-2">list_accounts_for_provisioned_permission_set/2</a></td><td>Lists all the AWS accounts where the specified permission set is
+  provisioned.</td></tr>
+<tr><td valign="top"><a href="#list_accounts_for_provisioned_permission_set-3">list_accounts_for_provisioned_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_instances-2">list_instances/2</a></td><td>Lists the SSO instances that the caller has access to.</td></tr>
+<tr><td valign="top"><a href="#list_instances-3">list_instances/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_managed_policies_in_permission_set-2">list_managed_policies_in_permission_set/2</a></td><td>Lists the IAM managed policy that is attached to a specified
+  permission set.</td></tr>
+<tr><td valign="top"><a href="#list_managed_policies_in_permission_set-3">list_managed_policies_in_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_permission_set_provisioning_status-2">list_permission_set_provisioning_status/2</a></td><td>Lists the status of the permission set provisioning requests for a
+  specified SSO instance.</td></tr>
+<tr><td valign="top"><a href="#list_permission_set_provisioning_status-3">list_permission_set_provisioning_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_permission_sets-2">list_permission_sets/2</a></td><td>Lists the <code>PermissionSet</code>s in an SSO instance.</td></tr>
+<tr><td valign="top"><a href="#list_permission_sets-3">list_permission_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_permission_sets_provisioned_to_account-2">list_permission_sets_provisioned_to_account/2</a></td><td>Lists all the permission sets that are provisioned to a specified AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_permission_sets_provisioned_to_account-3">list_permission_sets_provisioned_to_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags that are attached to a specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#provision_permission_set-2">provision_permission_set/2</a></td><td>The process by which a specified permission set is provisioned to the
+  specified target.</td></tr>
+<tr><td valign="top"><a href="#provision_permission_set-3">provision_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_inline_policy_to_permission_set-2">put_inline_policy_to_permission_set/2</a></td><td>Attaches an IAM inline policy to a permission set.</td></tr>
+<tr><td valign="top"><a href="#put_inline_policy_to_permission_set-3">put_inline_policy_to_permission_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Associates a set of tags with a specified resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Disassociates a set of tags from a specified resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_permission_set-2">update_permission_set/2</a></td><td>Updates an existing permission set.</td></tr>
+<tr><td valign="top"><a href="#update_permission_set-3">update_permission_set/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="attach_managed_policy_to_permission_set-2">attach_managed_policy_to_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>attach_managed_policy_to_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Attaches an IAM managed policy ARN to a permission set.</p>
+ 
+  If the permission set is already referenced by one or more account
+  assignments, you will need to call <code>`ProvisionPermissionSet</code> ' after this
+  action to apply the corresponding IAM policy updates to all assigned
+  accounts.</p>
+
+<h3 class="function"><a name="attach_managed_policy_to_permission_set-3">attach_managed_policy_to_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>attach_managed_policy_to_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_account_assignment-2">create_account_assignment/2</a></h3>
+<div class="spec">
+<p><tt>create_account_assignment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Assigns access to a principal for a specified AWS account using a  
+specified permission set.</p>
+ 
+  <p>The term principal here refers to a user or group that is defined in AWS  
+SSO.</p>
+ 
+  As part of a successful <code>CreateAccountAssignment</code> call, the specified
+  permission set will automatically be provisioned to the account in the
+  form of an IAM policy attached to the SSO-created IAM role. If the
+  permission set is subsequently updated, the corresponding IAM policies
+  attached to roles in your accounts will not be updated automatically. In
+  this case, you will need to call <code>`ProvisionPermissionSet</code> ' to make
+  these updates.</p>
+
+<h3 class="function"><a name="create_account_assignment-3">create_account_assignment/3</a></h3>
+<div class="spec">
+<p><tt>create_account_assignment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_permission_set-2">create_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>create_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a permission set within a specified SSO instance.</p>
+ 
+  To grant users and groups access to AWS account resources, use <code>`CreateAccountAssignment</code> '.</p>
+
+<h3 class="function"><a name="create_permission_set-3">create_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>create_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_account_assignment-2">delete_account_assignment/2</a></h3>
+<div class="spec">
+<p><tt>delete_account_assignment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a principal's access from a specified AWS account using a
+  specified permission set.</p>
+
+<h3 class="function"><a name="delete_account_assignment-3">delete_account_assignment/3</a></h3>
+<div class="spec">
+<p><tt>delete_account_assignment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_inline_policy_from_permission_set-2">delete_inline_policy_from_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_inline_policy_from_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the inline policy from a specified permission set.</p>
+
+<h3 class="function"><a name="delete_inline_policy_from_permission_set-3">delete_inline_policy_from_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_inline_policy_from_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_permission_set-2">delete_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>delete_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified permission set.</p>
+
+<h3 class="function"><a name="delete_permission_set-3">delete_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>delete_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_account_assignment_creation_status-2">describe_account_assignment_creation_status/2</a></h3>
+<div class="spec">
+<p><tt>describe_account_assignment_creation_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the status of the assignment creation request.</p>
+
+<h3 class="function"><a name="describe_account_assignment_creation_status-3">describe_account_assignment_creation_status/3</a></h3>
+<div class="spec">
+<p><tt>describe_account_assignment_creation_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_account_assignment_deletion_status-2">describe_account_assignment_deletion_status/2</a></h3>
+<div class="spec">
+<p><tt>describe_account_assignment_deletion_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the status of the assignment deletion request.</p>
+
+<h3 class="function"><a name="describe_account_assignment_deletion_status-3">describe_account_assignment_deletion_status/3</a></h3>
+<div class="spec">
+<p><tt>describe_account_assignment_deletion_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_permission_set-2">describe_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>describe_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the details of the permission set.</p>
+
+<h3 class="function"><a name="describe_permission_set-3">describe_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>describe_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_permission_set_provisioning_status-2">describe_permission_set_provisioning_status/2</a></h3>
+<div class="spec">
+<p><tt>describe_permission_set_provisioning_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the status for the given permission set provisioning
+  request.</p>
+
+<h3 class="function"><a name="describe_permission_set_provisioning_status-3">describe_permission_set_provisioning_status/3</a></h3>
+<div class="spec">
+<p><tt>describe_permission_set_provisioning_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="detach_managed_policy_from_permission_set-2">detach_managed_policy_from_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>detach_managed_policy_from_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Detaches the attached IAM managed policy ARN from the specified
+  permission set.</p>
+
+<h3 class="function"><a name="detach_managed_policy_from_permission_set-3">detach_managed_policy_from_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>detach_managed_policy_from_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_inline_policy_for_permission_set-2">get_inline_policy_for_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>get_inline_policy_for_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Obtains the inline policy assigned to the permission set.</p>
+
+<h3 class="function"><a name="get_inline_policy_for_permission_set-3">get_inline_policy_for_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>get_inline_policy_for_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_account_assignment_creation_status-2">list_account_assignment_creation_status/2</a></h3>
+<div class="spec">
+<p><tt>list_account_assignment_creation_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the status of the AWS account assignment creation requests for
+  a specified SSO instance.</p>
+
+<h3 class="function"><a name="list_account_assignment_creation_status-3">list_account_assignment_creation_status/3</a></h3>
+<div class="spec">
+<p><tt>list_account_assignment_creation_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_account_assignment_deletion_status-2">list_account_assignment_deletion_status/2</a></h3>
+<div class="spec">
+<p><tt>list_account_assignment_deletion_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the status of the AWS account assignment deletion requests for
+  a specified SSO instance.</p>
+
+<h3 class="function"><a name="list_account_assignment_deletion_status-3">list_account_assignment_deletion_status/3</a></h3>
+<div class="spec">
+<p><tt>list_account_assignment_deletion_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_account_assignments-2">list_account_assignments/2</a></h3>
+<div class="spec">
+<p><tt>list_account_assignments(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the assignee of the specified AWS account with the specified
+  permission set.</p>
+
+<h3 class="function"><a name="list_account_assignments-3">list_account_assignments/3</a></h3>
+<div class="spec">
+<p><tt>list_account_assignments(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_accounts_for_provisioned_permission_set-2">list_accounts_for_provisioned_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>list_accounts_for_provisioned_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the AWS accounts where the specified permission set is
+  provisioned.</p>
+
+<h3 class="function"><a name="list_accounts_for_provisioned_permission_set-3">list_accounts_for_provisioned_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>list_accounts_for_provisioned_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_instances-2">list_instances/2</a></h3>
+<div class="spec">
+<p><tt>list_instances(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the SSO instances that the caller has access to.</p>
+
+<h3 class="function"><a name="list_instances-3">list_instances/3</a></h3>
+<div class="spec">
+<p><tt>list_instances(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_managed_policies_in_permission_set-2">list_managed_policies_in_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>list_managed_policies_in_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the IAM managed policy that is attached to a specified
+  permission set.</p>
+
+<h3 class="function"><a name="list_managed_policies_in_permission_set-3">list_managed_policies_in_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>list_managed_policies_in_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_permission_set_provisioning_status-2">list_permission_set_provisioning_status/2</a></h3>
+<div class="spec">
+<p><tt>list_permission_set_provisioning_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the status of the permission set provisioning requests for a
+  specified SSO instance.</p>
+
+<h3 class="function"><a name="list_permission_set_provisioning_status-3">list_permission_set_provisioning_status/3</a></h3>
+<div class="spec">
+<p><tt>list_permission_set_provisioning_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_permission_sets-2">list_permission_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_permission_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the <code>PermissionSet</code>s in an SSO instance.</p>
+
+<h3 class="function"><a name="list_permission_sets-3">list_permission_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_permission_sets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_permission_sets_provisioned_to_account-2">list_permission_sets_provisioned_to_account/2</a></h3>
+<div class="spec">
+<p><tt>list_permission_sets_provisioned_to_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the permission sets that are provisioned to a specified AWS
+  account.</p>
+
+<h3 class="function"><a name="list_permission_sets_provisioned_to_account-3">list_permission_sets_provisioned_to_account/3</a></h3>
+<div class="spec">
+<p><tt>list_permission_sets_provisioned_to_account(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags that are attached to a specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="provision_permission_set-2">provision_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>provision_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The process by which a specified permission set is provisioned to the
+  specified target.</p>
+
+<h3 class="function"><a name="provision_permission_set-3">provision_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>provision_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_inline_policy_to_permission_set-2">put_inline_policy_to_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>put_inline_policy_to_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Attaches an IAM inline policy to a permission set.</p>
+ 
+  If the permission set is already referenced by one or more account
+  assignments, you will need to call <code>`ProvisionPermissionSet</code> ' after this
+  action to apply the corresponding IAM policy updates to all assigned
+  accounts.</p>
+
+<h3 class="function"><a name="put_inline_policy_to_permission_set-3">put_inline_policy_to_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>put_inline_policy_to_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a set of tags with a specified resource.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates a set of tags from a specified resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_permission_set-2">update_permission_set/2</a></h3>
+<div class="spec">
+<p><tt>update_permission_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing permission set.</p>
+
+<h3 class="function"><a name="update_permission_set-3">update_permission_set/3</a></h3>
+<div class="spec">
+<p><tt>update_permission_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

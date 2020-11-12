@@ -1,0 +1,598 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_application_discovery</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_application_discovery</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Application Discovery Service.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Application Discovery Service</p>
+ 
+  <p>AWS Application Discovery Service helps you plan application migration  
+projects.</p>
+ 
+  <p>It automatically identifies servers, virtual machines (VMs), and network  
+dependencies in your on-premises data centers. For more information, see  
+the AWS Application Discovery Service FAQ. Application Discovery Service  
+offers three ways of performing discovery and collecting data about your  
+on-premises servers:</p>
+ 
+  <ul> <li><p> Agentless discovery is recommended for environments that use  
+VMware vCenter Server. This mode doesn't require you to install an agent  
+on each host. It does not work in non-VMware environments.</p>
+ 
+  <ul> <li><p> Agentless discovery gathers server information regardless of the  
+operating systems, which minimizes the time required for initial  
+on-premises infrastructure assessment.</p>
+ 
+  </li> <li><p> Agentless discovery doesn't collect information about network  
+dependencies, only agent-based discovery collects that information.</p>
+ 
+  </li> </ul> </li> </ul> <ul> <li><p> Agent-based discovery collects a richer  
+set of data than agentless discovery by using the AWS Application  
+Discovery Agent, which you install on one or more hosts in your data  
+center.</p>
+ 
+  <ul> <li><p> The agent captures infrastructure and application information,  
+including an inventory of running processes, system performance  
+information, resource utilization, and network dependencies.</p>
+ 
+  </li> <li><p> The information collected by agents is secured at rest and in  
+transit to the Application Discovery Service database in the cloud.</p>
+ 
+  </li> </ul> </li> </ul> <ul> <li><p> AWS Partner Network (APN) solutions  
+integrate with Application Discovery Service, enabling you to import  
+details of your on-premises environment directly into Migration Hub  
+without using the discovery connector or discovery agent.</p>
+ 
+  <ul> <li><p> Third-party application discovery tools can query AWS  
+Application Discovery Service, and they can write to the Application  
+Discovery Service database using the public API.</p>
+ 
+  </li> <li><p> In this way, you can import data into Migration Hub and view  
+it, so that you can associate applications with servers and track  
+migrations.</p>
+ 
+  </li> </ul> </li> </ul><p> Recommendations</p>
+ 
+  <p>We recommend that you use agent-based discovery for non-VMware  
+environments, and whenever you want to collect information about network  
+dependencies. You can run agent-based and agentless discovery  
+simultaneously. Use agentless discovery to complete the initial  
+infrastructure assessment quickly, and then install agents on select hosts  
+to collect additional information.</p>
+ 
+  <p>Working With This Guide</p>
+ 
+  <p>This API reference provides descriptions, syntax, and usage examples for  
+each of the actions and data types for Application Discovery Service. The  
+topic for each action shows the API request parameters and the response.  
+Alternatively, you can use one of the AWS SDKs to access an API that is  
+tailored to the programming language or platform that you're using. For  
+more information, see AWS SDKs.</p>
+ 
+  <p>Remember that you must set your Migration Hub home region before you call  
+any of these APIs.</p>
+ 
+  <p>You must make API calls for write actions (create, notify, associate,
+  disassociate, import, or put) while in your home region, or a
+  <code>HomeRegionNotSetException</code> error is returned.</p>
+ 
+  <p>API calls for read actions (list, describe, stop, and delete) are  
+permitted outside of your home region.</p>
+ 
+  <p>Although it is unlikely, the Migration Hub home region could change. If
+  you call APIs outside the home region, an <code>InvalidInputException</code> is  
+returned.</p>
+ 
+  <p>You must call <code>GetHomeRegion</code> to obtain the latest Migration Hub home  
+region.</p>
+ 
+  <p>This guide is intended for use with the AWS Application Discovery Service  
+User Guide.</p>
+ 
+  All data is handled according to the AWS Privacy Policy. You can operate
+  Application Discovery Service offline to inspect collected data before it
+  is shared with the service.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_configuration_items_to_application-2">associate_configuration_items_to_application/2</a></td><td>Associates one or more configuration items with an application.</td></tr>
+<tr><td valign="top"><a href="#associate_configuration_items_to_application-3">associate_configuration_items_to_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_delete_import_data-2">batch_delete_import_data/2</a></td><td>Deletes one or more import tasks, each identified by their import ID.</td></tr>
+<tr><td valign="top"><a href="#batch_delete_import_data-3">batch_delete_import_data/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_application-2">create_application/2</a></td><td>Creates an application with the given name and description.</td></tr>
+<tr><td valign="top"><a href="#create_application-3">create_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_tags-2">create_tags/2</a></td><td>Creates one or more tags for configuration items.</td></tr>
+<tr><td valign="top"><a href="#create_tags-3">create_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_applications-2">delete_applications/2</a></td><td>Deletes a list of applications and their associations with
+  configuration items.</td></tr>
+<tr><td valign="top"><a href="#delete_applications-3">delete_applications/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_tags-2">delete_tags/2</a></td><td>Deletes the association between configuration items and one or more  
+tags.</td></tr>
+<tr><td valign="top"><a href="#delete_tags-3">delete_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_agents-2">describe_agents/2</a></td><td>Lists agents or connectors as specified by ID or other filters.</td></tr>
+<tr><td valign="top"><a href="#describe_agents-3">describe_agents/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_configurations-2">describe_configurations/2</a></td><td>Retrieves attributes for a list of configuration item IDs.</td></tr>
+<tr><td valign="top"><a href="#describe_configurations-3">describe_configurations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_continuous_exports-2">describe_continuous_exports/2</a></td><td>Lists exports as specified by ID.</td></tr>
+<tr><td valign="top"><a href="#describe_continuous_exports-3">describe_continuous_exports/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_export_configurations-2">describe_export_configurations/2</a></td><td><code>DescribeExportConfigurations</code> is deprecated.</td></tr>
+<tr><td valign="top"><a href="#describe_export_configurations-3">describe_export_configurations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_export_tasks-2">describe_export_tasks/2</a></td><td>Retrieve status of one or more export tasks.</td></tr>
+<tr><td valign="top"><a href="#describe_export_tasks-3">describe_export_tasks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_import_tasks-2">describe_import_tasks/2</a></td><td>Returns an array of import tasks for your account, including status
+  information, times, IDs, the Amazon S3 Object URL for the import file, and
+  more.</td></tr>
+<tr><td valign="top"><a href="#describe_import_tasks-3">describe_import_tasks/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_tags-2">describe_tags/2</a></td><td>Retrieves a list of configuration items that have tags as specified
+  by the key-value pairs, name and value, passed to the optional parameter
+  <code>filters</code>.</td></tr>
+<tr><td valign="top"><a href="#describe_tags-3">describe_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_configuration_items_from_application-2">disassociate_configuration_items_from_application/2</a></td><td>Disassociates one or more configuration items from an application.</td></tr>
+<tr><td valign="top"><a href="#disassociate_configuration_items_from_application-3">disassociate_configuration_items_from_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#export_configurations-2">export_configurations/2</a></td><td>Deprecated.</td></tr>
+<tr><td valign="top"><a href="#export_configurations-3">export_configurations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_discovery_summary-2">get_discovery_summary/2</a></td><td>Retrieves a short summary of discovered assets.</td></tr>
+<tr><td valign="top"><a href="#get_discovery_summary-3">get_discovery_summary/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_configurations-2">list_configurations/2</a></td><td>Retrieves a list of configuration items as specified by the value
+  passed to the required parameter <code>configurationType</code>.</td></tr>
+<tr><td valign="top"><a href="#list_configurations-3">list_configurations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_server_neighbors-2">list_server_neighbors/2</a></td><td>Retrieves a list of servers that are one network hop away from a
+  specified server.</td></tr>
+<tr><td valign="top"><a href="#list_server_neighbors-3">list_server_neighbors/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_continuous_export-2">start_continuous_export/2</a></td><td>Start the continuous flow of agent's discovered data into Amazon
+  Athena.</td></tr>
+<tr><td valign="top"><a href="#start_continuous_export-3">start_continuous_export/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_data_collection_by_agent_ids-2">start_data_collection_by_agent_ids/2</a></td><td>Instructs the specified agents or connectors to start collecting
+  data.</td></tr>
+<tr><td valign="top"><a href="#start_data_collection_by_agent_ids-3">start_data_collection_by_agent_ids/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_export_task-2">start_export_task/2</a></td><td>Begins the export of discovered data to an S3 bucket.</td></tr>
+<tr><td valign="top"><a href="#start_export_task-3">start_export_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_import_task-2">start_import_task/2</a></td><td>Starts an import task, which allows you to import details of your  
+on-premises environment directly into AWS Migration Hub without having to  
+use the Application Discovery Service (ADS) tools such as the Discovery  
+Connector or Discovery Agent.</td></tr>
+<tr><td valign="top"><a href="#start_import_task-3">start_import_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_continuous_export-2">stop_continuous_export/2</a></td><td>Stop the continuous flow of agent's discovered data into Amazon
+  Athena.</td></tr>
+<tr><td valign="top"><a href="#stop_continuous_export-3">stop_continuous_export/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_data_collection_by_agent_ids-2">stop_data_collection_by_agent_ids/2</a></td><td>Instructs the specified agents or connectors to stop collecting data.</td></tr>
+<tr><td valign="top"><a href="#stop_data_collection_by_agent_ids-3">stop_data_collection_by_agent_ids/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_application-2">update_application/2</a></td><td>Updates metadata about an application.</td></tr>
+<tr><td valign="top"><a href="#update_application-3">update_application/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_configuration_items_to_application-2">associate_configuration_items_to_application/2</a></h3>
+<div class="spec">
+<p><tt>associate_configuration_items_to_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates one or more configuration items with an application.</p>
+
+<h3 class="function"><a name="associate_configuration_items_to_application-3">associate_configuration_items_to_application/3</a></h3>
+<div class="spec">
+<p><tt>associate_configuration_items_to_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_delete_import_data-2">batch_delete_import_data/2</a></h3>
+<div class="spec">
+<p><tt>batch_delete_import_data(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes one or more import tasks, each identified by their import ID.</p>
+ 
+  <p>Each import task has a number of records that can identify servers or  
+applications.</p>
+ 
+  AWS Application Discovery Service has built-in matching logic that will
+  identify when discovered servers match existing entries that you've
+  previously discovered, the information for the already-existing discovered
+  server is updated. When you delete an import task that contains records
+  that were used to match, the information in those matched records that
+  comes from the deleted records will also be deleted.</p>
+
+<h3 class="function"><a name="batch_delete_import_data-3">batch_delete_import_data/3</a></h3>
+<div class="spec">
+<p><tt>batch_delete_import_data(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_application-2">create_application/2</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an application with the given name and description.</p>
+
+<h3 class="function"><a name="create_application-3">create_application/3</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_tags-2">create_tags/2</a></h3>
+<div class="spec">
+<p><tt>create_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates one or more tags for configuration items.</p>
+ 
+  Tags are metadata that help you categorize IT assets. This API accepts a
+  list of multiple configuration items.</p>
+
+<h3 class="function"><a name="create_tags-3">create_tags/3</a></h3>
+<div class="spec">
+<p><tt>create_tags(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_applications-2">delete_applications/2</a></h3>
+<div class="spec">
+<p><tt>delete_applications(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a list of applications and their associations with
+  configuration items.</p>
+
+<h3 class="function"><a name="delete_applications-3">delete_applications/3</a></h3>
+<div class="spec">
+<p><tt>delete_applications(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_tags-2">delete_tags/2</a></h3>
+<div class="spec">
+<p><tt>delete_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the association between configuration items and one or more  
+tags.</p>
+ 
+  This API accepts a list of multiple configuration items.</p>
+
+<h3 class="function"><a name="delete_tags-3">delete_tags/3</a></h3>
+<div class="spec">
+<p><tt>delete_tags(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_agents-2">describe_agents/2</a></h3>
+<div class="spec">
+<p><tt>describe_agents(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists agents or connectors as specified by ID or other filters.</p>
+ 
+  All agents/connectors associated with your user account can be listed if
+  you call <code>DescribeAgents</code> as is without passing any parameters.</p>
+
+<h3 class="function"><a name="describe_agents-3">describe_agents/3</a></h3>
+<div class="spec">
+<p><tt>describe_agents(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_configurations-2">describe_configurations/2</a></h3>
+<div class="spec">
+<p><tt>describe_configurations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves attributes for a list of configuration item IDs.</p>
+ 
+  <p>All of the supplied IDs must be for the same asset type from one of the  
+following:</p>
+ 
+  <p>server</p>
+ 
+  <p>application</p>
+ 
+  <p>process</p>
+ 
+  <p>connection</p>
+ 
+  <p>Output fields are specific to the asset type specified. For example, the  
+output for a server configuration item includes a list of attributes about  
+the server, such as host name, operating system, number of network cards,  
+etc.</p>
+ 
+  For a complete list of outputs for each asset type, see Using the
+  DescribeConfigurations Action in the AWS Application Discovery Service
+  User Guide.</p>
+
+<h3 class="function"><a name="describe_configurations-3">describe_configurations/3</a></h3>
+<div class="spec">
+<p><tt>describe_configurations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_continuous_exports-2">describe_continuous_exports/2</a></h3>
+<div class="spec">
+<p><tt>describe_continuous_exports(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists exports as specified by ID.</p>
+ 
+  All continuous exports associated with your user account can be listed if
+  you call <code>DescribeContinuousExports</code> as is without passing any parameters.</p>
+
+<h3 class="function"><a name="describe_continuous_exports-3">describe_continuous_exports/3</a></h3>
+<div class="spec">
+<p><tt>describe_continuous_exports(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_export_configurations-2">describe_export_configurations/2</a></h3>
+<div class="spec">
+<p><tt>describe_export_configurations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p><code>DescribeExportConfigurations</code> is deprecated.</p>
+ 
+  Use DescribeImportTasks, instead.</p>
+
+<h3 class="function"><a name="describe_export_configurations-3">describe_export_configurations/3</a></h3>
+<div class="spec">
+<p><tt>describe_export_configurations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_export_tasks-2">describe_export_tasks/2</a></h3>
+<div class="spec">
+<p><tt>describe_export_tasks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieve status of one or more export tasks.</p>
+ 
+  You can retrieve the status of up to 100 export tasks.</p>
+
+<h3 class="function"><a name="describe_export_tasks-3">describe_export_tasks/3</a></h3>
+<div class="spec">
+<p><tt>describe_export_tasks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_import_tasks-2">describe_import_tasks/2</a></h3>
+<div class="spec">
+<p><tt>describe_import_tasks(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an array of import tasks for your account, including status
+  information, times, IDs, the Amazon S3 Object URL for the import file, and
+  more.</p>
+
+<h3 class="function"><a name="describe_import_tasks-3">describe_import_tasks/3</a></h3>
+<div class="spec">
+<p><tt>describe_import_tasks(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_tags-2">describe_tags/2</a></h3>
+<div class="spec">
+<p><tt>describe_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list of configuration items that have tags as specified
+  by the key-value pairs, name and value, passed to the optional parameter
+  <code>filters</code>.</p>
+ 
+  <p>There are three valid tag filter names:</p>
+ 
+  <ul> <li><p> tagKey</p>
+ 
+  </li> <li><p> tagValue</p>
+ 
+  </li> <li><p> configurationId</p>
+ 
+  </li> </ul> Also, all configuration items associated with your user
+  account that have tags can be listed if you call <code>DescribeTags</code> as is
+  without passing any parameters.</p>
+
+<h3 class="function"><a name="describe_tags-3">describe_tags/3</a></h3>
+<div class="spec">
+<p><tt>describe_tags(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_configuration_items_from_application-2">disassociate_configuration_items_from_application/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_configuration_items_from_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates one or more configuration items from an application.</p>
+
+<h3 class="function"><a name="disassociate_configuration_items_from_application-3">disassociate_configuration_items_from_application/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_configuration_items_from_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="export_configurations-2">export_configurations/2</a></h3>
+<div class="spec">
+<p><tt>export_configurations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deprecated.</p>
+ 
+  <p>Use <code>StartExportTask</code> instead.</p>
+ 
+  Exports all discovered configuration data to an Amazon S3 bucket or an
+  application that enables you to view and evaluate the data. Data includes
+  tags and tag associations, processes, connections, servers, and system
+  performance. This API returns an export ID that you can query using the
+  DescribeExportConfigurations API. The system imposes a limit of two
+  configuration exports in six hours.</p>
+
+<h3 class="function"><a name="export_configurations-3">export_configurations/3</a></h3>
+<div class="spec">
+<p><tt>export_configurations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_discovery_summary-2">get_discovery_summary/2</a></h3>
+<div class="spec">
+<p><tt>get_discovery_summary(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a short summary of discovered assets.</p>
+ 
+  This API operation takes no request parameters and is called as is at the
+  command prompt as shown in the example.</p>
+
+<h3 class="function"><a name="get_discovery_summary-3">get_discovery_summary/3</a></h3>
+<div class="spec">
+<p><tt>get_discovery_summary(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_configurations-2">list_configurations/2</a></h3>
+<div class="spec">
+<p><tt>list_configurations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list of configuration items as specified by the value
+  passed to the required parameter <code>configurationType</code>.</p>
+ 
+  Optional filtering may be applied to refine search results.</p>
+
+<h3 class="function"><a name="list_configurations-3">list_configurations/3</a></h3>
+<div class="spec">
+<p><tt>list_configurations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_server_neighbors-2">list_server_neighbors/2</a></h3>
+<div class="spec">
+<p><tt>list_server_neighbors(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of servers that are one network hop away from a
+  specified server.</p>
+
+<h3 class="function"><a name="list_server_neighbors-3">list_server_neighbors/3</a></h3>
+<div class="spec">
+<p><tt>list_server_neighbors(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_continuous_export-2">start_continuous_export/2</a></h3>
+<div class="spec">
+<p><tt>start_continuous_export(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Start the continuous flow of agent's discovered data into Amazon
+  Athena.</p>
+
+<h3 class="function"><a name="start_continuous_export-3">start_continuous_export/3</a></h3>
+<div class="spec">
+<p><tt>start_continuous_export(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_data_collection_by_agent_ids-2">start_data_collection_by_agent_ids/2</a></h3>
+<div class="spec">
+<p><tt>start_data_collection_by_agent_ids(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Instructs the specified agents or connectors to start collecting
+  data.</p>
+
+<h3 class="function"><a name="start_data_collection_by_agent_ids-3">start_data_collection_by_agent_ids/3</a></h3>
+<div class="spec">
+<p><tt>start_data_collection_by_agent_ids(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_export_task-2">start_export_task/2</a></h3>
+<div class="spec">
+<p><tt>start_export_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Begins the export of discovered data to an S3 bucket.</p>
+ 
+  <p>If you specify <code>agentIds</code> in a filter, the task exports up to 72 hours of
+  detailed data collected by the identified Application Discovery Agent,
+  including network, process, and performance details. A time range for
+  exported agent data may be set by using <code>startTime</code> and <code>endTime</code>. Export  
+of detailed agent data is limited to five concurrently running exports.</p>
+ 
+  If you do not include an <code>agentIds</code> filter, summary data is exported that
+  includes both AWS Agentless Discovery Connector data and summary data from
+  AWS Discovery Agents. Export of summary data is limited to two exports per
+  day.</p>
+
+<h3 class="function"><a name="start_export_task-3">start_export_task/3</a></h3>
+<div class="spec">
+<p><tt>start_export_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_import_task-2">start_import_task/2</a></h3>
+<div class="spec">
+<p><tt>start_import_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts an import task, which allows you to import details of your  
+on-premises environment directly into AWS Migration Hub without having to  
+use the Application Discovery Service (ADS) tools such as the Discovery  
+Connector or Discovery Agent.</p>
+ 
+  <p>This gives you the option to perform migration assessment and planning  
+directly from your imported data, including the ability to group your  
+devices as applications and track their migration status.</p>
+ 
+  <p>To start an import request, do this:</p>
+ 
+  <ol> <li><p> Download the specially formatted comma separated value (CSV)
+  import template, which you can find here:
+  <a href="https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv" target="_top"><tt>https://s3-us-west-2.amazonaws.com/templates-7cffcf56-bd96-4b1c-b45b-a5b42f282e46/import_template.csv</tt></a>.</p>
+ 
+  </li> <li><p> Fill out the template with your server and application data.</p>
+ 
+  </li> <li><p> Upload your import file to an Amazon S3 bucket, and make a note  
+of it's Object URL. Your import file must be in the CSV format.</p>
+ 
+  </li> <li><p> Use the console or the <code>StartImportTask</code> command with the AWS  
+CLI or one of the AWS SDKs to import the records from your file.</p>
+ 
+  </li> </ol><p> For more information, including step-by-step procedures, see  
+Migration Hub Import in the AWS Application Discovery Service User Guide.</p>
+ 
+  There are limits to the number of import tasks you can create (and delete)
+  in an AWS account. For more information, see AWS Application Discovery
+  Service Limits in the AWS Application Discovery Service User Guide.</p>
+
+<h3 class="function"><a name="start_import_task-3">start_import_task/3</a></h3>
+<div class="spec">
+<p><tt>start_import_task(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_continuous_export-2">stop_continuous_export/2</a></h3>
+<div class="spec">
+<p><tt>stop_continuous_export(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stop the continuous flow of agent's discovered data into Amazon
+  Athena.</p>
+
+<h3 class="function"><a name="stop_continuous_export-3">stop_continuous_export/3</a></h3>
+<div class="spec">
+<p><tt>stop_continuous_export(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_data_collection_by_agent_ids-2">stop_data_collection_by_agent_ids/2</a></h3>
+<div class="spec">
+<p><tt>stop_data_collection_by_agent_ids(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Instructs the specified agents or connectors to stop collecting data.</p>
+
+<h3 class="function"><a name="stop_data_collection_by_agent_ids-3">stop_data_collection_by_agent_ids/3</a></h3>
+<div class="spec">
+<p><tt>stop_data_collection_by_agent_ids(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_application-2">update_application/2</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates metadata about an application.</p>
+
+<h3 class="function"><a name="update_application-3">update_application/3</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

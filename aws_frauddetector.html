@@ -1,0 +1,999 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_frauddetector</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_frauddetector</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>This is the Amazon Fraud Detector API Reference.
+
+
+<h2><a name="description">Description</a></h2><p>This is the Amazon Fraud Detector API Reference.</p>
+ 
+  This guide is for developers who need detailed information about Amazon
+  Fraud Detector API actions, data types, and errors. For more information
+  about Amazon Fraud Detector features, see the Amazon Fraud Detector User
+  Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#batch_create_variable-2">batch_create_variable/2</a></td><td>Creates a batch of variables.</td></tr>
+<tr><td valign="top"><a href="#batch_create_variable-3">batch_create_variable/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_variable-2">batch_get_variable/2</a></td><td>Gets a batch of variables.</td></tr>
+<tr><td valign="top"><a href="#batch_get_variable-3">batch_get_variable/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_detector_version-2">create_detector_version/2</a></td><td>Creates a detector version.</td></tr>
+<tr><td valign="top"><a href="#create_detector_version-3">create_detector_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_model-2">create_model/2</a></td><td>Creates a model using the specified model type.</td></tr>
+<tr><td valign="top"><a href="#create_model-3">create_model/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_model_version-2">create_model_version/2</a></td><td>Creates a version of the model using the specified model type and
+  model id.</td></tr>
+<tr><td valign="top"><a href="#create_model_version-3">create_model_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_rule-2">create_rule/2</a></td><td>Creates a rule for use with the specified detector.</td></tr>
+<tr><td valign="top"><a href="#create_rule-3">create_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_variable-2">create_variable/2</a></td><td>Creates a variable.</td></tr>
+<tr><td valign="top"><a href="#create_variable-3">create_variable/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_detector-2">delete_detector/2</a></td><td>Deletes the detector.</td></tr>
+<tr><td valign="top"><a href="#delete_detector-3">delete_detector/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_detector_version-2">delete_detector_version/2</a></td><td>Deletes the detector version.</td></tr>
+<tr><td valign="top"><a href="#delete_detector_version-3">delete_detector_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_entity_type-2">delete_entity_type/2</a></td><td>Deletes an entity type.</td></tr>
+<tr><td valign="top"><a href="#delete_entity_type-3">delete_entity_type/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_event-2">delete_event/2</a></td><td>Deletes the specified event.</td></tr>
+<tr><td valign="top"><a href="#delete_event-3">delete_event/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_event_type-2">delete_event_type/2</a></td><td>Deletes an event type.</td></tr>
+<tr><td valign="top"><a href="#delete_event_type-3">delete_event_type/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_external_model-2">delete_external_model/2</a></td><td>Removes a SageMaker model from Amazon Fraud Detector.</td></tr>
+<tr><td valign="top"><a href="#delete_external_model-3">delete_external_model/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_label-2">delete_label/2</a></td><td>Deletes a label.</td></tr>
+<tr><td valign="top"><a href="#delete_label-3">delete_label/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_model-2">delete_model/2</a></td><td>Deletes a model.</td></tr>
+<tr><td valign="top"><a href="#delete_model-3">delete_model/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_model_version-2">delete_model_version/2</a></td><td>Deletes a model version.</td></tr>
+<tr><td valign="top"><a href="#delete_model_version-3">delete_model_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_outcome-2">delete_outcome/2</a></td><td>Deletes an outcome.</td></tr>
+<tr><td valign="top"><a href="#delete_outcome-3">delete_outcome/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_rule-2">delete_rule/2</a></td><td>Deletes the rule.</td></tr>
+<tr><td valign="top"><a href="#delete_rule-3">delete_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_variable-2">delete_variable/2</a></td><td>Deletes a variable.</td></tr>
+<tr><td valign="top"><a href="#delete_variable-3">delete_variable/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_detector-2">describe_detector/2</a></td><td>Gets all versions for a specified detector.</td></tr>
+<tr><td valign="top"><a href="#describe_detector-3">describe_detector/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_model_versions-2">describe_model_versions/2</a></td><td>Gets all of the model versions for the specified model type or for  
+the specified model type and model ID.</td></tr>
+<tr><td valign="top"><a href="#describe_model_versions-3">describe_model_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_detector_version-2">get_detector_version/2</a></td><td>Gets a particular detector version.</td></tr>
+<tr><td valign="top"><a href="#get_detector_version-3">get_detector_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_detectors-2">get_detectors/2</a></td><td>Gets all detectors or a single detector if a <code>detectorId</code> is  
+specified.</td></tr>
+<tr><td valign="top"><a href="#get_detectors-3">get_detectors/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_entity_types-2">get_entity_types/2</a></td><td>Gets all entity types or a specific entity type if a name is  
+specified.</td></tr>
+<tr><td valign="top"><a href="#get_entity_types-3">get_entity_types/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_event_prediction-2">get_event_prediction/2</a></td><td>Evaluates an event against a detector version.</td></tr>
+<tr><td valign="top"><a href="#get_event_prediction-3">get_event_prediction/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_event_types-2">get_event_types/2</a></td><td>Gets all event types or a specific event type if name is provided.</td></tr>
+<tr><td valign="top"><a href="#get_event_types-3">get_event_types/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_external_models-2">get_external_models/2</a></td><td>Gets the details for one or more Amazon SageMaker models that have  
+been imported into the service.</td></tr>
+<tr><td valign="top"><a href="#get_external_models-3">get_external_models/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_k_m_s_encryption_key-2">get_k_m_s_encryption_key/2</a></td><td>Gets the encryption key if a Key Management Service (KMS) customer
+  master key (CMK) has been specified to be used to encrypt content in
+  Amazon Fraud Detector.</td></tr>
+<tr><td valign="top"><a href="#get_k_m_s_encryption_key-3">get_k_m_s_encryption_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_labels-2">get_labels/2</a></td><td>Gets all labels or a specific label if name is provided.</td></tr>
+<tr><td valign="top"><a href="#get_labels-3">get_labels/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_model_version-2">get_model_version/2</a></td><td>Gets the details of the specified model version.</td></tr>
+<tr><td valign="top"><a href="#get_model_version-3">get_model_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_models-2">get_models/2</a></td><td>Gets one or more models.</td></tr>
+<tr><td valign="top"><a href="#get_models-3">get_models/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_outcomes-2">get_outcomes/2</a></td><td>Gets one or more outcomes.</td></tr>
+<tr><td valign="top"><a href="#get_outcomes-3">get_outcomes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_rules-2">get_rules/2</a></td><td>Get all rules for a detector (paginated) if <code>ruleId</code> and
+  <code>ruleVersion</code> are not specified.</td></tr>
+<tr><td valign="top"><a href="#get_rules-3">get_rules/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_variables-2">get_variables/2</a></td><td>Gets all of the variables or the specific variable.</td></tr>
+<tr><td valign="top"><a href="#get_variables-3">get_variables/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists all tags associated with the resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_detector-2">put_detector/2</a></td><td>Creates or updates a detector.</td></tr>
+<tr><td valign="top"><a href="#put_detector-3">put_detector/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_entity_type-2">put_entity_type/2</a></td><td>Creates or updates an entity type.</td></tr>
+<tr><td valign="top"><a href="#put_entity_type-3">put_entity_type/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_event_type-2">put_event_type/2</a></td><td>Creates or updates an event type.</td></tr>
+<tr><td valign="top"><a href="#put_event_type-3">put_event_type/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_external_model-2">put_external_model/2</a></td><td>Creates or updates an Amazon SageMaker model endpoint.</td></tr>
+<tr><td valign="top"><a href="#put_external_model-3">put_external_model/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_k_m_s_encryption_key-2">put_k_m_s_encryption_key/2</a></td><td>Specifies the Key Management Service (KMS) customer master key (CMK)
+  to be used to encrypt content in Amazon Fraud Detector.</td></tr>
+<tr><td valign="top"><a href="#put_k_m_s_encryption_key-3">put_k_m_s_encryption_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_label-2">put_label/2</a></td><td>Creates or updates label.</td></tr>
+<tr><td valign="top"><a href="#put_label-3">put_label/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_outcome-2">put_outcome/2</a></td><td>Creates or updates an outcome.</td></tr>
+<tr><td valign="top"><a href="#put_outcome-3">put_outcome/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Assigns tags to a resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes tags from a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_detector_version-2">update_detector_version/2</a></td><td>Updates a detector version.</td></tr>
+<tr><td valign="top"><a href="#update_detector_version-3">update_detector_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_detector_version_metadata-2">update_detector_version_metadata/2</a></td><td>Updates the detector version's description.</td></tr>
+<tr><td valign="top"><a href="#update_detector_version_metadata-3">update_detector_version_metadata/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_detector_version_status-2">update_detector_version_status/2</a></td><td>Updates the detector version’s status.</td></tr>
+<tr><td valign="top"><a href="#update_detector_version_status-3">update_detector_version_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_model-2">update_model/2</a></td><td>Updates a model.</td></tr>
+<tr><td valign="top"><a href="#update_model-3">update_model/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_model_version-2">update_model_version/2</a></td><td>Updates a model version.</td></tr>
+<tr><td valign="top"><a href="#update_model_version-3">update_model_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_model_version_status-2">update_model_version_status/2</a></td><td>Updates the status of a model version.</td></tr>
+<tr><td valign="top"><a href="#update_model_version_status-3">update_model_version_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_rule_metadata-2">update_rule_metadata/2</a></td><td>Updates a rule's metadata.</td></tr>
+<tr><td valign="top"><a href="#update_rule_metadata-3">update_rule_metadata/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_rule_version-2">update_rule_version/2</a></td><td>Updates a rule version resulting in a new rule version.</td></tr>
+<tr><td valign="top"><a href="#update_rule_version-3">update_rule_version/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_variable-2">update_variable/2</a></td><td>Updates a variable.</td></tr>
+<tr><td valign="top"><a href="#update_variable-3">update_variable/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="batch_create_variable-2">batch_create_variable/2</a></h3>
+<div class="spec">
+<p><tt>batch_create_variable(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a batch of variables.</p>
+
+<h3 class="function"><a name="batch_create_variable-3">batch_create_variable/3</a></h3>
+<div class="spec">
+<p><tt>batch_create_variable(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_variable-2">batch_get_variable/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_variable(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a batch of variables.</p>
+
+<h3 class="function"><a name="batch_get_variable-3">batch_get_variable/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_variable(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_detector_version-2">create_detector_version/2</a></h3>
+<div class="spec">
+<p><tt>create_detector_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a detector version.</p>
+ 
+  The detector version starts in a <code>DRAFT</code> status.</p>
+
+<h3 class="function"><a name="create_detector_version-3">create_detector_version/3</a></h3>
+<div class="spec">
+<p><tt>create_detector_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_model-2">create_model/2</a></h3>
+<div class="spec">
+<p><tt>create_model(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a model using the specified model type.</p>
+
+<h3 class="function"><a name="create_model-3">create_model/3</a></h3>
+<div class="spec">
+<p><tt>create_model(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_model_version-2">create_model_version/2</a></h3>
+<div class="spec">
+<p><tt>create_model_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a version of the model using the specified model type and
+  model id.</p>
+
+<h3 class="function"><a name="create_model_version-3">create_model_version/3</a></h3>
+<div class="spec">
+<p><tt>create_model_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_rule-2">create_rule/2</a></h3>
+<div class="spec">
+<p><tt>create_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a rule for use with the specified detector.</p>
+
+<h3 class="function"><a name="create_rule-3">create_rule/3</a></h3>
+<div class="spec">
+<p><tt>create_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_variable-2">create_variable/2</a></h3>
+<div class="spec">
+<p><tt>create_variable(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a variable.</p>
+
+<h3 class="function"><a name="create_variable-3">create_variable/3</a></h3>
+<div class="spec">
+<p><tt>create_variable(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_detector-2">delete_detector/2</a></h3>
+<div class="spec">
+<p><tt>delete_detector(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the detector.</p>
+ 
+  <p>Before deleting a detector, you must first delete all detector versions  
+and rule versions associated with the detector.</p>
+ 
+  When you delete a detector, Amazon Fraud Detector permanently deletes the
+  detector and the data is no longer stored in Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_detector-3">delete_detector/3</a></h3>
+<div class="spec">
+<p><tt>delete_detector(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_detector_version-2">delete_detector_version/2</a></h3>
+<div class="spec">
+<p><tt>delete_detector_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the detector version.</p>
+ 
+  <p>You cannot delete detector versions that are in <code>ACTIVE</code> status.</p>
+ 
+  When you delete a detector version, Amazon Fraud Detector permanently
+  deletes the detector and the data is no longer stored in Amazon Fraud
+  Detector.</p>
+
+<h3 class="function"><a name="delete_detector_version-3">delete_detector_version/3</a></h3>
+<div class="spec">
+<p><tt>delete_detector_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_entity_type-2">delete_entity_type/2</a></h3>
+<div class="spec">
+<p><tt>delete_entity_type(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an entity type.</p>
+ 
+  <p>You cannot delete an entity type that is included in an event type.</p>
+ 
+  When you delete an entity type, Amazon Fraud Detector permanently deletes
+  that entity type from the evaluation history, and the data is no longer
+  stored in Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_entity_type-3">delete_entity_type/3</a></h3>
+<div class="spec">
+<p><tt>delete_entity_type(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_event-2">delete_event/2</a></h3>
+<div class="spec">
+<p><tt>delete_event(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified event.</p>
+ 
+  When you delete an event, Amazon Fraud Detector permanently deletes that
+  event from the evaluation history, and the event data is no longer stored
+  in Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_event-3">delete_event/3</a></h3>
+<div class="spec">
+<p><tt>delete_event(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_event_type-2">delete_event_type/2</a></h3>
+<div class="spec">
+<p><tt>delete_event_type(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an event type.</p>
+ 
+  <p>You cannot delete an event type that is used in a detector or a model.</p>
+ 
+  When you delete an entity type, Amazon Fraud Detector permanently deletes
+  that entity type from the evaluation history, and the data is no longer
+  stored in Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_event_type-3">delete_event_type/3</a></h3>
+<div class="spec">
+<p><tt>delete_event_type(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_external_model-2">delete_external_model/2</a></h3>
+<div class="spec">
+<p><tt>delete_external_model(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes a SageMaker model from Amazon Fraud Detector.</p>
+ 
+  You can remove an Amazon SageMaker model if it is not associated with a
+  detector version. Removing a SageMaker model disconnects it from Amazon
+  Fraud Detector, but the model remains available in SageMaker.</p>
+
+<h3 class="function"><a name="delete_external_model-3">delete_external_model/3</a></h3>
+<div class="spec">
+<p><tt>delete_external_model(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_label-2">delete_label/2</a></h3>
+<div class="spec">
+<p><tt>delete_label(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a label.</p>
+ 
+  <p>You cannot delete labels that are included in an event type in Amazon  
+Fraud Detector.</p>
+ 
+  <p>You cannot delete a label assigned to an event ID. You must first delete  
+the relevant event ID.</p>
+ 
+  When you delete a label, Amazon Fraud Detector permanently deletes that
+  label from the evaluation history, and the data is no longer stored in
+  Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_label-3">delete_label/3</a></h3>
+<div class="spec">
+<p><tt>delete_label(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_model-2">delete_model/2</a></h3>
+<div class="spec">
+<p><tt>delete_model(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a model.</p>
+ 
+  <p>You can delete models and model versions in Amazon Fraud Detector,  
+provided that they are not associated with a detector version.</p>
+ 
+  When you delete a model, Amazon Fraud Detector permanently deletes that
+  model from the evaluation history, and the data is no longer stored in
+  Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_model-3">delete_model/3</a></h3>
+<div class="spec">
+<p><tt>delete_model(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_model_version-2">delete_model_version/2</a></h3>
+<div class="spec">
+<p><tt>delete_model_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a model version.</p>
+ 
+  <p>You can delete models and model versions in Amazon Fraud Detector,  
+provided that they are not associated with a detector version.</p>
+ 
+  When you delete a model version, Amazon Fraud Detector permanently deletes
+  that model version from the evaluation history, and the data is no longer
+  stored in Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_model_version-3">delete_model_version/3</a></h3>
+<div class="spec">
+<p><tt>delete_model_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_outcome-2">delete_outcome/2</a></h3>
+<div class="spec">
+<p><tt>delete_outcome(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an outcome.</p>
+ 
+  <p>You cannot delete an outcome that is used in a rule version.</p>
+ 
+  When you delete an outcome, Amazon Fraud Detector permanently deletes that
+  outcome from the evaluation history, and the data is no longer stored in
+  Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_outcome-3">delete_outcome/3</a></h3>
+<div class="spec">
+<p><tt>delete_outcome(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_rule-2">delete_rule/2</a></h3>
+<div class="spec">
+<p><tt>delete_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the rule.</p>
+ 
+  <p>You cannot delete a rule if it is used by an <code>ACTIVE</code> or <code>INACTIVE</code>  
+detector version.</p>
+ 
+  When you delete a rule, Amazon Fraud Detector permanently deletes that
+  rule from the evaluation history, and the data is no longer stored in
+  Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_rule-3">delete_rule/3</a></h3>
+<div class="spec">
+<p><tt>delete_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_variable-2">delete_variable/2</a></h3>
+<div class="spec">
+<p><tt>delete_variable(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a variable.</p>
+ 
+  <p>You can't delete variables that are included in an event type in Amazon  
+Fraud Detector.</p>
+ 
+  <p>Amazon Fraud Detector automatically deletes model output variables and  
+SageMaker model output variables when you delete the model. You can't  
+delete these variables manually.</p>
+ 
+  When you delete a variable, Amazon Fraud Detector permanently deletes that
+  variable from the evaluation history, and the data is no longer stored in
+  Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="delete_variable-3">delete_variable/3</a></h3>
+<div class="spec">
+<p><tt>delete_variable(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_detector-2">describe_detector/2</a></h3>
+<div class="spec">
+<p><tt>describe_detector(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets all versions for a specified detector.</p>
+
+<h3 class="function"><a name="describe_detector-3">describe_detector/3</a></h3>
+<div class="spec">
+<p><tt>describe_detector(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_model_versions-2">describe_model_versions/2</a></h3>
+<div class="spec">
+<p><tt>describe_model_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets all of the model versions for the specified model type or for  
+the specified model type and model ID.</p>
+ 
+  You can also get details for a single, specified model version.</p>
+
+<h3 class="function"><a name="describe_model_versions-3">describe_model_versions/3</a></h3>
+<div class="spec">
+<p><tt>describe_model_versions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_detector_version-2">get_detector_version/2</a></h3>
+<div class="spec">
+<p><tt>get_detector_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a particular detector version.</p>
+
+<h3 class="function"><a name="get_detector_version-3">get_detector_version/3</a></h3>
+<div class="spec">
+<p><tt>get_detector_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_detectors-2">get_detectors/2</a></h3>
+<div class="spec">
+<p><tt>get_detectors(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets all detectors or a single detector if a <code>detectorId</code> is  
+specified.</p>
+ 
+  This is a paginated API. If you provide a null <code>maxResults</code>, this action
+  retrieves a maximum of 10 records per page. If you provide a <code>maxResults</code>,
+  the value must be between 5 and 10. To get the next page results, provide
+  the pagination token from the <code>GetDetectorsResponse</code> as part of your
+  request. A null pagination token fetches the records from the beginning.</p>
+
+<h3 class="function"><a name="get_detectors-3">get_detectors/3</a></h3>
+<div class="spec">
+<p><tt>get_detectors(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_entity_types-2">get_entity_types/2</a></h3>
+<div class="spec">
+<p><tt>get_entity_types(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets all entity types or a specific entity type if a name is  
+specified.</p>
+ 
+  This is a paginated API. If you provide a null <code>maxResults</code>, this action
+  retrieves a maximum of 10 records per page. If you provide a <code>maxResults</code>,
+  the value must be between 5 and 10. To get the next page results, provide
+  the pagination token from the <code>GetEntityTypesResponse</code> as part of your
+  request. A null pagination token fetches the records from the beginning.</p>
+
+<h3 class="function"><a name="get_entity_types-3">get_entity_types/3</a></h3>
+<div class="spec">
+<p><tt>get_entity_types(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_event_prediction-2">get_event_prediction/2</a></h3>
+<div class="spec">
+<p><tt>get_event_prediction(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Evaluates an event against a detector version.</p>
+ 
+  If a version ID is not provided, the detector’s (<code>ACTIVE</code>) version is
+  used.</p>
+
+<h3 class="function"><a name="get_event_prediction-3">get_event_prediction/3</a></h3>
+<div class="spec">
+<p><tt>get_event_prediction(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_event_types-2">get_event_types/2</a></h3>
+<div class="spec">
+<p><tt>get_event_types(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets all event types or a specific event type if name is provided.</p>
+ 
+  This is a paginated API. If you provide a null <code>maxResults</code>, this action
+  retrieves a maximum of 10 records per page. If you provide a <code>maxResults</code>,
+  the value must be between 5 and 10. To get the next page results, provide
+  the pagination token from the <code>GetEventTypesResponse</code> as part of your
+  request. A null pagination token fetches the records from the beginning.</p>
+
+<h3 class="function"><a name="get_event_types-3">get_event_types/3</a></h3>
+<div class="spec">
+<p><tt>get_event_types(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_external_models-2">get_external_models/2</a></h3>
+<div class="spec">
+<p><tt>get_external_models(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the details for one or more Amazon SageMaker models that have  
+been imported into the service.</p>
+ 
+  This is a paginated API. If you provide a null <code>maxResults</code>, this actions
+  retrieves a maximum of 10 records per page. If you provide a <code>maxResults</code>,
+  the value must be between 5 and 10. To get the next page results, provide
+  the pagination token from the <code>GetExternalModelsResult</code> as part of your
+  request. A null pagination token fetches the records from the beginning.</p>
+
+<h3 class="function"><a name="get_external_models-3">get_external_models/3</a></h3>
+<div class="spec">
+<p><tt>get_external_models(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_k_m_s_encryption_key-2">get_k_m_s_encryption_key/2</a></h3>
+<div class="spec">
+<p><tt>get_k_m_s_encryption_key(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the encryption key if a Key Management Service (KMS) customer
+  master key (CMK) has been specified to be used to encrypt content in
+  Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="get_k_m_s_encryption_key-3">get_k_m_s_encryption_key/3</a></h3>
+<div class="spec">
+<p><tt>get_k_m_s_encryption_key(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_labels-2">get_labels/2</a></h3>
+<div class="spec">
+<p><tt>get_labels(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets all labels or a specific label if name is provided.</p>
+ 
+  This is a paginated API. If you provide a null <code>maxResults</code>, this action
+  retrieves a maximum of 50 records per page. If you provide a <code>maxResults</code>,
+  the value must be between 10 and 50. To get the next page results, provide
+  the pagination token from the <code>GetGetLabelsResponse</code> as part of your
+  request. A null pagination token fetches the records from the beginning.</p>
+
+<h3 class="function"><a name="get_labels-3">get_labels/3</a></h3>
+<div class="spec">
+<p><tt>get_labels(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_model_version-2">get_model_version/2</a></h3>
+<div class="spec">
+<p><tt>get_model_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the details of the specified model version.</p>
+
+<h3 class="function"><a name="get_model_version-3">get_model_version/3</a></h3>
+<div class="spec">
+<p><tt>get_model_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_models-2">get_models/2</a></h3>
+<div class="spec">
+<p><tt>get_models(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets one or more models.</p>
+ 
+  <p>Gets all models for the AWS account if no model type and no model id  
+provided. Gets all models for the AWS account and model type, if the model  
+type is specified but model id is not provided. Gets a specific model if  
+(model type, model id) tuple is specified.</p>
+ 
+  This is a paginated API. If you provide a null <code>maxResults</code>, this action
+  retrieves a maximum of 10 records per page. If you provide a <code>maxResults</code>,
+  the value must be between 1 and 10. To get the next page results, provide
+  the pagination token from the response as part of your request. A null
+  pagination token fetches the records from the beginning.</p>
+
+<h3 class="function"><a name="get_models-3">get_models/3</a></h3>
+<div class="spec">
+<p><tt>get_models(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_outcomes-2">get_outcomes/2</a></h3>
+<div class="spec">
+<p><tt>get_outcomes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets one or more outcomes.</p>
+ 
+  This is a paginated API. If you provide a null <code>maxResults</code>, this actions
+  retrieves a maximum of 100 records per page. If you provide a
+  <code>maxResults</code>, the value must be between 50 and 100. To get the next page
+  results, provide the pagination token from the <code>GetOutcomesResult</code> as part
+  of your request. A null pagination token fetches the records from the
+  beginning.</p>
+
+<h3 class="function"><a name="get_outcomes-3">get_outcomes/3</a></h3>
+<div class="spec">
+<p><tt>get_outcomes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_rules-2">get_rules/2</a></h3>
+<div class="spec">
+<p><tt>get_rules(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Get all rules for a detector (paginated) if <code>ruleId</code> and
+  <code>ruleVersion</code> are not specified.</p>
+ 
+  <p>Gets all rules for the detector and the <code>ruleId</code> if present (paginated).
+  Gets a specific rule if both the <code>ruleId</code> and the <code>ruleVersion</code> are  
+specified.</p>
+ 
+  This is a paginated API. Providing null maxResults results in retrieving
+  maximum of 100 records per page. If you provide maxResults the value must
+  be between 50 and 100. To get the next page result, a provide a pagination
+  token from GetRulesResult as part of your request. Null pagination token
+  fetches the records from the beginning.</p>
+
+<h3 class="function"><a name="get_rules-3">get_rules/3</a></h3>
+<div class="spec">
+<p><tt>get_rules(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_variables-2">get_variables/2</a></h3>
+<div class="spec">
+<p><tt>get_variables(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets all of the variables or the specific variable.</p>
+ 
+  This is a paginated API. Providing null <code>maxSizePerPage</code> results in
+  retrieving maximum of 100 records per page. If you provide
+  <code>maxSizePerPage</code> the value must be between 50 and 100. To get the next
+  page result, a provide a pagination token from <code>GetVariablesResult</code> as
+  part of your request. Null pagination token fetches the records from the
+  beginning.</p>
+
+<h3 class="function"><a name="get_variables-3">get_variables/3</a></h3>
+<div class="spec">
+<p><tt>get_variables(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all tags associated with the resource.</p>
+ 
+  This is a paginated API. To get the next page results, provide the
+  pagination token from the response as part of your request. A null
+  pagination token fetches the records from the beginning.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_detector-2">put_detector/2</a></h3>
+<div class="spec">
+<p><tt>put_detector(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates or updates a detector.</p>
+
+<h3 class="function"><a name="put_detector-3">put_detector/3</a></h3>
+<div class="spec">
+<p><tt>put_detector(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_entity_type-2">put_entity_type/2</a></h3>
+<div class="spec">
+<p><tt>put_entity_type(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or updates an entity type.</p>
+ 
+  An entity represents who is performing the event. As part of a fraud
+  prediction, you pass the entity ID to indicate the specific entity who
+  performed the event. An entity type classifies the entity. Example
+  classifications include customer, merchant, or account.</p>
+
+<h3 class="function"><a name="put_entity_type-3">put_entity_type/3</a></h3>
+<div class="spec">
+<p><tt>put_entity_type(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_event_type-2">put_event_type/2</a></h3>
+<div class="spec">
+<p><tt>put_event_type(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or updates an event type.</p>
+ 
+  An event is a business activity that is evaluated for fraud risk. With
+  Amazon Fraud Detector, you generate fraud predictions for events. An event
+  type defines the structure for an event sent to Amazon Fraud Detector.
+  This includes the variables sent as part of the event, the entity
+  performing the event (such as a customer), and the labels that classify
+  the event. Example event types include online payment transactions,
+  account registrations, and authentications.</p>
+
+<h3 class="function"><a name="put_event_type-3">put_event_type/3</a></h3>
+<div class="spec">
+<p><tt>put_event_type(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_external_model-2">put_external_model/2</a></h3>
+<div class="spec">
+<p><tt>put_external_model(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or updates an Amazon SageMaker model endpoint.</p>
+ 
+  You can also use this action to update the configuration of the model
+  endpoint, including the IAM role and/or the mapped variables.</p>
+
+<h3 class="function"><a name="put_external_model-3">put_external_model/3</a></h3>
+<div class="spec">
+<p><tt>put_external_model(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_k_m_s_encryption_key-2">put_k_m_s_encryption_key/2</a></h3>
+<div class="spec">
+<p><tt>put_k_m_s_encryption_key(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Specifies the Key Management Service (KMS) customer master key (CMK)
+  to be used to encrypt content in Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="put_k_m_s_encryption_key-3">put_k_m_s_encryption_key/3</a></h3>
+<div class="spec">
+<p><tt>put_k_m_s_encryption_key(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_label-2">put_label/2</a></h3>
+<div class="spec">
+<p><tt>put_label(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or updates label.</p>
+ 
+  A label classifies an event as fraudulent or legitimate. Labels are
+  associated with event types and used to train supervised machine learning
+  models in Amazon Fraud Detector.</p>
+
+<h3 class="function"><a name="put_label-3">put_label/3</a></h3>
+<div class="spec">
+<p><tt>put_label(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_outcome-2">put_outcome/2</a></h3>
+<div class="spec">
+<p><tt>put_outcome(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates or updates an outcome.</p>
+
+<h3 class="function"><a name="put_outcome-3">put_outcome/3</a></h3>
+<div class="spec">
+<p><tt>put_outcome(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Assigns tags to a resource.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from a resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_detector_version-2">update_detector_version/2</a></h3>
+<div class="spec">
+<p><tt>update_detector_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a detector version.</p>
+ 
+  The detector version attributes that you can update include models,
+  external model endpoints, rules, rule execution mode, and description. You
+  can only update a <code>DRAFT</code> detector version.</p>
+
+<h3 class="function"><a name="update_detector_version-3">update_detector_version/3</a></h3>
+<div class="spec">
+<p><tt>update_detector_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_detector_version_metadata-2">update_detector_version_metadata/2</a></h3>
+<div class="spec">
+<p><tt>update_detector_version_metadata(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the detector version's description.</p>
+ 
+  You can update the metadata for any detector version (<code>DRAFT, ACTIVE,</code> or
+  <code>INACTIVE</code>).</p>
+
+<h3 class="function"><a name="update_detector_version_metadata-3">update_detector_version_metadata/3</a></h3>
+<div class="spec">
+<p><tt>update_detector_version_metadata(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_detector_version_status-2">update_detector_version_status/2</a></h3>
+<div class="spec">
+<p><tt>update_detector_version_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the detector version’s status.</p>
+ 
+  You can perform the following promotions or demotions using
+  <code>UpdateDetectorVersionStatus</code>: <code>DRAFT</code> to <code>ACTIVE</code>, <code>ACTIVE</code> to
+  <code>INACTIVE</code>, and <code>INACTIVE</code> to <code>ACTIVE</code>.</p>
+
+<h3 class="function"><a name="update_detector_version_status-3">update_detector_version_status/3</a></h3>
+<div class="spec">
+<p><tt>update_detector_version_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_model-2">update_model/2</a></h3>
+<div class="spec">
+<p><tt>update_model(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a model.</p>
+ 
+  You can update the description attribute using this action.</p>
+
+<h3 class="function"><a name="update_model-3">update_model/3</a></h3>
+<div class="spec">
+<p><tt>update_model(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_model_version-2">update_model_version/2</a></h3>
+<div class="spec">
+<p><tt>update_model_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a model version.</p>
+ 
+  Updating a model version retrains an existing model version using updated
+  training data and produces a new minor version of the model. You can
+  update the training data set location and data access role attributes
+  using this action. This action creates and trains a new minor version of
+  the model, for example version 1.01, 1.02, 1.03.</p>
+
+<h3 class="function"><a name="update_model_version-3">update_model_version/3</a></h3>
+<div class="spec">
+<p><tt>update_model_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_model_version_status-2">update_model_version_status/2</a></h3>
+<div class="spec">
+<p><tt>update_model_version_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the status of a model version.</p>
+ 
+  <p>You can perform the following status updates:</p>
+ 
+  <ol> <li><p> Change the <code>TRAINING_COMPLETE</code> status to <code>ACTIVE</code>.</p>
+ 
+  </li> <li><p> Change <code>ACTIVE</code>to <code>INACTIVE</code>.</p>
+ 
+  </li> </ol></p>
+
+<h3 class="function"><a name="update_model_version_status-3">update_model_version_status/3</a></h3>
+<div class="spec">
+<p><tt>update_model_version_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_rule_metadata-2">update_rule_metadata/2</a></h3>
+<div class="spec">
+<p><tt>update_rule_metadata(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a rule's metadata.</p>
+ 
+  The description attribute can be updated.</p>
+
+<h3 class="function"><a name="update_rule_metadata-3">update_rule_metadata/3</a></h3>
+<div class="spec">
+<p><tt>update_rule_metadata(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_rule_version-2">update_rule_version/2</a></h3>
+<div class="spec">
+<p><tt>update_rule_version(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a rule version resulting in a new rule version.</p>
+ 
+  Updates a rule version resulting in a new rule version (version 1, 2, 3
+  ...).</p>
+
+<h3 class="function"><a name="update_rule_version-3">update_rule_version/3</a></h3>
+<div class="spec">
+<p><tt>update_rule_version(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_variable-2">update_variable/2</a></h3>
+<div class="spec">
+<p><tt>update_variable(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a variable.</p>
+
+<h3 class="function"><a name="update_variable-3">update_variable/3</a></h3>
+<div class="spec">
+<p><tt>update_variable(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

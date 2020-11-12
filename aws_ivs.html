@@ -1,0 +1,547 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_ivs</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_ivs</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Introduction.
+
+
+<h2><a name="description">Description</a></h2><p>Introduction</p>
+ 
+  <p>The Amazon Interactive Video Service (IVS) API is REST compatible, using a  
+standard HTTP API and an AWS SNS event stream for responses.</p>
+ 
+  <p>JSON is used for both requests and responses, including errors.</p>
+ 
+  <p>The API is an AWS regional service, currently in these regions: us-west-2,  
+us-east-1, and eu-west-1.</p>
+ 
+  <p>All API request parameters and URLs are case sensitive.</p>
+ 
+  <p>For a summary of notable documentation changes in each release, see  
+Document History.</p>
+ 
+  <p>Service Endpoints</p>
+ 
+  <p>The following are the Amazon IVS service endpoints (all HTTPS):</p>
+ 
+  <p>Region name: US West (Oregon)</p>
+ 
+  <ul> <li><p> Region: <code>us-west-2</code></p>
+ 
+  </li> <li><p> Endpoint: <code>ivs.us-west-2.amazonaws.com</code></p>
+ 
+  </li> </ul><p> Region name: US East (Virginia)</p>
+ 
+  <ul> <li><p> Region: <code>us-east-1</code></p>
+ 
+  </li> <li><p> Endpoint: <code>ivs.us-east-1.amazonaws.com</code></p>
+ 
+  </li> </ul><p> Region name: EU West (Dublin)</p>
+ 
+  <ul> <li><p> Region: <code>eu-west-1</code></p>
+ 
+  </li> <li><p> Endpoint: <code>ivs.eu-west-1.amazonaws.com</code></p>
+ 
+  </li> </ul><p> Allowed Header Values</p>
+ 
+  <ul> <li><p> <code>Accept:</code> application/json</p>
+ 
+  </li> <li><p> <code>Accept-Encoding:</code> gzip, deflate</p>
+ 
+  </li> <li><p> <code>Content-Type:</code>application/json</p>
+ 
+  </li> </ul><p> Resources</p>
+ 
+  <p>The following resources contain information about your IVS live stream  
+(see Getting Started with Amazon IVS):</p>
+ 
+  <ul> <li><p> Channel — Stores configuration data related to your live stream.  
+You first create a channel and then use the channel’s stream key to start  
+your live stream. See the Channel endpoints for more information.</p>
+ 
+  </li> <li><p> Stream key — An identifier assigned by Amazon IVS when you  
+create a channel, which is then used to authorize streaming. See the  
+StreamKey endpoints for more information. Treat the stream key like a  
+secret, since it allows anyone to stream to the channel.</p>
+ 
+  </li> <li><p> Playback key pair — Video playback may be restricted using  
+playback-authorization tokens, which use public-key encryption. A playback  
+key pair is the public-private pair of keys used to sign and validate the  
+playback-authorization token. See the PlaybackKeyPair endpoints for more  
+information.</p>
+ 
+  </li> </ul><p> Tagging</p>
+ 
+  <p>A tag is a metadata label that you assign to an AWS resource. A tag
+  comprises a key and a value, both set by you. For example, you might set a
+  tag as <code>topic:nature</code> to label a particular video category. See Tagging  
+AWS Resources for more information, including restrictions that apply to  
+tags.</p>
+ 
+  <p>Tags can help you identify and organize your AWS resources. For example,  
+you can use the same tag for different resources to indicate that they are  
+related. You can also use tags to manage access (see Access Tags).</p>
+ 
+  <p>The Amazon IVS API has these tag-related endpoints: <code>TagResource</code>,
+  <code>UntagResource</code>, and <code>ListTagsForResource</code>. The following resources  
+support tagging: Channels, Stream Keys, and Playback Key Pairs.</p>
+ 
+  <p>Channel Endpoints</p>
+ 
+  <ul> <li><p> <code>CreateChannel</code> — Creates a new channel and an associated stream  
+key to start streaming.</p>
+ 
+  </li> <li><p> <code>GetChannel</code> — Gets the channel configuration for the specified  
+channel ARN (Amazon Resource Name).</p>
+ 
+  </li> <li><p> <code>BatchGetChannel</code> — Performs <code>GetChannel</code> on multiple ARNs  
+simultaneously.</p>
+ 
+  </li> <li><p> <code>ListChannels</code> — Gets summary information about all channels in  
+your account, in the AWS region where the API request is processed. This  
+list can be filtered to match a specified string.</p>
+ 
+  </li> <li><p> <code>UpdateChannel</code> — Updates a channel's configuration. This does  
+not affect an ongoing stream of this channel. You must stop and restart  
+the stream for the changes to take effect.</p>
+ 
+  </li> <li><p> <code>DeleteChannel</code> — Deletes the specified channel.</p>
+ 
+  </li> </ul><p> StreamKey Endpoints</p>
+ 
+  <ul> <li><p> <code>CreateStreamKey</code> — Creates a stream key, used to initiate a  
+stream, for the specified channel ARN.</p>
+ 
+  </li> <li><p> <code>GetStreamKey</code> — Gets stream key information for the specified  
+ARN.</p>
+ 
+  </li> <li><p> <code>BatchGetStreamKey</code> — Performs <code>GetStreamKey</code> on multiple ARNs  
+simultaneously.</p>
+ 
+  </li> <li><p> <code>ListStreamKeys</code> — Gets summary information about stream keys  
+for the specified channel.</p>
+ 
+  </li> <li><p> <code>DeleteStreamKey</code> — Deletes the stream key for the specified  
+ARN, so it can no longer be used to stream.</p>
+ 
+  </li> </ul><p> Stream Endpoints</p>
+ 
+  <ul> <li><p> <code>GetStream</code> — Gets information about the active (live) stream on  
+a specified channel.</p>
+ 
+  </li> <li><p> <code>ListStreams</code> — Gets summary information about live streams in  
+your account, in the AWS region where the API request is processed.</p>
+ 
+  </li> <li><p> <code>StopStream</code> — Disconnects the incoming RTMPS stream for the
+  specified channel. Can be used in conjunction with <code>DeleteStreamKey</code> to  
+prevent further streaming to a channel.</p>
+ 
+  </li> <li><p> <code>PutMetadata</code> — Inserts metadata into an RTMPS stream for the  
+specified channel. A maximum of 5 requests per second per channel is  
+allowed, each with a maximum 1KB payload.</p>
+ 
+  </li> </ul><p> PlaybackKeyPair Endpoints</p>
+ 
+  <ul> <li><p> <code>ImportPlaybackKeyPair</code> — Imports the public portion of a new
+  key pair and returns its <code>arn</code> and <code>fingerprint</code>. The <code>privateKey</code> can  
+then be used to generate viewer authorization tokens, to grant viewers  
+access to authorized channels.</p>
+ 
+  </li> <li><p> <code>GetPlaybackKeyPair</code> — Gets a specified playback authorization
+  key pair and returns the <code>arn</code> and <code>fingerprint</code>. The <code>privateKey</code> held by  
+the caller can be used to generate viewer authorization tokens, to grant  
+viewers access to authorized channels.</p>
+ 
+  </li> <li><p> <code>ListPlaybackKeyPairs</code> — Gets summary information about  
+playback key pairs.</p>
+ 
+  </li> <li><p> <code>DeletePlaybackKeyPair</code> — Deletes a specified authorization key
+  pair. This invalidates future viewer tokens generated using the key pair’s
+  <code>privateKey</code>.</p>
+ 
+  </li> </ul><p> AWS Tags Endpoints</p>
+ 
+  <ul> <li><p> <code>TagResource</code> — Adds or updates tags for the AWS resource with  
+the specified ARN.</p>
+ 
+  </li> <li><p> <code>UntagResource</code> — Removes tags from the resource with the  
+specified ARN.</p>
+ 
+  </li> <li><p> <code>ListTagsForResource</code> — Gets information about AWS tags for the  
+specified ARN.</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#batch_get_channel-2">batch_get_channel/2</a></td><td>Performs <code>GetChannel</code> on multiple ARNs simultaneously.</td></tr>
+<tr><td valign="top"><a href="#batch_get_channel-3">batch_get_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_stream_key-2">batch_get_stream_key/2</a></td><td>Performs <code>GetStreamKey</code> on multiple ARNs simultaneously.</td></tr>
+<tr><td valign="top"><a href="#batch_get_stream_key-3">batch_get_stream_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_channel-2">create_channel/2</a></td><td>Creates a new channel and an associated stream key to start
+  streaming.</td></tr>
+<tr><td valign="top"><a href="#create_channel-3">create_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_stream_key-2">create_stream_key/2</a></td><td>Creates a stream key, used to initiate a stream, for the specified  
+channel ARN.</td></tr>
+<tr><td valign="top"><a href="#create_stream_key-3">create_stream_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_channel-2">delete_channel/2</a></td><td>Deletes the specified channel and its associated stream keys.</td></tr>
+<tr><td valign="top"><a href="#delete_channel-3">delete_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_playback_key_pair-2">delete_playback_key_pair/2</a></td><td>Deletes a specified authorization key pair.</td></tr>
+<tr><td valign="top"><a href="#delete_playback_key_pair-3">delete_playback_key_pair/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_stream_key-2">delete_stream_key/2</a></td><td>Deletes the stream key for the specified ARN, so it can no longer be
+  used to stream.</td></tr>
+<tr><td valign="top"><a href="#delete_stream_key-3">delete_stream_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_channel-2">get_channel/2</a></td><td>Gets the channel configuration for the specified channel ARN.</td></tr>
+<tr><td valign="top"><a href="#get_channel-3">get_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_playback_key_pair-2">get_playback_key_pair/2</a></td><td>Gets a specified playback authorization key pair and returns the
+  <code>arn</code> and <code>fingerprint</code>.</td></tr>
+<tr><td valign="top"><a href="#get_playback_key_pair-3">get_playback_key_pair/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_stream-2">get_stream/2</a></td><td>Gets information about the active (live) stream on a specified
+  channel.</td></tr>
+<tr><td valign="top"><a href="#get_stream-3">get_stream/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_stream_key-2">get_stream_key/2</a></td><td>Gets stream-key information for a specified ARN.</td></tr>
+<tr><td valign="top"><a href="#get_stream_key-3">get_stream_key/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_playback_key_pair-2">import_playback_key_pair/2</a></td><td>Imports the public portion of a new key pair and returns its <code>arn</code>
+  and <code>fingerprint</code>.</td></tr>
+<tr><td valign="top"><a href="#import_playback_key_pair-3">import_playback_key_pair/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_channels-2">list_channels/2</a></td><td>Gets summary information about all channels in your account, in the  
+AWS region where the API request is processed.</td></tr>
+<tr><td valign="top"><a href="#list_channels-3">list_channels/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_playback_key_pairs-2">list_playback_key_pairs/2</a></td><td>Gets summary information about playback key pairs.</td></tr>
+<tr><td valign="top"><a href="#list_playback_key_pairs-3">list_playback_key_pairs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_stream_keys-2">list_stream_keys/2</a></td><td>Gets summary information about stream keys for the specified channel.</td></tr>
+<tr><td valign="top"><a href="#list_stream_keys-3">list_stream_keys/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_streams-2">list_streams/2</a></td><td>Gets summary information about live streams in your account, in the
+  AWS region where the API request is processed.</td></tr>
+<tr><td valign="top"><a href="#list_streams-3">list_streams/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Gets information about AWS tags for the specified ARN.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_metadata-2">put_metadata/2</a></td><td>Inserts metadata into an RTMPS stream for the specified channel.</td></tr>
+<tr><td valign="top"><a href="#put_metadata-3">put_metadata/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_stream-2">stop_stream/2</a></td><td>Disconnects the incoming RTMPS stream for the specified channel.</td></tr>
+<tr><td valign="top"><a href="#stop_stream-3">stop_stream/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds or updates tags for the AWS resource with the specified ARN.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes tags from the resource with the specified ARN.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_channel-2">update_channel/2</a></td><td>Updates a channel's configuration.</td></tr>
+<tr><td valign="top"><a href="#update_channel-3">update_channel/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="batch_get_channel-2">batch_get_channel/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Performs <code>GetChannel</code> on multiple ARNs simultaneously.</p>
+
+<h3 class="function"><a name="batch_get_channel-3">batch_get_channel/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_channel(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_stream_key-2">batch_get_stream_key/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_stream_key(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Performs <code>GetStreamKey</code> on multiple ARNs simultaneously.</p>
+
+<h3 class="function"><a name="batch_get_stream_key-3">batch_get_stream_key/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_stream_key(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_channel-2">create_channel/2</a></h3>
+<div class="spec">
+<p><tt>create_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new channel and an associated stream key to start
+  streaming.</p>
+
+<h3 class="function"><a name="create_channel-3">create_channel/3</a></h3>
+<div class="spec">
+<p><tt>create_channel(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_stream_key-2">create_stream_key/2</a></h3>
+<div class="spec">
+<p><tt>create_stream_key(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a stream key, used to initiate a stream, for the specified  
+channel ARN.</p>
+ 
+  Note that <code>CreateChannel</code> creates a stream key. If you subsequently use
+  CreateStreamKey on the same channel, it will fail because a stream key
+  already exists and there is a limit of 1 stream key per channel. To reset
+  the stream key on a channel, use <code>DeleteStreamKey</code> and then
+  CreateStreamKey.</p>
+
+<h3 class="function"><a name="create_stream_key-3">create_stream_key/3</a></h3>
+<div class="spec">
+<p><tt>create_stream_key(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_channel-2">delete_channel/2</a></h3>
+<div class="spec">
+<p><tt>delete_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the specified channel and its associated stream keys.</p>
+
+<h3 class="function"><a name="delete_channel-3">delete_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_channel(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_playback_key_pair-2">delete_playback_key_pair/2</a></h3>
+<div class="spec">
+<p><tt>delete_playback_key_pair(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified authorization key pair.</p>
+ 
+  This invalidates future viewer tokens generated using the key pair’s
+  <code>privateKey</code>.</p>
+
+<h3 class="function"><a name="delete_playback_key_pair-3">delete_playback_key_pair/3</a></h3>
+<div class="spec">
+<p><tt>delete_playback_key_pair(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_stream_key-2">delete_stream_key/2</a></h3>
+<div class="spec">
+<p><tt>delete_stream_key(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the stream key for the specified ARN, so it can no longer be
+  used to stream.</p>
+
+<h3 class="function"><a name="delete_stream_key-3">delete_stream_key/3</a></h3>
+<div class="spec">
+<p><tt>delete_stream_key(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_channel-2">get_channel/2</a></h3>
+<div class="spec">
+<p><tt>get_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the channel configuration for the specified channel ARN.</p>
+ 
+  See also <code>BatchGetChannel</code>.</p>
+
+<h3 class="function"><a name="get_channel-3">get_channel/3</a></h3>
+<div class="spec">
+<p><tt>get_channel(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_playback_key_pair-2">get_playback_key_pair/2</a></h3>
+<div class="spec">
+<p><tt>get_playback_key_pair(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a specified playback authorization key pair and returns the
+  <code>arn</code> and <code>fingerprint</code>.</p>
+ 
+  The <code>privateKey</code> held by the caller can be used to generate viewer
+  authorization tokens, to grant viewers access to authorized channels.</p>
+
+<h3 class="function"><a name="get_playback_key_pair-3">get_playback_key_pair/3</a></h3>
+<div class="spec">
+<p><tt>get_playback_key_pair(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_stream-2">get_stream/2</a></h3>
+<div class="spec">
+<p><tt>get_stream(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about the active (live) stream on a specified
+  channel.</p>
+
+<h3 class="function"><a name="get_stream-3">get_stream/3</a></h3>
+<div class="spec">
+<p><tt>get_stream(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_stream_key-2">get_stream_key/2</a></h3>
+<div class="spec">
+<p><tt>get_stream_key(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets stream-key information for a specified ARN.</p>
+
+<h3 class="function"><a name="get_stream_key-3">get_stream_key/3</a></h3>
+<div class="spec">
+<p><tt>get_stream_key(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_playback_key_pair-2">import_playback_key_pair/2</a></h3>
+<div class="spec">
+<p><tt>import_playback_key_pair(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Imports the public portion of a new key pair and returns its <code>arn</code>
+  and <code>fingerprint</code>.</p>
+ 
+  The <code>privateKey</code> can then be used to generate viewer authorization tokens,
+  to grant viewers access to authorized channels.</p>
+
+<h3 class="function"><a name="import_playback_key_pair-3">import_playback_key_pair/3</a></h3>
+<div class="spec">
+<p><tt>import_playback_key_pair(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_channels-2">list_channels/2</a></h3>
+<div class="spec">
+<p><tt>list_channels(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets summary information about all channels in your account, in the  
+AWS region where the API request is processed.</p>
+ 
+  This list can be filtered to match a specified string.</p>
+
+<h3 class="function"><a name="list_channels-3">list_channels/3</a></h3>
+<div class="spec">
+<p><tt>list_channels(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_playback_key_pairs-2">list_playback_key_pairs/2</a></h3>
+<div class="spec">
+<p><tt>list_playback_key_pairs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets summary information about playback key pairs.</p>
+
+<h3 class="function"><a name="list_playback_key_pairs-3">list_playback_key_pairs/3</a></h3>
+<div class="spec">
+<p><tt>list_playback_key_pairs(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_stream_keys-2">list_stream_keys/2</a></h3>
+<div class="spec">
+<p><tt>list_stream_keys(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets summary information about stream keys for the specified channel.</p>
+
+<h3 class="function"><a name="list_stream_keys-3">list_stream_keys/3</a></h3>
+<div class="spec">
+<p><tt>list_stream_keys(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_streams-2">list_streams/2</a></h3>
+<div class="spec">
+<p><tt>list_streams(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets summary information about live streams in your account, in the
+  AWS region where the API request is processed.</p>
+
+<h3 class="function"><a name="list_streams-3">list_streams/3</a></h3>
+<div class="spec">
+<p><tt>list_streams(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about AWS tags for the specified ARN.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_metadata-2">put_metadata/2</a></h3>
+<div class="spec">
+<p><tt>put_metadata(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Inserts metadata into an RTMPS stream for the specified channel.</p>
+ 
+  A maximum of 5 requests per second per channel is allowed, each with a
+  maximum 1KB payload.</p>
+
+<h3 class="function"><a name="put_metadata-3">put_metadata/3</a></h3>
+<div class="spec">
+<p><tt>put_metadata(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_stream-2">stop_stream/2</a></h3>
+<div class="spec">
+<p><tt>stop_stream(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disconnects the incoming RTMPS stream for the specified channel.</p>
+ 
+  <p>Can be used in conjunction with <code>DeleteStreamKey</code> to prevent further  
+streaming to a channel.</p>
+ 
+  Many streaming client-software libraries automatically reconnect a dropped
+  RTMPS session, so to stop the stream permanently, you may want to first
+  revoke the <code>streamKey</code> attached to the channel.</p>
+
+<h3 class="function"><a name="stop_stream-3">stop_stream/3</a></h3>
+<div class="spec">
+<p><tt>stop_stream(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds or updates tags for the AWS resource with the specified ARN.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from the resource with the specified ARN.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_channel-2">update_channel/2</a></h3>
+<div class="spec">
+<p><tt>update_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a channel's configuration.</p>
+ 
+  This does not affect an ongoing stream of this channel. You must stop and
+  restart the stream for the changes to take effect.</p>
+
+<h3 class="function"><a name="update_channel-3">update_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_channel(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

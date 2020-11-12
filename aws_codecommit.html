@@ -1,0 +1,1618 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_codecommit</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_codecommit</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS CodeCommit.
+
+
+<h2><a name="description">Description</a></h2><p>AWS CodeCommit</p>
+ 
+  <p>This is the AWS CodeCommit API Reference.</p>
+ 
+  <p>This reference provides descriptions of the operations and data types for  
+AWS CodeCommit API along with usage examples.</p>
+ 
+  <p>You can use the AWS CodeCommit API to work with the following objects:</p>
+ 
+  <p>Repositories, by calling the following:</p>
+ 
+  <ul> <li><p> <code>BatchGetRepositories</code>, which returns information about one or  
+more repositories associated with your AWS account.</p>
+ 
+  </li> <li><p> <code>CreateRepository</code>, which creates an AWS CodeCommit repository.</p>
+ 
+  </li> <li><p> <code>DeleteRepository</code>, which deletes an AWS CodeCommit repository.</p>
+ 
+  </li> <li><p> <code>GetRepository</code>, which returns information about a specified  
+repository.</p>
+ 
+  </li> <li><p> <code>ListRepositories</code>, which lists all AWS CodeCommit repositories  
+associated with your AWS account.</p>
+ 
+  </li> <li><p> <code>UpdateRepositoryDescription</code>, which sets or updates the  
+description of the repository.</p>
+ 
+  </li> <li><p> <code>UpdateRepositoryName</code>, which changes the name of the  
+repository. If you change the name of a repository, no other users of that  
+repository can access it until you send them the new HTTPS or SSH URL to  
+use.</p>
+ 
+  </li> </ul><p> Branches, by calling the following:</p>
+ 
+  <ul> <li><p> <code>CreateBranch</code>, which creates a branch in a specified  
+repository.</p>
+ 
+  </li> <li><p> <code>DeleteBranch</code>, which deletes the specified branch in a  
+repository unless it is the default branch.</p>
+ 
+  </li> <li><p> <code>GetBranch</code>, which returns information about a specified  
+branch.</p>
+ 
+  </li> <li><p> <code>ListBranches</code>, which lists all branches for a specified  
+repository.</p>
+ 
+  </li> <li><p> <code>UpdateDefaultBranch</code>, which changes the default branch for a  
+repository.</p>
+ 
+  </li> </ul><p> Files, by calling the following:</p>
+ 
+  <ul> <li><p> <code>DeleteFile</code>, which deletes the content of a specified file from  
+a specified branch.</p>
+ 
+  </li> <li><p> <code>GetBlob</code>, which returns the base-64 encoded content of an  
+individual Git blob object in a repository.</p>
+ 
+  </li> <li><p> <code>GetFile</code>, which returns the base-64 encoded content of a  
+specified file.</p>
+ 
+  </li> <li><p> <code>GetFolder</code>, which returns the contents of a specified folder  
+or directory.</p>
+ 
+  </li> <li><p> <code>PutFile</code>, which adds or modifies a single file in a specified  
+repository and branch.</p>
+ 
+  </li> </ul><p> Commits, by calling the following:</p>
+ 
+  <ul> <li><p> <code>BatchGetCommits</code>, which returns information about one or more  
+commits in a repository.</p>
+ 
+  </li> <li><p> <code>CreateCommit</code>, which creates a commit for changes to a  
+repository.</p>
+ 
+  </li> <li><p> <code>GetCommit</code>, which returns information about a commit,  
+including commit messages and author and committer information.</p>
+ 
+  </li> <li><p> <code>GetDifferences</code>, which returns information about the  
+differences in a valid commit specifier (such as a branch, tag, HEAD,  
+commit ID, or other fully qualified reference).</p>
+ 
+  </li> </ul><p> Merges, by calling the following:</p>
+ 
+  <ul> <li><p> <code>BatchDescribeMergeConflicts</code>, which returns information about  
+conflicts in a merge between commits in a repository.</p>
+ 
+  </li> <li><p> <code>CreateUnreferencedMergeCommit</code>, which creates an unreferenced  
+commit between two branches or commits for the purpose of comparing them  
+and identifying any potential conflicts.</p>
+ 
+  </li> <li><p> <code>DescribeMergeConflicts</code>, which returns information about merge  
+conflicts between the base, source, and destination versions of a file in  
+a potential merge.</p>
+ 
+  </li> <li><p> <code>GetMergeCommit</code>, which returns information about the merge  
+between a source and destination commit.</p>
+ 
+  </li> <li><p> <code>GetMergeConflicts</code>, which returns information about merge  
+conflicts between the source and destination branch in a pull request.</p>
+ 
+  </li> <li><p> <code>GetMergeOptions</code>, which returns information about the  
+available merge options between two branches or commit specifiers.</p>
+ 
+  </li> <li><p> <code>MergeBranchesByFastForward</code>, which merges two branches using  
+the fast-forward merge option.</p>
+ 
+  </li> <li><p> <code>MergeBranchesBySquash</code>, which merges two branches using the  
+squash merge option.</p>
+ 
+  </li> <li><p> <code>MergeBranchesByThreeWay</code>, which merges two branches using the  
+three-way merge option.</p>
+ 
+  </li> </ul><p> Pull requests, by calling the following:</p>
+ 
+  <ul> <li><p> <code>CreatePullRequest</code>, which creates a pull request in a specified  
+repository.</p>
+ 
+  </li> <li><p> <code>CreatePullRequestApprovalRule</code>, which creates an approval rule  
+for a specified pull request.</p>
+ 
+  </li> <li><p> <code>DeletePullRequestApprovalRule</code>, which deletes an approval rule  
+for a specified pull request.</p>
+ 
+  </li> <li><p> <code>DescribePullRequestEvents</code>, which returns information about  
+one or more pull request events.</p>
+ 
+  </li> <li><p> <code>EvaluatePullRequestApprovalRules</code>, which evaluates whether a  
+pull request has met all the conditions specified in its associated  
+approval rules.</p>
+ 
+  </li> <li><p> <code>GetCommentsForPullRequest</code>, which returns information about  
+comments on a specified pull request.</p>
+ 
+  </li> <li><p> <code>GetPullRequest</code>, which returns information about a specified  
+pull request.</p>
+ 
+  </li> <li><p> <code>GetPullRequestApprovalStates</code>, which returns information about  
+the approval states for a specified pull request.</p>
+ 
+  </li> <li><p> <code>GetPullRequestOverrideState</code>, which returns information about  
+whether approval rules have been set aside (overriden) for a pull request,  
+and if so, the Amazon Resource Name (ARN) of the user or identity that  
+overrode the rules and their requirements for the pull request.</p>
+ 
+  </li> <li><p> <code>ListPullRequests</code>, which lists all pull requests for a  
+repository.</p>
+ 
+  </li> <li><p> <code>MergePullRequestByFastForward</code>, which merges the source  
+destination branch of a pull request into the specified destination branch  
+for that pull request using the fast-forward merge option.</p>
+ 
+  </li> <li><p> <code>MergePullRequestBySquash</code>, which merges the source destination  
+branch of a pull request into the specified destination branch for that  
+pull request using the squash merge option.</p>
+ 
+  </li> <li><p> <code>MergePullRequestByThreeWay</code>. which merges the source  
+destination branch of a pull request into the specified destination branch  
+for that pull request using the three-way merge option.</p>
+ 
+  </li> <li><p> <code>OverridePullRequestApprovalRules</code>, which sets aside all  
+approval rule requirements for a pull request.</p>
+ 
+  </li> <li><p> <code>PostCommentForPullRequest</code>, which posts a comment to a pull  
+request at the specified line, file, or request.</p>
+ 
+  </li> <li><p> <code>UpdatePullRequestApprovalRuleContent</code>, which updates the  
+structure of an approval rule for a pull request.</p>
+ 
+  </li> <li><p> <code>UpdatePullRequestApprovalState</code>, which updates the state of an  
+approval on a pull request.</p>
+ 
+  </li> <li><p> <code>UpdatePullRequestDescription</code>, which updates the description  
+of a pull request.</p>
+ 
+  </li> <li><p> <code>UpdatePullRequestStatus</code>, which updates the status of a pull  
+request.</p>
+ 
+  </li> <li><p> <code>UpdatePullRequestTitle</code>, which updates the title of a pull  
+request.</p>
+ 
+  </li> </ul><p> Approval rule templates, by calling the following:</p>
+ 
+  <ul> <li><p> <code>AssociateApprovalRuleTemplateWithRepository</code>, which associates  
+a template with a specified repository. After the template is associated  
+with a repository, AWS CodeCommit creates approval rules that match the  
+template conditions on every pull request created in the specified  
+repository.</p>
+ 
+  </li> <li><p> <code>BatchAssociateApprovalRuleTemplateWithRepositories</code>, which  
+associates a template with one or more specified repositories. After the  
+template is associated with a repository, AWS CodeCommit creates approval  
+rules that match the template conditions on every pull request created in  
+the specified repositories.</p>
+ 
+  </li> <li><p> <code>BatchDisassociateApprovalRuleTemplateFromRepositories</code>, which  
+removes the association between a template and specified repositories so  
+that approval rules based on the template are not automatically created  
+when pull requests are created in those repositories.</p>
+ 
+  </li> <li><p> <code>CreateApprovalRuleTemplate</code>, which creates a template for  
+approval rules that can then be associated with one or more repositories  
+in your AWS account.</p>
+ 
+  </li> <li><p> <code>DeleteApprovalRuleTemplate</code>, which deletes the specified  
+template. It does not remove approval rules on pull requests already  
+created with the template.</p>
+ 
+  </li> <li><p> <code>DisassociateApprovalRuleTemplateFromRepository</code>, which removes  
+the association between a template and a repository so that approval rules  
+based on the template are not automatically created when pull requests are  
+created in the specified repository.</p>
+ 
+  </li> <li><p> <code>GetApprovalRuleTemplate</code>, which returns information about an  
+approval rule template.</p>
+ 
+  </li> <li><p> <code>ListApprovalRuleTemplates</code>, which lists all approval rule  
+templates in the AWS Region in your AWS account.</p>
+ 
+  </li> <li><p> <code>ListAssociatedApprovalRuleTemplatesForRepository</code>, which lists  
+all approval rule templates that are associated with a specified  
+repository.</p>
+ 
+  </li> <li><p> <code>ListRepositoriesForApprovalRuleTemplate</code>, which lists all  
+repositories associated with the specified approval rule template.</p>
+ 
+  </li> <li><p> <code>UpdateApprovalRuleTemplateDescription</code>, which updates the  
+description of an approval rule template.</p>
+ 
+  </li> <li><p> <code>UpdateApprovalRuleTemplateName</code>, which updates the name of an  
+approval rule template.</p>
+ 
+  </li> <li><p> <code>UpdateApprovalRuleTemplateContent</code>, which updates the content  
+of an approval rule template.</p>
+ 
+  </li> </ul><p> Comments in a repository, by calling the following:</p>
+ 
+  <ul> <li><p> <code>DeleteCommentContent</code>, which deletes the content of a comment  
+on a commit in a repository.</p>
+ 
+  </li> <li><p> <code>GetComment</code>, which returns information about a comment on a  
+commit.</p>
+ 
+  </li> <li><p> <code>GetCommentReactions</code>, which returns information about emoji  
+reactions to comments.</p>
+ 
+  </li> <li><p> <code>GetCommentsForComparedCommit</code>, which returns information about  
+comments on the comparison between two commit specifiers in a repository.</p>
+ 
+  </li> <li><p> <code>PostCommentForComparedCommit</code>, which creates a comment on the  
+comparison between two commit specifiers in a repository.</p>
+ 
+  </li> <li><p> <code>PostCommentReply</code>, which creates a reply to a comment.</p>
+ 
+  </li> <li><p> <code>PutCommentReaction</code>, which creates or updates an emoji  
+reaction to a comment.</p>
+ 
+  </li> <li><p> <code>UpdateComment</code>, which updates the content of a comment on a  
+commit in a repository.</p>
+ 
+  </li> </ul><p> Tags used to tag resources in AWS CodeCommit (not Git tags),  
+by calling the following:</p>
+ 
+  <ul> <li><p> <code>ListTagsForResource</code>, which gets information about AWS tags for  
+a specified Amazon Resource Name (ARN) in AWS CodeCommit.</p>
+ 
+  </li> <li><p> <code>TagResource</code>, which adds or updates tags for a resource in AWS  
+CodeCommit.</p>
+ 
+  </li> <li><p> <code>UntagResource</code>, which removes tags for a resource in AWS  
+CodeCommit.</p>
+ 
+  </li> </ul><p> Triggers, by calling the following:</p>
+ 
+  <ul> <li><p> <code>GetRepositoryTriggers</code>, which returns information about  
+triggers configured for a repository.</p>
+ 
+  </li> <li><p> <code>PutRepositoryTriggers</code>, which replaces all triggers for a  
+repository and can be used to create or delete triggers.</p>
+ 
+  </li> <li><p> <code>TestRepositoryTriggers</code>, which tests the functionality of a  
+repository trigger by sending data to the trigger target.</p>
+ 
+  </li> </ul> For information about how to use AWS CodeCommit, see the AWS
+  CodeCommit User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_approval_rule_template_with_repository-2">associate_approval_rule_template_with_repository/2</a></td><td>Creates an association between an approval rule template and a  
+specified repository.</td></tr>
+<tr><td valign="top"><a href="#associate_approval_rule_template_with_repository-3">associate_approval_rule_template_with_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_associate_approval_rule_template_with_repositories-2">batch_associate_approval_rule_template_with_repositories/2</a></td><td>Creates an association between an approval rule template and one or
+  more specified repositories.</td></tr>
+<tr><td valign="top"><a href="#batch_associate_approval_rule_template_with_repositories-3">batch_associate_approval_rule_template_with_repositories/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_describe_merge_conflicts-2">batch_describe_merge_conflicts/2</a></td><td>Returns information about one or more merge conflicts in the
+  attempted merge of two commit specifiers using the squash or three-way
+  merge strategy.</td></tr>
+<tr><td valign="top"><a href="#batch_describe_merge_conflicts-3">batch_describe_merge_conflicts/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_disassociate_approval_rule_template_from_repositories-2">batch_disassociate_approval_rule_template_from_repositories/2</a></td><td>Removes the association between an approval rule template and one or
+  more specified repositories.</td></tr>
+<tr><td valign="top"><a href="#batch_disassociate_approval_rule_template_from_repositories-3">batch_disassociate_approval_rule_template_from_repositories/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_commits-2">batch_get_commits/2</a></td><td>Returns information about the contents of one or more commits in a
+  repository.</td></tr>
+<tr><td valign="top"><a href="#batch_get_commits-3">batch_get_commits/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_repositories-2">batch_get_repositories/2</a></td><td>Returns information about one or more repositories.</td></tr>
+<tr><td valign="top"><a href="#batch_get_repositories-3">batch_get_repositories/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_approval_rule_template-2">create_approval_rule_template/2</a></td><td>Creates a template for approval rules that can then be associated  
+with one or more repositories in your AWS account.</td></tr>
+<tr><td valign="top"><a href="#create_approval_rule_template-3">create_approval_rule_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_branch-2">create_branch/2</a></td><td>Creates a branch in a repository and points the branch to a commit.</td></tr>
+<tr><td valign="top"><a href="#create_branch-3">create_branch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_commit-2">create_commit/2</a></td><td>Creates a commit for a repository on the tip of a specified branch.</td></tr>
+<tr><td valign="top"><a href="#create_commit-3">create_commit/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_pull_request-2">create_pull_request/2</a></td><td>Creates a pull request in the specified repository.</td></tr>
+<tr><td valign="top"><a href="#create_pull_request-3">create_pull_request/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_pull_request_approval_rule-2">create_pull_request_approval_rule/2</a></td><td>Creates an approval rule for a pull request.</td></tr>
+<tr><td valign="top"><a href="#create_pull_request_approval_rule-3">create_pull_request_approval_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_repository-2">create_repository/2</a></td><td>Creates a new, empty repository.</td></tr>
+<tr><td valign="top"><a href="#create_repository-3">create_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_unreferenced_merge_commit-2">create_unreferenced_merge_commit/2</a></td><td>Creates an unreferenced commit that represents the result of merging  
+two branches using a specified merge strategy.</td></tr>
+<tr><td valign="top"><a href="#create_unreferenced_merge_commit-3">create_unreferenced_merge_commit/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_approval_rule_template-2">delete_approval_rule_template/2</a></td><td>Deletes a specified approval rule template.</td></tr>
+<tr><td valign="top"><a href="#delete_approval_rule_template-3">delete_approval_rule_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_branch-2">delete_branch/2</a></td><td>Deletes a branch from a repository, unless that branch is the default
+  branch for the repository.</td></tr>
+<tr><td valign="top"><a href="#delete_branch-3">delete_branch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_comment_content-2">delete_comment_content/2</a></td><td>Deletes the content of a comment made on a change, file, or commit in
+  a repository.</td></tr>
+<tr><td valign="top"><a href="#delete_comment_content-3">delete_comment_content/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_file-2">delete_file/2</a></td><td>Deletes a specified file from a specified branch.</td></tr>
+<tr><td valign="top"><a href="#delete_file-3">delete_file/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_pull_request_approval_rule-2">delete_pull_request_approval_rule/2</a></td><td>Deletes an approval rule from a specified pull request.</td></tr>
+<tr><td valign="top"><a href="#delete_pull_request_approval_rule-3">delete_pull_request_approval_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_repository-2">delete_repository/2</a></td><td>Deletes a repository.</td></tr>
+<tr><td valign="top"><a href="#delete_repository-3">delete_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_merge_conflicts-2">describe_merge_conflicts/2</a></td><td>Returns information about one or more merge conflicts in the  
+attempted merge of two commit specifiers using the squash or three-way  
+merge strategy.</td></tr>
+<tr><td valign="top"><a href="#describe_merge_conflicts-3">describe_merge_conflicts/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_pull_request_events-2">describe_pull_request_events/2</a></td><td>Returns information about one or more pull request events.</td></tr>
+<tr><td valign="top"><a href="#describe_pull_request_events-3">describe_pull_request_events/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_approval_rule_template_from_repository-2">disassociate_approval_rule_template_from_repository/2</a></td><td>Removes the association between a template and a repository so that  
+approval rules based on the template are not automatically created when  
+pull requests are created in the specified repository.</td></tr>
+<tr><td valign="top"><a href="#disassociate_approval_rule_template_from_repository-3">disassociate_approval_rule_template_from_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#evaluate_pull_request_approval_rules-2">evaluate_pull_request_approval_rules/2</a></td><td>Evaluates whether a pull request has met all the conditions specified
+  in its associated approval rules.</td></tr>
+<tr><td valign="top"><a href="#evaluate_pull_request_approval_rules-3">evaluate_pull_request_approval_rules/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_approval_rule_template-2">get_approval_rule_template/2</a></td><td>Returns information about a specified approval rule template.</td></tr>
+<tr><td valign="top"><a href="#get_approval_rule_template-3">get_approval_rule_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_blob-2">get_blob/2</a></td><td>Returns the base-64 encoded content of an individual blob in a
+  repository.</td></tr>
+<tr><td valign="top"><a href="#get_blob-3">get_blob/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_branch-2">get_branch/2</a></td><td>Returns information about a repository branch, including its name and
+  the last commit ID.</td></tr>
+<tr><td valign="top"><a href="#get_branch-3">get_branch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_comment-2">get_comment/2</a></td><td>Returns the content of a comment made on a change, file, or commit in  
+a repository.</td></tr>
+<tr><td valign="top"><a href="#get_comment-3">get_comment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_comment_reactions-2">get_comment_reactions/2</a></td><td>Returns information about reactions to a specified comment ID.</td></tr>
+<tr><td valign="top"><a href="#get_comment_reactions-3">get_comment_reactions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_comments_for_compared_commit-2">get_comments_for_compared_commit/2</a></td><td>Returns information about comments made on the comparison between two  
+commits.</td></tr>
+<tr><td valign="top"><a href="#get_comments_for_compared_commit-3">get_comments_for_compared_commit/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_comments_for_pull_request-2">get_comments_for_pull_request/2</a></td><td>Returns comments made on a pull request.</td></tr>
+<tr><td valign="top"><a href="#get_comments_for_pull_request-3">get_comments_for_pull_request/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_commit-2">get_commit/2</a></td><td>Returns information about a commit, including commit message and
+  committer information.</td></tr>
+<tr><td valign="top"><a href="#get_commit-3">get_commit/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_differences-2">get_differences/2</a></td><td>Returns information about the differences in a valid commit specifier  
+(such as a branch, tag, HEAD, commit ID, or other fully qualified  
+reference).</td></tr>
+<tr><td valign="top"><a href="#get_differences-3">get_differences/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_file-2">get_file/2</a></td><td>Returns the base-64 encoded contents of a specified file and its
+  metadata.</td></tr>
+<tr><td valign="top"><a href="#get_file-3">get_file/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_folder-2">get_folder/2</a></td><td>Returns the contents of a specified folder in a repository.</td></tr>
+<tr><td valign="top"><a href="#get_folder-3">get_folder/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_merge_commit-2">get_merge_commit/2</a></td><td>Returns information about a specified merge commit.</td></tr>
+<tr><td valign="top"><a href="#get_merge_commit-3">get_merge_commit/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_merge_conflicts-2">get_merge_conflicts/2</a></td><td>Returns information about merge conflicts between the before and
+  after commit IDs for a pull request in a repository.</td></tr>
+<tr><td valign="top"><a href="#get_merge_conflicts-3">get_merge_conflicts/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_merge_options-2">get_merge_options/2</a></td><td>Returns information about the merge options available for merging two  
+specified branches.</td></tr>
+<tr><td valign="top"><a href="#get_merge_options-3">get_merge_options/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_pull_request-2">get_pull_request/2</a></td><td>Gets information about a pull request in a specified repository.</td></tr>
+<tr><td valign="top"><a href="#get_pull_request-3">get_pull_request/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_pull_request_approval_states-2">get_pull_request_approval_states/2</a></td><td>Gets information about the approval states for a specified pull  
+request.</td></tr>
+<tr><td valign="top"><a href="#get_pull_request_approval_states-3">get_pull_request_approval_states/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_pull_request_override_state-2">get_pull_request_override_state/2</a></td><td>Returns information about whether approval rules have been set aside
+  (overridden) for a pull request, and if so, the Amazon Resource Name (ARN)
+  of the user or identity that overrode the rules and their requirements for
+  the pull request.</td></tr>
+<tr><td valign="top"><a href="#get_pull_request_override_state-3">get_pull_request_override_state/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_repository-2">get_repository/2</a></td><td>Returns information about a repository.</td></tr>
+<tr><td valign="top"><a href="#get_repository-3">get_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_repository_triggers-2">get_repository_triggers/2</a></td><td>Gets information about triggers configured for a repository.</td></tr>
+<tr><td valign="top"><a href="#get_repository_triggers-3">get_repository_triggers/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_approval_rule_templates-2">list_approval_rule_templates/2</a></td><td>Lists all approval rule templates in the specified AWS Region in your  
+AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_approval_rule_templates-3">list_approval_rule_templates/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_associated_approval_rule_templates_for_repository-2">list_associated_approval_rule_templates_for_repository/2</a></td><td>Lists all approval rule templates that are associated with a
+  specified repository.</td></tr>
+<tr><td valign="top"><a href="#list_associated_approval_rule_templates_for_repository-3">list_associated_approval_rule_templates_for_repository/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_branches-2">list_branches/2</a></td><td>Gets information about one or more branches in a repository.</td></tr>
+<tr><td valign="top"><a href="#list_branches-3">list_branches/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_pull_requests-2">list_pull_requests/2</a></td><td>Returns a list of pull requests for a specified repository.</td></tr>
+<tr><td valign="top"><a href="#list_pull_requests-3">list_pull_requests/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_repositories-2">list_repositories/2</a></td><td>Gets information about one or more repositories.</td></tr>
+<tr><td valign="top"><a href="#list_repositories-3">list_repositories/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_repositories_for_approval_rule_template-2">list_repositories_for_approval_rule_template/2</a></td><td>Lists all repositories associated with the specified approval rule
+  template.</td></tr>
+<tr><td valign="top"><a href="#list_repositories_for_approval_rule_template-3">list_repositories_for_approval_rule_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Gets information about AWS tags for a specified Amazon Resource Name  
+(ARN) in AWS CodeCommit.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#merge_branches_by_fast_forward-2">merge_branches_by_fast_forward/2</a></td><td>Merges two branches using the fast-forward merge strategy.</td></tr>
+<tr><td valign="top"><a href="#merge_branches_by_fast_forward-3">merge_branches_by_fast_forward/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#merge_branches_by_squash-2">merge_branches_by_squash/2</a></td><td>Merges two branches using the squash merge strategy.</td></tr>
+<tr><td valign="top"><a href="#merge_branches_by_squash-3">merge_branches_by_squash/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#merge_branches_by_three_way-2">merge_branches_by_three_way/2</a></td><td>Merges two specified branches using the three-way merge strategy.</td></tr>
+<tr><td valign="top"><a href="#merge_branches_by_three_way-3">merge_branches_by_three_way/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#merge_pull_request_by_fast_forward-2">merge_pull_request_by_fast_forward/2</a></td><td>Attempts to merge the source commit of a pull request into the  
+specified destination branch for that pull request at the specified commit  
+using the fast-forward merge strategy.</td></tr>
+<tr><td valign="top"><a href="#merge_pull_request_by_fast_forward-3">merge_pull_request_by_fast_forward/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#merge_pull_request_by_squash-2">merge_pull_request_by_squash/2</a></td><td>Attempts to merge the source commit of a pull request into the  
+specified destination branch for that pull request at the specified commit  
+using the squash merge strategy.</td></tr>
+<tr><td valign="top"><a href="#merge_pull_request_by_squash-3">merge_pull_request_by_squash/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#merge_pull_request_by_three_way-2">merge_pull_request_by_three_way/2</a></td><td>Attempts to merge the source commit of a pull request into the  
+specified destination branch for that pull request at the specified commit  
+using the three-way merge strategy.</td></tr>
+<tr><td valign="top"><a href="#merge_pull_request_by_three_way-3">merge_pull_request_by_three_way/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#override_pull_request_approval_rules-2">override_pull_request_approval_rules/2</a></td><td>Sets aside (overrides) all approval rule requirements for a specified
+  pull request.</td></tr>
+<tr><td valign="top"><a href="#override_pull_request_approval_rules-3">override_pull_request_approval_rules/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#post_comment_for_compared_commit-2">post_comment_for_compared_commit/2</a></td><td>Posts a comment on the comparison between two commits.</td></tr>
+<tr><td valign="top"><a href="#post_comment_for_compared_commit-3">post_comment_for_compared_commit/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#post_comment_for_pull_request-2">post_comment_for_pull_request/2</a></td><td>Posts a comment on a pull request.</td></tr>
+<tr><td valign="top"><a href="#post_comment_for_pull_request-3">post_comment_for_pull_request/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#post_comment_reply-2">post_comment_reply/2</a></td><td>Posts a comment in reply to an existing comment on a comparison
+  between commits or a pull request.</td></tr>
+<tr><td valign="top"><a href="#post_comment_reply-3">post_comment_reply/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_comment_reaction-2">put_comment_reaction/2</a></td><td>Adds or updates a reaction to a specified comment for the user whose  
+identity is used to make the request.</td></tr>
+<tr><td valign="top"><a href="#put_comment_reaction-3">put_comment_reaction/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_file-2">put_file/2</a></td><td>Adds or updates a file in a branch in an AWS CodeCommit repository,
+  and generates a commit for the addition in the specified branch.</td></tr>
+<tr><td valign="top"><a href="#put_file-3">put_file/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_repository_triggers-2">put_repository_triggers/2</a></td><td>Replaces all triggers for a repository.</td></tr>
+<tr><td valign="top"><a href="#put_repository_triggers-3">put_repository_triggers/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds or updates tags for a resource in AWS CodeCommit.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#test_repository_triggers-2">test_repository_triggers/2</a></td><td>Tests the functionality of repository triggers by sending information  
+to the trigger target.</td></tr>
+<tr><td valign="top"><a href="#test_repository_triggers-3">test_repository_triggers/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes tags for a resource in AWS CodeCommit.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_approval_rule_template_content-2">update_approval_rule_template_content/2</a></td><td>Updates the content of an approval rule template.</td></tr>
+<tr><td valign="top"><a href="#update_approval_rule_template_content-3">update_approval_rule_template_content/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_approval_rule_template_description-2">update_approval_rule_template_description/2</a></td><td>Updates the description for a specified approval rule template.</td></tr>
+<tr><td valign="top"><a href="#update_approval_rule_template_description-3">update_approval_rule_template_description/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_approval_rule_template_name-2">update_approval_rule_template_name/2</a></td><td>Updates the name of a specified approval rule template.</td></tr>
+<tr><td valign="top"><a href="#update_approval_rule_template_name-3">update_approval_rule_template_name/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_comment-2">update_comment/2</a></td><td>Replaces the contents of a comment.</td></tr>
+<tr><td valign="top"><a href="#update_comment-3">update_comment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_default_branch-2">update_default_branch/2</a></td><td>Sets or changes the default branch name for the specified repository.</td></tr>
+<tr><td valign="top"><a href="#update_default_branch-3">update_default_branch/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_pull_request_approval_rule_content-2">update_pull_request_approval_rule_content/2</a></td><td>Updates the structure of an approval rule created specifically for a  
+pull request.</td></tr>
+<tr><td valign="top"><a href="#update_pull_request_approval_rule_content-3">update_pull_request_approval_rule_content/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_pull_request_approval_state-2">update_pull_request_approval_state/2</a></td><td>Updates the state of a user's approval on a pull request.</td></tr>
+<tr><td valign="top"><a href="#update_pull_request_approval_state-3">update_pull_request_approval_state/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_pull_request_description-2">update_pull_request_description/2</a></td><td>Replaces the contents of the description of a pull request.</td></tr>
+<tr><td valign="top"><a href="#update_pull_request_description-3">update_pull_request_description/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_pull_request_status-2">update_pull_request_status/2</a></td><td>Updates the status of a pull request.</td></tr>
+<tr><td valign="top"><a href="#update_pull_request_status-3">update_pull_request_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_pull_request_title-2">update_pull_request_title/2</a></td><td>Replaces the title of a pull request.</td></tr>
+<tr><td valign="top"><a href="#update_pull_request_title-3">update_pull_request_title/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_repository_description-2">update_repository_description/2</a></td><td>Sets or changes the comment or description for a repository.</td></tr>
+<tr><td valign="top"><a href="#update_repository_description-3">update_repository_description/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_repository_name-2">update_repository_name/2</a></td><td>Renames a repository.</td></tr>
+<tr><td valign="top"><a href="#update_repository_name-3">update_repository_name/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_approval_rule_template_with_repository-2">associate_approval_rule_template_with_repository/2</a></h3>
+<div class="spec">
+<p><tt>associate_approval_rule_template_with_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an association between an approval rule template and a  
+specified repository.</p>
+ 
+  Then, the next time a pull request is created in the repository where the
+  destination reference (if specified) matches the destination reference
+  (branch) for the pull request, an approval rule that matches the template
+  conditions is automatically created for that pull request. If no
+  destination references are specified in the template, an approval rule
+  that matches the template contents is created for all pull requests in
+  that repository.</p>
+
+<h3 class="function"><a name="associate_approval_rule_template_with_repository-3">associate_approval_rule_template_with_repository/3</a></h3>
+<div class="spec">
+<p><tt>associate_approval_rule_template_with_repository(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_associate_approval_rule_template_with_repositories-2">batch_associate_approval_rule_template_with_repositories/2</a></h3>
+<div class="spec">
+<p><tt>batch_associate_approval_rule_template_with_repositories(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an association between an approval rule template and one or
+  more specified repositories.</p>
+
+<h3 class="function"><a name="batch_associate_approval_rule_template_with_repositories-3">batch_associate_approval_rule_template_with_repositories/3</a></h3>
+<div class="spec">
+<p><tt>batch_associate_approval_rule_template_with_repositories(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_describe_merge_conflicts-2">batch_describe_merge_conflicts/2</a></h3>
+<div class="spec">
+<p><tt>batch_describe_merge_conflicts(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about one or more merge conflicts in the
+  attempted merge of two commit specifiers using the squash or three-way
+  merge strategy.</p>
+
+<h3 class="function"><a name="batch_describe_merge_conflicts-3">batch_describe_merge_conflicts/3</a></h3>
+<div class="spec">
+<p><tt>batch_describe_merge_conflicts(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_disassociate_approval_rule_template_from_repositories-2">batch_disassociate_approval_rule_template_from_repositories/2</a></h3>
+<div class="spec">
+<p><tt>batch_disassociate_approval_rule_template_from_repositories(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the association between an approval rule template and one or
+  more specified repositories.</p>
+
+<h3 class="function"><a name="batch_disassociate_approval_rule_template_from_repositories-3">batch_disassociate_approval_rule_template_from_repositories/3</a></h3>
+<div class="spec">
+<p><tt>batch_disassociate_approval_rule_template_from_repositories(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_commits-2">batch_get_commits/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_commits(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the contents of one or more commits in a
+  repository.</p>
+
+<h3 class="function"><a name="batch_get_commits-3">batch_get_commits/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_commits(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_repositories-2">batch_get_repositories/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_repositories(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about one or more repositories.</p>
+ 
+  The description field for a repository accepts all HTML characters and all
+  valid Unicode characters. Applications that do not HTML-encode the
+  description and display it in a webpage can expose users to potentially
+  malicious code. Make sure that you HTML-encode the description field in
+  any application that uses this API to display the repository description
+  on a webpage.</p>
+
+<h3 class="function"><a name="batch_get_repositories-3">batch_get_repositories/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_repositories(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_approval_rule_template-2">create_approval_rule_template/2</a></h3>
+<div class="spec">
+<p><tt>create_approval_rule_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a template for approval rules that can then be associated  
+with one or more repositories in your AWS account.</p>
+ 
+  When you associate a template with a repository, AWS CodeCommit creates an
+  approval rule that matches the conditions of the template for all pull
+  requests that meet the conditions of the template. For more information,
+  see <code>AssociateApprovalRuleTemplateWithRepository</code>.</p>
+
+<h3 class="function"><a name="create_approval_rule_template-3">create_approval_rule_template/3</a></h3>
+<div class="spec">
+<p><tt>create_approval_rule_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_branch-2">create_branch/2</a></h3>
+<div class="spec">
+<p><tt>create_branch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a branch in a repository and points the branch to a commit.</p>
+ 
+  Calling the create branch operation does not set a repository's default
+  branch. To do this, call the update default branch operation.</p>
+
+<h3 class="function"><a name="create_branch-3">create_branch/3</a></h3>
+<div class="spec">
+<p><tt>create_branch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_commit-2">create_commit/2</a></h3>
+<div class="spec">
+<p><tt>create_commit(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a commit for a repository on the tip of a specified branch.</p>
+
+<h3 class="function"><a name="create_commit-3">create_commit/3</a></h3>
+<div class="spec">
+<p><tt>create_commit(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_pull_request-2">create_pull_request/2</a></h3>
+<div class="spec">
+<p><tt>create_pull_request(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a pull request in the specified repository.</p>
+
+<h3 class="function"><a name="create_pull_request-3">create_pull_request/3</a></h3>
+<div class="spec">
+<p><tt>create_pull_request(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_pull_request_approval_rule-2">create_pull_request_approval_rule/2</a></h3>
+<div class="spec">
+<p><tt>create_pull_request_approval_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an approval rule for a pull request.</p>
+
+<h3 class="function"><a name="create_pull_request_approval_rule-3">create_pull_request_approval_rule/3</a></h3>
+<div class="spec">
+<p><tt>create_pull_request_approval_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_repository-2">create_repository/2</a></h3>
+<div class="spec">
+<p><tt>create_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new, empty repository.</p>
+
+<h3 class="function"><a name="create_repository-3">create_repository/3</a></h3>
+<div class="spec">
+<p><tt>create_repository(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_unreferenced_merge_commit-2">create_unreferenced_merge_commit/2</a></h3>
+<div class="spec">
+<p><tt>create_unreferenced_merge_commit(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an unreferenced commit that represents the result of merging  
+two branches using a specified merge strategy.</p>
+ 
+  <p>This can help you determine the outcome of a potential merge. This API  
+cannot be used with the fast-forward merge strategy because that strategy  
+does not create a merge commit.</p>
+ 
+  This unreferenced merge commit can only be accessed using the GetCommit
+  API or through git commands such as git fetch. To retrieve this commit,
+  you must specify its commit ID or otherwise reference it.</p>
+
+<h3 class="function"><a name="create_unreferenced_merge_commit-3">create_unreferenced_merge_commit/3</a></h3>
+<div class="spec">
+<p><tt>create_unreferenced_merge_commit(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_approval_rule_template-2">delete_approval_rule_template/2</a></h3>
+<div class="spec">
+<p><tt>delete_approval_rule_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified approval rule template.</p>
+ 
+  Deleting a template does not remove approval rules on pull requests
+  already created with the template.</p>
+
+<h3 class="function"><a name="delete_approval_rule_template-3">delete_approval_rule_template/3</a></h3>
+<div class="spec">
+<p><tt>delete_approval_rule_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_branch-2">delete_branch/2</a></h3>
+<div class="spec">
+<p><tt>delete_branch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a branch from a repository, unless that branch is the default
+  branch for the repository.</p>
+
+<h3 class="function"><a name="delete_branch-3">delete_branch/3</a></h3>
+<div class="spec">
+<p><tt>delete_branch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_comment_content-2">delete_comment_content/2</a></h3>
+<div class="spec">
+<p><tt>delete_comment_content(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the content of a comment made on a change, file, or commit in
+  a repository.</p>
+
+<h3 class="function"><a name="delete_comment_content-3">delete_comment_content/3</a></h3>
+<div class="spec">
+<p><tt>delete_comment_content(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_file-2">delete_file/2</a></h3>
+<div class="spec">
+<p><tt>delete_file(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified file from a specified branch.</p>
+ 
+  A commit is created on the branch that contains the revision. The file
+  still exists in the commits earlier to the commit that contains the
+  deletion.</p>
+
+<h3 class="function"><a name="delete_file-3">delete_file/3</a></h3>
+<div class="spec">
+<p><tt>delete_file(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_pull_request_approval_rule-2">delete_pull_request_approval_rule/2</a></h3>
+<div class="spec">
+<p><tt>delete_pull_request_approval_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an approval rule from a specified pull request.</p>
+ 
+  Approval rules can be deleted from a pull request only if the pull request
+  is open, and if the approval rule was created specifically for a pull
+  request and not generated from an approval rule template associated with
+  the repository where the pull request was created. You cannot delete an
+  approval rule from a merged or closed pull request.</p>
+
+<h3 class="function"><a name="delete_pull_request_approval_rule-3">delete_pull_request_approval_rule/3</a></h3>
+<div class="spec">
+<p><tt>delete_pull_request_approval_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_repository-2">delete_repository/2</a></h3>
+<div class="spec">
+<p><tt>delete_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a repository.</p>
+ 
+  <p>If a specified repository was already deleted, a null repository ID is  
+returned.</p>
+ 
+  Deleting a repository also deletes all associated objects and metadata.
+  After a repository is deleted, all future push calls to the deleted
+  repository fail.</p>
+
+<h3 class="function"><a name="delete_repository-3">delete_repository/3</a></h3>
+<div class="spec">
+<p><tt>delete_repository(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_merge_conflicts-2">describe_merge_conflicts/2</a></h3>
+<div class="spec">
+<p><tt>describe_merge_conflicts(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about one or more merge conflicts in the  
+attempted merge of two commit specifiers using the squash or three-way  
+merge strategy.</p>
+ 
+  If the merge option for the attempted merge is specified as
+  FAST_FORWARD_MERGE, an exception is thrown.</p>
+
+<h3 class="function"><a name="describe_merge_conflicts-3">describe_merge_conflicts/3</a></h3>
+<div class="spec">
+<p><tt>describe_merge_conflicts(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_pull_request_events-2">describe_pull_request_events/2</a></h3>
+<div class="spec">
+<p><tt>describe_pull_request_events(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about one or more pull request events.</p>
+
+<h3 class="function"><a name="describe_pull_request_events-3">describe_pull_request_events/3</a></h3>
+<div class="spec">
+<p><tt>describe_pull_request_events(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_approval_rule_template_from_repository-2">disassociate_approval_rule_template_from_repository/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_approval_rule_template_from_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the association between a template and a repository so that  
+approval rules based on the template are not automatically created when  
+pull requests are created in the specified repository.</p>
+ 
+  This does not delete any approval rules previously created for pull
+  requests through the template association.</p>
+
+<h3 class="function"><a name="disassociate_approval_rule_template_from_repository-3">disassociate_approval_rule_template_from_repository/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_approval_rule_template_from_repository(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="evaluate_pull_request_approval_rules-2">evaluate_pull_request_approval_rules/2</a></h3>
+<div class="spec">
+<p><tt>evaluate_pull_request_approval_rules(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Evaluates whether a pull request has met all the conditions specified
+  in its associated approval rules.</p>
+
+<h3 class="function"><a name="evaluate_pull_request_approval_rules-3">evaluate_pull_request_approval_rules/3</a></h3>
+<div class="spec">
+<p><tt>evaluate_pull_request_approval_rules(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_approval_rule_template-2">get_approval_rule_template/2</a></h3>
+<div class="spec">
+<p><tt>get_approval_rule_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a specified approval rule template.</p>
+
+<h3 class="function"><a name="get_approval_rule_template-3">get_approval_rule_template/3</a></h3>
+<div class="spec">
+<p><tt>get_approval_rule_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_blob-2">get_blob/2</a></h3>
+<div class="spec">
+<p><tt>get_blob(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the base-64 encoded content of an individual blob in a
+  repository.</p>
+
+<h3 class="function"><a name="get_blob-3">get_blob/3</a></h3>
+<div class="spec">
+<p><tt>get_blob(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_branch-2">get_branch/2</a></h3>
+<div class="spec">
+<p><tt>get_branch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a repository branch, including its name and
+  the last commit ID.</p>
+
+<h3 class="function"><a name="get_branch-3">get_branch/3</a></h3>
+<div class="spec">
+<p><tt>get_branch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_comment-2">get_comment/2</a></h3>
+<div class="spec">
+<p><tt>get_comment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the content of a comment made on a change, file, or commit in  
+a repository.</p>
+ 
+  Reaction counts might include numbers from user identities who were
+  deleted after the reaction was made. For a count of reactions from active
+  identities, use GetCommentReactions.</p>
+
+<h3 class="function"><a name="get_comment-3">get_comment/3</a></h3>
+<div class="spec">
+<p><tt>get_comment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_comment_reactions-2">get_comment_reactions/2</a></h3>
+<div class="spec">
+<p><tt>get_comment_reactions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about reactions to a specified comment ID.</p>
+ 
+  Reactions from users who have been deleted will not be included in the
+  count.</p>
+
+<h3 class="function"><a name="get_comment_reactions-3">get_comment_reactions/3</a></h3>
+<div class="spec">
+<p><tt>get_comment_reactions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_comments_for_compared_commit-2">get_comments_for_compared_commit/2</a></h3>
+<div class="spec">
+<p><tt>get_comments_for_compared_commit(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about comments made on the comparison between two  
+commits.</p>
+ 
+  Reaction counts might include numbers from user identities who were
+  deleted after the reaction was made. For a count of reactions from active
+  identities, use GetCommentReactions.</p>
+
+<h3 class="function"><a name="get_comments_for_compared_commit-3">get_comments_for_compared_commit/3</a></h3>
+<div class="spec">
+<p><tt>get_comments_for_compared_commit(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_comments_for_pull_request-2">get_comments_for_pull_request/2</a></h3>
+<div class="spec">
+<p><tt>get_comments_for_pull_request(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns comments made on a pull request.</p>
+ 
+  Reaction counts might include numbers from user identities who were
+  deleted after the reaction was made. For a count of reactions from active
+  identities, use GetCommentReactions.</p>
+
+<h3 class="function"><a name="get_comments_for_pull_request-3">get_comments_for_pull_request/3</a></h3>
+<div class="spec">
+<p><tt>get_comments_for_pull_request(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_commit-2">get_commit/2</a></h3>
+<div class="spec">
+<p><tt>get_commit(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a commit, including commit message and
+  committer information.</p>
+
+<h3 class="function"><a name="get_commit-3">get_commit/3</a></h3>
+<div class="spec">
+<p><tt>get_commit(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_differences-2">get_differences/2</a></h3>
+<div class="spec">
+<p><tt>get_differences(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about the differences in a valid commit specifier  
+(such as a branch, tag, HEAD, commit ID, or other fully qualified  
+reference).</p>
+ 
+  Results can be limited to a specified path.</p>
+
+<h3 class="function"><a name="get_differences-3">get_differences/3</a></h3>
+<div class="spec">
+<p><tt>get_differences(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_file-2">get_file/2</a></h3>
+<div class="spec">
+<p><tt>get_file(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the base-64 encoded contents of a specified file and its
+  metadata.</p>
+
+<h3 class="function"><a name="get_file-3">get_file/3</a></h3>
+<div class="spec">
+<p><tt>get_file(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_folder-2">get_folder/2</a></h3>
+<div class="spec">
+<p><tt>get_folder(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the contents of a specified folder in a repository.</p>
+
+<h3 class="function"><a name="get_folder-3">get_folder/3</a></h3>
+<div class="spec">
+<p><tt>get_folder(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_merge_commit-2">get_merge_commit/2</a></h3>
+<div class="spec">
+<p><tt>get_merge_commit(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a specified merge commit.</p>
+
+<h3 class="function"><a name="get_merge_commit-3">get_merge_commit/3</a></h3>
+<div class="spec">
+<p><tt>get_merge_commit(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_merge_conflicts-2">get_merge_conflicts/2</a></h3>
+<div class="spec">
+<p><tt>get_merge_conflicts(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about merge conflicts between the before and
+  after commit IDs for a pull request in a repository.</p>
+
+<h3 class="function"><a name="get_merge_conflicts-3">get_merge_conflicts/3</a></h3>
+<div class="spec">
+<p><tt>get_merge_conflicts(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_merge_options-2">get_merge_options/2</a></h3>
+<div class="spec">
+<p><tt>get_merge_options(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about the merge options available for merging two  
+specified branches.</p>
+ 
+  For details about why a merge option is not available, use
+  GetMergeConflicts or DescribeMergeConflicts.</p>
+
+<h3 class="function"><a name="get_merge_options-3">get_merge_options/3</a></h3>
+<div class="spec">
+<p><tt>get_merge_options(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_pull_request-2">get_pull_request/2</a></h3>
+<div class="spec">
+<p><tt>get_pull_request(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a pull request in a specified repository.</p>
+
+<h3 class="function"><a name="get_pull_request-3">get_pull_request/3</a></h3>
+<div class="spec">
+<p><tt>get_pull_request(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_pull_request_approval_states-2">get_pull_request_approval_states/2</a></h3>
+<div class="spec">
+<p><tt>get_pull_request_approval_states(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the approval states for a specified pull  
+request.</p>
+ 
+  Approval states only apply to pull requests that have one or more approval
+  rules applied to them.</p>
+
+<h3 class="function"><a name="get_pull_request_approval_states-3">get_pull_request_approval_states/3</a></h3>
+<div class="spec">
+<p><tt>get_pull_request_approval_states(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_pull_request_override_state-2">get_pull_request_override_state/2</a></h3>
+<div class="spec">
+<p><tt>get_pull_request_override_state(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about whether approval rules have been set aside
+  (overridden) for a pull request, and if so, the Amazon Resource Name (ARN)
+  of the user or identity that overrode the rules and their requirements for
+  the pull request.</p>
+
+<h3 class="function"><a name="get_pull_request_override_state-3">get_pull_request_override_state/3</a></h3>
+<div class="spec">
+<p><tt>get_pull_request_override_state(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_repository-2">get_repository/2</a></h3>
+<div class="spec">
+<p><tt>get_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about a repository.</p>
+ 
+  The description field for a repository accepts all HTML characters and all
+  valid Unicode characters. Applications that do not HTML-encode the
+  description and display it in a webpage can expose users to potentially
+  malicious code. Make sure that you HTML-encode the description field in
+  any application that uses this API to display the repository description
+  on a webpage.</p>
+
+<h3 class="function"><a name="get_repository-3">get_repository/3</a></h3>
+<div class="spec">
+<p><tt>get_repository(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_repository_triggers-2">get_repository_triggers/2</a></h3>
+<div class="spec">
+<p><tt>get_repository_triggers(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about triggers configured for a repository.</p>
+
+<h3 class="function"><a name="get_repository_triggers-3">get_repository_triggers/3</a></h3>
+<div class="spec">
+<p><tt>get_repository_triggers(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_approval_rule_templates-2">list_approval_rule_templates/2</a></h3>
+<div class="spec">
+<p><tt>list_approval_rule_templates(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all approval rule templates in the specified AWS Region in your  
+AWS account.</p>
+ 
+  If an AWS Region is not specified, the AWS Region where you are signed in
+  is used.</p>
+
+<h3 class="function"><a name="list_approval_rule_templates-3">list_approval_rule_templates/3</a></h3>
+<div class="spec">
+<p><tt>list_approval_rule_templates(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_associated_approval_rule_templates_for_repository-2">list_associated_approval_rule_templates_for_repository/2</a></h3>
+<div class="spec">
+<p><tt>list_associated_approval_rule_templates_for_repository(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all approval rule templates that are associated with a
+  specified repository.</p>
+
+<h3 class="function"><a name="list_associated_approval_rule_templates_for_repository-3">list_associated_approval_rule_templates_for_repository/3</a></h3>
+<div class="spec">
+<p><tt>list_associated_approval_rule_templates_for_repository(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_branches-2">list_branches/2</a></h3>
+<div class="spec">
+<p><tt>list_branches(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about one or more branches in a repository.</p>
+
+<h3 class="function"><a name="list_branches-3">list_branches/3</a></h3>
+<div class="spec">
+<p><tt>list_branches(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_pull_requests-2">list_pull_requests/2</a></h3>
+<div class="spec">
+<p><tt>list_pull_requests(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of pull requests for a specified repository.</p>
+ 
+  The return list can be refined by pull request status or pull request
+  author ARN.</p>
+
+<h3 class="function"><a name="list_pull_requests-3">list_pull_requests/3</a></h3>
+<div class="spec">
+<p><tt>list_pull_requests(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_repositories-2">list_repositories/2</a></h3>
+<div class="spec">
+<p><tt>list_repositories(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about one or more repositories.</p>
+
+<h3 class="function"><a name="list_repositories-3">list_repositories/3</a></h3>
+<div class="spec">
+<p><tt>list_repositories(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_repositories_for_approval_rule_template-2">list_repositories_for_approval_rule_template/2</a></h3>
+<div class="spec">
+<p><tt>list_repositories_for_approval_rule_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all repositories associated with the specified approval rule
+  template.</p>
+
+<h3 class="function"><a name="list_repositories_for_approval_rule_template-3">list_repositories_for_approval_rule_template/3</a></h3>
+<div class="spec">
+<p><tt>list_repositories_for_approval_rule_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about AWS tags for a specified Amazon Resource Name  
+(ARN) in AWS CodeCommit.</p>
+ 
+  For a list of valid resources in AWS CodeCommit, see CodeCommit Resources
+  and Operations in the AWS CodeCommit User Guide.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="merge_branches_by_fast_forward-2">merge_branches_by_fast_forward/2</a></h3>
+<div class="spec">
+<p><tt>merge_branches_by_fast_forward(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Merges two branches using the fast-forward merge strategy.</p>
+
+<h3 class="function"><a name="merge_branches_by_fast_forward-3">merge_branches_by_fast_forward/3</a></h3>
+<div class="spec">
+<p><tt>merge_branches_by_fast_forward(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="merge_branches_by_squash-2">merge_branches_by_squash/2</a></h3>
+<div class="spec">
+<p><tt>merge_branches_by_squash(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Merges two branches using the squash merge strategy.</p>
+
+<h3 class="function"><a name="merge_branches_by_squash-3">merge_branches_by_squash/3</a></h3>
+<div class="spec">
+<p><tt>merge_branches_by_squash(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="merge_branches_by_three_way-2">merge_branches_by_three_way/2</a></h3>
+<div class="spec">
+<p><tt>merge_branches_by_three_way(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Merges two specified branches using the three-way merge strategy.</p>
+
+<h3 class="function"><a name="merge_branches_by_three_way-3">merge_branches_by_three_way/3</a></h3>
+<div class="spec">
+<p><tt>merge_branches_by_three_way(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="merge_pull_request_by_fast_forward-2">merge_pull_request_by_fast_forward/2</a></h3>
+<div class="spec">
+<p><tt>merge_pull_request_by_fast_forward(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Attempts to merge the source commit of a pull request into the  
+specified destination branch for that pull request at the specified commit  
+using the fast-forward merge strategy.</p>
+ 
+  If the merge is successful, it closes the pull request.</p>
+
+<h3 class="function"><a name="merge_pull_request_by_fast_forward-3">merge_pull_request_by_fast_forward/3</a></h3>
+<div class="spec">
+<p><tt>merge_pull_request_by_fast_forward(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="merge_pull_request_by_squash-2">merge_pull_request_by_squash/2</a></h3>
+<div class="spec">
+<p><tt>merge_pull_request_by_squash(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Attempts to merge the source commit of a pull request into the  
+specified destination branch for that pull request at the specified commit  
+using the squash merge strategy.</p>
+ 
+  If the merge is successful, it closes the pull request.</p>
+
+<h3 class="function"><a name="merge_pull_request_by_squash-3">merge_pull_request_by_squash/3</a></h3>
+<div class="spec">
+<p><tt>merge_pull_request_by_squash(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="merge_pull_request_by_three_way-2">merge_pull_request_by_three_way/2</a></h3>
+<div class="spec">
+<p><tt>merge_pull_request_by_three_way(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Attempts to merge the source commit of a pull request into the  
+specified destination branch for that pull request at the specified commit  
+using the three-way merge strategy.</p>
+ 
+  If the merge is successful, it closes the pull request.</p>
+
+<h3 class="function"><a name="merge_pull_request_by_three_way-3">merge_pull_request_by_three_way/3</a></h3>
+<div class="spec">
+<p><tt>merge_pull_request_by_three_way(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="override_pull_request_approval_rules-2">override_pull_request_approval_rules/2</a></h3>
+<div class="spec">
+<p><tt>override_pull_request_approval_rules(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Sets aside (overrides) all approval rule requirements for a specified
+  pull request.</p>
+
+<h3 class="function"><a name="override_pull_request_approval_rules-3">override_pull_request_approval_rules/3</a></h3>
+<div class="spec">
+<p><tt>override_pull_request_approval_rules(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="post_comment_for_compared_commit-2">post_comment_for_compared_commit/2</a></h3>
+<div class="spec">
+<p><tt>post_comment_for_compared_commit(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Posts a comment on the comparison between two commits.</p>
+
+<h3 class="function"><a name="post_comment_for_compared_commit-3">post_comment_for_compared_commit/3</a></h3>
+<div class="spec">
+<p><tt>post_comment_for_compared_commit(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="post_comment_for_pull_request-2">post_comment_for_pull_request/2</a></h3>
+<div class="spec">
+<p><tt>post_comment_for_pull_request(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Posts a comment on a pull request.</p>
+
+<h3 class="function"><a name="post_comment_for_pull_request-3">post_comment_for_pull_request/3</a></h3>
+<div class="spec">
+<p><tt>post_comment_for_pull_request(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="post_comment_reply-2">post_comment_reply/2</a></h3>
+<div class="spec">
+<p><tt>post_comment_reply(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Posts a comment in reply to an existing comment on a comparison
+  between commits or a pull request.</p>
+
+<h3 class="function"><a name="post_comment_reply-3">post_comment_reply/3</a></h3>
+<div class="spec">
+<p><tt>post_comment_reply(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_comment_reaction-2">put_comment_reaction/2</a></h3>
+<div class="spec">
+<p><tt>put_comment_reaction(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds or updates a reaction to a specified comment for the user whose  
+identity is used to make the request.</p>
+ 
+  You can only add or update a reaction for yourself. You cannot add,
+  modify, or delete a reaction for another user.</p>
+
+<h3 class="function"><a name="put_comment_reaction-3">put_comment_reaction/3</a></h3>
+<div class="spec">
+<p><tt>put_comment_reaction(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_file-2">put_file/2</a></h3>
+<div class="spec">
+<p><tt>put_file(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds or updates a file in a branch in an AWS CodeCommit repository,
+  and generates a commit for the addition in the specified branch.</p>
+
+<h3 class="function"><a name="put_file-3">put_file/3</a></h3>
+<div class="spec">
+<p><tt>put_file(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_repository_triggers-2">put_repository_triggers/2</a></h3>
+<div class="spec">
+<p><tt>put_repository_triggers(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Replaces all triggers for a repository.</p>
+ 
+  Used to create or delete triggers.</p>
+
+<h3 class="function"><a name="put_repository_triggers-3">put_repository_triggers/3</a></h3>
+<div class="spec">
+<p><tt>put_repository_triggers(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds or updates tags for a resource in AWS CodeCommit.</p>
+ 
+  For a list of valid resources in AWS CodeCommit, see CodeCommit Resources
+  and Operations in the AWS CodeCommit User Guide.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="test_repository_triggers-2">test_repository_triggers/2</a></h3>
+<div class="spec">
+<p><tt>test_repository_triggers(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Tests the functionality of repository triggers by sending information  
+to the trigger target.</p>
+ 
+  If real data is available in the repository, the test sends data from the
+  last commit. If no data is available, sample data is generated.</p>
+
+<h3 class="function"><a name="test_repository_triggers-3">test_repository_triggers/3</a></h3>
+<div class="spec">
+<p><tt>test_repository_triggers(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes tags for a resource in AWS CodeCommit.</p>
+ 
+  For a list of valid resources in AWS CodeCommit, see CodeCommit Resources
+  and Operations in the AWS CodeCommit User Guide.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_approval_rule_template_content-2">update_approval_rule_template_content/2</a></h3>
+<div class="spec">
+<p><tt>update_approval_rule_template_content(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the content of an approval rule template.</p>
+ 
+  You can change the number of required approvals, the membership of the
+  approval rule, and whether an approval pool is defined.</p>
+
+<h3 class="function"><a name="update_approval_rule_template_content-3">update_approval_rule_template_content/3</a></h3>
+<div class="spec">
+<p><tt>update_approval_rule_template_content(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_approval_rule_template_description-2">update_approval_rule_template_description/2</a></h3>
+<div class="spec">
+<p><tt>update_approval_rule_template_description(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the description for a specified approval rule template.</p>
+
+<h3 class="function"><a name="update_approval_rule_template_description-3">update_approval_rule_template_description/3</a></h3>
+<div class="spec">
+<p><tt>update_approval_rule_template_description(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_approval_rule_template_name-2">update_approval_rule_template_name/2</a></h3>
+<div class="spec">
+<p><tt>update_approval_rule_template_name(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the name of a specified approval rule template.</p>
+
+<h3 class="function"><a name="update_approval_rule_template_name-3">update_approval_rule_template_name/3</a></h3>
+<div class="spec">
+<p><tt>update_approval_rule_template_name(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_comment-2">update_comment/2</a></h3>
+<div class="spec">
+<p><tt>update_comment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Replaces the contents of a comment.</p>
+
+<h3 class="function"><a name="update_comment-3">update_comment/3</a></h3>
+<div class="spec">
+<p><tt>update_comment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_default_branch-2">update_default_branch/2</a></h3>
+<div class="spec">
+<p><tt>update_default_branch(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets or changes the default branch name for the specified repository.</p>
+ 
+  If you use this operation to change the default branch name to the current
+  default branch name, a success message is returned even though the default
+  branch did not change.</p>
+
+<h3 class="function"><a name="update_default_branch-3">update_default_branch/3</a></h3>
+<div class="spec">
+<p><tt>update_default_branch(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_pull_request_approval_rule_content-2">update_pull_request_approval_rule_content/2</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_approval_rule_content(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the structure of an approval rule created specifically for a  
+pull request.</p>
+ 
+  For example, you can change the number of required approvers and the
+  approval pool for approvers.</p>
+
+<h3 class="function"><a name="update_pull_request_approval_rule_content-3">update_pull_request_approval_rule_content/3</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_approval_rule_content(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_pull_request_approval_state-2">update_pull_request_approval_state/2</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_approval_state(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the state of a user's approval on a pull request.</p>
+ 
+  The user is derived from the signed-in account when the request is made.</p>
+
+<h3 class="function"><a name="update_pull_request_approval_state-3">update_pull_request_approval_state/3</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_approval_state(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_pull_request_description-2">update_pull_request_description/2</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_description(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Replaces the contents of the description of a pull request.</p>
+
+<h3 class="function"><a name="update_pull_request_description-3">update_pull_request_description/3</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_description(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_pull_request_status-2">update_pull_request_status/2</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the status of a pull request.</p>
+
+<h3 class="function"><a name="update_pull_request_status-3">update_pull_request_status/3</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_pull_request_title-2">update_pull_request_title/2</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_title(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Replaces the title of a pull request.</p>
+
+<h3 class="function"><a name="update_pull_request_title-3">update_pull_request_title/3</a></h3>
+<div class="spec">
+<p><tt>update_pull_request_title(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_repository_description-2">update_repository_description/2</a></h3>
+<div class="spec">
+<p><tt>update_repository_description(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets or changes the comment or description for a repository.</p>
+ 
+  The description field for a repository accepts all HTML characters and all
+  valid Unicode characters. Applications that do not HTML-encode the
+  description and display it in a webpage can expose users to potentially
+  malicious code. Make sure that you HTML-encode the description field in
+  any application that uses this API to display the repository description
+  on a webpage.</p>
+
+<h3 class="function"><a name="update_repository_description-3">update_repository_description/3</a></h3>
+<div class="spec">
+<p><tt>update_repository_description(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_repository_name-2">update_repository_name/2</a></h3>
+<div class="spec">
+<p><tt>update_repository_name(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Renames a repository.</p>
+ 
+  The repository name must be unique across the calling AWS account.
+  Repository names are limited to 100 alphanumeric, dash, and underscore
+  characters, and cannot include certain characters. The suffix .git is
+  prohibited. For more information about the limits on repository names, see
+  Limits in the AWS CodeCommit User Guide.</p>
+
+<h3 class="function"><a name="update_repository_name-3">update_repository_name/3</a></h3>
+<div class="spec">
+<p><tt>update_repository_name(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

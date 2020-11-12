@@ -1,0 +1,996 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_iotsitewise</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_iotsitewise</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Welcome to the AWS IoT SiteWise API Reference.
+
+
+<h2><a name="description">Description</a></h2><p>Welcome to the AWS IoT SiteWise API Reference.</p>
+ 
+  AWS IoT SiteWise is an AWS service that connects Industrial Internet of
+  Things (IIoT) devices to the power of the AWS Cloud. For more information,
+  see the AWS IoT SiteWise User Guide. For information about AWS IoT
+  SiteWise quotas, see Quotas in the AWS IoT SiteWise User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_assets-3">associate_assets/3</a></td><td>Associates a child asset with the given parent asset through a  
+hierarchy defined in the parent asset's model.</td></tr>
+<tr><td valign="top"><a href="#associate_assets-4">associate_assets/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_associate_project_assets-3">batch_associate_project_assets/3</a></td><td>Associates a group (batch) of assets with an AWS IoT SiteWise Monitor
+  project.</td></tr>
+<tr><td valign="top"><a href="#batch_associate_project_assets-4">batch_associate_project_assets/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_disassociate_project_assets-3">batch_disassociate_project_assets/3</a></td><td>Disassociates a group (batch) of assets from an AWS IoT SiteWise
+  Monitor project.</td></tr>
+<tr><td valign="top"><a href="#batch_disassociate_project_assets-4">batch_disassociate_project_assets/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_put_asset_property_value-2">batch_put_asset_property_value/2</a></td><td>Sends a list of asset property values to AWS IoT SiteWise.</td></tr>
+<tr><td valign="top"><a href="#batch_put_asset_property_value-3">batch_put_asset_property_value/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_access_policy-2">create_access_policy/2</a></td><td>Creates an access policy that grants the specified identity (AWS SSO
+  user, AWS SSO group, or IAM user) access to the specified AWS IoT SiteWise
+  Monitor portal or project resource.</td></tr>
+<tr><td valign="top"><a href="#create_access_policy-3">create_access_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_asset-2">create_asset/2</a></td><td>Creates an asset from an existing asset model.</td></tr>
+<tr><td valign="top"><a href="#create_asset-3">create_asset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_asset_model-2">create_asset_model/2</a></td><td>Creates an asset model from specified property and hierarchy  
+definitions.</td></tr>
+<tr><td valign="top"><a href="#create_asset_model-3">create_asset_model/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_dashboard-2">create_dashboard/2</a></td><td>Creates a dashboard in an AWS IoT SiteWise Monitor project.</td></tr>
+<tr><td valign="top"><a href="#create_dashboard-3">create_dashboard/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_gateway-2">create_gateway/2</a></td><td>Creates a gateway, which is a virtual or edge device that delivers  
+industrial data streams from local servers to AWS IoT SiteWise.</td></tr>
+<tr><td valign="top"><a href="#create_gateway-3">create_gateway/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_portal-2">create_portal/2</a></td><td>Creates a portal, which can contain projects and dashboards.</td></tr>
+<tr><td valign="top"><a href="#create_portal-3">create_portal/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_project-2">create_project/2</a></td><td>Creates a project in the specified portal.</td></tr>
+<tr><td valign="top"><a href="#create_project-3">create_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_access_policy-3">delete_access_policy/3</a></td><td>Deletes an access policy that grants the specified identity access to  
+the specified AWS IoT SiteWise Monitor resource.</td></tr>
+<tr><td valign="top"><a href="#delete_access_policy-4">delete_access_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_asset-3">delete_asset/3</a></td><td>Deletes an asset.</td></tr>
+<tr><td valign="top"><a href="#delete_asset-4">delete_asset/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_asset_model-3">delete_asset_model/3</a></td><td>Deletes an asset model.</td></tr>
+<tr><td valign="top"><a href="#delete_asset_model-4">delete_asset_model/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_dashboard-3">delete_dashboard/3</a></td><td>Deletes a dashboard from AWS IoT SiteWise Monitor.</td></tr>
+<tr><td valign="top"><a href="#delete_dashboard-4">delete_dashboard/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_gateway-3">delete_gateway/3</a></td><td>Deletes a gateway from AWS IoT SiteWise.</td></tr>
+<tr><td valign="top"><a href="#delete_gateway-4">delete_gateway/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_portal-3">delete_portal/3</a></td><td>Deletes a portal from AWS IoT SiteWise Monitor.</td></tr>
+<tr><td valign="top"><a href="#delete_portal-4">delete_portal/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_project-3">delete_project/3</a></td><td>Deletes a project from AWS IoT SiteWise Monitor.</td></tr>
+<tr><td valign="top"><a href="#delete_project-4">delete_project/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_access_policy-2">describe_access_policy/2</a></td><td>Describes an access policy, which specifies an identity's access to
+  an AWS IoT SiteWise Monitor portal or project.</td></tr>
+<tr><td valign="top"><a href="#describe_access_policy-3">describe_access_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_asset-2">describe_asset/2</a></td><td>Retrieves information about an asset.</td></tr>
+<tr><td valign="top"><a href="#describe_asset-3">describe_asset/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_asset_model-2">describe_asset_model/2</a></td><td>Retrieves information about an asset model.</td></tr>
+<tr><td valign="top"><a href="#describe_asset_model-3">describe_asset_model/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_asset_property-3">describe_asset_property/3</a></td><td>Retrieves information about an asset property.</td></tr>
+<tr><td valign="top"><a href="#describe_asset_property-4">describe_asset_property/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_dashboard-2">describe_dashboard/2</a></td><td>Retrieves information about a dashboard.</td></tr>
+<tr><td valign="top"><a href="#describe_dashboard-3">describe_dashboard/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_gateway-2">describe_gateway/2</a></td><td>Retrieves information about a gateway.</td></tr>
+<tr><td valign="top"><a href="#describe_gateway-3">describe_gateway/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_gateway_capability_configuration-3">describe_gateway_capability_configuration/3</a></td><td>Retrieves information about a gateway capability configuration.</td></tr>
+<tr><td valign="top"><a href="#describe_gateway_capability_configuration-4">describe_gateway_capability_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_logging_options-1">describe_logging_options/1</a></td><td>Retrieves the current AWS IoT SiteWise logging options.</td></tr>
+<tr><td valign="top"><a href="#describe_logging_options-2">describe_logging_options/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_portal-2">describe_portal/2</a></td><td>Retrieves information about a portal.</td></tr>
+<tr><td valign="top"><a href="#describe_portal-3">describe_portal/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_project-2">describe_project/2</a></td><td>Retrieves information about a project.</td></tr>
+<tr><td valign="top"><a href="#describe_project-3">describe_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_assets-3">disassociate_assets/3</a></td><td>Disassociates a child asset from the given parent asset through a
+  hierarchy defined in the parent asset's model.</td></tr>
+<tr><td valign="top"><a href="#disassociate_assets-4">disassociate_assets/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_asset_property_aggregates-12">get_asset_property_aggregates/12</a></td><td>Gets aggregated values for an asset property.</td></tr>
+<tr><td valign="top"><a href="#get_asset_property_aggregates-13">get_asset_property_aggregates/13</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_asset_property_value-4">get_asset_property_value/4</a></td><td>Gets an asset property's current value.</td></tr>
+<tr><td valign="top"><a href="#get_asset_property_value-5">get_asset_property_value/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_asset_property_value_history-10">get_asset_property_value_history/10</a></td><td>Gets the history of an asset property's values.</td></tr>
+<tr><td valign="top"><a href="#get_asset_property_value_history-11">get_asset_property_value_history/11</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_access_policies-8">list_access_policies/8</a></td><td>Retrieves a paginated list of access policies for an identity (an AWS
+  SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise Monitor
+  resource (a portal or project).</td></tr>
+<tr><td valign="top"><a href="#list_access_policies-9">list_access_policies/9</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_asset_models-3">list_asset_models/3</a></td><td>Retrieves a paginated list of summaries of all asset models.</td></tr>
+<tr><td valign="top"><a href="#list_asset_models-4">list_asset_models/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_assets-5">list_assets/5</a></td><td>Retrieves a paginated list of asset summaries.</td></tr>
+<tr><td valign="top"><a href="#list_assets-6">list_assets/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_associated_assets-6">list_associated_assets/6</a></td><td>Retrieves a paginated list of associated assets.</td></tr>
+<tr><td valign="top"><a href="#list_associated_assets-7">list_associated_assets/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_dashboards-4">list_dashboards/4</a></td><td>Retrieves a paginated list of dashboards for an AWS IoT SiteWise
+  Monitor project.</td></tr>
+<tr><td valign="top"><a href="#list_dashboards-5">list_dashboards/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_gateways-3">list_gateways/3</a></td><td>Retrieves a paginated list of gateways.</td></tr>
+<tr><td valign="top"><a href="#list_gateways-4">list_gateways/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_portals-3">list_portals/3</a></td><td>Retrieves a paginated list of AWS IoT SiteWise Monitor portals.</td></tr>
+<tr><td valign="top"><a href="#list_portals-4">list_portals/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_project_assets-4">list_project_assets/4</a></td><td>Retrieves a paginated list of assets associated with an AWS IoT
+  SiteWise Monitor project.</td></tr>
+<tr><td valign="top"><a href="#list_project_assets-5">list_project_assets/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_projects-4">list_projects/4</a></td><td>Retrieves a paginated list of projects for an AWS IoT SiteWise
+  Monitor portal.</td></tr>
+<tr><td valign="top"><a href="#list_projects-5">list_projects/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieves the list of tags for an AWS IoT SiteWise resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_logging_options-2">put_logging_options/2</a></td><td>Sets logging options for AWS IoT SiteWise.</td></tr>
+<tr><td valign="top"><a href="#put_logging_options-3">put_logging_options/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds tags to an AWS IoT SiteWise resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes a tag from an AWS IoT SiteWise resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_access_policy-3">update_access_policy/3</a></td><td>Updates an existing access policy that specifies an identity's access
+  to an AWS IoT SiteWise Monitor portal or project resource.</td></tr>
+<tr><td valign="top"><a href="#update_access_policy-4">update_access_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_asset-3">update_asset/3</a></td><td>Updates an asset's name.</td></tr>
+<tr><td valign="top"><a href="#update_asset-4">update_asset/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_asset_model-3">update_asset_model/3</a></td><td>Updates an asset model and all of the assets that were created from  
+the model.</td></tr>
+<tr><td valign="top"><a href="#update_asset_model-4">update_asset_model/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_asset_property-4">update_asset_property/4</a></td><td>Updates an asset property's alias and notification state.</td></tr>
+<tr><td valign="top"><a href="#update_asset_property-5">update_asset_property/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_dashboard-3">update_dashboard/3</a></td><td>Updates an AWS IoT SiteWise Monitor dashboard.</td></tr>
+<tr><td valign="top"><a href="#update_dashboard-4">update_dashboard/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_gateway-3">update_gateway/3</a></td><td>Updates a gateway's name.</td></tr>
+<tr><td valign="top"><a href="#update_gateway-4">update_gateway/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_gateway_capability_configuration-3">update_gateway_capability_configuration/3</a></td><td>Updates a gateway capability configuration or defines a new  
+capability configuration.</td></tr>
+<tr><td valign="top"><a href="#update_gateway_capability_configuration-4">update_gateway_capability_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_portal-3">update_portal/3</a></td><td>Updates an AWS IoT SiteWise Monitor portal.</td></tr>
+<tr><td valign="top"><a href="#update_portal-4">update_portal/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_project-3">update_project/3</a></td><td>Updates an AWS IoT SiteWise Monitor project.</td></tr>
+<tr><td valign="top"><a href="#update_project-4">update_project/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_assets-3">associate_assets/3</a></h3>
+<div class="spec">
+<p><tt>associate_assets(Client, AssetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates a child asset with the given parent asset through a  
+hierarchy defined in the parent asset's model.</p>
+ 
+  For more information, see Associating assets in the AWS IoT SiteWise User
+  Guide.</p>
+
+<h3 class="function"><a name="associate_assets-4">associate_assets/4</a></h3>
+<div class="spec">
+<p><tt>associate_assets(Client, AssetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_associate_project_assets-3">batch_associate_project_assets/3</a></h3>
+<div class="spec">
+<p><tt>batch_associate_project_assets(Client, ProjectId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a group (batch) of assets with an AWS IoT SiteWise Monitor
+  project.</p>
+
+<h3 class="function"><a name="batch_associate_project_assets-4">batch_associate_project_assets/4</a></h3>
+<div class="spec">
+<p><tt>batch_associate_project_assets(Client, ProjectId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_disassociate_project_assets-3">batch_disassociate_project_assets/3</a></h3>
+<div class="spec">
+<p><tt>batch_disassociate_project_assets(Client, ProjectId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates a group (batch) of assets from an AWS IoT SiteWise
+  Monitor project.</p>
+
+<h3 class="function"><a name="batch_disassociate_project_assets-4">batch_disassociate_project_assets/4</a></h3>
+<div class="spec">
+<p><tt>batch_disassociate_project_assets(Client, ProjectId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_put_asset_property_value-2">batch_put_asset_property_value/2</a></h3>
+<div class="spec">
+<p><tt>batch_put_asset_property_value(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sends a list of asset property values to AWS IoT SiteWise.</p>
+ 
+  <p>Each value is a timestamp-quality-value (TQV) data point. For more  
+information, see Ingesting data using the API in the AWS IoT SiteWise User  
+Guide.</p>
+ 
+  <p>To identify an asset property, you must specify one of the following:</p>
+ 
+  <ul> <li><p> The <code>assetId</code> and <code>propertyId</code> of an asset property.</p>
+ 
+  </li> <li><p> A <code>propertyAlias</code>, which is a data stream alias (for example,
+  <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset  
+property's alias, see UpdateAssetProperty.</p>
+ 
+  </li> </ul><p> With respect to Unix epoch time, AWS IoT SiteWise accepts only
+  TQVs that have a timestamp of no more than 15 minutes in the past and no
+  more than 5 minutes in the future. AWS IoT SiteWise rejects timestamps
+  outside of the inclusive range of [-15, +5] minutes and returns a
+  <code>TimestampOutOfRangeException</code> error.</p>
+ 
+  <p>For each asset property, AWS IoT SiteWise overwrites TQVs with duplicate
+  timestamps unless the newer TQV has a different quality. For example, if
+  you store a TQV <code>{T1, GOOD, V1}</code>, then storing <code>{T1, GOOD, V2}</code> replaces  
+the existing TQV.</p>
+ 
+  AWS IoT SiteWise authorizes access to each <code>BatchPutAssetPropertyValue</code>
+  entry individually. For more information, see BatchPutAssetPropertyValue
+  authorization in the AWS IoT SiteWise User Guide.</p>
+
+<h3 class="function"><a name="batch_put_asset_property_value-3">batch_put_asset_property_value/3</a></h3>
+<div class="spec">
+<p><tt>batch_put_asset_property_value(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_access_policy-2">create_access_policy/2</a></h3>
+<div class="spec">
+<p><tt>create_access_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an access policy that grants the specified identity (AWS SSO
+  user, AWS SSO group, or IAM user) access to the specified AWS IoT SiteWise
+  Monitor portal or project resource.</p>
+
+<h3 class="function"><a name="create_access_policy-3">create_access_policy/3</a></h3>
+<div class="spec">
+<p><tt>create_access_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_asset-2">create_asset/2</a></h3>
+<div class="spec">
+<p><tt>create_asset(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an asset from an existing asset model.</p>
+ 
+  For more information, see Creating assets in the AWS IoT SiteWise User
+  Guide.</p>
+
+<h3 class="function"><a name="create_asset-3">create_asset/3</a></h3>
+<div class="spec">
+<p><tt>create_asset(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_asset_model-2">create_asset_model/2</a></h3>
+<div class="spec">
+<p><tt>create_asset_model(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an asset model from specified property and hierarchy  
+definitions.</p>
+ 
+  You create assets from asset models. With asset models, you can easily
+  create assets of the same type that have standardized definitions. Each
+  asset created from a model inherits the asset model's property and
+  hierarchy definitions. For more information, see Defining asset models in
+  the AWS IoT SiteWise User Guide.</p>
+
+<h3 class="function"><a name="create_asset_model-3">create_asset_model/3</a></h3>
+<div class="spec">
+<p><tt>create_asset_model(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_dashboard-2">create_dashboard/2</a></h3>
+<div class="spec">
+<p><tt>create_dashboard(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a dashboard in an AWS IoT SiteWise Monitor project.</p>
+
+<h3 class="function"><a name="create_dashboard-3">create_dashboard/3</a></h3>
+<div class="spec">
+<p><tt>create_dashboard(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_gateway-2">create_gateway/2</a></h3>
+<div class="spec">
+<p><tt>create_gateway(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a gateway, which is a virtual or edge device that delivers  
+industrial data streams from local servers to AWS IoT SiteWise.</p>
+ 
+  For more information, see Ingesting data using a gateway in the AWS IoT
+  SiteWise User Guide.</p>
+
+<h3 class="function"><a name="create_gateway-3">create_gateway/3</a></h3>
+<div class="spec">
+<p><tt>create_gateway(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_portal-2">create_portal/2</a></h3>
+<div class="spec">
+<p><tt>create_portal(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a portal, which can contain projects and dashboards.</p>
+ 
+  <p>AWS IoT SiteWise Monitor uses AWS SSO or IAM to authenticate portal users  
+and manage user permissions.</p>
+ 
+  Before you can sign in to a new portal, you must add at least one identity
+  to that portal. For more information, see Adding or removing portal
+  administrators in the AWS IoT SiteWise User Guide.</p>
+
+<h3 class="function"><a name="create_portal-3">create_portal/3</a></h3>
+<div class="spec">
+<p><tt>create_portal(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_project-2">create_project/2</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a project in the specified portal.</p>
+
+<h3 class="function"><a name="create_project-3">create_project/3</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_access_policy-3">delete_access_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_access_policy(Client, AccessPolicyId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an access policy that grants the specified identity access to  
+the specified AWS IoT SiteWise Monitor resource.</p>
+ 
+  You can use this operation to revoke access to an AWS IoT SiteWise Monitor
+  resource.</p>
+
+<h3 class="function"><a name="delete_access_policy-4">delete_access_policy/4</a></h3>
+<div class="spec">
+<p><tt>delete_access_policy(Client, AccessPolicyId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_asset-3">delete_asset/3</a></h3>
+<div class="spec">
+<p><tt>delete_asset(Client, AssetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an asset.</p>
+ 
+  <p>This action can't be undone. For more information, see Deleting assets and  
+models in the AWS IoT SiteWise User Guide.</p>
+ 
+  You can't delete an asset that's associated to another asset. For more
+  information, see DisassociateAssets.</p>
+
+<h3 class="function"><a name="delete_asset-4">delete_asset/4</a></h3>
+<div class="spec">
+<p><tt>delete_asset(Client, AssetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_asset_model-3">delete_asset_model/3</a></h3>
+<div class="spec">
+<p><tt>delete_asset_model(Client, AssetModelId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an asset model.</p>
+ 
+  This action can't be undone. You must delete all assets created from an
+  asset model before you can delete the model. Also, you can't delete an
+  asset model if a parent asset model exists that contains a property
+  formula expression that depends on the asset model that you want to
+  delete. For more information, see Deleting assets and models in the AWS
+  IoT SiteWise User Guide.</p>
+
+<h3 class="function"><a name="delete_asset_model-4">delete_asset_model/4</a></h3>
+<div class="spec">
+<p><tt>delete_asset_model(Client, AssetModelId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_dashboard-3">delete_dashboard/3</a></h3>
+<div class="spec">
+<p><tt>delete_dashboard(Client, DashboardId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a dashboard from AWS IoT SiteWise Monitor.</p>
+
+<h3 class="function"><a name="delete_dashboard-4">delete_dashboard/4</a></h3>
+<div class="spec">
+<p><tt>delete_dashboard(Client, DashboardId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_gateway-3">delete_gateway/3</a></h3>
+<div class="spec">
+<p><tt>delete_gateway(Client, GatewayId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a gateway from AWS IoT SiteWise.</p>
+ 
+  When you delete a gateway, some of the gateway's files remain in your
+  gateway's file system.</p>
+
+<h3 class="function"><a name="delete_gateway-4">delete_gateway/4</a></h3>
+<div class="spec">
+<p><tt>delete_gateway(Client, GatewayId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_portal-3">delete_portal/3</a></h3>
+<div class="spec">
+<p><tt>delete_portal(Client, PortalId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a portal from AWS IoT SiteWise Monitor.</p>
+
+<h3 class="function"><a name="delete_portal-4">delete_portal/4</a></h3>
+<div class="spec">
+<p><tt>delete_portal(Client, PortalId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_project-3">delete_project/3</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, ProjectId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a project from AWS IoT SiteWise Monitor.</p>
+
+<h3 class="function"><a name="delete_project-4">delete_project/4</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, ProjectId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_access_policy-2">describe_access_policy/2</a></h3>
+<div class="spec">
+<p><tt>describe_access_policy(Client, AccessPolicyId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes an access policy, which specifies an identity's access to
+  an AWS IoT SiteWise Monitor portal or project.</p>
+
+<h3 class="function"><a name="describe_access_policy-3">describe_access_policy/3</a></h3>
+<div class="spec">
+<p><tt>describe_access_policy(Client, AccessPolicyId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_asset-2">describe_asset/2</a></h3>
+<div class="spec">
+<p><tt>describe_asset(Client, AssetId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about an asset.</p>
+
+<h3 class="function"><a name="describe_asset-3">describe_asset/3</a></h3>
+<div class="spec">
+<p><tt>describe_asset(Client, AssetId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_asset_model-2">describe_asset_model/2</a></h3>
+<div class="spec">
+<p><tt>describe_asset_model(Client, AssetModelId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about an asset model.</p>
+
+<h3 class="function"><a name="describe_asset_model-3">describe_asset_model/3</a></h3>
+<div class="spec">
+<p><tt>describe_asset_model(Client, AssetModelId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_asset_property-3">describe_asset_property/3</a></h3>
+<div class="spec">
+<p><tt>describe_asset_property(Client, AssetId, PropertyId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves information about an asset property.</p>
+ 
+  <p>When you call this operation for an attribute property, this response  
+includes the default attribute value that you define in the asset model.  
+If you update the default value in the model, this operation's response  
+includes the new default value.</p>
+ 
+  This operation doesn't return the value of the asset property. To get the
+  value of an asset property, use GetAssetPropertyValue.</p>
+
+<h3 class="function"><a name="describe_asset_property-4">describe_asset_property/4</a></h3>
+<div class="spec">
+<p><tt>describe_asset_property(Client, AssetId, PropertyId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_dashboard-2">describe_dashboard/2</a></h3>
+<div class="spec">
+<p><tt>describe_dashboard(Client, DashboardId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a dashboard.</p>
+
+<h3 class="function"><a name="describe_dashboard-3">describe_dashboard/3</a></h3>
+<div class="spec">
+<p><tt>describe_dashboard(Client, DashboardId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_gateway-2">describe_gateway/2</a></h3>
+<div class="spec">
+<p><tt>describe_gateway(Client, GatewayId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a gateway.</p>
+
+<h3 class="function"><a name="describe_gateway-3">describe_gateway/3</a></h3>
+<div class="spec">
+<p><tt>describe_gateway(Client, GatewayId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_gateway_capability_configuration-3">describe_gateway_capability_configuration/3</a></h3>
+<div class="spec">
+<p><tt>describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves information about a gateway capability configuration.</p>
+ 
+  Each gateway capability defines data sources for a gateway. A capability
+  configuration can contain multiple data source configurations. If you
+  define OPC-UA sources for a gateway in the AWS IoT SiteWise console, all
+  of your OPC-UA sources are stored in one capability configuration. To list
+  all capability configurations for a gateway, use DescribeGateway.</p>
+
+<h3 class="function"><a name="describe_gateway_capability_configuration-4">describe_gateway_capability_configuration/4</a></h3>
+<div class="spec">
+<p><tt>describe_gateway_capability_configuration(Client, CapabilityNamespace, GatewayId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_logging_options-1">describe_logging_options/1</a></h3>
+<div class="spec">
+<p><tt>describe_logging_options(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the current AWS IoT SiteWise logging options.</p>
+
+<h3 class="function"><a name="describe_logging_options-2">describe_logging_options/2</a></h3>
+<div class="spec">
+<p><tt>describe_logging_options(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_portal-2">describe_portal/2</a></h3>
+<div class="spec">
+<p><tt>describe_portal(Client, PortalId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a portal.</p>
+
+<h3 class="function"><a name="describe_portal-3">describe_portal/3</a></h3>
+<div class="spec">
+<p><tt>describe_portal(Client, PortalId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_project-2">describe_project/2</a></h3>
+<div class="spec">
+<p><tt>describe_project(Client, ProjectId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a project.</p>
+
+<h3 class="function"><a name="describe_project-3">describe_project/3</a></h3>
+<div class="spec">
+<p><tt>describe_project(Client, ProjectId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_assets-3">disassociate_assets/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_assets(Client, AssetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates a child asset from the given parent asset through a
+  hierarchy defined in the parent asset's model.</p>
+
+<h3 class="function"><a name="disassociate_assets-4">disassociate_assets/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_assets(Client, AssetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_asset_property_aggregates-12">get_asset_property_aggregates/12</a></h3>
+<div class="spec">
+<p><tt>get_asset_property_aggregates(Client, AggregateTypes, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, Resolution, StartDate, TimeOrdering) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets aggregated values for an asset property.</p>
+ 
+  <p>For more information, see Querying aggregates in the AWS IoT SiteWise User  
+Guide.</p>
+ 
+  <p>To identify an asset property, you must specify one of the following:</p>
+ 
+  <ul> <li><p> The <code>assetId</code> and <code>propertyId</code> of an asset property.</p>
+ 
+  </li> <li><p> A <code>propertyAlias</code>, which is a data stream alias (for example,
+  <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset  
+property's alias, see UpdateAssetProperty.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_asset_property_aggregates-13">get_asset_property_aggregates/13</a></h3>
+<div class="spec">
+<p><tt>get_asset_property_aggregates(Client, AggregateTypes, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, Resolution, StartDate, TimeOrdering, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_asset_property_value-4">get_asset_property_value/4</a></h3>
+<div class="spec">
+<p><tt>get_asset_property_value(Client, AssetId, PropertyAlias, PropertyId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets an asset property's current value.</p>
+ 
+  <p>For more information, see Querying current values in the AWS IoT SiteWise  
+User Guide.</p>
+ 
+  <p>To identify an asset property, you must specify one of the following:</p>
+ 
+  <ul> <li><p> The <code>assetId</code> and <code>propertyId</code> of an asset property.</p>
+ 
+  </li> <li><p> A <code>propertyAlias</code>, which is a data stream alias (for example,
+  <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset  
+property's alias, see UpdateAssetProperty.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_asset_property_value-5">get_asset_property_value/5</a></h3>
+<div class="spec">
+<p><tt>get_asset_property_value(Client, AssetId, PropertyAlias, PropertyId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_asset_property_value_history-10">get_asset_property_value_history/10</a></h3>
+<div class="spec">
+<p><tt>get_asset_property_value_history(Client, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, StartDate, TimeOrdering) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the history of an asset property's values.</p>
+ 
+  <p>For more information, see Querying historical values in the AWS IoT  
+SiteWise User Guide.</p>
+ 
+  <p>To identify an asset property, you must specify one of the following:</p>
+ 
+  <ul> <li><p> The <code>assetId</code> and <code>propertyId</code> of an asset property.</p>
+ 
+  </li> <li><p> A <code>propertyAlias</code>, which is a data stream alias (for example,
+  <code>/company/windfarm/3/turbine/7/temperature</code>). To define an asset  
+property's alias, see UpdateAssetProperty.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_asset_property_value_history-11">get_asset_property_value_history/11</a></h3>
+<div class="spec">
+<p><tt>get_asset_property_value_history(Client, AssetId, EndDate, MaxResults, NextToken, PropertyAlias, PropertyId, Qualities, StartDate, TimeOrdering, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_access_policies-8">list_access_policies/8</a></h3>
+<div class="spec">
+<p><tt>list_access_policies(Client, IamArn, IdentityId, IdentityType, MaxResults, NextToken, ResourceId, ResourceType) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a paginated list of access policies for an identity (an AWS
+  SSO user, an AWS SSO group, or an IAM user) or an AWS IoT SiteWise Monitor
+  resource (a portal or project).</p>
+
+<h3 class="function"><a name="list_access_policies-9">list_access_policies/9</a></h3>
+<div class="spec">
+<p><tt>list_access_policies(Client, IamArn, IdentityId, IdentityType, MaxResults, NextToken, ResourceId, ResourceType, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_asset_models-3">list_asset_models/3</a></h3>
+<div class="spec">
+<p><tt>list_asset_models(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a paginated list of summaries of all asset models.</p>
+
+<h3 class="function"><a name="list_asset_models-4">list_asset_models/4</a></h3>
+<div class="spec">
+<p><tt>list_asset_models(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_assets-5">list_assets/5</a></h3>
+<div class="spec">
+<p><tt>list_assets(Client, AssetModelId, Filter, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a paginated list of asset summaries.</p>
+ 
+  <p>You can use this operation to do the following:</p>
+ 
+  <ul> <li><p> List assets based on a specific asset model.</p>
+ 
+  </li> <li><p> List top-level assets.</p>
+ 
+  </li> </ul> You can't use this operation to list all assets. To retrieve
+  summaries for all of your assets, use ListAssetModels to get all of your
+  asset model IDs. Then, use ListAssets to get all assets for each asset
+  model.</p>
+
+<h3 class="function"><a name="list_assets-6">list_assets/6</a></h3>
+<div class="spec">
+<p><tt>list_assets(Client, AssetModelId, Filter, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_associated_assets-6">list_associated_assets/6</a></h3>
+<div class="spec">
+<p><tt>list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, TraversalDirection) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a paginated list of associated assets.</p>
+ 
+  <p>You can use this operation to do the following:</p>
+ 
+  <ul> <li><p> List child assets associated to a parent asset by a hierarchy  
+that you specify.</p>
+ 
+  </li> <li><p> List an asset's parent asset.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="list_associated_assets-7">list_associated_assets/7</a></h3>
+<div class="spec">
+<p><tt>list_associated_assets(Client, AssetId, HierarchyId, MaxResults, NextToken, TraversalDirection, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_dashboards-4">list_dashboards/4</a></h3>
+<div class="spec">
+<p><tt>list_dashboards(Client, MaxResults, NextToken, ProjectId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a paginated list of dashboards for an AWS IoT SiteWise
+  Monitor project.</p>
+
+<h3 class="function"><a name="list_dashboards-5">list_dashboards/5</a></h3>
+<div class="spec">
+<p><tt>list_dashboards(Client, MaxResults, NextToken, ProjectId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_gateways-3">list_gateways/3</a></h3>
+<div class="spec">
+<p><tt>list_gateways(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a paginated list of gateways.</p>
+
+<h3 class="function"><a name="list_gateways-4">list_gateways/4</a></h3>
+<div class="spec">
+<p><tt>list_gateways(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_portals-3">list_portals/3</a></h3>
+<div class="spec">
+<p><tt>list_portals(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a paginated list of AWS IoT SiteWise Monitor portals.</p>
+
+<h3 class="function"><a name="list_portals-4">list_portals/4</a></h3>
+<div class="spec">
+<p><tt>list_portals(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_project_assets-4">list_project_assets/4</a></h3>
+<div class="spec">
+<p><tt>list_project_assets(Client, ProjectId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a paginated list of assets associated with an AWS IoT
+  SiteWise Monitor project.</p>
+
+<h3 class="function"><a name="list_project_assets-5">list_project_assets/5</a></h3>
+<div class="spec">
+<p><tt>list_project_assets(Client, ProjectId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_projects-4">list_projects/4</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, MaxResults, NextToken, PortalId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a paginated list of projects for an AWS IoT SiteWise
+  Monitor portal.</p>
+
+<h3 class="function"><a name="list_projects-5">list_projects/5</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, MaxResults, NextToken, PortalId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the list of tags for an AWS IoT SiteWise resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_logging_options-2">put_logging_options/2</a></h3>
+<div class="spec">
+<p><tt>put_logging_options(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Sets logging options for AWS IoT SiteWise.</p>
+
+<h3 class="function"><a name="put_logging_options-3">put_logging_options/3</a></h3>
+<div class="spec">
+<p><tt>put_logging_options(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds tags to an AWS IoT SiteWise resource.</p>
+ 
+  If a tag already exists for the resource, this operation updates the tag's
+  value.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a tag from an AWS IoT SiteWise resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_access_policy-3">update_access_policy/3</a></h3>
+<div class="spec">
+<p><tt>update_access_policy(Client, AccessPolicyId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing access policy that specifies an identity's access
+  to an AWS IoT SiteWise Monitor portal or project resource.</p>
+
+<h3 class="function"><a name="update_access_policy-4">update_access_policy/4</a></h3>
+<div class="spec">
+<p><tt>update_access_policy(Client, AccessPolicyId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_asset-3">update_asset/3</a></h3>
+<div class="spec">
+<p><tt>update_asset(Client, AssetId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an asset's name.</p>
+ 
+  For more information, see Updating assets and models in the AWS IoT
+  SiteWise User Guide.</p>
+
+<h3 class="function"><a name="update_asset-4">update_asset/4</a></h3>
+<div class="spec">
+<p><tt>update_asset(Client, AssetId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_asset_model-3">update_asset_model/3</a></h3>
+<div class="spec">
+<p><tt>update_asset_model(Client, AssetModelId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an asset model and all of the assets that were created from  
+the model.</p>
+ 
+  <p>Each asset created from the model inherits the updated asset model's  
+property and hierarchy definitions. For more information, see Updating  
+assets and models in the AWS IoT SiteWise User Guide.</p>
+ 
+  <p>This operation overwrites the existing model with the provided model. To  
+avoid deleting your asset model's properties or hierarchies, you must  
+include their IDs and definitions in the updated asset model payload. For  
+more information, see DescribeAssetModel.</p>
+ 
+  If you remove a property from an asset model, AWS IoT SiteWise deletes all
+  previous data for that property. If you remove a hierarchy definition from
+  an asset model, AWS IoT SiteWise disassociates every asset associated with
+  that hierarchy. You can't change the type or data type of an existing
+  property.</p>
+
+<h3 class="function"><a name="update_asset_model-4">update_asset_model/4</a></h3>
+<div class="spec">
+<p><tt>update_asset_model(Client, AssetModelId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_asset_property-4">update_asset_property/4</a></h3>
+<div class="spec">
+<p><tt>update_asset_property(Client, AssetId, PropertyId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an asset property's alias and notification state.</p>
+ 
+  This operation overwrites the property's existing alias and notification
+  state. To keep your existing property's alias or notification state, you
+  must include the existing values in the UpdateAssetProperty request. For
+  more information, see DescribeAssetProperty.</p>
+
+<h3 class="function"><a name="update_asset_property-5">update_asset_property/5</a></h3>
+<div class="spec">
+<p><tt>update_asset_property(Client, AssetId, PropertyId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_dashboard-3">update_dashboard/3</a></h3>
+<div class="spec">
+<p><tt>update_dashboard(Client, DashboardId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an AWS IoT SiteWise Monitor dashboard.</p>
+
+<h3 class="function"><a name="update_dashboard-4">update_dashboard/4</a></h3>
+<div class="spec">
+<p><tt>update_dashboard(Client, DashboardId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_gateway-3">update_gateway/3</a></h3>
+<div class="spec">
+<p><tt>update_gateway(Client, GatewayId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a gateway's name.</p>
+
+<h3 class="function"><a name="update_gateway-4">update_gateway/4</a></h3>
+<div class="spec">
+<p><tt>update_gateway(Client, GatewayId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_gateway_capability_configuration-3">update_gateway_capability_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_gateway_capability_configuration(Client, GatewayId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a gateway capability configuration or defines a new  
+capability configuration.</p>
+ 
+  Each gateway capability defines data sources for a gateway. A capability
+  configuration can contain multiple data source configurations. If you
+  define OPC-UA sources for a gateway in the AWS IoT SiteWise console, all
+  of your OPC-UA sources are stored in one capability configuration. To list
+  all capability configurations for a gateway, use DescribeGateway.</p>
+
+<h3 class="function"><a name="update_gateway_capability_configuration-4">update_gateway_capability_configuration/4</a></h3>
+<div class="spec">
+<p><tt>update_gateway_capability_configuration(Client, GatewayId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_portal-3">update_portal/3</a></h3>
+<div class="spec">
+<p><tt>update_portal(Client, PortalId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an AWS IoT SiteWise Monitor portal.</p>
+
+<h3 class="function"><a name="update_portal-4">update_portal/4</a></h3>
+<div class="spec">
+<p><tt>update_portal(Client, PortalId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_project-3">update_project/3</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, ProjectId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an AWS IoT SiteWise Monitor project.</p>
+
+<h3 class="function"><a name="update_project-4">update_project/4</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, ProjectId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

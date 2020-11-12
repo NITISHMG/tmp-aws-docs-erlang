@@ -1,0 +1,297 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_mediapackage</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_mediapackage</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Elemental MediaPackage.
+
+
+<h2><a name="description">Description</a></h2>AWS Elemental MediaPackage
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#configure_logs-3">configure_logs/3</a></td><td>Changes the Channel's properities to configure log subscription.</td></tr>
+<tr><td valign="top"><a href="#configure_logs-4">configure_logs/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_channel-2">create_channel/2</a></td><td>Creates a new Channel.</td></tr>
+<tr><td valign="top"><a href="#create_channel-3">create_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_harvest_job-2">create_harvest_job/2</a></td><td>Creates a new HarvestJob record.</td></tr>
+<tr><td valign="top"><a href="#create_harvest_job-3">create_harvest_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_origin_endpoint-2">create_origin_endpoint/2</a></td><td>Creates a new OriginEndpoint record.</td></tr>
+<tr><td valign="top"><a href="#create_origin_endpoint-3">create_origin_endpoint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_channel-3">delete_channel/3</a></td><td>Deletes an existing Channel.</td></tr>
+<tr><td valign="top"><a href="#delete_channel-4">delete_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_origin_endpoint-3">delete_origin_endpoint/3</a></td><td>Deletes an existing OriginEndpoint.</td></tr>
+<tr><td valign="top"><a href="#delete_origin_endpoint-4">delete_origin_endpoint/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_channel-2">describe_channel/2</a></td><td>Gets details about a Channel.</td></tr>
+<tr><td valign="top"><a href="#describe_channel-3">describe_channel/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_harvest_job-2">describe_harvest_job/2</a></td><td>Gets details about an existing HarvestJob.</td></tr>
+<tr><td valign="top"><a href="#describe_harvest_job-3">describe_harvest_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_origin_endpoint-2">describe_origin_endpoint/2</a></td><td>Gets details about an existing OriginEndpoint.</td></tr>
+<tr><td valign="top"><a href="#describe_origin_endpoint-3">describe_origin_endpoint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_channels-3">list_channels/3</a></td><td>Returns a collection of Channels.</td></tr>
+<tr><td valign="top"><a href="#list_channels-4">list_channels/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_harvest_jobs-5">list_harvest_jobs/5</a></td><td>Returns a collection of HarvestJob records.</td></tr>
+<tr><td valign="top"><a href="#list_harvest_jobs-6">list_harvest_jobs/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_origin_endpoints-4">list_origin_endpoints/4</a></td><td>Returns a collection of OriginEndpoint records.</td></tr>
+<tr><td valign="top"><a href="#list_origin_endpoints-5">list_origin_endpoints/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#rotate_channel_credentials-3">rotate_channel_credentials/3</a></td><td>Changes the Channel's first IngestEndpoint's username and password.</td></tr>
+<tr><td valign="top"><a href="#rotate_channel_credentials-4">rotate_channel_credentials/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#rotate_ingest_endpoint_credentials-4">rotate_ingest_endpoint_credentials/4</a></td><td>Rotate the IngestEndpoint's username and password, as specified by
+  the IngestEndpoint's id.</td></tr>
+<tr><td valign="top"><a href="#rotate_ingest_endpoint_credentials-5">rotate_ingest_endpoint_credentials/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_channel-3">update_channel/3</a></td><td>Updates an existing Channel.</td></tr>
+<tr><td valign="top"><a href="#update_channel-4">update_channel/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_origin_endpoint-3">update_origin_endpoint/3</a></td><td>Updates an existing OriginEndpoint.</td></tr>
+<tr><td valign="top"><a href="#update_origin_endpoint-4">update_origin_endpoint/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="configure_logs-3">configure_logs/3</a></h3>
+<div class="spec">
+<p><tt>configure_logs(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes the Channel's properities to configure log subscription</p>
+
+<h3 class="function"><a name="configure_logs-4">configure_logs/4</a></h3>
+<div class="spec">
+<p><tt>configure_logs(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_channel-2">create_channel/2</a></h3>
+<div class="spec">
+<p><tt>create_channel(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new Channel.</p>
+
+<h3 class="function"><a name="create_channel-3">create_channel/3</a></h3>
+<div class="spec">
+<p><tt>create_channel(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_harvest_job-2">create_harvest_job/2</a></h3>
+<div class="spec">
+<p><tt>create_harvest_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new HarvestJob record.</p>
+
+<h3 class="function"><a name="create_harvest_job-3">create_harvest_job/3</a></h3>
+<div class="spec">
+<p><tt>create_harvest_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_origin_endpoint-2">create_origin_endpoint/2</a></h3>
+<div class="spec">
+<p><tt>create_origin_endpoint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new OriginEndpoint record.</p>
+
+<h3 class="function"><a name="create_origin_endpoint-3">create_origin_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>create_origin_endpoint(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_channel-3">delete_channel/3</a></h3>
+<div class="spec">
+<p><tt>delete_channel(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing Channel.</p>
+
+<h3 class="function"><a name="delete_channel-4">delete_channel/4</a></h3>
+<div class="spec">
+<p><tt>delete_channel(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_origin_endpoint-3">delete_origin_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>delete_origin_endpoint(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an existing OriginEndpoint.</p>
+
+<h3 class="function"><a name="delete_origin_endpoint-4">delete_origin_endpoint/4</a></h3>
+<div class="spec">
+<p><tt>delete_origin_endpoint(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_channel-2">describe_channel/2</a></h3>
+<div class="spec">
+<p><tt>describe_channel(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets details about a Channel.</p>
+
+<h3 class="function"><a name="describe_channel-3">describe_channel/3</a></h3>
+<div class="spec">
+<p><tt>describe_channel(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_harvest_job-2">describe_harvest_job/2</a></h3>
+<div class="spec">
+<p><tt>describe_harvest_job(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets details about an existing HarvestJob.</p>
+
+<h3 class="function"><a name="describe_harvest_job-3">describe_harvest_job/3</a></h3>
+<div class="spec">
+<p><tt>describe_harvest_job(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_origin_endpoint-2">describe_origin_endpoint/2</a></h3>
+<div class="spec">
+<p><tt>describe_origin_endpoint(Client, Id) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets details about an existing OriginEndpoint.</p>
+
+<h3 class="function"><a name="describe_origin_endpoint-3">describe_origin_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>describe_origin_endpoint(Client, Id, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_channels-3">list_channels/3</a></h3>
+<div class="spec">
+<p><tt>list_channels(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a collection of Channels.</p>
+
+<h3 class="function"><a name="list_channels-4">list_channels/4</a></h3>
+<div class="spec">
+<p><tt>list_channels(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_harvest_jobs-5">list_harvest_jobs/5</a></h3>
+<div class="spec">
+<p><tt>list_harvest_jobs(Client, IncludeChannelId, IncludeStatus, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a collection of HarvestJob records.</p>
+
+<h3 class="function"><a name="list_harvest_jobs-6">list_harvest_jobs/6</a></h3>
+<div class="spec">
+<p><tt>list_harvest_jobs(Client, IncludeChannelId, IncludeStatus, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_origin_endpoints-4">list_origin_endpoints/4</a></h3>
+<div class="spec">
+<p><tt>list_origin_endpoints(Client, ChannelId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a collection of OriginEndpoint records.</p>
+
+<h3 class="function"><a name="list_origin_endpoints-5">list_origin_endpoints/5</a></h3>
+<div class="spec">
+<p><tt>list_origin_endpoints(Client, ChannelId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="rotate_channel_credentials-3">rotate_channel_credentials/3</a></h3>
+<div class="spec">
+<p><tt>rotate_channel_credentials(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Changes the Channel's first IngestEndpoint's username and password.</p>
+ 
+  WARNING - This API is deprecated. Please use
+  RotateIngestEndpointCredentials instead</p>
+
+<h3 class="function"><a name="rotate_channel_credentials-4">rotate_channel_credentials/4</a></h3>
+<div class="spec">
+<p><tt>rotate_channel_credentials(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="rotate_ingest_endpoint_credentials-4">rotate_ingest_endpoint_credentials/4</a></h3>
+<div class="spec">
+<p><tt>rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Rotate the IngestEndpoint's username and password, as specified by
+  the IngestEndpoint's id.</p>
+
+<h3 class="function"><a name="rotate_ingest_endpoint_credentials-5">rotate_ingest_endpoint_credentials/5</a></h3>
+<div class="spec">
+<p><tt>rotate_ingest_endpoint_credentials(Client, Id, IngestEndpointId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_channel-3">update_channel/3</a></h3>
+<div class="spec">
+<p><tt>update_channel(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing Channel.</p>
+
+<h3 class="function"><a name="update_channel-4">update_channel/4</a></h3>
+<div class="spec">
+<p><tt>update_channel(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_origin_endpoint-3">update_origin_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>update_origin_endpoint(Client, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an existing OriginEndpoint.</p>
+
+<h3 class="function"><a name="update_origin_endpoint-4">update_origin_endpoint/4</a></h3>
+<div class="spec">
+<p><tt>update_origin_endpoint(Client, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

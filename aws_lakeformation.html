@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_lakeformation</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_lakeformation</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Lake Formation.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Lake Formation</p>
+ 
+  Defines the public endpoint for the AWS Lake Formation service.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#batch_grant_permissions-2">batch_grant_permissions/2</a></td><td>Batch operation to grant permissions to the principal.</td></tr>
+<tr><td valign="top"><a href="#batch_grant_permissions-3">batch_grant_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_revoke_permissions-2">batch_revoke_permissions/2</a></td><td>Batch operation to revoke permissions from the principal.</td></tr>
+<tr><td valign="top"><a href="#batch_revoke_permissions-3">batch_revoke_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_resource-2">deregister_resource/2</a></td><td>Deregisters the resource as managed by the Data Catalog.</td></tr>
+<tr><td valign="top"><a href="#deregister_resource-3">deregister_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_resource-2">describe_resource/2</a></td><td>Retrieves the current data access role for the given resource
+  registered in AWS Lake Formation.</td></tr>
+<tr><td valign="top"><a href="#describe_resource-3">describe_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_data_lake_settings-2">get_data_lake_settings/2</a></td><td>Retrieves the list of the data lake administrators of a Lake
+  Formation-managed data lake.</td></tr>
+<tr><td valign="top"><a href="#get_data_lake_settings-3">get_data_lake_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_effective_permissions_for_path-2">get_effective_permissions_for_path/2</a></td><td>Returns the Lake Formation permissions for a specified table or  
+database resource located at a path in Amazon S3.</td></tr>
+<tr><td valign="top"><a href="#get_effective_permissions_for_path-3">get_effective_permissions_for_path/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#grant_permissions-2">grant_permissions/2</a></td><td>Grants permissions to the principal to access metadata in the Data  
+Catalog and data organized in underlying data storage such as Amazon S3.</td></tr>
+<tr><td valign="top"><a href="#grant_permissions-3">grant_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_permissions-2">list_permissions/2</a></td><td>Returns a list of the principal permissions on the resource, filtered  
+by the permissions of the caller.</td></tr>
+<tr><td valign="top"><a href="#list_permissions-3">list_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resources-2">list_resources/2</a></td><td>Lists the resources registered to be managed by the Data Catalog.</td></tr>
+<tr><td valign="top"><a href="#list_resources-3">list_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_data_lake_settings-2">put_data_lake_settings/2</a></td><td>Sets the list of data lake administrators who have admin privileges  
+on all resources managed by Lake Formation.</td></tr>
+<tr><td valign="top"><a href="#put_data_lake_settings-3">put_data_lake_settings/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_resource-2">register_resource/2</a></td><td>Registers the resource as managed by the Data Catalog.</td></tr>
+<tr><td valign="top"><a href="#register_resource-3">register_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#revoke_permissions-2">revoke_permissions/2</a></td><td>Revokes permissions to the principal to access metadata in the Data
+  Catalog and data organized in underlying data storage such as Amazon S3.</td></tr>
+<tr><td valign="top"><a href="#revoke_permissions-3">revoke_permissions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_resource-2">update_resource/2</a></td><td>Updates the data access role used for vending access to the given
+  (registered) resource in AWS Lake Formation.</td></tr>
+<tr><td valign="top"><a href="#update_resource-3">update_resource/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="batch_grant_permissions-2">batch_grant_permissions/2</a></h3>
+<div class="spec">
+<p><tt>batch_grant_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Batch operation to grant permissions to the principal.</p>
+
+<h3 class="function"><a name="batch_grant_permissions-3">batch_grant_permissions/3</a></h3>
+<div class="spec">
+<p><tt>batch_grant_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_revoke_permissions-2">batch_revoke_permissions/2</a></h3>
+<div class="spec">
+<p><tt>batch_revoke_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Batch operation to revoke permissions from the principal.</p>
+
+<h3 class="function"><a name="batch_revoke_permissions-3">batch_revoke_permissions/3</a></h3>
+<div class="spec">
+<p><tt>batch_revoke_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_resource-2">deregister_resource/2</a></h3>
+<div class="spec">
+<p><tt>deregister_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregisters the resource as managed by the Data Catalog.</p>
+ 
+  When you deregister a path, Lake Formation removes the path from the
+  inline policy attached to your service-linked role.</p>
+
+<h3 class="function"><a name="deregister_resource-3">deregister_resource/3</a></h3>
+<div class="spec">
+<p><tt>deregister_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_resource-2">describe_resource/2</a></h3>
+<div class="spec">
+<p><tt>describe_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the current data access role for the given resource
+  registered in AWS Lake Formation.</p>
+
+<h3 class="function"><a name="describe_resource-3">describe_resource/3</a></h3>
+<div class="spec">
+<p><tt>describe_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_data_lake_settings-2">get_data_lake_settings/2</a></h3>
+<div class="spec">
+<p><tt>get_data_lake_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the list of the data lake administrators of a Lake
+  Formation-managed data lake.</p>
+
+<h3 class="function"><a name="get_data_lake_settings-3">get_data_lake_settings/3</a></h3>
+<div class="spec">
+<p><tt>get_data_lake_settings(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_effective_permissions_for_path-2">get_effective_permissions_for_path/2</a></h3>
+<div class="spec">
+<p><tt>get_effective_permissions_for_path(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the Lake Formation permissions for a specified table or  
+database resource located at a path in Amazon S3.</p>
+ 
+  <code>GetEffectivePermissionsForPath</code> will not return databases and tables if
+  the catalog is encrypted.</p>
+
+<h3 class="function"><a name="get_effective_permissions_for_path-3">get_effective_permissions_for_path/3</a></h3>
+<div class="spec">
+<p><tt>get_effective_permissions_for_path(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="grant_permissions-2">grant_permissions/2</a></h3>
+<div class="spec">
+<p><tt>grant_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Grants permissions to the principal to access metadata in the Data  
+Catalog and data organized in underlying data storage such as Amazon S3.</p>
+ 
+  For information about permissions, see Security and Access Control to
+  Metadata and Data.</p>
+
+<h3 class="function"><a name="grant_permissions-3">grant_permissions/3</a></h3>
+<div class="spec">
+<p><tt>grant_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_permissions-2">list_permissions/2</a></h3>
+<div class="spec">
+<p><tt>list_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of the principal permissions on the resource, filtered  
+by the permissions of the caller.</p>
+ 
+  <p>For example, if you are granted an ALTER permission, you are able to see  
+only the principal permissions for ALTER.</p>
+ 
+  <p>This operation returns only those permissions that have been explicitly  
+granted.</p>
+ 
+  For information about permissions, see Security and Access Control to
+  Metadata and Data.</p>
+
+<h3 class="function"><a name="list_permissions-3">list_permissions/3</a></h3>
+<div class="spec">
+<p><tt>list_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resources-2">list_resources/2</a></h3>
+<div class="spec">
+<p><tt>list_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the resources registered to be managed by the Data Catalog.</p>
+
+<h3 class="function"><a name="list_resources-3">list_resources/3</a></h3>
+<div class="spec">
+<p><tt>list_resources(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_data_lake_settings-2">put_data_lake_settings/2</a></h3>
+<div class="spec">
+<p><tt>put_data_lake_settings(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the list of data lake administrators who have admin privileges  
+on all resources managed by Lake Formation.</p>
+ 
+  <p>For more information on admin privileges, see Granting Lake Formation  
+Permissions.</p>
+ 
+  This API replaces the current list of data lake admins with the new list
+  being passed. To add an admin, fetch the current list and add the new
+  admin to that list and pass that list in this API.</p>
+
+<h3 class="function"><a name="put_data_lake_settings-3">put_data_lake_settings/3</a></h3>
+<div class="spec">
+<p><tt>put_data_lake_settings(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_resource-2">register_resource/2</a></h3>
+<div class="spec">
+<p><tt>register_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers the resource as managed by the Data Catalog.</p>
+ 
+  <p>To add or update data, Lake Formation needs read/write access to the  
+chosen Amazon S3 path. Choose a role that you know has permission to do  
+this, or choose the AWSServiceRoleForLakeFormationDataAccess  
+service-linked role. When you register the first Amazon S3 path, the  
+service-linked role and a new inline policy are created on your behalf.  
+Lake Formation adds the first path to the inline policy and attaches it to  
+the service-linked role. When you register subsequent paths, Lake  
+Formation adds the path to the existing policy.</p>
+ 
+  <p>The following request registers a new location and gives AWS Lake  
+Formation permission to use the service-linked role to access that  
+location.</p>
+ 
+  <p><code>ResourceArn = arn:aws:s3:::my-bucket UseServiceLinkedRole = true</code></p>
+ 
+  <p>If <code>UseServiceLinkedRole</code> is not set to true, you must provide or set the
+  <code>RoleArn</code>:</p>
+ 
+  <code>arn:aws:iam::12345:role/my-data-access-role</code></p>
+
+<h3 class="function"><a name="register_resource-3">register_resource/3</a></h3>
+<div class="spec">
+<p><tt>register_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="revoke_permissions-2">revoke_permissions/2</a></h3>
+<div class="spec">
+<p><tt>revoke_permissions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Revokes permissions to the principal to access metadata in the Data
+  Catalog and data organized in underlying data storage such as Amazon S3.</p>
+
+<h3 class="function"><a name="revoke_permissions-3">revoke_permissions/3</a></h3>
+<div class="spec">
+<p><tt>revoke_permissions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_resource-2">update_resource/2</a></h3>
+<div class="spec">
+<p><tt>update_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the data access role used for vending access to the given
+  (registered) resource in AWS Lake Formation.</p>
+
+<h3 class="function"><a name="update_resource-3">update_resource/3</a></h3>
+<div class="spec">
+<p><tt>update_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

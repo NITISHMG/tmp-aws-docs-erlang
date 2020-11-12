@@ -1,0 +1,271 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_signer</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_signer</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>With code signing for IoT, you can sign code that you create for any  
+IoT device that is supported by Amazon Web Services (AWS).
+
+
+<h2><a name="description">Description</a></h2><p>With code signing for IoT, you can sign code that you create for any  
+IoT device that is supported by Amazon Web Services (AWS).</p>
+ 
+  Code signing is available through Amazon FreeRTOS and AWS IoT Device
+  Management, and integrated with AWS Certificate Manager (ACM). In order to
+  sign code, you import a third-party code signing certificate with ACM that
+  is used to sign updates in Amazon FreeRTOS and AWS IoT Device Management.
+  For general information about using code signing, see the Code Signing for
+  IoT Developer Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_signing_profile-3">cancel_signing_profile/3</a></td><td>Changes the state of an <code>ACTIVE</code> signing profile to <code>CANCELED</code>.</td></tr>
+<tr><td valign="top"><a href="#cancel_signing_profile-4">cancel_signing_profile/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_signing_job-2">describe_signing_job/2</a></td><td>Returns information about a specific code signing job.</td></tr>
+<tr><td valign="top"><a href="#describe_signing_job-3">describe_signing_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_signing_platform-2">get_signing_platform/2</a></td><td>Returns information on a specific signing platform.</td></tr>
+<tr><td valign="top"><a href="#get_signing_platform-3">get_signing_platform/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_signing_profile-2">get_signing_profile/2</a></td><td>Returns information on a specific signing profile.</td></tr>
+<tr><td valign="top"><a href="#get_signing_profile-3">get_signing_profile/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_signing_jobs-6">list_signing_jobs/6</a></td><td>Lists all your signing jobs.</td></tr>
+<tr><td valign="top"><a href="#list_signing_jobs-7">list_signing_jobs/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_signing_platforms-6">list_signing_platforms/6</a></td><td>Lists all signing platforms available in code signing that match the  
+request parameters.</td></tr>
+<tr><td valign="top"><a href="#list_signing_platforms-7">list_signing_platforms/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_signing_profiles-4">list_signing_profiles/4</a></td><td>Lists all available signing profiles in your AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_signing_profiles-5">list_signing_profiles/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of the tags associated with a signing profile
+  resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_signing_profile-3">put_signing_profile/3</a></td><td>Creates a signing profile.</td></tr>
+<tr><td valign="top"><a href="#put_signing_profile-4">put_signing_profile/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_signing_job-2">start_signing_job/2</a></td><td>Initiates a signing job to be performed on the code provided.</td></tr>
+<tr><td valign="top"><a href="#start_signing_job-3">start_signing_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds one or more tags to a signing profile.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes one or more tags from a signing profile.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_signing_profile-3">cancel_signing_profile/3</a></h3>
+<div class="spec">
+<p><tt>cancel_signing_profile(Client, ProfileName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Changes the state of an <code>ACTIVE</code> signing profile to <code>CANCELED</code>.</p>
+ 
+  A canceled profile is still viewable with the <code>ListSigningProfiles</code>
+  operation, but it cannot perform new signing jobs, and is deleted two
+  years after cancelation.</p>
+
+<h3 class="function"><a name="cancel_signing_profile-4">cancel_signing_profile/4</a></h3>
+<div class="spec">
+<p><tt>cancel_signing_profile(Client, ProfileName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_signing_job-2">describe_signing_job/2</a></h3>
+<div class="spec">
+<p><tt>describe_signing_job(Client, JobId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about a specific code signing job.</p>
+ 
+  You specify the job by using the <code>jobId</code> value that is returned by the
+  <code>StartSigningJob</code> operation.</p>
+
+<h3 class="function"><a name="describe_signing_job-3">describe_signing_job/3</a></h3>
+<div class="spec">
+<p><tt>describe_signing_job(Client, JobId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_signing_platform-2">get_signing_platform/2</a></h3>
+<div class="spec">
+<p><tt>get_signing_platform(Client, PlatformId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information on a specific signing platform.</p>
+
+<h3 class="function"><a name="get_signing_platform-3">get_signing_platform/3</a></h3>
+<div class="spec">
+<p><tt>get_signing_platform(Client, PlatformId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_signing_profile-2">get_signing_profile/2</a></h3>
+<div class="spec">
+<p><tt>get_signing_profile(Client, ProfileName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information on a specific signing profile.</p>
+
+<h3 class="function"><a name="get_signing_profile-3">get_signing_profile/3</a></h3>
+<div class="spec">
+<p><tt>get_signing_profile(Client, ProfileName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_signing_jobs-6">list_signing_jobs/6</a></h3>
+<div class="spec">
+<p><tt>list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all your signing jobs.</p>
+ 
+  You can use the <code>maxResults</code> parameter to limit the number of signing jobs
+  that are returned in the response. If additional jobs remain to be listed,
+  code signing returns a <code>nextToken</code> value. Use this value in subsequent
+  calls to <code>ListSigningJobs</code> to fetch the remaining values. You can continue
+  calling <code>ListSigningJobs</code> with your <code>maxResults</code> parameter and with new
+  values that code signing returns in the <code>nextToken</code> parameter until all of
+  your signing jobs have been returned.</p>
+
+<h3 class="function"><a name="list_signing_jobs-7">list_signing_jobs/7</a></h3>
+<div class="spec">
+<p><tt>list_signing_jobs(Client, MaxResults, NextToken, PlatformId, RequestedBy, Status, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_signing_platforms-6">list_signing_platforms/6</a></h3>
+<div class="spec">
+<p><tt>list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all signing platforms available in code signing that match the  
+request parameters.</p>
+ 
+  If additional jobs remain to be listed, code signing returns a <code>nextToken</code>
+  value. Use this value in subsequent calls to <code>ListSigningJobs</code> to fetch
+  the remaining values. You can continue calling <code>ListSigningJobs</code> with your
+  <code>maxResults</code> parameter and with new values that code signing returns in
+  the <code>nextToken</code> parameter until all of your signing jobs have been
+  returned.</p>
+
+<h3 class="function"><a name="list_signing_platforms-7">list_signing_platforms/7</a></h3>
+<div class="spec">
+<p><tt>list_signing_platforms(Client, Category, MaxResults, NextToken, Partner, Target, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_signing_profiles-4">list_signing_profiles/4</a></h3>
+<div class="spec">
+<p><tt>list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all available signing profiles in your AWS account.</p>
+ 
+  Returns only profiles with an <code>ACTIVE</code> status unless the <code>includeCanceled</code>
+  request field is set to <code>true</code>. If additional jobs remain to be listed,
+  code signing returns a <code>nextToken</code> value. Use this value in subsequent
+  calls to <code>ListSigningJobs</code> to fetch the remaining values. You can continue
+  calling <code>ListSigningJobs</code> with your <code>maxResults</code> parameter and with new
+  values that code signing returns in the <code>nextToken</code> parameter until all of
+  your signing jobs have been returned.</p>
+
+<h3 class="function"><a name="list_signing_profiles-5">list_signing_profiles/5</a></h3>
+<div class="spec">
+<p><tt>list_signing_profiles(Client, IncludeCanceled, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the tags associated with a signing profile
+  resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_signing_profile-3">put_signing_profile/3</a></h3>
+<div class="spec">
+<p><tt>put_signing_profile(Client, ProfileName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a signing profile.</p>
+ 
+  A signing profile is a code signing template that can be used to carry out
+  a pre-defined signing job. For more information, see
+  <a href="http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html" target="_top"><tt>http://docs.aws.amazon.com/signer/latest/developerguide/gs-profile.html</tt></a></p>
+
+<h3 class="function"><a name="put_signing_profile-4">put_signing_profile/4</a></h3>
+<div class="spec">
+<p><tt>put_signing_profile(Client, ProfileName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_signing_job-2">start_signing_job/2</a></h3>
+<div class="spec">
+<p><tt>start_signing_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Initiates a signing job to be performed on the code provided.</p>
+ 
+  <p>Signing jobs are viewable by the <code>ListSigningJobs</code> operation for two years  
+after they are performed. Note the following requirements:</p>
+ 
+  <ul> <li><p> You must create an Amazon S3 source bucket. For more  
+information, see Create a Bucket in the Amazon S3 Getting Started Guide.</p>
+ 
+  </li> <li><p> Your S3 source bucket must be version enabled.</p>
+ 
+  </li> <li><p> You must create an S3 destination bucket. Code signing uses  
+your S3 destination bucket to write your signed code.</p>
+ 
+  </li> <li><p> You specify the name of the source and destination buckets when
+  calling the <code>StartSigningJob</code> operation.</p>
+ 
+  </li> <li><p> You must also specify a request token that identifies your  
+request to code signing.</p>
+ 
+  </li> </ul><p> You can call the <code>DescribeSigningJob</code> and the
+  <code>ListSigningJobs</code> actions after you call <code>StartSigningJob</code>.</p>
+ 
+  For a Java example that shows how to use this action, see
+  <a href="http://docs.aws.amazon.com/acm/latest/userguide/" target="_top"><tt>http://docs.aws.amazon.com/acm/latest/userguide/</tt></a></p>
+
+<h3 class="function"><a name="start_signing_job-3">start_signing_job/3</a></h3>
+<div class="spec">
+<p><tt>start_signing_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds one or more tags to a signing profile.</p>
+ 
+  Tags are labels that you can use to identify and organize your AWS
+  resources. Each tag consists of a key and an optional value. To specify
+  the signing profile, use its Amazon Resource Name (ARN). To specify the
+  tag, use a key-value pair.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes one or more tags from a signing profile.</p>
+ 
+  To remove the tags, specify a list of tag keys.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

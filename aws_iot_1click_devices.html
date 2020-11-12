@@ -1,0 +1,260 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_iot_1click_devices</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_iot_1click_devices</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Describes all of the AWS IoT 1-Click device-related API operations  
+for the service.
+
+
+<h2><a name="description">Description</a></h2><p>Describes all of the AWS IoT 1-Click device-related API operations  
+for the service.</p>
+ 
+  Also provides sample requests, responses, and errors for the supported web
+  services
+  protocols.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#claim_devices_by_claim_code-3">claim_devices_by_claim_code/3</a></td><td>Adds device(s) to your account (i.e., claim one or more devices) if
+  and only if you
+  received a claim code with the device(s).</td></tr>
+<tr><td valign="top"><a href="#claim_devices_by_claim_code-4">claim_devices_by_claim_code/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_device-2">describe_device/2</a></td><td>Given a device ID, returns a DescribeDeviceResponse object describing
+  the
+  details of the device.</td></tr>
+<tr><td valign="top"><a href="#describe_device-3">describe_device/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#finalize_device_claim-3">finalize_device_claim/3</a></td><td>Given a device ID, finalizes the claim request for the associated  
+device.</td></tr>
+<tr><td valign="top"><a href="#finalize_device_claim-4">finalize_device_claim/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_device_methods-2">get_device_methods/2</a></td><td>Given a device ID, returns the invokable methods associated with the
+  device.</td></tr>
+<tr><td valign="top"><a href="#get_device_methods-3">get_device_methods/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#initiate_device_claim-3">initiate_device_claim/3</a></td><td>Given a device ID, initiates a claim request for the associated  
+device.</td></tr>
+<tr><td valign="top"><a href="#initiate_device_claim-4">initiate_device_claim/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#invoke_device_method-3">invoke_device_method/3</a></td><td>Given a device ID, issues a request to invoke a named device method  
+(with possible  
+parameters).</td></tr>
+<tr><td valign="top"><a href="#invoke_device_method-4">invoke_device_method/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_device_events-6">list_device_events/6</a></td><td>Using a device ID, returns a DeviceEventsResponse object containing
+  an
+  array of events for the device.</td></tr>
+<tr><td valign="top"><a href="#list_device_events-7">list_device_events/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_devices-4">list_devices/4</a></td><td>Lists the 1-Click compatible devices associated with your AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_devices-5">list_devices/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags associated with the specified resource ARN.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds or updates the tags associated with the resource ARN.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#unclaim_device-3">unclaim_device/3</a></td><td>Disassociates a device from your AWS account using its device ID.</td></tr>
+<tr><td valign="top"><a href="#unclaim_device-4">unclaim_device/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Using tag keys, deletes the tags (key/value pairs) associated with
+  the specified
+  resource ARN.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_device_state-3">update_device_state/3</a></td><td>Using a Boolean value (true or false), this operation
+  enables or disables the device given a device ID.</td></tr>
+<tr><td valign="top"><a href="#update_device_state-4">update_device_state/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="claim_devices_by_claim_code-3">claim_devices_by_claim_code/3</a></h3>
+<div class="spec">
+<p><tt>claim_devices_by_claim_code(Client, ClaimCode, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds device(s) to your account (i.e., claim one or more devices) if
+  and only if you
+  received a claim code with the device(s).</p>
+
+<h3 class="function"><a name="claim_devices_by_claim_code-4">claim_devices_by_claim_code/4</a></h3>
+<div class="spec">
+<p><tt>claim_devices_by_claim_code(Client, ClaimCode, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_device-2">describe_device/2</a></h3>
+<div class="spec">
+<p><tt>describe_device(Client, DeviceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Given a device ID, returns a DescribeDeviceResponse object describing
+  the
+  details of the device.</p>
+
+<h3 class="function"><a name="describe_device-3">describe_device/3</a></h3>
+<div class="spec">
+<p><tt>describe_device(Client, DeviceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="finalize_device_claim-3">finalize_device_claim/3</a></h3>
+<div class="spec">
+<p><tt>finalize_device_claim(Client, DeviceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Given a device ID, finalizes the claim request for the associated  
+device.</p>
+ 
+  Claiming a device consists of initiating a claim, then publishing a device
+  event,
+  and finalizing the claim. For a device of type button, a device event can
+  be published by simply clicking the device.</p>
+
+<h3 class="function"><a name="finalize_device_claim-4">finalize_device_claim/4</a></h3>
+<div class="spec">
+<p><tt>finalize_device_claim(Client, DeviceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_device_methods-2">get_device_methods/2</a></h3>
+<div class="spec">
+<p><tt>get_device_methods(Client, DeviceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Given a device ID, returns the invokable methods associated with the
+  device.</p>
+
+<h3 class="function"><a name="get_device_methods-3">get_device_methods/3</a></h3>
+<div class="spec">
+<p><tt>get_device_methods(Client, DeviceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="initiate_device_claim-3">initiate_device_claim/3</a></h3>
+<div class="spec">
+<p><tt>initiate_device_claim(Client, DeviceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Given a device ID, initiates a claim request for the associated  
+device.</p>
+ 
+  Claiming a device consists of initiating a claim, then publishing a device
+  event,
+  and finalizing the claim. For a device of type button, a device event can
+  be published by simply clicking the device.</p>
+
+<h3 class="function"><a name="initiate_device_claim-4">initiate_device_claim/4</a></h3>
+<div class="spec">
+<p><tt>initiate_device_claim(Client, DeviceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="invoke_device_method-3">invoke_device_method/3</a></h3>
+<div class="spec">
+<p><tt>invoke_device_method(Client, DeviceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Given a device ID, issues a request to invoke a named device method  
+(with possible  
+parameters).</p>
+ 
+  See the "Example POST" code snippet below.</p>
+
+<h3 class="function"><a name="invoke_device_method-4">invoke_device_method/4</a></h3>
+<div class="spec">
+<p><tt>invoke_device_method(Client, DeviceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_device_events-6">list_device_events/6</a></h3>
+<div class="spec">
+<p><tt>list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTimeStamp) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Using a device ID, returns a DeviceEventsResponse object containing
+  an
+  array of events for the device.</p>
+
+<h3 class="function"><a name="list_device_events-7">list_device_events/7</a></h3>
+<div class="spec">
+<p><tt>list_device_events(Client, DeviceId, FromTimeStamp, MaxResults, NextToken, ToTimeStamp, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_devices-4">list_devices/4</a></h3>
+<div class="spec">
+<p><tt>list_devices(Client, DeviceType, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the 1-Click compatible devices associated with your AWS
+  account.</p>
+
+<h3 class="function"><a name="list_devices-5">list_devices/5</a></h3>
+<div class="spec">
+<p><tt>list_devices(Client, DeviceType, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags associated with the specified resource ARN.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds or updates the tags associated with the resource ARN.</p>
+ 
+  See AWS IoT 1-Click Service Limits for the maximum number of tags allowed
+  per
+  resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="unclaim_device-3">unclaim_device/3</a></h3>
+<div class="spec">
+<p><tt>unclaim_device(Client, DeviceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates a device from your AWS account using its device ID.</p>
+
+<h3 class="function"><a name="unclaim_device-4">unclaim_device/4</a></h3>
+<div class="spec">
+<p><tt>unclaim_device(Client, DeviceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Using tag keys, deletes the tags (key/value pairs) associated with
+  the specified
+  resource ARN.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_device_state-3">update_device_state/3</a></h3>
+<div class="spec">
+<p><tt>update_device_state(Client, DeviceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Using a Boolean value (true or false), this operation
+  enables or disables the device given a device ID.</p>
+
+<h3 class="function"><a name="update_device_state-4">update_device_state/4</a></h3>
+<div class="spec">
+<p><tt>update_device_state(Client, DeviceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

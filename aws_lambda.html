@@ -1,0 +1,1072 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_lambda</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_lambda</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Lambda.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Lambda</p>
+ 
+  <p>Overview</p>
+ 
+  <p>This is the AWS Lambda API Reference.</p>
+ 
+  The AWS Lambda Developer Guide provides additional information. For the
+  service overview, see What is AWS Lambda, and for information about how
+  the service works, see AWS Lambda: How it Works in the AWS Lambda
+  Developer Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_layer_version_permission-4">add_layer_version_permission/4</a></td><td>Adds permissions to the resource-based policy of a version of an AWS  
+Lambda layer.</td></tr>
+<tr><td valign="top"><a href="#add_layer_version_permission-5">add_layer_version_permission/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_permission-3">add_permission/3</a></td><td>Grants an AWS service or another account permission to use a  
+function.</td></tr>
+<tr><td valign="top"><a href="#add_permission-4">add_permission/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_alias-3">create_alias/3</a></td><td>Creates an alias for a Lambda function version.</td></tr>
+<tr><td valign="top"><a href="#create_alias-4">create_alias/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_event_source_mapping-2">create_event_source_mapping/2</a></td><td>Creates a mapping between an event source and an AWS Lambda function.</td></tr>
+<tr><td valign="top"><a href="#create_event_source_mapping-3">create_event_source_mapping/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_function-2">create_function/2</a></td><td>Creates a Lambda function.</td></tr>
+<tr><td valign="top"><a href="#create_function-3">create_function/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_alias-4">delete_alias/4</a></td><td>Deletes a Lambda function alias.</td></tr>
+<tr><td valign="top"><a href="#delete_alias-5">delete_alias/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_event_source_mapping-3">delete_event_source_mapping/3</a></td><td>Deletes an event source mapping.</td></tr>
+<tr><td valign="top"><a href="#delete_event_source_mapping-4">delete_event_source_mapping/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_function-3">delete_function/3</a></td><td>Deletes a Lambda function.</td></tr>
+<tr><td valign="top"><a href="#delete_function-4">delete_function/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_function_concurrency-3">delete_function_concurrency/3</a></td><td>Removes a concurrent execution limit from a function.</td></tr>
+<tr><td valign="top"><a href="#delete_function_concurrency-4">delete_function_concurrency/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_function_event_invoke_config-3">delete_function_event_invoke_config/3</a></td><td>Deletes the configuration for asynchronous invocation for a function,  
+version, or alias.</td></tr>
+<tr><td valign="top"><a href="#delete_function_event_invoke_config-4">delete_function_event_invoke_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_layer_version-4">delete_layer_version/4</a></td><td>Deletes a version of an AWS Lambda layer.</td></tr>
+<tr><td valign="top"><a href="#delete_layer_version-5">delete_layer_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_provisioned_concurrency_config-3">delete_provisioned_concurrency_config/3</a></td><td>Deletes the provisioned concurrency configuration for a function.</td></tr>
+<tr><td valign="top"><a href="#delete_provisioned_concurrency_config-4">delete_provisioned_concurrency_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_account_settings-1">get_account_settings/1</a></td><td>Retrieves details about your account's limits and usage in an AWS
+  Region.</td></tr>
+<tr><td valign="top"><a href="#get_account_settings-2">get_account_settings/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_alias-3">get_alias/3</a></td><td>Returns details about a Lambda function alias.</td></tr>
+<tr><td valign="top"><a href="#get_alias-4">get_alias/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_event_source_mapping-2">get_event_source_mapping/2</a></td><td>Returns details about an event source mapping.</td></tr>
+<tr><td valign="top"><a href="#get_event_source_mapping-3">get_event_source_mapping/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_function-3">get_function/3</a></td><td>Returns information about the function or function version, with a  
+link to download the deployment package that's valid for 10 minutes.</td></tr>
+<tr><td valign="top"><a href="#get_function-4">get_function/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_function_concurrency-2">get_function_concurrency/2</a></td><td>Returns details about the reserved concurrency configuration for a  
+function.</td></tr>
+<tr><td valign="top"><a href="#get_function_concurrency-3">get_function_concurrency/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_function_configuration-3">get_function_configuration/3</a></td><td>Returns the version-specific settings of a Lambda function or  
+version.</td></tr>
+<tr><td valign="top"><a href="#get_function_configuration-4">get_function_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_function_event_invoke_config-3">get_function_event_invoke_config/3</a></td><td>Retrieves the configuration for asynchronous invocation for a  
+function, version, or alias.</td></tr>
+<tr><td valign="top"><a href="#get_function_event_invoke_config-4">get_function_event_invoke_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_layer_version-3">get_layer_version/3</a></td><td>Returns information about a version of an AWS Lambda layer, with a
+  link to download the layer archive that's valid for 10 minutes.</td></tr>
+<tr><td valign="top"><a href="#get_layer_version-4">get_layer_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_layer_version_by_arn-2">get_layer_version_by_arn/2</a></td><td>Returns information about a version of an AWS Lambda layer, with a
+  link to download the layer archive that's valid for 10 minutes.</td></tr>
+<tr><td valign="top"><a href="#get_layer_version_by_arn-3">get_layer_version_by_arn/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_layer_version_policy-3">get_layer_version_policy/3</a></td><td>Returns the permission policy for a version of an AWS Lambda layer.</td></tr>
+<tr><td valign="top"><a href="#get_layer_version_policy-4">get_layer_version_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_policy-3">get_policy/3</a></td><td>Returns the resource-based IAM policy for a function, version, or
+  alias.</td></tr>
+<tr><td valign="top"><a href="#get_policy-4">get_policy/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_provisioned_concurrency_config-3">get_provisioned_concurrency_config/3</a></td><td>Retrieves the provisioned concurrency configuration for a function's
+  alias or version.</td></tr>
+<tr><td valign="top"><a href="#get_provisioned_concurrency_config-4">get_provisioned_concurrency_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#invoke-3">invoke/3</a></td><td>Invokes a Lambda function.</td></tr>
+<tr><td valign="top"><a href="#invoke-4">invoke/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#invoke_async-3">invoke_async/3</a></td><td>For asynchronous function invocation, use <code>Invoke</code>.</td></tr>
+<tr><td valign="top"><a href="#invoke_async-4">invoke_async/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_aliases-5">list_aliases/5</a></td><td>Returns a list of aliases for a Lambda function.</td></tr>
+<tr><td valign="top"><a href="#list_aliases-6">list_aliases/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_event_source_mappings-5">list_event_source_mappings/5</a></td><td>Lists event source mappings.</td></tr>
+<tr><td valign="top"><a href="#list_event_source_mappings-6">list_event_source_mappings/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_function_event_invoke_configs-4">list_function_event_invoke_configs/4</a></td><td>Retrieves a list of configurations for asynchronous invocation for a  
+function.</td></tr>
+<tr><td valign="top"><a href="#list_function_event_invoke_configs-5">list_function_event_invoke_configs/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_functions-5">list_functions/5</a></td><td>Returns a list of Lambda functions, with the version-specific  
+configuration of each.</td></tr>
+<tr><td valign="top"><a href="#list_functions-6">list_functions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_layer_versions-5">list_layer_versions/5</a></td><td>Lists the versions of an AWS Lambda layer.</td></tr>
+<tr><td valign="top"><a href="#list_layer_versions-6">list_layer_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_layers-4">list_layers/4</a></td><td>Lists AWS Lambda layers and shows information about the latest  
+version of each.</td></tr>
+<tr><td valign="top"><a href="#list_layers-5">list_layers/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_provisioned_concurrency_configs-4">list_provisioned_concurrency_configs/4</a></td><td>Retrieves a list of provisioned concurrency configurations for a
+  function.</td></tr>
+<tr><td valign="top"><a href="#list_provisioned_concurrency_configs-5">list_provisioned_concurrency_configs/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags-2">list_tags/2</a></td><td>Returns a function's tags.</td></tr>
+<tr><td valign="top"><a href="#list_tags-3">list_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_versions_by_function-4">list_versions_by_function/4</a></td><td>Returns a list of versions, with the version-specific configuration  
+of each.</td></tr>
+<tr><td valign="top"><a href="#list_versions_by_function-5">list_versions_by_function/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#publish_layer_version-3">publish_layer_version/3</a></td><td>Creates an AWS Lambda layer from a ZIP archive.</td></tr>
+<tr><td valign="top"><a href="#publish_layer_version-4">publish_layer_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#publish_version-3">publish_version/3</a></td><td>Creates a version from the current code and configuration of a  
+function.</td></tr>
+<tr><td valign="top"><a href="#publish_version-4">publish_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_function_concurrency-3">put_function_concurrency/3</a></td><td>Sets the maximum number of simultaneous executions for a function,  
+and reserves capacity for that concurrency level.</td></tr>
+<tr><td valign="top"><a href="#put_function_concurrency-4">put_function_concurrency/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_function_event_invoke_config-3">put_function_event_invoke_config/3</a></td><td>Configures options for asynchronous invocation on a function,  
+version, or alias.</td></tr>
+<tr><td valign="top"><a href="#put_function_event_invoke_config-4">put_function_event_invoke_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_provisioned_concurrency_config-3">put_provisioned_concurrency_config/3</a></td><td>Adds a provisioned concurrency configuration to a function's alias or
+  version.</td></tr>
+<tr><td valign="top"><a href="#put_provisioned_concurrency_config-4">put_provisioned_concurrency_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_layer_version_permission-5">remove_layer_version_permission/5</a></td><td>Removes a statement from the permissions policy for a version of an  
+AWS Lambda layer.</td></tr>
+<tr><td valign="top"><a href="#remove_layer_version_permission-6">remove_layer_version_permission/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_permission-4">remove_permission/4</a></td><td>Revokes function-use permission from an AWS service or another  
+account.</td></tr>
+<tr><td valign="top"><a href="#remove_permission-5">remove_permission/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds tags to a function.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes tags from a function.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_alias-4">update_alias/4</a></td><td>Updates the configuration of a Lambda function alias.</td></tr>
+<tr><td valign="top"><a href="#update_alias-5">update_alias/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_event_source_mapping-3">update_event_source_mapping/3</a></td><td>Updates an event source mapping.</td></tr>
+<tr><td valign="top"><a href="#update_event_source_mapping-4">update_event_source_mapping/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_function_code-3">update_function_code/3</a></td><td>Updates a Lambda function's code.</td></tr>
+<tr><td valign="top"><a href="#update_function_code-4">update_function_code/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_function_configuration-3">update_function_configuration/3</a></td><td>Modify the version-specific settings of a Lambda function.</td></tr>
+<tr><td valign="top"><a href="#update_function_configuration-4">update_function_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_function_event_invoke_config-3">update_function_event_invoke_config/3</a></td><td>Updates the configuration for asynchronous invocation for a function,  
+version, or alias.</td></tr>
+<tr><td valign="top"><a href="#update_function_event_invoke_config-4">update_function_event_invoke_config/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_layer_version_permission-4">add_layer_version_permission/4</a></h3>
+<div class="spec">
+<p><tt>add_layer_version_permission(Client, LayerName, VersionNumber, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds permissions to the resource-based policy of a version of an AWS  
+Lambda layer.</p>
+ 
+  <p>Use this action to grant layer usage permission to other accounts. You can  
+grant permission to a single account, all AWS accounts, or all accounts in  
+an organization.</p>
+ 
+  To revoke permission, call <code>RemoveLayerVersionPermission</code> with the
+  statement ID that you specified when you added it.</p>
+
+<h3 class="function"><a name="add_layer_version_permission-5">add_layer_version_permission/5</a></h3>
+<div class="spec">
+<p><tt>add_layer_version_permission(Client, LayerName, VersionNumber, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_permission-3">add_permission/3</a></h3>
+<div class="spec">
+<p><tt>add_permission(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Grants an AWS service or another account permission to use a  
+function.</p>
+ 
+  <p>You can apply the policy at the function level, or specify a qualifier to  
+restrict access to a single version or alias. If you use a qualifier, the  
+invoker must use the full Amazon Resource Name (ARN) of that version or  
+alias to invoke the function.</p>
+ 
+  <p>To grant permission to another account, specify the account ID as the
+  <code>Principal</code>. For AWS services, the principal is a domain-style identifier
+  defined by the service, like <code>s3.amazonaws.com</code> or <code>sns.amazonaws.com</code>.
+  For AWS services, you can also specify the ARN of the associated resource
+  as the <code>SourceArn</code>. If you grant permission to a service principal without  
+specifying the source, other accounts could potentially configure  
+resources in their account to invoke your Lambda function.</p>
+ 
+  This action adds a statement to a resource-based permissions policy for
+  the function. For more information about function policies, see Lambda
+  Function Policies.</p>
+
+<h3 class="function"><a name="add_permission-4">add_permission/4</a></h3>
+<div class="spec">
+<p><tt>add_permission(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_alias-3">create_alias/3</a></h3>
+<div class="spec">
+<p><tt>create_alias(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an alias for a Lambda function version.</p>
+ 
+  <p>Use aliases to provide clients with a function identifier that you can  
+update to invoke a different version.</p>
+ 
+  You can also map an alias to split invocation requests between two
+  versions. Use the <code>RoutingConfig</code> parameter to specify a second version
+  and the percentage of invocation requests that it receives.</p>
+
+<h3 class="function"><a name="create_alias-4">create_alias/4</a></h3>
+<div class="spec">
+<p><tt>create_alias(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_event_source_mapping-2">create_event_source_mapping/2</a></h3>
+<div class="spec">
+<p><tt>create_event_source_mapping(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a mapping between an event source and an AWS Lambda function.</p>
+ 
+  <p>Lambda reads items from the event source and triggers the function.</p>
+ 
+  <p>For details about each event source type, see the following topics.</p>
+ 
+  <ul> <li><p> Using AWS Lambda with Amazon DynamoDB</p>
+ 
+  </li> <li><p> Using AWS Lambda with Amazon Kinesis</p>
+ 
+  </li> <li><p> Using AWS Lambda with Amazon SQS</p>
+ 
+  </li> <li><p> Using AWS Lambda with Amazon MSK</p>
+ 
+  </li> </ul><p> The following error handling options are only available for  
+stream sources (DynamoDB and Kinesis):</p>
+ 
+  <ul> <li><p> <code>BisectBatchOnFunctionError</code> - If the function returns an error,  
+split the batch in two and retry.</p>
+ 
+  </li> <li><p> <code>DestinationConfig</code> - Send discarded records to an Amazon SQS  
+queue or Amazon SNS topic.</p>
+ 
+  </li> <li><p> <code>MaximumRecordAgeInSeconds</code> - Discard records older than the  
+specified age. The default value is infinite (-1). When set to infinite  
+(-1), failed records are retried until the record expires</p>
+ 
+  </li> <li><p> <code>MaximumRetryAttempts</code> - Discard records after the specified  
+number of retries. The default value is infinite (-1). When set to  
+infinite (-1), failed records are retried until the record expires.</p>
+ 
+  </li> <li><p> <code>ParallelizationFactor</code> - Process multiple batches from each  
+shard concurrently.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="create_event_source_mapping-3">create_event_source_mapping/3</a></h3>
+<div class="spec">
+<p><tt>create_event_source_mapping(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_function-2">create_function/2</a></h3>
+<div class="spec">
+<p><tt>create_function(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a Lambda function.</p>
+ 
+  <p>To create a function, you need a deployment package and an execution role.  
+The deployment package contains your function code. The execution role  
+grants the function permission to use AWS services, such as Amazon  
+CloudWatch Logs for log streaming and AWS X-Ray for request tracing.</p>
+ 
+  <p>When you create a function, Lambda provisions an instance of the function
+  and its supporting resources. If your function connects to a VPC, this
+  process can take a minute or so. During this time, you can't invoke or
+  modify the function. The <code>State</code>, <code>StateReason</code>, and <code>StateReasonCode</code>
+  fields in the response from <code>GetFunctionConfiguration</code> indicate when the  
+function is ready to invoke. For more information, see Function States.</p>
+ 
+  <p>A function has an unpublished version, and can have published versions and
+  aliases. The unpublished version changes when you update your function's
+  code and configuration. A published version is a snapshot of your function
+  code and configuration that can't be changed. An alias is a named resource
+  that maps to a version, and can be changed to map to a different version.
+  Use the <code>Publish</code> parameter to create version <code>1</code> of your function from  
+its initial configuration.</p>
+ 
+  <p>The other parameters let you configure version-specific and function-level
+  settings. You can modify version-specific settings later with
+  <code>UpdateFunctionConfiguration</code>. Function-level settings apply to both the
+  unpublished and published versions of the function, and include tags
+  (<code>TagResource</code>) and per-function concurrency limits
+  (<code>PutFunctionConcurrency</code>).</p>
+ 
+  <p>If another account or an AWS service invokes your function, use
+  <code>AddPermission</code> to grant permission by creating a resource-based IAM  
+policy. You can grant permissions at the function level, on a version, or  
+on an alias.</p>
+ 
+  To invoke your function directly, use <code>Invoke</code>. To invoke your function in
+  response to events in other AWS services, create an event source mapping
+  (<code>CreateEventSourceMapping</code>), or configure a function trigger in the other
+  service. For more information, see Invoking Functions.</p>
+
+<h3 class="function"><a name="create_function-3">create_function/3</a></h3>
+<div class="spec">
+<p><tt>create_function(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_alias-4">delete_alias/4</a></h3>
+<div class="spec">
+<p><tt>delete_alias(Client, FunctionName, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a Lambda function alias.</p>
+
+<h3 class="function"><a name="delete_alias-5">delete_alias/5</a></h3>
+<div class="spec">
+<p><tt>delete_alias(Client, FunctionName, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_event_source_mapping-3">delete_event_source_mapping/3</a></h3>
+<div class="spec">
+<p><tt>delete_event_source_mapping(Client, UUID, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an event source mapping.</p>
+ 
+  <p>You can get the identifier of a mapping from the output of
+  <code>ListEventSourceMappings</code>.</p>
+ 
+  When you delete an event source mapping, it enters a <code>Deleting</code> state and
+  might not be completely deleted for several seconds.</p>
+
+<h3 class="function"><a name="delete_event_source_mapping-4">delete_event_source_mapping/4</a></h3>
+<div class="spec">
+<p><tt>delete_event_source_mapping(Client, UUID, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_function-3">delete_function/3</a></h3>
+<div class="spec">
+<p><tt>delete_function(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a Lambda function.</p>
+ 
+  <p>To delete a specific function version, use the <code>Qualifier</code> parameter.  
+Otherwise, all versions and aliases are deleted.</p>
+ 
+  To delete Lambda event source mappings that invoke a function, use
+  <code>DeleteEventSourceMapping</code>. For AWS services and resources that invoke
+  your function directly, delete the trigger in the service where you
+  originally configured it.</p>
+
+<h3 class="function"><a name="delete_function-4">delete_function/4</a></h3>
+<div class="spec">
+<p><tt>delete_function(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_function_concurrency-3">delete_function_concurrency/3</a></h3>
+<div class="spec">
+<p><tt>delete_function_concurrency(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a concurrent execution limit from a function.</p>
+
+<h3 class="function"><a name="delete_function_concurrency-4">delete_function_concurrency/4</a></h3>
+<div class="spec">
+<p><tt>delete_function_concurrency(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_function_event_invoke_config-3">delete_function_event_invoke_config/3</a></h3>
+<div class="spec">
+<p><tt>delete_function_event_invoke_config(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the configuration for asynchronous invocation for a function,  
+version, or alias.</p>
+ 
+  To configure options for asynchronous invocation, use
+  <code>PutFunctionEventInvokeConfig</code>.</p>
+
+<h3 class="function"><a name="delete_function_event_invoke_config-4">delete_function_event_invoke_config/4</a></h3>
+<div class="spec">
+<p><tt>delete_function_event_invoke_config(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_layer_version-4">delete_layer_version/4</a></h3>
+<div class="spec">
+<p><tt>delete_layer_version(Client, LayerName, VersionNumber, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a version of an AWS Lambda layer.</p>
+ 
+  Deleted versions can no longer be viewed or added to functions. To avoid
+  breaking functions, a copy of the version remains in Lambda until no
+  functions refer to it.</p>
+
+<h3 class="function"><a name="delete_layer_version-5">delete_layer_version/5</a></h3>
+<div class="spec">
+<p><tt>delete_layer_version(Client, LayerName, VersionNumber, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_provisioned_concurrency_config-3">delete_provisioned_concurrency_config/3</a></h3>
+<div class="spec">
+<p><tt>delete_provisioned_concurrency_config(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the provisioned concurrency configuration for a function.</p>
+
+<h3 class="function"><a name="delete_provisioned_concurrency_config-4">delete_provisioned_concurrency_config/4</a></h3>
+<div class="spec">
+<p><tt>delete_provisioned_concurrency_config(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_account_settings-1">get_account_settings/1</a></h3>
+<div class="spec">
+<p><tt>get_account_settings(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves details about your account's limits and usage in an AWS
+  Region.</p>
+
+<h3 class="function"><a name="get_account_settings-2">get_account_settings/2</a></h3>
+<div class="spec">
+<p><tt>get_account_settings(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_alias-3">get_alias/3</a></h3>
+<div class="spec">
+<p><tt>get_alias(Client, FunctionName, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns details about a Lambda function alias.</p>
+
+<h3 class="function"><a name="get_alias-4">get_alias/4</a></h3>
+<div class="spec">
+<p><tt>get_alias(Client, FunctionName, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_event_source_mapping-2">get_event_source_mapping/2</a></h3>
+<div class="spec">
+<p><tt>get_event_source_mapping(Client, UUID) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns details about an event source mapping.</p>
+ 
+  You can get the identifier of a mapping from the output of
+  <code>ListEventSourceMappings</code>.</p>
+
+<h3 class="function"><a name="get_event_source_mapping-3">get_event_source_mapping/3</a></h3>
+<div class="spec">
+<p><tt>get_event_source_mapping(Client, UUID, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_function-3">get_function/3</a></h3>
+<div class="spec">
+<p><tt>get_function(Client, FunctionName, Qualifier) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about the function or function version, with a  
+link to download the deployment package that's valid for 10 minutes.</p>
+ 
+  If you specify a function version, only details that are specific to that
+  version are returned.</p>
+
+<h3 class="function"><a name="get_function-4">get_function/4</a></h3>
+<div class="spec">
+<p><tt>get_function(Client, FunctionName, Qualifier, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_function_concurrency-2">get_function_concurrency/2</a></h3>
+<div class="spec">
+<p><tt>get_function_concurrency(Client, FunctionName) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns details about the reserved concurrency configuration for a  
+function.</p>
+ 
+  To set a concurrency limit for a function, use <code>PutFunctionConcurrency</code>.</p>
+
+<h3 class="function"><a name="get_function_concurrency-3">get_function_concurrency/3</a></h3>
+<div class="spec">
+<p><tt>get_function_concurrency(Client, FunctionName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_function_configuration-3">get_function_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_function_configuration(Client, FunctionName, Qualifier) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the version-specific settings of a Lambda function or  
+version.</p>
+ 
+  <p>The output includes only options that can vary between versions of a
+  function. To modify these settings, use <code>UpdateFunctionConfiguration</code>.</p>
+ 
+  To get all of a function's details, including function-level settings, use
+  <code>GetFunction</code>.</p>
+
+<h3 class="function"><a name="get_function_configuration-4">get_function_configuration/4</a></h3>
+<div class="spec">
+<p><tt>get_function_configuration(Client, FunctionName, Qualifier, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_function_event_invoke_config-3">get_function_event_invoke_config/3</a></h3>
+<div class="spec">
+<p><tt>get_function_event_invoke_config(Client, FunctionName, Qualifier) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the configuration for asynchronous invocation for a  
+function, version, or alias.</p>
+ 
+  To configure options for asynchronous invocation, use
+  <code>PutFunctionEventInvokeConfig</code>.</p>
+
+<h3 class="function"><a name="get_function_event_invoke_config-4">get_function_event_invoke_config/4</a></h3>
+<div class="spec">
+<p><tt>get_function_event_invoke_config(Client, FunctionName, Qualifier, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_layer_version-3">get_layer_version/3</a></h3>
+<div class="spec">
+<p><tt>get_layer_version(Client, LayerName, VersionNumber) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a version of an AWS Lambda layer, with a
+  link to download the layer archive that's valid for 10 minutes.</p>
+
+<h3 class="function"><a name="get_layer_version-4">get_layer_version/4</a></h3>
+<div class="spec">
+<p><tt>get_layer_version(Client, LayerName, VersionNumber, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_layer_version_by_arn-2">get_layer_version_by_arn/2</a></h3>
+<div class="spec">
+<p><tt>get_layer_version_by_arn(Client, Arn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a version of an AWS Lambda layer, with a
+  link to download the layer archive that's valid for 10 minutes.</p>
+
+<h3 class="function"><a name="get_layer_version_by_arn-3">get_layer_version_by_arn/3</a></h3>
+<div class="spec">
+<p><tt>get_layer_version_by_arn(Client, Arn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_layer_version_policy-3">get_layer_version_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_layer_version_policy(Client, LayerName, VersionNumber) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the permission policy for a version of an AWS Lambda layer.</p>
+ 
+  For more information, see <code>AddLayerVersionPermission</code>.</p>
+
+<h3 class="function"><a name="get_layer_version_policy-4">get_layer_version_policy/4</a></h3>
+<div class="spec">
+<p><tt>get_layer_version_policy(Client, LayerName, VersionNumber, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_policy-3">get_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_policy(Client, FunctionName, Qualifier) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the resource-based IAM policy for a function, version, or
+  alias.</p>
+
+<h3 class="function"><a name="get_policy-4">get_policy/4</a></h3>
+<div class="spec">
+<p><tt>get_policy(Client, FunctionName, Qualifier, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_provisioned_concurrency_config-3">get_provisioned_concurrency_config/3</a></h3>
+<div class="spec">
+<p><tt>get_provisioned_concurrency_config(Client, FunctionName, Qualifier) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the provisioned concurrency configuration for a function's
+  alias or version.</p>
+
+<h3 class="function"><a name="get_provisioned_concurrency_config-4">get_provisioned_concurrency_config/4</a></h3>
+<div class="spec">
+<p><tt>get_provisioned_concurrency_config(Client, FunctionName, Qualifier, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="invoke-3">invoke/3</a></h3>
+<div class="spec">
+<p><tt>invoke(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Invokes a Lambda function.</p>
+ 
+  <p>You can invoke a function synchronously (and wait for the response), or
+  asynchronously. To invoke a function asynchronously, set <code>InvocationType</code>
+  to <code>Event</code>.</p>
+ 
+  <p>For synchronous invocation, details about the function response, including  
+errors, are included in the response body and headers. For either  
+invocation type, you can find more information in the execution log and  
+trace.</p>
+ 
+  <p>When an error occurs, your function may be invoked multiple times. Retry  
+behavior varies by error type, client, event source, and invocation type.  
+For example, if you invoke a function asynchronously and it returns an  
+error, Lambda executes the function up to two more times. For more  
+information, see Retry Behavior.</p>
+ 
+  <p>For asynchronous invocation, Lambda adds events to a queue before sending  
+them to your function. If your function does not have enough capacity to  
+keep up with the queue, events may be lost. Occasionally, your function  
+may receive the same event multiple times, even if no error occurs. To  
+retain events that were not processed, configure your function with a  
+dead-letter queue.</p>
+ 
+  <p>The status code in the API response doesn't reflect function errors. Error
+  codes are reserved for errors that prevent your function from executing,
+  such as permissions errors, limit errors, or issues with your function's
+  code and configuration. For example, Lambda returns
+  <code>TooManyRequestsException</code> if executing the function would cause you to
+  exceed a concurrency limit at either the account level
+  (<code>ConcurrentInvocationLimitExceeded</code>) or function level
+  (<code>ReservedFunctionConcurrentInvocationLimitExceeded</code>).</p>
+ 
+  <p>For functions with a long timeout, your client might be disconnected  
+during synchronous invocation while it waits for a response. Configure  
+your HTTP client, SDK, firewall, proxy, or operating system to allow for  
+long connections with timeout or keep-alive settings.</p>
+ 
+  This operation requires permission for the lambda:InvokeFunction action.</p>
+
+<h3 class="function"><a name="invoke-4">invoke/4</a></h3>
+<div class="spec">
+<p><tt>invoke(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="invoke_async-3">invoke_async/3</a></h3>
+<div class="spec">
+<p><tt>invoke_async(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>For asynchronous function invocation, use <code>Invoke</code>.</p>
+ 
+  Invokes a function asynchronously.</p>
+
+<h3 class="function"><a name="invoke_async-4">invoke_async/4</a></h3>
+<div class="spec">
+<p><tt>invoke_async(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_aliases-5">list_aliases/5</a></h3>
+<div class="spec">
+<p><tt>list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of aliases for a Lambda function.</p>
+
+<h3 class="function"><a name="list_aliases-6">list_aliases/6</a></h3>
+<div class="spec">
+<p><tt>list_aliases(Client, FunctionName, FunctionVersion, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_event_source_mappings-5">list_event_source_mappings/5</a></h3>
+<div class="spec">
+<p><tt>list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists event source mappings.</p>
+ 
+  Specify an <code>EventSourceArn</code> to only show event source mappings for a
+  single event source.</p>
+
+<h3 class="function"><a name="list_event_source_mappings-6">list_event_source_mappings/6</a></h3>
+<div class="spec">
+<p><tt>list_event_source_mappings(Client, EventSourceArn, FunctionName, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_function_event_invoke_configs-4">list_function_event_invoke_configs/4</a></h3>
+<div class="spec">
+<p><tt>list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a list of configurations for asynchronous invocation for a  
+function.</p>
+ 
+  To configure options for asynchronous invocation, use
+  <code>PutFunctionEventInvokeConfig</code>.</p>
+
+<h3 class="function"><a name="list_function_event_invoke_configs-5">list_function_event_invoke_configs/5</a></h3>
+<div class="spec">
+<p><tt>list_function_event_invoke_configs(Client, FunctionName, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_functions-5">list_functions/5</a></h3>
+<div class="spec">
+<p><tt>list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of Lambda functions, with the version-specific  
+configuration of each.</p>
+ 
+  <p>Lambda returns up to 50 functions per call.</p>
+ 
+  Set <code>FunctionVersion</code> to <code>ALL</code> to include all published versions of each
+  function in addition to the unpublished version. To get more information
+  about a function or version, use <code>GetFunction</code>.</p>
+
+<h3 class="function"><a name="list_functions-6">list_functions/6</a></h3>
+<div class="spec">
+<p><tt>list_functions(Client, FunctionVersion, Marker, MasterRegion, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_layer_versions-5">list_layer_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the versions of an AWS Lambda layer.</p>
+ 
+  Versions that have been deleted aren't listed. Specify a runtime
+  identifier to list only versions that indicate that they're compatible
+  with that runtime.</p>
+
+<h3 class="function"><a name="list_layer_versions-6">list_layer_versions/6</a></h3>
+<div class="spec">
+<p><tt>list_layer_versions(Client, LayerName, CompatibleRuntime, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_layers-4">list_layers/4</a></h3>
+<div class="spec">
+<p><tt>list_layers(Client, CompatibleRuntime, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists AWS Lambda layers and shows information about the latest  
+version of each.</p>
+ 
+  Specify a runtime identifier to list only layers that indicate that
+  they're compatible with that runtime.</p>
+
+<h3 class="function"><a name="list_layers-5">list_layers/5</a></h3>
+<div class="spec">
+<p><tt>list_layers(Client, CompatibleRuntime, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_provisioned_concurrency_configs-4">list_provisioned_concurrency_configs/4</a></h3>
+<div class="spec">
+<p><tt>list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of provisioned concurrency configurations for a
+  function.</p>
+
+<h3 class="function"><a name="list_provisioned_concurrency_configs-5">list_provisioned_concurrency_configs/5</a></h3>
+<div class="spec">
+<p><tt>list_provisioned_concurrency_configs(Client, FunctionName, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags-2">list_tags/2</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, Resource) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a function's tags.</p>
+ 
+  You can also view tags with <code>GetFunction</code>.</p>
+
+<h3 class="function"><a name="list_tags-3">list_tags/3</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, Resource, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_versions_by_function-4">list_versions_by_function/4</a></h3>
+<div class="spec">
+<p><tt>list_versions_by_function(Client, FunctionName, Marker, MaxItems) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of versions, with the version-specific configuration  
+of each.</p>
+ 
+  Lambda returns up to 50 versions per call.</p>
+
+<h3 class="function"><a name="list_versions_by_function-5">list_versions_by_function/5</a></h3>
+<div class="spec">
+<p><tt>list_versions_by_function(Client, FunctionName, Marker, MaxItems, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="publish_layer_version-3">publish_layer_version/3</a></h3>
+<div class="spec">
+<p><tt>publish_layer_version(Client, LayerName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an AWS Lambda layer from a ZIP archive.</p>
+ 
+  <p>Each time you call <code>PublishLayerVersion</code> with the same layer name, a new  
+version is created.</p>
+ 
+  Add layers to your function with <code>CreateFunction</code> or
+  <code>UpdateFunctionConfiguration</code>.</p>
+
+<h3 class="function"><a name="publish_layer_version-4">publish_layer_version/4</a></h3>
+<div class="spec">
+<p><tt>publish_layer_version(Client, LayerName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="publish_version-3">publish_version/3</a></h3>
+<div class="spec">
+<p><tt>publish_version(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a version from the current code and configuration of a  
+function.</p>
+ 
+  <p>Use versions to create a snapshot of your function code and configuration  
+that doesn't change.</p>
+ 
+  <p>AWS Lambda doesn't publish a version if the function's configuration and
+  code haven't changed since the last version. Use <code>UpdateFunctionCode</code> or
+  <code>UpdateFunctionConfiguration</code> to update the function before publishing a  
+version.</p>
+ 
+  Clients can invoke versions directly or with an alias. To create an alias,
+  use <code>CreateAlias</code>.</p>
+
+<h3 class="function"><a name="publish_version-4">publish_version/4</a></h3>
+<div class="spec">
+<p><tt>publish_version(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_function_concurrency-3">put_function_concurrency/3</a></h3>
+<div class="spec">
+<p><tt>put_function_concurrency(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets the maximum number of simultaneous executions for a function,  
+and reserves capacity for that concurrency level.</p>
+ 
+  <p>Concurrency settings apply to the function as a whole, including all
+  published versions and the unpublished version. Reserving concurrency both
+  ensures that your function has capacity to process the specified number of
+  events simultaneously, and prevents it from scaling beyond that level. Use
+  <code>GetFunction</code> to see the current setting for a function.</p>
+ 
+  Use <code>GetAccountSettings</code> to see your Regional concurrency limit. You can
+  reserve concurrency for as many functions as you like, as long as you
+  leave at least 100 simultaneous executions unreserved for functions that
+  aren't configured with a per-function limit. For more information, see
+  Managing Concurrency.</p>
+
+<h3 class="function"><a name="put_function_concurrency-4">put_function_concurrency/4</a></h3>
+<div class="spec">
+<p><tt>put_function_concurrency(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_function_event_invoke_config-3">put_function_event_invoke_config/3</a></h3>
+<div class="spec">
+<p><tt>put_function_event_invoke_config(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures options for asynchronous invocation on a function,  
+version, or alias.</p>
+ 
+  <p>If a configuration already exists for a function, version, or alias, this
+  operation overwrites it. If you exclude any settings, they are removed. To
+  set one option without affecting existing settings for other options, use
+  <code>UpdateFunctionEventInvokeConfig</code>.</p>
+ 
+  <p>By default, Lambda retries an asynchronous invocation twice if the
+  function returns an error. It retains events in a queue for up to six
+  hours. When an event fails all processing attempts or stays in the
+  asynchronous invocation queue for too long, Lambda discards it. To retain
+  discarded events, configure a dead-letter queue with
+  <code>UpdateFunctionConfiguration</code>.</p>
+ 
+  To send an invocation record to a queue, topic, function, or event bus,
+  specify a destination. You can configure separate destinations for
+  successful invocations (on-success) and events that fail all processing
+  attempts (on-failure). You can configure destinations in addition to or
+  instead of a dead-letter queue.</p>
+
+<h3 class="function"><a name="put_function_event_invoke_config-4">put_function_event_invoke_config/4</a></h3>
+<div class="spec">
+<p><tt>put_function_event_invoke_config(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_provisioned_concurrency_config-3">put_provisioned_concurrency_config/3</a></h3>
+<div class="spec">
+<p><tt>put_provisioned_concurrency_config(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds a provisioned concurrency configuration to a function's alias or
+  version.</p>
+
+<h3 class="function"><a name="put_provisioned_concurrency_config-4">put_provisioned_concurrency_config/4</a></h3>
+<div class="spec">
+<p><tt>put_provisioned_concurrency_config(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="remove_layer_version_permission-5">remove_layer_version_permission/5</a></h3>
+<div class="spec">
+<p><tt>remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes a statement from the permissions policy for a version of an  
+AWS Lambda layer.</p>
+ 
+  For more information, see <code>AddLayerVersionPermission</code>.</p>
+
+<h3 class="function"><a name="remove_layer_version_permission-6">remove_layer_version_permission/6</a></h3>
+<div class="spec">
+<p><tt>remove_layer_version_permission(Client, LayerName, StatementId, VersionNumber, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="remove_permission-4">remove_permission/4</a></h3>
+<div class="spec">
+<p><tt>remove_permission(Client, FunctionName, StatementId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Revokes function-use permission from an AWS service or another  
+account.</p>
+ 
+  You can get the ID of the statement from the output of <code>GetPolicy</code>.</p>
+
+<h3 class="function"><a name="remove_permission-5">remove_permission/5</a></h3>
+<div class="spec">
+<p><tt>remove_permission(Client, FunctionName, StatementId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Resource, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds tags to a function.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Resource, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Resource, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from a function.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Resource, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_alias-4">update_alias/4</a></h3>
+<div class="spec">
+<p><tt>update_alias(Client, FunctionName, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the configuration of a Lambda function alias.</p>
+
+<h3 class="function"><a name="update_alias-5">update_alias/5</a></h3>
+<div class="spec">
+<p><tt>update_alias(Client, FunctionName, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_event_source_mapping-3">update_event_source_mapping/3</a></h3>
+<div class="spec">
+<p><tt>update_event_source_mapping(Client, UUID, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an event source mapping.</p>
+ 
+  <p>You can change the function that AWS Lambda invokes, or pause invocation  
+and resume later from the same location.</p>
+ 
+  <p>The following error handling options are only available for stream sources  
+(DynamoDB and Kinesis):</p>
+ 
+  <ul> <li><p> <code>BisectBatchOnFunctionError</code> - If the function returns an error,  
+split the batch in two and retry.</p>
+ 
+  </li> <li><p> <code>DestinationConfig</code> - Send discarded records to an Amazon SQS  
+queue or Amazon SNS topic.</p>
+ 
+  </li> <li><p> <code>MaximumRecordAgeInSeconds</code> - Discard records older than the  
+specified age. The default value is infinite (-1). When set to infinite  
+(-1), failed records are retried until the record expires</p>
+ 
+  </li> <li><p> <code>MaximumRetryAttempts</code> - Discard records after the specified  
+number of retries. The default value is infinite (-1). When set to  
+infinite (-1), failed records are retried until the record expires.</p>
+ 
+  </li> <li><p> <code>ParallelizationFactor</code> - Process multiple batches from each  
+shard concurrently.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="update_event_source_mapping-4">update_event_source_mapping/4</a></h3>
+<div class="spec">
+<p><tt>update_event_source_mapping(Client, UUID, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_function_code-3">update_function_code/3</a></h3>
+<div class="spec">
+<p><tt>update_function_code(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a Lambda function's code.</p>
+ 
+  The function's code is locked when you publish a version. You can't modify
+  the code of a published version, only the unpublished version.</p>
+
+<h3 class="function"><a name="update_function_code-4">update_function_code/4</a></h3>
+<div class="spec">
+<p><tt>update_function_code(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_function_configuration-3">update_function_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_function_configuration(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Modify the version-specific settings of a Lambda function.</p>
+ 
+  <p>When you update a function, Lambda provisions an instance of the function
+  and its supporting resources. If your function connects to a VPC, this
+  process can take a minute. During this time, you can't modify the
+  function, but you can still invoke it. The <code>LastUpdateStatus</code>,
+  <code>LastUpdateStatusReason</code>, and <code>LastUpdateStatusReasonCode</code> fields in the
+  response from <code>GetFunctionConfiguration</code> indicate when the update is  
+complete and the function is processing events with the new configuration.  
+For more information, see Function States.</p>
+ 
+  <p>These settings can vary between versions of a function and are locked when  
+you publish a version. You can't modify the configuration of a published  
+version, only the unpublished version.</p>
+ 
+  To configure function concurrency, use <code>PutFunctionConcurrency</code>. To grant
+  invoke permissions to an account or AWS service, use <code>AddPermission</code>.</p>
+
+<h3 class="function"><a name="update_function_configuration-4">update_function_configuration/4</a></h3>
+<div class="spec">
+<p><tt>update_function_configuration(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_function_event_invoke_config-3">update_function_event_invoke_config/3</a></h3>
+<div class="spec">
+<p><tt>update_function_event_invoke_config(Client, FunctionName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the configuration for asynchronous invocation for a function,  
+version, or alias.</p>
+ 
+  To configure options for asynchronous invocation, use
+  <code>PutFunctionEventInvokeConfig</code>.</p>
+
+<h3 class="function"><a name="update_function_event_invoke_config-4">update_function_event_invoke_config/4</a></h3>
+<div class="spec">
+<p><tt>update_function_event_invoke_config(Client, FunctionName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_cloudhsm</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_cloudhsm</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS CloudHSM Service.
+
+
+<h2><a name="description">Description</a></h2><p>AWS CloudHSM Service</p>
+ 
+  <p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  For information about the current version of AWS CloudHSM, see AWS
+  CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_tags_to_resource-2">add_tags_to_resource/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#add_tags_to_resource-3">add_tags_to_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_hapg-2">create_hapg/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#create_hapg-3">create_hapg/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_hsm-2">create_hsm/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#create_hsm-3">create_hsm/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_luna_client-2">create_luna_client/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#create_luna_client-3">create_luna_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_hapg-2">delete_hapg/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#delete_hapg-3">delete_hapg/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_hsm-2">delete_hsm/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#delete_hsm-3">delete_hsm/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_luna_client-2">delete_luna_client/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#delete_luna_client-3">delete_luna_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_hapg-2">describe_hapg/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#describe_hapg-3">describe_hapg/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_hsm-2">describe_hsm/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#describe_hsm-3">describe_hsm/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_luna_client-2">describe_luna_client/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#describe_luna_client-3">describe_luna_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_config-2">get_config/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#get_config-3">get_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_available_zones-2">list_available_zones/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#list_available_zones-3">list_available_zones/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_hapgs-2">list_hapgs/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#list_hapgs-3">list_hapgs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_hsms-2">list_hsms/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#list_hsms-3">list_hsms/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_luna_clients-2">list_luna_clients/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#list_luna_clients-3">list_luna_clients/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#modify_hapg-2">modify_hapg/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#modify_hapg-3">modify_hapg/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#modify_hsm-2">modify_hsm/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#modify_hsm-3">modify_hsm/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#modify_luna_client-2">modify_luna_client/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#modify_luna_client-3">modify_luna_client/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_tags_from_resource-2">remove_tags_from_resource/2</a></td><td>This is documentation for AWS CloudHSM Classic.</td></tr>
+<tr><td valign="top"><a href="#remove_tags_from_resource-3">remove_tags_from_resource/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_tags_to_resource-2">add_tags_to_resource/2</a></h3>
+<div class="spec">
+<p><tt>add_tags_to_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  <p>Adds or overwrites one or more tags for the specified AWS CloudHSM  
+resource.</p>
+ 
+  Each tag consists of a key and a value. Tag keys must be unique to each
+  resource.</p>
+
+<h3 class="function"><a name="add_tags_to_resource-3">add_tags_to_resource/3</a></h3>
+<div class="spec">
+<p><tt>add_tags_to_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_hapg-2">create_hapg/2</a></h3>
+<div class="spec">
+<p><tt>create_hapg(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Creates a high-availability partition group. A high-availability partition
+  group is a group of partitions that spans multiple physical HSMs.</p>
+
+<h3 class="function"><a name="create_hapg-3">create_hapg/3</a></h3>
+<div class="spec">
+<p><tt>create_hapg(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_hsm-2">create_hsm/2</a></h3>
+<div class="spec">
+<p><tt>create_hsm(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  <p>Creates an uninitialized HSM instance.</p>
+ 
+  <p>There is an upfront fee charged for each HSM instance that you create with
+  the <code>CreateHsm</code> operation. If you accidentally provision an HSM and want
+  to request a refund, delete the instance using the <code>DeleteHsm</code> operation,  
+go to the AWS Support Center, create a new case, and select Account and  
+Billing Support.</p>
+ 
+  It can take up to 20 minutes to create and provision an HSM. You can
+  monitor the status of the HSM with the <code>DescribeHsm</code> operation. The HSM is
+  ready to be initialized when the status changes to <code>RUNNING</code>.</p>
+
+<h3 class="function"><a name="create_hsm-3">create_hsm/3</a></h3>
+<div class="spec">
+<p><tt>create_hsm(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_luna_client-2">create_luna_client/2</a></h3>
+<div class="spec">
+<p><tt>create_luna_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Creates an HSM client.</p>
+
+<h3 class="function"><a name="create_luna_client-3">create_luna_client/3</a></h3>
+<div class="spec">
+<p><tt>create_luna_client(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_hapg-2">delete_hapg/2</a></h3>
+<div class="spec">
+<p><tt>delete_hapg(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Deletes a high-availability partition group.</p>
+
+<h3 class="function"><a name="delete_hapg-3">delete_hapg/3</a></h3>
+<div class="spec">
+<p><tt>delete_hapg(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_hsm-2">delete_hsm/2</a></h3>
+<div class="spec">
+<p><tt>delete_hsm(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Deletes an HSM. After completion, this operation cannot be undone and your
+  key material cannot be recovered.</p>
+
+<h3 class="function"><a name="delete_hsm-3">delete_hsm/3</a></h3>
+<div class="spec">
+<p><tt>delete_hsm(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_luna_client-2">delete_luna_client/2</a></h3>
+<div class="spec">
+<p><tt>delete_luna_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Deletes a client.</p>
+
+<h3 class="function"><a name="delete_luna_client-3">delete_luna_client/3</a></h3>
+<div class="spec">
+<p><tt>delete_luna_client(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_hapg-2">describe_hapg/2</a></h3>
+<div class="spec">
+<p><tt>describe_hapg(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Retrieves information about a high-availability partition group.</p>
+
+<h3 class="function"><a name="describe_hapg-3">describe_hapg/3</a></h3>
+<div class="spec">
+<p><tt>describe_hapg(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_hsm-2">describe_hsm/2</a></h3>
+<div class="spec">
+<p><tt>describe_hsm(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Retrieves information about an HSM. You can identify the HSM by its ARN or
+  its serial number.</p>
+
+<h3 class="function"><a name="describe_hsm-3">describe_hsm/3</a></h3>
+<div class="spec">
+<p><tt>describe_hsm(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_luna_client-2">describe_luna_client/2</a></h3>
+<div class="spec">
+<p><tt>describe_luna_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Retrieves information about an HSM client.</p>
+
+<h3 class="function"><a name="describe_luna_client-3">describe_luna_client/3</a></h3>
+<div class="spec">
+<p><tt>describe_luna_client(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_config-2">get_config/2</a></h3>
+<div class="spec">
+<p><tt>get_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Gets the configuration files necessary to connect to all high availability
+  partition groups the client is associated with.</p>
+
+<h3 class="function"><a name="get_config-3">get_config/3</a></h3>
+<div class="spec">
+<p><tt>get_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_available_zones-2">list_available_zones/2</a></h3>
+<div class="spec">
+<p><tt>list_available_zones(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Lists the Availability Zones that have available AWS CloudHSM capacity.</p>
+
+<h3 class="function"><a name="list_available_zones-3">list_available_zones/3</a></h3>
+<div class="spec">
+<p><tt>list_available_zones(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_hapgs-2">list_hapgs/2</a></h3>
+<div class="spec">
+<p><tt>list_hapgs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  <p>Lists the high-availability partition groups for the account.</p>
+ 
+  This operation supports pagination with the use of the <code>NextToken</code> member.
+  If more results are available, the <code>NextToken</code> member of the response
+  contains a token that you pass in the next call to <code>ListHapgs</code> to retrieve
+  the next set of items.</p>
+
+<h3 class="function"><a name="list_hapgs-3">list_hapgs/3</a></h3>
+<div class="spec">
+<p><tt>list_hapgs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_hsms-2">list_hsms/2</a></h3>
+<div class="spec">
+<p><tt>list_hsms(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  <p>Retrieves the identifiers of all of the HSMs provisioned for the current  
+customer.</p>
+ 
+  This operation supports pagination with the use of the <code>NextToken</code> member.
+  If more results are available, the <code>NextToken</code> member of the response
+  contains a token that you pass in the next call to <code>ListHsms</code> to retrieve
+  the next set of items.</p>
+
+<h3 class="function"><a name="list_hsms-3">list_hsms/3</a></h3>
+<div class="spec">
+<p><tt>list_hsms(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_luna_clients-2">list_luna_clients/2</a></h3>
+<div class="spec">
+<p><tt>list_luna_clients(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  <p>Lists all of the clients.</p>
+ 
+  This operation supports pagination with the use of the <code>NextToken</code> member.
+  If more results are available, the <code>NextToken</code> member of the response
+  contains a token that you pass in the next call to <code>ListLunaClients</code> to
+  retrieve the next set of items.</p>
+
+<h3 class="function"><a name="list_luna_clients-3">list_luna_clients/3</a></h3>
+<div class="spec">
+<p><tt>list_luna_clients(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Returns a list of all tags for the specified AWS CloudHSM resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="modify_hapg-2">modify_hapg/2</a></h3>
+<div class="spec">
+<p><tt>modify_hapg(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  Modifies an existing high-availability partition group.</p>
+
+<h3 class="function"><a name="modify_hapg-3">modify_hapg/3</a></h3>
+<div class="spec">
+<p><tt>modify_hapg(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="modify_hsm-2">modify_hsm/2</a></h3>
+<div class="spec">
+<p><tt>modify_hsm(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  <p>Modifies an HSM.</p>
+ 
+  This operation can result in the HSM being offline for up to 15 minutes
+  while the AWS CloudHSM service is reconfigured. If you are modifying a
+  production HSM, you should ensure that your AWS CloudHSM service is
+  configured for high availability, and consider executing this operation
+  during a maintenance window.</p>
+
+<h3 class="function"><a name="modify_hsm-3">modify_hsm/3</a></h3>
+<div class="spec">
+<p><tt>modify_hsm(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="modify_luna_client-2">modify_luna_client/2</a></h3>
+<div class="spec">
+<p><tt>modify_luna_client(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  <p>Modifies the certificate used by the client.</p>
+ 
+  This action can potentially start a workflow to install the new
+  certificate on the client's HSMs.</p>
+
+<h3 class="function"><a name="modify_luna_client-3">modify_luna_client/3</a></h3>
+<div class="spec">
+<p><tt>modify_luna_client(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="remove_tags_from_resource-2">remove_tags_from_resource/2</a></h3>
+<div class="spec">
+<p><tt>remove_tags_from_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This is documentation for AWS CloudHSM Classic.</p>
+ 
+  <p>For more information, see AWS CloudHSM Classic FAQs, the AWS CloudHSM  
+Classic User Guide, and the AWS CloudHSM Classic API Reference.</p>
+ 
+  <p>For information about the current version of AWS CloudHSM, see AWS  
+CloudHSM, the AWS CloudHSM User Guide, and the AWS CloudHSM API Reference.</p>
+ 
+  <p>Removes one or more tags from the specified AWS CloudHSM resource.</p>
+ 
+  To remove a tag, specify only the tag key to remove (not the value). To
+  overwrite the value for an existing tag, use <code>AddTagsToResource</code>.</p>
+
+<h3 class="function"><a name="remove_tags_from_resource-3">remove_tags_from_resource/3</a></h3>
+<div class="spec">
+<p><tt>remove_tags_from_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

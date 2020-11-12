@@ -1,0 +1,345 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_detective</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_detective</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Detective uses machine learning and purpose-built visualizations to  
+help you analyze and investigate security issues across your Amazon Web  
+Services (AWS) workloads.
+
+
+<h2><a name="description">Description</a></h2><p>Detective uses machine learning and purpose-built visualizations to  
+help you analyze and investigate security issues across your Amazon Web  
+Services (AWS) workloads.</p>
+ 
+  <p>Detective automatically extracts time-based events such as login attempts,  
+API calls, and network traffic from AWS CloudTrail and Amazon Virtual  
+Private Cloud (Amazon VPC) flow logs. It also extracts findings detected  
+by Amazon GuardDuty.</p>
+ 
+  <p>The Detective API primarily supports the creation and management of  
+behavior graphs. A behavior graph contains the extracted data from a set  
+of member accounts, and is created and managed by a master account.</p>
+ 
+  <p>Every behavior graph is specific to a Region. You can only use the API to  
+manage graphs that belong to the Region that is associated with the  
+currently selected endpoint.</p>
+ 
+  <p>A Detective master account can use the Detective API to do the following:</p>
+ 
+  <ul> <li><p> Enable and disable Detective. Enabling Detective creates a new  
+behavior graph.</p>
+ 
+  </li> <li><p> View the list of member accounts in a behavior graph.</p>
+ 
+  </li> <li><p> Add member accounts to a behavior graph.</p>
+ 
+  </li> <li><p> Remove member accounts from a behavior graph.</p>
+ 
+  </li> </ul><p> A member account can use the Detective API to do the  
+following:</p>
+ 
+  <ul> <li><p> View the list of behavior graphs that they are invited to.</p>
+ 
+  </li> <li><p> Accept an invitation to contribute to a behavior graph.</p>
+ 
+  </li> <li><p> Decline an invitation to contribute to a behavior graph.</p>
+ 
+  </li> <li><p> Remove their account from a behavior graph.</p>
+ 
+  </li> </ul> All API actions are logged as CloudTrail events. See Logging
+  Detective API Calls with CloudTrail.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#accept_invitation-2">accept_invitation/2</a></td><td>Accepts an invitation for the member account to contribute data to a  
+behavior graph.</td></tr>
+<tr><td valign="top"><a href="#accept_invitation-3">accept_invitation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_graph-2">create_graph/2</a></td><td>Creates a new behavior graph for the calling account, and sets that  
+account as the master account.</td></tr>
+<tr><td valign="top"><a href="#create_graph-3">create_graph/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_members-2">create_members/2</a></td><td>Sends a request to invite the specified AWS accounts to be member  
+accounts in the behavior graph.</td></tr>
+<tr><td valign="top"><a href="#create_members-3">create_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_graph-2">delete_graph/2</a></td><td>Disables the specified behavior graph and queues it to be deleted.</td></tr>
+<tr><td valign="top"><a href="#delete_graph-3">delete_graph/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_members-2">delete_members/2</a></td><td>Deletes one or more member accounts from the master account behavior  
+graph.</td></tr>
+<tr><td valign="top"><a href="#delete_members-3">delete_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_membership-2">disassociate_membership/2</a></td><td>Removes the member account from the specified behavior graph.</td></tr>
+<tr><td valign="top"><a href="#disassociate_membership-3">disassociate_membership/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_members-2">get_members/2</a></td><td>Returns the membership details for specified member accounts for a
+  behavior graph.</td></tr>
+<tr><td valign="top"><a href="#get_members-3">get_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_graphs-2">list_graphs/2</a></td><td>Returns the list of behavior graphs that the calling account is a  
+master of.</td></tr>
+<tr><td valign="top"><a href="#list_graphs-3">list_graphs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_invitations-2">list_invitations/2</a></td><td>Retrieves the list of open and accepted behavior graph invitations  
+for the member account.</td></tr>
+<tr><td valign="top"><a href="#list_invitations-3">list_invitations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_members-2">list_members/2</a></td><td>Retrieves the list of member accounts for a behavior graph.</td></tr>
+<tr><td valign="top"><a href="#list_members-3">list_members/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reject_invitation-2">reject_invitation/2</a></td><td>Rejects an invitation to contribute the account data to a behavior  
+graph.</td></tr>
+<tr><td valign="top"><a href="#reject_invitation-3">reject_invitation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_monitoring_member-2">start_monitoring_member/2</a></td><td>Sends a request to enable data ingest for a member account that has a
+  status of <code>ACCEPTED_BUT_DISABLED</code>.</td></tr>
+<tr><td valign="top"><a href="#start_monitoring_member-3">start_monitoring_member/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="accept_invitation-2">accept_invitation/2</a></h3>
+<div class="spec">
+<p><tt>accept_invitation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Accepts an invitation for the member account to contribute data to a  
+behavior graph.</p>
+ 
+  <p>This operation can only be called by an invited member account.</p>
+ 
+  <p>The request provides the ARN of behavior graph.</p>
+ 
+  The member account status in the graph must be <code>INVITED</code>.</p>
+
+<h3 class="function"><a name="accept_invitation-3">accept_invitation/3</a></h3>
+<div class="spec">
+<p><tt>accept_invitation(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_graph-2">create_graph/2</a></h3>
+<div class="spec">
+<p><tt>create_graph(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new behavior graph for the calling account, and sets that  
+account as the master account.</p>
+ 
+  <p>This operation is called by the account that is enabling Detective.</p>
+ 
+  <p>Before you try to enable Detective, make sure that your account has been  
+enrolled in Amazon GuardDuty for at least 48 hours. If you do not meet  
+this requirement, you cannot enable Detective. If you do meet the  
+GuardDuty prerequisite, then when you make the request to enable  
+Detective, it checks whether your data volume is within the Detective  
+quota. If it exceeds the quota, then you cannot enable Detective.</p>
+ 
+  <p>The operation also enables Detective for the calling account in the  
+currently selected Region. It returns the ARN of the new behavior graph.</p>
+ 
+  <p><code>CreateGraph</code> triggers a process to create the corresponding data tables  
+for the new behavior graph.</p>
+ 
+  An account can only be the master account for one behavior graph within a
+  Region. If the same account calls <code>CreateGraph</code> with the same master
+  account, it always returns the same behavior graph ARN. It does not create
+  a new behavior graph.</p>
+
+<h3 class="function"><a name="create_graph-3">create_graph/3</a></h3>
+<div class="spec">
+<p><tt>create_graph(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_members-2">create_members/2</a></h3>
+<div class="spec">
+<p><tt>create_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sends a request to invite the specified AWS accounts to be member  
+accounts in the behavior graph.</p>
+ 
+  <p>This operation can only be called by the master account for a behavior  
+graph.</p>
+ 
+  <p><code>CreateMembers</code> verifies the accounts and then sends invitations to the  
+verified accounts.</p>
+ 
+  <p>The request provides the behavior graph ARN and the list of accounts to  
+invite.</p>
+ 
+  <p>The response separates the requested accounts into two lists:</p>
+ 
+  <ul> <li><p> The accounts that <code>CreateMembers</code> was able to start the  
+verification for. This list includes member accounts that are being  
+verified, that have passed verification and are being sent an invitation,  
+and that have failed verification.</p>
+ 
+  </li> <li><p> The accounts that <code>CreateMembers</code> was unable to process. This  
+list includes accounts that were already invited to be member accounts in  
+the behavior graph.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="create_members-3">create_members/3</a></h3>
+<div class="spec">
+<p><tt>create_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_graph-2">delete_graph/2</a></h3>
+<div class="spec">
+<p><tt>delete_graph(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disables the specified behavior graph and queues it to be deleted.</p>
+ 
+  <p>This operation removes the graph from each member account's list of  
+behavior graphs.</p>
+ 
+  <code>DeleteGraph</code> can only be called by the master account for a behavior
+  graph.</p>
+
+<h3 class="function"><a name="delete_graph-3">delete_graph/3</a></h3>
+<div class="spec">
+<p><tt>delete_graph(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_members-2">delete_members/2</a></h3>
+<div class="spec">
+<p><tt>delete_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes one or more member accounts from the master account behavior  
+graph.</p>
+ 
+  This operation can only be called by a Detective master account. That
+  account cannot use <code>DeleteMembers</code> to delete their own account from the
+  behavior graph. To disable a behavior graph, the master account uses the
+  <code>DeleteGraph</code> API method.</p>
+
+<h3 class="function"><a name="delete_members-3">delete_members/3</a></h3>
+<div class="spec">
+<p><tt>delete_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_membership-2">disassociate_membership/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_membership(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the member account from the specified behavior graph.</p>
+ 
+  This operation can only be called by a member account that has the
+  <code>ENABLED</code> status.</p>
+
+<h3 class="function"><a name="disassociate_membership-3">disassociate_membership/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_membership(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_members-2">get_members/2</a></h3>
+<div class="spec">
+<p><tt>get_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the membership details for specified member accounts for a
+  behavior graph.</p>
+
+<h3 class="function"><a name="get_members-3">get_members/3</a></h3>
+<div class="spec">
+<p><tt>get_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_graphs-2">list_graphs/2</a></h3>
+<div class="spec">
+<p><tt>list_graphs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the list of behavior graphs that the calling account is a  
+master of.</p>
+ 
+  <p>This operation can only be called by a master account.</p>
+ 
+  Because an account can currently only be the master of one behavior graph
+  within a Region, the results always contain a single graph.</p>
+
+<h3 class="function"><a name="list_graphs-3">list_graphs/3</a></h3>
+<div class="spec">
+<p><tt>list_graphs(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_invitations-2">list_invitations/2</a></h3>
+<div class="spec">
+<p><tt>list_invitations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the list of open and accepted behavior graph invitations  
+for the member account.</p>
+ 
+  <p>This operation can only be called by a member account.</p>
+ 
+  <p>Open invitations are invitations that the member account has not responded  
+to.</p>
+ 
+  The results do not include behavior graphs for which the member account
+  declined the invitation. The results also do not include behavior graphs
+  that the member account resigned from or was removed from.</p>
+
+<h3 class="function"><a name="list_invitations-3">list_invitations/3</a></h3>
+<div class="spec">
+<p><tt>list_invitations(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_members-2">list_members/2</a></h3>
+<div class="spec">
+<p><tt>list_members(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the list of member accounts for a behavior graph.</p>
+ 
+  Does not return member accounts that were removed from the behavior graph.</p>
+
+<h3 class="function"><a name="list_members-3">list_members/3</a></h3>
+<div class="spec">
+<p><tt>list_members(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reject_invitation-2">reject_invitation/2</a></h3>
+<div class="spec">
+<p><tt>reject_invitation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Rejects an invitation to contribute the account data to a behavior  
+graph.</p>
+ 
+  This operation must be called by a member account that has the <code>INVITED</code>
+  status.</p>
+
+<h3 class="function"><a name="reject_invitation-3">reject_invitation/3</a></h3>
+<div class="spec">
+<p><tt>reject_invitation(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_monitoring_member-2">start_monitoring_member/2</a></h3>
+<div class="spec">
+<p><tt>start_monitoring_member(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sends a request to enable data ingest for a member account that has a
+  status of <code>ACCEPTED_BUT_DISABLED</code>.</p>
+ 
+  <p>For valid member accounts, the status is updated as follows.</p>
+ 
+  <ul> <li><p> If Detective enabled the member account, then the new status is
+  <code>ENABLED</code>.</p>
+ 
+  </li> <li><p> If Detective cannot enable the member account, the status
+  remains <code>ACCEPTED_BUT_DISABLED</code>.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="start_monitoring_member-3">start_monitoring_member/3</a></h3>
+<div class="spec">
+<p><tt>start_monitoring_member(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

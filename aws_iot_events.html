@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_iot_events</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_iot_events</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS IoT Events monitors your equipment or device fleets for failures  
+or changes in operation, and triggers actions when such events occur.
+
+
+<h2><a name="description">Description</a></h2><p>AWS IoT Events monitors your equipment or device fleets for failures  
+or changes in operation, and triggers actions when such events occur.</p>
+ 
+  You can use AWS IoT Events API operations to create, read, update, and
+  delete inputs and detector models, and to list their versions.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_detector_model-2">create_detector_model/2</a></td><td>Creates a detector model.</td></tr>
+<tr><td valign="top"><a href="#create_detector_model-3">create_detector_model/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_input-2">create_input/2</a></td><td>Creates an input.</td></tr>
+<tr><td valign="top"><a href="#create_input-3">create_input/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_detector_model-3">delete_detector_model/3</a></td><td>Deletes a detector model.</td></tr>
+<tr><td valign="top"><a href="#delete_detector_model-4">delete_detector_model/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_input-3">delete_input/3</a></td><td>Deletes an input.</td></tr>
+<tr><td valign="top"><a href="#delete_input-4">delete_input/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_detector_model-3">describe_detector_model/3</a></td><td>Describes a detector model.</td></tr>
+<tr><td valign="top"><a href="#describe_detector_model-4">describe_detector_model/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_input-2">describe_input/2</a></td><td>Describes an input.</td></tr>
+<tr><td valign="top"><a href="#describe_input-3">describe_input/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_logging_options-1">describe_logging_options/1</a></td><td>Retrieves the current settings of the AWS IoT Events logging options.</td></tr>
+<tr><td valign="top"><a href="#describe_logging_options-2">describe_logging_options/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_detector_model_versions-4">list_detector_model_versions/4</a></td><td>Lists all the versions of a detector model.</td></tr>
+<tr><td valign="top"><a href="#list_detector_model_versions-5">list_detector_model_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_detector_models-3">list_detector_models/3</a></td><td>Lists the detector models you have created.</td></tr>
+<tr><td valign="top"><a href="#list_detector_models-4">list_detector_models/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_inputs-3">list_inputs/3</a></td><td>Lists the inputs you have created.</td></tr>
+<tr><td valign="top"><a href="#list_inputs-4">list_inputs/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags (metadata) you have assigned to the resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_logging_options-2">put_logging_options/2</a></td><td>Sets or updates the AWS IoT Events logging options.</td></tr>
+<tr><td valign="top"><a href="#put_logging_options-3">put_logging_options/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds to or modifies the tags of the given resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes the given tags (metadata) from the resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_detector_model-3">update_detector_model/3</a></td><td>Updates a detector model.</td></tr>
+<tr><td valign="top"><a href="#update_detector_model-4">update_detector_model/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_input-3">update_input/3</a></td><td>Updates an input.</td></tr>
+<tr><td valign="top"><a href="#update_input-4">update_input/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_detector_model-2">create_detector_model/2</a></h3>
+<div class="spec">
+<p><tt>create_detector_model(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a detector model.</p>
+
+<h3 class="function"><a name="create_detector_model-3">create_detector_model/3</a></h3>
+<div class="spec">
+<p><tt>create_detector_model(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_input-2">create_input/2</a></h3>
+<div class="spec">
+<p><tt>create_input(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an input.</p>
+
+<h3 class="function"><a name="create_input-3">create_input/3</a></h3>
+<div class="spec">
+<p><tt>create_input(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_detector_model-3">delete_detector_model/3</a></h3>
+<div class="spec">
+<p><tt>delete_detector_model(Client, DetectorModelName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a detector model.</p>
+ 
+  Any active instances of the detector model are also deleted.</p>
+
+<h3 class="function"><a name="delete_detector_model-4">delete_detector_model/4</a></h3>
+<div class="spec">
+<p><tt>delete_detector_model(Client, DetectorModelName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_input-3">delete_input/3</a></h3>
+<div class="spec">
+<p><tt>delete_input(Client, InputName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an input.</p>
+
+<h3 class="function"><a name="delete_input-4">delete_input/4</a></h3>
+<div class="spec">
+<p><tt>delete_input(Client, InputName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_detector_model-3">describe_detector_model/3</a></h3>
+<div class="spec">
+<p><tt>describe_detector_model(Client, DetectorModelName, DetectorModelVersion) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes a detector model.</p>
+ 
+  If the <code>version</code> parameter is not specified, information about the latest
+  version is returned.</p>
+
+<h3 class="function"><a name="describe_detector_model-4">describe_detector_model/4</a></h3>
+<div class="spec">
+<p><tt>describe_detector_model(Client, DetectorModelName, DetectorModelVersion, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_input-2">describe_input/2</a></h3>
+<div class="spec">
+<p><tt>describe_input(Client, InputName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes an input.</p>
+
+<h3 class="function"><a name="describe_input-3">describe_input/3</a></h3>
+<div class="spec">
+<p><tt>describe_input(Client, InputName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_logging_options-1">describe_logging_options/1</a></h3>
+<div class="spec">
+<p><tt>describe_logging_options(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the current settings of the AWS IoT Events logging options.</p>
+
+<h3 class="function"><a name="describe_logging_options-2">describe_logging_options/2</a></h3>
+<div class="spec">
+<p><tt>describe_logging_options(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_detector_model_versions-4">list_detector_model_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all the versions of a detector model.</p>
+ 
+  Only the metadata associated with each detector model version is returned.</p>
+
+<h3 class="function"><a name="list_detector_model_versions-5">list_detector_model_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_detector_model_versions(Client, DetectorModelName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_detector_models-3">list_detector_models/3</a></h3>
+<div class="spec">
+<p><tt>list_detector_models(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the detector models you have created.</p>
+ 
+  Only the metadata associated with each detector model is returned.</p>
+
+<h3 class="function"><a name="list_detector_models-4">list_detector_models/4</a></h3>
+<div class="spec">
+<p><tt>list_detector_models(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_inputs-3">list_inputs/3</a></h3>
+<div class="spec">
+<p><tt>list_inputs(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the inputs you have created.</p>
+
+<h3 class="function"><a name="list_inputs-4">list_inputs/4</a></h3>
+<div class="spec">
+<p><tt>list_inputs(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags (metadata) you have assigned to the resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_logging_options-2">put_logging_options/2</a></h3>
+<div class="spec">
+<p><tt>put_logging_options(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Sets or updates the AWS IoT Events logging options.</p>
+ 
+  If you update the value of any <code>loggingOptions</code> field, it takes up to one
+  minute for the change to take effect. If you change the policy attached to
+  the role you specified in the <code>roleArn</code> field (for example, to correct an
+  invalid policy), it takes up to five minutes for that change to take
+  effect.</p>
+
+<h3 class="function"><a name="put_logging_options-3">put_logging_options/3</a></h3>
+<div class="spec">
+<p><tt>put_logging_options(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds to or modifies the tags of the given resource.</p>
+ 
+  Tags are metadata that can be used to manage a resource.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the given tags (metadata) from the resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_detector_model-3">update_detector_model/3</a></h3>
+<div class="spec">
+<p><tt>update_detector_model(Client, DetectorModelName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a detector model.</p>
+ 
+  Detectors (instances) spawned by the previous version are deleted and then
+  re-created as new inputs arrive.</p>
+
+<h3 class="function"><a name="update_detector_model-4">update_detector_model/4</a></h3>
+<div class="spec">
+<p><tt>update_detector_model(Client, DetectorModelName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_input-3">update_input/3</a></h3>
+<div class="spec">
+<p><tt>update_input(Client, InputName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an input.</p>
+
+<h3 class="function"><a name="update_input-4">update_input/4</a></h3>
+<div class="spec">
+<p><tt>update_input(Client, InputName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

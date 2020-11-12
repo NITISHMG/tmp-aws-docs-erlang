@@ -1,0 +1,422 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_batch</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_batch</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Batch enables you to run batch computing workloads on the AWS  
+Cloud.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Batch enables you to run batch computing workloads on the AWS  
+Cloud.</p>
+ 
+  <p>Batch computing is a common way for developers, scientists, and engineers  
+to access large amounts of compute resources, and AWS Batch removes the  
+undifferentiated heavy lifting of configuring and managing the required  
+infrastructure. AWS Batch will be familiar to users of traditional batch  
+computing software. This service can efficiently provision resources in  
+response to jobs submitted in order to eliminate capacity constraints,  
+reduce compute costs, and deliver results quickly.</p>
+ 
+  As a fully managed service, AWS Batch enables developers, scientists, and
+  engineers to run batch computing workloads of any scale. AWS Batch
+  automatically provisions compute resources and optimizes the workload
+  distribution based on the quantity and scale of the workloads. With AWS
+  Batch, there is no need to install or manage batch computing software,
+  which allows you to focus on analyzing results and solving problems. AWS
+  Batch reduces operational complexities, saves time, and reduces costs,
+  which makes it easy for developers, scientists, and engineers to run their
+  batch jobs in the AWS Cloud.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_job-2">cancel_job/2</a></td><td>Cancels a job in an AWS Batch job queue.</td></tr>
+<tr><td valign="top"><a href="#cancel_job-3">cancel_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_compute_environment-2">create_compute_environment/2</a></td><td>Creates an AWS Batch compute environment.</td></tr>
+<tr><td valign="top"><a href="#create_compute_environment-3">create_compute_environment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_job_queue-2">create_job_queue/2</a></td><td>Creates an AWS Batch job queue.</td></tr>
+<tr><td valign="top"><a href="#create_job_queue-3">create_job_queue/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_compute_environment-2">delete_compute_environment/2</a></td><td>Deletes an AWS Batch compute environment.</td></tr>
+<tr><td valign="top"><a href="#delete_compute_environment-3">delete_compute_environment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_job_queue-2">delete_job_queue/2</a></td><td>Deletes the specified job queue.</td></tr>
+<tr><td valign="top"><a href="#delete_job_queue-3">delete_job_queue/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_job_definition-2">deregister_job_definition/2</a></td><td>Deregisters an AWS Batch job definition.</td></tr>
+<tr><td valign="top"><a href="#deregister_job_definition-3">deregister_job_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_compute_environments-2">describe_compute_environments/2</a></td><td>Describes one or more of your compute environments.</td></tr>
+<tr><td valign="top"><a href="#describe_compute_environments-3">describe_compute_environments/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_job_definitions-2">describe_job_definitions/2</a></td><td>Describes a list of job definitions.</td></tr>
+<tr><td valign="top"><a href="#describe_job_definitions-3">describe_job_definitions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_job_queues-2">describe_job_queues/2</a></td><td>Describes one or more of your job queues.</td></tr>
+<tr><td valign="top"><a href="#describe_job_queues-3">describe_job_queues/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_jobs-2">describe_jobs/2</a></td><td>Describes a list of AWS Batch jobs.</td></tr>
+<tr><td valign="top"><a href="#describe_jobs-3">describe_jobs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_jobs-2">list_jobs/2</a></td><td>Returns a list of AWS Batch jobs.</td></tr>
+<tr><td valign="top"><a href="#list_jobs-3">list_jobs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>List the tags for an AWS Batch resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_job_definition-2">register_job_definition/2</a></td><td>Registers an AWS Batch job definition.</td></tr>
+<tr><td valign="top"><a href="#register_job_definition-3">register_job_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#submit_job-2">submit_job/2</a></td><td>Submits an AWS Batch job from a job definition.</td></tr>
+<tr><td valign="top"><a href="#submit_job-3">submit_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Associates the specified tags to a resource with the specified
+  <code>resourceArn</code>.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#terminate_job-2">terminate_job/2</a></td><td>Terminates a job in a job queue.</td></tr>
+<tr><td valign="top"><a href="#terminate_job-3">terminate_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Deletes specified tags from an AWS Batch resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_compute_environment-2">update_compute_environment/2</a></td><td>Updates an AWS Batch compute environment.</td></tr>
+<tr><td valign="top"><a href="#update_compute_environment-3">update_compute_environment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_job_queue-2">update_job_queue/2</a></td><td>Updates a job queue.</td></tr>
+<tr><td valign="top"><a href="#update_job_queue-3">update_job_queue/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_job-2">cancel_job/2</a></h3>
+<div class="spec">
+<p><tt>cancel_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Cancels a job in an AWS Batch job queue.</p>
+ 
+  Jobs that are in the <code>SUBMITTED</code>, <code>PENDING</code>, or <code>RUNNABLE</code> state are
+  cancelled. Jobs that have progressed to <code>STARTING</code> or <code>RUNNING</code> are not
+  cancelled (but the API operation still succeeds, even if no job is
+  cancelled); these jobs must be terminated with the <code>TerminateJob</code>
+  operation.</p>
+
+<h3 class="function"><a name="cancel_job-3">cancel_job/3</a></h3>
+<div class="spec">
+<p><tt>cancel_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_compute_environment-2">create_compute_environment/2</a></h3>
+<div class="spec">
+<p><tt>create_compute_environment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an AWS Batch compute environment.</p>
+ 
+  <p>You can create <code>MANAGED</code> or <code>UNMANAGED</code> compute environments.</p>
+ 
+  <p>In a managed compute environment, AWS Batch manages the capacity and  
+instance types of the compute resources within the environment. This is  
+based on the compute resource specification that you define or the launch  
+template that you specify when you create the compute environment. You can  
+choose to use Amazon EC2 On-Demand Instances or Spot Instances in your  
+managed compute environment. You can optionally set a maximum price so  
+that Spot Instances only launch when the Spot Instance price is below a  
+specified percentage of the On-Demand price.</p>
+ 
+  <p>Multi-node parallel jobs are not supported on Spot Instances.</p>
+ 
+  <p>In an unmanaged compute environment, you can manage your own compute
+  resources. This provides more compute resource configuration options, such
+  as using a custom AMI, but you must ensure that your AMI meets the Amazon
+  ECS container instance AMI specification. For more information, see
+  Container Instance AMIs in the Amazon Elastic Container Service Developer
+  Guide. After you have created your unmanaged compute environment, you can
+  use the <code>DescribeComputeEnvironments</code> operation to find the Amazon ECS  
+cluster that is associated with it. Then, manually launch your container  
+instances into that Amazon ECS cluster. For more information, see  
+Launching an Amazon ECS Container Instance in the Amazon Elastic Container  
+Service Developer Guide.</p>
+ 
+  <p>AWS Batch does not upgrade the AMIs in a compute environment after it is  
+created (for example, when a newer version of the Amazon ECS-optimized AMI  
+is available). You are responsible for the management of the guest  
+operating system (including updates and security patches) and any  
+additional application software or utilities that you install on the  
+compute resources. To use a new AMI for your AWS Batch jobs:</p>
+ 
+  <p>Create a new compute environment with the new AMI.</p>
+ 
+  <p>Add the compute environment to an existing job queue.</p>
+ 
+  <p>Remove the old compute environment from your job queue.</p>
+ 
+  Delete the old compute environment.</p>
+
+<h3 class="function"><a name="create_compute_environment-3">create_compute_environment/3</a></h3>
+<div class="spec">
+<p><tt>create_compute_environment(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_job_queue-2">create_job_queue/2</a></h3>
+<div class="spec">
+<p><tt>create_job_queue(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an AWS Batch job queue.</p>
+ 
+  <p>When you create a job queue, you associate one or more compute  
+environments to the queue and assign an order of preference for the  
+compute environments.</p>
+ 
+  You also set a priority to the job queue that determines the order in
+  which the AWS Batch scheduler places jobs onto its associated compute
+  environments. For example, if a compute environment is associated with
+  more than one job queue, the job queue with a higher priority is given
+  preference for scheduling jobs to that compute environment.</p>
+
+<h3 class="function"><a name="create_job_queue-3">create_job_queue/3</a></h3>
+<div class="spec">
+<p><tt>create_job_queue(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_compute_environment-2">delete_compute_environment/2</a></h3>
+<div class="spec">
+<p><tt>delete_compute_environment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an AWS Batch compute environment.</p>
+ 
+  Before you can delete a compute environment, you must set its state to
+  <code>DISABLED</code> with the <code>UpdateComputeEnvironment</code> API operation and
+  disassociate it from any job queues with the <code>UpdateJobQueue</code> API
+  operation.</p>
+
+<h3 class="function"><a name="delete_compute_environment-3">delete_compute_environment/3</a></h3>
+<div class="spec">
+<p><tt>delete_compute_environment(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_job_queue-2">delete_job_queue/2</a></h3>
+<div class="spec">
+<p><tt>delete_job_queue(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified job queue.</p>
+ 
+  <p>You must first disable submissions for a queue with the <code>UpdateJobQueue</code>  
+operation. All jobs in the queue are terminated when you delete a job  
+queue.</p>
+ 
+  It is not necessary to disassociate compute environments from a queue
+  before submitting a <code>DeleteJobQueue</code> request.</p>
+
+<h3 class="function"><a name="delete_job_queue-3">delete_job_queue/3</a></h3>
+<div class="spec">
+<p><tt>delete_job_queue(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_job_definition-2">deregister_job_definition/2</a></h3>
+<div class="spec">
+<p><tt>deregister_job_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregisters an AWS Batch job definition.</p>
+ 
+  Job definitions will be permanently deleted after 180 days.</p>
+
+<h3 class="function"><a name="deregister_job_definition-3">deregister_job_definition/3</a></h3>
+<div class="spec">
+<p><tt>deregister_job_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_compute_environments-2">describe_compute_environments/2</a></h3>
+<div class="spec">
+<p><tt>describe_compute_environments(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes one or more of your compute environments.</p>
+ 
+  If you are using an unmanaged compute environment, you can use the
+  <code>DescribeComputeEnvironment</code> operation to determine the <code>ecsClusterArn</code>
+  that you should launch your Amazon ECS container instances into.</p>
+
+<h3 class="function"><a name="describe_compute_environments-3">describe_compute_environments/3</a></h3>
+<div class="spec">
+<p><tt>describe_compute_environments(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_job_definitions-2">describe_job_definitions/2</a></h3>
+<div class="spec">
+<p><tt>describe_job_definitions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes a list of job definitions.</p>
+ 
+  You can specify a <code>status</code> (such as <code>ACTIVE</code>) to only return job
+  definitions that match that status.</p>
+
+<h3 class="function"><a name="describe_job_definitions-3">describe_job_definitions/3</a></h3>
+<div class="spec">
+<p><tt>describe_job_definitions(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_job_queues-2">describe_job_queues/2</a></h3>
+<div class="spec">
+<p><tt>describe_job_queues(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes one or more of your job queues.</p>
+
+<h3 class="function"><a name="describe_job_queues-3">describe_job_queues/3</a></h3>
+<div class="spec">
+<p><tt>describe_job_queues(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_jobs-2">describe_jobs/2</a></h3>
+<div class="spec">
+<p><tt>describe_jobs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a list of AWS Batch jobs.</p>
+
+<h3 class="function"><a name="describe_jobs-3">describe_jobs/3</a></h3>
+<div class="spec">
+<p><tt>describe_jobs(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_jobs-2">list_jobs/2</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of AWS Batch jobs.</p>
+ 
+  <p>You must specify only one of the following:</p>
+ 
+  <ul> <li><p> a job queue ID to return a list of jobs in that job queue</p>
+ 
+  </li> <li><p> a multi-node parallel job ID to return a list of that job's  
+nodes</p>
+ 
+  </li> <li><p> an array job ID to return a list of that job's children</p>
+ 
+  </li> </ul> You can filter the results by job status with the <code>jobStatus</code>
+  parameter. If you do not specify a status, only <code>RUNNING</code> jobs are
+  returned.</p>
+
+<h3 class="function"><a name="list_jobs-3">list_jobs/3</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>List the tags for an AWS Batch resource.</p>
+ 
+  AWS Batch resources that support tags are compute environments, jobs, job
+  definitions, and job queues. ARNs for child jobs of array and multi-node
+  parallel (MNP) jobs are not supported.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_job_definition-2">register_job_definition/2</a></h3>
+<div class="spec">
+<p><tt>register_job_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Registers an AWS Batch job definition.</p>
+
+<h3 class="function"><a name="register_job_definition-3">register_job_definition/3</a></h3>
+<div class="spec">
+<p><tt>register_job_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="submit_job-2">submit_job/2</a></h3>
+<div class="spec">
+<p><tt>submit_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Submits an AWS Batch job from a job definition.</p>
+ 
+  Parameters specified during <code>SubmitJob</code> override parameters defined in the
+  job definition.</p>
+
+<h3 class="function"><a name="submit_job-3">submit_job/3</a></h3>
+<div class="spec">
+<p><tt>submit_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates the specified tags to a resource with the specified
+  <code>resourceArn</code>.</p>
+ 
+  If existing tags on a resource are not specified in the request
+  parameters, they are not changed. When a resource is deleted, the tags
+  associated with that resource are deleted as well. AWS Batch resources
+  that support tags are compute environments, jobs, job definitions, and job
+  queues. ARNs for child jobs of array and multi-node parallel (MNP) jobs
+  are not supported.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="terminate_job-2">terminate_job/2</a></h3>
+<div class="spec">
+<p><tt>terminate_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Terminates a job in a job queue.</p>
+ 
+  Jobs that are in the <code>STARTING</code> or <code>RUNNING</code> state are terminated, which
+  causes them to transition to <code>FAILED</code>. Jobs that have not progressed to
+  the <code>STARTING</code> state are cancelled.</p>
+
+<h3 class="function"><a name="terminate_job-3">terminate_job/3</a></h3>
+<div class="spec">
+<p><tt>terminate_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes specified tags from an AWS Batch resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_compute_environment-2">update_compute_environment/2</a></h3>
+<div class="spec">
+<p><tt>update_compute_environment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates an AWS Batch compute environment.</p>
+
+<h3 class="function"><a name="update_compute_environment-3">update_compute_environment/3</a></h3>
+<div class="spec">
+<p><tt>update_compute_environment(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_job_queue-2">update_job_queue/2</a></h3>
+<div class="spec">
+<p><tt>update_job_queue(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a job queue.</p>
+
+<h3 class="function"><a name="update_job_queue-3">update_job_queue/3</a></h3>
+<div class="spec">
+<p><tt>update_job_queue(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

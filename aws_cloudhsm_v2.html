@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_cloudhsm_v2</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_cloudhsm_v2</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>For more information about AWS CloudHSM, see AWS CloudHSM and the AWS
+  CloudHSM User Guide.
+
+
+<h2><a name="description">Description</a></h2>For more information about AWS CloudHSM, see AWS CloudHSM and the AWS
+  CloudHSM User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#copy_backup_to_region-2">copy_backup_to_region/2</a></td><td>Copy an AWS CloudHSM cluster backup to a different region.</td></tr>
+<tr><td valign="top"><a href="#copy_backup_to_region-3">copy_backup_to_region/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_cluster-2">create_cluster/2</a></td><td>Creates a new AWS CloudHSM cluster.</td></tr>
+<tr><td valign="top"><a href="#create_cluster-3">create_cluster/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_hsm-2">create_hsm/2</a></td><td>Creates a new hardware security module (HSM) in the specified AWS
+  CloudHSM cluster.</td></tr>
+<tr><td valign="top"><a href="#create_hsm-3">create_hsm/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_backup-2">delete_backup/2</a></td><td>Deletes a specified AWS CloudHSM backup.</td></tr>
+<tr><td valign="top"><a href="#delete_backup-3">delete_backup/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_cluster-2">delete_cluster/2</a></td><td>Deletes the specified AWS CloudHSM cluster.</td></tr>
+<tr><td valign="top"><a href="#delete_cluster-3">delete_cluster/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_hsm-2">delete_hsm/2</a></td><td>Deletes the specified HSM.</td></tr>
+<tr><td valign="top"><a href="#delete_hsm-3">delete_hsm/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_backups-2">describe_backups/2</a></td><td>Gets information about backups of AWS CloudHSM clusters.</td></tr>
+<tr><td valign="top"><a href="#describe_backups-3">describe_backups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_clusters-2">describe_clusters/2</a></td><td>Gets information about AWS CloudHSM clusters.</td></tr>
+<tr><td valign="top"><a href="#describe_clusters-3">describe_clusters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#initialize_cluster-2">initialize_cluster/2</a></td><td>Claims an AWS CloudHSM cluster by submitting the cluster certificate  
+issued by your issuing certificate authority (CA) and the CA's root  
+certificate.</td></tr>
+<tr><td valign="top"><a href="#initialize_cluster-3">initialize_cluster/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags-2">list_tags/2</a></td><td>Gets a list of tags for the specified AWS CloudHSM cluster.</td></tr>
+<tr><td valign="top"><a href="#list_tags-3">list_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#restore_backup-2">restore_backup/2</a></td><td>Restores a specified AWS CloudHSM backup that is in the
+  <code>PENDING_DELETION</code> state.</td></tr>
+<tr><td valign="top"><a href="#restore_backup-3">restore_backup/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds or overwrites one or more tags for the specified AWS CloudHSM
+  cluster.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes the specified tag or tags from the specified AWS CloudHSM
+  cluster.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="copy_backup_to_region-2">copy_backup_to_region/2</a></h3>
+<div class="spec">
+<p><tt>copy_backup_to_region(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Copy an AWS CloudHSM cluster backup to a different region.</p>
+
+<h3 class="function"><a name="copy_backup_to_region-3">copy_backup_to_region/3</a></h3>
+<div class="spec">
+<p><tt>copy_backup_to_region(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_cluster-2">create_cluster/2</a></h3>
+<div class="spec">
+<p><tt>create_cluster(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new AWS CloudHSM cluster.</p>
+
+<h3 class="function"><a name="create_cluster-3">create_cluster/3</a></h3>
+<div class="spec">
+<p><tt>create_cluster(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_hsm-2">create_hsm/2</a></h3>
+<div class="spec">
+<p><tt>create_hsm(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new hardware security module (HSM) in the specified AWS
+  CloudHSM cluster.</p>
+
+<h3 class="function"><a name="create_hsm-3">create_hsm/3</a></h3>
+<div class="spec">
+<p><tt>create_hsm(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_backup-2">delete_backup/2</a></h3>
+<div class="spec">
+<p><tt>delete_backup(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a specified AWS CloudHSM backup.</p>
+ 
+  A backup can be restored up to 7 days after the DeleteBackup request is
+  made. For more information on restoring a backup, see <code>RestoreBackup</code>.</p>
+
+<h3 class="function"><a name="delete_backup-3">delete_backup/3</a></h3>
+<div class="spec">
+<p><tt>delete_backup(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_cluster-2">delete_cluster/2</a></h3>
+<div class="spec">
+<p><tt>delete_cluster(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified AWS CloudHSM cluster.</p>
+ 
+  Before you can delete a cluster, you must delete all HSMs in the cluster.
+  To see if the cluster contains any HSMs, use <code>DescribeClusters</code>. To delete
+  an HSM, use <code>DeleteHsm</code>.</p>
+
+<h3 class="function"><a name="delete_cluster-3">delete_cluster/3</a></h3>
+<div class="spec">
+<p><tt>delete_cluster(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_hsm-2">delete_hsm/2</a></h3>
+<div class="spec">
+<p><tt>delete_hsm(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified HSM.</p>
+ 
+  To specify an HSM, you can use its identifier (ID), the IP address of the
+  HSM's elastic network interface (ENI), or the ID of the HSM's ENI. You
+  need to specify only one of these values. To find these values, use
+  <code>DescribeClusters</code>.</p>
+
+<h3 class="function"><a name="delete_hsm-3">delete_hsm/3</a></h3>
+<div class="spec">
+<p><tt>delete_hsm(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_backups-2">describe_backups/2</a></h3>
+<div class="spec">
+<p><tt>describe_backups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about backups of AWS CloudHSM clusters.</p>
+ 
+  This is a paginated operation, which means that each response might
+  contain only a subset of all the backups. When the response contains only
+  a subset of backups, it includes a <code>NextToken</code> value. Use this value in a
+  subsequent <code>DescribeBackups</code> request to get more backups. When you receive
+  a response with no <code>NextToken</code> (or an empty or null value), that means
+  there are no more backups to get.</p>
+
+<h3 class="function"><a name="describe_backups-3">describe_backups/3</a></h3>
+<div class="spec">
+<p><tt>describe_backups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_clusters-2">describe_clusters/2</a></h3>
+<div class="spec">
+<p><tt>describe_clusters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about AWS CloudHSM clusters.</p>
+ 
+  This is a paginated operation, which means that each response might
+  contain only a subset of all the clusters. When the response contains only
+  a subset of clusters, it includes a <code>NextToken</code> value. Use this value in a
+  subsequent <code>DescribeClusters</code> request to get more clusters. When you
+  receive a response with no <code>NextToken</code> (or an empty or null value), that
+  means there are no more clusters to get.</p>
+
+<h3 class="function"><a name="describe_clusters-3">describe_clusters/3</a></h3>
+<div class="spec">
+<p><tt>describe_clusters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="initialize_cluster-2">initialize_cluster/2</a></h3>
+<div class="spec">
+<p><tt>initialize_cluster(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Claims an AWS CloudHSM cluster by submitting the cluster certificate  
+issued by your issuing certificate authority (CA) and the CA's root  
+certificate.</p>
+ 
+  Before you can claim a cluster, you must sign the cluster's certificate
+  signing request (CSR) with your issuing CA. To get the cluster's CSR, use
+  <code>DescribeClusters</code>.</p>
+
+<h3 class="function"><a name="initialize_cluster-3">initialize_cluster/3</a></h3>
+<div class="spec">
+<p><tt>initialize_cluster(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags-2">list_tags/2</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets a list of tags for the specified AWS CloudHSM cluster.</p>
+ 
+  This is a paginated operation, which means that each response might
+  contain only a subset of all the tags. When the response contains only a
+  subset of tags, it includes a <code>NextToken</code> value. Use this value in a
+  subsequent <code>ListTags</code> request to get more tags. When you receive a
+  response with no <code>NextToken</code> (or an empty or null value), that means there
+  are no more tags to get.</p>
+
+<h3 class="function"><a name="list_tags-3">list_tags/3</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="restore_backup-2">restore_backup/2</a></h3>
+<div class="spec">
+<p><tt>restore_backup(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Restores a specified AWS CloudHSM backup that is in the
+  <code>PENDING_DELETION</code> state.</p>
+ 
+  For mor information on deleting a backup, see <code>DeleteBackup</code>.</p>
+
+<h3 class="function"><a name="restore_backup-3">restore_backup/3</a></h3>
+<div class="spec">
+<p><tt>restore_backup(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds or overwrites one or more tags for the specified AWS CloudHSM
+  cluster.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the specified tag or tags from the specified AWS CloudHSM
+  cluster.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

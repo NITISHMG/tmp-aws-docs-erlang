@@ -1,0 +1,111 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_sso</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_sso</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Single Sign-On Portal is a web service that makes it easy for you  
+to assign user access to AWS SSO resources such as the user portal.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Single Sign-On Portal is a web service that makes it easy for you  
+to assign user access to AWS SSO resources such as the user portal.</p>
+ 
+  <p>Users can get AWS account applications and roles assigned to them and get  
+federated into the application.</p>
+ 
+  <p>For general information about AWS SSO, see What is AWS Single Sign-On? in  
+the AWS SSO User Guide.</p>
+ 
+  <p>This API reference guide describes the AWS SSO Portal operations that you  
+can call programatically and includes detailed information on data types  
+and errors.</p>
+ 
+  AWS provides SDKs that consist of libraries and sample code for various
+  programming languages and platforms, such as Java, Ruby, .Net, iOS, or
+  Android. The SDKs provide a convenient way to create programmatic access
+  to AWS SSO and other AWS services. For more information about the AWS
+  SDKs, including how to download and install them, see Tools for Amazon Web
+  Services.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#get_role_credentials-4">get_role_credentials/4</a></td><td>Returns the STS short-term credentials for a given role name that is
+  assigned to the user.</td></tr>
+<tr><td valign="top"><a href="#get_role_credentials-5">get_role_credentials/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_account_roles-5">list_account_roles/5</a></td><td>Lists all roles that are assigned to the user for a given AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_account_roles-6">list_account_roles/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_accounts-4">list_accounts/4</a></td><td>Lists all AWS accounts assigned to the user.</td></tr>
+<tr><td valign="top"><a href="#list_accounts-5">list_accounts/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#logout-2">logout/2</a></td><td>Removes the client- and server-side session that is associated with
+  the user.</td></tr>
+<tr><td valign="top"><a href="#logout-3">logout/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="get_role_credentials-4">get_role_credentials/4</a></h3>
+<div class="spec">
+<p><tt>get_role_credentials(Client, AccountId, RoleName, AccessToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the STS short-term credentials for a given role name that is
+  assigned to the user.</p>
+
+<h3 class="function"><a name="get_role_credentials-5">get_role_credentials/5</a></h3>
+<div class="spec">
+<p><tt>get_role_credentials(Client, AccountId, RoleName, AccessToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_account_roles-5">list_account_roles/5</a></h3>
+<div class="spec">
+<p><tt>list_account_roles(Client, AccountId, MaxResults, NextToken, AccessToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all roles that are assigned to the user for a given AWS
+  account.</p>
+
+<h3 class="function"><a name="list_account_roles-6">list_account_roles/6</a></h3>
+<div class="spec">
+<p><tt>list_account_roles(Client, AccountId, MaxResults, NextToken, AccessToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_accounts-4">list_accounts/4</a></h3>
+<div class="spec">
+<p><tt>list_accounts(Client, MaxResults, NextToken, AccessToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists all AWS accounts assigned to the user.</p>
+ 
+  These AWS accounts are assigned by the administrator of the account. For
+  more information, see Assign User Access in the AWS SSO User Guide. This
+  operation returns a paginated response.</p>
+
+<h3 class="function"><a name="list_accounts-5">list_accounts/5</a></h3>
+<div class="spec">
+<p><tt>list_accounts(Client, MaxResults, NextToken, AccessToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="logout-2">logout/2</a></h3>
+<div class="spec">
+<p><tt>logout(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the client- and server-side session that is associated with
+  the user.</p>
+
+<h3 class="function"><a name="logout-3">logout/3</a></h3>
+<div class="spec">
+<p><tt>logout(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_marketplace_catalog</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_marketplace_catalog</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Catalog API actions allow you to manage your entities through list,  
+describe, and update capabilities.
+
+
+<h2><a name="description">Description</a></h2><p>Catalog API actions allow you to manage your entities through list,  
+describe, and update capabilities.</p>
+ 
+  <p>An entity can be a product or an offer on AWS Marketplace.</p>
+ 
+  You can automate your entity update process by integrating the AWS
+  Marketplace Catalog API with your AWS Marketplace product build or
+  deployment pipelines. You can also create your own applications on top of
+  the Catalog API to manage your products on AWS Marketplace.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_change_set-2">cancel_change_set/2</a></td><td>Used to cancel an open change request.</td></tr>
+<tr><td valign="top"><a href="#cancel_change_set-3">cancel_change_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_change_set-3">describe_change_set/3</a></td><td>Provides information about a given change set.</td></tr>
+<tr><td valign="top"><a href="#describe_change_set-4">describe_change_set/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_entity-3">describe_entity/3</a></td><td>Returns the metadata and content of the entity.</td></tr>
+<tr><td valign="top"><a href="#describe_entity-4">describe_entity/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_change_sets-2">list_change_sets/2</a></td><td>Returns the list of change sets owned by the account being used to  
+make the call.</td></tr>
+<tr><td valign="top"><a href="#list_change_sets-3">list_change_sets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_entities-2">list_entities/2</a></td><td>Provides the list of entities of a given type.</td></tr>
+<tr><td valign="top"><a href="#list_entities-3">list_entities/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_change_set-2">start_change_set/2</a></td><td>This operation allows you to request changes for your entities.</td></tr>
+<tr><td valign="top"><a href="#start_change_set-3">start_change_set/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_change_set-2">cancel_change_set/2</a></h3>
+<div class="spec">
+<p><tt>cancel_change_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Used to cancel an open change request.</p>
+ 
+  Must be sent before the status of the request changes to <code>APPLYING</code>, the
+  final stage of completing your change request. You can describe a change
+  during the 60-day request history retention period for API calls.</p>
+
+<h3 class="function"><a name="cancel_change_set-3">cancel_change_set/3</a></h3>
+<div class="spec">
+<p><tt>cancel_change_set(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_change_set-3">describe_change_set/3</a></h3>
+<div class="spec">
+<p><tt>describe_change_set(Client, Catalog, ChangeSetId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides information about a given change set.</p>
+
+<h3 class="function"><a name="describe_change_set-4">describe_change_set/4</a></h3>
+<div class="spec">
+<p><tt>describe_change_set(Client, Catalog, ChangeSetId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_entity-3">describe_entity/3</a></h3>
+<div class="spec">
+<p><tt>describe_entity(Client, Catalog, EntityId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the metadata and content of the entity.</p>
+
+<h3 class="function"><a name="describe_entity-4">describe_entity/4</a></h3>
+<div class="spec">
+<p><tt>describe_entity(Client, Catalog, EntityId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_change_sets-2">list_change_sets/2</a></h3>
+<div class="spec">
+<p><tt>list_change_sets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the list of change sets owned by the account being used to  
+make the call.</p>
+ 
+  <p>You can filter this list by providing any combination of <code>entityId</code>,
+  <code>ChangeSetName</code>, and status. If you provide more than one filter, the API  
+operation applies a logical AND between the filters.</p>
+ 
+  You can describe a change during the 60-day request history retention
+  period for API calls.</p>
+
+<h3 class="function"><a name="list_change_sets-3">list_change_sets/3</a></h3>
+<div class="spec">
+<p><tt>list_change_sets(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_entities-2">list_entities/2</a></h3>
+<div class="spec">
+<p><tt>list_entities(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides the list of entities of a given type.</p>
+
+<h3 class="function"><a name="list_entities-3">list_entities/3</a></h3>
+<div class="spec">
+<p><tt>list_entities(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_change_set-2">start_change_set/2</a></h3>
+<div class="spec">
+<p><tt>start_change_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This operation allows you to request changes for your entities.</p>
+ 
+  <p>Within a single ChangeSet, you cannot start the same change type against
+  the same entity multiple times. Additionally, when a ChangeSet is running,
+  all the entities targeted by the different changes are locked until the
+  ChangeSet has completed (either succeeded, cancelled, or failed). If you
+  try to start a ChangeSet containing a change against an entity that is
+  already locked, you will receive a <code>ResourceInUseException</code>.</p>
+ 
+  For example, you cannot start the ChangeSet described in the example below
+  because it contains two changes to execute the same change type
+  (<code>AddRevisions</code>) against the same entity (<code>entity-id@1)</code>.</p>
+
+<h3 class="function"><a name="start_change_set-3">start_change_set/3</a></h3>
+<div class="spec">
+<p><tt>start_change_set(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,660 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_elasticsearch</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_elasticsearch</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Elasticsearch Configuration Service.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Elasticsearch Configuration Service</p>
+ 
+  <p>Use the Amazon Elasticsearch Configuration API to create, configure, and  
+manage Elasticsearch domains.</p>
+ 
+  <p>For sample code that uses the Configuration API, see the Amazon  
+Elasticsearch Service Developer Guide. The guide also contains sample code  
+for sending signed HTTP requests to the Elasticsearch APIs.</p>
+ 
+  The endpoint for configuration service requests is region-specific:
+  es.region.amazonaws.com. For example, es.us-east-1.amazonaws.com. For a
+  current list of supported regions and endpoints, see Regions and
+  Endpoints.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#accept_inbound_cross_cluster_search_connection-3">accept_inbound_cross_cluster_search_connection/3</a></td><td>Allows the destination domain owner to accept an inbound
+  cross-cluster search connection request.</td></tr>
+<tr><td valign="top"><a href="#accept_inbound_cross_cluster_search_connection-4">accept_inbound_cross_cluster_search_connection/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_tags-2">add_tags/2</a></td><td>Attaches tags to an existing Elasticsearch domain.</td></tr>
+<tr><td valign="top"><a href="#add_tags-3">add_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_package-4">associate_package/4</a></td><td>Associates a package with an Amazon ES domain.</td></tr>
+<tr><td valign="top"><a href="#associate_package-5">associate_package/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#cancel_elasticsearch_service_software_update-2">cancel_elasticsearch_service_software_update/2</a></td><td>Cancels a scheduled service software update for an Amazon ES domain.</td></tr>
+<tr><td valign="top"><a href="#cancel_elasticsearch_service_software_update-3">cancel_elasticsearch_service_software_update/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_elasticsearch_domain-2">create_elasticsearch_domain/2</a></td><td>Creates a new Elasticsearch domain.</td></tr>
+<tr><td valign="top"><a href="#create_elasticsearch_domain-3">create_elasticsearch_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_outbound_cross_cluster_search_connection-2">create_outbound_cross_cluster_search_connection/2</a></td><td>Creates a new cross-cluster search connection from a source domain to
+  a destination domain.</td></tr>
+<tr><td valign="top"><a href="#create_outbound_cross_cluster_search_connection-3">create_outbound_cross_cluster_search_connection/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_package-2">create_package/2</a></td><td>Create a package for use with Amazon ES domains.</td></tr>
+<tr><td valign="top"><a href="#create_package-3">create_package/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_elasticsearch_domain-3">delete_elasticsearch_domain/3</a></td><td>Permanently deletes the specified Elasticsearch domain and all of its  
+data.</td></tr>
+<tr><td valign="top"><a href="#delete_elasticsearch_domain-4">delete_elasticsearch_domain/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_elasticsearch_service_role-2">delete_elasticsearch_service_role/2</a></td><td>Deletes the service-linked role that Elasticsearch Service uses to  
+manage and maintain VPC domains.</td></tr>
+<tr><td valign="top"><a href="#delete_elasticsearch_service_role-3">delete_elasticsearch_service_role/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_inbound_cross_cluster_search_connection-3">delete_inbound_cross_cluster_search_connection/3</a></td><td>Allows the destination domain owner to delete an existing inbound
+  cross-cluster search connection.</td></tr>
+<tr><td valign="top"><a href="#delete_inbound_cross_cluster_search_connection-4">delete_inbound_cross_cluster_search_connection/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_outbound_cross_cluster_search_connection-3">delete_outbound_cross_cluster_search_connection/3</a></td><td>Allows the source domain owner to delete an existing outbound
+  cross-cluster search connection.</td></tr>
+<tr><td valign="top"><a href="#delete_outbound_cross_cluster_search_connection-4">delete_outbound_cross_cluster_search_connection/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_package-3">delete_package/3</a></td><td>Delete the package.</td></tr>
+<tr><td valign="top"><a href="#delete_package-4">delete_package/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_elasticsearch_domain-2">describe_elasticsearch_domain/2</a></td><td>Returns domain configuration information about the specified
+  Elasticsearch domain, including the domain ID, domain endpoint, and domain
+  ARN.</td></tr>
+<tr><td valign="top"><a href="#describe_elasticsearch_domain-3">describe_elasticsearch_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_elasticsearch_domain_config-2">describe_elasticsearch_domain_config/2</a></td><td>Provides cluster configuration information about the specified
+  Elasticsearch domain, such as the state, creation date, update version,
+  and update date for cluster options.</td></tr>
+<tr><td valign="top"><a href="#describe_elasticsearch_domain_config-3">describe_elasticsearch_domain_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_elasticsearch_domains-2">describe_elasticsearch_domains/2</a></td><td>Returns domain configuration information about the specified
+  Elasticsearch domains, including the domain ID, domain endpoint, and
+  domain ARN.</td></tr>
+<tr><td valign="top"><a href="#describe_elasticsearch_domains-3">describe_elasticsearch_domains/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_elasticsearch_instance_type_limits-4">describe_elasticsearch_instance_type_limits/4</a></td><td>Describe Elasticsearch Limits for a given InstanceType and  
+ElasticsearchVersion.</td></tr>
+<tr><td valign="top"><a href="#describe_elasticsearch_instance_type_limits-5">describe_elasticsearch_instance_type_limits/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_inbound_cross_cluster_search_connections-2">describe_inbound_cross_cluster_search_connections/2</a></td><td>Lists all the inbound cross-cluster search connections for a
+  destination domain.</td></tr>
+<tr><td valign="top"><a href="#describe_inbound_cross_cluster_search_connections-3">describe_inbound_cross_cluster_search_connections/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_outbound_cross_cluster_search_connections-2">describe_outbound_cross_cluster_search_connections/2</a></td><td>Lists all the outbound cross-cluster search connections for a source
+  domain.</td></tr>
+<tr><td valign="top"><a href="#describe_outbound_cross_cluster_search_connections-3">describe_outbound_cross_cluster_search_connections/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_packages-2">describe_packages/2</a></td><td>Describes all packages available to Amazon ES.</td></tr>
+<tr><td valign="top"><a href="#describe_packages-3">describe_packages/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_reserved_elasticsearch_instance_offerings-4">describe_reserved_elasticsearch_instance_offerings/4</a></td><td>Lists available reserved Elasticsearch instance offerings.</td></tr>
+<tr><td valign="top"><a href="#describe_reserved_elasticsearch_instance_offerings-5">describe_reserved_elasticsearch_instance_offerings/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_reserved_elasticsearch_instances-4">describe_reserved_elasticsearch_instances/4</a></td><td>Returns information about reserved Elasticsearch instances for this
+  account.</td></tr>
+<tr><td valign="top"><a href="#describe_reserved_elasticsearch_instances-5">describe_reserved_elasticsearch_instances/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#dissociate_package-4">dissociate_package/4</a></td><td>Dissociates a package from the Amazon ES domain.</td></tr>
+<tr><td valign="top"><a href="#dissociate_package-5">dissociate_package/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_compatible_elasticsearch_versions-2">get_compatible_elasticsearch_versions/2</a></td><td>Returns a list of upgrade compatible Elastisearch versions.</td></tr>
+<tr><td valign="top"><a href="#get_compatible_elasticsearch_versions-3">get_compatible_elasticsearch_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_package_version_history-4">get_package_version_history/4</a></td><td>Returns a list of versions of the package, along with their creation
+  time and commit message.</td></tr>
+<tr><td valign="top"><a href="#get_package_version_history-5">get_package_version_history/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_upgrade_history-4">get_upgrade_history/4</a></td><td>Retrieves the complete history of the last 10 upgrades that were
+  performed on the domain.</td></tr>
+<tr><td valign="top"><a href="#get_upgrade_history-5">get_upgrade_history/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_upgrade_status-2">get_upgrade_status/2</a></td><td>Retrieves the latest status of the last upgrade or upgrade
+  eligibility check that was performed on the domain.</td></tr>
+<tr><td valign="top"><a href="#get_upgrade_status-3">get_upgrade_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_domain_names-1">list_domain_names/1</a></td><td>Returns the name of all Elasticsearch domains owned by the current
+  user's account.</td></tr>
+<tr><td valign="top"><a href="#list_domain_names-2">list_domain_names/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_domains_for_package-4">list_domains_for_package/4</a></td><td>Lists all Amazon ES domains associated with the package.</td></tr>
+<tr><td valign="top"><a href="#list_domains_for_package-5">list_domains_for_package/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_elasticsearch_instance_types-5">list_elasticsearch_instance_types/5</a></td><td>List all Elasticsearch instance types that are supported for given
+  ElasticsearchVersion.</td></tr>
+<tr><td valign="top"><a href="#list_elasticsearch_instance_types-6">list_elasticsearch_instance_types/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_elasticsearch_versions-3">list_elasticsearch_versions/3</a></td><td>List all supported Elasticsearch versions.</td></tr>
+<tr><td valign="top"><a href="#list_elasticsearch_versions-4">list_elasticsearch_versions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_packages_for_domain-4">list_packages_for_domain/4</a></td><td>Lists all packages associated with the Amazon ES domain.</td></tr>
+<tr><td valign="top"><a href="#list_packages_for_domain-5">list_packages_for_domain/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags-2">list_tags/2</a></td><td>Returns all tags for the given Elasticsearch domain.</td></tr>
+<tr><td valign="top"><a href="#list_tags-3">list_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#purchase_reserved_elasticsearch_instance_offering-2">purchase_reserved_elasticsearch_instance_offering/2</a></td><td>Allows you to purchase reserved Elasticsearch instances.</td></tr>
+<tr><td valign="top"><a href="#purchase_reserved_elasticsearch_instance_offering-3">purchase_reserved_elasticsearch_instance_offering/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reject_inbound_cross_cluster_search_connection-3">reject_inbound_cross_cluster_search_connection/3</a></td><td>Allows the destination domain owner to reject an inbound
+  cross-cluster search connection request.</td></tr>
+<tr><td valign="top"><a href="#reject_inbound_cross_cluster_search_connection-4">reject_inbound_cross_cluster_search_connection/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#remove_tags-2">remove_tags/2</a></td><td>Removes the specified set of tags from the specified Elasticsearch
+  domain.</td></tr>
+<tr><td valign="top"><a href="#remove_tags-3">remove_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_elasticsearch_service_software_update-2">start_elasticsearch_service_software_update/2</a></td><td>Schedules a service software update for an Amazon ES domain.</td></tr>
+<tr><td valign="top"><a href="#start_elasticsearch_service_software_update-3">start_elasticsearch_service_software_update/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_elasticsearch_domain_config-3">update_elasticsearch_domain_config/3</a></td><td>Modifies the cluster configuration of the specified Elasticsearch
+  domain, setting as setting the instance type and the number of instances.</td></tr>
+<tr><td valign="top"><a href="#update_elasticsearch_domain_config-4">update_elasticsearch_domain_config/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_package-2">update_package/2</a></td><td>Updates a package for use with Amazon ES domains.</td></tr>
+<tr><td valign="top"><a href="#update_package-3">update_package/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#upgrade_elasticsearch_domain-2">upgrade_elasticsearch_domain/2</a></td><td>Allows you to either upgrade your domain or perform an Upgrade
+  eligibility check to a compatible Elasticsearch version.</td></tr>
+<tr><td valign="top"><a href="#upgrade_elasticsearch_domain-3">upgrade_elasticsearch_domain/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="accept_inbound_cross_cluster_search_connection-3">accept_inbound_cross_cluster_search_connection/3</a></h3>
+<div class="spec">
+<p><tt>accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows the destination domain owner to accept an inbound
+  cross-cluster search connection request.</p>
+
+<h3 class="function"><a name="accept_inbound_cross_cluster_search_connection-4">accept_inbound_cross_cluster_search_connection/4</a></h3>
+<div class="spec">
+<p><tt>accept_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_tags-2">add_tags/2</a></h3>
+<div class="spec">
+<p><tt>add_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Attaches tags to an existing Elasticsearch domain.</p>
+ 
+  Tags are a set of case-sensitive key value pairs. An Elasticsearch domain
+  may have up to 10 tags. See Tagging Amazon Elasticsearch Service Domains
+  for more information.</p>
+
+<h3 class="function"><a name="add_tags-3">add_tags/3</a></h3>
+<div class="spec">
+<p><tt>add_tags(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_package-4">associate_package/4</a></h3>
+<div class="spec">
+<p><tt>associate_package(Client, DomainName, PackageID, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a package with an Amazon ES domain.</p>
+
+<h3 class="function"><a name="associate_package-5">associate_package/5</a></h3>
+<div class="spec">
+<p><tt>associate_package(Client, DomainName, PackageID, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="cancel_elasticsearch_service_software_update-2">cancel_elasticsearch_service_software_update/2</a></h3>
+<div class="spec">
+<p><tt>cancel_elasticsearch_service_software_update(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Cancels a scheduled service software update for an Amazon ES domain.</p>
+ 
+  You can only perform this operation before the <code>AutomatedUpdateDate</code> and
+  when the <code>UpdateStatus</code> is in the <code>PENDING_UPDATE</code> state.</p>
+
+<h3 class="function"><a name="cancel_elasticsearch_service_software_update-3">cancel_elasticsearch_service_software_update/3</a></h3>
+<div class="spec">
+<p><tt>cancel_elasticsearch_service_software_update(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_elasticsearch_domain-2">create_elasticsearch_domain/2</a></h3>
+<div class="spec">
+<p><tt>create_elasticsearch_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new Elasticsearch domain.</p>
+ 
+  For more information, see Creating Elasticsearch Domains in the Amazon
+  Elasticsearch Service Developer Guide.</p>
+
+<h3 class="function"><a name="create_elasticsearch_domain-3">create_elasticsearch_domain/3</a></h3>
+<div class="spec">
+<p><tt>create_elasticsearch_domain(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_outbound_cross_cluster_search_connection-2">create_outbound_cross_cluster_search_connection/2</a></h3>
+<div class="spec">
+<p><tt>create_outbound_cross_cluster_search_connection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new cross-cluster search connection from a source domain to
+  a destination domain.</p>
+
+<h3 class="function"><a name="create_outbound_cross_cluster_search_connection-3">create_outbound_cross_cluster_search_connection/3</a></h3>
+<div class="spec">
+<p><tt>create_outbound_cross_cluster_search_connection(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_package-2">create_package/2</a></h3>
+<div class="spec">
+<p><tt>create_package(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create a package for use with Amazon ES domains.</p>
+
+<h3 class="function"><a name="create_package-3">create_package/3</a></h3>
+<div class="spec">
+<p><tt>create_package(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_elasticsearch_domain-3">delete_elasticsearch_domain/3</a></h3>
+<div class="spec">
+<p><tt>delete_elasticsearch_domain(Client, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Permanently deletes the specified Elasticsearch domain and all of its  
+data.</p>
+ 
+  Once a domain is deleted, it cannot be recovered.</p>
+
+<h3 class="function"><a name="delete_elasticsearch_domain-4">delete_elasticsearch_domain/4</a></h3>
+<div class="spec">
+<p><tt>delete_elasticsearch_domain(Client, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_elasticsearch_service_role-2">delete_elasticsearch_service_role/2</a></h3>
+<div class="spec">
+<p><tt>delete_elasticsearch_service_role(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the service-linked role that Elasticsearch Service uses to  
+manage and maintain VPC domains.</p>
+ 
+  Role deletion will fail if any existing VPC domains use the role. You must
+  delete any such Elasticsearch domains before deleting the role. See
+  Deleting Elasticsearch Service Role in VPC Endpoints for Amazon
+  Elasticsearch Service Domains.</p>
+
+<h3 class="function"><a name="delete_elasticsearch_service_role-3">delete_elasticsearch_service_role/3</a></h3>
+<div class="spec">
+<p><tt>delete_elasticsearch_service_role(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_inbound_cross_cluster_search_connection-3">delete_inbound_cross_cluster_search_connection/3</a></h3>
+<div class="spec">
+<p><tt>delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows the destination domain owner to delete an existing inbound
+  cross-cluster search connection.</p>
+
+<h3 class="function"><a name="delete_inbound_cross_cluster_search_connection-4">delete_inbound_cross_cluster_search_connection/4</a></h3>
+<div class="spec">
+<p><tt>delete_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_outbound_cross_cluster_search_connection-3">delete_outbound_cross_cluster_search_connection/3</a></h3>
+<div class="spec">
+<p><tt>delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows the source domain owner to delete an existing outbound
+  cross-cluster search connection.</p>
+
+<h3 class="function"><a name="delete_outbound_cross_cluster_search_connection-4">delete_outbound_cross_cluster_search_connection/4</a></h3>
+<div class="spec">
+<p><tt>delete_outbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_package-3">delete_package/3</a></h3>
+<div class="spec">
+<p><tt>delete_package(Client, PackageID, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete the package.</p>
+
+<h3 class="function"><a name="delete_package-4">delete_package/4</a></h3>
+<div class="spec">
+<p><tt>delete_package(Client, PackageID, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_elasticsearch_domain-2">describe_elasticsearch_domain/2</a></h3>
+<div class="spec">
+<p><tt>describe_elasticsearch_domain(Client, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns domain configuration information about the specified
+  Elasticsearch domain, including the domain ID, domain endpoint, and domain
+  ARN.</p>
+
+<h3 class="function"><a name="describe_elasticsearch_domain-3">describe_elasticsearch_domain/3</a></h3>
+<div class="spec">
+<p><tt>describe_elasticsearch_domain(Client, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_elasticsearch_domain_config-2">describe_elasticsearch_domain_config/2</a></h3>
+<div class="spec">
+<p><tt>describe_elasticsearch_domain_config(Client, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides cluster configuration information about the specified
+  Elasticsearch domain, such as the state, creation date, update version,
+  and update date for cluster options.</p>
+
+<h3 class="function"><a name="describe_elasticsearch_domain_config-3">describe_elasticsearch_domain_config/3</a></h3>
+<div class="spec">
+<p><tt>describe_elasticsearch_domain_config(Client, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_elasticsearch_domains-2">describe_elasticsearch_domains/2</a></h3>
+<div class="spec">
+<p><tt>describe_elasticsearch_domains(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns domain configuration information about the specified
+  Elasticsearch domains, including the domain ID, domain endpoint, and
+  domain ARN.</p>
+
+<h3 class="function"><a name="describe_elasticsearch_domains-3">describe_elasticsearch_domains/3</a></h3>
+<div class="spec">
+<p><tt>describe_elasticsearch_domains(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_elasticsearch_instance_type_limits-4">describe_elasticsearch_instance_type_limits/4</a></h3>
+<div class="spec">
+<p><tt>describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describe Elasticsearch Limits for a given InstanceType and  
+ElasticsearchVersion.</p>
+ 
+  When modifying existing Domain, specify the <code>`DomainName</code> ' to know what
+  Limits are supported for modifying.</p>
+
+<h3 class="function"><a name="describe_elasticsearch_instance_type_limits-5">describe_elasticsearch_instance_type_limits/5</a></h3>
+<div class="spec">
+<p><tt>describe_elasticsearch_instance_type_limits(Client, ElasticsearchVersion, InstanceType, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_inbound_cross_cluster_search_connections-2">describe_inbound_cross_cluster_search_connections/2</a></h3>
+<div class="spec">
+<p><tt>describe_inbound_cross_cluster_search_connections(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the inbound cross-cluster search connections for a
+  destination domain.</p>
+
+<h3 class="function"><a name="describe_inbound_cross_cluster_search_connections-3">describe_inbound_cross_cluster_search_connections/3</a></h3>
+<div class="spec">
+<p><tt>describe_inbound_cross_cluster_search_connections(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_outbound_cross_cluster_search_connections-2">describe_outbound_cross_cluster_search_connections/2</a></h3>
+<div class="spec">
+<p><tt>describe_outbound_cross_cluster_search_connections(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the outbound cross-cluster search connections for a source
+  domain.</p>
+
+<h3 class="function"><a name="describe_outbound_cross_cluster_search_connections-3">describe_outbound_cross_cluster_search_connections/3</a></h3>
+<div class="spec">
+<p><tt>describe_outbound_cross_cluster_search_connections(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_packages-2">describe_packages/2</a></h3>
+<div class="spec">
+<p><tt>describe_packages(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes all packages available to Amazon ES.</p>
+ 
+  Includes options for filtering, limiting the number of results, and
+  pagination.</p>
+
+<h3 class="function"><a name="describe_packages-3">describe_packages/3</a></h3>
+<div class="spec">
+<p><tt>describe_packages(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_reserved_elasticsearch_instance_offerings-4">describe_reserved_elasticsearch_instance_offerings/4</a></h3>
+<div class="spec">
+<p><tt>describe_reserved_elasticsearch_instance_offerings(Client, MaxResults, NextToken, ReservedElasticsearchInstanceOfferingId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists available reserved Elasticsearch instance offerings.</p>
+
+<h3 class="function"><a name="describe_reserved_elasticsearch_instance_offerings-5">describe_reserved_elasticsearch_instance_offerings/5</a></h3>
+<div class="spec">
+<p><tt>describe_reserved_elasticsearch_instance_offerings(Client, MaxResults, NextToken, ReservedElasticsearchInstanceOfferingId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_reserved_elasticsearch_instances-4">describe_reserved_elasticsearch_instances/4</a></h3>
+<div class="spec">
+<p><tt>describe_reserved_elasticsearch_instances(Client, MaxResults, NextToken, ReservedElasticsearchInstanceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about reserved Elasticsearch instances for this
+  account.</p>
+
+<h3 class="function"><a name="describe_reserved_elasticsearch_instances-5">describe_reserved_elasticsearch_instances/5</a></h3>
+<div class="spec">
+<p><tt>describe_reserved_elasticsearch_instances(Client, MaxResults, NextToken, ReservedElasticsearchInstanceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="dissociate_package-4">dissociate_package/4</a></h3>
+<div class="spec">
+<p><tt>dissociate_package(Client, DomainName, PackageID, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Dissociates a package from the Amazon ES domain.</p>
+
+<h3 class="function"><a name="dissociate_package-5">dissociate_package/5</a></h3>
+<div class="spec">
+<p><tt>dissociate_package(Client, DomainName, PackageID, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_compatible_elasticsearch_versions-2">get_compatible_elasticsearch_versions/2</a></h3>
+<div class="spec">
+<p><tt>get_compatible_elasticsearch_versions(Client, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of upgrade compatible Elastisearch versions.</p>
+ 
+  You can optionally pass a <code>`DomainName</code> ' to get all upgrade compatible
+  Elasticsearch versions for that specific domain.</p>
+
+<h3 class="function"><a name="get_compatible_elasticsearch_versions-3">get_compatible_elasticsearch_versions/3</a></h3>
+<div class="spec">
+<p><tt>get_compatible_elasticsearch_versions(Client, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_package_version_history-4">get_package_version_history/4</a></h3>
+<div class="spec">
+<p><tt>get_package_version_history(Client, PackageID, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of versions of the package, along with their creation
+  time and commit message.</p>
+
+<h3 class="function"><a name="get_package_version_history-5">get_package_version_history/5</a></h3>
+<div class="spec">
+<p><tt>get_package_version_history(Client, PackageID, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_upgrade_history-4">get_upgrade_history/4</a></h3>
+<div class="spec">
+<p><tt>get_upgrade_history(Client, DomainName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the complete history of the last 10 upgrades that were
+  performed on the domain.</p>
+
+<h3 class="function"><a name="get_upgrade_history-5">get_upgrade_history/5</a></h3>
+<div class="spec">
+<p><tt>get_upgrade_history(Client, DomainName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_upgrade_status-2">get_upgrade_status/2</a></h3>
+<div class="spec">
+<p><tt>get_upgrade_status(Client, DomainName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the latest status of the last upgrade or upgrade
+  eligibility check that was performed on the domain.</p>
+
+<h3 class="function"><a name="get_upgrade_status-3">get_upgrade_status/3</a></h3>
+<div class="spec">
+<p><tt>get_upgrade_status(Client, DomainName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_domain_names-1">list_domain_names/1</a></h3>
+<div class="spec">
+<p><tt>list_domain_names(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the name of all Elasticsearch domains owned by the current
+  user's account.</p>
+
+<h3 class="function"><a name="list_domain_names-2">list_domain_names/2</a></h3>
+<div class="spec">
+<p><tt>list_domain_names(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_domains_for_package-4">list_domains_for_package/4</a></h3>
+<div class="spec">
+<p><tt>list_domains_for_package(Client, PackageID, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all Amazon ES domains associated with the package.</p>
+
+<h3 class="function"><a name="list_domains_for_package-5">list_domains_for_package/5</a></h3>
+<div class="spec">
+<p><tt>list_domains_for_package(Client, PackageID, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_elasticsearch_instance_types-5">list_elasticsearch_instance_types/5</a></h3>
+<div class="spec">
+<p><tt>list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List all Elasticsearch instance types that are supported for given
+  ElasticsearchVersion</p>
+
+<h3 class="function"><a name="list_elasticsearch_instance_types-6">list_elasticsearch_instance_types/6</a></h3>
+<div class="spec">
+<p><tt>list_elasticsearch_instance_types(Client, ElasticsearchVersion, DomainName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_elasticsearch_versions-3">list_elasticsearch_versions/3</a></h3>
+<div class="spec">
+<p><tt>list_elasticsearch_versions(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List all supported Elasticsearch versions</p>
+
+<h3 class="function"><a name="list_elasticsearch_versions-4">list_elasticsearch_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_elasticsearch_versions(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_packages_for_domain-4">list_packages_for_domain/4</a></h3>
+<div class="spec">
+<p><tt>list_packages_for_domain(Client, DomainName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all packages associated with the Amazon ES domain.</p>
+
+<h3 class="function"><a name="list_packages_for_domain-5">list_packages_for_domain/5</a></h3>
+<div class="spec">
+<p><tt>list_packages_for_domain(Client, DomainName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags-2">list_tags/2</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, ARN) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns all tags for the given Elasticsearch domain.</p>
+
+<h3 class="function"><a name="list_tags-3">list_tags/3</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, ARN, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="purchase_reserved_elasticsearch_instance_offering-2">purchase_reserved_elasticsearch_instance_offering/2</a></h3>
+<div class="spec">
+<p><tt>purchase_reserved_elasticsearch_instance_offering(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows you to purchase reserved Elasticsearch instances.</p>
+
+<h3 class="function"><a name="purchase_reserved_elasticsearch_instance_offering-3">purchase_reserved_elasticsearch_instance_offering/3</a></h3>
+<div class="spec">
+<p><tt>purchase_reserved_elasticsearch_instance_offering(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reject_inbound_cross_cluster_search_connection-3">reject_inbound_cross_cluster_search_connection/3</a></h3>
+<div class="spec">
+<p><tt>reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows the destination domain owner to reject an inbound
+  cross-cluster search connection request.</p>
+
+<h3 class="function"><a name="reject_inbound_cross_cluster_search_connection-4">reject_inbound_cross_cluster_search_connection/4</a></h3>
+<div class="spec">
+<p><tt>reject_inbound_cross_cluster_search_connection(Client, CrossClusterSearchConnectionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="remove_tags-2">remove_tags/2</a></h3>
+<div class="spec">
+<p><tt>remove_tags(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the specified set of tags from the specified Elasticsearch
+  domain.</p>
+
+<h3 class="function"><a name="remove_tags-3">remove_tags/3</a></h3>
+<div class="spec">
+<p><tt>remove_tags(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_elasticsearch_service_software_update-2">start_elasticsearch_service_software_update/2</a></h3>
+<div class="spec">
+<p><tt>start_elasticsearch_service_software_update(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Schedules a service software update for an Amazon ES domain.</p>
+
+<h3 class="function"><a name="start_elasticsearch_service_software_update-3">start_elasticsearch_service_software_update/3</a></h3>
+<div class="spec">
+<p><tt>start_elasticsearch_service_software_update(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_elasticsearch_domain_config-3">update_elasticsearch_domain_config/3</a></h3>
+<div class="spec">
+<p><tt>update_elasticsearch_domain_config(Client, DomainName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Modifies the cluster configuration of the specified Elasticsearch
+  domain, setting as setting the instance type and the number of instances.</p>
+
+<h3 class="function"><a name="update_elasticsearch_domain_config-4">update_elasticsearch_domain_config/4</a></h3>
+<div class="spec">
+<p><tt>update_elasticsearch_domain_config(Client, DomainName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_package-2">update_package/2</a></h3>
+<div class="spec">
+<p><tt>update_package(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a package for use with Amazon ES domains.</p>
+
+<h3 class="function"><a name="update_package-3">update_package/3</a></h3>
+<div class="spec">
+<p><tt>update_package(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="upgrade_elasticsearch_domain-2">upgrade_elasticsearch_domain/2</a></h3>
+<div class="spec">
+<p><tt>upgrade_elasticsearch_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows you to either upgrade your domain or perform an Upgrade
+  eligibility check to a compatible Elasticsearch version.</p>
+
+<h3 class="function"><a name="upgrade_elasticsearch_domain-3">upgrade_elasticsearch_domain/3</a></h3>
+<div class="spec">
+<p><tt>upgrade_elasticsearch_domain(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

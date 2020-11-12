@@ -1,0 +1,222 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_polly</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_polly</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Polly is a web service that makes it easy to synthesize speech  
+from text.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Polly is a web service that makes it easy to synthesize speech  
+from text.</p>
+ 
+  The Amazon Polly service provides API operations for synthesizing
+  high-quality speech from plain text and Speech Synthesis Markup Language
+  (SSML), along with managing pronunciations lexicons that enable you to get
+  the best results for your application domain.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#delete_lexicon-3">delete_lexicon/3</a></td><td>Deletes the specified pronunciation lexicon stored in an AWS Region.</td></tr>
+<tr><td valign="top"><a href="#delete_lexicon-4">delete_lexicon/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_voices-5">describe_voices/5</a></td><td>Returns the list of voices that are available for use when requesting  
+speech synthesis.</td></tr>
+<tr><td valign="top"><a href="#describe_voices-6">describe_voices/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_lexicon-2">get_lexicon/2</a></td><td>Returns the content of the specified pronunciation lexicon stored in  
+an AWS Region.</td></tr>
+<tr><td valign="top"><a href="#get_lexicon-3">get_lexicon/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_speech_synthesis_task-2">get_speech_synthesis_task/2</a></td><td>Retrieves a specific SpeechSynthesisTask object based on its TaskID.</td></tr>
+<tr><td valign="top"><a href="#get_speech_synthesis_task-3">get_speech_synthesis_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_lexicons-2">list_lexicons/2</a></td><td>Returns a list of pronunciation lexicons stored in an AWS Region.</td></tr>
+<tr><td valign="top"><a href="#list_lexicons-3">list_lexicons/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_speech_synthesis_tasks-4">list_speech_synthesis_tasks/4</a></td><td>Returns a list of SpeechSynthesisTask objects ordered by their  
+creation date.</td></tr>
+<tr><td valign="top"><a href="#list_speech_synthesis_tasks-5">list_speech_synthesis_tasks/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_lexicon-3">put_lexicon/3</a></td><td>Stores a pronunciation lexicon in an AWS Region.</td></tr>
+<tr><td valign="top"><a href="#put_lexicon-4">put_lexicon/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_speech_synthesis_task-2">start_speech_synthesis_task/2</a></td><td>Allows the creation of an asynchronous synthesis task, by starting a
+  new <code>SpeechSynthesisTask</code>.</td></tr>
+<tr><td valign="top"><a href="#start_speech_synthesis_task-3">start_speech_synthesis_task/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#synthesize_speech-2">synthesize_speech/2</a></td><td>Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes.</td></tr>
+<tr><td valign="top"><a href="#synthesize_speech-3">synthesize_speech/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="delete_lexicon-3">delete_lexicon/3</a></h3>
+<div class="spec">
+<p><tt>delete_lexicon(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified pronunciation lexicon stored in an AWS Region.</p>
+ 
+  <p>A lexicon which has been deleted is not available for speech synthesis,
+  nor is it possible to retrieve it using either the <code>GetLexicon</code> or
+  <code>ListLexicon</code> APIs.</p>
+ 
+  For more information, see Managing Lexicons.</p>
+
+<h3 class="function"><a name="delete_lexicon-4">delete_lexicon/4</a></h3>
+<div class="spec">
+<p><tt>delete_lexicon(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_voices-5">describe_voices/5</a></h3>
+<div class="spec">
+<p><tt>describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the list of voices that are available for use when requesting  
+speech synthesis.</p>
+ 
+  <p>Each voice speaks a specified language, is either male or female, and is  
+identified by an ID, which is the ASCII version of the voice name.</p>
+ 
+  <p>When synthesizing speech ( <code>SynthesizeSpeech</code> ), you provide the voice ID
+  for the voice you want from the list of voices returned by
+  <code>DescribeVoices</code>.</p>
+ 
+  <p>For example, you want your news reader application to read news in a
+  specific language, but giving a user the option to choose the voice. Using
+  the <code>DescribeVoices</code> operation you can provide the user with a list of  
+available voices to select from.</p>
+ 
+  <p>You can optionally specify a language code to filter the available voices.
+  For example, if you specify <code>en-US</code>, the operation returns a list of all  
+available US English voices.</p>
+ 
+  This operation requires permissions to perform the <code>polly:DescribeVoices</code>
+  action.</p>
+
+<h3 class="function"><a name="describe_voices-6">describe_voices/6</a></h3>
+<div class="spec">
+<p><tt>describe_voices(Client, Engine, IncludeAdditionalLanguageCodes, LanguageCode, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_lexicon-2">get_lexicon/2</a></h3>
+<div class="spec">
+<p><tt>get_lexicon(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the content of the specified pronunciation lexicon stored in  
+an AWS Region.</p>
+ 
+  For more information, see Managing Lexicons.</p>
+
+<h3 class="function"><a name="get_lexicon-3">get_lexicon/3</a></h3>
+<div class="spec">
+<p><tt>get_lexicon(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_speech_synthesis_task-2">get_speech_synthesis_task/2</a></h3>
+<div class="spec">
+<p><tt>get_speech_synthesis_task(Client, TaskId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves a specific SpeechSynthesisTask object based on its TaskID.</p>
+ 
+  This object contains information about the given speech synthesis task,
+  including the status of the task, and a link to the S3 bucket containing
+  the output of the task.</p>
+
+<h3 class="function"><a name="get_speech_synthesis_task-3">get_speech_synthesis_task/3</a></h3>
+<div class="spec">
+<p><tt>get_speech_synthesis_task(Client, TaskId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_lexicons-2">list_lexicons/2</a></h3>
+<div class="spec">
+<p><tt>list_lexicons(Client, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of pronunciation lexicons stored in an AWS Region.</p>
+ 
+  For more information, see Managing Lexicons.</p>
+
+<h3 class="function"><a name="list_lexicons-3">list_lexicons/3</a></h3>
+<div class="spec">
+<p><tt>list_lexicons(Client, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_speech_synthesis_tasks-4">list_speech_synthesis_tasks/4</a></h3>
+<div class="spec">
+<p><tt>list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of SpeechSynthesisTask objects ordered by their  
+creation date.</p>
+ 
+  This operation can filter the tasks by their status, for example, allowing
+  users to list only tasks that are completed.</p>
+
+<h3 class="function"><a name="list_speech_synthesis_tasks-5">list_speech_synthesis_tasks/5</a></h3>
+<div class="spec">
+<p><tt>list_speech_synthesis_tasks(Client, MaxResults, NextToken, Status, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_lexicon-3">put_lexicon/3</a></h3>
+<div class="spec">
+<p><tt>put_lexicon(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stores a pronunciation lexicon in an AWS Region.</p>
+ 
+  <p>If a lexicon with the same name already exists in the region, it is  
+overwritten by the new lexicon. Lexicon operations have eventual  
+consistency, therefore, it might take some time before the lexicon is  
+available to the SynthesizeSpeech operation.</p>
+ 
+  For more information, see Managing Lexicons.</p>
+
+<h3 class="function"><a name="put_lexicon-4">put_lexicon/4</a></h3>
+<div class="spec">
+<p><tt>put_lexicon(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_speech_synthesis_task-2">start_speech_synthesis_task/2</a></h3>
+<div class="spec">
+<p><tt>start_speech_synthesis_task(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Allows the creation of an asynchronous synthesis task, by starting a
+  new <code>SpeechSynthesisTask</code>.</p>
+ 
+  This operation requires all the standard information needed for speech
+  synthesis, plus the name of an Amazon S3 bucket for the service to store
+  the output of the synthesis task and two optional parameters
+  (OutputS3KeyPrefix and SnsTopicArn). Once the synthesis task is created,
+  this operation will return a SpeechSynthesisTask object, which will
+  include an identifier of this task as well as the current status.</p>
+
+<h3 class="function"><a name="start_speech_synthesis_task-3">start_speech_synthesis_task/3</a></h3>
+<div class="spec">
+<p><tt>start_speech_synthesis_task(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="synthesize_speech-2">synthesize_speech/2</a></h3>
+<div class="spec">
+<p><tt>synthesize_speech(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Synthesizes UTF-8 input, plain text or SSML, to a stream of bytes.</p>
+ 
+  SSML input must be valid, well-formed SSML. Some alphabets might not be
+  available with all the voices (for example, Cyrillic might not be read at
+  all by English voices) unless phoneme mapping is used. For more
+  information, see How it Works.</p>
+
+<h3 class="function"><a name="synthesize_speech-3">synthesize_speech/3</a></h3>
+<div class="spec">
+<p><tt>synthesize_speech(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

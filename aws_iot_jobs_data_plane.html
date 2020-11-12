@@ -1,0 +1,105 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_iot_jobs_data_plane</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_iot_jobs_data_plane</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS IoT Jobs is a service that allows you to define a set of jobs —  
+remote operations that are sent to and executed on one or more devices  
+connected to AWS IoT.
+
+
+<h2><a name="description">Description</a></h2><p>AWS IoT Jobs is a service that allows you to define a set of jobs —  
+remote operations that are sent to and executed on one or more devices  
+connected to AWS IoT.</p>
+ 
+  <p>For example, you can define a job that instructs a set of devices to  
+download and install application or firmware updates, reboot, rotate  
+certificates, or perform remote troubleshooting operations.</p>
+ 
+  <p>To create a job, you make a job document which is a description of the  
+remote operations to be performed, and you specify a list of targets that  
+should perform the operations. The targets can be individual things, thing  
+groups or both.</p>
+ 
+  AWS IoT Jobs sends a message to inform the targets that a job is
+  available. The target starts the execution of the job by downloading the
+  job document, performing the operations it specifies, and reporting its
+  progress to AWS IoT. The Jobs service provides commands to track the
+  progress of a job on a specific target and for all the targets of the job
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#describe_job_execution-5">describe_job_execution/5</a></td><td>Gets details of a job execution.</td></tr>
+<tr><td valign="top"><a href="#describe_job_execution-6">describe_job_execution/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_pending_job_executions-2">get_pending_job_executions/2</a></td><td>Gets the list of all jobs for a thing that are not in a terminal
+  status.</td></tr>
+<tr><td valign="top"><a href="#get_pending_job_executions-3">get_pending_job_executions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_next_pending_job_execution-3">start_next_pending_job_execution/3</a></td><td>Gets and starts the next pending (status IN_PROGRESS or QUEUED) job
+  execution for a thing.</td></tr>
+<tr><td valign="top"><a href="#start_next_pending_job_execution-4">start_next_pending_job_execution/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_job_execution-4">update_job_execution/4</a></td><td>Updates the status of a job execution.</td></tr>
+<tr><td valign="top"><a href="#update_job_execution-5">update_job_execution/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="describe_job_execution-5">describe_job_execution/5</a></h3>
+<div class="spec">
+<p><tt>describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocument) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets details of a job execution.</p>
+
+<h3 class="function"><a name="describe_job_execution-6">describe_job_execution/6</a></h3>
+<div class="spec">
+<p><tt>describe_job_execution(Client, JobId, ThingName, ExecutionNumber, IncludeJobDocument, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_pending_job_executions-2">get_pending_job_executions/2</a></h3>
+<div class="spec">
+<p><tt>get_pending_job_executions(Client, ThingName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the list of all jobs for a thing that are not in a terminal
+  status.</p>
+
+<h3 class="function"><a name="get_pending_job_executions-3">get_pending_job_executions/3</a></h3>
+<div class="spec">
+<p><tt>get_pending_job_executions(Client, ThingName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_next_pending_job_execution-3">start_next_pending_job_execution/3</a></h3>
+<div class="spec">
+<p><tt>start_next_pending_job_execution(Client, ThingName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets and starts the next pending (status IN_PROGRESS or QUEUED) job
+  execution for a thing.</p>
+
+<h3 class="function"><a name="start_next_pending_job_execution-4">start_next_pending_job_execution/4</a></h3>
+<div class="spec">
+<p><tt>start_next_pending_job_execution(Client, ThingName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_job_execution-4">update_job_execution/4</a></h3>
+<div class="spec">
+<p><tt>update_job_execution(Client, JobId, ThingName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the status of a job execution.</p>
+
+<h3 class="function"><a name="update_job_execution-5">update_job_execution/5</a></h3>
+<div class="spec">
+<p><tt>update_job_execution(Client, JobId, ThingName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

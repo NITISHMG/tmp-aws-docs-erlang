@@ -1,0 +1,341 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_application_auto_scaling</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_application_auto_scaling</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>With Application Auto Scaling, you can configure automatic scaling  
+for the following resources:.
+
+
+<h2><a name="description">Description</a></h2><p>With Application Auto Scaling, you can configure automatic scaling  
+for the following resources:</p>
+ 
+  <ul> <li><p> Amazon ECS services</p>
+ 
+  </li> <li><p> Amazon EC2 Spot Fleet requests</p>
+ 
+  </li> <li><p> Amazon EMR clusters</p>
+ 
+  </li> <li><p> Amazon AppStream 2.0 fleets</p>
+ 
+  </li> <li><p> Amazon DynamoDB tables and global secondary indexes throughput  
+capacity</p>
+ 
+  </li> <li><p> Amazon Aurora Replicas</p>
+ 
+  </li> <li><p> Amazon SageMaker endpoint variants</p>
+ 
+  </li> <li><p> Custom resources provided by your own applications or services</p>
+ 
+  </li> <li><p> Amazon Comprehend document classification and entity recognizer  
+endpoints</p>
+ 
+  </li> <li><p> AWS Lambda function provisioned concurrency</p>
+ 
+  </li> <li><p> Amazon Keyspaces (for Apache Cassandra) tables</p>
+ 
+  </li> <li><p> Amazon Managed Streaming for Apache Kafka cluster storage</p>
+ 
+  </li> </ul><p> API Summary</p>
+ 
+  <p>The Application Auto Scaling service API includes three key sets of  
+actions:</p>
+ 
+  <ul> <li><p> Register and manage scalable targets - Register AWS or custom  
+resources as scalable targets (a resource that Application Auto Scaling  
+can scale), set minimum and maximum capacity limits, and retrieve  
+information on existing scalable targets.</p>
+ 
+  </li> <li><p> Configure and manage automatic scaling - Define scaling  
+policies to dynamically scale your resources in response to CloudWatch  
+alarms, schedule one-time or recurring scaling actions, and retrieve your  
+recent scaling activity history.</p>
+ 
+  </li> <li><p> Suspend and resume scaling - Temporarily suspend and later  
+resume automatic scaling by calling the RegisterScalableTarget API action  
+for any Application Auto Scaling scalable target. You can suspend and  
+resume (individually or in combination) scale-out activities that are  
+triggered by a scaling policy, scale-in activities that are triggered by a  
+scaling policy, and scheduled scaling.</p>
+ 
+  </li> </ul> To learn more about Application Auto Scaling, including
+  information about granting IAM users required permissions for Application
+  Auto Scaling actions, see the Application Auto Scaling User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#delete_scaling_policy-2">delete_scaling_policy/2</a></td><td>Deletes the specified scaling policy for an Application Auto Scaling  
+scalable target.</td></tr>
+<tr><td valign="top"><a href="#delete_scaling_policy-3">delete_scaling_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_scheduled_action-2">delete_scheduled_action/2</a></td><td>Deletes the specified scheduled action for an Application Auto  
+Scaling scalable target.</td></tr>
+<tr><td valign="top"><a href="#delete_scheduled_action-3">delete_scheduled_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#deregister_scalable_target-2">deregister_scalable_target/2</a></td><td>Deregisters an Application Auto Scaling scalable target when you have  
+finished using it.</td></tr>
+<tr><td valign="top"><a href="#deregister_scalable_target-3">deregister_scalable_target/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_scalable_targets-2">describe_scalable_targets/2</a></td><td>Gets information about the scalable targets in the specified  
+namespace.</td></tr>
+<tr><td valign="top"><a href="#describe_scalable_targets-3">describe_scalable_targets/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_scaling_activities-2">describe_scaling_activities/2</a></td><td>Provides descriptive information about the scaling activities in the  
+specified namespace from the previous six weeks.</td></tr>
+<tr><td valign="top"><a href="#describe_scaling_activities-3">describe_scaling_activities/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_scaling_policies-2">describe_scaling_policies/2</a></td><td>Describes the Application Auto Scaling scaling policies for the  
+specified service namespace.</td></tr>
+<tr><td valign="top"><a href="#describe_scaling_policies-3">describe_scaling_policies/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_scheduled_actions-2">describe_scheduled_actions/2</a></td><td>Describes the Application Auto Scaling scheduled actions for the  
+specified service namespace.</td></tr>
+<tr><td valign="top"><a href="#describe_scheduled_actions-3">describe_scheduled_actions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_scaling_policy-2">put_scaling_policy/2</a></td><td>Creates or updates a scaling policy for an Application Auto Scaling  
+scalable target.</td></tr>
+<tr><td valign="top"><a href="#put_scaling_policy-3">put_scaling_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_scheduled_action-2">put_scheduled_action/2</a></td><td>Creates or updates a scheduled action for an Application Auto Scaling  
+scalable target.</td></tr>
+<tr><td valign="top"><a href="#put_scheduled_action-3">put_scheduled_action/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#register_scalable_target-2">register_scalable_target/2</a></td><td>Registers or updates a scalable target.</td></tr>
+<tr><td valign="top"><a href="#register_scalable_target-3">register_scalable_target/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="delete_scaling_policy-2">delete_scaling_policy/2</a></h3>
+<div class="spec">
+<p><tt>delete_scaling_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified scaling policy for an Application Auto Scaling  
+scalable target.</p>
+ 
+  <p>Deleting a step scaling policy deletes the underlying alarm action, but  
+does not delete the CloudWatch alarm associated with the scaling policy,  
+even if it no longer has an associated action.</p>
+ 
+  For more information, see Delete a Step Scaling Policy and Delete a Target
+  Tracking Scaling Policy in the Application Auto Scaling User Guide.</p>
+
+<h3 class="function"><a name="delete_scaling_policy-3">delete_scaling_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_scaling_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_scheduled_action-2">delete_scheduled_action/2</a></h3>
+<div class="spec">
+<p><tt>delete_scheduled_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified scheduled action for an Application Auto  
+Scaling scalable target.</p>
+ 
+  For more information, see Delete a Scheduled Action in the Application
+  Auto Scaling User Guide.</p>
+
+<h3 class="function"><a name="delete_scheduled_action-3">delete_scheduled_action/3</a></h3>
+<div class="spec">
+<p><tt>delete_scheduled_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="deregister_scalable_target-2">deregister_scalable_target/2</a></h3>
+<div class="spec">
+<p><tt>deregister_scalable_target(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deregisters an Application Auto Scaling scalable target when you have  
+finished using it.</p>
+ 
+  <p>To see which resources have been registered, use DescribeScalableTargets.</p>
+ 
+  Deregistering a scalable target deletes the scaling policies and the
+  scheduled actions that are associated with it.</p>
+
+<h3 class="function"><a name="deregister_scalable_target-3">deregister_scalable_target/3</a></h3>
+<div class="spec">
+<p><tt>deregister_scalable_target(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_scalable_targets-2">describe_scalable_targets/2</a></h3>
+<div class="spec">
+<p><tt>describe_scalable_targets(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the scalable targets in the specified  
+namespace.</p>
+ 
+  You can filter the results using <code>ResourceIds</code> and <code>ScalableDimension</code>.</p>
+
+<h3 class="function"><a name="describe_scalable_targets-3">describe_scalable_targets/3</a></h3>
+<div class="spec">
+<p><tt>describe_scalable_targets(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_scaling_activities-2">describe_scaling_activities/2</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_activities(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides descriptive information about the scaling activities in the  
+specified namespace from the previous six weeks.</p>
+ 
+  You can filter the results using <code>ResourceId</code> and <code>ScalableDimension</code>.</p>
+
+<h3 class="function"><a name="describe_scaling_activities-3">describe_scaling_activities/3</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_activities(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_scaling_policies-2">describe_scaling_policies/2</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_policies(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the Application Auto Scaling scaling policies for the  
+specified service namespace.</p>
+ 
+  <p>You can filter the results using <code>ResourceId</code>, <code>ScalableDimension</code>, and
+  <code>PolicyNames</code>.</p>
+ 
+  For more information, see Target Tracking Scaling Policies and Step
+  Scaling Policies in the Application Auto Scaling User Guide.</p>
+
+<h3 class="function"><a name="describe_scaling_policies-3">describe_scaling_policies/3</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_policies(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_scheduled_actions-2">describe_scheduled_actions/2</a></h3>
+<div class="spec">
+<p><tt>describe_scheduled_actions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the Application Auto Scaling scheduled actions for the  
+specified service namespace.</p>
+ 
+  <p>You can filter the results using the <code>ResourceId</code>, <code>ScalableDimension</code>,
+  and <code>ScheduledActionNames</code> parameters.</p>
+ 
+  For more information, see Scheduled Scaling in the Application Auto
+  Scaling User Guide.</p>
+
+<h3 class="function"><a name="describe_scheduled_actions-3">describe_scheduled_actions/3</a></h3>
+<div class="spec">
+<p><tt>describe_scheduled_actions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_scaling_policy-2">put_scaling_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_scaling_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or updates a scaling policy for an Application Auto Scaling  
+scalable target.</p>
+ 
+  <p>Each scalable target is identified by a service namespace, resource ID,  
+and scalable dimension. A scaling policy applies to the scalable target  
+identified by those three attributes. You cannot create a scaling policy  
+until you have registered the resource as a scalable target.</p>
+ 
+  <p>Multiple scaling policies can be in force at the same time for the same  
+scalable target. You can have one or more target tracking scaling  
+policies, one or more step scaling policies, or both. However, there is a  
+chance that multiple policies could conflict, instructing the scalable  
+target to scale out or in at the same time. Application Auto Scaling gives  
+precedence to the policy that provides the largest capacity for both scale  
+out and scale in. For example, if one policy increases capacity by 3,  
+another policy increases capacity by 200 percent, and the current capacity  
+is 10, Application Auto Scaling uses the policy with the highest  
+calculated capacity (200% of 10 = 20) and scales out to 30.</p>
+ 
+  <p>We recommend caution, however, when using target tracking scaling policies  
+with step scaling policies because conflicts between these policies can  
+cause undesirable behavior. For example, if the step scaling policy  
+initiates a scale-in activity before the target tracking policy is ready  
+to scale in, the scale-in activity will not be blocked. After the scale-in  
+activity completes, the target tracking policy could instruct the scalable  
+target to scale out again.</p>
+ 
+  <p>For more information, see Target Tracking Scaling Policies and Step  
+Scaling Policies in the Application Auto Scaling User Guide.</p>
+ 
+  If a scalable target is deregistered, the scalable target is no longer
+  available to execute scaling policies. Any scaling policies that were
+  specified for the scalable target are deleted.</p>
+
+<h3 class="function"><a name="put_scaling_policy-3">put_scaling_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_scaling_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_scheduled_action-2">put_scheduled_action/2</a></h3>
+<div class="spec">
+<p><tt>put_scheduled_action(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or updates a scheduled action for an Application Auto Scaling  
+scalable target.</p>
+ 
+  <p>Each scalable target is identified by a service namespace, resource ID,  
+and scalable dimension. A scheduled action applies to the scalable target  
+identified by those three attributes. You cannot create a scheduled action  
+until you have registered the resource as a scalable target.</p>
+ 
+  <p>When start and end times are specified with a recurring schedule using a  
+cron expression or rates, they form the boundaries of when the recurring  
+action starts and stops.</p>
+ 
+  <p>To update a scheduled action, specify the parameters that you want to  
+change. If you don't specify start and end times, the old values are  
+deleted.</p>
+ 
+  <p>For more information, see Scheduled Scaling in the Application Auto  
+Scaling User Guide.</p>
+ 
+  If a scalable target is deregistered, the scalable target is no longer
+  available to run scheduled actions. Any scheduled actions that were
+  specified for the scalable target are deleted.</p>
+
+<h3 class="function"><a name="put_scheduled_action-3">put_scheduled_action/3</a></h3>
+<div class="spec">
+<p><tt>put_scheduled_action(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="register_scalable_target-2">register_scalable_target/2</a></h3>
+<div class="spec">
+<p><tt>register_scalable_target(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Registers or updates a scalable target.</p>
+ 
+  <p>A scalable target is a resource that Application Auto Scaling can scale  
+out and scale in. Scalable targets are uniquely identified by the  
+combination of resource ID, scalable dimension, and namespace.</p>
+ 
+  <p>When you register a new scalable target, you must specify values for  
+minimum and maximum capacity. Current capacity will be adjusted within the  
+specified range when scaling starts. Application Auto Scaling scaling  
+policies will not scale capacity to values that are outside of this range.</p>
+ 
+  <p>After you register a scalable target, you do not need to register it again  
+to use other Application Auto Scaling operations. To see which resources  
+have been registered, use DescribeScalableTargets. You can also view the  
+scaling policies for a service namespace by using DescribeScalableTargets.  
+If you no longer need a scalable target, you can deregister it by using  
+DeregisterScalableTarget.</p>
+ 
+  To update a scalable target, specify the parameters that you want to
+  change. Include the parameters that identify the scalable target: resource
+  ID, scalable dimension, and namespace. Any parameters that you don't
+  specify are not changed by this update request.</p>
+
+<h3 class="function"><a name="register_scalable_target-3">register_scalable_target/3</a></h3>
+<div class="spec">
+<p><tt>register_scalable_target(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

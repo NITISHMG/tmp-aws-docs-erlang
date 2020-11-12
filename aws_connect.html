@@ -1,0 +1,901 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_connect</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_connect</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Connect is a cloud-based contact center solution that makes it  
+easy to set up and manage a customer contact center and provide reliable  
+customer engagement at any scale.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Connect is a cloud-based contact center solution that makes it  
+easy to set up and manage a customer contact center and provide reliable  
+customer engagement at any scale.</p>
+ 
+  <p>Amazon Connect provides rich metrics and real-time reporting that allow  
+you to optimize contact routing. You can also resolve customer issues more  
+efficiently by putting customers in touch with the right agents.</p>
+ 
+  <p>There are limits to the number of Amazon Connect resources that you can  
+create and limits to the number of requests that you can make per second.  
+For more information, see Amazon Connect Service Quotas in the Amazon  
+Connect Administrator Guide.</p>
+ 
+  <p>To connect programmatically to an AWS service, you use an endpoint. For a  
+list of Amazon Connect endpoints, see Amazon Connect Endpoints.</p>
+ 
+  Working with contact flows? Check out the Amazon Connect Flow language.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_routing_profile_queues-4">associate_routing_profile_queues/4</a></td><td>Associates a set of queues with a routing profile.</td></tr>
+<tr><td valign="top"><a href="#associate_routing_profile_queues-5">associate_routing_profile_queues/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_contact_flow-3">create_contact_flow/3</a></td><td>Creates a contact flow for the specified Amazon Connect instance.</td></tr>
+<tr><td valign="top"><a href="#create_contact_flow-4">create_contact_flow/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_routing_profile-3">create_routing_profile/3</a></td><td>Creates a new routing profile.</td></tr>
+<tr><td valign="top"><a href="#create_routing_profile-4">create_routing_profile/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user-3">create_user/3</a></td><td>Creates a user account for the specified Amazon Connect instance.</td></tr>
+<tr><td valign="top"><a href="#create_user-4">create_user/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user-4">delete_user/4</a></td><td>Deletes a user account from the specified Amazon Connect instance.</td></tr>
+<tr><td valign="top"><a href="#delete_user-5">delete_user/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_contact_flow-3">describe_contact_flow/3</a></td><td>Describes the specified contact flow.</td></tr>
+<tr><td valign="top"><a href="#describe_contact_flow-4">describe_contact_flow/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_routing_profile-3">describe_routing_profile/3</a></td><td>Describes the specified routing profile.</td></tr>
+<tr><td valign="top"><a href="#describe_routing_profile-4">describe_routing_profile/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user-3">describe_user/3</a></td><td>Describes the specified user account.</td></tr>
+<tr><td valign="top"><a href="#describe_user-4">describe_user/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_hierarchy_group-3">describe_user_hierarchy_group/3</a></td><td>Describes the specified hierarchy group.</td></tr>
+<tr><td valign="top"><a href="#describe_user_hierarchy_group-4">describe_user_hierarchy_group/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user_hierarchy_structure-2">describe_user_hierarchy_structure/2</a></td><td>Describes the hierarchy structure of the specified Amazon Connect
+  instance.</td></tr>
+<tr><td valign="top"><a href="#describe_user_hierarchy_structure-3">describe_user_hierarchy_structure/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_routing_profile_queues-4">disassociate_routing_profile_queues/4</a></td><td>Disassociates a set of queues from a routing profile.</td></tr>
+<tr><td valign="top"><a href="#disassociate_routing_profile_queues-5">disassociate_routing_profile_queues/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_contact_attributes-3">get_contact_attributes/3</a></td><td>Retrieves the contact attributes for the specified contact.</td></tr>
+<tr><td valign="top"><a href="#get_contact_attributes-4">get_contact_attributes/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_current_metric_data-3">get_current_metric_data/3</a></td><td>Gets the real-time metric data from the specified Amazon Connect  
+instance.</td></tr>
+<tr><td valign="top"><a href="#get_current_metric_data-4">get_current_metric_data/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_federation_token-2">get_federation_token/2</a></td><td>Retrieves a token for federation.</td></tr>
+<tr><td valign="top"><a href="#get_federation_token-3">get_federation_token/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_metric_data-3">get_metric_data/3</a></td><td>Gets historical metric data from the specified Amazon Connect  
+instance.</td></tr>
+<tr><td valign="top"><a href="#get_metric_data-4">get_metric_data/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_contact_flows-5">list_contact_flows/5</a></td><td>Provides information about the contact flows for the specified Amazon  
+Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_contact_flows-6">list_contact_flows/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_hours_of_operations-4">list_hours_of_operations/4</a></td><td>Provides information about the hours of operation for the specified  
+Amazon Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_hours_of_operations-5">list_hours_of_operations/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_phone_numbers-6">list_phone_numbers/6</a></td><td>Provides information about the phone numbers for the specified Amazon  
+Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_phone_numbers-7">list_phone_numbers/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_prompts-4">list_prompts/4</a></td><td>Provides information about the prompts for the specified Amazon
+  Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_prompts-5">list_prompts/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_queues-5">list_queues/5</a></td><td>Provides information about the queues for the specified Amazon  
+Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_queues-6">list_queues/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_routing_profile_queues-5">list_routing_profile_queues/5</a></td><td>List the queues associated with a routing profile.</td></tr>
+<tr><td valign="top"><a href="#list_routing_profile_queues-6">list_routing_profile_queues/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_routing_profiles-4">list_routing_profiles/4</a></td><td>Provides summary information about the routing profiles for the  
+specified Amazon Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_routing_profiles-5">list_routing_profiles/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_security_profiles-4">list_security_profiles/4</a></td><td>Provides summary information about the security profiles for the  
+specified Amazon Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_security_profiles-5">list_security_profiles/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags for the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_user_hierarchy_groups-4">list_user_hierarchy_groups/4</a></td><td>Provides summary information about the hierarchy groups for the  
+specified Amazon Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_user_hierarchy_groups-5">list_user_hierarchy_groups/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_users-4">list_users/4</a></td><td>Provides summary information about the users for the specified Amazon
+  Connect instance.</td></tr>
+<tr><td valign="top"><a href="#list_users-5">list_users/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#resume_contact_recording-2">resume_contact_recording/2</a></td><td>When a contact is being recorded, and the recording has been  
+suspended using SuspendContactRecording, this API resumes recording the  
+call.</td></tr>
+<tr><td valign="top"><a href="#resume_contact_recording-3">resume_contact_recording/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_chat_contact-2">start_chat_contact/2</a></td><td>Initiates a contact flow to start a new chat for the customer.</td></tr>
+<tr><td valign="top"><a href="#start_chat_contact-3">start_chat_contact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_contact_recording-2">start_contact_recording/2</a></td><td>This API starts recording the contact when the agent joins the call.</td></tr>
+<tr><td valign="top"><a href="#start_contact_recording-3">start_contact_recording/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_outbound_voice_contact-2">start_outbound_voice_contact/2</a></td><td>This API places an outbound call to a contact, and then initiates the  
+contact flow.</td></tr>
+<tr><td valign="top"><a href="#start_outbound_voice_contact-3">start_outbound_voice_contact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_contact-2">stop_contact/2</a></td><td>Ends the specified contact.</td></tr>
+<tr><td valign="top"><a href="#stop_contact-3">stop_contact/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_contact_recording-2">stop_contact_recording/2</a></td><td>When a contact is being recorded, this API stops recording the call.</td></tr>
+<tr><td valign="top"><a href="#stop_contact_recording-3">stop_contact_recording/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#suspend_contact_recording-2">suspend_contact_recording/2</a></td><td>When a contact is being recorded, this API suspends recording the  
+call.</td></tr>
+<tr><td valign="top"><a href="#suspend_contact_recording-3">suspend_contact_recording/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds the specified tags to the specified resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes the specified tags from the specified resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_contact_attributes-2">update_contact_attributes/2</a></td><td>Creates or updates the contact attributes associated with the  
+specified contact.</td></tr>
+<tr><td valign="top"><a href="#update_contact_attributes-3">update_contact_attributes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_contact_flow_content-4">update_contact_flow_content/4</a></td><td>Updates the specified contact flow.</td></tr>
+<tr><td valign="top"><a href="#update_contact_flow_content-5">update_contact_flow_content/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_contact_flow_name-4">update_contact_flow_name/4</a></td><td>The name of the contact flow.</td></tr>
+<tr><td valign="top"><a href="#update_contact_flow_name-5">update_contact_flow_name/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_routing_profile_concurrency-4">update_routing_profile_concurrency/4</a></td><td>Updates the channels that agents can handle in the Contact Control
+  Panel (CCP) for a routing profile.</td></tr>
+<tr><td valign="top"><a href="#update_routing_profile_concurrency-5">update_routing_profile_concurrency/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_routing_profile_default_outbound_queue-4">update_routing_profile_default_outbound_queue/4</a></td><td>Updates the default outbound queue of a routing profile.</td></tr>
+<tr><td valign="top"><a href="#update_routing_profile_default_outbound_queue-5">update_routing_profile_default_outbound_queue/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_routing_profile_name-4">update_routing_profile_name/4</a></td><td>Updates the name and description of a routing profile.</td></tr>
+<tr><td valign="top"><a href="#update_routing_profile_name-5">update_routing_profile_name/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_routing_profile_queues-4">update_routing_profile_queues/4</a></td><td>Updates the properties associated with a set of queues for a routing
+  profile.</td></tr>
+<tr><td valign="top"><a href="#update_routing_profile_queues-5">update_routing_profile_queues/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_hierarchy-4">update_user_hierarchy/4</a></td><td>Assigns the specified hierarchy group to the specified user.</td></tr>
+<tr><td valign="top"><a href="#update_user_hierarchy-5">update_user_hierarchy/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_identity_info-4">update_user_identity_info/4</a></td><td>Updates the identity information for the specified user.</td></tr>
+<tr><td valign="top"><a href="#update_user_identity_info-5">update_user_identity_info/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_phone_config-4">update_user_phone_config/4</a></td><td>Updates the phone configuration settings for the specified user.</td></tr>
+<tr><td valign="top"><a href="#update_user_phone_config-5">update_user_phone_config/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_routing_profile-4">update_user_routing_profile/4</a></td><td>Assigns the specified routing profile to the specified user.</td></tr>
+<tr><td valign="top"><a href="#update_user_routing_profile-5">update_user_routing_profile/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user_security_profiles-4">update_user_security_profiles/4</a></td><td>Assigns the specified security profiles to the specified user.</td></tr>
+<tr><td valign="top"><a href="#update_user_security_profiles-5">update_user_security_profiles/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_routing_profile_queues-4">associate_routing_profile_queues/4</a></h3>
+<div class="spec">
+<p><tt>associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a set of queues with a routing profile.</p>
+
+<h3 class="function"><a name="associate_routing_profile_queues-5">associate_routing_profile_queues/5</a></h3>
+<div class="spec">
+<p><tt>associate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_contact_flow-3">create_contact_flow/3</a></h3>
+<div class="spec">
+<p><tt>create_contact_flow(Client, InstanceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a contact flow for the specified Amazon Connect instance.</p>
+ 
+  You can also create and update contact flows using the Amazon Connect Flow
+  language.</p>
+
+<h3 class="function"><a name="create_contact_flow-4">create_contact_flow/4</a></h3>
+<div class="spec">
+<p><tt>create_contact_flow(Client, InstanceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_routing_profile-3">create_routing_profile/3</a></h3>
+<div class="spec">
+<p><tt>create_routing_profile(Client, InstanceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new routing profile.</p>
+
+<h3 class="function"><a name="create_routing_profile-4">create_routing_profile/4</a></h3>
+<div class="spec">
+<p><tt>create_routing_profile(Client, InstanceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user-3">create_user/3</a></h3>
+<div class="spec">
+<p><tt>create_user(Client, InstanceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a user account for the specified Amazon Connect instance.</p>
+ 
+  For information about how to create user accounts using the Amazon Connect
+  console, see Add Users in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="create_user-4">create_user/4</a></h3>
+<div class="spec">
+<p><tt>create_user(Client, InstanceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user-4">delete_user/4</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, InstanceId, UserId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a user account from the specified Amazon Connect instance.</p>
+ 
+  For information about what happens to a user's data when their account is
+  deleted, see Delete Users from Your Amazon Connect Instance in the Amazon
+  Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="delete_user-5">delete_user/5</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, InstanceId, UserId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_contact_flow-3">describe_contact_flow/3</a></h3>
+<div class="spec">
+<p><tt>describe_contact_flow(Client, ContactFlowId, InstanceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the specified contact flow.</p>
+ 
+  You can also create and update contact flows using the Amazon Connect Flow
+  language.</p>
+
+<h3 class="function"><a name="describe_contact_flow-4">describe_contact_flow/4</a></h3>
+<div class="spec">
+<p><tt>describe_contact_flow(Client, ContactFlowId, InstanceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_routing_profile-3">describe_routing_profile/3</a></h3>
+<div class="spec">
+<p><tt>describe_routing_profile(Client, InstanceId, RoutingProfileId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the specified routing profile.</p>
+
+<h3 class="function"><a name="describe_routing_profile-4">describe_routing_profile/4</a></h3>
+<div class="spec">
+<p><tt>describe_routing_profile(Client, InstanceId, RoutingProfileId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user-3">describe_user/3</a></h3>
+<div class="spec">
+<p><tt>describe_user(Client, InstanceId, UserId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the specified user account.</p>
+ 
+  You can find the instance ID in the console (it’s the final part of the
+  ARN). The console does not display the user IDs. Instead, list the users
+  and note the IDs provided in the output.</p>
+
+<h3 class="function"><a name="describe_user-4">describe_user/4</a></h3>
+<div class="spec">
+<p><tt>describe_user(Client, InstanceId, UserId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_hierarchy_group-3">describe_user_hierarchy_group/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the specified hierarchy group.</p>
+
+<h3 class="function"><a name="describe_user_hierarchy_group-4">describe_user_hierarchy_group/4</a></h3>
+<div class="spec">
+<p><tt>describe_user_hierarchy_group(Client, HierarchyGroupId, InstanceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user_hierarchy_structure-2">describe_user_hierarchy_structure/2</a></h3>
+<div class="spec">
+<p><tt>describe_user_hierarchy_structure(Client, InstanceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the hierarchy structure of the specified Amazon Connect
+  instance.</p>
+
+<h3 class="function"><a name="describe_user_hierarchy_structure-3">describe_user_hierarchy_structure/3</a></h3>
+<div class="spec">
+<p><tt>describe_user_hierarchy_structure(Client, InstanceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_routing_profile_queues-4">disassociate_routing_profile_queues/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates a set of queues from a routing profile.</p>
+
+<h3 class="function"><a name="disassociate_routing_profile_queues-5">disassociate_routing_profile_queues/5</a></h3>
+<div class="spec">
+<p><tt>disassociate_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_contact_attributes-3">get_contact_attributes/3</a></h3>
+<div class="spec">
+<p><tt>get_contact_attributes(Client, InitialContactId, InstanceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the contact attributes for the specified contact.</p>
+
+<h3 class="function"><a name="get_contact_attributes-4">get_contact_attributes/4</a></h3>
+<div class="spec">
+<p><tt>get_contact_attributes(Client, InitialContactId, InstanceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_current_metric_data-3">get_current_metric_data/3</a></h3>
+<div class="spec">
+<p><tt>get_current_metric_data(Client, InstanceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the real-time metric data from the specified Amazon Connect  
+instance.</p>
+ 
+  For a description of each metric, see Real-time Metrics Definitions in the
+  Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="get_current_metric_data-4">get_current_metric_data/4</a></h3>
+<div class="spec">
+<p><tt>get_current_metric_data(Client, InstanceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_federation_token-2">get_federation_token/2</a></h3>
+<div class="spec">
+<p><tt>get_federation_token(Client, InstanceId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a token for federation.</p>
+
+<h3 class="function"><a name="get_federation_token-3">get_federation_token/3</a></h3>
+<div class="spec">
+<p><tt>get_federation_token(Client, InstanceId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_metric_data-3">get_metric_data/3</a></h3>
+<div class="spec">
+<p><tt>get_metric_data(Client, InstanceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets historical metric data from the specified Amazon Connect  
+instance.</p>
+ 
+  For a description of each historical metric, see Historical Metrics
+  Definitions in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="get_metric_data-4">get_metric_data/4</a></h3>
+<div class="spec">
+<p><tt>get_metric_data(Client, InstanceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_contact_flows-5">list_contact_flows/5</a></h3>
+<div class="spec">
+<p><tt>list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides information about the contact flows for the specified Amazon  
+Connect instance.</p>
+ 
+  <p>You can also create and update contact flows using the Amazon Connect Flow  
+language.</p>
+ 
+  For more information about contact flows, see Contact Flows in the Amazon
+  Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="list_contact_flows-6">list_contact_flows/6</a></h3>
+<div class="spec">
+<p><tt>list_contact_flows(Client, InstanceId, ContactFlowTypes, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_hours_of_operations-4">list_hours_of_operations/4</a></h3>
+<div class="spec">
+<p><tt>list_hours_of_operations(Client, InstanceId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides information about the hours of operation for the specified  
+Amazon Connect instance.</p>
+ 
+  For more information about hours of operation, see Set the Hours of
+  Operation for a Queue in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="list_hours_of_operations-5">list_hours_of_operations/5</a></h3>
+<div class="spec">
+<p><tt>list_hours_of_operations(Client, InstanceId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_phone_numbers-6">list_phone_numbers/6</a></h3>
+<div class="spec">
+<p><tt>list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides information about the phone numbers for the specified Amazon  
+Connect instance.</p>
+ 
+  For more information about phone numbers, see Set Up Phone Numbers for
+  Your Contact Center in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="list_phone_numbers-7">list_phone_numbers/7</a></h3>
+<div class="spec">
+<p><tt>list_phone_numbers(Client, InstanceId, MaxResults, NextToken, PhoneNumberCountryCodes, PhoneNumberTypes, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_prompts-4">list_prompts/4</a></h3>
+<div class="spec">
+<p><tt>list_prompts(Client, InstanceId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides information about the prompts for the specified Amazon
+  Connect instance.</p>
+
+<h3 class="function"><a name="list_prompts-5">list_prompts/5</a></h3>
+<div class="spec">
+<p><tt>list_prompts(Client, InstanceId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_queues-5">list_queues/5</a></h3>
+<div class="spec">
+<p><tt>list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides information about the queues for the specified Amazon  
+Connect instance.</p>
+ 
+  For more information about queues, see Queues: Standard and Agent in the
+  Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="list_queues-6">list_queues/6</a></h3>
+<div class="spec">
+<p><tt>list_queues(Client, InstanceId, MaxResults, NextToken, QueueTypes, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_routing_profile_queues-5">list_routing_profile_queues/5</a></h3>
+<div class="spec">
+<p><tt>list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List the queues associated with a routing profile.</p>
+
+<h3 class="function"><a name="list_routing_profile_queues-6">list_routing_profile_queues/6</a></h3>
+<div class="spec">
+<p><tt>list_routing_profile_queues(Client, InstanceId, RoutingProfileId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_routing_profiles-4">list_routing_profiles/4</a></h3>
+<div class="spec">
+<p><tt>list_routing_profiles(Client, InstanceId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides summary information about the routing profiles for the  
+specified Amazon Connect instance.</p>
+ 
+  For more information about routing profiles, see Routing Profiles and
+  Create a Routing Profile in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="list_routing_profiles-5">list_routing_profiles/5</a></h3>
+<div class="spec">
+<p><tt>list_routing_profiles(Client, InstanceId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_security_profiles-4">list_security_profiles/4</a></h3>
+<div class="spec">
+<p><tt>list_security_profiles(Client, InstanceId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides summary information about the security profiles for the  
+specified Amazon Connect instance.</p>
+ 
+  For more information about security profiles, see Security Profiles in the
+  Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="list_security_profiles-5">list_security_profiles/5</a></h3>
+<div class="spec">
+<p><tt>list_security_profiles(Client, InstanceId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the tags for the specified resource.</p>
+ 
+  For sample policies that use tags, see Amazon Connect Identity-Based
+  Policy Examples in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_user_hierarchy_groups-4">list_user_hierarchy_groups/4</a></h3>
+<div class="spec">
+<p><tt>list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides summary information about the hierarchy groups for the  
+specified Amazon Connect instance.</p>
+ 
+  For more information about agent hierarchies, see Set Up Agent Hierarchies
+  in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="list_user_hierarchy_groups-5">list_user_hierarchy_groups/5</a></h3>
+<div class="spec">
+<p><tt>list_user_hierarchy_groups(Client, InstanceId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_users-4">list_users/4</a></h3>
+<div class="spec">
+<p><tt>list_users(Client, InstanceId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides summary information about the users for the specified Amazon
+  Connect instance.</p>
+
+<h3 class="function"><a name="list_users-5">list_users/5</a></h3>
+<div class="spec">
+<p><tt>list_users(Client, InstanceId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="resume_contact_recording-2">resume_contact_recording/2</a></h3>
+<div class="spec">
+<p><tt>resume_contact_recording(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>When a contact is being recorded, and the recording has been  
+suspended using SuspendContactRecording, this API resumes recording the  
+call.</p>
+ 
+  Only voice recordings are supported at this time.</p>
+
+<h3 class="function"><a name="resume_contact_recording-3">resume_contact_recording/3</a></h3>
+<div class="spec">
+<p><tt>resume_contact_recording(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_chat_contact-2">start_chat_contact/2</a></h3>
+<div class="spec">
+<p><tt>start_chat_contact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Initiates a contact flow to start a new chat for the customer.</p>
+ 
+  <p>Response of this API provides a token required to obtain credentials from  
+the CreateParticipantConnection API in the Amazon Connect Participant  
+Service.</p>
+ 
+  <p>When a new chat contact is successfully created, clients need to subscribe  
+to the participant’s connection for the created chat within 5 minutes.  
+This is achieved by invoking CreateParticipantConnection with WEBSOCKET  
+and CONNECTION_CREDENTIALS.</p>
+ 
+  <p>A 429 error occurs in two situations:</p>
+ 
+  <ul> <li><p> API rate limit is exceeded. API TPS throttling returns a
+  <code>TooManyRequests</code> exception from the API Gateway.</p>
+ 
+  </li> <li><p> The quota for concurrent active chats is exceeded. Active chat
+  throttling returns a <code>LimitExceededException</code>.</p>
+ 
+  </li> </ul> For more information about how chat works, see Chat in the
+  Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="start_chat_contact-3">start_chat_contact/3</a></h3>
+<div class="spec">
+<p><tt>start_chat_contact(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_contact_recording-2">start_contact_recording/2</a></h3>
+<div class="spec">
+<p><tt>start_contact_recording(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API starts recording the contact when the agent joins the call.</p>
+ 
+  <p>StartContactRecording is a one-time action. For example, if you use  
+StopContactRecording to stop recording an ongoing call, you can't use  
+StartContactRecording to restart it. For scenarios where the recording has  
+started and you want to suspend and resume it, such as when collecting  
+sensitive information (for example, a credit card number), use  
+SuspendContactRecording and ResumeContactRecording.</p>
+ 
+  <p>You can use this API to override the recording behavior configured in the  
+Set recording behavior block.</p>
+ 
+  Only voice recordings are supported at this time.</p>
+
+<h3 class="function"><a name="start_contact_recording-3">start_contact_recording/3</a></h3>
+<div class="spec">
+<p><tt>start_contact_recording(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_outbound_voice_contact-2">start_outbound_voice_contact/2</a></h3>
+<div class="spec">
+<p><tt>start_outbound_voice_contact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API places an outbound call to a contact, and then initiates the  
+contact flow.</p>
+ 
+  <p>It performs the actions in the contact flow that's specified (in
+  <code>ContactFlowId</code>).</p>
+ 
+  <p>Agents are not involved in initiating the outbound API (that is, dialing  
+the contact). If the contact flow places an outbound call to a contact,  
+and then puts the contact in queue, that's when the call is routed to the  
+agent, like any other inbound case.</p>
+ 
+  <p>There is a 60 second dialing timeout for this operation. If the call is  
+not connected after 60 seconds, it fails.</p>
+ 
+  UK numbers with a 447 prefix are not allowed by default. Before you can
+  dial these UK mobile numbers, you must submit a service quota increase
+  request. For more information, see Amazon Connect Service Quotas in the
+  Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="start_outbound_voice_contact-3">start_outbound_voice_contact/3</a></h3>
+<div class="spec">
+<p><tt>start_outbound_voice_contact(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_contact-2">stop_contact/2</a></h3>
+<div class="spec">
+<p><tt>stop_contact(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Ends the specified contact.</p>
+
+<h3 class="function"><a name="stop_contact-3">stop_contact/3</a></h3>
+<div class="spec">
+<p><tt>stop_contact(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_contact_recording-2">stop_contact_recording/2</a></h3>
+<div class="spec">
+<p><tt>stop_contact_recording(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>When a contact is being recorded, this API stops recording the call.</p>
+ 
+  <p>StopContactRecording is a one-time action. If you use StopContactRecording  
+to stop recording an ongoing call, you can't use StartContactRecording to  
+restart it. For scenarios where the recording has started and you want to  
+suspend it for sensitive information (for example, to collect a credit  
+card number), and then restart it, use SuspendContactRecording and  
+ResumeContactRecording.</p>
+ 
+  Only voice recordings are supported at this time.</p>
+
+<h3 class="function"><a name="stop_contact_recording-3">stop_contact_recording/3</a></h3>
+<div class="spec">
+<p><tt>stop_contact_recording(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="suspend_contact_recording-2">suspend_contact_recording/2</a></h3>
+<div class="spec">
+<p><tt>suspend_contact_recording(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>When a contact is being recorded, this API suspends recording the  
+call.</p>
+ 
+  <p>For example, you might suspend the call recording while collecting  
+sensitive information, such as a credit card number. Then use  
+ResumeContactRecording to restart recording.</p>
+ 
+  <p>The period of time that the recording is suspended is filled with silence  
+in the final recording.</p>
+ 
+  Only voice recordings are supported at this time.</p>
+
+<h3 class="function"><a name="suspend_contact_recording-3">suspend_contact_recording/3</a></h3>
+<div class="spec">
+<p><tt>suspend_contact_recording(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds the specified tags to the specified resource.</p>
+ 
+  <p>The supported resource types are users, routing profiles, and contact  
+flows.</p>
+ 
+  For sample policies that use tags, see Amazon Connect Identity-Based
+  Policy Examples in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the specified tags from the specified resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_contact_attributes-2">update_contact_attributes/2</a></h3>
+<div class="spec">
+<p><tt>update_contact_attributes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or updates the contact attributes associated with the  
+specified contact.</p>
+ 
+  <p>You can add or update attributes for both ongoing and completed contacts.  
+For example, you can update the customer's name or the reason the customer  
+called while the call is active, or add notes about steps that the agent  
+took during the call that are displayed to the next agent that takes the  
+call. You can also update attributes for a contact using data from your  
+CRM application and save the data with the contact in Amazon Connect. You  
+could also flag calls for additional analysis, such as legal review or  
+identifying abusive callers.</p>
+ 
+  <p>Contact attributes are available in Amazon Connect for 24 months, and are  
+then deleted.</p>
+ 
+  <p>This operation is also available in the Amazon Connect Flow language. See  
+UpdateContactAttributes.</p>
+ 
+  Important: You cannot use the operation to update attributes for contacts
+  that occurred prior to the release of the API, September 12, 2018. You can
+  update attributes only for contacts that started after the release of the
+  API. If you attempt to update attributes for a contact that occurred prior
+  to the release of the API, a 400 error is returned. This applies also to
+  queued callbacks that were initiated prior to the release of the API but
+  are still active in your instance.</p>
+
+<h3 class="function"><a name="update_contact_attributes-3">update_contact_attributes/3</a></h3>
+<div class="spec">
+<p><tt>update_contact_attributes(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_contact_flow_content-4">update_contact_flow_content/4</a></h3>
+<div class="spec">
+<p><tt>update_contact_flow_content(Client, ContactFlowId, InstanceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the specified contact flow.</p>
+ 
+  You can also create and update contact flows using the Amazon Connect Flow
+  language.</p>
+
+<h3 class="function"><a name="update_contact_flow_content-5">update_contact_flow_content/5</a></h3>
+<div class="spec">
+<p><tt>update_contact_flow_content(Client, ContactFlowId, InstanceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_contact_flow_name-4">update_contact_flow_name/4</a></h3>
+<div class="spec">
+<p><tt>update_contact_flow_name(Client, ContactFlowId, InstanceId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The name of the contact flow.</p>
+
+<h3 class="function"><a name="update_contact_flow_name-5">update_contact_flow_name/5</a></h3>
+<div class="spec">
+<p><tt>update_contact_flow_name(Client, ContactFlowId, InstanceId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_routing_profile_concurrency-4">update_routing_profile_concurrency/4</a></h3>
+<div class="spec">
+<p><tt>update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the channels that agents can handle in the Contact Control
+  Panel (CCP) for a routing profile.</p>
+
+<h3 class="function"><a name="update_routing_profile_concurrency-5">update_routing_profile_concurrency/5</a></h3>
+<div class="spec">
+<p><tt>update_routing_profile_concurrency(Client, InstanceId, RoutingProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_routing_profile_default_outbound_queue-4">update_routing_profile_default_outbound_queue/4</a></h3>
+<div class="spec">
+<p><tt>update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the default outbound queue of a routing profile.</p>
+
+<h3 class="function"><a name="update_routing_profile_default_outbound_queue-5">update_routing_profile_default_outbound_queue/5</a></h3>
+<div class="spec">
+<p><tt>update_routing_profile_default_outbound_queue(Client, InstanceId, RoutingProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_routing_profile_name-4">update_routing_profile_name/4</a></h3>
+<div class="spec">
+<p><tt>update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the name and description of a routing profile.</p>
+ 
+  The request accepts the following data in JSON format. At least <code>Name</code> or
+  <code>Description</code> must be provided.</p>
+
+<h3 class="function"><a name="update_routing_profile_name-5">update_routing_profile_name/5</a></h3>
+<div class="spec">
+<p><tt>update_routing_profile_name(Client, InstanceId, RoutingProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_routing_profile_queues-4">update_routing_profile_queues/4</a></h3>
+<div class="spec">
+<p><tt>update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the properties associated with a set of queues for a routing
+  profile.</p>
+
+<h3 class="function"><a name="update_routing_profile_queues-5">update_routing_profile_queues/5</a></h3>
+<div class="spec">
+<p><tt>update_routing_profile_queues(Client, InstanceId, RoutingProfileId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_hierarchy-4">update_user_hierarchy/4</a></h3>
+<div class="spec">
+<p><tt>update_user_hierarchy(Client, InstanceId, UserId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Assigns the specified hierarchy group to the specified user.</p>
+
+<h3 class="function"><a name="update_user_hierarchy-5">update_user_hierarchy/5</a></h3>
+<div class="spec">
+<p><tt>update_user_hierarchy(Client, InstanceId, UserId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_identity_info-4">update_user_identity_info/4</a></h3>
+<div class="spec">
+<p><tt>update_user_identity_info(Client, InstanceId, UserId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the identity information for the specified user.</p>
+ 
+  Someone with the ability to invoke <code>UpdateUserIndentityInfo</code> can change
+  the login credentials of other users by changing their email address. This
+  poses a security risk to your organization. They can change the email
+  address of a user to the attacker's email address, and then reset the
+  password through email. We strongly recommend limiting who has the ability
+  to invoke <code>UpdateUserIndentityInfo</code>. For more information, see Best
+  Practices for Security Profiles in the Amazon Connect Administrator Guide.</p>
+
+<h3 class="function"><a name="update_user_identity_info-5">update_user_identity_info/5</a></h3>
+<div class="spec">
+<p><tt>update_user_identity_info(Client, InstanceId, UserId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_phone_config-4">update_user_phone_config/4</a></h3>
+<div class="spec">
+<p><tt>update_user_phone_config(Client, InstanceId, UserId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the phone configuration settings for the specified user.</p>
+
+<h3 class="function"><a name="update_user_phone_config-5">update_user_phone_config/5</a></h3>
+<div class="spec">
+<p><tt>update_user_phone_config(Client, InstanceId, UserId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_routing_profile-4">update_user_routing_profile/4</a></h3>
+<div class="spec">
+<p><tt>update_user_routing_profile(Client, InstanceId, UserId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Assigns the specified routing profile to the specified user.</p>
+
+<h3 class="function"><a name="update_user_routing_profile-5">update_user_routing_profile/5</a></h3>
+<div class="spec">
+<p><tt>update_user_routing_profile(Client, InstanceId, UserId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user_security_profiles-4">update_user_security_profiles/4</a></h3>
+<div class="spec">
+<p><tt>update_user_security_profiles(Client, InstanceId, UserId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Assigns the specified security profiles to the specified user.</p>
+
+<h3 class="function"><a name="update_user_security_profiles-5">update_user_security_profiles/5</a></h3>
+<div class="spec">
+<p><tt>update_user_security_profiles(Client, InstanceId, UserId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

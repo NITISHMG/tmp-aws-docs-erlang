@@ -1,0 +1,527 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_kinesis_analytics_v2</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_kinesis_analytics_v2</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Kinesis Data Analytics is a fully managed service that you can  
+use to process and analyze streaming data using Java, SQL, or Scala.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Kinesis Data Analytics is a fully managed service that you can  
+use to process and analyze streaming data using Java, SQL, or Scala.</p>
+ 
+  The service enables you to quickly author and run Java, SQL, or Scala code
+  against streaming sources to perform time series analytics, feed real-time
+  dashboards, and create real-time metrics.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#add_application_cloud_watch_logging_option-2">add_application_cloud_watch_logging_option/2</a></td><td>Adds an Amazon CloudWatch log stream to monitor application
+  configuration errors.</td></tr>
+<tr><td valign="top"><a href="#add_application_cloud_watch_logging_option-3">add_application_cloud_watch_logging_option/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_application_input-2">add_application_input/2</a></td><td>Adds a streaming source to your SQL-based Kinesis Data Analytics  
+application.</td></tr>
+<tr><td valign="top"><a href="#add_application_input-3">add_application_input/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_application_input_processing_configuration-2">add_application_input_processing_configuration/2</a></td><td>Adds an <code>InputProcessingConfiguration</code> to a SQL-based Kinesis Data  
+Analytics application.</td></tr>
+<tr><td valign="top"><a href="#add_application_input_processing_configuration-3">add_application_input_processing_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_application_output-2">add_application_output/2</a></td><td>Adds an external destination to your SQL-based Kinesis Data Analytics  
+application.</td></tr>
+<tr><td valign="top"><a href="#add_application_output-3">add_application_output/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_application_reference_data_source-2">add_application_reference_data_source/2</a></td><td>Adds a reference data source to an existing SQL-based Kinesis Data  
+Analytics application.</td></tr>
+<tr><td valign="top"><a href="#add_application_reference_data_source-3">add_application_reference_data_source/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#add_application_vpc_configuration-2">add_application_vpc_configuration/2</a></td><td>Adds a Virtual Private Cloud (VPC) configuration to the application.</td></tr>
+<tr><td valign="top"><a href="#add_application_vpc_configuration-3">add_application_vpc_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_application-2">create_application/2</a></td><td>Creates a Kinesis Data Analytics application.</td></tr>
+<tr><td valign="top"><a href="#create_application-3">create_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_application_snapshot-2">create_application_snapshot/2</a></td><td>Creates a snapshot of the application's state data.</td></tr>
+<tr><td valign="top"><a href="#create_application_snapshot-3">create_application_snapshot/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application-2">delete_application/2</a></td><td>Deletes the specified application.</td></tr>
+<tr><td valign="top"><a href="#delete_application-3">delete_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application_cloud_watch_logging_option-2">delete_application_cloud_watch_logging_option/2</a></td><td>Deletes an Amazon CloudWatch log stream from an Kinesis Data
+  Analytics application.</td></tr>
+<tr><td valign="top"><a href="#delete_application_cloud_watch_logging_option-3">delete_application_cloud_watch_logging_option/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application_input_processing_configuration-2">delete_application_input_processing_configuration/2</a></td><td>Deletes an <code>InputProcessingConfiguration</code> from an input.</td></tr>
+<tr><td valign="top"><a href="#delete_application_input_processing_configuration-3">delete_application_input_processing_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application_output-2">delete_application_output/2</a></td><td>Deletes the output destination configuration from your SQL-based  
+Kinesis Data Analytics application's configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_application_output-3">delete_application_output/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application_reference_data_source-2">delete_application_reference_data_source/2</a></td><td>Deletes a reference data source configuration from the specified  
+SQL-based Kinesis Data Analytics application's configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_application_reference_data_source-3">delete_application_reference_data_source/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application_snapshot-2">delete_application_snapshot/2</a></td><td>Deletes a snapshot of application state.</td></tr>
+<tr><td valign="top"><a href="#delete_application_snapshot-3">delete_application_snapshot/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_application_vpc_configuration-2">delete_application_vpc_configuration/2</a></td><td>Removes a VPC configuration from a Kinesis Data Analytics
+  application.</td></tr>
+<tr><td valign="top"><a href="#delete_application_vpc_configuration-3">delete_application_vpc_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_application-2">describe_application/2</a></td><td>Returns information about a specific Kinesis Data Analytics  
+application.</td></tr>
+<tr><td valign="top"><a href="#describe_application-3">describe_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_application_snapshot-2">describe_application_snapshot/2</a></td><td>Returns information about a snapshot of application state data.</td></tr>
+<tr><td valign="top"><a href="#describe_application_snapshot-3">describe_application_snapshot/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#discover_input_schema-2">discover_input_schema/2</a></td><td>Infers a schema for a SQL-based Kinesis Data Analytics application by  
+evaluating sample records on the specified streaming source (Kinesis data  
+stream or Kinesis Data Firehose delivery stream) or Amazon S3 object.</td></tr>
+<tr><td valign="top"><a href="#discover_input_schema-3">discover_input_schema/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_application_snapshots-2">list_application_snapshots/2</a></td><td>Lists information about the current application snapshots.</td></tr>
+<tr><td valign="top"><a href="#list_application_snapshots-3">list_application_snapshots/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_applications-2">list_applications/2</a></td><td>Returns a list of Kinesis Data Analytics applications in your  
+account.</td></tr>
+<tr><td valign="top"><a href="#list_applications-3">list_applications/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieves the list of key-value tags assigned to the application.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_application-2">start_application/2</a></td><td>Starts the specified Kinesis Data Analytics application.</td></tr>
+<tr><td valign="top"><a href="#start_application-3">start_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_application-2">stop_application/2</a></td><td>Stops the application from processing data.</td></tr>
+<tr><td valign="top"><a href="#stop_application-3">stop_application/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds one or more key-value tags to a Kinesis Data Analytics  
+application.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes one or more tags from a Kinesis Data Analytics application.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_application-2">update_application/2</a></td><td>Updates an existing Kinesis Data Analytics application.</td></tr>
+<tr><td valign="top"><a href="#update_application-3">update_application/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="add_application_cloud_watch_logging_option-2">add_application_cloud_watch_logging_option/2</a></h3>
+<div class="spec">
+<p><tt>add_application_cloud_watch_logging_option(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds an Amazon CloudWatch log stream to monitor application
+  configuration errors.</p>
+
+<h3 class="function"><a name="add_application_cloud_watch_logging_option-3">add_application_cloud_watch_logging_option/3</a></h3>
+<div class="spec">
+<p><tt>add_application_cloud_watch_logging_option(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_application_input-2">add_application_input/2</a></h3>
+<div class="spec">
+<p><tt>add_application_input(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds a streaming source to your SQL-based Kinesis Data Analytics  
+application.</p>
+ 
+  <p>You can add a streaming source when you create an application, or you can
+  use this operation to add a streaming source after you create an
+  application. For more information, see <code>CreateApplication</code>.</p>
+ 
+  Any configuration update, including adding a streaming source using this
+  operation, results in a new version of the application. You can use the
+  <code>DescribeApplication</code> operation to find the current application version.</p>
+
+<h3 class="function"><a name="add_application_input-3">add_application_input/3</a></h3>
+<div class="spec">
+<p><tt>add_application_input(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_application_input_processing_configuration-2">add_application_input_processing_configuration/2</a></h3>
+<div class="spec">
+<p><tt>add_application_input_processing_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds an <code>InputProcessingConfiguration</code> to a SQL-based Kinesis Data  
+Analytics application.</p>
+ 
+  An input processor pre-processes records on the input stream before the
+  application's SQL code executes. Currently, the only input processor
+  available is AWS Lambda.</p>
+
+<h3 class="function"><a name="add_application_input_processing_configuration-3">add_application_input_processing_configuration/3</a></h3>
+<div class="spec">
+<p><tt>add_application_input_processing_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_application_output-2">add_application_output/2</a></h3>
+<div class="spec">
+<p><tt>add_application_output(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds an external destination to your SQL-based Kinesis Data Analytics  
+application.</p>
+ 
+  <p>If you want Kinesis Data Analytics to deliver data from an in-application  
+stream within your application to an external destination (such as an  
+Kinesis data stream, a Kinesis Data Firehose delivery stream, or an AWS  
+Lambda function), you add the relevant configuration to your application  
+using this operation. You can configure one or more outputs for your  
+application. Each output configuration maps an in-application stream and  
+an external destination.</p>
+ 
+  <p>You can use one of the output configurations to deliver data from your  
+in-application error stream to an external destination so that you can  
+analyze the errors.</p>
+ 
+  Any configuration update, including adding a streaming source using this
+  operation, results in a new version of the application. You can use the
+  <code>DescribeApplication</code> operation to find the current application version.</p>
+
+<h3 class="function"><a name="add_application_output-3">add_application_output/3</a></h3>
+<div class="spec">
+<p><tt>add_application_output(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_application_reference_data_source-2">add_application_reference_data_source/2</a></h3>
+<div class="spec">
+<p><tt>add_application_reference_data_source(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds a reference data source to an existing SQL-based Kinesis Data  
+Analytics application.</p>
+ 
+  Kinesis Data Analytics reads reference data (that is, an Amazon S3 object)
+  and creates an in-application table within your application. In the
+  request, you provide the source (S3 bucket name and object key name), name
+  of the in-application table to create, and the necessary mapping
+  information that describes how data in an Amazon S3 object maps to columns
+  in the resulting in-application table.</p>
+
+<h3 class="function"><a name="add_application_reference_data_source-3">add_application_reference_data_source/3</a></h3>
+<div class="spec">
+<p><tt>add_application_reference_data_source(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="add_application_vpc_configuration-2">add_application_vpc_configuration/2</a></h3>
+<div class="spec">
+<p><tt>add_application_vpc_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds a Virtual Private Cloud (VPC) configuration to the application.</p>
+ 
+  <p>Applications can use VPCs to store and access resources securely.</p>
+ 
+  <p>Note the following about VPC configurations for Kinesis Data Analytics  
+applications:</p>
+ 
+  <ul> <li><p> VPC configurations are not supported for SQL applications.</p>
+ 
+  </li> <li><p> When a VPC is added to a Kinesis Data Analytics application,  
+the application can no longer be accessed from the Internet directly. To  
+enable Internet access to the application, add an Internet gateway to your  
+VPC.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="add_application_vpc_configuration-3">add_application_vpc_configuration/3</a></h3>
+<div class="spec">
+<p><tt>add_application_vpc_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_application-2">create_application/2</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a Kinesis Data Analytics application.</p>
+ 
+  For information about creating a Kinesis Data Analytics application, see
+  Creating an Application.</p>
+
+<h3 class="function"><a name="create_application-3">create_application/3</a></h3>
+<div class="spec">
+<p><tt>create_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_application_snapshot-2">create_application_snapshot/2</a></h3>
+<div class="spec">
+<p><tt>create_application_snapshot(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a snapshot of the application's state data.</p>
+
+<h3 class="function"><a name="create_application_snapshot-3">create_application_snapshot/3</a></h3>
+<div class="spec">
+<p><tt>create_application_snapshot(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application-2">delete_application/2</a></h3>
+<div class="spec">
+<p><tt>delete_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified application.</p>
+ 
+  Kinesis Data Analytics halts application execution and deletes the
+  application.</p>
+
+<h3 class="function"><a name="delete_application-3">delete_application/3</a></h3>
+<div class="spec">
+<p><tt>delete_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application_cloud_watch_logging_option-2">delete_application_cloud_watch_logging_option/2</a></h3>
+<div class="spec">
+<p><tt>delete_application_cloud_watch_logging_option(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an Amazon CloudWatch log stream from an Kinesis Data
+  Analytics application.</p>
+
+<h3 class="function"><a name="delete_application_cloud_watch_logging_option-3">delete_application_cloud_watch_logging_option/3</a></h3>
+<div class="spec">
+<p><tt>delete_application_cloud_watch_logging_option(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application_input_processing_configuration-2">delete_application_input_processing_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_application_input_processing_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an <code>InputProcessingConfiguration</code> from an input.</p>
+
+<h3 class="function"><a name="delete_application_input_processing_configuration-3">delete_application_input_processing_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_application_input_processing_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application_output-2">delete_application_output/2</a></h3>
+<div class="spec">
+<p><tt>delete_application_output(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the output destination configuration from your SQL-based  
+Kinesis Data Analytics application's configuration.</p>
+ 
+  Kinesis Data Analytics will no longer write data from the corresponding
+  in-application stream to the external output destination.</p>
+
+<h3 class="function"><a name="delete_application_output-3">delete_application_output/3</a></h3>
+<div class="spec">
+<p><tt>delete_application_output(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application_reference_data_source-2">delete_application_reference_data_source/2</a></h3>
+<div class="spec">
+<p><tt>delete_application_reference_data_source(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a reference data source configuration from the specified  
+SQL-based Kinesis Data Analytics application's configuration.</p>
+ 
+  If the application is running, Kinesis Data Analytics immediately removes
+  the in-application table that you created using the
+  <code>AddApplicationReferenceDataSource</code> operation.</p>
+
+<h3 class="function"><a name="delete_application_reference_data_source-3">delete_application_reference_data_source/3</a></h3>
+<div class="spec">
+<p><tt>delete_application_reference_data_source(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application_snapshot-2">delete_application_snapshot/2</a></h3>
+<div class="spec">
+<p><tt>delete_application_snapshot(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a snapshot of application state.</p>
+
+<h3 class="function"><a name="delete_application_snapshot-3">delete_application_snapshot/3</a></h3>
+<div class="spec">
+<p><tt>delete_application_snapshot(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_application_vpc_configuration-2">delete_application_vpc_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_application_vpc_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a VPC configuration from a Kinesis Data Analytics
+  application.</p>
+
+<h3 class="function"><a name="delete_application_vpc_configuration-3">delete_application_vpc_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_application_vpc_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_application-2">describe_application/2</a></h3>
+<div class="spec">
+<p><tt>describe_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about a specific Kinesis Data Analytics  
+application.</p>
+ 
+  If you want to retrieve a list of all applications in your account, use
+  the <code>ListApplications</code> operation.</p>
+
+<h3 class="function"><a name="describe_application-3">describe_application/3</a></h3>
+<div class="spec">
+<p><tt>describe_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_application_snapshot-2">describe_application_snapshot/2</a></h3>
+<div class="spec">
+<p><tt>describe_application_snapshot(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a snapshot of application state data.</p>
+
+<h3 class="function"><a name="describe_application_snapshot-3">describe_application_snapshot/3</a></h3>
+<div class="spec">
+<p><tt>describe_application_snapshot(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="discover_input_schema-2">discover_input_schema/2</a></h3>
+<div class="spec">
+<p><tt>discover_input_schema(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Infers a schema for a SQL-based Kinesis Data Analytics application by  
+evaluating sample records on the specified streaming source (Kinesis data  
+stream or Kinesis Data Firehose delivery stream) or Amazon S3 object.</p>
+ 
+  <p>In the response, the operation returns the inferred schema and also the  
+sample records that the operation used to infer the schema.</p>
+ 
+  You can use the inferred schema when configuring a streaming source for
+  your application. When you create an application using the Kinesis Data
+  Analytics console, the console uses this operation to infer a schema and
+  show it in the console user interface.</p>
+
+<h3 class="function"><a name="discover_input_schema-3">discover_input_schema/3</a></h3>
+<div class="spec">
+<p><tt>discover_input_schema(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_application_snapshots-2">list_application_snapshots/2</a></h3>
+<div class="spec">
+<p><tt>list_application_snapshots(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists information about the current application snapshots.</p>
+
+<h3 class="function"><a name="list_application_snapshots-3">list_application_snapshots/3</a></h3>
+<div class="spec">
+<p><tt>list_application_snapshots(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_applications-2">list_applications/2</a></h3>
+<div class="spec">
+<p><tt>list_applications(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of Kinesis Data Analytics applications in your  
+account.</p>
+ 
+  <p>For each application, the response includes the application name, Amazon  
+Resource Name (ARN), and status.</p>
+ 
+  If you want detailed information about a specific application, use
+  <code>DescribeApplication</code>.</p>
+
+<h3 class="function"><a name="list_applications-3">list_applications/3</a></h3>
+<div class="spec">
+<p><tt>list_applications(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves the list of key-value tags assigned to the application.</p>
+ 
+  For more information, see Using Tagging.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_application-2">start_application/2</a></h3>
+<div class="spec">
+<p><tt>start_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts the specified Kinesis Data Analytics application.</p>
+ 
+  After creating an application, you must exclusively call this operation to
+  start your application.</p>
+
+<h3 class="function"><a name="start_application-3">start_application/3</a></h3>
+<div class="spec">
+<p><tt>start_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_application-2">stop_application/2</a></h3>
+<div class="spec">
+<p><tt>stop_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops the application from processing data.</p>
+ 
+  You can stop an application only if it is in the running state. You can
+  use the <code>DescribeApplication</code> operation to find the application state.</p>
+
+<h3 class="function"><a name="stop_application-3">stop_application/3</a></h3>
+<div class="spec">
+<p><tt>stop_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds one or more key-value tags to a Kinesis Data Analytics  
+application.</p>
+ 
+  Note that the maximum number of application tags includes system tags. The
+  maximum number of user-defined application tags is 50. For more
+  information, see Using Tagging.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes one or more tags from a Kinesis Data Analytics application.</p>
+ 
+  For more information, see Using Tagging.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_application-2">update_application/2</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an existing Kinesis Data Analytics application.</p>
+ 
+  <p>Using this operation, you can update application code, input  
+configuration, and output configuration.</p>
+ 
+  <p>Kinesis Data Analytics updates the <code>ApplicationVersionId</code> each time you  
+update your application.</p>
+ 
+  You cannot update the <code>RuntimeEnvironment</code> of an existing application. If
+  you need to update an application's <code>RuntimeEnvironment</code>, you must delete
+  the application and create it again.</p>
+
+<h3 class="function"><a name="update_application-3">update_application/3</a></h3>
+<div class="spec">
+<p><tt>update_application(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

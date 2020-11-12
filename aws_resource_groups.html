@@ -1,0 +1,312 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_resource_groups</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_resource_groups</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Resource Groups.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Resource Groups</p>
+ 
+  <p>AWS Resource Groups lets you organize AWS resources such as Amazon EC2  
+instances, Amazon Relational Database Service databases, and Amazon S3  
+buckets into groups using criteria that you define as tags.</p>
+ 
+  <p>A resource group is a collection of resources that match the resource  
+types specified in a query, and share one or more tags or portions of  
+tags. You can create a group of resources based on their roles in your  
+cloud infrastructure, lifecycle stages, regions, application layers, or  
+virtually any criteria. Resource Groups enable you to automate management  
+tasks, such as those in AWS Systems Manager Automation documents, on  
+tag-related resources in AWS Systems Manager. Groups of tagged resources  
+also let you quickly view a custom console in AWS Systems Manager that  
+shows AWS Config compliance and other monitoring data about member  
+resources.</p>
+ 
+  <p>To create a resource group, build a resource query, and specify tags that  
+identify the criteria that members of the group have in common. Tags are  
+key-value pairs.</p>
+ 
+  <p>For more information about Resource Groups, see the AWS Resource Groups  
+User Guide.</p>
+ 
+  <p>AWS Resource Groups uses a REST-compliant API that you can use to perform  
+the following types of operations.</p>
+ 
+  <ul> <li><p> Create, Read, Update, and Delete (CRUD) operations on resource  
+groups and resource query entities</p>
+ 
+  </li> <li><p> Applying, editing, and removing tags from resource groups</p>
+ 
+  </li> <li><p> Resolving resource group member ARNs so they can be returned as  
+search results</p>
+ 
+  </li> <li><p> Getting data about resources that are members of a group</p>
+ 
+  </li> <li><p> Searching AWS resources based on a resource query</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_group-2">create_group/2</a></td><td>Creates a resource group with the specified name and description.</td></tr>
+<tr><td valign="top"><a href="#create_group-3">create_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_group-2">delete_group/2</a></td><td>Deletes the specified resource group.</td></tr>
+<tr><td valign="top"><a href="#delete_group-3">delete_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group-2">get_group/2</a></td><td>Returns information about a specified resource group.</td></tr>
+<tr><td valign="top"><a href="#get_group-3">get_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group_configuration-2">get_group_configuration/2</a></td><td>Returns the service configuration associated with the specified  
+resource group.</td></tr>
+<tr><td valign="top"><a href="#get_group_configuration-3">get_group_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group_query-2">get_group_query/2</a></td><td>Retrieves the resource query associated with the specified resource
+  group.</td></tr>
+<tr><td valign="top"><a href="#get_group_query-3">get_group_query/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_tags-2">get_tags/2</a></td><td>Returns a list of tags that are associated with a resource group,
+  specified by an ARN.</td></tr>
+<tr><td valign="top"><a href="#get_tags-3">get_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#group_resources-2">group_resources/2</a></td><td>Adds the specified resources to the specified group.</td></tr>
+<tr><td valign="top"><a href="#group_resources-3">group_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_group_resources-2">list_group_resources/2</a></td><td>Returns a list of ARNs of the resources that are members of a
+  specified resource group.</td></tr>
+<tr><td valign="top"><a href="#list_group_resources-3">list_group_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_groups-2">list_groups/2</a></td><td>Returns a list of existing resource groups in your account.</td></tr>
+<tr><td valign="top"><a href="#list_groups-3">list_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#search_resources-2">search_resources/2</a></td><td>Returns a list of AWS resource identifiers that matches the specified  
+query.</td></tr>
+<tr><td valign="top"><a href="#search_resources-3">search_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag-3">tag/3</a></td><td>Adds tags to a resource group with the specified ARN.</td></tr>
+<tr><td valign="top"><a href="#tag-4">tag/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#ungroup_resources-2">ungroup_resources/2</a></td><td>Removes the specified resources from the specified group.</td></tr>
+<tr><td valign="top"><a href="#ungroup_resources-3">ungroup_resources/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag-3">untag/3</a></td><td>Deletes tags from a specified resource group.</td></tr>
+<tr><td valign="top"><a href="#untag-4">untag/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_group-2">update_group/2</a></td><td>Updates the description for an existing group.</td></tr>
+<tr><td valign="top"><a href="#update_group-3">update_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_group_query-2">update_group_query/2</a></td><td>Updates the resource query of a group.</td></tr>
+<tr><td valign="top"><a href="#update_group_query-3">update_group_query/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_group-2">create_group/2</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a resource group with the specified name and description.</p>
+ 
+  You can optionally include a resource query, or a service configuration.</p>
+
+<h3 class="function"><a name="create_group-3">create_group/3</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_group-2">delete_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified resource group.</p>
+ 
+  Deleting a resource group does not delete any resources that are members
+  of the group; it only deletes the group structure.</p>
+
+<h3 class="function"><a name="delete_group-3">delete_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group-2">get_group/2</a></h3>
+<div class="spec">
+<p><tt>get_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about a specified resource group.</p>
+
+<h3 class="function"><a name="get_group-3">get_group/3</a></h3>
+<div class="spec">
+<p><tt>get_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group_configuration-2">get_group_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_group_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the service configuration associated with the specified  
+resource group.</p>
+ 
+  <p>AWS Resource Groups supports configurations for the following resource  
+group types:</p>
+ 
+  <ul> <li><p> <code>AWS::EC2::CapacityReservationPool</code> - Amazon EC2 capacity  
+reservation pools. For more information, see Working with capacity  
+reservation groups in the EC2 Users Guide.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="get_group_configuration-3">get_group_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_group_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group_query-2">get_group_query/2</a></h3>
+<div class="spec">
+<p><tt>get_group_query(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the resource query associated with the specified resource
+  group.</p>
+
+<h3 class="function"><a name="get_group_query-3">get_group_query/3</a></h3>
+<div class="spec">
+<p><tt>get_group_query(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_tags-2">get_tags/2</a></h3>
+<div class="spec">
+<p><tt>get_tags(Client, Arn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of tags that are associated with a resource group,
+  specified by an ARN.</p>
+
+<h3 class="function"><a name="get_tags-3">get_tags/3</a></h3>
+<div class="spec">
+<p><tt>get_tags(Client, Arn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="group_resources-2">group_resources/2</a></h3>
+<div class="spec">
+<p><tt>group_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds the specified resources to the specified group.</p>
+
+<h3 class="function"><a name="group_resources-3">group_resources/3</a></h3>
+<div class="spec">
+<p><tt>group_resources(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_group_resources-2">list_group_resources/2</a></h3>
+<div class="spec">
+<p><tt>list_group_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of ARNs of the resources that are members of a
+  specified resource group.</p>
+
+<h3 class="function"><a name="list_group_resources-3">list_group_resources/3</a></h3>
+<div class="spec">
+<p><tt>list_group_resources(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_groups-2">list_groups/2</a></h3>
+<div class="spec">
+<p><tt>list_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of existing resource groups in your account.</p>
+
+<h3 class="function"><a name="list_groups-3">list_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_groups(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="search_resources-2">search_resources/2</a></h3>
+<div class="spec">
+<p><tt>search_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of AWS resource identifiers that matches the specified  
+query.</p>
+ 
+  The query uses the same format as a resource query in a CreateGroup or
+  UpdateGroupQuery operation.</p>
+
+<h3 class="function"><a name="search_resources-3">search_resources/3</a></h3>
+<div class="spec">
+<p><tt>search_resources(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag-3">tag/3</a></h3>
+<div class="spec">
+<p><tt>tag(Client, Arn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds tags to a resource group with the specified ARN.</p>
+ 
+  <p>Existing tags on a resource group are not changed if they are not  
+specified in the request parameters.</p>
+ 
+  Do not store personally identifiable information (PII) or other
+  confidential or sensitive information in tags. We use tags to provide you
+  with billing and administration services. Tags are not intended to be used
+  for private or sensitive data.</p>
+
+<h3 class="function"><a name="tag-4">tag/4</a></h3>
+<div class="spec">
+<p><tt>tag(Client, Arn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="ungroup_resources-2">ungroup_resources/2</a></h3>
+<div class="spec">
+<p><tt>ungroup_resources(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes the specified resources from the specified group.</p>
+
+<h3 class="function"><a name="ungroup_resources-3">ungroup_resources/3</a></h3>
+<div class="spec">
+<p><tt>ungroup_resources(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag-3">untag/3</a></h3>
+<div class="spec">
+<p><tt>untag(Client, Arn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes tags from a specified resource group.</p>
+
+<h3 class="function"><a name="untag-4">untag/4</a></h3>
+<div class="spec">
+<p><tt>untag(Client, Arn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_group-2">update_group/2</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the description for an existing group.</p>
+ 
+  You cannot update the name of a resource group.</p>
+
+<h3 class="function"><a name="update_group-3">update_group/3</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_group_query-2">update_group_query/2</a></h3>
+<div class="spec">
+<p><tt>update_group_query(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the resource query of a group.</p>
+
+<h3 class="function"><a name="update_group_query-3">update_group_query/3</a></h3>
+<div class="spec">
+<p><tt>update_group_query(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

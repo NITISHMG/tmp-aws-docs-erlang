@@ -1,0 +1,1437 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_greengrass</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_greengrass</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS IoT Greengrass seamlessly extends AWS onto physical devices so  
+they can act locally on the data they generate, while still using the  
+cloud for management, analytics, and durable storage.
+
+
+<h2><a name="description">Description</a></h2><p>AWS IoT Greengrass seamlessly extends AWS onto physical devices so  
+they can act locally on the data they generate, while still using the  
+cloud for management, analytics, and durable storage.</p>
+ 
+  AWS IoT Greengrass ensures your devices can respond quickly to local
+  events and operate with intermittent connectivity. AWS IoT Greengrass
+  minimizes the cost of transmitting data to the cloud by allowing you to
+  author AWS Lambda functions that execute locally.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_role_to_group-3">associate_role_to_group/3</a></td><td>Associates a role with a group.</td></tr>
+<tr><td valign="top"><a href="#associate_role_to_group-4">associate_role_to_group/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_service_role_to_account-2">associate_service_role_to_account/2</a></td><td>Associates a role with your account.</td></tr>
+<tr><td valign="top"><a href="#associate_service_role_to_account-3">associate_service_role_to_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_connector_definition-2">create_connector_definition/2</a></td><td>Creates a connector definition.</td></tr>
+<tr><td valign="top"><a href="#create_connector_definition-3">create_connector_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_connector_definition_version-3">create_connector_definition_version/3</a></td><td>Creates a version of a connector definition which has already been
+  defined.</td></tr>
+<tr><td valign="top"><a href="#create_connector_definition_version-4">create_connector_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_core_definition-2">create_core_definition/2</a></td><td>Creates a core definition.</td></tr>
+<tr><td valign="top"><a href="#create_core_definition-3">create_core_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_core_definition_version-3">create_core_definition_version/3</a></td><td>Creates a version of a core definition that has already been defined.</td></tr>
+<tr><td valign="top"><a href="#create_core_definition_version-4">create_core_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_deployment-3">create_deployment/3</a></td><td>Creates a deployment.</td></tr>
+<tr><td valign="top"><a href="#create_deployment-4">create_deployment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_device_definition-2">create_device_definition/2</a></td><td>Creates a device definition.</td></tr>
+<tr><td valign="top"><a href="#create_device_definition-3">create_device_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_device_definition_version-3">create_device_definition_version/3</a></td><td>Creates a version of a device definition that has already been
+  defined.</td></tr>
+<tr><td valign="top"><a href="#create_device_definition_version-4">create_device_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_function_definition-2">create_function_definition/2</a></td><td>Creates a Lambda function definition which contains a list of Lambda  
+functions and their configurations to be used in a group.</td></tr>
+<tr><td valign="top"><a href="#create_function_definition-3">create_function_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_function_definition_version-3">create_function_definition_version/3</a></td><td>Creates a version of a Lambda function definition that has already
+  been defined.</td></tr>
+<tr><td valign="top"><a href="#create_function_definition_version-4">create_function_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_group-2">create_group/2</a></td><td>Creates a group.</td></tr>
+<tr><td valign="top"><a href="#create_group-3">create_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_group_certificate_authority-3">create_group_certificate_authority/3</a></td><td>Creates a CA for the group.</td></tr>
+<tr><td valign="top"><a href="#create_group_certificate_authority-4">create_group_certificate_authority/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_group_version-3">create_group_version/3</a></td><td>Creates a version of a group which has already been defined.</td></tr>
+<tr><td valign="top"><a href="#create_group_version-4">create_group_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_logger_definition-2">create_logger_definition/2</a></td><td>Creates a logger definition.</td></tr>
+<tr><td valign="top"><a href="#create_logger_definition-3">create_logger_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_logger_definition_version-3">create_logger_definition_version/3</a></td><td>Creates a version of a logger definition that has already been
+  defined.</td></tr>
+<tr><td valign="top"><a href="#create_logger_definition_version-4">create_logger_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resource_definition-2">create_resource_definition/2</a></td><td>Creates a resource definition which contains a list of resources to  
+be used in a group.</td></tr>
+<tr><td valign="top"><a href="#create_resource_definition-3">create_resource_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resource_definition_version-3">create_resource_definition_version/3</a></td><td>Creates a version of a resource definition that has already been
+  defined.</td></tr>
+<tr><td valign="top"><a href="#create_resource_definition_version-4">create_resource_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_software_update_job-2">create_software_update_job/2</a></td><td>Creates a software update for a core or group of cores (specified as  
+an IoT thing group.) Use this to update the OTA Agent as well as the  
+Greengrass core software.</td></tr>
+<tr><td valign="top"><a href="#create_software_update_job-3">create_software_update_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_subscription_definition-2">create_subscription_definition/2</a></td><td>Creates a subscription definition.</td></tr>
+<tr><td valign="top"><a href="#create_subscription_definition-3">create_subscription_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_subscription_definition_version-3">create_subscription_definition_version/3</a></td><td>Creates a version of a subscription definition which has already been
+  defined.</td></tr>
+<tr><td valign="top"><a href="#create_subscription_definition_version-4">create_subscription_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_connector_definition-3">delete_connector_definition/3</a></td><td>Deletes a connector definition.</td></tr>
+<tr><td valign="top"><a href="#delete_connector_definition-4">delete_connector_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_core_definition-3">delete_core_definition/3</a></td><td>Deletes a core definition.</td></tr>
+<tr><td valign="top"><a href="#delete_core_definition-4">delete_core_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_device_definition-3">delete_device_definition/3</a></td><td>Deletes a device definition.</td></tr>
+<tr><td valign="top"><a href="#delete_device_definition-4">delete_device_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_function_definition-3">delete_function_definition/3</a></td><td>Deletes a Lambda function definition.</td></tr>
+<tr><td valign="top"><a href="#delete_function_definition-4">delete_function_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_group-3">delete_group/3</a></td><td>Deletes a group.</td></tr>
+<tr><td valign="top"><a href="#delete_group-4">delete_group/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_logger_definition-3">delete_logger_definition/3</a></td><td>Deletes a logger definition.</td></tr>
+<tr><td valign="top"><a href="#delete_logger_definition-4">delete_logger_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resource_definition-3">delete_resource_definition/3</a></td><td>Deletes a resource definition.</td></tr>
+<tr><td valign="top"><a href="#delete_resource_definition-4">delete_resource_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_subscription_definition-3">delete_subscription_definition/3</a></td><td>Deletes a subscription definition.</td></tr>
+<tr><td valign="top"><a href="#delete_subscription_definition-4">delete_subscription_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_role_from_group-3">disassociate_role_from_group/3</a></td><td>Disassociates the role from a group.</td></tr>
+<tr><td valign="top"><a href="#disassociate_role_from_group-4">disassociate_role_from_group/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_service_role_from_account-2">disassociate_service_role_from_account/2</a></td><td>Disassociates the service role from your account.</td></tr>
+<tr><td valign="top"><a href="#disassociate_service_role_from_account-3">disassociate_service_role_from_account/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_associated_role-2">get_associated_role/2</a></td><td>Retrieves the role associated with a particular group.</td></tr>
+<tr><td valign="top"><a href="#get_associated_role-3">get_associated_role/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_bulk_deployment_status-2">get_bulk_deployment_status/2</a></td><td>Returns the status of a bulk deployment.</td></tr>
+<tr><td valign="top"><a href="#get_bulk_deployment_status-3">get_bulk_deployment_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_connectivity_info-2">get_connectivity_info/2</a></td><td>Retrieves the connectivity information for a core.</td></tr>
+<tr><td valign="top"><a href="#get_connectivity_info-3">get_connectivity_info/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_connector_definition-2">get_connector_definition/2</a></td><td>Retrieves information about a connector definition.</td></tr>
+<tr><td valign="top"><a href="#get_connector_definition-3">get_connector_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_connector_definition_version-4">get_connector_definition_version/4</a></td><td>Retrieves information about a connector definition version, including  
+the connectors that the version contains.</td></tr>
+<tr><td valign="top"><a href="#get_connector_definition_version-5">get_connector_definition_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_core_definition-2">get_core_definition/2</a></td><td>Retrieves information about a core definition version.</td></tr>
+<tr><td valign="top"><a href="#get_core_definition-3">get_core_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_core_definition_version-3">get_core_definition_version/3</a></td><td>Retrieves information about a core definition version.</td></tr>
+<tr><td valign="top"><a href="#get_core_definition_version-4">get_core_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_deployment_status-3">get_deployment_status/3</a></td><td>Returns the status of a deployment.</td></tr>
+<tr><td valign="top"><a href="#get_deployment_status-4">get_deployment_status/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_device_definition-2">get_device_definition/2</a></td><td>Retrieves information about a device definition.</td></tr>
+<tr><td valign="top"><a href="#get_device_definition-3">get_device_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_device_definition_version-4">get_device_definition_version/4</a></td><td>Retrieves information about a device definition version.</td></tr>
+<tr><td valign="top"><a href="#get_device_definition_version-5">get_device_definition_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_function_definition-2">get_function_definition/2</a></td><td>Retrieves information about a Lambda function definition, including
+  its creation time and latest version.</td></tr>
+<tr><td valign="top"><a href="#get_function_definition-3">get_function_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_function_definition_version-4">get_function_definition_version/4</a></td><td>Retrieves information about a Lambda function definition version,
+  including which Lambda functions are included in the version and their
+  configurations.</td></tr>
+<tr><td valign="top"><a href="#get_function_definition_version-5">get_function_definition_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group-2">get_group/2</a></td><td>Retrieves information about a group.</td></tr>
+<tr><td valign="top"><a href="#get_group-3">get_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group_certificate_authority-3">get_group_certificate_authority/3</a></td><td>Retreives the CA associated with a group.</td></tr>
+<tr><td valign="top"><a href="#get_group_certificate_authority-4">get_group_certificate_authority/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group_certificate_configuration-2">get_group_certificate_configuration/2</a></td><td>Retrieves the current configuration for the CA used by the group.</td></tr>
+<tr><td valign="top"><a href="#get_group_certificate_configuration-3">get_group_certificate_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_group_version-3">get_group_version/3</a></td><td>Retrieves information about a group version.</td></tr>
+<tr><td valign="top"><a href="#get_group_version-4">get_group_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_logger_definition-2">get_logger_definition/2</a></td><td>Retrieves information about a logger definition.</td></tr>
+<tr><td valign="top"><a href="#get_logger_definition-3">get_logger_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_logger_definition_version-4">get_logger_definition_version/4</a></td><td>Retrieves information about a logger definition version.</td></tr>
+<tr><td valign="top"><a href="#get_logger_definition_version-5">get_logger_definition_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resource_definition-2">get_resource_definition/2</a></td><td>Retrieves information about a resource definition, including its
+  creation time and latest version.</td></tr>
+<tr><td valign="top"><a href="#get_resource_definition-3">get_resource_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resource_definition_version-3">get_resource_definition_version/3</a></td><td>Retrieves information about a resource definition version, including
+  which resources are included in the version.</td></tr>
+<tr><td valign="top"><a href="#get_resource_definition_version-4">get_resource_definition_version/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_service_role_for_account-1">get_service_role_for_account/1</a></td><td>Retrieves the service role that is attached to your account.</td></tr>
+<tr><td valign="top"><a href="#get_service_role_for_account-2">get_service_role_for_account/2</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_subscription_definition-2">get_subscription_definition/2</a></td><td>Retrieves information about a subscription definition.</td></tr>
+<tr><td valign="top"><a href="#get_subscription_definition-3">get_subscription_definition/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_subscription_definition_version-4">get_subscription_definition_version/4</a></td><td>Retrieves information about a subscription definition version.</td></tr>
+<tr><td valign="top"><a href="#get_subscription_definition_version-5">get_subscription_definition_version/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_thing_runtime_configuration-2">get_thing_runtime_configuration/2</a></td><td>Get the runtime configuration of a thing.</td></tr>
+<tr><td valign="top"><a href="#get_thing_runtime_configuration-3">get_thing_runtime_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_bulk_deployment_detailed_reports-4">list_bulk_deployment_detailed_reports/4</a></td><td>Gets a paginated list of the deployments that have been started in a
+  bulk deployment operation, and their current deployment status.</td></tr>
+<tr><td valign="top"><a href="#list_bulk_deployment_detailed_reports-5">list_bulk_deployment_detailed_reports/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_bulk_deployments-3">list_bulk_deployments/3</a></td><td>Returns a list of bulk deployments.</td></tr>
+<tr><td valign="top"><a href="#list_bulk_deployments-4">list_bulk_deployments/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_connector_definition_versions-4">list_connector_definition_versions/4</a></td><td>Lists the versions of a connector definition, which are containers  
+for connectors.</td></tr>
+<tr><td valign="top"><a href="#list_connector_definition_versions-5">list_connector_definition_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_connector_definitions-3">list_connector_definitions/3</a></td><td>Retrieves a list of connector definitions.</td></tr>
+<tr><td valign="top"><a href="#list_connector_definitions-4">list_connector_definitions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_core_definition_versions-4">list_core_definition_versions/4</a></td><td>Lists the versions of a core definition.</td></tr>
+<tr><td valign="top"><a href="#list_core_definition_versions-5">list_core_definition_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_core_definitions-3">list_core_definitions/3</a></td><td>Retrieves a list of core definitions.</td></tr>
+<tr><td valign="top"><a href="#list_core_definitions-4">list_core_definitions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_deployments-4">list_deployments/4</a></td><td>Returns a history of deployments for the group.</td></tr>
+<tr><td valign="top"><a href="#list_deployments-5">list_deployments/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_device_definition_versions-4">list_device_definition_versions/4</a></td><td>Lists the versions of a device definition.</td></tr>
+<tr><td valign="top"><a href="#list_device_definition_versions-5">list_device_definition_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_device_definitions-3">list_device_definitions/3</a></td><td>Retrieves a list of device definitions.</td></tr>
+<tr><td valign="top"><a href="#list_device_definitions-4">list_device_definitions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_function_definition_versions-4">list_function_definition_versions/4</a></td><td>Lists the versions of a Lambda function definition.</td></tr>
+<tr><td valign="top"><a href="#list_function_definition_versions-5">list_function_definition_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_function_definitions-3">list_function_definitions/3</a></td><td>Retrieves a list of Lambda function definitions.</td></tr>
+<tr><td valign="top"><a href="#list_function_definitions-4">list_function_definitions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_group_certificate_authorities-2">list_group_certificate_authorities/2</a></td><td>Retrieves the current CAs for a group.</td></tr>
+<tr><td valign="top"><a href="#list_group_certificate_authorities-3">list_group_certificate_authorities/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_group_versions-4">list_group_versions/4</a></td><td>Lists the versions of a group.</td></tr>
+<tr><td valign="top"><a href="#list_group_versions-5">list_group_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_groups-3">list_groups/3</a></td><td>Retrieves a list of groups.</td></tr>
+<tr><td valign="top"><a href="#list_groups-4">list_groups/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_logger_definition_versions-4">list_logger_definition_versions/4</a></td><td>Lists the versions of a logger definition.</td></tr>
+<tr><td valign="top"><a href="#list_logger_definition_versions-5">list_logger_definition_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_logger_definitions-3">list_logger_definitions/3</a></td><td>Retrieves a list of logger definitions.</td></tr>
+<tr><td valign="top"><a href="#list_logger_definitions-4">list_logger_definitions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resource_definition_versions-4">list_resource_definition_versions/4</a></td><td>Lists the versions of a resource definition.</td></tr>
+<tr><td valign="top"><a href="#list_resource_definition_versions-5">list_resource_definition_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resource_definitions-3">list_resource_definitions/3</a></td><td>Retrieves a list of resource definitions.</td></tr>
+<tr><td valign="top"><a href="#list_resource_definitions-4">list_resource_definitions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_subscription_definition_versions-4">list_subscription_definition_versions/4</a></td><td>Lists the versions of a subscription definition.</td></tr>
+<tr><td valign="top"><a href="#list_subscription_definition_versions-5">list_subscription_definition_versions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_subscription_definitions-3">list_subscription_definitions/3</a></td><td>Retrieves a list of subscription definitions.</td></tr>
+<tr><td valign="top"><a href="#list_subscription_definitions-4">list_subscription_definitions/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Retrieves a list of resource tags for a resource arn.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reset_deployments-3">reset_deployments/3</a></td><td>Resets a group's deployments.</td></tr>
+<tr><td valign="top"><a href="#reset_deployments-4">reset_deployments/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_bulk_deployment-2">start_bulk_deployment/2</a></td><td>Deploys multiple groups in one operation.</td></tr>
+<tr><td valign="top"><a href="#start_bulk_deployment-3">start_bulk_deployment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_bulk_deployment-3">stop_bulk_deployment/3</a></td><td>Stops the execution of a bulk deployment.</td></tr>
+<tr><td valign="top"><a href="#stop_bulk_deployment-4">stop_bulk_deployment/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds tags to a Greengrass resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Remove resource tags from a Greengrass Resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_connectivity_info-3">update_connectivity_info/3</a></td><td>Updates the connectivity information for the core.</td></tr>
+<tr><td valign="top"><a href="#update_connectivity_info-4">update_connectivity_info/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_connector_definition-3">update_connector_definition/3</a></td><td>Updates a connector definition.</td></tr>
+<tr><td valign="top"><a href="#update_connector_definition-4">update_connector_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_core_definition-3">update_core_definition/3</a></td><td>Updates a core definition.</td></tr>
+<tr><td valign="top"><a href="#update_core_definition-4">update_core_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_device_definition-3">update_device_definition/3</a></td><td>Updates a device definition.</td></tr>
+<tr><td valign="top"><a href="#update_device_definition-4">update_device_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_function_definition-3">update_function_definition/3</a></td><td>Updates a Lambda function definition.</td></tr>
+<tr><td valign="top"><a href="#update_function_definition-4">update_function_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_group-3">update_group/3</a></td><td>Updates a group.</td></tr>
+<tr><td valign="top"><a href="#update_group-4">update_group/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_group_certificate_configuration-3">update_group_certificate_configuration/3</a></td><td>Updates the Certificate expiry time for a group.</td></tr>
+<tr><td valign="top"><a href="#update_group_certificate_configuration-4">update_group_certificate_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_logger_definition-3">update_logger_definition/3</a></td><td>Updates a logger definition.</td></tr>
+<tr><td valign="top"><a href="#update_logger_definition-4">update_logger_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_resource_definition-3">update_resource_definition/3</a></td><td>Updates a resource definition.</td></tr>
+<tr><td valign="top"><a href="#update_resource_definition-4">update_resource_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_subscription_definition-3">update_subscription_definition/3</a></td><td>Updates a subscription definition.</td></tr>
+<tr><td valign="top"><a href="#update_subscription_definition-4">update_subscription_definition/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_thing_runtime_configuration-3">update_thing_runtime_configuration/3</a></td><td>Updates the runtime configuration of a thing.</td></tr>
+<tr><td valign="top"><a href="#update_thing_runtime_configuration-4">update_thing_runtime_configuration/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_role_to_group-3">associate_role_to_group/3</a></h3>
+<div class="spec">
+<p><tt>associate_role_to_group(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates a role with a group.</p>
+ 
+  Your Greengrass core will use the role to access AWS cloud services. The
+  role's permissions should allow Greengrass core Lambda functions to
+  perform actions against the cloud.</p>
+
+<h3 class="function"><a name="associate_role_to_group-4">associate_role_to_group/4</a></h3>
+<div class="spec">
+<p><tt>associate_role_to_group(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_service_role_to_account-2">associate_service_role_to_account/2</a></h3>
+<div class="spec">
+<p><tt>associate_service_role_to_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates a role with your account.</p>
+ 
+  AWS IoT Greengrass will use the role to access your Lambda functions and
+  AWS IoT resources. This is necessary for deployments to succeed. The role
+  must have at least minimum permissions in the policy
+  ''AWSGreengrassResourceAccessRolePolicy''.</p>
+
+<h3 class="function"><a name="associate_service_role_to_account-3">associate_service_role_to_account/3</a></h3>
+<div class="spec">
+<p><tt>associate_service_role_to_account(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_connector_definition-2">create_connector_definition/2</a></h3>
+<div class="spec">
+<p><tt>create_connector_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a connector definition.</p>
+ 
+  You may provide the initial version of the connector definition now or use
+  ''CreateConnectorDefinitionVersion'' at a later time.</p>
+
+<h3 class="function"><a name="create_connector_definition-3">create_connector_definition/3</a></h3>
+<div class="spec">
+<p><tt>create_connector_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_connector_definition_version-3">create_connector_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>create_connector_definition_version(Client, ConnectorDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a version of a connector definition which has already been
+  defined.</p>
+
+<h3 class="function"><a name="create_connector_definition_version-4">create_connector_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>create_connector_definition_version(Client, ConnectorDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_core_definition-2">create_core_definition/2</a></h3>
+<div class="spec">
+<p><tt>create_core_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a core definition.</p>
+ 
+  You may provide the initial version of the core definition now or use
+  ''CreateCoreDefinitionVersion'' at a later time. Greengrass groups must
+  each contain exactly one Greengrass core.</p>
+
+<h3 class="function"><a name="create_core_definition-3">create_core_definition/3</a></h3>
+<div class="spec">
+<p><tt>create_core_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_core_definition_version-3">create_core_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>create_core_definition_version(Client, CoreDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a version of a core definition that has already been defined.</p>
+ 
+  Greengrass groups must each contain exactly one Greengrass core.</p>
+
+<h3 class="function"><a name="create_core_definition_version-4">create_core_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>create_core_definition_version(Client, CoreDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_deployment-3">create_deployment/3</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a deployment.</p>
+ 
+  ''CreateDeployment'' requests are idempotent with respect to the
+  ''X-Amzn-Client-Token'' token and the request parameters.</p>
+
+<h3 class="function"><a name="create_deployment-4">create_deployment/4</a></h3>
+<div class="spec">
+<p><tt>create_deployment(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_device_definition-2">create_device_definition/2</a></h3>
+<div class="spec">
+<p><tt>create_device_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a device definition.</p>
+ 
+  You may provide the initial version of the device definition now or use
+  ''CreateDeviceDefinitionVersion'' at a later time.</p>
+
+<h3 class="function"><a name="create_device_definition-3">create_device_definition/3</a></h3>
+<div class="spec">
+<p><tt>create_device_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_device_definition_version-3">create_device_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>create_device_definition_version(Client, DeviceDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a version of a device definition that has already been
+  defined.</p>
+
+<h3 class="function"><a name="create_device_definition_version-4">create_device_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>create_device_definition_version(Client, DeviceDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_function_definition-2">create_function_definition/2</a></h3>
+<div class="spec">
+<p><tt>create_function_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a Lambda function definition which contains a list of Lambda  
+functions and their configurations to be used in a group.</p>
+ 
+  You can create an initial version of the definition by providing a list of
+  Lambda functions and their configurations now, or use
+  ''CreateFunctionDefinitionVersion'' later.</p>
+
+<h3 class="function"><a name="create_function_definition-3">create_function_definition/3</a></h3>
+<div class="spec">
+<p><tt>create_function_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_function_definition_version-3">create_function_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>create_function_definition_version(Client, FunctionDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a version of a Lambda function definition that has already
+  been defined.</p>
+
+<h3 class="function"><a name="create_function_definition_version-4">create_function_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>create_function_definition_version(Client, FunctionDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_group-2">create_group/2</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a group.</p>
+ 
+  You may provide the initial version of the group or use
+  ''CreateGroupVersion'' at a later time. Tip: You can use the
+  ''gg_group_setup'' package
+  (https://github.com/awslabs/aws-greengrass-group-setup) as a library or
+  command-line application to create and deploy Greengrass groups.</p>
+
+<h3 class="function"><a name="create_group-3">create_group/3</a></h3>
+<div class="spec">
+<p><tt>create_group(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_group_certificate_authority-3">create_group_certificate_authority/3</a></h3>
+<div class="spec">
+<p><tt>create_group_certificate_authority(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a CA for the group.</p>
+ 
+  If a CA already exists, it will rotate the existing CA.</p>
+
+<h3 class="function"><a name="create_group_certificate_authority-4">create_group_certificate_authority/4</a></h3>
+<div class="spec">
+<p><tt>create_group_certificate_authority(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_group_version-3">create_group_version/3</a></h3>
+<div class="spec">
+<p><tt>create_group_version(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a version of a group which has already been defined.</p>
+
+<h3 class="function"><a name="create_group_version-4">create_group_version/4</a></h3>
+<div class="spec">
+<p><tt>create_group_version(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_logger_definition-2">create_logger_definition/2</a></h3>
+<div class="spec">
+<p><tt>create_logger_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a logger definition.</p>
+ 
+  You may provide the initial version of the logger definition now or use
+  ''CreateLoggerDefinitionVersion'' at a later time.</p>
+
+<h3 class="function"><a name="create_logger_definition-3">create_logger_definition/3</a></h3>
+<div class="spec">
+<p><tt>create_logger_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_logger_definition_version-3">create_logger_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>create_logger_definition_version(Client, LoggerDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a version of a logger definition that has already been
+  defined.</p>
+
+<h3 class="function"><a name="create_logger_definition_version-4">create_logger_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>create_logger_definition_version(Client, LoggerDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resource_definition-2">create_resource_definition/2</a></h3>
+<div class="spec">
+<p><tt>create_resource_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a resource definition which contains a list of resources to  
+be used in a group.</p>
+ 
+  You can create an initial version of the definition by providing a list of
+  resources now, or use ''CreateResourceDefinitionVersion'' later.</p>
+
+<h3 class="function"><a name="create_resource_definition-3">create_resource_definition/3</a></h3>
+<div class="spec">
+<p><tt>create_resource_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resource_definition_version-3">create_resource_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>create_resource_definition_version(Client, ResourceDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a version of a resource definition that has already been
+  defined.</p>
+
+<h3 class="function"><a name="create_resource_definition_version-4">create_resource_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>create_resource_definition_version(Client, ResourceDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_software_update_job-2">create_software_update_job/2</a></h3>
+<div class="spec">
+<p><tt>create_software_update_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a software update for a core or group of cores (specified as  
+an IoT thing group.) Use this to update the OTA Agent as well as the  
+Greengrass core software.</p>
+ 
+  It makes use of the IoT Jobs feature which provides additional commands to
+  manage a Greengrass core software update job.</p>
+
+<h3 class="function"><a name="create_software_update_job-3">create_software_update_job/3</a></h3>
+<div class="spec">
+<p><tt>create_software_update_job(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_subscription_definition-2">create_subscription_definition/2</a></h3>
+<div class="spec">
+<p><tt>create_subscription_definition(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a subscription definition.</p>
+ 
+  You may provide the initial version of the subscription definition now or
+  use ''CreateSubscriptionDefinitionVersion'' at a later time.</p>
+
+<h3 class="function"><a name="create_subscription_definition-3">create_subscription_definition/3</a></h3>
+<div class="spec">
+<p><tt>create_subscription_definition(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_subscription_definition_version-3">create_subscription_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>create_subscription_definition_version(Client, SubscriptionDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a version of a subscription definition which has already been
+  defined.</p>
+
+<h3 class="function"><a name="create_subscription_definition_version-4">create_subscription_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>create_subscription_definition_version(Client, SubscriptionDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_connector_definition-3">delete_connector_definition/3</a></h3>
+<div class="spec">
+<p><tt>delete_connector_definition(Client, ConnectorDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a connector definition.</p>
+
+<h3 class="function"><a name="delete_connector_definition-4">delete_connector_definition/4</a></h3>
+<div class="spec">
+<p><tt>delete_connector_definition(Client, ConnectorDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_core_definition-3">delete_core_definition/3</a></h3>
+<div class="spec">
+<p><tt>delete_core_definition(Client, CoreDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a core definition.</p>
+
+<h3 class="function"><a name="delete_core_definition-4">delete_core_definition/4</a></h3>
+<div class="spec">
+<p><tt>delete_core_definition(Client, CoreDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_device_definition-3">delete_device_definition/3</a></h3>
+<div class="spec">
+<p><tt>delete_device_definition(Client, DeviceDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a device definition.</p>
+
+<h3 class="function"><a name="delete_device_definition-4">delete_device_definition/4</a></h3>
+<div class="spec">
+<p><tt>delete_device_definition(Client, DeviceDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_function_definition-3">delete_function_definition/3</a></h3>
+<div class="spec">
+<p><tt>delete_function_definition(Client, FunctionDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a Lambda function definition.</p>
+
+<h3 class="function"><a name="delete_function_definition-4">delete_function_definition/4</a></h3>
+<div class="spec">
+<p><tt>delete_function_definition(Client, FunctionDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_group-3">delete_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a group.</p>
+
+<h3 class="function"><a name="delete_group-4">delete_group/4</a></h3>
+<div class="spec">
+<p><tt>delete_group(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_logger_definition-3">delete_logger_definition/3</a></h3>
+<div class="spec">
+<p><tt>delete_logger_definition(Client, LoggerDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a logger definition.</p>
+
+<h3 class="function"><a name="delete_logger_definition-4">delete_logger_definition/4</a></h3>
+<div class="spec">
+<p><tt>delete_logger_definition(Client, LoggerDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resource_definition-3">delete_resource_definition/3</a></h3>
+<div class="spec">
+<p><tt>delete_resource_definition(Client, ResourceDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a resource definition.</p>
+
+<h3 class="function"><a name="delete_resource_definition-4">delete_resource_definition/4</a></h3>
+<div class="spec">
+<p><tt>delete_resource_definition(Client, ResourceDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_subscription_definition-3">delete_subscription_definition/3</a></h3>
+<div class="spec">
+<p><tt>delete_subscription_definition(Client, SubscriptionDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a subscription definition.</p>
+
+<h3 class="function"><a name="delete_subscription_definition-4">delete_subscription_definition/4</a></h3>
+<div class="spec">
+<p><tt>delete_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_role_from_group-3">disassociate_role_from_group/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_role_from_group(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Disassociates the role from a group.</p>
+
+<h3 class="function"><a name="disassociate_role_from_group-4">disassociate_role_from_group/4</a></h3>
+<div class="spec">
+<p><tt>disassociate_role_from_group(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_service_role_from_account-2">disassociate_service_role_from_account/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_service_role_from_account(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates the service role from your account.</p>
+ 
+  Without a service role, deployments will not work.</p>
+
+<h3 class="function"><a name="disassociate_service_role_from_account-3">disassociate_service_role_from_account/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_service_role_from_account(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_associated_role-2">get_associated_role/2</a></h3>
+<div class="spec">
+<p><tt>get_associated_role(Client, GroupId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the role associated with a particular group.</p>
+
+<h3 class="function"><a name="get_associated_role-3">get_associated_role/3</a></h3>
+<div class="spec">
+<p><tt>get_associated_role(Client, GroupId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_bulk_deployment_status-2">get_bulk_deployment_status/2</a></h3>
+<div class="spec">
+<p><tt>get_bulk_deployment_status(Client, BulkDeploymentId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the status of a bulk deployment.</p>
+
+<h3 class="function"><a name="get_bulk_deployment_status-3">get_bulk_deployment_status/3</a></h3>
+<div class="spec">
+<p><tt>get_bulk_deployment_status(Client, BulkDeploymentId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_connectivity_info-2">get_connectivity_info/2</a></h3>
+<div class="spec">
+<p><tt>get_connectivity_info(Client, ThingName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the connectivity information for a core.</p>
+
+<h3 class="function"><a name="get_connectivity_info-3">get_connectivity_info/3</a></h3>
+<div class="spec">
+<p><tt>get_connectivity_info(Client, ThingName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_connector_definition-2">get_connector_definition/2</a></h3>
+<div class="spec">
+<p><tt>get_connector_definition(Client, ConnectorDefinitionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a connector definition.</p>
+
+<h3 class="function"><a name="get_connector_definition-3">get_connector_definition/3</a></h3>
+<div class="spec">
+<p><tt>get_connector_definition(Client, ConnectorDefinitionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_connector_definition_version-4">get_connector_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retrieves information about a connector definition version, including  
+the connectors that the version contains.</p>
+ 
+  Connectors are prebuilt modules that interact with local infrastructure,
+  device protocols, AWS, and other cloud services.</p>
+
+<h3 class="function"><a name="get_connector_definition_version-5">get_connector_definition_version/5</a></h3>
+<div class="spec">
+<p><tt>get_connector_definition_version(Client, ConnectorDefinitionId, ConnectorDefinitionVersionId, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_core_definition-2">get_core_definition/2</a></h3>
+<div class="spec">
+<p><tt>get_core_definition(Client, CoreDefinitionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a core definition version.</p>
+
+<h3 class="function"><a name="get_core_definition-3">get_core_definition/3</a></h3>
+<div class="spec">
+<p><tt>get_core_definition(Client, CoreDefinitionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_core_definition_version-3">get_core_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a core definition version.</p>
+
+<h3 class="function"><a name="get_core_definition_version-4">get_core_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>get_core_definition_version(Client, CoreDefinitionId, CoreDefinitionVersionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_deployment_status-3">get_deployment_status/3</a></h3>
+<div class="spec">
+<p><tt>get_deployment_status(Client, DeploymentId, GroupId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the status of a deployment.</p>
+
+<h3 class="function"><a name="get_deployment_status-4">get_deployment_status/4</a></h3>
+<div class="spec">
+<p><tt>get_deployment_status(Client, DeploymentId, GroupId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_device_definition-2">get_device_definition/2</a></h3>
+<div class="spec">
+<p><tt>get_device_definition(Client, DeviceDefinitionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a device definition.</p>
+
+<h3 class="function"><a name="get_device_definition-3">get_device_definition/3</a></h3>
+<div class="spec">
+<p><tt>get_device_definition(Client, DeviceDefinitionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_device_definition_version-4">get_device_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a device definition version.</p>
+
+<h3 class="function"><a name="get_device_definition_version-5">get_device_definition_version/5</a></h3>
+<div class="spec">
+<p><tt>get_device_definition_version(Client, DeviceDefinitionId, DeviceDefinitionVersionId, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_function_definition-2">get_function_definition/2</a></h3>
+<div class="spec">
+<p><tt>get_function_definition(Client, FunctionDefinitionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a Lambda function definition, including
+  its creation time and latest version.</p>
+
+<h3 class="function"><a name="get_function_definition-3">get_function_definition/3</a></h3>
+<div class="spec">
+<p><tt>get_function_definition(Client, FunctionDefinitionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_function_definition_version-4">get_function_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a Lambda function definition version,
+  including which Lambda functions are included in the version and their
+  configurations.</p>
+
+<h3 class="function"><a name="get_function_definition_version-5">get_function_definition_version/5</a></h3>
+<div class="spec">
+<p><tt>get_function_definition_version(Client, FunctionDefinitionId, FunctionDefinitionVersionId, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group-2">get_group/2</a></h3>
+<div class="spec">
+<p><tt>get_group(Client, GroupId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a group.</p>
+
+<h3 class="function"><a name="get_group-3">get_group/3</a></h3>
+<div class="spec">
+<p><tt>get_group(Client, GroupId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group_certificate_authority-3">get_group_certificate_authority/3</a></h3>
+<div class="spec">
+<p><tt>get_group_certificate_authority(Client, CertificateAuthorityId, GroupId) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Retreives the CA associated with a group.</p>
+ 
+  Returns the public key of the CA.</p>
+
+<h3 class="function"><a name="get_group_certificate_authority-4">get_group_certificate_authority/4</a></h3>
+<div class="spec">
+<p><tt>get_group_certificate_authority(Client, CertificateAuthorityId, GroupId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group_certificate_configuration-2">get_group_certificate_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_group_certificate_configuration(Client, GroupId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the current configuration for the CA used by the group.</p>
+
+<h3 class="function"><a name="get_group_certificate_configuration-3">get_group_certificate_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_group_certificate_configuration(Client, GroupId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_group_version-3">get_group_version/3</a></h3>
+<div class="spec">
+<p><tt>get_group_version(Client, GroupId, GroupVersionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a group version.</p>
+
+<h3 class="function"><a name="get_group_version-4">get_group_version/4</a></h3>
+<div class="spec">
+<p><tt>get_group_version(Client, GroupId, GroupVersionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_logger_definition-2">get_logger_definition/2</a></h3>
+<div class="spec">
+<p><tt>get_logger_definition(Client, LoggerDefinitionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a logger definition.</p>
+
+<h3 class="function"><a name="get_logger_definition-3">get_logger_definition/3</a></h3>
+<div class="spec">
+<p><tt>get_logger_definition(Client, LoggerDefinitionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_logger_definition_version-4">get_logger_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a logger definition version.</p>
+
+<h3 class="function"><a name="get_logger_definition_version-5">get_logger_definition_version/5</a></h3>
+<div class="spec">
+<p><tt>get_logger_definition_version(Client, LoggerDefinitionId, LoggerDefinitionVersionId, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resource_definition-2">get_resource_definition/2</a></h3>
+<div class="spec">
+<p><tt>get_resource_definition(Client, ResourceDefinitionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a resource definition, including its
+  creation time and latest version.</p>
+
+<h3 class="function"><a name="get_resource_definition-3">get_resource_definition/3</a></h3>
+<div class="spec">
+<p><tt>get_resource_definition(Client, ResourceDefinitionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resource_definition_version-3">get_resource_definition_version/3</a></h3>
+<div class="spec">
+<p><tt>get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a resource definition version, including
+  which resources are included in the version.</p>
+
+<h3 class="function"><a name="get_resource_definition_version-4">get_resource_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>get_resource_definition_version(Client, ResourceDefinitionId, ResourceDefinitionVersionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_service_role_for_account-1">get_service_role_for_account/1</a></h3>
+<div class="spec">
+<p><tt>get_service_role_for_account(Client) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the service role that is attached to your account.</p>
+
+<h3 class="function"><a name="get_service_role_for_account-2">get_service_role_for_account/2</a></h3>
+<div class="spec">
+<p><tt>get_service_role_for_account(Client, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_subscription_definition-2">get_subscription_definition/2</a></h3>
+<div class="spec">
+<p><tt>get_subscription_definition(Client, SubscriptionDefinitionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a subscription definition.</p>
+
+<h3 class="function"><a name="get_subscription_definition-3">get_subscription_definition/3</a></h3>
+<div class="spec">
+<p><tt>get_subscription_definition(Client, SubscriptionDefinitionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_subscription_definition_version-4">get_subscription_definition_version/4</a></h3>
+<div class="spec">
+<p><tt>get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a subscription definition version.</p>
+
+<h3 class="function"><a name="get_subscription_definition_version-5">get_subscription_definition_version/5</a></h3>
+<div class="spec">
+<p><tt>get_subscription_definition_version(Client, SubscriptionDefinitionId, SubscriptionDefinitionVersionId, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_thing_runtime_configuration-2">get_thing_runtime_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_thing_runtime_configuration(Client, ThingName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the runtime configuration of a thing.</p>
+
+<h3 class="function"><a name="get_thing_runtime_configuration-3">get_thing_runtime_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_thing_runtime_configuration(Client, ThingName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_bulk_deployment_detailed_reports-4">list_bulk_deployment_detailed_reports/4</a></h3>
+<div class="spec">
+<p><tt>list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a paginated list of the deployments that have been started in a
+  bulk deployment operation, and their current deployment status.</p>
+
+<h3 class="function"><a name="list_bulk_deployment_detailed_reports-5">list_bulk_deployment_detailed_reports/5</a></h3>
+<div class="spec">
+<p><tt>list_bulk_deployment_detailed_reports(Client, BulkDeploymentId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_bulk_deployments-3">list_bulk_deployments/3</a></h3>
+<div class="spec">
+<p><tt>list_bulk_deployments(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of bulk deployments.</p>
+
+<h3 class="function"><a name="list_bulk_deployments-4">list_bulk_deployments/4</a></h3>
+<div class="spec">
+<p><tt>list_bulk_deployments(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_connector_definition_versions-4">list_connector_definition_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the versions of a connector definition, which are containers  
+for connectors.</p>
+ 
+  Connectors run on the Greengrass core and contain built-in integration
+  with local infrastructure, device protocols, AWS, and other cloud
+  services.</p>
+
+<h3 class="function"><a name="list_connector_definition_versions-5">list_connector_definition_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_connector_definition_versions(Client, ConnectorDefinitionId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_connector_definitions-3">list_connector_definitions/3</a></h3>
+<div class="spec">
+<p><tt>list_connector_definitions(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of connector definitions.</p>
+
+<h3 class="function"><a name="list_connector_definitions-4">list_connector_definitions/4</a></h3>
+<div class="spec">
+<p><tt>list_connector_definitions(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_core_definition_versions-4">list_core_definition_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the versions of a core definition.</p>
+
+<h3 class="function"><a name="list_core_definition_versions-5">list_core_definition_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_core_definition_versions(Client, CoreDefinitionId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_core_definitions-3">list_core_definitions/3</a></h3>
+<div class="spec">
+<p><tt>list_core_definitions(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of core definitions.</p>
+
+<h3 class="function"><a name="list_core_definitions-4">list_core_definitions/4</a></h3>
+<div class="spec">
+<p><tt>list_core_definitions(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_deployments-4">list_deployments/4</a></h3>
+<div class="spec">
+<p><tt>list_deployments(Client, GroupId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a history of deployments for the group.</p>
+
+<h3 class="function"><a name="list_deployments-5">list_deployments/5</a></h3>
+<div class="spec">
+<p><tt>list_deployments(Client, GroupId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_device_definition_versions-4">list_device_definition_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the versions of a device definition.</p>
+
+<h3 class="function"><a name="list_device_definition_versions-5">list_device_definition_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_device_definition_versions(Client, DeviceDefinitionId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_device_definitions-3">list_device_definitions/3</a></h3>
+<div class="spec">
+<p><tt>list_device_definitions(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of device definitions.</p>
+
+<h3 class="function"><a name="list_device_definitions-4">list_device_definitions/4</a></h3>
+<div class="spec">
+<p><tt>list_device_definitions(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_function_definition_versions-4">list_function_definition_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the versions of a Lambda function definition.</p>
+
+<h3 class="function"><a name="list_function_definition_versions-5">list_function_definition_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_function_definition_versions(Client, FunctionDefinitionId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_function_definitions-3">list_function_definitions/3</a></h3>
+<div class="spec">
+<p><tt>list_function_definitions(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of Lambda function definitions.</p>
+
+<h3 class="function"><a name="list_function_definitions-4">list_function_definitions/4</a></h3>
+<div class="spec">
+<p><tt>list_function_definitions(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_group_certificate_authorities-2">list_group_certificate_authorities/2</a></h3>
+<div class="spec">
+<p><tt>list_group_certificate_authorities(Client, GroupId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the current CAs for a group.</p>
+
+<h3 class="function"><a name="list_group_certificate_authorities-3">list_group_certificate_authorities/3</a></h3>
+<div class="spec">
+<p><tt>list_group_certificate_authorities(Client, GroupId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_group_versions-4">list_group_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_group_versions(Client, GroupId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the versions of a group.</p>
+
+<h3 class="function"><a name="list_group_versions-5">list_group_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_group_versions(Client, GroupId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_groups-3">list_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_groups(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of groups.</p>
+
+<h3 class="function"><a name="list_groups-4">list_groups/4</a></h3>
+<div class="spec">
+<p><tt>list_groups(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_logger_definition_versions-4">list_logger_definition_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the versions of a logger definition.</p>
+
+<h3 class="function"><a name="list_logger_definition_versions-5">list_logger_definition_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_logger_definition_versions(Client, LoggerDefinitionId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_logger_definitions-3">list_logger_definitions/3</a></h3>
+<div class="spec">
+<p><tt>list_logger_definitions(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of logger definitions.</p>
+
+<h3 class="function"><a name="list_logger_definitions-4">list_logger_definitions/4</a></h3>
+<div class="spec">
+<p><tt>list_logger_definitions(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resource_definition_versions-4">list_resource_definition_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the versions of a resource definition.</p>
+
+<h3 class="function"><a name="list_resource_definition_versions-5">list_resource_definition_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_resource_definition_versions(Client, ResourceDefinitionId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resource_definitions-3">list_resource_definitions/3</a></h3>
+<div class="spec">
+<p><tt>list_resource_definitions(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of resource definitions.</p>
+
+<h3 class="function"><a name="list_resource_definitions-4">list_resource_definitions/4</a></h3>
+<div class="spec">
+<p><tt>list_resource_definitions(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_subscription_definition_versions-4">list_subscription_definition_versions/4</a></h3>
+<div class="spec">
+<p><tt>list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the versions of a subscription definition.</p>
+
+<h3 class="function"><a name="list_subscription_definition_versions-5">list_subscription_definition_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_subscription_definition_versions(Client, SubscriptionDefinitionId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_subscription_definitions-3">list_subscription_definitions/3</a></h3>
+<div class="spec">
+<p><tt>list_subscription_definitions(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of subscription definitions.</p>
+
+<h3 class="function"><a name="list_subscription_definitions-4">list_subscription_definitions/4</a></h3>
+<div class="spec">
+<p><tt>list_subscription_definitions(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a list of resource tags for a resource arn.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reset_deployments-3">reset_deployments/3</a></h3>
+<div class="spec">
+<p><tt>reset_deployments(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Resets a group's deployments.</p>
+
+<h3 class="function"><a name="reset_deployments-4">reset_deployments/4</a></h3>
+<div class="spec">
+<p><tt>reset_deployments(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_bulk_deployment-2">start_bulk_deployment/2</a></h3>
+<div class="spec">
+<p><tt>start_bulk_deployment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deploys multiple groups in one operation.</p>
+ 
+  This action starts the bulk deployment of a specified set of group
+  versions. Each group version deployment will be triggered with an adaptive
+  rate that has a fixed upper limit. We recommend that you include an
+  ''X-Amzn-Client-Token'' token in every ''StartBulkDeployment'' request.
+  These requests are idempotent with respect to the token and the request
+  parameters.</p>
+
+<h3 class="function"><a name="start_bulk_deployment-3">start_bulk_deployment/3</a></h3>
+<div class="spec">
+<p><tt>start_bulk_deployment(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_bulk_deployment-3">stop_bulk_deployment/3</a></h3>
+<div class="spec">
+<p><tt>stop_bulk_deployment(Client, BulkDeploymentId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops the execution of a bulk deployment.</p>
+ 
+  This action returns a status of ''Stopping'' until the deployment is
+  stopped. You cannot start a new bulk deployment while a previous
+  deployment is in the ''Stopping'' state. This action doesn't rollback
+  completed deployments or cancel pending deployments.</p>
+
+<h3 class="function"><a name="stop_bulk_deployment-4">stop_bulk_deployment/4</a></h3>
+<div class="spec">
+<p><tt>stop_bulk_deployment(Client, BulkDeploymentId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds tags to a Greengrass resource.</p>
+ 
+  Valid resources are 'Group', 'ConnectorDefinition', 'CoreDefinition',
+  'DeviceDefinition', 'FunctionDefinition', 'LoggerDefinition',
+  'SubscriptionDefinition', 'ResourceDefinition', and 'BulkDeployment'.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Remove resource tags from a Greengrass Resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_connectivity_info-3">update_connectivity_info/3</a></h3>
+<div class="spec">
+<p><tt>update_connectivity_info(Client, ThingName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the connectivity information for the core.</p>
+ 
+  Any devices that belong to the group which has this core will receive this
+  information in order to find the location of the core and connect to it.</p>
+
+<h3 class="function"><a name="update_connectivity_info-4">update_connectivity_info/4</a></h3>
+<div class="spec">
+<p><tt>update_connectivity_info(Client, ThingName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_connector_definition-3">update_connector_definition/3</a></h3>
+<div class="spec">
+<p><tt>update_connector_definition(Client, ConnectorDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a connector definition.</p>
+
+<h3 class="function"><a name="update_connector_definition-4">update_connector_definition/4</a></h3>
+<div class="spec">
+<p><tt>update_connector_definition(Client, ConnectorDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_core_definition-3">update_core_definition/3</a></h3>
+<div class="spec">
+<p><tt>update_core_definition(Client, CoreDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a core definition.</p>
+
+<h3 class="function"><a name="update_core_definition-4">update_core_definition/4</a></h3>
+<div class="spec">
+<p><tt>update_core_definition(Client, CoreDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_device_definition-3">update_device_definition/3</a></h3>
+<div class="spec">
+<p><tt>update_device_definition(Client, DeviceDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a device definition.</p>
+
+<h3 class="function"><a name="update_device_definition-4">update_device_definition/4</a></h3>
+<div class="spec">
+<p><tt>update_device_definition(Client, DeviceDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_function_definition-3">update_function_definition/3</a></h3>
+<div class="spec">
+<p><tt>update_function_definition(Client, FunctionDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a Lambda function definition.</p>
+
+<h3 class="function"><a name="update_function_definition-4">update_function_definition/4</a></h3>
+<div class="spec">
+<p><tt>update_function_definition(Client, FunctionDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_group-3">update_group/3</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a group.</p>
+
+<h3 class="function"><a name="update_group-4">update_group/4</a></h3>
+<div class="spec">
+<p><tt>update_group(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_group_certificate_configuration-3">update_group_certificate_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_group_certificate_configuration(Client, GroupId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the Certificate expiry time for a group.</p>
+
+<h3 class="function"><a name="update_group_certificate_configuration-4">update_group_certificate_configuration/4</a></h3>
+<div class="spec">
+<p><tt>update_group_certificate_configuration(Client, GroupId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_logger_definition-3">update_logger_definition/3</a></h3>
+<div class="spec">
+<p><tt>update_logger_definition(Client, LoggerDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a logger definition.</p>
+
+<h3 class="function"><a name="update_logger_definition-4">update_logger_definition/4</a></h3>
+<div class="spec">
+<p><tt>update_logger_definition(Client, LoggerDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_resource_definition-3">update_resource_definition/3</a></h3>
+<div class="spec">
+<p><tt>update_resource_definition(Client, ResourceDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a resource definition.</p>
+
+<h3 class="function"><a name="update_resource_definition-4">update_resource_definition/4</a></h3>
+<div class="spec">
+<p><tt>update_resource_definition(Client, ResourceDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_subscription_definition-3">update_subscription_definition/3</a></h3>
+<div class="spec">
+<p><tt>update_subscription_definition(Client, SubscriptionDefinitionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a subscription definition.</p>
+
+<h3 class="function"><a name="update_subscription_definition-4">update_subscription_definition/4</a></h3>
+<div class="spec">
+<p><tt>update_subscription_definition(Client, SubscriptionDefinitionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_thing_runtime_configuration-3">update_thing_runtime_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_thing_runtime_configuration(Client, ThingName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the runtime configuration of a thing.</p>
+
+<h3 class="function"><a name="update_thing_runtime_configuration-4">update_thing_runtime_configuration/4</a></h3>
+<div class="spec">
+<p><tt>update_thing_runtime_configuration(Client, ThingName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

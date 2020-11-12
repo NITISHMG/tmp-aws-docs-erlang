@@ -1,0 +1,619 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_appsync</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_appsync</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS AppSync provides API actions for creating and interacting with
+  data sources using GraphQL from your application.
+
+
+<h2><a name="description">Description</a></h2>AWS AppSync provides API actions for creating and interacting with
+  data sources using GraphQL from your application.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_api_cache-3">create_api_cache/3</a></td><td>Creates a cache for the GraphQL API.</td></tr>
+<tr><td valign="top"><a href="#create_api_cache-4">create_api_cache/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_api_key-3">create_api_key/3</a></td><td>Creates a unique key that you can distribute to clients who are
+  executing your API.</td></tr>
+<tr><td valign="top"><a href="#create_api_key-4">create_api_key/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_data_source-3">create_data_source/3</a></td><td>Creates a <code>DataSource</code> object.</td></tr>
+<tr><td valign="top"><a href="#create_data_source-4">create_data_source/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_function-3">create_function/3</a></td><td>Creates a <code>Function</code> object.</td></tr>
+<tr><td valign="top"><a href="#create_function-4">create_function/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_graphql_api-2">create_graphql_api/2</a></td><td>Creates a <code>GraphqlApi</code> object.</td></tr>
+<tr><td valign="top"><a href="#create_graphql_api-3">create_graphql_api/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resolver-4">create_resolver/4</a></td><td>Creates a <code>Resolver</code> object.</td></tr>
+<tr><td valign="top"><a href="#create_resolver-5">create_resolver/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_type-3">create_type/3</a></td><td>Creates a <code>Type</code> object.</td></tr>
+<tr><td valign="top"><a href="#create_type-4">create_type/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_api_cache-3">delete_api_cache/3</a></td><td>Deletes an <code>ApiCache</code> object.</td></tr>
+<tr><td valign="top"><a href="#delete_api_cache-4">delete_api_cache/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_api_key-4">delete_api_key/4</a></td><td>Deletes an API key.</td></tr>
+<tr><td valign="top"><a href="#delete_api_key-5">delete_api_key/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_data_source-4">delete_data_source/4</a></td><td>Deletes a <code>DataSource</code> object.</td></tr>
+<tr><td valign="top"><a href="#delete_data_source-5">delete_data_source/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_function-4">delete_function/4</a></td><td>Deletes a <code>Function</code>.</td></tr>
+<tr><td valign="top"><a href="#delete_function-5">delete_function/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_graphql_api-3">delete_graphql_api/3</a></td><td>Deletes a <code>GraphqlApi</code> object.</td></tr>
+<tr><td valign="top"><a href="#delete_graphql_api-4">delete_graphql_api/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resolver-5">delete_resolver/5</a></td><td>Deletes a <code>Resolver</code> object.</td></tr>
+<tr><td valign="top"><a href="#delete_resolver-6">delete_resolver/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_type-4">delete_type/4</a></td><td>Deletes a <code>Type</code> object.</td></tr>
+<tr><td valign="top"><a href="#delete_type-5">delete_type/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#flush_api_cache-3">flush_api_cache/3</a></td><td>Flushes an <code>ApiCache</code> object.</td></tr>
+<tr><td valign="top"><a href="#flush_api_cache-4">flush_api_cache/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_api_cache-2">get_api_cache/2</a></td><td>Retrieves an <code>ApiCache</code> object.</td></tr>
+<tr><td valign="top"><a href="#get_api_cache-3">get_api_cache/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_data_source-3">get_data_source/3</a></td><td>Retrieves a <code>DataSource</code> object.</td></tr>
+<tr><td valign="top"><a href="#get_data_source-4">get_data_source/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_function-3">get_function/3</a></td><td>Get a <code>Function</code>.</td></tr>
+<tr><td valign="top"><a href="#get_function-4">get_function/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_graphql_api-2">get_graphql_api/2</a></td><td>Retrieves a <code>GraphqlApi</code> object.</td></tr>
+<tr><td valign="top"><a href="#get_graphql_api-3">get_graphql_api/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_introspection_schema-4">get_introspection_schema/4</a></td><td>Retrieves the introspection schema for a GraphQL API.</td></tr>
+<tr><td valign="top"><a href="#get_introspection_schema-5">get_introspection_schema/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resolver-4">get_resolver/4</a></td><td>Retrieves a <code>Resolver</code> object.</td></tr>
+<tr><td valign="top"><a href="#get_resolver-5">get_resolver/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_schema_creation_status-2">get_schema_creation_status/2</a></td><td>Retrieves the current status of a schema creation operation.</td></tr>
+<tr><td valign="top"><a href="#get_schema_creation_status-3">get_schema_creation_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_type-4">get_type/4</a></td><td>Retrieves a <code>Type</code> object.</td></tr>
+<tr><td valign="top"><a href="#get_type-5">get_type/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_api_keys-4">list_api_keys/4</a></td><td>Lists the API keys for a given API.</td></tr>
+<tr><td valign="top"><a href="#list_api_keys-5">list_api_keys/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_data_sources-4">list_data_sources/4</a></td><td>Lists the data sources for a given API.</td></tr>
+<tr><td valign="top"><a href="#list_data_sources-5">list_data_sources/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_functions-4">list_functions/4</a></td><td>List multiple functions.</td></tr>
+<tr><td valign="top"><a href="#list_functions-5">list_functions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_graphql_apis-3">list_graphql_apis/3</a></td><td>Lists your GraphQL APIs.</td></tr>
+<tr><td valign="top"><a href="#list_graphql_apis-4">list_graphql_apis/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resolvers-5">list_resolvers/5</a></td><td>Lists the resolvers for a given API and type.</td></tr>
+<tr><td valign="top"><a href="#list_resolvers-6">list_resolvers/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resolvers_by_function-5">list_resolvers_by_function/5</a></td><td>List the resolvers that are associated with a specific function.</td></tr>
+<tr><td valign="top"><a href="#list_resolvers_by_function-6">list_resolvers_by_function/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags for a resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_types-5">list_types/5</a></td><td>Lists the types for a given API.</td></tr>
+<tr><td valign="top"><a href="#list_types-6">list_types/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_schema_creation-3">start_schema_creation/3</a></td><td>Adds a new schema to your GraphQL API.</td></tr>
+<tr><td valign="top"><a href="#start_schema_creation-4">start_schema_creation/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Tags a resource with user-supplied tags.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Untags a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_api_cache-3">update_api_cache/3</a></td><td>Updates the cache for the GraphQL API.</td></tr>
+<tr><td valign="top"><a href="#update_api_cache-4">update_api_cache/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_api_key-4">update_api_key/4</a></td><td>Updates an API key.</td></tr>
+<tr><td valign="top"><a href="#update_api_key-5">update_api_key/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_data_source-4">update_data_source/4</a></td><td>Updates a <code>DataSource</code> object.</td></tr>
+<tr><td valign="top"><a href="#update_data_source-5">update_data_source/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_function-4">update_function/4</a></td><td>Updates a <code>Function</code> object.</td></tr>
+<tr><td valign="top"><a href="#update_function-5">update_function/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_graphql_api-3">update_graphql_api/3</a></td><td>Updates a <code>GraphqlApi</code> object.</td></tr>
+<tr><td valign="top"><a href="#update_graphql_api-4">update_graphql_api/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_resolver-5">update_resolver/5</a></td><td>Updates a <code>Resolver</code> object.</td></tr>
+<tr><td valign="top"><a href="#update_resolver-6">update_resolver/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_type-4">update_type/4</a></td><td>Updates a <code>Type</code> object.</td></tr>
+<tr><td valign="top"><a href="#update_type-5">update_type/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_api_cache-3">create_api_cache/3</a></h3>
+<div class="spec">
+<p><tt>create_api_cache(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a cache for the GraphQL API.</p>
+
+<h3 class="function"><a name="create_api_cache-4">create_api_cache/4</a></h3>
+<div class="spec">
+<p><tt>create_api_cache(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_api_key-3">create_api_key/3</a></h3>
+<div class="spec">
+<p><tt>create_api_key(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a unique key that you can distribute to clients who are
+  executing your API.</p>
+
+<h3 class="function"><a name="create_api_key-4">create_api_key/4</a></h3>
+<div class="spec">
+<p><tt>create_api_key(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_data_source-3">create_data_source/3</a></h3>
+<div class="spec">
+<p><tt>create_data_source(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a <code>DataSource</code> object.</p>
+
+<h3 class="function"><a name="create_data_source-4">create_data_source/4</a></h3>
+<div class="spec">
+<p><tt>create_data_source(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_function-3">create_function/3</a></h3>
+<div class="spec">
+<p><tt>create_function(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a <code>Function</code> object.</p>
+ 
+  A function is a reusable entity. Multiple functions can be used to compose
+  the resolver logic.</p>
+
+<h3 class="function"><a name="create_function-4">create_function/4</a></h3>
+<div class="spec">
+<p><tt>create_function(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_graphql_api-2">create_graphql_api/2</a></h3>
+<div class="spec">
+<p><tt>create_graphql_api(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a <code>GraphqlApi</code> object.</p>
+
+<h3 class="function"><a name="create_graphql_api-3">create_graphql_api/3</a></h3>
+<div class="spec">
+<p><tt>create_graphql_api(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resolver-4">create_resolver/4</a></h3>
+<div class="spec">
+<p><tt>create_resolver(Client, ApiId, TypeName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a <code>Resolver</code> object.</p>
+ 
+  A resolver converts incoming requests into a format that a data source can
+  understand and converts the data source's responses into GraphQL.</p>
+
+<h3 class="function"><a name="create_resolver-5">create_resolver/5</a></h3>
+<div class="spec">
+<p><tt>create_resolver(Client, ApiId, TypeName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_type-3">create_type/3</a></h3>
+<div class="spec">
+<p><tt>create_type(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a <code>Type</code> object.</p>
+
+<h3 class="function"><a name="create_type-4">create_type/4</a></h3>
+<div class="spec">
+<p><tt>create_type(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_api_cache-3">delete_api_cache/3</a></h3>
+<div class="spec">
+<p><tt>delete_api_cache(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an <code>ApiCache</code> object.</p>
+
+<h3 class="function"><a name="delete_api_cache-4">delete_api_cache/4</a></h3>
+<div class="spec">
+<p><tt>delete_api_cache(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_api_key-4">delete_api_key/4</a></h3>
+<div class="spec">
+<p><tt>delete_api_key(Client, ApiId, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an API key.</p>
+
+<h3 class="function"><a name="delete_api_key-5">delete_api_key/5</a></h3>
+<div class="spec">
+<p><tt>delete_api_key(Client, ApiId, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_data_source-4">delete_data_source/4</a></h3>
+<div class="spec">
+<p><tt>delete_data_source(Client, ApiId, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a <code>DataSource</code> object.</p>
+
+<h3 class="function"><a name="delete_data_source-5">delete_data_source/5</a></h3>
+<div class="spec">
+<p><tt>delete_data_source(Client, ApiId, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_function-4">delete_function/4</a></h3>
+<div class="spec">
+<p><tt>delete_function(Client, ApiId, FunctionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a <code>Function</code>.</p>
+
+<h3 class="function"><a name="delete_function-5">delete_function/5</a></h3>
+<div class="spec">
+<p><tt>delete_function(Client, ApiId, FunctionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_graphql_api-3">delete_graphql_api/3</a></h3>
+<div class="spec">
+<p><tt>delete_graphql_api(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a <code>GraphqlApi</code> object.</p>
+
+<h3 class="function"><a name="delete_graphql_api-4">delete_graphql_api/4</a></h3>
+<div class="spec">
+<p><tt>delete_graphql_api(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resolver-5">delete_resolver/5</a></h3>
+<div class="spec">
+<p><tt>delete_resolver(Client, ApiId, FieldName, TypeName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a <code>Resolver</code> object.</p>
+
+<h3 class="function"><a name="delete_resolver-6">delete_resolver/6</a></h3>
+<div class="spec">
+<p><tt>delete_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_type-4">delete_type/4</a></h3>
+<div class="spec">
+<p><tt>delete_type(Client, ApiId, TypeName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a <code>Type</code> object.</p>
+
+<h3 class="function"><a name="delete_type-5">delete_type/5</a></h3>
+<div class="spec">
+<p><tt>delete_type(Client, ApiId, TypeName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="flush_api_cache-3">flush_api_cache/3</a></h3>
+<div class="spec">
+<p><tt>flush_api_cache(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Flushes an <code>ApiCache</code> object.</p>
+
+<h3 class="function"><a name="flush_api_cache-4">flush_api_cache/4</a></h3>
+<div class="spec">
+<p><tt>flush_api_cache(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_api_cache-2">get_api_cache/2</a></h3>
+<div class="spec">
+<p><tt>get_api_cache(Client, ApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves an <code>ApiCache</code> object.</p>
+
+<h3 class="function"><a name="get_api_cache-3">get_api_cache/3</a></h3>
+<div class="spec">
+<p><tt>get_api_cache(Client, ApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_data_source-3">get_data_source/3</a></h3>
+<div class="spec">
+<p><tt>get_data_source(Client, ApiId, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a <code>DataSource</code> object.</p>
+
+<h3 class="function"><a name="get_data_source-4">get_data_source/4</a></h3>
+<div class="spec">
+<p><tt>get_data_source(Client, ApiId, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_function-3">get_function/3</a></h3>
+<div class="spec">
+<p><tt>get_function(Client, ApiId, FunctionId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get a <code>Function</code>.</p>
+
+<h3 class="function"><a name="get_function-4">get_function/4</a></h3>
+<div class="spec">
+<p><tt>get_function(Client, ApiId, FunctionId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_graphql_api-2">get_graphql_api/2</a></h3>
+<div class="spec">
+<p><tt>get_graphql_api(Client, ApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a <code>GraphqlApi</code> object.</p>
+
+<h3 class="function"><a name="get_graphql_api-3">get_graphql_api/3</a></h3>
+<div class="spec">
+<p><tt>get_graphql_api(Client, ApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_introspection_schema-4">get_introspection_schema/4</a></h3>
+<div class="spec">
+<p><tt>get_introspection_schema(Client, ApiId, Format, IncludeDirectives) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the introspection schema for a GraphQL API.</p>
+
+<h3 class="function"><a name="get_introspection_schema-5">get_introspection_schema/5</a></h3>
+<div class="spec">
+<p><tt>get_introspection_schema(Client, ApiId, Format, IncludeDirectives, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resolver-4">get_resolver/4</a></h3>
+<div class="spec">
+<p><tt>get_resolver(Client, ApiId, FieldName, TypeName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a <code>Resolver</code> object.</p>
+
+<h3 class="function"><a name="get_resolver-5">get_resolver/5</a></h3>
+<div class="spec">
+<p><tt>get_resolver(Client, ApiId, FieldName, TypeName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_schema_creation_status-2">get_schema_creation_status/2</a></h3>
+<div class="spec">
+<p><tt>get_schema_creation_status(Client, ApiId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the current status of a schema creation operation.</p>
+
+<h3 class="function"><a name="get_schema_creation_status-3">get_schema_creation_status/3</a></h3>
+<div class="spec">
+<p><tt>get_schema_creation_status(Client, ApiId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_type-4">get_type/4</a></h3>
+<div class="spec">
+<p><tt>get_type(Client, ApiId, TypeName, Format) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves a <code>Type</code> object.</p>
+
+<h3 class="function"><a name="get_type-5">get_type/5</a></h3>
+<div class="spec">
+<p><tt>get_type(Client, ApiId, TypeName, Format, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_api_keys-4">list_api_keys/4</a></h3>
+<div class="spec">
+<p><tt>list_api_keys(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists the API keys for a given API.</p>
+ 
+  API keys are deleted automatically 60 days after they expire. However,
+  they may still be included in the response until they have actually been
+  deleted. You can safely call <code>DeleteApiKey</code> to manually delete a key
+  before it's automatically deleted.</p>
+
+<h3 class="function"><a name="list_api_keys-5">list_api_keys/5</a></h3>
+<div class="spec">
+<p><tt>list_api_keys(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_data_sources-4">list_data_sources/4</a></h3>
+<div class="spec">
+<p><tt>list_data_sources(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the data sources for a given API.</p>
+
+<h3 class="function"><a name="list_data_sources-5">list_data_sources/5</a></h3>
+<div class="spec">
+<p><tt>list_data_sources(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_functions-4">list_functions/4</a></h3>
+<div class="spec">
+<p><tt>list_functions(Client, ApiId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List multiple functions.</p>
+
+<h3 class="function"><a name="list_functions-5">list_functions/5</a></h3>
+<div class="spec">
+<p><tt>list_functions(Client, ApiId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_graphql_apis-3">list_graphql_apis/3</a></h3>
+<div class="spec">
+<p><tt>list_graphql_apis(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists your GraphQL APIs.</p>
+
+<h3 class="function"><a name="list_graphql_apis-4">list_graphql_apis/4</a></h3>
+<div class="spec">
+<p><tt>list_graphql_apis(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resolvers-5">list_resolvers/5</a></h3>
+<div class="spec">
+<p><tt>list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the resolvers for a given API and type.</p>
+
+<h3 class="function"><a name="list_resolvers-6">list_resolvers/6</a></h3>
+<div class="spec">
+<p><tt>list_resolvers(Client, ApiId, TypeName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resolvers_by_function-5">list_resolvers_by_function/5</a></h3>
+<div class="spec">
+<p><tt>list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List the resolvers that are associated with a specific function.</p>
+
+<h3 class="function"><a name="list_resolvers_by_function-6">list_resolvers_by_function/6</a></h3>
+<div class="spec">
+<p><tt>list_resolvers_by_function(Client, ApiId, FunctionId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags for a resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_types-5">list_types/5</a></h3>
+<div class="spec">
+<p><tt>list_types(Client, ApiId, Format, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the types for a given API.</p>
+
+<h3 class="function"><a name="list_types-6">list_types/6</a></h3>
+<div class="spec">
+<p><tt>list_types(Client, ApiId, Format, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_schema_creation-3">start_schema_creation/3</a></h3>
+<div class="spec">
+<p><tt>start_schema_creation(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds a new schema to your GraphQL API.</p>
+ 
+  This operation is asynchronous. Use to determine when it has completed.</p>
+
+<h3 class="function"><a name="start_schema_creation-4">start_schema_creation/4</a></h3>
+<div class="spec">
+<p><tt>start_schema_creation(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Tags a resource with user-supplied tags.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Untags a resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_api_cache-3">update_api_cache/3</a></h3>
+<div class="spec">
+<p><tt>update_api_cache(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the cache for the GraphQL API.</p>
+
+<h3 class="function"><a name="update_api_cache-4">update_api_cache/4</a></h3>
+<div class="spec">
+<p><tt>update_api_cache(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_api_key-4">update_api_key/4</a></h3>
+<div class="spec">
+<p><tt>update_api_key(Client, ApiId, Id, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates an API key.</p>
+ 
+  The key can be updated while it is not deleted.</p>
+
+<h3 class="function"><a name="update_api_key-5">update_api_key/5</a></h3>
+<div class="spec">
+<p><tt>update_api_key(Client, ApiId, Id, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_data_source-4">update_data_source/4</a></h3>
+<div class="spec">
+<p><tt>update_data_source(Client, ApiId, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a <code>DataSource</code> object.</p>
+
+<h3 class="function"><a name="update_data_source-5">update_data_source/5</a></h3>
+<div class="spec">
+<p><tt>update_data_source(Client, ApiId, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_function-4">update_function/4</a></h3>
+<div class="spec">
+<p><tt>update_function(Client, ApiId, FunctionId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a <code>Function</code> object.</p>
+
+<h3 class="function"><a name="update_function-5">update_function/5</a></h3>
+<div class="spec">
+<p><tt>update_function(Client, ApiId, FunctionId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_graphql_api-3">update_graphql_api/3</a></h3>
+<div class="spec">
+<p><tt>update_graphql_api(Client, ApiId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a <code>GraphqlApi</code> object.</p>
+
+<h3 class="function"><a name="update_graphql_api-4">update_graphql_api/4</a></h3>
+<div class="spec">
+<p><tt>update_graphql_api(Client, ApiId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_resolver-5">update_resolver/5</a></h3>
+<div class="spec">
+<p><tt>update_resolver(Client, ApiId, FieldName, TypeName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a <code>Resolver</code> object.</p>
+
+<h3 class="function"><a name="update_resolver-6">update_resolver/6</a></h3>
+<div class="spec">
+<p><tt>update_resolver(Client, ApiId, FieldName, TypeName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_type-4">update_type/4</a></h3>
+<div class="spec">
+<p><tt>update_type(Client, ApiId, TypeName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a <code>Type</code> object.</p>
+
+<h3 class="function"><a name="update_type-5">update_type/5</a></h3>
+<div class="spec">
+<p><tt>update_type(Client, ApiId, TypeName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

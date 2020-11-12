@@ -1,0 +1,671 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_imagebuilder</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_imagebuilder</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>EC2 Image Builder is a fully managed AWS service that makes it easier
+  to automate the creation, management, and deployment of customized,
+  secure, and up-to-date “golden” server images that are pre-installed and
+  pre-configured with software and settings to meet specific IT standards.
+
+
+<h2><a name="description">Description</a></h2>EC2 Image Builder is a fully managed AWS service that makes it easier
+  to automate the creation, management, and deployment of customized,
+  secure, and up-to-date “golden” server images that are pre-installed and
+  pre-configured with software and settings to meet specific IT standards.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_image_creation-2">cancel_image_creation/2</a></td><td>CancelImageCreation cancels the creation of Image.</td></tr>
+<tr><td valign="top"><a href="#cancel_image_creation-3">cancel_image_creation/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_component-2">create_component/2</a></td><td>Creates a new component that can be used to build, validate, test,
+  and assess your image.</td></tr>
+<tr><td valign="top"><a href="#create_component-3">create_component/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_distribution_configuration-2">create_distribution_configuration/2</a></td><td>Creates a new distribution configuration.</td></tr>
+<tr><td valign="top"><a href="#create_distribution_configuration-3">create_distribution_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_image-2">create_image/2</a></td><td>Creates a new image.</td></tr>
+<tr><td valign="top"><a href="#create_image-3">create_image/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_image_pipeline-2">create_image_pipeline/2</a></td><td>Creates a new image pipeline.</td></tr>
+<tr><td valign="top"><a href="#create_image_pipeline-3">create_image_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_image_recipe-2">create_image_recipe/2</a></td><td>Creates a new image recipe.</td></tr>
+<tr><td valign="top"><a href="#create_image_recipe-3">create_image_recipe/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_infrastructure_configuration-2">create_infrastructure_configuration/2</a></td><td>Creates a new infrastructure configuration.</td></tr>
+<tr><td valign="top"><a href="#create_infrastructure_configuration-3">create_infrastructure_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_component-2">delete_component/2</a></td><td>Deletes a component build version.</td></tr>
+<tr><td valign="top"><a href="#delete_component-3">delete_component/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_distribution_configuration-2">delete_distribution_configuration/2</a></td><td>Deletes a distribution configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_distribution_configuration-3">delete_distribution_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_image-2">delete_image/2</a></td><td>Deletes an image.</td></tr>
+<tr><td valign="top"><a href="#delete_image-3">delete_image/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_image_pipeline-2">delete_image_pipeline/2</a></td><td>Deletes an image pipeline.</td></tr>
+<tr><td valign="top"><a href="#delete_image_pipeline-3">delete_image_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_image_recipe-2">delete_image_recipe/2</a></td><td>Deletes an image recipe.</td></tr>
+<tr><td valign="top"><a href="#delete_image_recipe-3">delete_image_recipe/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_infrastructure_configuration-2">delete_infrastructure_configuration/2</a></td><td>Deletes an infrastructure configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_infrastructure_configuration-3">delete_infrastructure_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_component-2">get_component/2</a></td><td>Gets a component object.</td></tr>
+<tr><td valign="top"><a href="#get_component-3">get_component/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_component_policy-2">get_component_policy/2</a></td><td>Gets a component policy.</td></tr>
+<tr><td valign="top"><a href="#get_component_policy-3">get_component_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_distribution_configuration-2">get_distribution_configuration/2</a></td><td>Gets a distribution configuration.</td></tr>
+<tr><td valign="top"><a href="#get_distribution_configuration-3">get_distribution_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_image-2">get_image/2</a></td><td>Gets an image.</td></tr>
+<tr><td valign="top"><a href="#get_image-3">get_image/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_image_pipeline-2">get_image_pipeline/2</a></td><td>Gets an image pipeline.</td></tr>
+<tr><td valign="top"><a href="#get_image_pipeline-3">get_image_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_image_policy-2">get_image_policy/2</a></td><td>Gets an image policy.</td></tr>
+<tr><td valign="top"><a href="#get_image_policy-3">get_image_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_image_recipe-2">get_image_recipe/2</a></td><td>Gets an image recipe.</td></tr>
+<tr><td valign="top"><a href="#get_image_recipe-3">get_image_recipe/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_image_recipe_policy-2">get_image_recipe_policy/2</a></td><td>Gets an image recipe policy.</td></tr>
+<tr><td valign="top"><a href="#get_image_recipe_policy-3">get_image_recipe_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_infrastructure_configuration-2">get_infrastructure_configuration/2</a></td><td>Gets an infrastructure configuration.</td></tr>
+<tr><td valign="top"><a href="#get_infrastructure_configuration-3">get_infrastructure_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_component-2">import_component/2</a></td><td>Imports a component and transforms its data into a component
+  document.</td></tr>
+<tr><td valign="top"><a href="#import_component-3">import_component/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_component_build_versions-2">list_component_build_versions/2</a></td><td>Returns the list of component build versions for the specified
+  semantic version.</td></tr>
+<tr><td valign="top"><a href="#list_component_build_versions-3">list_component_build_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_components-2">list_components/2</a></td><td>Returns the list of component build versions for the specified
+  semantic version.</td></tr>
+<tr><td valign="top"><a href="#list_components-3">list_components/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_distribution_configurations-2">list_distribution_configurations/2</a></td><td>Returns a list of distribution configurations.</td></tr>
+<tr><td valign="top"><a href="#list_distribution_configurations-3">list_distribution_configurations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_image_build_versions-2">list_image_build_versions/2</a></td><td>Returns a list of image build versions.</td></tr>
+<tr><td valign="top"><a href="#list_image_build_versions-3">list_image_build_versions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_image_pipeline_images-2">list_image_pipeline_images/2</a></td><td>Returns a list of images created by the specified pipeline.</td></tr>
+<tr><td valign="top"><a href="#list_image_pipeline_images-3">list_image_pipeline_images/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_image_pipelines-2">list_image_pipelines/2</a></td><td>Returns a list of image pipelines.</td></tr>
+<tr><td valign="top"><a href="#list_image_pipelines-3">list_image_pipelines/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_image_recipes-2">list_image_recipes/2</a></td><td>Returns a list of image recipes.</td></tr>
+<tr><td valign="top"><a href="#list_image_recipes-3">list_image_recipes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_images-2">list_images/2</a></td><td>Returns the list of images that you have access to.</td></tr>
+<tr><td valign="top"><a href="#list_images-3">list_images/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_infrastructure_configurations-2">list_infrastructure_configurations/2</a></td><td>Returns a list of infrastructure configurations.</td></tr>
+<tr><td valign="top"><a href="#list_infrastructure_configurations-3">list_infrastructure_configurations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns the list of tags for the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_component_policy-2">put_component_policy/2</a></td><td>Applies a policy to a component.</td></tr>
+<tr><td valign="top"><a href="#put_component_policy-3">put_component_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_image_policy-2">put_image_policy/2</a></td><td>Applies a policy to an image.</td></tr>
+<tr><td valign="top"><a href="#put_image_policy-3">put_image_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_image_recipe_policy-2">put_image_recipe_policy/2</a></td><td>Applies a policy to an image recipe.</td></tr>
+<tr><td valign="top"><a href="#put_image_recipe_policy-3">put_image_recipe_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_image_pipeline_execution-2">start_image_pipeline_execution/2</a></td><td>Manually triggers a pipeline to create an image.</td></tr>
+<tr><td valign="top"><a href="#start_image_pipeline_execution-3">start_image_pipeline_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds a tag to a resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes a tag from a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_distribution_configuration-2">update_distribution_configuration/2</a></td><td>Updates a new distribution configuration.</td></tr>
+<tr><td valign="top"><a href="#update_distribution_configuration-3">update_distribution_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_image_pipeline-2">update_image_pipeline/2</a></td><td>Updates a new image pipeline.</td></tr>
+<tr><td valign="top"><a href="#update_image_pipeline-3">update_image_pipeline/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_infrastructure_configuration-2">update_infrastructure_configuration/2</a></td><td>Updates a new infrastructure configuration.</td></tr>
+<tr><td valign="top"><a href="#update_infrastructure_configuration-3">update_infrastructure_configuration/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_image_creation-2">cancel_image_creation/2</a></h3>
+<div class="spec">
+<p><tt>cancel_image_creation(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>CancelImageCreation cancels the creation of Image.</p>
+ 
+  This operation can only be used on images in a non-terminal state.</p>
+
+<h3 class="function"><a name="cancel_image_creation-3">cancel_image_creation/3</a></h3>
+<div class="spec">
+<p><tt>cancel_image_creation(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_component-2">create_component/2</a></h3>
+<div class="spec">
+<p><tt>create_component(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a new component that can be used to build, validate, test,
+  and assess your image.</p>
+
+<h3 class="function"><a name="create_component-3">create_component/3</a></h3>
+<div class="spec">
+<p><tt>create_component(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_distribution_configuration-2">create_distribution_configuration/2</a></h3>
+<div class="spec">
+<p><tt>create_distribution_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new distribution configuration.</p>
+ 
+  Distribution configurations define and configure the outputs of your
+  pipeline.</p>
+
+<h3 class="function"><a name="create_distribution_configuration-3">create_distribution_configuration/3</a></h3>
+<div class="spec">
+<p><tt>create_distribution_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_image-2">create_image/2</a></h3>
+<div class="spec">
+<p><tt>create_image(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new image.</p>
+ 
+  This request will create a new image along with all of the configured
+  output resources defined in the distribution configuration.</p>
+
+<h3 class="function"><a name="create_image-3">create_image/3</a></h3>
+<div class="spec">
+<p><tt>create_image(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_image_pipeline-2">create_image_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>create_image_pipeline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new image pipeline.</p>
+ 
+  Image pipelines enable you to automate the creation and distribution of
+  images.</p>
+
+<h3 class="function"><a name="create_image_pipeline-3">create_image_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>create_image_pipeline(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_image_recipe-2">create_image_recipe/2</a></h3>
+<div class="spec">
+<p><tt>create_image_recipe(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new image recipe.</p>
+ 
+  Image recipes define how images are configured, tested, and assessed.</p>
+
+<h3 class="function"><a name="create_image_recipe-3">create_image_recipe/3</a></h3>
+<div class="spec">
+<p><tt>create_image_recipe(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_infrastructure_configuration-2">create_infrastructure_configuration/2</a></h3>
+<div class="spec">
+<p><tt>create_infrastructure_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new infrastructure configuration.</p>
+ 
+  An infrastructure configuration defines the environment in which your
+  image will be built and tested.</p>
+
+<h3 class="function"><a name="create_infrastructure_configuration-3">create_infrastructure_configuration/3</a></h3>
+<div class="spec">
+<p><tt>create_infrastructure_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_component-2">delete_component/2</a></h3>
+<div class="spec">
+<p><tt>delete_component(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a component build version.</p>
+
+<h3 class="function"><a name="delete_component-3">delete_component/3</a></h3>
+<div class="spec">
+<p><tt>delete_component(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_distribution_configuration-2">delete_distribution_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_distribution_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a distribution configuration.</p>
+
+<h3 class="function"><a name="delete_distribution_configuration-3">delete_distribution_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_distribution_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_image-2">delete_image/2</a></h3>
+<div class="spec">
+<p><tt>delete_image(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an image.</p>
+
+<h3 class="function"><a name="delete_image-3">delete_image/3</a></h3>
+<div class="spec">
+<p><tt>delete_image(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_image_pipeline-2">delete_image_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>delete_image_pipeline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an image pipeline.</p>
+
+<h3 class="function"><a name="delete_image_pipeline-3">delete_image_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>delete_image_pipeline(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_image_recipe-2">delete_image_recipe/2</a></h3>
+<div class="spec">
+<p><tt>delete_image_recipe(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an image recipe.</p>
+
+<h3 class="function"><a name="delete_image_recipe-3">delete_image_recipe/3</a></h3>
+<div class="spec">
+<p><tt>delete_image_recipe(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_infrastructure_configuration-2">delete_infrastructure_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_infrastructure_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an infrastructure configuration.</p>
+
+<h3 class="function"><a name="delete_infrastructure_configuration-3">delete_infrastructure_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_infrastructure_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_component-2">get_component/2</a></h3>
+<div class="spec">
+<p><tt>get_component(Client, ComponentBuildVersionArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a component object.</p>
+
+<h3 class="function"><a name="get_component-3">get_component/3</a></h3>
+<div class="spec">
+<p><tt>get_component(Client, ComponentBuildVersionArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_component_policy-2">get_component_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_component_policy(Client, ComponentArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a component policy.</p>
+
+<h3 class="function"><a name="get_component_policy-3">get_component_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_component_policy(Client, ComponentArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_distribution_configuration-2">get_distribution_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_distribution_configuration(Client, DistributionConfigurationArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a distribution configuration.</p>
+
+<h3 class="function"><a name="get_distribution_configuration-3">get_distribution_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_distribution_configuration(Client, DistributionConfigurationArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_image-2">get_image/2</a></h3>
+<div class="spec">
+<p><tt>get_image(Client, ImageBuildVersionArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an image.</p>
+
+<h3 class="function"><a name="get_image-3">get_image/3</a></h3>
+<div class="spec">
+<p><tt>get_image(Client, ImageBuildVersionArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_image_pipeline-2">get_image_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>get_image_pipeline(Client, ImagePipelineArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an image pipeline.</p>
+
+<h3 class="function"><a name="get_image_pipeline-3">get_image_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>get_image_pipeline(Client, ImagePipelineArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_image_policy-2">get_image_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_image_policy(Client, ImageArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an image policy.</p>
+
+<h3 class="function"><a name="get_image_policy-3">get_image_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_image_policy(Client, ImageArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_image_recipe-2">get_image_recipe/2</a></h3>
+<div class="spec">
+<p><tt>get_image_recipe(Client, ImageRecipeArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an image recipe.</p>
+
+<h3 class="function"><a name="get_image_recipe-3">get_image_recipe/3</a></h3>
+<div class="spec">
+<p><tt>get_image_recipe(Client, ImageRecipeArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_image_recipe_policy-2">get_image_recipe_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_image_recipe_policy(Client, ImageRecipeArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an image recipe policy.</p>
+
+<h3 class="function"><a name="get_image_recipe_policy-3">get_image_recipe_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_image_recipe_policy(Client, ImageRecipeArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_infrastructure_configuration-2">get_infrastructure_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_infrastructure_configuration(Client, InfrastructureConfigurationArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets an infrastructure configuration.</p>
+
+<h3 class="function"><a name="get_infrastructure_configuration-3">get_infrastructure_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_infrastructure_configuration(Client, InfrastructureConfigurationArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_component-2">import_component/2</a></h3>
+<div class="spec">
+<p><tt>import_component(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Imports a component and transforms its data into a component
+  document.</p>
+
+<h3 class="function"><a name="import_component-3">import_component/3</a></h3>
+<div class="spec">
+<p><tt>import_component(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_component_build_versions-2">list_component_build_versions/2</a></h3>
+<div class="spec">
+<p><tt>list_component_build_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the list of component build versions for the specified
+  semantic version.</p>
+
+<h3 class="function"><a name="list_component_build_versions-3">list_component_build_versions/3</a></h3>
+<div class="spec">
+<p><tt>list_component_build_versions(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_components-2">list_components/2</a></h3>
+<div class="spec">
+<p><tt>list_components(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the list of component build versions for the specified
+  semantic version.</p>
+
+<h3 class="function"><a name="list_components-3">list_components/3</a></h3>
+<div class="spec">
+<p><tt>list_components(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_distribution_configurations-2">list_distribution_configurations/2</a></h3>
+<div class="spec">
+<p><tt>list_distribution_configurations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of distribution configurations.</p>
+
+<h3 class="function"><a name="list_distribution_configurations-3">list_distribution_configurations/3</a></h3>
+<div class="spec">
+<p><tt>list_distribution_configurations(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_image_build_versions-2">list_image_build_versions/2</a></h3>
+<div class="spec">
+<p><tt>list_image_build_versions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of image build versions.</p>
+
+<h3 class="function"><a name="list_image_build_versions-3">list_image_build_versions/3</a></h3>
+<div class="spec">
+<p><tt>list_image_build_versions(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_image_pipeline_images-2">list_image_pipeline_images/2</a></h3>
+<div class="spec">
+<p><tt>list_image_pipeline_images(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of images created by the specified pipeline.</p>
+
+<h3 class="function"><a name="list_image_pipeline_images-3">list_image_pipeline_images/3</a></h3>
+<div class="spec">
+<p><tt>list_image_pipeline_images(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_image_pipelines-2">list_image_pipelines/2</a></h3>
+<div class="spec">
+<p><tt>list_image_pipelines(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of image pipelines.</p>
+
+<h3 class="function"><a name="list_image_pipelines-3">list_image_pipelines/3</a></h3>
+<div class="spec">
+<p><tt>list_image_pipelines(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_image_recipes-2">list_image_recipes/2</a></h3>
+<div class="spec">
+<p><tt>list_image_recipes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of image recipes.</p>
+
+<h3 class="function"><a name="list_image_recipes-3">list_image_recipes/3</a></h3>
+<div class="spec">
+<p><tt>list_image_recipes(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_images-2">list_images/2</a></h3>
+<div class="spec">
+<p><tt>list_images(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the list of images that you have access to.</p>
+
+<h3 class="function"><a name="list_images-3">list_images/3</a></h3>
+<div class="spec">
+<p><tt>list_images(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_infrastructure_configurations-2">list_infrastructure_configurations/2</a></h3>
+<div class="spec">
+<p><tt>list_infrastructure_configurations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of infrastructure configurations.</p>
+
+<h3 class="function"><a name="list_infrastructure_configurations-3">list_infrastructure_configurations/3</a></h3>
+<div class="spec">
+<p><tt>list_infrastructure_configurations(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the list of tags for the specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_component_policy-2">put_component_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_component_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Applies a policy to a component.</p>
+ 
+  We recommend that you call the RAM API CreateResourceShare to share
+  resources. If you call the Image Builder API <code>PutComponentPolicy</code>, you
+  must also call the RAM API PromoteResourceShareCreatedFromPolicy in order
+  for the resource to be visible to all principals with whom the resource is
+  shared.</p>
+
+<h3 class="function"><a name="put_component_policy-3">put_component_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_component_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_image_policy-2">put_image_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_image_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Applies a policy to an image.</p>
+ 
+  We recommend that you call the RAM API CreateResourceShare to share
+  resources. If you call the Image Builder API <code>PutImagePolicy</code>, you must
+  also call the RAM API PromoteResourceShareCreatedFromPolicy in order for
+  the resource to be visible to all principals with whom the resource is
+  shared.</p>
+
+<h3 class="function"><a name="put_image_policy-3">put_image_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_image_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_image_recipe_policy-2">put_image_recipe_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_image_recipe_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Applies a policy to an image recipe.</p>
+ 
+  We recommend that you call the RAM API CreateResourceShare to share
+  resources. If you call the Image Builder API <code>PutImageRecipePolicy</code>, you
+  must also call the RAM API PromoteResourceShareCreatedFromPolicy in order
+  for the resource to be visible to all principals with whom the resource is
+  shared.</p>
+
+<h3 class="function"><a name="put_image_recipe_policy-3">put_image_recipe_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_image_recipe_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_image_pipeline_execution-2">start_image_pipeline_execution/2</a></h3>
+<div class="spec">
+<p><tt>start_image_pipeline_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Manually triggers a pipeline to create an image.</p>
+
+<h3 class="function"><a name="start_image_pipeline_execution-3">start_image_pipeline_execution/3</a></h3>
+<div class="spec">
+<p><tt>start_image_pipeline_execution(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds a tag to a resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a tag from a resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_distribution_configuration-2">update_distribution_configuration/2</a></h3>
+<div class="spec">
+<p><tt>update_distribution_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a new distribution configuration.</p>
+ 
+  Distribution configurations define and configure the outputs of your
+  pipeline.</p>
+
+<h3 class="function"><a name="update_distribution_configuration-3">update_distribution_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_distribution_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_image_pipeline-2">update_image_pipeline/2</a></h3>
+<div class="spec">
+<p><tt>update_image_pipeline(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a new image pipeline.</p>
+ 
+  Image pipelines enable you to automate the creation and distribution of
+  images.</p>
+
+<h3 class="function"><a name="update_image_pipeline-3">update_image_pipeline/3</a></h3>
+<div class="spec">
+<p><tt>update_image_pipeline(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_infrastructure_configuration-2">update_infrastructure_configuration/2</a></h3>
+<div class="spec">
+<p><tt>update_infrastructure_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a new infrastructure configuration.</p>
+ 
+  An infrastructure configuration defines the environment in which your
+  image will be built and tested.</p>
+
+<h3 class="function"><a name="update_infrastructure_configuration-3">update_infrastructure_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_infrastructure_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

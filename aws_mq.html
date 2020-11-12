@@ -1,0 +1,352 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_mq</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_mq</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon MQ is a managed message broker service for Apache ActiveMQ and  
+RabbitMQ that makes it easy to set up and operate message brokers in the  
+cloud.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon MQ is a managed message broker service for Apache ActiveMQ and  
+RabbitMQ that makes it easy to set up and operate message brokers in the  
+cloud.</p>
+ 
+  A message broker allows software applications and components to
+  communicate using various programming languages, operating systems, and
+  formal messaging protocols.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_broker-2">create_broker/2</a></td><td>Creates a broker.</td></tr>
+<tr><td valign="top"><a href="#create_broker-3">create_broker/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_configuration-2">create_configuration/2</a></td><td>Creates a new configuration for the specified configuration name.</td></tr>
+<tr><td valign="top"><a href="#create_configuration-3">create_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_tags-3">create_tags/3</a></td><td>Add a tag to a resource.</td></tr>
+<tr><td valign="top"><a href="#create_tags-4">create_tags/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_user-4">create_user/4</a></td><td>Creates an ActiveMQ user.</td></tr>
+<tr><td valign="top"><a href="#create_user-5">create_user/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_broker-3">delete_broker/3</a></td><td>Deletes a broker.</td></tr>
+<tr><td valign="top"><a href="#delete_broker-4">delete_broker/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_tags-3">delete_tags/3</a></td><td>Removes a tag from a resource.</td></tr>
+<tr><td valign="top"><a href="#delete_tags-4">delete_tags/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_user-4">delete_user/4</a></td><td>Deletes an ActiveMQ user.</td></tr>
+<tr><td valign="top"><a href="#delete_user-5">delete_user/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_broker-2">describe_broker/2</a></td><td>Returns information about the specified broker.</td></tr>
+<tr><td valign="top"><a href="#describe_broker-3">describe_broker/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_broker_engine_types-4">describe_broker_engine_types/4</a></td><td>Describe available engine types and versions.</td></tr>
+<tr><td valign="top"><a href="#describe_broker_engine_types-5">describe_broker_engine_types/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_broker_instance_options-6">describe_broker_instance_options/6</a></td><td>Describe available broker instance options.</td></tr>
+<tr><td valign="top"><a href="#describe_broker_instance_options-7">describe_broker_instance_options/7</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_configuration-2">describe_configuration/2</a></td><td>Returns information about the specified configuration.</td></tr>
+<tr><td valign="top"><a href="#describe_configuration-3">describe_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_configuration_revision-3">describe_configuration_revision/3</a></td><td>Returns the specified configuration revision for the specified
+  configuration.</td></tr>
+<tr><td valign="top"><a href="#describe_configuration_revision-4">describe_configuration_revision/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_user-3">describe_user/3</a></td><td>Returns information about an ActiveMQ user.</td></tr>
+<tr><td valign="top"><a href="#describe_user-4">describe_user/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_brokers-3">list_brokers/3</a></td><td>Returns a list of all brokers.</td></tr>
+<tr><td valign="top"><a href="#list_brokers-4">list_brokers/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_configuration_revisions-4">list_configuration_revisions/4</a></td><td>Returns a list of all revisions for the specified configuration.</td></tr>
+<tr><td valign="top"><a href="#list_configuration_revisions-5">list_configuration_revisions/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_configurations-3">list_configurations/3</a></td><td>Returns a list of all configurations.</td></tr>
+<tr><td valign="top"><a href="#list_configurations-4">list_configurations/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags-2">list_tags/2</a></td><td>Lists tags for a resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags-3">list_tags/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_users-4">list_users/4</a></td><td>Returns a list of all ActiveMQ users.</td></tr>
+<tr><td valign="top"><a href="#list_users-5">list_users/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#reboot_broker-3">reboot_broker/3</a></td><td>Reboots a broker.</td></tr>
+<tr><td valign="top"><a href="#reboot_broker-4">reboot_broker/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_broker-3">update_broker/3</a></td><td>Adds a pending configuration change to a broker.</td></tr>
+<tr><td valign="top"><a href="#update_broker-4">update_broker/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_configuration-3">update_configuration/3</a></td><td>Updates the specified configuration.</td></tr>
+<tr><td valign="top"><a href="#update_configuration-4">update_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_user-4">update_user/4</a></td><td>Updates the information for an ActiveMQ user.</td></tr>
+<tr><td valign="top"><a href="#update_user-5">update_user/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_broker-2">create_broker/2</a></h3>
+<div class="spec">
+<p><tt>create_broker(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a broker.</p>
+ 
+  Note: This API is asynchronous.</p>
+
+<h3 class="function"><a name="create_broker-3">create_broker/3</a></h3>
+<div class="spec">
+<p><tt>create_broker(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_configuration-2">create_configuration/2</a></h3>
+<div class="spec">
+<p><tt>create_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new configuration for the specified configuration name.</p>
+ 
+  Amazon MQ uses the default configuration (the engine type and version).</p>
+
+<h3 class="function"><a name="create_configuration-3">create_configuration/3</a></h3>
+<div class="spec">
+<p><tt>create_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_tags-3">create_tags/3</a></h3>
+<div class="spec">
+<p><tt>create_tags(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Add a tag to a resource.</p>
+
+<h3 class="function"><a name="create_tags-4">create_tags/4</a></h3>
+<div class="spec">
+<p><tt>create_tags(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_user-4">create_user/4</a></h3>
+<div class="spec">
+<p><tt>create_user(Client, BrokerId, Username, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an ActiveMQ user.</p>
+
+<h3 class="function"><a name="create_user-5">create_user/5</a></h3>
+<div class="spec">
+<p><tt>create_user(Client, BrokerId, Username, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_broker-3">delete_broker/3</a></h3>
+<div class="spec">
+<p><tt>delete_broker(Client, BrokerId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a broker.</p>
+ 
+  Note: This API is asynchronous.</p>
+
+<h3 class="function"><a name="delete_broker-4">delete_broker/4</a></h3>
+<div class="spec">
+<p><tt>delete_broker(Client, BrokerId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_tags-3">delete_tags/3</a></h3>
+<div class="spec">
+<p><tt>delete_tags(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a tag from a resource.</p>
+
+<h3 class="function"><a name="delete_tags-4">delete_tags/4</a></h3>
+<div class="spec">
+<p><tt>delete_tags(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_user-4">delete_user/4</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, BrokerId, Username, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an ActiveMQ user.</p>
+
+<h3 class="function"><a name="delete_user-5">delete_user/5</a></h3>
+<div class="spec">
+<p><tt>delete_user(Client, BrokerId, Username, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_broker-2">describe_broker/2</a></h3>
+<div class="spec">
+<p><tt>describe_broker(Client, BrokerId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the specified broker.</p>
+
+<h3 class="function"><a name="describe_broker-3">describe_broker/3</a></h3>
+<div class="spec">
+<p><tt>describe_broker(Client, BrokerId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_broker_engine_types-4">describe_broker_engine_types/4</a></h3>
+<div class="spec">
+<p><tt>describe_broker_engine_types(Client, EngineType, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describe available engine types and versions.</p>
+
+<h3 class="function"><a name="describe_broker_engine_types-5">describe_broker_engine_types/5</a></h3>
+<div class="spec">
+<p><tt>describe_broker_engine_types(Client, EngineType, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_broker_instance_options-6">describe_broker_instance_options/6</a></h3>
+<div class="spec">
+<p><tt>describe_broker_instance_options(Client, EngineType, HostInstanceType, MaxResults, NextToken, StorageType) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describe available broker instance options.</p>
+
+<h3 class="function"><a name="describe_broker_instance_options-7">describe_broker_instance_options/7</a></h3>
+<div class="spec">
+<p><tt>describe_broker_instance_options(Client, EngineType, HostInstanceType, MaxResults, NextToken, StorageType, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_configuration-2">describe_configuration/2</a></h3>
+<div class="spec">
+<p><tt>describe_configuration(Client, ConfigurationId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the specified configuration.</p>
+
+<h3 class="function"><a name="describe_configuration-3">describe_configuration/3</a></h3>
+<div class="spec">
+<p><tt>describe_configuration(Client, ConfigurationId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_configuration_revision-3">describe_configuration_revision/3</a></h3>
+<div class="spec">
+<p><tt>describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the specified configuration revision for the specified
+  configuration.</p>
+
+<h3 class="function"><a name="describe_configuration_revision-4">describe_configuration_revision/4</a></h3>
+<div class="spec">
+<p><tt>describe_configuration_revision(Client, ConfigurationId, ConfigurationRevision, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_user-3">describe_user/3</a></h3>
+<div class="spec">
+<p><tt>describe_user(Client, BrokerId, Username) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about an ActiveMQ user.</p>
+
+<h3 class="function"><a name="describe_user-4">describe_user/4</a></h3>
+<div class="spec">
+<p><tt>describe_user(Client, BrokerId, Username, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_brokers-3">list_brokers/3</a></h3>
+<div class="spec">
+<p><tt>list_brokers(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of all brokers.</p>
+
+<h3 class="function"><a name="list_brokers-4">list_brokers/4</a></h3>
+<div class="spec">
+<p><tt>list_brokers(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_configuration_revisions-4">list_configuration_revisions/4</a></h3>
+<div class="spec">
+<p><tt>list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of all revisions for the specified configuration.</p>
+
+<h3 class="function"><a name="list_configuration_revisions-5">list_configuration_revisions/5</a></h3>
+<div class="spec">
+<p><tt>list_configuration_revisions(Client, ConfigurationId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_configurations-3">list_configurations/3</a></h3>
+<div class="spec">
+<p><tt>list_configurations(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of all configurations.</p>
+
+<h3 class="function"><a name="list_configurations-4">list_configurations/4</a></h3>
+<div class="spec">
+<p><tt>list_configurations(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags-2">list_tags/2</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists tags for a resource.</p>
+
+<h3 class="function"><a name="list_tags-3">list_tags/3</a></h3>
+<div class="spec">
+<p><tt>list_tags(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_users-4">list_users/4</a></h3>
+<div class="spec">
+<p><tt>list_users(Client, BrokerId, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of all ActiveMQ users.</p>
+
+<h3 class="function"><a name="list_users-5">list_users/5</a></h3>
+<div class="spec">
+<p><tt>list_users(Client, BrokerId, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="reboot_broker-3">reboot_broker/3</a></h3>
+<div class="spec">
+<p><tt>reboot_broker(Client, BrokerId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Reboots a broker.</p>
+ 
+  Note: This API is asynchronous.</p>
+
+<h3 class="function"><a name="reboot_broker-4">reboot_broker/4</a></h3>
+<div class="spec">
+<p><tt>reboot_broker(Client, BrokerId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_broker-3">update_broker/3</a></h3>
+<div class="spec">
+<p><tt>update_broker(Client, BrokerId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds a pending configuration change to a broker.</p>
+
+<h3 class="function"><a name="update_broker-4">update_broker/4</a></h3>
+<div class="spec">
+<p><tt>update_broker(Client, BrokerId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_configuration-3">update_configuration/3</a></h3>
+<div class="spec">
+<p><tt>update_configuration(Client, ConfigurationId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the specified configuration.</p>
+
+<h3 class="function"><a name="update_configuration-4">update_configuration/4</a></h3>
+<div class="spec">
+<p><tt>update_configuration(Client, ConfigurationId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_user-4">update_user/4</a></h3>
+<div class="spec">
+<p><tt>update_user(Client, BrokerId, Username, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the information for an ActiveMQ user.</p>
+
+<h3 class="function"><a name="update_user-5">update_user/5</a></h3>
+<div class="spec">
+<p><tt>update_user(Client, BrokerId, Username, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

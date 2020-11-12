@@ -1,0 +1,279 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_textract</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_textract</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Textract detects and analyzes text in documents and converts  
+it into machine-readable text.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Textract detects and analyzes text in documents and converts  
+it into machine-readable text.</p>
+ 
+  This is the API reference documentation for Amazon Textract.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#analyze_document-2">analyze_document/2</a></td><td>Analyzes an input document for relationships between detected items.</td></tr>
+<tr><td valign="top"><a href="#analyze_document-3">analyze_document/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#detect_document_text-2">detect_document_text/2</a></td><td>Detects text in the input document.</td></tr>
+<tr><td valign="top"><a href="#detect_document_text-3">detect_document_text/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_document_analysis-2">get_document_analysis/2</a></td><td>Gets the results for an Amazon Textract asynchronous operation that  
+analyzes text in a document.</td></tr>
+<tr><td valign="top"><a href="#get_document_analysis-3">get_document_analysis/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_document_text_detection-2">get_document_text_detection/2</a></td><td>Gets the results for an Amazon Textract asynchronous operation that  
+detects text in a document.</td></tr>
+<tr><td valign="top"><a href="#get_document_text_detection-3">get_document_text_detection/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_document_analysis-2">start_document_analysis/2</a></td><td>Starts the asynchronous analysis of an input document for  
+relationships between detected items such as key-value pairs, tables, and  
+selection elements.</td></tr>
+<tr><td valign="top"><a href="#start_document_analysis-3">start_document_analysis/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_document_text_detection-2">start_document_text_detection/2</a></td><td>Starts the asynchronous detection of text in a document.</td></tr>
+<tr><td valign="top"><a href="#start_document_text_detection-3">start_document_text_detection/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="analyze_document-2">analyze_document/2</a></h3>
+<div class="spec">
+<p><tt>analyze_document(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Analyzes an input document for relationships between detected items.</p>
+ 
+  <p>The types of information returned are as follows:</p>
+ 
+  <ul> <li><p> Form data (key-value pairs). The related information is returned
+  in two <code>Block</code> objects, each of type <code>KEY_VALUE_SET</code>: a KEY <code>Block</code> object
+  and a VALUE <code>Block</code> object. For example, Name: Ana Silva Carolina contains  
+a key and value. Name: is the key. Ana Silva Carolina is the value.</p>
+ 
+  </li> <li><p> Table and table cell data. A TABLE <code>Block</code> object contains
+  information about a detected table. A CELL <code>Block</code> object is returned for  
+each cell in a table.</p>
+ 
+  </li> <li><p> Lines and words of text. A LINE <code>Block</code> object contains one or
+  more WORD <code>Block</code> objects. All lines and words that are detected in the
+  document are returned (including text that doesn't have a relationship
+  with the value of <code>FeatureTypes</code>).</p>
+ 
+  </li> </ul><p> Selection elements such as check boxes and option buttons
+  (radio buttons) can be detected in form data and in tables. A
+  SELECTION_ELEMENT <code>Block</code> object contains information about a selection  
+element, including the selection status.</p>
+ 
+  <p>You can choose which type of analysis to perform by specifying the
+  <code>FeatureTypes</code> list.</p>
+ 
+  <p>The output is returned in a list of <code>Block</code> objects.</p>
+ 
+  <p><code>AnalyzeDocument</code> is a synchronous operation. To analyze documents
+  asynchronously, use <code>StartDocumentAnalysis</code>.</p>
+ 
+  For more information, see Document Text Analysis.</p>
+
+<h3 class="function"><a name="analyze_document-3">analyze_document/3</a></h3>
+<div class="spec">
+<p><tt>analyze_document(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="detect_document_text-2">detect_document_text/2</a></h3>
+<div class="spec">
+<p><tt>detect_document_text(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Detects text in the input document.</p>
+ 
+  <p>Amazon Textract can detect lines of text and the words that make up a line
+  of text. The input document must be an image in JPEG or PNG format.
+  <code>DetectDocumentText</code> returns the detected text in an array of <code>Block</code>  
+objects.</p>
+ 
+  <p>Each document page has as an associated <code>Block</code> of type PAGE. Each PAGE
+  <code>Block</code> object is the parent of LINE <code>Block</code> objects that represent the
+  lines of detected text on a page. A LINE <code>Block</code> object is a parent for
+  each word that makes up the line. Words are represented by <code>Block</code> objects  
+of type WORD.</p>
+ 
+  <p><code>DetectDocumentText</code> is a synchronous operation. To analyze documents
+  asynchronously, use <code>StartDocumentTextDetection</code>.</p>
+ 
+  For more information, see Document Text Detection.</p>
+
+<h3 class="function"><a name="detect_document_text-3">detect_document_text/3</a></h3>
+<div class="spec">
+<p><tt>detect_document_text(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_document_analysis-2">get_document_analysis/2</a></h3>
+<div class="spec">
+<p><tt>get_document_analysis(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the results for an Amazon Textract asynchronous operation that  
+analyzes text in a document.</p>
+ 
+  <p>You start asynchronous text analysis by calling <code>StartDocumentAnalysis</code>,
+  which returns a job identifier (<code>JobId</code>). When the text analysis operation
+  finishes, Amazon Textract publishes a completion status to the Amazon
+  Simple Notification Service (Amazon SNS) topic that's registered in the
+  initial call to <code>StartDocumentAnalysis</code>. To get the results of the
+  text-detection operation, first check that the status value published to
+  the Amazon SNS topic is <code>SUCCEEDED</code>. If so, call <code>GetDocumentAnalysis</code>,
+  and pass the job identifier (<code>JobId</code>) from the initial call to
+  <code>StartDocumentAnalysis</code>.</p>
+ 
+  <p><code>GetDocumentAnalysis</code> returns an array of <code>Block</code> objects. The following  
+types of information are returned:</p>
+ 
+  <ul> <li><p> Form data (key-value pairs). The related information is returned
+  in two <code>Block</code> objects, each of type <code>KEY_VALUE_SET</code>: a KEY <code>Block</code> object
+  and a VALUE <code>Block</code> object. For example, Name: Ana Silva Carolina contains  
+a key and value. Name: is the key. Ana Silva Carolina is the value.</p>
+ 
+  </li> <li><p> Table and table cell data. A TABLE <code>Block</code> object contains
+  information about a detected table. A CELL <code>Block</code> object is returned for  
+each cell in a table.</p>
+ 
+  </li> <li><p> Lines and words of text. A LINE <code>Block</code> object contains one or
+  more WORD <code>Block</code> objects. All lines and words that are detected in the
+  document are returned (including text that doesn't have a relationship
+  with the value of the <code>StartDocumentAnalysis</code> <code>FeatureTypes</code> input  
+parameter).</p>
+ 
+  </li> </ul><p> Selection elements such as check boxes and option buttons
+  (radio buttons) can be detected in form data and in tables. A
+  SELECTION_ELEMENT <code>Block</code> object contains information about a selection  
+element, including the selection status.</p>
+ 
+  <p>Use the <code>MaxResults</code> parameter to limit the number of blocks that are
+  returned. If there are more results than specified in <code>MaxResults</code>, the
+  value of <code>NextToken</code> in the operation response contains a pagination token
+  for getting the next set of results. To get the next page of results, call
+  <code>GetDocumentAnalysis</code>, and populate the <code>NextToken</code> request parameter with
+  the token value that's returned from the previous call to
+  <code>GetDocumentAnalysis</code>.</p>
+ 
+  For more information, see Document Text Analysis.</p>
+
+<h3 class="function"><a name="get_document_analysis-3">get_document_analysis/3</a></h3>
+<div class="spec">
+<p><tt>get_document_analysis(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_document_text_detection-2">get_document_text_detection/2</a></h3>
+<div class="spec">
+<p><tt>get_document_text_detection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the results for an Amazon Textract asynchronous operation that  
+detects text in a document.</p>
+ 
+  <p>Amazon Textract can detect lines of text and the words that make up a line  
+of text.</p>
+ 
+  <p>You start asynchronous text detection by calling
+  <code>StartDocumentTextDetection</code>, which returns a job identifier (<code>JobId</code>).
+  When the text detection operation finishes, Amazon Textract publishes a
+  completion status to the Amazon Simple Notification Service (Amazon SNS)
+  topic that's registered in the initial call to
+  <code>StartDocumentTextDetection</code>. To get the results of the text-detection
+  operation, first check that the status value published to the Amazon SNS
+  topic is <code>SUCCEEDED</code>. If so, call <code>GetDocumentTextDetection</code>, and pass the
+  job identifier (<code>JobId</code>) from the initial call to
+  <code>StartDocumentTextDetection</code>.</p>
+ 
+  <p><code>GetDocumentTextDetection</code> returns an array of <code>Block</code> objects.</p>
+ 
+  <p>Each document page has as an associated <code>Block</code> of type PAGE. Each PAGE
+  <code>Block</code> object is the parent of LINE <code>Block</code> objects that represent the
+  lines of detected text on a page. A LINE <code>Block</code> object is a parent for
+  each word that makes up the line. Words are represented by <code>Block</code> objects  
+of type WORD.</p>
+ 
+  <p>Use the MaxResults parameter to limit the number of blocks that are
+  returned. If there are more results than specified in <code>MaxResults</code>, the
+  value of <code>NextToken</code> in the operation response contains a pagination token
+  for getting the next set of results. To get the next page of results, call
+  <code>GetDocumentTextDetection</code>, and populate the <code>NextToken</code> request parameter
+  with the token value that's returned from the previous call to
+  <code>GetDocumentTextDetection</code>.</p>
+ 
+  For more information, see Document Text Detection.</p>
+
+<h3 class="function"><a name="get_document_text_detection-3">get_document_text_detection/3</a></h3>
+<div class="spec">
+<p><tt>get_document_text_detection(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_document_analysis-2">start_document_analysis/2</a></h3>
+<div class="spec">
+<p><tt>start_document_analysis(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts the asynchronous analysis of an input document for  
+relationships between detected items such as key-value pairs, tables, and  
+selection elements.</p>
+ 
+  <p><code>StartDocumentAnalysis</code> can analyze text in documents that are in JPEG,
+  PNG, and PDF format. The documents are stored in an Amazon S3 bucket. Use
+  <code>DocumentLocation</code> to specify the bucket name and file name of the  
+document.</p>
+ 
+  <p><code>StartDocumentAnalysis</code> returns a job identifier (<code>JobId</code>) that you use to
+  get the results of the operation. When text analysis is finished, Amazon
+  Textract publishes a completion status to the Amazon Simple Notification
+  Service (Amazon SNS) topic that you specify in <code>NotificationChannel</code>. To
+  get the results of the text analysis operation, first check that the
+  status value published to the Amazon SNS topic is <code>SUCCEEDED</code>. If so, call
+  <code>GetDocumentAnalysis</code>, and pass the job identifier (<code>JobId</code>) from the
+  initial call to <code>StartDocumentAnalysis</code>.</p>
+ 
+  For more information, see Document Text Analysis.</p>
+
+<h3 class="function"><a name="start_document_analysis-3">start_document_analysis/3</a></h3>
+<div class="spec">
+<p><tt>start_document_analysis(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_document_text_detection-2">start_document_text_detection/2</a></h3>
+<div class="spec">
+<p><tt>start_document_text_detection(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts the asynchronous detection of text in a document.</p>
+ 
+  <p>Amazon Textract can detect lines of text and the words that make up a line  
+of text.</p>
+ 
+  <p><code>StartDocumentTextDetection</code> can analyze text in documents that are in
+  JPEG, PNG, and PDF format. The documents are stored in an Amazon S3
+  bucket. Use <code>DocumentLocation</code> to specify the bucket name and file name of  
+the document.</p>
+ 
+  <p><code>StartTextDetection</code> returns a job identifier (<code>JobId</code>) that you use to
+  get the results of the operation. When text detection is finished, Amazon
+  Textract publishes a completion status to the Amazon Simple Notification
+  Service (Amazon SNS) topic that you specify in <code>NotificationChannel</code>. To
+  get the results of the text detection operation, first check that the
+  status value published to the Amazon SNS topic is <code>SUCCEEDED</code>. If so, call
+  <code>GetDocumentTextDetection</code>, and pass the job identifier (<code>JobId</code>) from the
+  initial call to <code>StartDocumentTextDetection</code>.</p>
+ 
+  For more information, see Document Text Detection.</p>
+
+<h3 class="function"><a name="start_document_text_detection-3">start_document_text_detection/3</a></h3>
+<div class="spec">
+<p><tt>start_document_text_detection(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

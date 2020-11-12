@@ -1,0 +1,585 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_sms</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_sms</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Server Migration Service.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Server Migration Service</p>
+ 
+  <p>AWS Server Migration Service (AWS SMS) makes it easier and faster for you  
+to migrate your on-premises workloads to AWS.</p>
+ 
+  <p>To learn more about AWS SMS, see the following resources:</p>
+ 
+  <ul> <li><p> AWS Server Migration Service product page</p>
+ 
+  </li> <li><p> AWS Server Migration Service User Guide</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_app-2">create_app/2</a></td><td>Creates an application.</td></tr>
+<tr><td valign="top"><a href="#create_app-3">create_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_replication_job-2">create_replication_job/2</a></td><td>Creates a replication job.</td></tr>
+<tr><td valign="top"><a href="#create_replication_job-3">create_replication_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_app-2">delete_app/2</a></td><td>Deletes the specified application.</td></tr>
+<tr><td valign="top"><a href="#delete_app-3">delete_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_app_launch_configuration-2">delete_app_launch_configuration/2</a></td><td>Deletes the launch configuration for the specified application.</td></tr>
+<tr><td valign="top"><a href="#delete_app_launch_configuration-3">delete_app_launch_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_app_replication_configuration-2">delete_app_replication_configuration/2</a></td><td>Deletes the replication configuration for the specified application.</td></tr>
+<tr><td valign="top"><a href="#delete_app_replication_configuration-3">delete_app_replication_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_app_validation_configuration-2">delete_app_validation_configuration/2</a></td><td>Deletes the validation configuration for the specified application.</td></tr>
+<tr><td valign="top"><a href="#delete_app_validation_configuration-3">delete_app_validation_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_replication_job-2">delete_replication_job/2</a></td><td>Deletes the specified replication job.</td></tr>
+<tr><td valign="top"><a href="#delete_replication_job-3">delete_replication_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_server_catalog-2">delete_server_catalog/2</a></td><td>Deletes all servers from your server catalog.</td></tr>
+<tr><td valign="top"><a href="#delete_server_catalog-3">delete_server_catalog/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_connector-2">disassociate_connector/2</a></td><td>Disassociates the specified connector from AWS SMS.</td></tr>
+<tr><td valign="top"><a href="#disassociate_connector-3">disassociate_connector/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#generate_change_set-2">generate_change_set/2</a></td><td>Generates a target change set for a currently launched stack and
+  writes it to an Amazon S3 object in the customer’s Amazon S3 bucket.</td></tr>
+<tr><td valign="top"><a href="#generate_change_set-3">generate_change_set/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#generate_template-2">generate_template/2</a></td><td>Generates an AWS CloudFormation template based on the current launch
+  configuration and writes it to an Amazon S3 object in the customer’s
+  Amazon S3 bucket.</td></tr>
+<tr><td valign="top"><a href="#generate_template-3">generate_template/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_app-2">get_app/2</a></td><td>Retrieve information about the specified application.</td></tr>
+<tr><td valign="top"><a href="#get_app-3">get_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_app_launch_configuration-2">get_app_launch_configuration/2</a></td><td>Retrieves the application launch configuration associated with the
+  specified application.</td></tr>
+<tr><td valign="top"><a href="#get_app_launch_configuration-3">get_app_launch_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_app_replication_configuration-2">get_app_replication_configuration/2</a></td><td>Retrieves the application replication configuration associated with
+  the specified application.</td></tr>
+<tr><td valign="top"><a href="#get_app_replication_configuration-3">get_app_replication_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_app_validation_configuration-2">get_app_validation_configuration/2</a></td><td>Retrieves information about a configuration for validating an
+  application.</td></tr>
+<tr><td valign="top"><a href="#get_app_validation_configuration-3">get_app_validation_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_app_validation_output-2">get_app_validation_output/2</a></td><td>Retrieves output from validating an application.</td></tr>
+<tr><td valign="top"><a href="#get_app_validation_output-3">get_app_validation_output/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_connectors-2">get_connectors/2</a></td><td>Describes the connectors registered with the AWS SMS.</td></tr>
+<tr><td valign="top"><a href="#get_connectors-3">get_connectors/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_replication_jobs-2">get_replication_jobs/2</a></td><td>Describes the specified replication job or all of your replication
+  jobs.</td></tr>
+<tr><td valign="top"><a href="#get_replication_jobs-3">get_replication_jobs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_replication_runs-2">get_replication_runs/2</a></td><td>Describes the replication runs for the specified replication job.</td></tr>
+<tr><td valign="top"><a href="#get_replication_runs-3">get_replication_runs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_servers-2">get_servers/2</a></td><td>Describes the servers in your server catalog.</td></tr>
+<tr><td valign="top"><a href="#get_servers-3">get_servers/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_app_catalog-2">import_app_catalog/2</a></td><td>Allows application import from AWS Migration Hub.</td></tr>
+<tr><td valign="top"><a href="#import_app_catalog-3">import_app_catalog/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#import_server_catalog-2">import_server_catalog/2</a></td><td>Gathers a complete list of on-premises servers.</td></tr>
+<tr><td valign="top"><a href="#import_server_catalog-3">import_server_catalog/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#launch_app-2">launch_app/2</a></td><td>Launches the specified application as a stack in AWS CloudFormation.</td></tr>
+<tr><td valign="top"><a href="#launch_app-3">launch_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_apps-2">list_apps/2</a></td><td>Retrieves summaries for all applications.</td></tr>
+<tr><td valign="top"><a href="#list_apps-3">list_apps/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#notify_app_validation_output-2">notify_app_validation_output/2</a></td><td>Provides information to AWS SMS about whether application validation
+  is successful.</td></tr>
+<tr><td valign="top"><a href="#notify_app_validation_output-3">notify_app_validation_output/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_app_launch_configuration-2">put_app_launch_configuration/2</a></td><td>Creates or updates the launch configuration for the specified
+  application.</td></tr>
+<tr><td valign="top"><a href="#put_app_launch_configuration-3">put_app_launch_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_app_replication_configuration-2">put_app_replication_configuration/2</a></td><td>Creates or updates the replication configuration for the specified
+  application.</td></tr>
+<tr><td valign="top"><a href="#put_app_replication_configuration-3">put_app_replication_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_app_validation_configuration-2">put_app_validation_configuration/2</a></td><td>Creates or updates a validation configuration for the specified
+  application.</td></tr>
+<tr><td valign="top"><a href="#put_app_validation_configuration-3">put_app_validation_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_app_replication-2">start_app_replication/2</a></td><td>Starts replicating the specified application by creating replication
+  jobs for each server in the application.</td></tr>
+<tr><td valign="top"><a href="#start_app_replication-3">start_app_replication/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_on_demand_app_replication-2">start_on_demand_app_replication/2</a></td><td>Starts an on-demand replication run for the specified application.</td></tr>
+<tr><td valign="top"><a href="#start_on_demand_app_replication-3">start_on_demand_app_replication/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_on_demand_replication_run-2">start_on_demand_replication_run/2</a></td><td>Starts an on-demand replication run for the specified replication  
+job.</td></tr>
+<tr><td valign="top"><a href="#start_on_demand_replication_run-3">start_on_demand_replication_run/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_app_replication-2">stop_app_replication/2</a></td><td>Stops replicating the specified application by deleting the
+  replication job for each server in the application.</td></tr>
+<tr><td valign="top"><a href="#stop_app_replication-3">stop_app_replication/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#terminate_app-2">terminate_app/2</a></td><td>Terminates the stack for the specified application.</td></tr>
+<tr><td valign="top"><a href="#terminate_app-3">terminate_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_app-2">update_app/2</a></td><td>Updates the specified application.</td></tr>
+<tr><td valign="top"><a href="#update_app-3">update_app/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_replication_job-2">update_replication_job/2</a></td><td>Updates the specified settings for the specified replication job.</td></tr>
+<tr><td valign="top"><a href="#update_replication_job-3">update_replication_job/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_app-2">create_app/2</a></h3>
+<div class="spec">
+<p><tt>create_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an application.</p>
+ 
+  An application consists of one or more server groups. Each server group
+  contain one or more servers.</p>
+
+<h3 class="function"><a name="create_app-3">create_app/3</a></h3>
+<div class="spec">
+<p><tt>create_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_replication_job-2">create_replication_job/2</a></h3>
+<div class="spec">
+<p><tt>create_replication_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a replication job.</p>
+ 
+  The replication job schedules periodic replication runs to replicate your
+  server to AWS. Each replication run creates an Amazon Machine Image (AMI).</p>
+
+<h3 class="function"><a name="create_replication_job-3">create_replication_job/3</a></h3>
+<div class="spec">
+<p><tt>create_replication_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_app-2">delete_app/2</a></h3>
+<div class="spec">
+<p><tt>delete_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified application.</p>
+ 
+  Optionally deletes the launched stack associated with the application and
+  all AWS SMS replication jobs for servers in the application.</p>
+
+<h3 class="function"><a name="delete_app-3">delete_app/3</a></h3>
+<div class="spec">
+<p><tt>delete_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_app_launch_configuration-2">delete_app_launch_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_app_launch_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the launch configuration for the specified application.</p>
+
+<h3 class="function"><a name="delete_app_launch_configuration-3">delete_app_launch_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_app_launch_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_app_replication_configuration-2">delete_app_replication_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_app_replication_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the replication configuration for the specified application.</p>
+
+<h3 class="function"><a name="delete_app_replication_configuration-3">delete_app_replication_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_app_replication_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_app_validation_configuration-2">delete_app_validation_configuration/2</a></h3>
+<div class="spec">
+<p><tt>delete_app_validation_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the validation configuration for the specified application.</p>
+
+<h3 class="function"><a name="delete_app_validation_configuration-3">delete_app_validation_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_app_validation_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_replication_job-2">delete_replication_job/2</a></h3>
+<div class="spec">
+<p><tt>delete_replication_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the specified replication job.</p>
+ 
+  After you delete a replication job, there are no further replication runs.
+  AWS deletes the contents of the Amazon S3 bucket used to store AWS SMS
+  artifacts. The AMIs created by the replication runs are not deleted.</p>
+
+<h3 class="function"><a name="delete_replication_job-3">delete_replication_job/3</a></h3>
+<div class="spec">
+<p><tt>delete_replication_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_server_catalog-2">delete_server_catalog/2</a></h3>
+<div class="spec">
+<p><tt>delete_server_catalog(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes all servers from your server catalog.</p>
+
+<h3 class="function"><a name="delete_server_catalog-3">delete_server_catalog/3</a></h3>
+<div class="spec">
+<p><tt>delete_server_catalog(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_connector-2">disassociate_connector/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_connector(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates the specified connector from AWS SMS.</p>
+ 
+  After you disassociate a connector, it is no longer available to support
+  replication jobs.</p>
+
+<h3 class="function"><a name="disassociate_connector-3">disassociate_connector/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_connector(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="generate_change_set-2">generate_change_set/2</a></h3>
+<div class="spec">
+<p><tt>generate_change_set(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Generates a target change set for a currently launched stack and
+  writes it to an Amazon S3 object in the customer’s Amazon S3 bucket.</p>
+
+<h3 class="function"><a name="generate_change_set-3">generate_change_set/3</a></h3>
+<div class="spec">
+<p><tt>generate_change_set(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="generate_template-2">generate_template/2</a></h3>
+<div class="spec">
+<p><tt>generate_template(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Generates an AWS CloudFormation template based on the current launch
+  configuration and writes it to an Amazon S3 object in the customer’s
+  Amazon S3 bucket.</p>
+
+<h3 class="function"><a name="generate_template-3">generate_template/3</a></h3>
+<div class="spec">
+<p><tt>generate_template(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_app-2">get_app/2</a></h3>
+<div class="spec">
+<p><tt>get_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve information about the specified application.</p>
+
+<h3 class="function"><a name="get_app-3">get_app/3</a></h3>
+<div class="spec">
+<p><tt>get_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_app_launch_configuration-2">get_app_launch_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_app_launch_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the application launch configuration associated with the
+  specified application.</p>
+
+<h3 class="function"><a name="get_app_launch_configuration-3">get_app_launch_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_app_launch_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_app_replication_configuration-2">get_app_replication_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_app_replication_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the application replication configuration associated with
+  the specified application.</p>
+
+<h3 class="function"><a name="get_app_replication_configuration-3">get_app_replication_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_app_replication_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_app_validation_configuration-2">get_app_validation_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_app_validation_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves information about a configuration for validating an
+  application.</p>
+
+<h3 class="function"><a name="get_app_validation_configuration-3">get_app_validation_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_app_validation_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_app_validation_output-2">get_app_validation_output/2</a></h3>
+<div class="spec">
+<p><tt>get_app_validation_output(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves output from validating an application.</p>
+
+<h3 class="function"><a name="get_app_validation_output-3">get_app_validation_output/3</a></h3>
+<div class="spec">
+<p><tt>get_app_validation_output(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_connectors-2">get_connectors/2</a></h3>
+<div class="spec">
+<p><tt>get_connectors(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the connectors registered with the AWS SMS.</p>
+
+<h3 class="function"><a name="get_connectors-3">get_connectors/3</a></h3>
+<div class="spec">
+<p><tt>get_connectors(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_replication_jobs-2">get_replication_jobs/2</a></h3>
+<div class="spec">
+<p><tt>get_replication_jobs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the specified replication job or all of your replication
+  jobs.</p>
+
+<h3 class="function"><a name="get_replication_jobs-3">get_replication_jobs/3</a></h3>
+<div class="spec">
+<p><tt>get_replication_jobs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_replication_runs-2">get_replication_runs/2</a></h3>
+<div class="spec">
+<p><tt>get_replication_runs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the replication runs for the specified replication job.</p>
+
+<h3 class="function"><a name="get_replication_runs-3">get_replication_runs/3</a></h3>
+<div class="spec">
+<p><tt>get_replication_runs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_servers-2">get_servers/2</a></h3>
+<div class="spec">
+<p><tt>get_servers(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Describes the servers in your server catalog.</p>
+ 
+  Before you can describe your servers, you must import them using
+  <code>ImportServerCatalog</code>.</p>
+
+<h3 class="function"><a name="get_servers-3">get_servers/3</a></h3>
+<div class="spec">
+<p><tt>get_servers(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_app_catalog-2">import_app_catalog/2</a></h3>
+<div class="spec">
+<p><tt>import_app_catalog(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Allows application import from AWS Migration Hub.</p>
+
+<h3 class="function"><a name="import_app_catalog-3">import_app_catalog/3</a></h3>
+<div class="spec">
+<p><tt>import_app_catalog(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="import_server_catalog-2">import_server_catalog/2</a></h3>
+<div class="spec">
+<p><tt>import_server_catalog(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gathers a complete list of on-premises servers.</p>
+ 
+  <p>Connectors must be installed and monitoring all servers to import.</p>
+ 
+  This call returns immediately, but might take additional time to retrieve
+  all the servers.</p>
+
+<h3 class="function"><a name="import_server_catalog-3">import_server_catalog/3</a></h3>
+<div class="spec">
+<p><tt>import_server_catalog(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="launch_app-2">launch_app/2</a></h3>
+<div class="spec">
+<p><tt>launch_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Launches the specified application as a stack in AWS CloudFormation.</p>
+
+<h3 class="function"><a name="launch_app-3">launch_app/3</a></h3>
+<div class="spec">
+<p><tt>launch_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_apps-2">list_apps/2</a></h3>
+<div class="spec">
+<p><tt>list_apps(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves summaries for all applications.</p>
+
+<h3 class="function"><a name="list_apps-3">list_apps/3</a></h3>
+<div class="spec">
+<p><tt>list_apps(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="notify_app_validation_output-2">notify_app_validation_output/2</a></h3>
+<div class="spec">
+<p><tt>notify_app_validation_output(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides information to AWS SMS about whether application validation
+  is successful.</p>
+
+<h3 class="function"><a name="notify_app_validation_output-3">notify_app_validation_output/3</a></h3>
+<div class="spec">
+<p><tt>notify_app_validation_output(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_app_launch_configuration-2">put_app_launch_configuration/2</a></h3>
+<div class="spec">
+<p><tt>put_app_launch_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates or updates the launch configuration for the specified
+  application.</p>
+
+<h3 class="function"><a name="put_app_launch_configuration-3">put_app_launch_configuration/3</a></h3>
+<div class="spec">
+<p><tt>put_app_launch_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_app_replication_configuration-2">put_app_replication_configuration/2</a></h3>
+<div class="spec">
+<p><tt>put_app_replication_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates or updates the replication configuration for the specified
+  application.</p>
+
+<h3 class="function"><a name="put_app_replication_configuration-3">put_app_replication_configuration/3</a></h3>
+<div class="spec">
+<p><tt>put_app_replication_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_app_validation_configuration-2">put_app_validation_configuration/2</a></h3>
+<div class="spec">
+<p><tt>put_app_validation_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates or updates a validation configuration for the specified
+  application.</p>
+
+<h3 class="function"><a name="put_app_validation_configuration-3">put_app_validation_configuration/3</a></h3>
+<div class="spec">
+<p><tt>put_app_validation_configuration(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_app_replication-2">start_app_replication/2</a></h3>
+<div class="spec">
+<p><tt>start_app_replication(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts replicating the specified application by creating replication
+  jobs for each server in the application.</p>
+
+<h3 class="function"><a name="start_app_replication-3">start_app_replication/3</a></h3>
+<div class="spec">
+<p><tt>start_app_replication(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_on_demand_app_replication-2">start_on_demand_app_replication/2</a></h3>
+<div class="spec">
+<p><tt>start_on_demand_app_replication(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts an on-demand replication run for the specified application.</p>
+
+<h3 class="function"><a name="start_on_demand_app_replication-3">start_on_demand_app_replication/3</a></h3>
+<div class="spec">
+<p><tt>start_on_demand_app_replication(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_on_demand_replication_run-2">start_on_demand_replication_run/2</a></h3>
+<div class="spec">
+<p><tt>start_on_demand_replication_run(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Starts an on-demand replication run for the specified replication  
+job.</p>
+ 
+  <p>This replication run starts immediately. This replication run is in  
+addition to the ones already scheduled.</p>
+ 
+  There is a limit on the number of on-demand replications runs that you can
+  request in a 24-hour period.</p>
+
+<h3 class="function"><a name="start_on_demand_replication_run-3">start_on_demand_replication_run/3</a></h3>
+<div class="spec">
+<p><tt>start_on_demand_replication_run(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_app_replication-2">stop_app_replication/2</a></h3>
+<div class="spec">
+<p><tt>stop_app_replication(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stops replicating the specified application by deleting the
+  replication job for each server in the application.</p>
+
+<h3 class="function"><a name="stop_app_replication-3">stop_app_replication/3</a></h3>
+<div class="spec">
+<p><tt>stop_app_replication(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="terminate_app-2">terminate_app/2</a></h3>
+<div class="spec">
+<p><tt>terminate_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Terminates the stack for the specified application.</p>
+
+<h3 class="function"><a name="terminate_app-3">terminate_app/3</a></h3>
+<div class="spec">
+<p><tt>terminate_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_app-2">update_app/2</a></h3>
+<div class="spec">
+<p><tt>update_app(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the specified application.</p>
+
+<h3 class="function"><a name="update_app-3">update_app/3</a></h3>
+<div class="spec">
+<p><tt>update_app(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_replication_job-2">update_replication_job/2</a></h3>
+<div class="spec">
+<p><tt>update_replication_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the specified settings for the specified replication job.</p>
+
+<h3 class="function"><a name="update_replication_job-3">update_replication_job/3</a></h3>
+<div class="spec">
+<p><tt>update_replication_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

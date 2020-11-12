@@ -1,0 +1,674 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_route53resolver</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_route53resolver</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>When you create a VPC using Amazon VPC, you automatically get DNS  
+resolution within the VPC from Route 53 Resolver.
+
+
+<h2><a name="description">Description</a></h2><p>When you create a VPC using Amazon VPC, you automatically get DNS  
+resolution within the VPC from Route 53 Resolver.</p>
+ 
+  <p>By default, Resolver answers DNS queries for VPC domain names such as  
+domain names for EC2 instances or ELB load balancers. Resolver performs  
+recursive lookups against public name servers for all other domain names.</p>
+ 
+  <p>You can also configure DNS resolution between your VPC and your network  
+over a Direct Connect or VPN connection:</p>
+ 
+  <p>Forward DNS queries from resolvers on your network to Route 53 Resolver</p>
+ 
+  <p>DNS resolvers on your network can forward DNS queries to Resolver in a  
+specified VPC. This allows your DNS resolvers to easily resolve domain  
+names for AWS resources such as EC2 instances or records in a Route 53  
+private hosted zone. For more information, see How DNS Resolvers on Your  
+Network Forward DNS Queries to Route 53 Resolver in the Amazon Route 53  
+Developer Guide.</p>
+ 
+  <p>Conditionally forward queries from a VPC to resolvers on your network</p>
+ 
+  <p>You can configure Resolver to forward queries that it receives from EC2  
+instances in your VPCs to DNS resolvers on your network. To forward  
+selected queries, you create Resolver rules that specify the domain names  
+for the DNS queries that you want to forward (such as example.com), and  
+the IP addresses of the DNS resolvers on your network that you want to  
+forward the queries to. If a query matches multiple rules (example.com,  
+acme.example.com), Resolver chooses the rule with the most specific match  
+(acme.example.com) and forwards the query to the IP addresses that you  
+specified in that rule. For more information, see How Route 53 Resolver  
+Forwards DNS Queries from Your VPCs to Your Network in the Amazon Route 53  
+Developer Guide.</p>
+ 
+  Like Amazon VPC, Resolver is regional. In each region where you have VPCs,
+  you can choose whether to forward queries from your VPCs to your network
+  (outbound queries), from your network to your VPCs (inbound queries), or
+  both.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_resolver_endpoint_ip_address-2">associate_resolver_endpoint_ip_address/2</a></td><td>Adds IP addresses to an inbound or an outbound Resolver endpoint.</td></tr>
+<tr><td valign="top"><a href="#associate_resolver_endpoint_ip_address-3">associate_resolver_endpoint_ip_address/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_resolver_query_log_config-2">associate_resolver_query_log_config/2</a></td><td>Associates an Amazon VPC with a specified query logging  
+configuration.</td></tr>
+<tr><td valign="top"><a href="#associate_resolver_query_log_config-3">associate_resolver_query_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#associate_resolver_rule-2">associate_resolver_rule/2</a></td><td>Associates a Resolver rule with a VPC.</td></tr>
+<tr><td valign="top"><a href="#associate_resolver_rule-3">associate_resolver_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resolver_endpoint-2">create_resolver_endpoint/2</a></td><td>Creates a Resolver endpoint.</td></tr>
+<tr><td valign="top"><a href="#create_resolver_endpoint-3">create_resolver_endpoint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resolver_query_log_config-2">create_resolver_query_log_config/2</a></td><td>Creates a Resolver query logging configuration, which defines where  
+you want Resolver to save DNS query logs that originate in your VPCs.</td></tr>
+<tr><td valign="top"><a href="#create_resolver_query_log_config-3">create_resolver_query_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_resolver_rule-2">create_resolver_rule/2</a></td><td>For DNS queries that originate in your VPCs, specifies which Resolver
+  endpoint the queries pass through, one domain name that you want to
+  forward to your network, and the IP addresses of the DNS resolvers in your
+  network.</td></tr>
+<tr><td valign="top"><a href="#create_resolver_rule-3">create_resolver_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resolver_endpoint-2">delete_resolver_endpoint/2</a></td><td>Deletes a Resolver endpoint.</td></tr>
+<tr><td valign="top"><a href="#delete_resolver_endpoint-3">delete_resolver_endpoint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resolver_query_log_config-2">delete_resolver_query_log_config/2</a></td><td>Deletes a query logging configuration.</td></tr>
+<tr><td valign="top"><a href="#delete_resolver_query_log_config-3">delete_resolver_query_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resolver_rule-2">delete_resolver_rule/2</a></td><td>Deletes a Resolver rule.</td></tr>
+<tr><td valign="top"><a href="#delete_resolver_rule-3">delete_resolver_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_resolver_endpoint_ip_address-2">disassociate_resolver_endpoint_ip_address/2</a></td><td>Removes IP addresses from an inbound or an outbound Resolver  
+endpoint.</td></tr>
+<tr><td valign="top"><a href="#disassociate_resolver_endpoint_ip_address-3">disassociate_resolver_endpoint_ip_address/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_resolver_query_log_config-2">disassociate_resolver_query_log_config/2</a></td><td>Disassociates a VPC from a query logging configuration.</td></tr>
+<tr><td valign="top"><a href="#disassociate_resolver_query_log_config-3">disassociate_resolver_query_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_resolver_rule-2">disassociate_resolver_rule/2</a></td><td>Removes the association between a specified Resolver rule and a  
+specified VPC.</td></tr>
+<tr><td valign="top"><a href="#disassociate_resolver_rule-3">disassociate_resolver_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resolver_endpoint-2">get_resolver_endpoint/2</a></td><td>Gets information about a specified Resolver endpoint, such as whether
+  it's an inbound or an outbound Resolver endpoint, and the current status
+  of the endpoint.</td></tr>
+<tr><td valign="top"><a href="#get_resolver_endpoint-3">get_resolver_endpoint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resolver_query_log_config-2">get_resolver_query_log_config/2</a></td><td>Gets information about a specified Resolver query logging
+  configuration, such as the number of VPCs that the configuration is
+  logging queries for and the location that logs are sent to.</td></tr>
+<tr><td valign="top"><a href="#get_resolver_query_log_config-3">get_resolver_query_log_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resolver_query_log_config_association-2">get_resolver_query_log_config_association/2</a></td><td>Gets information about a specified association between a Resolver  
+query logging configuration and an Amazon VPC.</td></tr>
+<tr><td valign="top"><a href="#get_resolver_query_log_config_association-3">get_resolver_query_log_config_association/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resolver_query_log_config_policy-2">get_resolver_query_log_config_policy/2</a></td><td>Gets information about a query logging policy.</td></tr>
+<tr><td valign="top"><a href="#get_resolver_query_log_config_policy-3">get_resolver_query_log_config_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resolver_rule-2">get_resolver_rule/2</a></td><td>Gets information about a specified Resolver rule, such as the domain
+  name that the rule forwards DNS queries for and the ID of the outbound
+  Resolver endpoint that the rule is associated with.</td></tr>
+<tr><td valign="top"><a href="#get_resolver_rule-3">get_resolver_rule/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resolver_rule_association-2">get_resolver_rule_association/2</a></td><td>Gets information about an association between a specified Resolver  
+rule and a VPC.</td></tr>
+<tr><td valign="top"><a href="#get_resolver_rule_association-3">get_resolver_rule_association/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resolver_rule_policy-2">get_resolver_rule_policy/2</a></td><td>Gets information about a Resolver rule policy.</td></tr>
+<tr><td valign="top"><a href="#get_resolver_rule_policy-3">get_resolver_rule_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resolver_endpoint_ip_addresses-2">list_resolver_endpoint_ip_addresses/2</a></td><td>Gets the IP addresses for a specified Resolver endpoint.</td></tr>
+<tr><td valign="top"><a href="#list_resolver_endpoint_ip_addresses-3">list_resolver_endpoint_ip_addresses/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resolver_endpoints-2">list_resolver_endpoints/2</a></td><td>Lists all the Resolver endpoints that were created using the current
+  AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_resolver_endpoints-3">list_resolver_endpoints/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resolver_query_log_config_associations-2">list_resolver_query_log_config_associations/2</a></td><td>Lists information about associations between Amazon VPCs and query
+  logging configurations.</td></tr>
+<tr><td valign="top"><a href="#list_resolver_query_log_config_associations-3">list_resolver_query_log_config_associations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resolver_query_log_configs-2">list_resolver_query_log_configs/2</a></td><td>Lists information about the specified query logging configurations.</td></tr>
+<tr><td valign="top"><a href="#list_resolver_query_log_configs-3">list_resolver_query_log_configs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resolver_rule_associations-2">list_resolver_rule_associations/2</a></td><td>Lists the associations that were created between Resolver rules and
+  VPCs using the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_resolver_rule_associations-3">list_resolver_rule_associations/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_resolver_rules-2">list_resolver_rules/2</a></td><td>Lists the Resolver rules that were created using the current AWS
+  account.</td></tr>
+<tr><td valign="top"><a href="#list_resolver_rules-3">list_resolver_rules/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags that you associated with the specified resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_resolver_query_log_config_policy-2">put_resolver_query_log_config_policy/2</a></td><td>Specifies an AWS account that you want to share a query logging
+  configuration with, the query logging configuration that you want to
+  share, and the operations that you want the account to be able to perform
+  on the configuration.</td></tr>
+<tr><td valign="top"><a href="#put_resolver_query_log_config_policy-3">put_resolver_query_log_config_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_resolver_rule_policy-2">put_resolver_rule_policy/2</a></td><td>Specifies an AWS account that you want to share rules with, the
+  Resolver rules that you want to share, and the operations that you want
+  the account to be able to perform on those rules.</td></tr>
+<tr><td valign="top"><a href="#put_resolver_rule_policy-3">put_resolver_rule_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds one or more tags to a specified resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes one or more tags from a specified resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_resolver_endpoint-2">update_resolver_endpoint/2</a></td><td>Updates the name of an inbound or an outbound Resolver endpoint.</td></tr>
+<tr><td valign="top"><a href="#update_resolver_endpoint-3">update_resolver_endpoint/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_resolver_rule-2">update_resolver_rule/2</a></td><td>Updates settings for a specified Resolver rule.</td></tr>
+<tr><td valign="top"><a href="#update_resolver_rule-3">update_resolver_rule/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_resolver_endpoint_ip_address-2">associate_resolver_endpoint_ip_address/2</a></h3>
+<div class="spec">
+<p><tt>associate_resolver_endpoint_ip_address(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds IP addresses to an inbound or an outbound Resolver endpoint.</p>
+ 
+  <p>If you want to add more than one IP address, submit one
+  <code>AssociateResolverEndpointIpAddress</code> request for each IP address.</p>
+ 
+  To remove an IP address from an endpoint, see
+  DisassociateResolverEndpointIpAddress.</p>
+
+<h3 class="function"><a name="associate_resolver_endpoint_ip_address-3">associate_resolver_endpoint_ip_address/3</a></h3>
+<div class="spec">
+<p><tt>associate_resolver_endpoint_ip_address(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_resolver_query_log_config-2">associate_resolver_query_log_config/2</a></h3>
+<div class="spec">
+<p><tt>associate_resolver_query_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates an Amazon VPC with a specified query logging  
+configuration.</p>
+ 
+  <p>Route 53 Resolver logs DNS queries that originate in all of the Amazon
+  VPCs that are associated with a specified query logging configuration. To
+  associate more than one VPC with a configuration, submit one
+  <code>AssociateResolverQueryLogConfig</code> request for each VPC.</p>
+ 
+  <p>The VPCs that you associate with a query logging configuration must be in  
+the same Region as the configuration.</p>
+ 
+  To remove a VPC from a query logging configuration, see
+  DisassociateResolverQueryLogConfig.</p>
+
+<h3 class="function"><a name="associate_resolver_query_log_config-3">associate_resolver_query_log_config/3</a></h3>
+<div class="spec">
+<p><tt>associate_resolver_query_log_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="associate_resolver_rule-2">associate_resolver_rule/2</a></h3>
+<div class="spec">
+<p><tt>associate_resolver_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Associates a Resolver rule with a VPC.</p>
+ 
+  When you associate a rule with a VPC, Resolver forwards all DNS queries
+  for the domain name that is specified in the rule and that originate in
+  the VPC. The queries are forwarded to the IP addresses for the DNS
+  resolvers that are specified in the rule. For more information about
+  rules, see CreateResolverRule.</p>
+
+<h3 class="function"><a name="associate_resolver_rule-3">associate_resolver_rule/3</a></h3>
+<div class="spec">
+<p><tt>associate_resolver_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resolver_endpoint-2">create_resolver_endpoint/2</a></h3>
+<div class="spec">
+<p><tt>create_resolver_endpoint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a Resolver endpoint.</p>
+ 
+  <p>There are two types of Resolver endpoints, inbound and outbound:</p>
+ 
+  <ul> <li><p> An inbound Resolver endpoint forwards DNS queries to the DNS  
+service for a VPC from your network.</p>
+ 
+  </li> <li><p> An outbound Resolver endpoint forwards DNS queries from the DNS  
+service for a VPC to your network.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="create_resolver_endpoint-3">create_resolver_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>create_resolver_endpoint(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resolver_query_log_config-2">create_resolver_query_log_config/2</a></h3>
+<div class="spec">
+<p><tt>create_resolver_query_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a Resolver query logging configuration, which defines where  
+you want Resolver to save DNS query logs that originate in your VPCs.</p>
+ 
+  <p>Resolver can log queries only for VPCs that are in the same Region as the  
+query logging configuration.</p>
+ 
+  <p>To specify which VPCs you want to log queries for, you use
+  <code>AssociateResolverQueryLogConfig</code>. For more information, see  
+AssociateResolverQueryLogConfig.</p>
+ 
+  You can optionally use AWS Resource Access Manager (AWS RAM) to share a
+  query logging configuration with other AWS accounts. The other accounts
+  can then associate VPCs with the configuration. The query logs that
+  Resolver creates for a configuration include all DNS queries that
+  originate in all VPCs that are associated with the configuration.</p>
+
+<h3 class="function"><a name="create_resolver_query_log_config-3">create_resolver_query_log_config/3</a></h3>
+<div class="spec">
+<p><tt>create_resolver_query_log_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_resolver_rule-2">create_resolver_rule/2</a></h3>
+<div class="spec">
+<p><tt>create_resolver_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>For DNS queries that originate in your VPCs, specifies which Resolver
+  endpoint the queries pass through, one domain name that you want to
+  forward to your network, and the IP addresses of the DNS resolvers in your
+  network.</p>
+
+<h3 class="function"><a name="create_resolver_rule-3">create_resolver_rule/3</a></h3>
+<div class="spec">
+<p><tt>create_resolver_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resolver_endpoint-2">delete_resolver_endpoint/2</a></h3>
+<div class="spec">
+<p><tt>delete_resolver_endpoint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a Resolver endpoint.</p>
+ 
+  <p>The effect of deleting a Resolver endpoint depends on whether it's an  
+inbound or an outbound Resolver endpoint:</p>
+ 
+  <ul> <li><p> Inbound: DNS queries from your network are no longer routed to  
+the DNS service for the specified VPC.</p>
+ 
+  </li> <li><p> Outbound: DNS queries from a VPC are no longer routed to your  
+network.</p>
+ 
+  </li> </ul></p>
+
+<h3 class="function"><a name="delete_resolver_endpoint-3">delete_resolver_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>delete_resolver_endpoint(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resolver_query_log_config-2">delete_resolver_query_log_config/2</a></h3>
+<div class="spec">
+<p><tt>delete_resolver_query_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a query logging configuration.</p>
+ 
+  <p>When you delete a configuration, Resolver stops logging DNS queries for  
+all of the Amazon VPCs that are associated with the configuration. This  
+also applies if the query logging configuration is shared with other AWS  
+accounts, and the other accounts have associated VPCs with the shared  
+configuration.</p>
+ 
+  <p>Before you can delete a query logging configuration, you must first  
+disassociate all VPCs from the configuration. See  
+DisassociateResolverQueryLogConfig.</p>
+ 
+  If you used Resource Access Manager (RAM) to share a query logging
+  configuration with other accounts, you must stop sharing the configuration
+  before you can delete a configuration. The accounts that you shared the
+  configuration with can first disassociate VPCs that they associated with
+  the configuration, but that's not necessary. If you stop sharing the
+  configuration, those VPCs are automatically disassociated from the
+  configuration.</p>
+
+<h3 class="function"><a name="delete_resolver_query_log_config-3">delete_resolver_query_log_config/3</a></h3>
+<div class="spec">
+<p><tt>delete_resolver_query_log_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resolver_rule-2">delete_resolver_rule/2</a></h3>
+<div class="spec">
+<p><tt>delete_resolver_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a Resolver rule.</p>
+ 
+  Before you can delete a Resolver rule, you must disassociate it from all
+  the VPCs that you associated the Resolver rule with. For more information,
+  see DisassociateResolverRule.</p>
+
+<h3 class="function"><a name="delete_resolver_rule-3">delete_resolver_rule/3</a></h3>
+<div class="spec">
+<p><tt>delete_resolver_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_resolver_endpoint_ip_address-2">disassociate_resolver_endpoint_ip_address/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_resolver_endpoint_ip_address(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes IP addresses from an inbound or an outbound Resolver  
+endpoint.</p>
+ 
+  <p>If you want to remove more than one IP address, submit one
+  <code>DisassociateResolverEndpointIpAddress</code> request for each IP address.</p>
+ 
+  To add an IP address to an endpoint, see
+  AssociateResolverEndpointIpAddress.</p>
+
+<h3 class="function"><a name="disassociate_resolver_endpoint_ip_address-3">disassociate_resolver_endpoint_ip_address/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_resolver_endpoint_ip_address(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_resolver_query_log_config-2">disassociate_resolver_query_log_config/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_resolver_query_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Disassociates a VPC from a query logging configuration.</p>
+ 
+  <p>Before you can delete a query logging configuration, you must first  
+disassociate all VPCs from the configuration. If you used Resource Access  
+Manager (RAM) to share a query logging configuration with other accounts,  
+VPCs can be disassociated from the configuration in the following ways:</p>
+ 
+  <p>The accounts that you shared the configuration with can disassociate VPCs  
+from the configuration.</p>
+ 
+  You can stop sharing the configuration.</p>
+
+<h3 class="function"><a name="disassociate_resolver_query_log_config-3">disassociate_resolver_query_log_config/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_resolver_query_log_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_resolver_rule-2">disassociate_resolver_rule/2</a></h3>
+<div class="spec">
+<p><tt>disassociate_resolver_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes the association between a specified Resolver rule and a  
+specified VPC.</p>
+ 
+  If you disassociate a Resolver rule from a VPC, Resolver stops forwarding
+  DNS queries for the domain name that you specified in the Resolver rule.</p>
+
+<h3 class="function"><a name="disassociate_resolver_rule-3">disassociate_resolver_rule/3</a></h3>
+<div class="spec">
+<p><tt>disassociate_resolver_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resolver_endpoint-2">get_resolver_endpoint/2</a></h3>
+<div class="spec">
+<p><tt>get_resolver_endpoint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a specified Resolver endpoint, such as whether
+  it's an inbound or an outbound Resolver endpoint, and the current status
+  of the endpoint.</p>
+
+<h3 class="function"><a name="get_resolver_endpoint-3">get_resolver_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>get_resolver_endpoint(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resolver_query_log_config-2">get_resolver_query_log_config/2</a></h3>
+<div class="spec">
+<p><tt>get_resolver_query_log_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a specified Resolver query logging
+  configuration, such as the number of VPCs that the configuration is
+  logging queries for and the location that logs are sent to.</p>
+
+<h3 class="function"><a name="get_resolver_query_log_config-3">get_resolver_query_log_config/3</a></h3>
+<div class="spec">
+<p><tt>get_resolver_query_log_config(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resolver_query_log_config_association-2">get_resolver_query_log_config_association/2</a></h3>
+<div class="spec">
+<p><tt>get_resolver_query_log_config_association(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about a specified association between a Resolver  
+query logging configuration and an Amazon VPC.</p>
+ 
+  When you associate a VPC with a query logging configuration, Resolver logs
+  DNS queries that originate in that VPC.</p>
+
+<h3 class="function"><a name="get_resolver_query_log_config_association-3">get_resolver_query_log_config_association/3</a></h3>
+<div class="spec">
+<p><tt>get_resolver_query_log_config_association(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resolver_query_log_config_policy-2">get_resolver_query_log_config_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_resolver_query_log_config_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about a query logging policy.</p>
+ 
+  A query logging policy specifies the Resolver query logging operations and
+  resources that you want to allow another AWS account to be able to use.</p>
+
+<h3 class="function"><a name="get_resolver_query_log_config_policy-3">get_resolver_query_log_config_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_resolver_query_log_config_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resolver_rule-2">get_resolver_rule/2</a></h3>
+<div class="spec">
+<p><tt>get_resolver_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about a specified Resolver rule, such as the domain
+  name that the rule forwards DNS queries for and the ID of the outbound
+  Resolver endpoint that the rule is associated with.</p>
+
+<h3 class="function"><a name="get_resolver_rule-3">get_resolver_rule/3</a></h3>
+<div class="spec">
+<p><tt>get_resolver_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resolver_rule_association-2">get_resolver_rule_association/2</a></h3>
+<div class="spec">
+<p><tt>get_resolver_rule_association(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about an association between a specified Resolver  
+rule and a VPC.</p>
+ 
+  You associate a Resolver rule and a VPC using AssociateResolverRule.</p>
+
+<h3 class="function"><a name="get_resolver_rule_association-3">get_resolver_rule_association/3</a></h3>
+<div class="spec">
+<p><tt>get_resolver_rule_association(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resolver_rule_policy-2">get_resolver_rule_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_resolver_rule_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about a Resolver rule policy.</p>
+ 
+  A Resolver rule policy specifies the Resolver operations and resources
+  that you want to allow another AWS account to be able to use.</p>
+
+<h3 class="function"><a name="get_resolver_rule_policy-3">get_resolver_rule_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_resolver_rule_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resolver_endpoint_ip_addresses-2">list_resolver_endpoint_ip_addresses/2</a></h3>
+<div class="spec">
+<p><tt>list_resolver_endpoint_ip_addresses(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the IP addresses for a specified Resolver endpoint.</p>
+
+<h3 class="function"><a name="list_resolver_endpoint_ip_addresses-3">list_resolver_endpoint_ip_addresses/3</a></h3>
+<div class="spec">
+<p><tt>list_resolver_endpoint_ip_addresses(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resolver_endpoints-2">list_resolver_endpoints/2</a></h3>
+<div class="spec">
+<p><tt>list_resolver_endpoints(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all the Resolver endpoints that were created using the current
+  AWS account.</p>
+
+<h3 class="function"><a name="list_resolver_endpoints-3">list_resolver_endpoints/3</a></h3>
+<div class="spec">
+<p><tt>list_resolver_endpoints(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resolver_query_log_config_associations-2">list_resolver_query_log_config_associations/2</a></h3>
+<div class="spec">
+<p><tt>list_resolver_query_log_config_associations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists information about associations between Amazon VPCs and query
+  logging configurations.</p>
+
+<h3 class="function"><a name="list_resolver_query_log_config_associations-3">list_resolver_query_log_config_associations/3</a></h3>
+<div class="spec">
+<p><tt>list_resolver_query_log_config_associations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resolver_query_log_configs-2">list_resolver_query_log_configs/2</a></h3>
+<div class="spec">
+<p><tt>list_resolver_query_log_configs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Lists information about the specified query logging configurations.</p>
+ 
+  Each configuration defines where you want Resolver to save DNS query logs
+  and specifies the VPCs that you want to log queries for.</p>
+
+<h3 class="function"><a name="list_resolver_query_log_configs-3">list_resolver_query_log_configs/3</a></h3>
+<div class="spec">
+<p><tt>list_resolver_query_log_configs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resolver_rule_associations-2">list_resolver_rule_associations/2</a></h3>
+<div class="spec">
+<p><tt>list_resolver_rule_associations(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the associations that were created between Resolver rules and
+  VPCs using the current AWS account.</p>
+
+<h3 class="function"><a name="list_resolver_rule_associations-3">list_resolver_rule_associations/3</a></h3>
+<div class="spec">
+<p><tt>list_resolver_rule_associations(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_resolver_rules-2">list_resolver_rules/2</a></h3>
+<div class="spec">
+<p><tt>list_resolver_rules(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the Resolver rules that were created using the current AWS
+  account.</p>
+
+<h3 class="function"><a name="list_resolver_rules-3">list_resolver_rules/3</a></h3>
+<div class="spec">
+<p><tt>list_resolver_rules(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags that you associated with the specified resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_resolver_query_log_config_policy-2">put_resolver_query_log_config_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_resolver_query_log_config_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Specifies an AWS account that you want to share a query logging
+  configuration with, the query logging configuration that you want to
+  share, and the operations that you want the account to be able to perform
+  on the configuration.</p>
+
+<h3 class="function"><a name="put_resolver_query_log_config_policy-3">put_resolver_query_log_config_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_resolver_query_log_config_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_resolver_rule_policy-2">put_resolver_rule_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_resolver_rule_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Specifies an AWS account that you want to share rules with, the
+  Resolver rules that you want to share, and the operations that you want
+  the account to be able to perform on those rules.</p>
+
+<h3 class="function"><a name="put_resolver_rule_policy-3">put_resolver_rule_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_resolver_rule_policy(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds one or more tags to a specified resource.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags from a specified resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_resolver_endpoint-2">update_resolver_endpoint/2</a></h3>
+<div class="spec">
+<p><tt>update_resolver_endpoint(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the name of an inbound or an outbound Resolver endpoint.</p>
+
+<h3 class="function"><a name="update_resolver_endpoint-3">update_resolver_endpoint/3</a></h3>
+<div class="spec">
+<p><tt>update_resolver_endpoint(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_resolver_rule-2">update_resolver_rule/2</a></h3>
+<div class="spec">
+<p><tt>update_resolver_rule(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates settings for a specified Resolver rule.</p>
+ 
+  <code>ResolverRuleId</code> is required, and all other parameters are optional. If
+  you don't specify a parameter, it retains its current value.</p>
+
+<h3 class="function"><a name="update_resolver_rule-3">update_resolver_rule/3</a></h3>
+<div class="spec">
+<p><tt>update_resolver_rule(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

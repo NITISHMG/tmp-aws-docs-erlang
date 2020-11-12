@@ -1,0 +1,124 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_util</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_util</h1>
+<ul class="index"><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>
+
+
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#base16-1">base16/1</a></td><td>Base16 encode binary data.</td></tr>
+<tr><td valign="top"><a href="#binary_join-2">binary_join/2</a></td><td>Join binary values using the specified separator.</td></tr>
+<tr><td valign="top"><a href="#decode_xml-1">decode_xml/1</a></td><td>Decode XML into a map representation.</td></tr>
+<tr><td valign="top"><a href="#encode_multi_segment_uri-1">encode_multi_segment_uri/1</a></td><td>Encode URI taking into account if it contains more than one
+  segment.</td></tr>
+<tr><td valign="top"><a href="#encode_query-1">encode_query/1</a></td><td>Encode the map's key/value pairs as a querystring.</td></tr>
+<tr><td valign="top"><a href="#encode_uri-1">encode_uri/1</a></td><td>Encode URI into a percent-encoding string.</td></tr>
+<tr><td valign="top"><a href="#encode_xml-1">encode_xml/1</a></td><td>Encode an Erlang map as XML.</td></tr>
+<tr><td valign="top"><a href="#get_in-2">get_in/2</a></td><td>Get a value from nested maps.</td></tr>
+<tr><td valign="top"><a href="#get_in-3">get_in/3</a></td><td>Get a value from nested maps, return default value if missing.</td></tr>
+<tr><td valign="top"><a href="#hmac_sha256-2">hmac_sha256/2</a></td><td>Create an HMAC-SHA256 hexdigest for Key and Message.</td></tr>
+<tr><td valign="top"><a href="#hmac_sha256_hexdigest-2">hmac_sha256_hexdigest/2</a></td><td>Create an HMAC-SHA256 hexdigest for Key and Message.</td></tr>
+<tr><td valign="top"><a href="#sha256_hexdigest-1">sha256_hexdigest/1</a></td><td>Create a SHA256 hexdigest for Value.</td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="base16-1">base16/1</a></h3>
+<div class="spec">
+<p><tt>base16(Data) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Base16 encode binary data.</p>
+
+<h3 class="function"><a name="binary_join-2">binary_join/2</a></h3>
+<div class="spec">
+<p><tt>binary_join(L, Sep) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Join binary values using the specified separator.</p>
+
+<h3 class="function"><a name="decode_xml-1">decode_xml/1</a></h3>
+<div class="spec">
+<p><tt>decode_xml(Xml) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Decode XML into a map representation</p>
+ 
+  <p>When there is more than one element with the same tag name, their  
+values get merged into a list.</p>
+ 
+  <p>If the content is only text then a key with the element name and a  
+value with the content is inserted.</p>
+ 
+  If the content is a mix between text and child elements, then the
+  elements are processed as described above and all the text parts
+  are merged under the binary <code>__text</code> key.</p>
+
+<h3 class="function"><a name="encode_multi_segment_uri-1">encode_multi_segment_uri/1</a></h3>
+<div class="spec">
+<p><tt>encode_multi_segment_uri(Value) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Encode URI taking into account if it contains more than one
+  segment.</p>
+
+<h3 class="function"><a name="encode_query-1">encode_query/1</a></h3>
+<div class="spec">
+<p><tt>encode_query(List) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Encode the map's key/value pairs as a querystring.</p>
+
+<h3 class="function"><a name="encode_uri-1">encode_uri/1</a></h3>
+<div class="spec">
+<p><tt>encode_uri(Value) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Encode URI into a percent-encoding string.</p>
+
+<h3 class="function"><a name="encode_xml-1">encode_xml/1</a></h3>
+<div class="spec">
+<p><tt>encode_xml(Map) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Encode an Erlang map as XML</p>
+ 
+  All keys must be binaries. Values can be a binary, a list, an
+  integer a float or another nested map.</p>
+
+<h3 class="function"><a name="get_in-2">get_in/2</a></h3>
+<div class="spec">
+<p><tt>get_in(Keys::[any()], V::any()) -&gt; any()</tt><br></p>
+<p> </p>
+</div><p>Get a value from nested maps</p>
+
+<h3 class="function"><a name="get_in-3">get_in/3</a></h3>
+<div class="spec">
+<p><tt>get_in(Keys::[any()], V::any(), Default::any()) -&gt; any()</tt><br></p>
+<p> </p>
+</div><p>Get a value from nested maps, return default value if missing</p>
+
+<h3 class="function"><a name="hmac_sha256-2">hmac_sha256/2</a></h3>
+<div class="spec">
+<p><tt>hmac_sha256(Key, Message) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create an HMAC-SHA256 hexdigest for Key and Message.</p>
+
+<h3 class="function"><a name="hmac_sha256_hexdigest-2">hmac_sha256_hexdigest/2</a></h3>
+<div class="spec">
+<p><tt>hmac_sha256_hexdigest(Key, Message) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create an HMAC-SHA256 hexdigest for Key and Message.</p>
+
+<h3 class="function"><a name="sha256_hexdigest-1">sha256_hexdigest/1</a></h3>
+<div class="spec">
+<p><tt>sha256_hexdigest(Value) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Create a SHA256 hexdigest for Value.</p>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

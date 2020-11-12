@@ -1,0 +1,87 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_kinesis_video_signaling</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_kinesis_video_signaling</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Kinesis Video Streams Signaling Service is a intermediate service
+  that establishes a communication channel for discovering peers,
+  transmitting offers and answers in order to establish peer-to-peer
+  connection in webRTC technology.
+
+
+<h2><a name="description">Description</a></h2>Kinesis Video Streams Signaling Service is a intermediate service
+  that establishes a communication channel for discovering peers,
+  transmitting offers and answers in order to establish peer-to-peer
+  connection in webRTC technology.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#get_ice_server_config-2">get_ice_server_config/2</a></td><td>Gets the Interactive Connectivity Establishment (ICE) server  
+configuration information, including URIs, username, and password which  
+can be used to configure the WebRTC connection.</td></tr>
+<tr><td valign="top"><a href="#get_ice_server_config-3">get_ice_server_config/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#send_alexa_offer_to_master-2">send_alexa_offer_to_master/2</a></td><td>This API allows you to connect WebRTC-enabled devices with Alexa  
+display devices.</td></tr>
+<tr><td valign="top"><a href="#send_alexa_offer_to_master-3">send_alexa_offer_to_master/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="get_ice_server_config-2">get_ice_server_config/2</a></h3>
+<div class="spec">
+<p><tt>get_ice_server_config(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the Interactive Connectivity Establishment (ICE) server  
+configuration information, including URIs, username, and password which  
+can be used to configure the WebRTC connection.</p>
+ 
+  <p>The ICE component uses this configuration information to setup the WebRTC  
+connection, including authenticating with the Traversal Using Relays  
+around NAT (TURN) relay server.</p>
+ 
+  <p>TURN is a protocol that is used to improve the connectivity of  
+peer-to-peer applications. By providing a cloud-based relay service, TURN  
+ensures that a connection can be established even when one or more peers  
+are incapable of a direct peer-to-peer connection. For more information,  
+see A REST API For Access To TURN Services.</p>
+ 
+  You can invoke this API to establish a fallback mechanism in case either
+  of the peers is unable to establish a direct peer-to-peer connection over
+  a signaling channel. You must specify either a signaling channel ARN or
+  the client ID in order to invoke this API.</p>
+
+<h3 class="function"><a name="get_ice_server_config-3">get_ice_server_config/3</a></h3>
+<div class="spec">
+<p><tt>get_ice_server_config(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="send_alexa_offer_to_master-2">send_alexa_offer_to_master/2</a></h3>
+<div class="spec">
+<p><tt>send_alexa_offer_to_master(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This API allows you to connect WebRTC-enabled devices with Alexa  
+display devices.</p>
+ 
+  When invoked, it sends the Alexa Session Description Protocol (SDP) offer
+  to the master peer. The offer is delivered as soon as the master is
+  connected to the specified signaling channel. This API returns the SDP
+  answer from the connected master. If the master is not connected to the
+  signaling channel, redelivery requests are made until the message expires.</p>
+
+<h3 class="function"><a name="send_alexa_offer_to_master-3">send_alexa_offer_to_master/3</a></h3>
+<div class="spec">
+<p><tt>send_alexa_offer_to_master(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

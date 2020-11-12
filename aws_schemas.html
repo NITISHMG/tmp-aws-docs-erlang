@@ -1,0 +1,464 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_schemas</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_schemas</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon EventBridge Schema Registry.
+
+
+<h2><a name="description">Description</a></h2>Amazon EventBridge Schema Registry
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_discoverer-2">create_discoverer/2</a></td><td>Creates a discoverer.</td></tr>
+<tr><td valign="top"><a href="#create_discoverer-3">create_discoverer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_registry-3">create_registry/3</a></td><td>Creates a registry.</td></tr>
+<tr><td valign="top"><a href="#create_registry-4">create_registry/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_schema-4">create_schema/4</a></td><td>Creates a schema definition.</td></tr>
+<tr><td valign="top"><a href="#create_schema-5">create_schema/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_discoverer-3">delete_discoverer/3</a></td><td>Deletes a discoverer.</td></tr>
+<tr><td valign="top"><a href="#delete_discoverer-4">delete_discoverer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_registry-3">delete_registry/3</a></td><td>Deletes a Registry.</td></tr>
+<tr><td valign="top"><a href="#delete_registry-4">delete_registry/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_resource_policy-2">delete_resource_policy/2</a></td><td>Delete the resource-based policy attached to the specified registry.</td></tr>
+<tr><td valign="top"><a href="#delete_resource_policy-3">delete_resource_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_schema-4">delete_schema/4</a></td><td>Delete a schema definition.</td></tr>
+<tr><td valign="top"><a href="#delete_schema-5">delete_schema/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_schema_version-5">delete_schema_version/5</a></td><td>Delete the schema version definition.</td></tr>
+<tr><td valign="top"><a href="#delete_schema_version-6">delete_schema_version/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_code_binding-5">describe_code_binding/5</a></td><td>Describe the code binding URI.</td></tr>
+<tr><td valign="top"><a href="#describe_code_binding-6">describe_code_binding/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_discoverer-2">describe_discoverer/2</a></td><td>Describes the discoverer.</td></tr>
+<tr><td valign="top"><a href="#describe_discoverer-3">describe_discoverer/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_registry-2">describe_registry/2</a></td><td>Describes the registry.</td></tr>
+<tr><td valign="top"><a href="#describe_registry-3">describe_registry/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_schema-4">describe_schema/4</a></td><td>Retrieve the schema definition.</td></tr>
+<tr><td valign="top"><a href="#describe_schema-5">describe_schema/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#export_schema-5">export_schema/5</a></td><td>Exports a schema to a different specification.</td></tr>
+<tr><td valign="top"><a href="#export_schema-6">export_schema/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_code_binding_source-5">get_code_binding_source/5</a></td><td>Get the code binding source URI.</td></tr>
+<tr><td valign="top"><a href="#get_code_binding_source-6">get_code_binding_source/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_discovered_schema-2">get_discovered_schema/2</a></td><td>Get the discovered schema that was generated based on sampled events.</td></tr>
+<tr><td valign="top"><a href="#get_discovered_schema-3">get_discovered_schema/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_resource_policy-2">get_resource_policy/2</a></td><td>Retrieves the resource-based policy attached to a given registry.</td></tr>
+<tr><td valign="top"><a href="#get_resource_policy-3">get_resource_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_discoverers-5">list_discoverers/5</a></td><td>List the discoverers.</td></tr>
+<tr><td valign="top"><a href="#list_discoverers-6">list_discoverers/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_registries-5">list_registries/5</a></td><td>List the registries.</td></tr>
+<tr><td valign="top"><a href="#list_registries-6">list_registries/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_schema_versions-5">list_schema_versions/5</a></td><td>Provides a list of the schema versions and related information.</td></tr>
+<tr><td valign="top"><a href="#list_schema_versions-6">list_schema_versions/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_schemas-5">list_schemas/5</a></td><td>List the schemas.</td></tr>
+<tr><td valign="top"><a href="#list_schemas-6">list_schemas/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Get tags for resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_code_binding-5">put_code_binding/5</a></td><td>Put code binding URI.</td></tr>
+<tr><td valign="top"><a href="#put_code_binding-6">put_code_binding/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_resource_policy-2">put_resource_policy/2</a></td><td>The name of the policy.</td></tr>
+<tr><td valign="top"><a href="#put_resource_policy-3">put_resource_policy/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#search_schemas-5">search_schemas/5</a></td><td>Search the schemas.</td></tr>
+<tr><td valign="top"><a href="#search_schemas-6">search_schemas/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_discoverer-3">start_discoverer/3</a></td><td>Starts the discoverer.</td></tr>
+<tr><td valign="top"><a href="#start_discoverer-4">start_discoverer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_discoverer-3">stop_discoverer/3</a></td><td>Stops the discoverer.</td></tr>
+<tr><td valign="top"><a href="#stop_discoverer-4">stop_discoverer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Add tags to a resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes tags from a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_discoverer-3">update_discoverer/3</a></td><td>Updates the discoverer.</td></tr>
+<tr><td valign="top"><a href="#update_discoverer-4">update_discoverer/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_registry-3">update_registry/3</a></td><td>Updates a registry.</td></tr>
+<tr><td valign="top"><a href="#update_registry-4">update_registry/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_schema-4">update_schema/4</a></td><td>Updates the schema definition.</td></tr>
+<tr><td valign="top"><a href="#update_schema-5">update_schema/5</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_discoverer-2">create_discoverer/2</a></h3>
+<div class="spec">
+<p><tt>create_discoverer(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a discoverer.</p>
+
+<h3 class="function"><a name="create_discoverer-3">create_discoverer/3</a></h3>
+<div class="spec">
+<p><tt>create_discoverer(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_registry-3">create_registry/3</a></h3>
+<div class="spec">
+<p><tt>create_registry(Client, RegistryName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a registry.</p>
+
+<h3 class="function"><a name="create_registry-4">create_registry/4</a></h3>
+<div class="spec">
+<p><tt>create_registry(Client, RegistryName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_schema-4">create_schema/4</a></h3>
+<div class="spec">
+<p><tt>create_schema(Client, RegistryName, SchemaName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a schema definition.</p>
+ 
+  Inactive schemas will be deleted after two years.</p>
+
+<h3 class="function"><a name="create_schema-5">create_schema/5</a></h3>
+<div class="spec">
+<p><tt>create_schema(Client, RegistryName, SchemaName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_discoverer-3">delete_discoverer/3</a></h3>
+<div class="spec">
+<p><tt>delete_discoverer(Client, DiscovererId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a discoverer.</p>
+
+<h3 class="function"><a name="delete_discoverer-4">delete_discoverer/4</a></h3>
+<div class="spec">
+<p><tt>delete_discoverer(Client, DiscovererId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_registry-3">delete_registry/3</a></h3>
+<div class="spec">
+<p><tt>delete_registry(Client, RegistryName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a Registry.</p>
+
+<h3 class="function"><a name="delete_registry-4">delete_registry/4</a></h3>
+<div class="spec">
+<p><tt>delete_registry(Client, RegistryName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_resource_policy-2">delete_resource_policy/2</a></h3>
+<div class="spec">
+<p><tt>delete_resource_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete the resource-based policy attached to the specified registry.</p>
+
+<h3 class="function"><a name="delete_resource_policy-3">delete_resource_policy/3</a></h3>
+<div class="spec">
+<p><tt>delete_resource_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_schema-4">delete_schema/4</a></h3>
+<div class="spec">
+<p><tt>delete_schema(Client, RegistryName, SchemaName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete a schema definition.</p>
+
+<h3 class="function"><a name="delete_schema-5">delete_schema/5</a></h3>
+<div class="spec">
+<p><tt>delete_schema(Client, RegistryName, SchemaName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_schema_version-5">delete_schema_version/5</a></h3>
+<div class="spec">
+<p><tt>delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Delete the schema version definition</p>
+
+<h3 class="function"><a name="delete_schema_version-6">delete_schema_version/6</a></h3>
+<div class="spec">
+<p><tt>delete_schema_version(Client, RegistryName, SchemaName, SchemaVersion, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_code_binding-5">describe_code_binding/5</a></h3>
+<div class="spec">
+<p><tt>describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describe the code binding URI.</p>
+
+<h3 class="function"><a name="describe_code_binding-6">describe_code_binding/6</a></h3>
+<div class="spec">
+<p><tt>describe_code_binding(Client, Language, RegistryName, SchemaName, SchemaVersion, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_discoverer-2">describe_discoverer/2</a></h3>
+<div class="spec">
+<p><tt>describe_discoverer(Client, DiscovererId) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the discoverer.</p>
+
+<h3 class="function"><a name="describe_discoverer-3">describe_discoverer/3</a></h3>
+<div class="spec">
+<p><tt>describe_discoverer(Client, DiscovererId, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_registry-2">describe_registry/2</a></h3>
+<div class="spec">
+<p><tt>describe_registry(Client, RegistryName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes the registry.</p>
+
+<h3 class="function"><a name="describe_registry-3">describe_registry/3</a></h3>
+<div class="spec">
+<p><tt>describe_registry(Client, RegistryName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_schema-4">describe_schema/4</a></h3>
+<div class="spec">
+<p><tt>describe_schema(Client, RegistryName, SchemaName, SchemaVersion) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieve the schema definition.</p>
+
+<h3 class="function"><a name="describe_schema-5">describe_schema/5</a></h3>
+<div class="spec">
+<p><tt>describe_schema(Client, RegistryName, SchemaName, SchemaVersion, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="export_schema-5">export_schema/5</a></h3>
+<div class="spec">
+<p><tt>export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Exports a schema to a different specification.</p>
+
+<h3 class="function"><a name="export_schema-6">export_schema/6</a></h3>
+<div class="spec">
+<p><tt>export_schema(Client, RegistryName, SchemaName, SchemaVersion, Type, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_code_binding_source-5">get_code_binding_source/5</a></h3>
+<div class="spec">
+<p><tt>get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersion) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the code binding source URI.</p>
+
+<h3 class="function"><a name="get_code_binding_source-6">get_code_binding_source/6</a></h3>
+<div class="spec">
+<p><tt>get_code_binding_source(Client, Language, RegistryName, SchemaName, SchemaVersion, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_discovered_schema-2">get_discovered_schema/2</a></h3>
+<div class="spec">
+<p><tt>get_discovered_schema(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get the discovered schema that was generated based on sampled events.</p>
+
+<h3 class="function"><a name="get_discovered_schema-3">get_discovered_schema/3</a></h3>
+<div class="spec">
+<p><tt>get_discovered_schema(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_resource_policy-2">get_resource_policy/2</a></h3>
+<div class="spec">
+<p><tt>get_resource_policy(Client, RegistryName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Retrieves the resource-based policy attached to a given registry.</p>
+
+<h3 class="function"><a name="get_resource_policy-3">get_resource_policy/3</a></h3>
+<div class="spec">
+<p><tt>get_resource_policy(Client, RegistryName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_discoverers-5">list_discoverers/5</a></h3>
+<div class="spec">
+<p><tt>list_discoverers(Client, DiscovererIdPrefix, Limit, NextToken, SourceArnPrefix) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List the discoverers.</p>
+
+<h3 class="function"><a name="list_discoverers-6">list_discoverers/6</a></h3>
+<div class="spec">
+<p><tt>list_discoverers(Client, DiscovererIdPrefix, Limit, NextToken, SourceArnPrefix, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_registries-5">list_registries/5</a></h3>
+<div class="spec">
+<p><tt>list_registries(Client, Limit, NextToken, RegistryNamePrefix, Scope) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List the registries.</p>
+
+<h3 class="function"><a name="list_registries-6">list_registries/6</a></h3>
+<div class="spec">
+<p><tt>list_registries(Client, Limit, NextToken, RegistryNamePrefix, Scope, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_schema_versions-5">list_schema_versions/5</a></h3>
+<div class="spec">
+<p><tt>list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides a list of the schema versions and related information.</p>
+
+<h3 class="function"><a name="list_schema_versions-6">list_schema_versions/6</a></h3>
+<div class="spec">
+<p><tt>list_schema_versions(Client, RegistryName, SchemaName, Limit, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_schemas-5">list_schemas/5</a></h3>
+<div class="spec">
+<p><tt>list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix) -&gt; any()</tt></p>
+<p> </p>
+</div><p>List the schemas.</p>
+
+<h3 class="function"><a name="list_schemas-6">list_schemas/6</a></h3>
+<div class="spec">
+<p><tt>list_schemas(Client, RegistryName, Limit, NextToken, SchemaNamePrefix, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Get tags for resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_code_binding-5">put_code_binding/5</a></h3>
+<div class="spec">
+<p><tt>put_code_binding(Client, Language, RegistryName, SchemaName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Put code binding URI</p>
+
+<h3 class="function"><a name="put_code_binding-6">put_code_binding/6</a></h3>
+<div class="spec">
+<p><tt>put_code_binding(Client, Language, RegistryName, SchemaName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_resource_policy-2">put_resource_policy/2</a></h3>
+<div class="spec">
+<p><tt>put_resource_policy(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>The name of the policy.</p>
+
+<h3 class="function"><a name="put_resource_policy-3">put_resource_policy/3</a></h3>
+<div class="spec">
+<p><tt>put_resource_policy(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="search_schemas-5">search_schemas/5</a></h3>
+<div class="spec">
+<p><tt>search_schemas(Client, RegistryName, Keywords, Limit, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Search the schemas</p>
+
+<h3 class="function"><a name="search_schemas-6">search_schemas/6</a></h3>
+<div class="spec">
+<p><tt>search_schemas(Client, RegistryName, Keywords, Limit, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_discoverer-3">start_discoverer/3</a></h3>
+<div class="spec">
+<p><tt>start_discoverer(Client, DiscovererId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Starts the discoverer</p>
+
+<h3 class="function"><a name="start_discoverer-4">start_discoverer/4</a></h3>
+<div class="spec">
+<p><tt>start_discoverer(Client, DiscovererId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_discoverer-3">stop_discoverer/3</a></h3>
+<div class="spec">
+<p><tt>stop_discoverer(Client, DiscovererId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Stops the discoverer</p>
+
+<h3 class="function"><a name="stop_discoverer-4">stop_discoverer/4</a></h3>
+<div class="spec">
+<p><tt>stop_discoverer(Client, DiscovererId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Add tags to a resource.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from a resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_discoverer-3">update_discoverer/3</a></h3>
+<div class="spec">
+<p><tt>update_discoverer(Client, DiscovererId, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the discoverer</p>
+
+<h3 class="function"><a name="update_discoverer-4">update_discoverer/4</a></h3>
+<div class="spec">
+<p><tt>update_discoverer(Client, DiscovererId, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_registry-3">update_registry/3</a></h3>
+<div class="spec">
+<p><tt>update_registry(Client, RegistryName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates a registry.</p>
+
+<h3 class="function"><a name="update_registry-4">update_registry/4</a></h3>
+<div class="spec">
+<p><tt>update_registry(Client, RegistryName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_schema-4">update_schema/4</a></h3>
+<div class="spec">
+<p><tt>update_schema(Client, RegistryName, SchemaName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the schema definition</p>
+ 
+  Inactive schemas will be deleted after two years.</p>
+
+<h3 class="function"><a name="update_schema-5">update_schema/5</a></h3>
+<div class="spec">
+<p><tt>update_schema(Client, RegistryName, SchemaName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

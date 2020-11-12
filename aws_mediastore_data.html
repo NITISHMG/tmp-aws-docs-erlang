@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_mediastore_data</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_mediastore_data</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>An AWS Elemental MediaStore asset is an object, similar to an object  
+in the Amazon S3 service.
+
+
+<h2><a name="description">Description</a></h2><p>An AWS Elemental MediaStore asset is an object, similar to an object  
+in the Amazon S3 service.</p>
+ 
+  Objects are the fundamental entities that are stored in AWS Elemental
+  MediaStore.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#delete_object-3">delete_object/3</a></td><td>Deletes an object at the specified path.</td></tr>
+<tr><td valign="top"><a href="#delete_object-4">delete_object/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_object-3">describe_object/3</a></td><td>Gets the headers for an object at the specified path.</td></tr>
+<tr><td valign="top"><a href="#describe_object-4">describe_object/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_object-3">get_object/3</a></td><td>Downloads the object at the specified path.</td></tr>
+<tr><td valign="top"><a href="#get_object-4">get_object/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_items-4">list_items/4</a></td><td>Provides a list of metadata entries about folders and objects in the
+  specified folder.</td></tr>
+<tr><td valign="top"><a href="#list_items-5">list_items/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_object-3">put_object/3</a></td><td>Uploads an object to the specified path.</td></tr>
+<tr><td valign="top"><a href="#put_object-4">put_object/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="delete_object-3">delete_object/3</a></h3>
+<div class="spec">
+<p><tt>delete_object(Client, Path, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an object at the specified path.</p>
+
+<h3 class="function"><a name="delete_object-4">delete_object/4</a></h3>
+<div class="spec">
+<p><tt>delete_object(Client, Path, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_object-3">describe_object/3</a></h3>
+<div class="spec">
+<p><tt>describe_object(Client, Path, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets the headers for an object at the specified path.</p>
+
+<h3 class="function"><a name="describe_object-4">describe_object/4</a></h3>
+<div class="spec">
+<p><tt>describe_object(Client, Path, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_object-3">get_object/3</a></h3>
+<div class="spec">
+<p><tt>get_object(Client, Path, Range) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Downloads the object at the specified path.</p>
+ 
+  If the object’s upload availability is set to <code>streaming</code>, AWS Elemental
+  MediaStore downloads the object even if it’s still uploading the object.</p>
+
+<h3 class="function"><a name="get_object-4">get_object/4</a></h3>
+<div class="spec">
+<p><tt>get_object(Client, Path, Range, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_items-4">list_items/4</a></h3>
+<div class="spec">
+<p><tt>list_items(Client, MaxResults, NextToken, Path) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Provides a list of metadata entries about folders and objects in the
+  specified folder.</p>
+
+<h3 class="function"><a name="list_items-5">list_items/5</a></h3>
+<div class="spec">
+<p><tt>list_items(Client, MaxResults, NextToken, Path, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_object-3">put_object/3</a></h3>
+<div class="spec">
+<p><tt>put_object(Client, Path, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Uploads an object to the specified path.</p>
+ 
+  Object sizes are limited to 25 MB for standard upload availability and 10
+  MB for streaming upload availability.</p>
+
+<h3 class="function"><a name="put_object-4">put_object/4</a></h3>
+<div class="spec">
+<p><tt>put_object(Client, Path, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

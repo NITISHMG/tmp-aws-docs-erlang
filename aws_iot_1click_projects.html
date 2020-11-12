@@ -1,0 +1,275 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_iot_1click_projects</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_iot_1click_projects</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>The AWS IoT 1-Click Projects API Reference.
+
+
+<h2><a name="description">Description</a></h2>The AWS IoT 1-Click Projects API Reference
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#associate_device_with_placement-5">associate_device_with_placement/5</a></td><td>Associates a physical device with a placement.</td></tr>
+<tr><td valign="top"><a href="#associate_device_with_placement-6">associate_device_with_placement/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_placement-3">create_placement/3</a></td><td>Creates an empty placement.</td></tr>
+<tr><td valign="top"><a href="#create_placement-4">create_placement/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_project-2">create_project/2</a></td><td>Creates an empty project with a placement template.</td></tr>
+<tr><td valign="top"><a href="#create_project-3">create_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_placement-4">delete_placement/4</a></td><td>Deletes a placement.</td></tr>
+<tr><td valign="top"><a href="#delete_placement-5">delete_placement/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_project-3">delete_project/3</a></td><td>Deletes a project.</td></tr>
+<tr><td valign="top"><a href="#delete_project-4">delete_project/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_placement-3">describe_placement/3</a></td><td>Describes a placement in a project.</td></tr>
+<tr><td valign="top"><a href="#describe_placement-4">describe_placement/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_project-2">describe_project/2</a></td><td>Returns an object describing a project.</td></tr>
+<tr><td valign="top"><a href="#describe_project-3">describe_project/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#disassociate_device_from_placement-5">disassociate_device_from_placement/5</a></td><td>Removes a physical device from a placement.</td></tr>
+<tr><td valign="top"><a href="#disassociate_device_from_placement-6">disassociate_device_from_placement/6</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_devices_in_placement-3">get_devices_in_placement/3</a></td><td>Returns an object enumerating the devices in a placement.</td></tr>
+<tr><td valign="top"><a href="#get_devices_in_placement-4">get_devices_in_placement/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_placements-4">list_placements/4</a></td><td>Lists the placement(s) of a project.</td></tr>
+<tr><td valign="top"><a href="#list_placements-5">list_placements/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_projects-3">list_projects/3</a></td><td>Lists the AWS IoT 1-Click project(s) associated with your AWS account
+  and region.</td></tr>
+<tr><td valign="top"><a href="#list_projects-4">list_projects/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags (metadata key/value pairs) which you have assigned to
+  the resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Creates or modifies tags for a resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes one or more tags (metadata key/value pairs) from a resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_placement-4">update_placement/4</a></td><td>Updates a placement with the given attributes.</td></tr>
+<tr><td valign="top"><a href="#update_placement-5">update_placement/5</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_project-3">update_project/3</a></td><td>Updates a project associated with your AWS account and region.</td></tr>
+<tr><td valign="top"><a href="#update_project-4">update_project/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="associate_device_with_placement-5">associate_device_with_placement/5</a></h3>
+<div class="spec">
+<p><tt>associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Associates a physical device with a placement.</p>
+
+<h3 class="function"><a name="associate_device_with_placement-6">associate_device_with_placement/6</a></h3>
+<div class="spec">
+<p><tt>associate_device_with_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_placement-3">create_placement/3</a></h3>
+<div class="spec">
+<p><tt>create_placement(Client, ProjectName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an empty placement.</p>
+
+<h3 class="function"><a name="create_placement-4">create_placement/4</a></h3>
+<div class="spec">
+<p><tt>create_placement(Client, ProjectName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_project-2">create_project/2</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates an empty project with a placement template.</p>
+ 
+  A project contains zero or more placements that adhere to the placement
+  template defined in the project.</p>
+
+<h3 class="function"><a name="create_project-3">create_project/3</a></h3>
+<div class="spec">
+<p><tt>create_project(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_placement-4">delete_placement/4</a></h3>
+<div class="spec">
+<p><tt>delete_placement(Client, PlacementName, ProjectName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a placement.</p>
+ 
+  <p>To delete a placement, it must not have any devices associated with it.</p>
+ 
+  When you delete a placement, all associated data becomes irretrievable.</p>
+
+<h3 class="function"><a name="delete_placement-5">delete_placement/5</a></h3>
+<div class="spec">
+<p><tt>delete_placement(Client, PlacementName, ProjectName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_project-3">delete_project/3</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, ProjectName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a project.</p>
+ 
+  <p>To delete a project, it must not have any placements associated with it.</p>
+ 
+  When you delete a project, all associated data becomes irretrievable.</p>
+
+<h3 class="function"><a name="delete_project-4">delete_project/4</a></h3>
+<div class="spec">
+<p><tt>delete_project(Client, ProjectName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_placement-3">describe_placement/3</a></h3>
+<div class="spec">
+<p><tt>describe_placement(Client, PlacementName, ProjectName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Describes a placement in a project.</p>
+
+<h3 class="function"><a name="describe_placement-4">describe_placement/4</a></h3>
+<div class="spec">
+<p><tt>describe_placement(Client, PlacementName, ProjectName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_project-2">describe_project/2</a></h3>
+<div class="spec">
+<p><tt>describe_project(Client, ProjectName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an object describing a project.</p>
+
+<h3 class="function"><a name="describe_project-3">describe_project/3</a></h3>
+<div class="spec">
+<p><tt>describe_project(Client, ProjectName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="disassociate_device_from_placement-5">disassociate_device_from_placement/5</a></h3>
+<div class="spec">
+<p><tt>disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes a physical device from a placement.</p>
+
+<h3 class="function"><a name="disassociate_device_from_placement-6">disassociate_device_from_placement/6</a></h3>
+<div class="spec">
+<p><tt>disassociate_device_from_placement(Client, DeviceTemplateName, PlacementName, ProjectName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_devices_in_placement-3">get_devices_in_placement/3</a></h3>
+<div class="spec">
+<p><tt>get_devices_in_placement(Client, PlacementName, ProjectName) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns an object enumerating the devices in a placement.</p>
+
+<h3 class="function"><a name="get_devices_in_placement-4">get_devices_in_placement/4</a></h3>
+<div class="spec">
+<p><tt>get_devices_in_placement(Client, PlacementName, ProjectName, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_placements-4">list_placements/4</a></h3>
+<div class="spec">
+<p><tt>list_placements(Client, ProjectName, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the placement(s) of a project.</p>
+
+<h3 class="function"><a name="list_placements-5">list_placements/5</a></h3>
+<div class="spec">
+<p><tt>list_placements(Client, ProjectName, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_projects-3">list_projects/3</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the AWS IoT 1-Click project(s) associated with your AWS account
+  and region.</p>
+
+<h3 class="function"><a name="list_projects-4">list_projects/4</a></h3>
+<div class="spec">
+<p><tt>list_projects(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags (metadata key/value pairs) which you have assigned to
+  the resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates or modifies tags for a resource.</p>
+ 
+  Tags are key/value pairs (metadata) that can be used to manage a resource.
+  For more information, see AWS Tagging Strategies.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags (metadata key/value pairs) from a resource.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_placement-4">update_placement/4</a></h3>
+<div class="spec">
+<p><tt>update_placement(Client, PlacementName, ProjectName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a placement with the given attributes.</p>
+ 
+  To clear an attribute, pass an empty value (i.e., "").</p>
+
+<h3 class="function"><a name="update_placement-5">update_placement/5</a></h3>
+<div class="spec">
+<p><tt>update_placement(Client, PlacementName, ProjectName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_project-3">update_project/3</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, ProjectName, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates a project associated with your AWS account and region.</p>
+ 
+  With the exception of device template names, you can pass just the values
+  that need to be updated because the update request will change only the
+  values that are provided. To clear a value, pass the empty string (i.e.,
+  <code>""</code>).</p>
+
+<h3 class="function"><a name="update_project-4">update_project/4</a></h3>
+<div class="spec">
+<p><tt>update_project(Client, ProjectName, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,151 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_mediatailor</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_mediatailor</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Use the AWS Elemental MediaTailor SDK to configure scalable ad  
+insertion for your live and VOD content.
+
+
+<h2><a name="description">Description</a></h2><p>Use the AWS Elemental MediaTailor SDK to configure scalable ad  
+insertion for your live and VOD content.</p>
+ 
+  <p>With AWS Elemental MediaTailor, you can serve targeted ads to viewers  
+while maintaining broadcast quality in over-the-top (OTT) video  
+applications. For information about using the service, including detailed  
+information about the settings covered in this guide, see the AWS  
+Elemental MediaTailor User Guide.</p>
+ 
+  Through the SDK, you manage AWS Elemental MediaTailor configurations the
+  same as you do through the console. For example, you specify ad insertion
+  behavior and mapping information for the origin server and the ad decision
+  server (ADS).
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#delete_playback_configuration-3">delete_playback_configuration/3</a></td><td>Deletes the playback configuration for the specified name.</td></tr>
+<tr><td valign="top"><a href="#delete_playback_configuration-4">delete_playback_configuration/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_playback_configuration-2">get_playback_configuration/2</a></td><td>Returns the playback configuration for the specified name.</td></tr>
+<tr><td valign="top"><a href="#get_playback_configuration-3">get_playback_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_playback_configurations-3">list_playback_configurations/3</a></td><td>Returns a list of the playback configurations defined in AWS  
+Elemental MediaTailor.</td></tr>
+<tr><td valign="top"><a href="#list_playback_configurations-4">list_playback_configurations/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Returns a list of the tags assigned to the specified playback
+  configuration resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#put_playback_configuration-2">put_playback_configuration/2</a></td><td>Adds a new playback configuration to AWS Elemental MediaTailor.</td></tr>
+<tr><td valign="top"><a href="#put_playback_configuration-3">put_playback_configuration/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td>Adds tags to the specified playback configuration resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-4">tag_resource/4</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td>Removes tags from the specified playback configuration resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-4">untag_resource/4</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="delete_playback_configuration-3">delete_playback_configuration/3</a></h3>
+<div class="spec">
+<p><tt>delete_playback_configuration(Client, Name, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes the playback configuration for the specified name.</p>
+
+<h3 class="function"><a name="delete_playback_configuration-4">delete_playback_configuration/4</a></h3>
+<div class="spec">
+<p><tt>delete_playback_configuration(Client, Name, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_playback_configuration-2">get_playback_configuration/2</a></h3>
+<div class="spec">
+<p><tt>get_playback_configuration(Client, Name) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the playback configuration for the specified name.</p>
+
+<h3 class="function"><a name="get_playback_configuration-3">get_playback_configuration/3</a></h3>
+<div class="spec">
+<p><tt>get_playback_configuration(Client, Name, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_playback_configurations-3">list_playback_configurations/3</a></h3>
+<div class="spec">
+<p><tt>list_playback_configurations(Client, MaxResults, NextToken) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns a list of the playback configurations defined in AWS  
+Elemental MediaTailor.</p>
+ 
+  You can specify a maximum number of configurations to return at a time.
+  The default maximum is 50. Results are returned in pagefuls. If
+  MediaTailor has more configurations than the specified maximum, it
+  provides parameters in the response that you can use to retrieve the next
+  pageful.</p>
+
+<h3 class="function"><a name="list_playback_configurations-4">list_playback_configurations/4</a></h3>
+<div class="spec">
+<p><tt>list_playback_configurations(Client, MaxResults, NextToken, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a list of the tags assigned to the specified playback
+  configuration resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, ResourceArn, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="put_playback_configuration-2">put_playback_configuration/2</a></h3>
+<div class="spec">
+<p><tt>put_playback_configuration(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds a new playback configuration to AWS Elemental MediaTailor.</p>
+
+<h3 class="function"><a name="put_playback_configuration-3">put_playback_configuration/3</a></h3>
+<div class="spec">
+<p><tt>put_playback_configuration(Client, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds tags to the specified playback configuration resource.</p>
+ 
+  You can specify one or more tags to add.</p>
+
+<h3 class="function"><a name="tag_resource-4">tag_resource/4</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes tags from the specified playback configuration resource.</p>
+ 
+  You can specify one or more tags to remove.</p>
+
+<h3 class="function"><a name="untag_resource-4">untag_resource/4</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, ResourceArn, Input0, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

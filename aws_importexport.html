@@ -1,0 +1,148 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_importexport</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_importexport</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Import/Export Service.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Import/Export Service</p>
+ 
+  <p>AWS Import/Export accelerates transferring large amounts of data between  
+the AWS cloud and portable storage devices that you mail to us.</p>
+ 
+  AWS Import/Export transfers data directly onto and off of your storage
+  devices using Amazon's high-speed internal network and bypassing the
+  Internet. For large data sets, AWS Import/Export is often faster than
+  Internet transfer and more cost effective than upgrading your
+  connectivity.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#cancel_job-2">cancel_job/2</a></td><td>This operation cancels a specified job.</td></tr>
+<tr><td valign="top"><a href="#cancel_job-3">cancel_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_job-2">create_job/2</a></td><td>This operation initiates the process of scheduling an upload or  
+download of your data.</td></tr>
+<tr><td valign="top"><a href="#create_job-3">create_job/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_shipping_label-2">get_shipping_label/2</a></td><td>This operation generates a pre-paid UPS shipping label that you will
+  use to ship your device to AWS for processing.</td></tr>
+<tr><td valign="top"><a href="#get_shipping_label-3">get_shipping_label/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_status-2">get_status/2</a></td><td>This operation returns information about a job, including where the  
+job is in the processing pipeline, the status of the results, and the  
+signature value associated with the job.</td></tr>
+<tr><td valign="top"><a href="#get_status-3">get_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_jobs-2">list_jobs/2</a></td><td>This operation returns the jobs associated with the requester.</td></tr>
+<tr><td valign="top"><a href="#list_jobs-3">list_jobs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_job-2">update_job/2</a></td><td>You use this operation to change the parameters specified in the  
+original manifest file by supplying a new manifest file.</td></tr>
+<tr><td valign="top"><a href="#update_job-3">update_job/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="cancel_job-2">cancel_job/2</a></h3>
+<div class="spec">
+<p><tt>cancel_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This operation cancels a specified job.</p>
+ 
+  Only the job owner can cancel it. The operation fails if the job has
+  already started or is complete.</p>
+
+<h3 class="function"><a name="cancel_job-3">cancel_job/3</a></h3>
+<div class="spec">
+<p><tt>cancel_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_job-2">create_job/2</a></h3>
+<div class="spec">
+<p><tt>create_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This operation initiates the process of scheduling an upload or  
+download of your data.</p>
+ 
+  You include in the request a manifest that describes the data transfer
+  specifics. The response to the request includes a job ID, which you can
+  use in other operations, a signature that you use to identify your storage
+  device, and the address where you should ship your storage device.</p>
+
+<h3 class="function"><a name="create_job-3">create_job/3</a></h3>
+<div class="spec">
+<p><tt>create_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_shipping_label-2">get_shipping_label/2</a></h3>
+<div class="spec">
+<p><tt>get_shipping_label(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>This operation generates a pre-paid UPS shipping label that you will
+  use to ship your device to AWS for processing.</p>
+
+<h3 class="function"><a name="get_shipping_label-3">get_shipping_label/3</a></h3>
+<div class="spec">
+<p><tt>get_shipping_label(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_status-2">get_status/2</a></h3>
+<div class="spec">
+<p><tt>get_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This operation returns information about a job, including where the  
+job is in the processing pipeline, the status of the results, and the  
+signature value associated with the job.</p>
+ 
+  You can only return information about jobs you own.</p>
+
+<h3 class="function"><a name="get_status-3">get_status/3</a></h3>
+<div class="spec">
+<p><tt>get_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_jobs-2">list_jobs/2</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>This operation returns the jobs associated with the requester.</p>
+ 
+  AWS Import/Export lists the jobs in reverse chronological order based on
+  the date of creation. For example if Job Test1 was created 2009Dec30 and
+  Test2 was created 2010Feb05, the ListJobs operation would return Test2
+  followed by Test1.</p>
+
+<h3 class="function"><a name="list_jobs-3">list_jobs/3</a></h3>
+<div class="spec">
+<p><tt>list_jobs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_job-2">update_job/2</a></h3>
+<div class="spec">
+<p><tt>update_job(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>You use this operation to change the parameters specified in the  
+original manifest file by supplying a new manifest file.</p>
+ 
+  The manifest file attached to this request replaces the original manifest
+  file. You can only use the operation after a CreateJob request but before
+  the data transfer starts and you can only use it on jobs you own.</p>
+
+<h3 class="function"><a name="update_job-3">update_job/3</a></h3>
+<div class="spec">
+<p><tt>update_job(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

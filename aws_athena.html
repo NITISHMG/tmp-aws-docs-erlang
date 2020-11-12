@@ -1,0 +1,544 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_athena</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_athena</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon Athena is an interactive query service that lets you use  
+standard SQL to analyze data directly in Amazon S3.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon Athena is an interactive query service that lets you use  
+standard SQL to analyze data directly in Amazon S3.</p>
+ 
+  <p>You can point Athena at your data in Amazon S3 and run ad-hoc queries and  
+get results in seconds. Athena is serverless, so there is no  
+infrastructure to set up or manage. You pay only for the queries you run.  
+Athena scales automatically—executing queries in parallel—so results are  
+fast, even with large datasets and complex queries. For more information,  
+see What is Amazon Athena in the Amazon Athena User Guide.</p>
+ 
+  <p>If you connect to Athena using the JDBC driver, use version 1.1.0 of the  
+driver or later with the Amazon Athena API. Earlier version drivers do not  
+support the API. For more information and to download the driver, see  
+Accessing Amazon Athena with JDBC.</p>
+ 
+  For code samples using the AWS SDK for Java, see Examples and Code Samples
+  in the Amazon Athena User Guide.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#batch_get_named_query-2">batch_get_named_query/2</a></td><td>Returns the details of a single named query or a list of up to 50  
+queries, which you provide as an array of query ID strings.</td></tr>
+<tr><td valign="top"><a href="#batch_get_named_query-3">batch_get_named_query/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#batch_get_query_execution-2">batch_get_query_execution/2</a></td><td>Returns the details of a single query execution or a list of up to 50  
+query executions, which you provide as an array of query execution ID  
+strings.</td></tr>
+<tr><td valign="top"><a href="#batch_get_query_execution-3">batch_get_query_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_data_catalog-2">create_data_catalog/2</a></td><td>Creates (registers) a data catalog with the specified name and  
+properties.</td></tr>
+<tr><td valign="top"><a href="#create_data_catalog-3">create_data_catalog/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_named_query-2">create_named_query/2</a></td><td>Creates a named query in the specified workgroup.</td></tr>
+<tr><td valign="top"><a href="#create_named_query-3">create_named_query/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_work_group-2">create_work_group/2</a></td><td>Creates a workgroup with the specified name.</td></tr>
+<tr><td valign="top"><a href="#create_work_group-3">create_work_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_data_catalog-2">delete_data_catalog/2</a></td><td>Deletes a data catalog.</td></tr>
+<tr><td valign="top"><a href="#delete_data_catalog-3">delete_data_catalog/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_named_query-2">delete_named_query/2</a></td><td>Deletes the named query if you have access to the workgroup in which  
+the query was saved.</td></tr>
+<tr><td valign="top"><a href="#delete_named_query-3">delete_named_query/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_work_group-2">delete_work_group/2</a></td><td>Deletes the workgroup with the specified name.</td></tr>
+<tr><td valign="top"><a href="#delete_work_group-3">delete_work_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_data_catalog-2">get_data_catalog/2</a></td><td>Returns the specified data catalog.</td></tr>
+<tr><td valign="top"><a href="#get_data_catalog-3">get_data_catalog/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_database-2">get_database/2</a></td><td>Returns a database object for the specfied database and data catalog.</td></tr>
+<tr><td valign="top"><a href="#get_database-3">get_database/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_named_query-2">get_named_query/2</a></td><td>Returns information about a single query.</td></tr>
+<tr><td valign="top"><a href="#get_named_query-3">get_named_query/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_query_execution-2">get_query_execution/2</a></td><td>Returns information about a single execution of a query if you have  
+access to the workgroup in which the query ran.</td></tr>
+<tr><td valign="top"><a href="#get_query_execution-3">get_query_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_query_results-2">get_query_results/2</a></td><td>Streams the results of a single query execution specified by
+  <code>QueryExecutionId</code> from the Athena query results location in Amazon S3.</td></tr>
+<tr><td valign="top"><a href="#get_query_results-3">get_query_results/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_table_metadata-2">get_table_metadata/2</a></td><td>Returns table metadata for the specified catalog, database, and
+  table.</td></tr>
+<tr><td valign="top"><a href="#get_table_metadata-3">get_table_metadata/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#get_work_group-2">get_work_group/2</a></td><td>Returns information about the workgroup with the specified name.</td></tr>
+<tr><td valign="top"><a href="#get_work_group-3">get_work_group/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_data_catalogs-2">list_data_catalogs/2</a></td><td>Lists the data catalogs in the current AWS account.</td></tr>
+<tr><td valign="top"><a href="#list_data_catalogs-3">list_data_catalogs/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_databases-2">list_databases/2</a></td><td>Lists the databases in the specified data catalog.</td></tr>
+<tr><td valign="top"><a href="#list_databases-3">list_databases/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_named_queries-2">list_named_queries/2</a></td><td>Provides a list of available query IDs only for queries saved in the  
+specified workgroup.</td></tr>
+<tr><td valign="top"><a href="#list_named_queries-3">list_named_queries/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_query_executions-2">list_query_executions/2</a></td><td>Provides a list of available query execution IDs for the queries in  
+the specified workgroup.</td></tr>
+<tr><td valign="top"><a href="#list_query_executions-3">list_query_executions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_table_metadata-2">list_table_metadata/2</a></td><td>Lists the metadata for the tables in the specified data catalog
+  database.</td></tr>
+<tr><td valign="top"><a href="#list_table_metadata-3">list_table_metadata/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Lists the tags associated with an Athena workgroup or data catalog
+  resource.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_work_groups-2">list_work_groups/2</a></td><td>Lists available workgroups for the account.</td></tr>
+<tr><td valign="top"><a href="#list_work_groups-3">list_work_groups/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#start_query_execution-2">start_query_execution/2</a></td><td>Runs the SQL query statements contained in the <code>Query</code>.</td></tr>
+<tr><td valign="top"><a href="#start_query_execution-3">start_query_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#stop_query_execution-2">stop_query_execution/2</a></td><td>Stops a query execution.</td></tr>
+<tr><td valign="top"><a href="#stop_query_execution-3">stop_query_execution/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds one or more tags to an Athena resource.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes one or more tags from a data catalog or workgroup resource.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_data_catalog-2">update_data_catalog/2</a></td><td>Updates the data catalog that has the specified name.</td></tr>
+<tr><td valign="top"><a href="#update_data_catalog-3">update_data_catalog/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_work_group-2">update_work_group/2</a></td><td>Updates the workgroup with the specified name.</td></tr>
+<tr><td valign="top"><a href="#update_work_group-3">update_work_group/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="batch_get_named_query-2">batch_get_named_query/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_named_query(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the details of a single named query or a list of up to 50  
+queries, which you provide as an array of query ID strings.</p>
+ 
+  Requires you to have access to the workgroup in which the queries were
+  saved. Use <code>ListNamedQueriesInput</code> to get the list of named query IDs in
+  the specified workgroup. If information could not be retrieved for a
+  submitted query ID, information about the query ID submitted is listed
+  under <code>UnprocessedNamedQueryId</code>. Named queries differ from executed
+  queries. Use <code>BatchGetQueryExecutionInput</code> to get details about each
+  unique query execution, and <code>ListQueryExecutionsInput</code> to get a list of
+  query execution IDs.</p>
+
+<h3 class="function"><a name="batch_get_named_query-3">batch_get_named_query/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_named_query(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="batch_get_query_execution-2">batch_get_query_execution/2</a></h3>
+<div class="spec">
+<p><tt>batch_get_query_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the details of a single query execution or a list of up to 50  
+query executions, which you provide as an array of query execution ID  
+strings.</p>
+ 
+  Requires you to have access to the workgroup in which the queries ran. To
+  get a list of query execution IDs, use
+  <code>ListQueryExecutionsInput$WorkGroup</code>. Query executions differ from named
+  (saved) queries. Use <code>BatchGetNamedQueryInput</code> to get details about named
+  queries.</p>
+
+<h3 class="function"><a name="batch_get_query_execution-3">batch_get_query_execution/3</a></h3>
+<div class="spec">
+<p><tt>batch_get_query_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_data_catalog-2">create_data_catalog/2</a></h3>
+<div class="spec">
+<p><tt>create_data_catalog(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates (registers) a data catalog with the specified name and  
+properties.</p>
+ 
+  Catalogs created are visible to all users of the same AWS account.</p>
+
+<h3 class="function"><a name="create_data_catalog-3">create_data_catalog/3</a></h3>
+<div class="spec">
+<p><tt>create_data_catalog(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_named_query-2">create_named_query/2</a></h3>
+<div class="spec">
+<p><tt>create_named_query(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a named query in the specified workgroup.</p>
+ 
+  <p>Requires that you have access to the workgroup.</p>
+ 
+  For code samples using the AWS SDK for Java, see Examples and Code Samples
+  in the Amazon Athena User Guide.</p>
+
+<h3 class="function"><a name="create_named_query-3">create_named_query/3</a></h3>
+<div class="spec">
+<p><tt>create_named_query(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_work_group-2">create_work_group/2</a></h3>
+<div class="spec">
+<p><tt>create_work_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates a workgroup with the specified name.</p>
+
+<h3 class="function"><a name="create_work_group-3">create_work_group/3</a></h3>
+<div class="spec">
+<p><tt>create_work_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_data_catalog-2">delete_data_catalog/2</a></h3>
+<div class="spec">
+<p><tt>delete_data_catalog(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes a data catalog.</p>
+
+<h3 class="function"><a name="delete_data_catalog-3">delete_data_catalog/3</a></h3>
+<div class="spec">
+<p><tt>delete_data_catalog(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_named_query-2">delete_named_query/2</a></h3>
+<div class="spec">
+<p><tt>delete_named_query(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the named query if you have access to the workgroup in which  
+the query was saved.</p>
+ 
+  For code samples using the AWS SDK for Java, see Examples and Code Samples
+  in the Amazon Athena User Guide.</p>
+
+<h3 class="function"><a name="delete_named_query-3">delete_named_query/3</a></h3>
+<div class="spec">
+<p><tt>delete_named_query(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_work_group-2">delete_work_group/2</a></h3>
+<div class="spec">
+<p><tt>delete_work_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes the workgroup with the specified name.</p>
+ 
+  The primary workgroup cannot be deleted.</p>
+
+<h3 class="function"><a name="delete_work_group-3">delete_work_group/3</a></h3>
+<div class="spec">
+<p><tt>delete_work_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_data_catalog-2">get_data_catalog/2</a></h3>
+<div class="spec">
+<p><tt>get_data_catalog(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns the specified data catalog.</p>
+
+<h3 class="function"><a name="get_data_catalog-3">get_data_catalog/3</a></h3>
+<div class="spec">
+<p><tt>get_data_catalog(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_database-2">get_database/2</a></h3>
+<div class="spec">
+<p><tt>get_database(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns a database object for the specfied database and data catalog.</p>
+
+<h3 class="function"><a name="get_database-3">get_database/3</a></h3>
+<div class="spec">
+<p><tt>get_database(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_named_query-2">get_named_query/2</a></h3>
+<div class="spec">
+<p><tt>get_named_query(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about a single query.</p>
+ 
+  Requires that you have access to the workgroup in which the query was
+  saved.</p>
+
+<h3 class="function"><a name="get_named_query-3">get_named_query/3</a></h3>
+<div class="spec">
+<p><tt>get_named_query(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_query_execution-2">get_query_execution/2</a></h3>
+<div class="spec">
+<p><tt>get_query_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns information about a single execution of a query if you have  
+access to the workgroup in which the query ran.</p>
+ 
+  Each time a query executes, information about the query execution is saved
+  with a unique ID.</p>
+
+<h3 class="function"><a name="get_query_execution-3">get_query_execution/3</a></h3>
+<div class="spec">
+<p><tt>get_query_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_query_results-2">get_query_results/2</a></h3>
+<div class="spec">
+<p><tt>get_query_results(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Streams the results of a single query execution specified by
+  <code>QueryExecutionId</code> from the Athena query results location in Amazon S3.</p>
+ 
+  <p>For more information, see Query Results in the Amazon Athena User Guide.
+  This request does not execute the query but returns results. Use
+  <code>StartQueryExecution</code> to run a query.</p>
+ 
+  <p>To stream query results successfully, the IAM principal with permission to
+  call <code>GetQueryResults</code> also must have permissions to the Amazon S3
+  <code>GetObject</code> action for the Athena query results location.</p>
+ 
+  IAM principals with permission to the Amazon S3 <code>GetObject</code> action for the
+  query results location are able to retrieve query results from Amazon S3
+  even if permission to the <code>GetQueryResults</code> action is denied. To restrict
+  user or role access, ensure that Amazon S3 permissions to the Athena query
+  location are denied.</p>
+
+<h3 class="function"><a name="get_query_results-3">get_query_results/3</a></h3>
+<div class="spec">
+<p><tt>get_query_results(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_table_metadata-2">get_table_metadata/2</a></h3>
+<div class="spec">
+<p><tt>get_table_metadata(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns table metadata for the specified catalog, database, and
+  table.</p>
+
+<h3 class="function"><a name="get_table_metadata-3">get_table_metadata/3</a></h3>
+<div class="spec">
+<p><tt>get_table_metadata(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="get_work_group-2">get_work_group/2</a></h3>
+<div class="spec">
+<p><tt>get_work_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Returns information about the workgroup with the specified name.</p>
+
+<h3 class="function"><a name="get_work_group-3">get_work_group/3</a></h3>
+<div class="spec">
+<p><tt>get_work_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_data_catalogs-2">list_data_catalogs/2</a></h3>
+<div class="spec">
+<p><tt>list_data_catalogs(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the data catalogs in the current AWS account.</p>
+
+<h3 class="function"><a name="list_data_catalogs-3">list_data_catalogs/3</a></h3>
+<div class="spec">
+<p><tt>list_data_catalogs(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_databases-2">list_databases/2</a></h3>
+<div class="spec">
+<p><tt>list_databases(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the databases in the specified data catalog.</p>
+
+<h3 class="function"><a name="list_databases-3">list_databases/3</a></h3>
+<div class="spec">
+<p><tt>list_databases(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_named_queries-2">list_named_queries/2</a></h3>
+<div class="spec">
+<p><tt>list_named_queries(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides a list of available query IDs only for queries saved in the  
+specified workgroup.</p>
+ 
+  <p>Requires that you have access to the specified workgroup. If a workgroup  
+is not specified, lists the saved queries for the primary workgroup.</p>
+ 
+  For code samples using the AWS SDK for Java, see Examples and Code Samples
+  in the Amazon Athena User Guide.</p>
+
+<h3 class="function"><a name="list_named_queries-3">list_named_queries/3</a></h3>
+<div class="spec">
+<p><tt>list_named_queries(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_query_executions-2">list_query_executions/2</a></h3>
+<div class="spec">
+<p><tt>list_query_executions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Provides a list of available query execution IDs for the queries in  
+the specified workgroup.</p>
+ 
+  <p>If a workgroup is not specified, returns a list of query execution IDs for  
+the primary workgroup. Requires you to have access to the workgroup in  
+which the queries ran.</p>
+ 
+  For code samples using the AWS SDK for Java, see Examples and Code Samples
+  in the Amazon Athena User Guide.</p>
+
+<h3 class="function"><a name="list_query_executions-3">list_query_executions/3</a></h3>
+<div class="spec">
+<p><tt>list_query_executions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_table_metadata-2">list_table_metadata/2</a></h3>
+<div class="spec">
+<p><tt>list_table_metadata(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the metadata for the tables in the specified data catalog
+  database.</p>
+
+<h3 class="function"><a name="list_table_metadata-3">list_table_metadata/3</a></h3>
+<div class="spec">
+<p><tt>list_table_metadata(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists the tags associated with an Athena workgroup or data catalog
+  resource.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_work_groups-2">list_work_groups/2</a></h3>
+<div class="spec">
+<p><tt>list_work_groups(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists available workgroups for the account.</p>
+
+<h3 class="function"><a name="list_work_groups-3">list_work_groups/3</a></h3>
+<div class="spec">
+<p><tt>list_work_groups(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="start_query_execution-2">start_query_execution/2</a></h3>
+<div class="spec">
+<p><tt>start_query_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Runs the SQL query statements contained in the <code>Query</code>.</p>
+ 
+  Requires you to have access to the workgroup in which the query ran.
+  Running queries against an external catalog requires <code>GetDataCatalog</code>
+  permission to the catalog. For code samples using the AWS SDK for Java,
+  see Examples and Code Samples in the Amazon Athena User Guide.</p>
+
+<h3 class="function"><a name="start_query_execution-3">start_query_execution/3</a></h3>
+<div class="spec">
+<p><tt>start_query_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="stop_query_execution-2">stop_query_execution/2</a></h3>
+<div class="spec">
+<p><tt>stop_query_execution(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Stops a query execution.</p>
+ 
+  <p>Requires you to have access to the workgroup in which the query ran.</p>
+ 
+  For code samples using the AWS SDK for Java, see Examples and Code Samples
+  in the Amazon Athena User Guide.</p>
+
+<h3 class="function"><a name="stop_query_execution-3">stop_query_execution/3</a></h3>
+<div class="spec">
+<p><tt>stop_query_execution(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds one or more tags to an Athena resource.</p>
+ 
+  A tag is a label that you assign to a resource. In Athena, a resource can
+  be a workgroup or data catalog. Each tag consists of a key and an optional
+  value, both of which you define. For example, you can use tags to
+  categorize Athena workgroups or data catalogs by purpose, owner, or
+  environment. Use a consistent set of tag keys to make it easier to search
+  and filter workgroups or data catalogs in your account. For best
+  practices, see Tagging Best Practices. Tag keys can be from 1 to 128 UTF-8
+  Unicode characters, and tag values can be from 0 to 256 UTF-8 Unicode
+  characters. Tags can use letters and numbers representable in UTF-8, and
+  the following characters: + - = . _ : / @. Tag keys and values are
+  case-sensitive. Tag keys must be unique per resource. If you specify more
+  than one tag, separate them by commas.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes one or more tags from a data catalog or workgroup resource.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_data_catalog-2">update_data_catalog/2</a></h3>
+<div class="spec">
+<p><tt>update_data_catalog(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Updates the data catalog that has the specified name.</p>
+
+<h3 class="function"><a name="update_data_catalog-3">update_data_catalog/3</a></h3>
+<div class="spec">
+<p><tt>update_data_catalog(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_work_group-2">update_work_group/2</a></h3>
+<div class="spec">
+<p><tt>update_work_group(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the workgroup with the specified name.</p>
+ 
+  The workgroup's name cannot be changed.</p>
+
+<h3 class="function"><a name="update_work_group-3">update_work_group/3</a></h3>
+<div class="spec">
+<p><tt>update_work_group(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

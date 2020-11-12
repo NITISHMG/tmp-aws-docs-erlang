@@ -1,0 +1,533 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_cloudsearch</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_cloudsearch</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>Amazon CloudSearch Configuration Service.
+
+
+<h2><a name="description">Description</a></h2><p>Amazon CloudSearch Configuration Service</p>
+ 
+  <p>You use the Amazon CloudSearch configuration service to create, configure,  
+and manage search domains.</p>
+ 
+  <p>Configuration service requests are submitted using the AWS Query protocol.  
+AWS Query requests are HTTP or HTTPS requests submitted via HTTP GET or  
+POST with a query parameter named Action.</p>
+ 
+  The endpoint for configuration service requests is region-specific:
+  cloudsearch.region.amazonaws.com. For example,
+  cloudsearch.us-east-1.amazonaws.com. For a current list of supported
+  regions and endpoints, see Regions and Endpoints.
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#build_suggesters-2">build_suggesters/2</a></td><td>Indexes the search suggestions.</td></tr>
+<tr><td valign="top"><a href="#build_suggesters-3">build_suggesters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_domain-2">create_domain/2</a></td><td>Creates a new search domain.</td></tr>
+<tr><td valign="top"><a href="#create_domain-3">create_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#define_analysis_scheme-2">define_analysis_scheme/2</a></td><td>Configures an analysis scheme that can be applied to a <code>text</code> or
+  <code>text-array</code> field to define language-specific text processing options.</td></tr>
+<tr><td valign="top"><a href="#define_analysis_scheme-3">define_analysis_scheme/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#define_expression-2">define_expression/2</a></td><td>Configures an <code>Expression</code> for the search domain.</td></tr>
+<tr><td valign="top"><a href="#define_expression-3">define_expression/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#define_index_field-2">define_index_field/2</a></td><td>Configures an <code>IndexField</code> for the search domain.</td></tr>
+<tr><td valign="top"><a href="#define_index_field-3">define_index_field/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#define_suggester-2">define_suggester/2</a></td><td>Configures a suggester for a domain.</td></tr>
+<tr><td valign="top"><a href="#define_suggester-3">define_suggester/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_analysis_scheme-2">delete_analysis_scheme/2</a></td><td>Deletes an analysis scheme.</td></tr>
+<tr><td valign="top"><a href="#delete_analysis_scheme-3">delete_analysis_scheme/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_domain-2">delete_domain/2</a></td><td>Permanently deletes a search domain and all of its data.</td></tr>
+<tr><td valign="top"><a href="#delete_domain-3">delete_domain/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_expression-2">delete_expression/2</a></td><td>Removes an <code>Expression</code> from the search domain.</td></tr>
+<tr><td valign="top"><a href="#delete_expression-3">delete_expression/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_index_field-2">delete_index_field/2</a></td><td>Removes an <code>IndexField</code> from the search domain.</td></tr>
+<tr><td valign="top"><a href="#delete_index_field-3">delete_index_field/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_suggester-2">delete_suggester/2</a></td><td>Deletes a suggester.</td></tr>
+<tr><td valign="top"><a href="#delete_suggester-3">delete_suggester/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_analysis_schemes-2">describe_analysis_schemes/2</a></td><td>Gets the analysis schemes configured for a domain.</td></tr>
+<tr><td valign="top"><a href="#describe_analysis_schemes-3">describe_analysis_schemes/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_availability_options-2">describe_availability_options/2</a></td><td>Gets the availability options configured for a domain.</td></tr>
+<tr><td valign="top"><a href="#describe_availability_options-3">describe_availability_options/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_domain_endpoint_options-2">describe_domain_endpoint_options/2</a></td><td>Returns the domain's endpoint options, specifically whether all  
+requests to the domain must arrive over HTTPS.</td></tr>
+<tr><td valign="top"><a href="#describe_domain_endpoint_options-3">describe_domain_endpoint_options/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_domains-2">describe_domains/2</a></td><td>Gets information about the search domains owned by this account.</td></tr>
+<tr><td valign="top"><a href="#describe_domains-3">describe_domains/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_expressions-2">describe_expressions/2</a></td><td>Gets the expressions configured for the search domain.</td></tr>
+<tr><td valign="top"><a href="#describe_expressions-3">describe_expressions/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_index_fields-2">describe_index_fields/2</a></td><td>Gets information about the index fields configured for the search  
+domain.</td></tr>
+<tr><td valign="top"><a href="#describe_index_fields-3">describe_index_fields/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_scaling_parameters-2">describe_scaling_parameters/2</a></td><td>Gets the scaling parameters configured for a domain.</td></tr>
+<tr><td valign="top"><a href="#describe_scaling_parameters-3">describe_scaling_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_service_access_policies-2">describe_service_access_policies/2</a></td><td>Gets information about the access policies that control access to the  
+domain's document and search endpoints.</td></tr>
+<tr><td valign="top"><a href="#describe_service_access_policies-3">describe_service_access_policies/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_suggesters-2">describe_suggesters/2</a></td><td>Gets the suggesters configured for a domain.</td></tr>
+<tr><td valign="top"><a href="#describe_suggesters-3">describe_suggesters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#index_documents-2">index_documents/2</a></td><td>Tells the search domain to start indexing its documents using the  
+latest indexing options.</td></tr>
+<tr><td valign="top"><a href="#index_documents-3">index_documents/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_domain_names-2">list_domain_names/2</a></td><td>Lists all search domains owned by an account.</td></tr>
+<tr><td valign="top"><a href="#list_domain_names-3">list_domain_names/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_availability_options-2">update_availability_options/2</a></td><td>Configures the availability options for a domain.</td></tr>
+<tr><td valign="top"><a href="#update_availability_options-3">update_availability_options/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_domain_endpoint_options-2">update_domain_endpoint_options/2</a></td><td>Updates the domain's endpoint options, specifically whether all  
+requests to the domain must arrive over HTTPS.</td></tr>
+<tr><td valign="top"><a href="#update_domain_endpoint_options-3">update_domain_endpoint_options/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_scaling_parameters-2">update_scaling_parameters/2</a></td><td>Configures scaling parameters for a domain.</td></tr>
+<tr><td valign="top"><a href="#update_scaling_parameters-3">update_scaling_parameters/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_service_access_policies-2">update_service_access_policies/2</a></td><td>Configures the access rules that control access to the domain's  
+document and search endpoints.</td></tr>
+<tr><td valign="top"><a href="#update_service_access_policies-3">update_service_access_policies/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="build_suggesters-2">build_suggesters/2</a></h3>
+<div class="spec">
+<p><tt>build_suggesters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Indexes the search suggestions.</p>
+ 
+  For more information, see Configuring Suggesters in the Amazon CloudSearch
+  Developer Guide.</p>
+
+<h3 class="function"><a name="build_suggesters-3">build_suggesters/3</a></h3>
+<div class="spec">
+<p><tt>build_suggesters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_domain-2">create_domain/2</a></h3>
+<div class="spec">
+<p><tt>create_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Creates a new search domain.</p>
+ 
+  For more information, see Creating a Search Domain in the Amazon
+  CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="create_domain-3">create_domain/3</a></h3>
+<div class="spec">
+<p><tt>create_domain(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="define_analysis_scheme-2">define_analysis_scheme/2</a></h3>
+<div class="spec">
+<p><tt>define_analysis_scheme(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures an analysis scheme that can be applied to a <code>text</code> or
+  <code>text-array</code> field to define language-specific text processing options.</p>
+ 
+  For more information, see Configuring Analysis Schemes in the Amazon
+  CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="define_analysis_scheme-3">define_analysis_scheme/3</a></h3>
+<div class="spec">
+<p><tt>define_analysis_scheme(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="define_expression-2">define_expression/2</a></h3>
+<div class="spec">
+<p><tt>define_expression(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures an <code>Expression</code> for the search domain.</p>
+ 
+  Used to create new expressions and modify existing ones. If the expression
+  exists, the new configuration replaces the old one. For more information,
+  see Configuring Expressions in the Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="define_expression-3">define_expression/3</a></h3>
+<div class="spec">
+<p><tt>define_expression(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="define_index_field-2">define_index_field/2</a></h3>
+<div class="spec">
+<p><tt>define_index_field(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures an <code>IndexField</code> for the search domain.</p>
+ 
+  Used to create new fields and modify existing ones. You must specify the
+  name of the domain you are configuring and an index field configuration.
+  The index field configuration specifies a unique name, the index field
+  type, and the options you want to configure for the field. The options you
+  can specify depend on the <code>IndexFieldType</code>. If the field exists, the new
+  configuration replaces the old one. For more information, see Configuring
+  Index Fields in the Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="define_index_field-3">define_index_field/3</a></h3>
+<div class="spec">
+<p><tt>define_index_field(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="define_suggester-2">define_suggester/2</a></h3>
+<div class="spec">
+<p><tt>define_suggester(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures a suggester for a domain.</p>
+ 
+  A suggester enables you to display possible matches before users finish
+  typing their queries. When you configure a suggester, you must specify the
+  name of the text field you want to search for possible matches and a
+  unique name for the suggester. For more information, see Getting Search
+  Suggestions in the Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="define_suggester-3">define_suggester/3</a></h3>
+<div class="spec">
+<p><tt>define_suggester(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_analysis_scheme-2">delete_analysis_scheme/2</a></h3>
+<div class="spec">
+<p><tt>delete_analysis_scheme(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an analysis scheme.</p>
+ 
+  For more information, see Configuring Analysis Schemes in the Amazon
+  CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="delete_analysis_scheme-3">delete_analysis_scheme/3</a></h3>
+<div class="spec">
+<p><tt>delete_analysis_scheme(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_domain-2">delete_domain/2</a></h3>
+<div class="spec">
+<p><tt>delete_domain(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Permanently deletes a search domain and all of its data.</p>
+ 
+  Once a domain has been deleted, it cannot be recovered. For more
+  information, see Deleting a Search Domain in the Amazon CloudSearch
+  Developer Guide.</p>
+
+<h3 class="function"><a name="delete_domain-3">delete_domain/3</a></h3>
+<div class="spec">
+<p><tt>delete_domain(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_expression-2">delete_expression/2</a></h3>
+<div class="spec">
+<p><tt>delete_expression(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes an <code>Expression</code> from the search domain.</p>
+ 
+  For more information, see Configuring Expressions in the Amazon
+  CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="delete_expression-3">delete_expression/3</a></h3>
+<div class="spec">
+<p><tt>delete_expression(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_index_field-2">delete_index_field/2</a></h3>
+<div class="spec">
+<p><tt>delete_index_field(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Removes an <code>IndexField</code> from the search domain.</p>
+ 
+  For more information, see Configuring Index Fields in the Amazon
+  CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="delete_index_field-3">delete_index_field/3</a></h3>
+<div class="spec">
+<p><tt>delete_index_field(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_suggester-2">delete_suggester/2</a></h3>
+<div class="spec">
+<p><tt>delete_suggester(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes a suggester.</p>
+ 
+  For more information, see Getting Search Suggestions in the Amazon
+  CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="delete_suggester-3">delete_suggester/3</a></h3>
+<div class="spec">
+<p><tt>delete_suggester(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_analysis_schemes-2">describe_analysis_schemes/2</a></h3>
+<div class="spec">
+<p><tt>describe_analysis_schemes(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the analysis schemes configured for a domain.</p>
+ 
+  An analysis scheme defines language-specific text processing options for a
+  <code>text</code> field. Can be limited to specific analysis schemes by name. By
+  default, shows all analysis schemes and includes any pending changes to
+  the configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active
+  configuration and exclude pending changes. For more information, see
+  Configuring Analysis Schemes in the Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="describe_analysis_schemes-3">describe_analysis_schemes/3</a></h3>
+<div class="spec">
+<p><tt>describe_analysis_schemes(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_availability_options-2">describe_availability_options/2</a></h3>
+<div class="spec">
+<p><tt>describe_availability_options(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the availability options configured for a domain.</p>
+ 
+  By default, shows the configuration with any pending changes. Set the
+  <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude
+  pending changes. For more information, see Configuring Availability
+  Options in the Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="describe_availability_options-3">describe_availability_options/3</a></h3>
+<div class="spec">
+<p><tt>describe_availability_options(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_domain_endpoint_options-2">describe_domain_endpoint_options/2</a></h3>
+<div class="spec">
+<p><tt>describe_domain_endpoint_options(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Returns the domain's endpoint options, specifically whether all  
+requests to the domain must arrive over HTTPS.</p>
+ 
+  For more information, see Configuring Domain Endpoint Options in the
+  Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="describe_domain_endpoint_options-3">describe_domain_endpoint_options/3</a></h3>
+<div class="spec">
+<p><tt>describe_domain_endpoint_options(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_domains-2">describe_domains/2</a></h3>
+<div class="spec">
+<p><tt>describe_domains(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the search domains owned by this account.</p>
+ 
+  Can be limited to specific domains. Shows all domains by default. To get
+  the number of searchable documents in a domain, use the console or submit
+  a <code>matchall</code> request to your domain's search endpoint:
+  <code>q=matchall&amp;amp;q.parser=structured&amp;amp;size=0</code>. For more information, see
+  Getting Information about a Search Domain in the Amazon CloudSearch
+  Developer Guide.</p>
+
+<h3 class="function"><a name="describe_domains-3">describe_domains/3</a></h3>
+<div class="spec">
+<p><tt>describe_domains(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_expressions-2">describe_expressions/2</a></h3>
+<div class="spec">
+<p><tt>describe_expressions(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the expressions configured for the search domain.</p>
+ 
+  Can be limited to specific expressions by name. By default, shows all
+  expressions and includes any pending changes to the configuration. Set the
+  <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude
+  pending changes. For more information, see Configuring Expressions in the
+  Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="describe_expressions-3">describe_expressions/3</a></h3>
+<div class="spec">
+<p><tt>describe_expressions(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_index_fields-2">describe_index_fields/2</a></h3>
+<div class="spec">
+<p><tt>describe_index_fields(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the index fields configured for the search  
+domain.</p>
+ 
+  Can be limited to specific fields by name. By default, shows all fields
+  and includes any pending changes to the configuration. Set the <code>Deployed</code>
+  option to <code>true</code> to show the active configuration and exclude pending
+  changes. For more information, see Getting Domain Information in the
+  Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="describe_index_fields-3">describe_index_fields/3</a></h3>
+<div class="spec">
+<p><tt>describe_index_fields(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_scaling_parameters-2">describe_scaling_parameters/2</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the scaling parameters configured for a domain.</p>
+ 
+  A domain's scaling parameters specify the desired search instance type and
+  replication count. For more information, see Configuring Scaling Options
+  in the Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="describe_scaling_parameters-3">describe_scaling_parameters/3</a></h3>
+<div class="spec">
+<p><tt>describe_scaling_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_service_access_policies-2">describe_service_access_policies/2</a></h3>
+<div class="spec">
+<p><tt>describe_service_access_policies(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets information about the access policies that control access to the  
+domain's document and search endpoints.</p>
+ 
+  By default, shows the configuration with any pending changes. Set the
+  <code>Deployed</code> option to <code>true</code> to show the active configuration and exclude
+  pending changes. For more information, see Configuring Access for a Search
+  Domain in the Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="describe_service_access_policies-3">describe_service_access_policies/3</a></h3>
+<div class="spec">
+<p><tt>describe_service_access_policies(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_suggesters-2">describe_suggesters/2</a></h3>
+<div class="spec">
+<p><tt>describe_suggesters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Gets the suggesters configured for a domain.</p>
+ 
+  A suggester enables you to display possible matches before users finish
+  typing their queries. Can be limited to specific suggesters by name. By
+  default, shows all suggesters and includes any pending changes to the
+  configuration. Set the <code>Deployed</code> option to <code>true</code> to show the active
+  configuration and exclude pending changes. For more information, see
+  Getting Search Suggestions in the Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="describe_suggesters-3">describe_suggesters/3</a></h3>
+<div class="spec">
+<p><tt>describe_suggesters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="index_documents-2">index_documents/2</a></h3>
+<div class="spec">
+<p><tt>index_documents(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Tells the search domain to start indexing its documents using the  
+latest indexing options.</p>
+ 
+  This operation must be invoked to activate options whose <code>OptionStatus</code> is
+  <code>RequiresIndexDocuments</code>.</p>
+
+<h3 class="function"><a name="index_documents-3">index_documents/3</a></h3>
+<div class="spec">
+<p><tt>index_documents(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_domain_names-2">list_domain_names/2</a></h3>
+<div class="spec">
+<p><tt>list_domain_names(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Lists all search domains owned by an account.</p>
+
+<h3 class="function"><a name="list_domain_names-3">list_domain_names/3</a></h3>
+<div class="spec">
+<p><tt>list_domain_names(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_availability_options-2">update_availability_options/2</a></h3>
+<div class="spec">
+<p><tt>update_availability_options(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures the availability options for a domain.</p>
+ 
+  Enabling the Multi-AZ option expands an Amazon CloudSearch domain to an
+  additional Availability Zone in the same Region to increase fault
+  tolerance in the event of a service disruption. Changes to the Multi-AZ
+  option can take about half an hour to become active. For more information,
+  see Configuring Availability Options in the Amazon CloudSearch Developer
+  Guide.</p>
+
+<h3 class="function"><a name="update_availability_options-3">update_availability_options/3</a></h3>
+<div class="spec">
+<p><tt>update_availability_options(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_domain_endpoint_options-2">update_domain_endpoint_options/2</a></h3>
+<div class="spec">
+<p><tt>update_domain_endpoint_options(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Updates the domain's endpoint options, specifically whether all  
+requests to the domain must arrive over HTTPS.</p>
+ 
+  For more information, see Configuring Domain Endpoint Options in the
+  Amazon CloudSearch Developer Guide.</p>
+
+<h3 class="function"><a name="update_domain_endpoint_options-3">update_domain_endpoint_options/3</a></h3>
+<div class="spec">
+<p><tt>update_domain_endpoint_options(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_scaling_parameters-2">update_scaling_parameters/2</a></h3>
+<div class="spec">
+<p><tt>update_scaling_parameters(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures scaling parameters for a domain.</p>
+ 
+  A domain's scaling parameters specify the desired search instance type and
+  replication count. Amazon CloudSearch will still automatically scale your
+  domain based on the volume of data and traffic, but not below the desired
+  instance type and replication count. If the Multi-AZ option is enabled,
+  these values control the resources used per Availability Zone. For more
+  information, see Configuring Scaling Options in the Amazon CloudSearch
+  Developer Guide.</p>
+
+<h3 class="function"><a name="update_scaling_parameters-3">update_scaling_parameters/3</a></h3>
+<div class="spec">
+<p><tt>update_scaling_parameters(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_service_access_policies-2">update_service_access_policies/2</a></h3>
+<div class="spec">
+<p><tt>update_service_access_policies(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Configures the access rules that control access to the domain's  
+document and search endpoints.</p>
+ 
+  For more information, see Configuring Access for an Amazon CloudSearch
+  Domain.</p>
+
+<h3 class="function"><a name="update_service_access_policies-3">update_service_access_policies/3</a></h3>
+<div class="spec">
+<p><tt>update_service_access_policies(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>

@@ -1,0 +1,272 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Module aws_cloud9</title>
+<link rel="stylesheet" type="text/css" href="stylesheet.css" title="EDoc">
+</head>
+<body bgcolor="white">
+<div class="navbar"><a name="#navbar_top"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<hr>
+
+<h1>Module aws_cloud9</h1>
+<ul class="index"><li><a href="#description">Description</a></li><li><a href="#index">Function Index</a></li><li><a href="#functions">Function Details</a></li></ul>AWS Cloud9.
+
+
+<h2><a name="description">Description</a></h2><p>AWS Cloud9</p>
+ 
+  <p>AWS Cloud9 is a collection of tools that you can use to code, build, run,  
+test, debug, and release software in the cloud.</p>
+ 
+  <p>For more information about AWS Cloud9, see the AWS Cloud9 User Guide.</p>
+ 
+  <p>AWS Cloud9 supports these operations:</p>
+ 
+  <ul> <li><p> <code>CreateEnvironmentEC2</code>: Creates an AWS Cloud9 development  
+environment, launches an Amazon EC2 instance, and then connects from the  
+instance to the environment.</p>
+ 
+  </li> <li><p> <code>CreateEnvironmentMembership</code>: Adds an environment member to an  
+environment.</p>
+ 
+  </li> <li><p> <code>DeleteEnvironment</code>: Deletes an environment. If an Amazon EC2  
+instance is connected to the environment, also terminates the instance.</p>
+ 
+  </li> <li><p> <code>DeleteEnvironmentMembership</code>: Deletes an environment member  
+from an environment.</p>
+ 
+  </li> <li><p> <code>DescribeEnvironmentMemberships</code>: Gets information about  
+environment members for an environment.</p>
+ 
+  </li> <li><p> <code>DescribeEnvironments</code>: Gets information about environments.</p>
+ 
+  </li> <li><p> <code>DescribeEnvironmentStatus</code>: Gets status information for an  
+environment.</p>
+ 
+  </li> <li><p> <code>ListEnvironments</code>: Gets a list of environment identifiers.</p>
+ 
+  </li> <li><p> <code>ListTagsForResource</code>: Gets the tags for an environment.</p>
+ 
+  </li> <li><p> <code>TagResource</code>: Adds tags to an environment.</p>
+ 
+  </li> <li><p> <code>UntagResource</code>: Removes tags from an environment.</p>
+ 
+  </li> <li><p> <code>UpdateEnvironment</code>: Changes the settings of an existing  
+environment.</p>
+ 
+  </li> <li><p> <code>UpdateEnvironmentMembership</code>: Changes the settings of an  
+existing environment member for an environment.</p>
+ 
+  </li> </ul>
+<h2><a name="index">Function Index</a></h2>
+<table width="100%" border="1" cellspacing="0" cellpadding="2" summary="function index"><tr><td valign="top"><a href="#create_environment_e_c2-2">create_environment_e_c2/2</a></td><td>Creates an AWS Cloud9 development environment, launches an Amazon
+  Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
+  instance to the environment.</td></tr>
+<tr><td valign="top"><a href="#create_environment_e_c2-3">create_environment_e_c2/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#create_environment_membership-2">create_environment_membership/2</a></td><td>Adds an environment member to an AWS Cloud9 development environment.</td></tr>
+<tr><td valign="top"><a href="#create_environment_membership-3">create_environment_membership/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_environment-2">delete_environment/2</a></td><td>Deletes an AWS Cloud9 development environment.</td></tr>
+<tr><td valign="top"><a href="#delete_environment-3">delete_environment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#delete_environment_membership-2">delete_environment_membership/2</a></td><td>Deletes an environment member from an AWS Cloud9 development
+  environment.</td></tr>
+<tr><td valign="top"><a href="#delete_environment_membership-3">delete_environment_membership/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_environment_memberships-2">describe_environment_memberships/2</a></td><td>Gets information about environment members for an AWS Cloud9
+  development environment.</td></tr>
+<tr><td valign="top"><a href="#describe_environment_memberships-3">describe_environment_memberships/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_environment_status-2">describe_environment_status/2</a></td><td>Gets status information for an AWS Cloud9 development environment.</td></tr>
+<tr><td valign="top"><a href="#describe_environment_status-3">describe_environment_status/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#describe_environments-2">describe_environments/2</a></td><td>Gets information about AWS Cloud9 development environments.</td></tr>
+<tr><td valign="top"><a href="#describe_environments-3">describe_environments/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_environments-2">list_environments/2</a></td><td>Gets a list of AWS Cloud9 development environment identifiers.</td></tr>
+<tr><td valign="top"><a href="#list_environments-3">list_environments/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-2">list_tags_for_resource/2</a></td><td>Gets a list of the tags associated with an AWS Cloud9 development
+  environment.</td></tr>
+<tr><td valign="top"><a href="#list_tags_for_resource-3">list_tags_for_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#tag_resource-2">tag_resource/2</a></td><td>Adds tags to an AWS Cloud9 development environment.</td></tr>
+<tr><td valign="top"><a href="#tag_resource-3">tag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#untag_resource-2">untag_resource/2</a></td><td>Removes tags from an AWS Cloud9 development environment.</td></tr>
+<tr><td valign="top"><a href="#untag_resource-3">untag_resource/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_environment-2">update_environment/2</a></td><td>Changes the settings of an existing AWS Cloud9 development
+  environment.</td></tr>
+<tr><td valign="top"><a href="#update_environment-3">update_environment/3</a></td><td></td></tr>
+<tr><td valign="top"><a href="#update_environment_membership-2">update_environment_membership/2</a></td><td>Changes the settings of an existing environment member for an AWS
+  Cloud9 development environment.</td></tr>
+<tr><td valign="top"><a href="#update_environment_membership-3">update_environment_membership/3</a></td><td></td></tr>
+</table>
+
+<h2><a name="functions">Function Details</a></h2>
+
+<h3 class="function"><a name="create_environment_e_c2-2">create_environment_e_c2/2</a></h3>
+<div class="spec">
+<p><tt>create_environment_e_c2(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Creates an AWS Cloud9 development environment, launches an Amazon
+  Elastic Compute Cloud (Amazon EC2) instance, and then connects from the
+  instance to the environment.</p>
+
+<h3 class="function"><a name="create_environment_e_c2-3">create_environment_e_c2/3</a></h3>
+<div class="spec">
+<p><tt>create_environment_e_c2(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="create_environment_membership-2">create_environment_membership/2</a></h3>
+<div class="spec">
+<p><tt>create_environment_membership(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Adds an environment member to an AWS Cloud9 development environment.</p>
+
+<h3 class="function"><a name="create_environment_membership-3">create_environment_membership/3</a></h3>
+<div class="spec">
+<p><tt>create_environment_membership(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_environment-2">delete_environment/2</a></h3>
+<div class="spec">
+<p><tt>delete_environment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Deletes an AWS Cloud9 development environment.</p>
+ 
+  If an Amazon EC2 instance is connected to the environment, also terminates
+  the instance.</p>
+
+<h3 class="function"><a name="delete_environment-3">delete_environment/3</a></h3>
+<div class="spec">
+<p><tt>delete_environment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="delete_environment_membership-2">delete_environment_membership/2</a></h3>
+<div class="spec">
+<p><tt>delete_environment_membership(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Deletes an environment member from an AWS Cloud9 development
+  environment.</p>
+
+<h3 class="function"><a name="delete_environment_membership-3">delete_environment_membership/3</a></h3>
+<div class="spec">
+<p><tt>delete_environment_membership(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_environment_memberships-2">describe_environment_memberships/2</a></h3>
+<div class="spec">
+<p><tt>describe_environment_memberships(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about environment members for an AWS Cloud9
+  development environment.</p>
+
+<h3 class="function"><a name="describe_environment_memberships-3">describe_environment_memberships/3</a></h3>
+<div class="spec">
+<p><tt>describe_environment_memberships(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_environment_status-2">describe_environment_status/2</a></h3>
+<div class="spec">
+<p><tt>describe_environment_status(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets status information for an AWS Cloud9 development environment.</p>
+
+<h3 class="function"><a name="describe_environment_status-3">describe_environment_status/3</a></h3>
+<div class="spec">
+<p><tt>describe_environment_status(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="describe_environments-2">describe_environments/2</a></h3>
+<div class="spec">
+<p><tt>describe_environments(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets information about AWS Cloud9 development environments.</p>
+
+<h3 class="function"><a name="describe_environments-3">describe_environments/3</a></h3>
+<div class="spec">
+<p><tt>describe_environments(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_environments-2">list_environments/2</a></h3>
+<div class="spec">
+<p><tt>list_environments(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a list of AWS Cloud9 development environment identifiers.</p>
+
+<h3 class="function"><a name="list_environments-3">list_environments/3</a></h3>
+<div class="spec">
+<p><tt>list_environments(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="list_tags_for_resource-2">list_tags_for_resource/2</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Gets a list of the tags associated with an AWS Cloud9 development
+  environment.</p>
+
+<h3 class="function"><a name="list_tags_for_resource-3">list_tags_for_resource/3</a></h3>
+<div class="spec">
+<p><tt>list_tags_for_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="tag_resource-2">tag_resource/2</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p><p>Adds tags to an AWS Cloud9 development environment.</p>
+ 
+  Tags that you add to an AWS Cloud9 environment by using this method will
+  NOT be automatically propagated to underlying resources.</p>
+
+<h3 class="function"><a name="tag_resource-3">tag_resource/3</a></h3>
+<div class="spec">
+<p><tt>tag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="untag_resource-2">untag_resource/2</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Removes tags from an AWS Cloud9 development environment.</p>
+
+<h3 class="function"><a name="untag_resource-3">untag_resource/3</a></h3>
+<div class="spec">
+<p><tt>untag_resource(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_environment-2">update_environment/2</a></h3>
+<div class="spec">
+<p><tt>update_environment(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes the settings of an existing AWS Cloud9 development
+  environment.</p>
+
+<h3 class="function"><a name="update_environment-3">update_environment/3</a></h3>
+<div class="spec">
+<p><tt>update_environment(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+
+<h3 class="function"><a name="update_environment_membership-2">update_environment_membership/2</a></h3>
+<div class="spec">
+<p><tt>update_environment_membership(Client, Input) -&gt; any()</tt></p>
+<p> </p>
+</div><p>Changes the settings of an existing environment member for an AWS
+  Cloud9 development environment.</p>
+
+<h3 class="function"><a name="update_environment_membership-3">update_environment_membership/3</a></h3>
+<div class="spec">
+<p><tt>update_environment_membership(Client, Input, Options) -&gt; any()</tt></p>
+<p> </p>
+</div>
+<hr>
+
+<div class="navbar"><a name="#navbar_bottom"></a><table width="100%" border="0" cellspacing="0" cellpadding="2" summary="navigation bar"><tr><td><a href="overview-summary.html" target="overviewFrame">Overview</a></td><td><a href="http://www.erlang.org/"><img src="erlang.png" align="right" border="0" alt="erlang logo"></a></td></tr></table></div>
+<p><i>Generated by EDoc</i></p>
+</body>
+</html>
